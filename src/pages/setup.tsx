@@ -15,6 +15,7 @@ const setupScript = raw(`
     document.getElementById('source-flag').textContent = data.flag;
     document.getElementById('source-code').textContent = data.currency;
     document.getElementById('source-name').textContent = data.name;
+    localStorage.setItem('tc_detect_info', JSON.stringify({ via: data.detectedVia, tz: data.tz, country: data.country, tzCurrency: data.tzCurrency }));
   }).catch(function() {
     detectedSource = 'USD';
     document.getElementById('source-flag').textContent = '🇺🇸';

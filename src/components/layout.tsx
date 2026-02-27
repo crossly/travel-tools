@@ -83,9 +83,11 @@ export const Layout: FC<PropsWithChildren<{ title?: string }>> = ({ children, ti
     <body>
       <div class="container fade-in">
         {children}
-        <div style="text-align: center; padding-top: 24px; padding-bottom: 8px; font-size: 11px; color: var(--text-secondary); opacity: 0.5;">
-          {BUILD_VERSION}
+        <div id="build-footer" style="text-align: center; padding-top: 24px; padding-bottom: 8px; font-size: 11px; color: var(--text-secondary); opacity: 0.5;">
+          <div>{BUILD_VERSION}</div>
+          <div id="detect-info"></div>
         </div>
+        {raw(`<script>try{var d=JSON.parse(localStorage.getItem('tc_detect_info')||'{}');if(d.via){document.getElementById('detect-info').textContent='detected via '+d.via+(d.via==='timezone'?' ('+d.tz+')':' ('+d.country+')');}}catch(e){}</script>`)}
       </div>
       <script src="/static/app.js"></script>
     </body>
