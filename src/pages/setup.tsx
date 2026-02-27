@@ -31,11 +31,9 @@ const setupScript = raw(`
   document.querySelectorAll('.currency-option').forEach(function(el) {
     el.addEventListener('click', function() {
       document.querySelectorAll('.currency-option').forEach(function(o) {
-        o.style.background = 'transparent';
-        o.style.color = '';
+        o.classList.remove('selected');
       });
-      el.style.background = 'var(--accent)';
-      el.style.color = '#fff';
+      el.classList.add('selected');
       selectedTarget = el.dataset.code;
       var btn = document.getElementById('confirm-btn');
       btn.disabled = false;

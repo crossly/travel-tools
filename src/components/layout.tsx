@@ -49,7 +49,13 @@ const css = raw(`
     outline: none; transition: border-color 0.15s ease;
   }
   input:focus, select:focus { border-color: var(--accent); }
+  .currency-option { border-left: 3px solid transparent; }
   .currency-option:hover { background: var(--bg) !important; }
+  .currency-option.selected {
+    background: #2563eb !important; color: #fff !important;
+    border-left-color: #1d4ed8;
+  }
+  .currency-option.selected * { color: #fff !important; }
   .fade-in { animation: fadeIn 0.3s ease; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
   ::-webkit-scrollbar { width: 4px; }
@@ -69,7 +75,8 @@ export const Layout: FC<PropsWithChildren<{ title?: string }>> = ({ children, ti
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       <link rel="manifest" href="/manifest.json" />
-      <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💱</text></svg>" />
+      <link rel="icon" href="/icons/icon.svg" type="image/svg+xml" />
+      {raw('<link rel="apple-touch-icon" href="/icons/icon.svg"/>')}
       <style>{css}</style>
     </head>
     <body>

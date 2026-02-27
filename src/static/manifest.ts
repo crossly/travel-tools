@@ -7,6 +7,6 @@ export const manifestJson = JSON.stringify({
   background_color: '#0f172a',
   theme_color: '#3b82f6',
   icons: [
-    { src: '/icons/icon.svg', sizes: 'any', type: 'image/svg+xml' },
+    { src: '/icons/icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any maskable' },
   ],
 });
