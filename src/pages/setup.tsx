@@ -1,6 +1,57 @@
+import { raw } from 'hono/html';
 import type { Context } from 'hono';
 import { Layout } from '../components/layout';
 import { currencyInfo, supportedCurrencies } from '../lib/currencies';
+
+const setupScript = raw(`
+(function() {
+  var selectedTarget = null;
+  var detectedSource = null;
+
+  fetch('/api/detect').then(function(r) { return r.json(); }).then(function(data) {
+    detectedSource = data.currency;
+    document.getElementById('source-flag').textContent = data.flag;
+    document.getElementById('source-code').textContent = data.currency;
+    document.getElementById('source-name').textContent = data.name;
+  }).catch(function() {
+    detectedSource = 'USD';
+    document.getElementById('source-flag').textContent = '🇺🇸';
+    document.getElementById('source-code').textContent = 'USD';
+    document.getElementById('source-name').textContent = 'US Dollar';
+  });
+
+  document.getElementById('currency-search').addEventListener('input', function(e) {
+    var q = e.target.value.toLowerCase();
+    document.querySelectorAll('.currency-option').forEach(function(el) {
+      var text = el.textContent.toLowerCase();
+      el.style.display = text.includes(q) ? 'flex' : 'none';
+    });
+  });
+
+  document.querySelectorAll('.currency-option').forEach(function(el) {
+    el.addEventListener('click', function() {
+      document.querySelectorAll('.currency-option').forEach(function(o) {
+        o.style.background = 'transparent';
+        o.style.color = '';
+      });
+      el.style.background = 'var(--accent)';
+      el.style.color = '#fff';
+      selectedTarget = el.dataset.code;
+      var btn = document.getElementById('confirm-btn');
+      btn.disabled = false;
+      btn.style.opacity = '1';
+    });
+  });
+
+  document.getElementById('confirm-btn').addEventListener('click', function() {
+    if (!selectedTarget) return;
+    localStorage.setItem('tc_source', detectedSource || 'USD');
+    localStorage.setItem('tc_target', selectedTarget);
+    localStorage.setItem('tc_setup_done', 'true');
+    window.location.href = '/';
+  });
+})();
+`);
 
 export const setupPage = (c: Context) => {
   const options = supportedCurrencies.map((code) => {
@@ -63,60 +114,7 @@ export const setupPage = (c: Context) => {
         Start Converting ✈️
       </button>
 
-      <script>{`
-        (function() {
-          var selectedTarget = null;
-          var detectedSource = null;
-
-          // Detect source currency
-          fetch('/api/detect').then(r => r.json()).then(function(data) {
-            detectedSource = data.currency;
-            document.getElementById('source-flag').textContent = data.flag;
-            document.getElementById('source-code').textContent = data.currency;
-            document.getElementById('source-name').textContent = data.name;
-          }).catch(function() {
-            detectedSource = 'USD';
-            document.getElementById('source-flag').textContent = '🇺🇸';
-            document.getElementById('source-code').textContent = 'USD';
-            document.getElementById('source-name').textContent = 'US Dollar';
-          });
-
-          // Search filter
-          document.getElementById('currency-search').addEventListener('input', function(e) {
-            var q = e.target.value.toLowerCase();
-            document.querySelectorAll('.currency-option').forEach(function(el) {
-              var code = el.dataset.code.toLowerCase();
-              var text = el.textContent.toLowerCase();
-              el.style.display = (text.includes(q) || code.includes(q)) ? 'flex' : 'none';
-            });
-          });
-
-          // Select currency
-          document.querySelectorAll('.currency-option').forEach(function(el) {
-            el.addEventListener('click', function() {
-              document.querySelectorAll('.currency-option').forEach(function(o) {
-                o.style.background = 'transparent';
-              });
-              el.style.background = 'var(--accent)';
-              el.style.color = '#fff';
-              selectedTarget = el.dataset.code;
-              var btn = document.getElementById('confirm-btn');
-              btn.disabled = false;
-              btn.style.opacity = '1';
-            });
-          });
-
-          // Confirm
-          document.getElementById('confirm-btn').addEventListener('click', function() {
-            if (!selectedTarget) return;
-            var source = detectedSource || 'USD';
-            localStorage.setItem('tc_source', source);
-            localStorage.setItem('tc_target', selectedTarget);
-            localStorage.setItem('tc_setup_done', 'true');
-            window.location.href = '/';
-          });
-        })();
-      `}</script>
+      <script>{setupScript}</script>
     </Layout>
   );
 };
