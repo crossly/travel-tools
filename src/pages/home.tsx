@@ -193,78 +193,110 @@ const homeScript = raw(`
 export const homePage = (c: Context) => {
   return c.html(
     <Layout title="Tiny Currency">
-      <div id="app-home">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
-          <h1 style="font-size: 20px; font-weight: 700;">💱 Tiny Currency</h1>
-          <button id="settings-btn" style="background: none; border: none; font-size: 20px; cursor: pointer; padding: 4px;">⚙️</button>
+      <div id="app-home" style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+
+        {/* Settings — top right, absolute */}
+        <div style="position: fixed; top: 0; right: 0; padding: max(12px, var(--safe-top)) max(12px, var(--safe-right)) 0 0; z-index: 10;">
+          <button id="settings-btn" style="background: none; border: none; cursor: pointer; padding: 6px; color: var(--text-secondary); transition: color 0.15s;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+          </button>
         </div>
 
-        <div class="card" style="margin-bottom: 12px;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-            <button id="source-area" style="display: flex; align-items: center; gap: 8px; background: none; border: none; cursor: pointer; padding: 0; color: var(--text);">
-              <span id="source-flag" style="font-size: 28px;">💱</span>
-              <span id="source-code" style="font-size: 18px; font-weight: 700;">---</span>
-            </button>
-            <span id="source-symbol" style="color: var(--text-secondary); font-size: 14px;"></span>
-          </div>
+        {/* Source section */}
+        <div id="source-section" style="padding: 0 0 16px;">
+          <button id="source-area" style="display: flex; align-items: center; gap: 6px; background: none; border: none; cursor: pointer; padding: 0; color: var(--text-secondary); font-family: var(--font-body); font-size: 14px; font-weight: 500; margin-bottom: 8px; letter-spacing: 0.02em;">
+            <span id="source-flag" style="font-size: 18px;">💱</span>
+            <span id="source-code" style="font-weight: 600; color: var(--text);">---</span>
+            <span id="source-symbol" style="opacity: 0.6;"></span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.4;"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
           <input
             type="text"
             id="amount-input"
             inputmode="decimal"
             placeholder="0"
             autocomplete="off"
-            style="font-size: 36px; font-weight: 700; border: none; background: transparent; padding: 0; text-align: right; letter-spacing: -0.5px;"
+            style="font-family: var(--font-display); font-size: 48px; font-weight: 500; border: none; background: transparent; padding: 0; width: 100%; letter-spacing: -1.5px; color: var(--text); caret-color: var(--accent);"
           />
         </div>
 
-        <div style="display: flex; justify-content: center; margin: -6px 0;">
-          <button id="swap-btn" style="background: var(--accent); color: #fff; border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 18px; cursor: pointer; z-index: 1; box-shadow: var(--shadow); transition: transform 0.2s ease; display: flex; align-items: center; justify-content: center;">
-            ⇅
+        {/* Divider with swap */}
+        <div style="display: flex; align-items: center; gap: 12px; padding: 4px 0;">
+          <div style="flex: 1; height: 1px; background: var(--border);"></div>
+          <button id="swap-btn" style="background: var(--bg-secondary); color: var(--text-secondary); border: 1px solid var(--border); width: 36px; height: 36px; border-radius: 50%; font-size: 14px; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 16V4m0 0L3 8m4-4l4 4M17 8v12m0 0l4-4m-4 4l-4-4"/></svg>
           </button>
+          <div style="flex: 1; height: 1px; background: var(--border);"></div>
         </div>
 
-        <div class="card" style="margin-top: -6px; margin-bottom: 20px;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-            <button id="target-area" style="display: flex; align-items: center; gap: 8px; background: none; border: none; cursor: pointer; padding: 0; color: var(--text);">
-              <span id="target-flag" style="font-size: 28px;">💱</span>
-              <span id="target-code" style="font-size: 18px; font-weight: 700;">---</span>
-            </button>
-            <span id="target-symbol" style="color: var(--text-secondary); font-size: 14px;"></span>
-          </div>
-          <div id="result" style="font-size: 36px; font-weight: 700; text-align: right; letter-spacing: -0.5px; min-height: 44px; color: var(--accent);">
+        {/* Target section */}
+        <div id="target-section" style="padding: 16px 0 0;">
+          <button id="target-area" style="display: flex; align-items: center; gap: 6px; background: none; border: none; cursor: pointer; padding: 0; color: var(--text-secondary); font-family: var(--font-body); font-size: 14px; font-weight: 500; margin-bottom: 8px; letter-spacing: 0.02em;">
+            <span id="target-flag" style="font-size: 18px;">💱</span>
+            <span id="target-code" style="font-weight: 600; color: var(--text);">---</span>
+            <span id="target-symbol" style="opacity: 0.6;"></span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.4;"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div id="result" class="num" style="font-size: 48px; font-weight: 500; letter-spacing: -1.5px; min-height: 58px; color: var(--accent);">
             0
           </div>
         </div>
 
-        <div style="text-align: center; color: var(--text-secondary); font-size: 13px;">
-          <div id="rate-info">1 <span id="rate-source">---</span> = <span id="rate-value">---</span> <span id="rate-target">---</span></div>
-          <div id="rate-time" style="margin-top: 4px; font-size: 11px;"></div>
+        {/* Rate info */}
+        <div style="color: var(--text-secondary); font-size: 12px; padding: 16px 0 0; display: flex; align-items: center; gap: 8px;">
+          <span id="rate-info" class="num" style="opacity: 0.6;">1 <span id="rate-source">---</span> = <span id="rate-value">---</span> <span id="rate-target">---</span></span>
+          <span id="rate-time" style="opacity: 0.4; font-size: 11px;"></span>
         </div>
       </div>
 
       {/* Currency Picker Modal */}
-      <div id="currency-modal" style="position: fixed; inset: 0; z-index: 100; display: flex; flex-direction: column; justify-content: flex-end; pointer-events: none; opacity: 0; transition: opacity 0.2s ease;">
-        <div id="currency-modal-backdrop" style="position: absolute; inset: 0; background: rgba(0,0,0,0.4);"></div>
-        <div style="position: relative; background: var(--card-bg); border-radius: 20px 20px 0 0; max-height: 70vh; display: flex; flex-direction: column; transform: translateY(100%); transition: transform 0.3s ease;">
-          <div style="display: flex; justify-content: space-between; align-items: center; padding: 16px 20px 8px;">
-            <h2 id="picker-title" style="font-size: 17px; font-weight: 700;">Select currency</h2>
-            <button id="picker-close" style="background: none; border: none; font-size: 22px; cursor: pointer; padding: 4px; color: var(--text-secondary);">✕</button>
+      <div id="currency-modal" class="picker-modal">
+        <div id="currency-modal-backdrop" class="picker-backdrop"></div>
+        <div class="picker-sheet">
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 16px 20px 12px;">
+            <h2 id="picker-title" style="font-size: 16px; font-weight: 700;">Select currency</h2>
+            <button id="picker-close" style="background: none; border: none; font-size: 20px; cursor: pointer; padding: 4px; color: var(--text-secondary); line-height: 1;">✕</button>
           </div>
           <div style="padding: 0 20px 12px;">
-            <input type="text" id="picker-search" placeholder="Search currency..." autocomplete="off" style="margin: 0;" />
+            <input type="text" id="picker-search" placeholder="Search currency..." autocomplete="off" style="margin: 0; font-size: 15px;" />
           </div>
-          <div id="picker-list" style="overflow-y: auto; padding: 0 12px 20px; flex: 1;">
+          <div id="picker-list" style="overflow-y: auto; padding: 0 12px 20px; padding-bottom: max(20px, var(--safe-bottom)); flex: 1;">
           </div>
         </div>
       </div>
 
       <script>{homeScript}</script>
       <style>{raw(`
-        #currency-modal.open { pointer-events: auto; opacity: 1; }
-        #currency-modal.open > div:last-child { transform: translateY(0); }
-        .picker-item { display: flex; align-items: center; gap: 12px; padding: 12px 8px; cursor: pointer; border-radius: 10px; border: none; background: none; width: 100%; text-align: left; color: var(--text); font-size: 15px; transition: background 0.1s; }
+        #amount-input::placeholder { color: var(--text-secondary); opacity: 0.3; }
+        #swap-btn:hover { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+        #swap-btn:active { transform: scale(0.92); }
+        #settings-btn:hover { color: var(--text); }
+        .picker-modal {
+          position: fixed; inset: 0; z-index: 100;
+          display: flex; flex-direction: column; justify-content: flex-end;
+          pointer-events: none; opacity: 0;
+          transition: opacity 0.2s ease;
+        }
+        .picker-modal.open { pointer-events: auto; opacity: 1; }
+        .picker-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+        .picker-sheet {
+          position: relative; background: var(--bg-secondary); border-radius: 20px 20px 0 0;
+          max-height: 70vh; display: flex; flex-direction: column;
+          transform: translateY(100%); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          box-shadow: 0 -4px 32px rgba(0,0,0,0.12);
+        }
+        .picker-modal.open .picker-sheet { transform: translateY(0); }
+        .picker-item {
+          display: flex; align-items: center; gap: 12px; padding: 12px 8px;
+          cursor: pointer; border-radius: 12px; border: none; background: none;
+          width: 100%; text-align: left; color: var(--text); font-family: var(--font-body);
+          font-size: 15px; transition: background 0.1s;
+        }
         .picker-item:active { background: var(--border); }
-        .picker-selected { background: var(--accent); color: #fff; }
+        .picker-selected { background: var(--accent) !important; color: #fff; }
         .picker-selected span { color: #fff !important; }
       `)}</style>
     </Layout>
