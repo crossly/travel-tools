@@ -1,0 +1,10 @@
+name = "tiny-currency"
+main = "src/index.tsx"
+compatibility_date = "2025-01-01"
+
+[triggers]
+crons = ["0 * * * *"]
+
+[[kv_namespaces]]
+binding = "RATES_KV"
+id = "placeholder-id"
