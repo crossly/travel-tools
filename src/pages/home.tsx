@@ -1,13 +1,15 @@
 import { raw } from 'hono/html';
 import type { Context } from 'hono';
 import { Layout } from '../components/layout';
-import { currencyInfo } from '../lib/currencies';
+import { currencyInfo, supportedCurrencies } from '../lib/currencies';
 
 const currencyInfoJson = JSON.stringify(
   Object.fromEntries(
     Object.entries(currencyInfo).map(([k, v]) => [k, { flag: v.flag, name: v.name, symbol: v.symbol }])
   )
 );
+
+const currencyListJson = JSON.stringify(supportedCurrencies);
 
 const homeScript = raw(`
 (function() {
@@ -21,6 +23,8 @@ const homeScript = raw(`
   var rates = JSON.parse(localStorage.getItem('tc_rates') || '{}');
   var rateUpdatedAt = localStorage.getItem('tc_rates_updated') || '';
   var currencyData = ${currencyInfoJson};
+  var allCurrencies = ${currencyListJson};
+  var pickerTarget = null; // 'source' or 'target'
 
   function getCurrencyInfo(code) {
     return currencyData[code] || { flag: '💱', symbol: code, name: code };
@@ -95,6 +99,59 @@ const homeScript = raw(`
       .catch(function() {});
   }
 
+  // --- Currency Picker ---
+  function openPicker(which) {
+    pickerTarget = which;
+    var modal = document.getElementById('currency-modal');
+    var title = document.getElementById('picker-title');
+    title.textContent = which === 'source' ? 'Source currency' : 'Target currency';
+    var search = document.getElementById('picker-search');
+    search.value = '';
+    renderPickerList('');
+    modal.classList.add('open');
+    setTimeout(function() { search.focus(); }, 100);
+  }
+
+  function closePicker() {
+    document.getElementById('currency-modal').classList.remove('open');
+    pickerTarget = null;
+  }
+
+  function renderPickerList(query) {
+    var list = document.getElementById('picker-list');
+    var current = pickerTarget === 'source' ? source : target;
+    var q = query.toLowerCase();
+    var html = '';
+    for (var i = 0; i < allCurrencies.length; i++) {
+      var code = allCurrencies[i];
+      var info = getCurrencyInfo(code);
+      var text = (code + ' ' + info.name).toLowerCase();
+      if (q && text.indexOf(q) === -1) continue;
+      var selected = code === current ? ' picker-selected' : '';
+      html += '<button class="picker-item' + selected + '" data-code="' + code + '">'
+        + '<span style="font-size:24px">' + info.flag + '</span>'
+        + '<div><span style="font-weight:600">' + code + '</span>'
+        + '<span style="color:var(--text-secondary);font-size:13px;margin-left:8px">' + info.name + '</span></div>'
+        + '</button>';
+    }
+    list.innerHTML = html;
+  }
+
+  function selectCurrency(code) {
+    if (pickerTarget === 'source' && code !== source) {
+      source = code;
+      localStorage.setItem('tc_source', source);
+      rates = {};
+      updateDisplay();
+      fetchRates();
+    } else if (pickerTarget === 'target' && code !== target) {
+      target = code;
+      localStorage.setItem('tc_target', target);
+      updateDisplay();
+    }
+    closePicker();
+  }
+
   document.getElementById('amount-input').addEventListener('input', convert);
 
   document.getElementById('swap-btn').addEventListener('click', function() {
@@ -112,6 +169,20 @@ const homeScript = raw(`
   document.getElementById('settings-btn').addEventListener('click', function() {
     localStorage.removeItem('tc_setup_done');
     window.location.href = '/setup';
+  });
+
+  document.getElementById('source-area').addEventListener('click', function() { openPicker('source'); });
+  document.getElementById('target-area').addEventListener('click', function() { openPicker('target'); });
+  document.getElementById('picker-close').addEventListener('click', closePicker);
+  document.getElementById('currency-modal-backdrop').addEventListener('click', closePicker);
+
+  document.getElementById('picker-search').addEventListener('input', function(e) {
+    renderPickerList(e.target.value);
+  });
+
+  document.getElementById('picker-list').addEventListener('click', function(e) {
+    var item = e.target.closest('.picker-item');
+    if (item) selectCurrency(item.dataset.code);
   });
 
   updateDisplay();
@@ -171,7 +242,31 @@ export const homePage = (c: Context) => {
         </div>
       </div>
 
+      {/* Currency Picker Modal */}
+      <div id="currency-modal" style="position: fixed; inset: 0; z-index: 100; display: flex; flex-direction: column; justify-content: flex-end; pointer-events: none; opacity: 0; transition: opacity 0.2s ease;">
+        <div id="currency-modal-backdrop" style="position: absolute; inset: 0; background: rgba(0,0,0,0.4);"></div>
+        <div style="position: relative; background: var(--card-bg); border-radius: 20px 20px 0 0; max-height: 70vh; display: flex; flex-direction: column; transform: translateY(100%); transition: transform 0.3s ease;">
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 16px 20px 8px;">
+            <h2 id="picker-title" style="font-size: 17px; font-weight: 700;">Select currency</h2>
+            <button id="picker-close" style="background: none; border: none; font-size: 22px; cursor: pointer; padding: 4px; color: var(--text-secondary);">✕</button>
+          </div>
+          <div style="padding: 0 20px 12px;">
+            <input type="text" id="picker-search" placeholder="Search currency..." autocomplete="off" style="margin: 0;" />
+          </div>
+          <div id="picker-list" style="overflow-y: auto; padding: 0 12px 20px; flex: 1;">
+          </div>
+        </div>
+      </div>
+
       <script>{homeScript}</script>
+      <style>{raw(`
+        #currency-modal.open { pointer-events: auto; opacity: 1; }
+        #currency-modal.open > div:last-child { transform: translateY(0); }
+        .picker-item { display: flex; align-items: center; gap: 12px; padding: 12px 8px; cursor: pointer; border-radius: 10px; border: none; background: none; width: 100%; text-align: left; color: var(--text); font-size: 15px; transition: background 0.1s; }
+        .picker-item:active { background: var(--border); }
+        .picker-selected { background: var(--accent); color: #fff; }
+        .picker-selected span { color: #fff !important; }
+      `)}</style>
     </Layout>
   );
 };

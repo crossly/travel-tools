@@ -1,5 +1,6 @@
 import { raw } from 'hono/html';
 import type { FC, PropsWithChildren } from 'hono/jsx';
+import { BUILD_VERSION } from '../lib/version';
 
 const css = raw(`
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -82,6 +83,9 @@ export const Layout: FC<PropsWithChildren<{ title?: string }>> = ({ children, ti
     <body>
       <div class="container fade-in">
         {children}
+        <div style="text-align: center; padding-top: 24px; padding-bottom: 8px; font-size: 11px; color: var(--text-secondary); opacity: 0.5;">
+          {BUILD_VERSION}
+        </div>
       </div>
       <script src="/static/app.js"></script>
     </body>

@@ -7,4 +7,4 @@ crons = ["0 * * * *"]
 
 [[kv_namespaces]]
 binding = "RATES_KV"
-id = "placeholder-id"
+id = "a9fed0b89c584406a7692849359a2ce5"

@@ -89,12 +89,57 @@ export const currencyInfo: Record<string, { name: string; flag: string; symbol: 
   KES: { name: 'Kenyan Shilling', flag: '🇰🇪', symbol: 'KSh' },
 };
 
+// IANA timezone → currency code (covers major timezones for supported currencies)
+export const timezoneToCurrency: Record<string, string> = {
+  // Americas
+  'America/New_York': 'USD', 'America/Chicago': 'USD', 'America/Denver': 'USD',
+  'America/Los_Angeles': 'USD', 'America/Anchorage': 'USD', 'Pacific/Honolulu': 'USD',
+  'America/Toronto': 'CAD', 'America/Vancouver': 'CAD', 'America/Edmonton': 'CAD',
+  'America/Winnipeg': 'CAD', 'America/Halifax': 'CAD',
+  'America/Mexico_City': 'MXN', 'America/Cancun': 'MXN', 'America/Tijuana': 'MXN',
+  'America/Sao_Paulo': 'BRL', 'America/Fortaleza': 'BRL', 'America/Manaus': 'BRL',
+  'America/Argentina/Buenos_Aires': 'ARS', 'America/Santiago': 'CLP',
+  'America/Bogota': 'COP', 'America/Lima': 'PEN',
+  // Europe
+  'Europe/London': 'GBP', 'Europe/Paris': 'EUR', 'Europe/Berlin': 'EUR',
+  'Europe/Madrid': 'EUR', 'Europe/Rome': 'EUR', 'Europe/Amsterdam': 'EUR',
+  'Europe/Brussels': 'EUR', 'Europe/Vienna': 'EUR', 'Europe/Dublin': 'EUR',
+  'Europe/Helsinki': 'EUR', 'Europe/Lisbon': 'EUR', 'Europe/Athens': 'EUR',
+  'Europe/Bucharest': 'RON', 'Europe/Sofia': 'BGN', 'Europe/Zagreb': 'EUR',
+  'Europe/Warsaw': 'PLN', 'Europe/Prague': 'CZK', 'Europe/Budapest': 'HUF',
+  'Europe/Stockholm': 'SEK', 'Europe/Oslo': 'NOK', 'Europe/Copenhagen': 'DKK',
+  'Atlantic/Reykjavik': 'ISK', 'Europe/Zurich': 'CHF',
+  'Europe/Moscow': 'RUB', 'Europe/Istanbul': 'TRY',
+  // Asia
+  'Asia/Shanghai': 'CNY', 'Asia/Chongqing': 'CNY', 'Asia/Urumqi': 'CNY',
+  'Asia/Hong_Kong': 'HKD', 'Asia/Taipei': 'TWD',
+  'Asia/Tokyo': 'JPY', 'Asia/Seoul': 'KRW',
+  'Asia/Singapore': 'SGD', 'Asia/Kuala_Lumpur': 'MYR',
+  'Asia/Bangkok': 'THB', 'Asia/Ho_Chi_Minh': 'VND', 'Asia/Manila': 'PHP',
+  'Asia/Jakarta': 'IDR', 'Asia/Makassar': 'IDR',
+  'Asia/Kolkata': 'INR', 'Asia/Karachi': 'PKR', 'Asia/Dhaka': 'BDT',
+  'Asia/Colombo': 'LKR',
+  'Asia/Dubai': 'AED', 'Asia/Riyadh': 'SAR', 'Asia/Qatar': 'QAR',
+  'Asia/Kuwait': 'KWD', 'Asia/Jerusalem': 'ILS',
+  // Africa
+  'Africa/Cairo': 'EGP', 'Africa/Johannesburg': 'ZAR', 'Africa/Lagos': 'NGN',
+  'Africa/Nairobi': 'KES',
+  // Oceania
+  'Australia/Sydney': 'AUD', 'Australia/Melbourne': 'AUD', 'Australia/Perth': 'AUD',
+  'Australia/Brisbane': 'AUD', 'Pacific/Auckland': 'NZD',
+};
+
 // All supported currency codes (from currencyInfo keys)
 export const supportedCurrencies = Object.keys(currencyInfo);
 
 // Get currency for a country code, with USD fallback
 export function getCurrencyForCountry(country: string): string {
   return countryToCurrency[country.toUpperCase()] || 'USD';
+}
+
+// Get currency for an IANA timezone
+export function getCurrencyForTimezone(tz: string): string | null {
+  return timezoneToCurrency[tz] || null;
 }
 
 // Get display info with fallback

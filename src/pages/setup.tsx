@@ -8,7 +8,9 @@ const setupScript = raw(`
   var selectedTarget = null;
   var detectedSource = null;
 
-  fetch('/api/detect').then(function(r) { return r.json(); }).then(function(data) {
+  var tz = '';
+  try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch(e) {}
+  fetch('/api/detect?tz=' + encodeURIComponent(tz)).then(function(r) { return r.json(); }).then(function(data) {
     detectedSource = data.currency;
     document.getElementById('source-flag').textContent = data.flag;
     document.getElementById('source-code').textContent = data.currency;
