@@ -7,6 +7,7 @@ import { setupPage } from './pages/setup';
 import { appJs } from './static/app';
 import { swJs } from './static/sw';
 import { manifestJson } from './static/manifest';
+import { BUILD_VERSION } from './lib/version';
 
 type Bindings = {
   RATES_KV: KVNamespace;
@@ -31,7 +32,7 @@ app.get('/static/app.js', (c) => {
 app.get('/sw.js', (c) => {
   c.header('Content-Type', 'application/javascript');
   c.header('Cache-Control', 'no-cache');
-  return c.text(swJs);
+  return c.text(swJs(BUILD_VERSION));
 });
 app.get('/manifest.json', (c) => {
   c.header('Content-Type', 'application/json');

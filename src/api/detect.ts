@@ -2,7 +2,7 @@ import type { Context } from 'hono';
 import { getCurrencyForCountry, getCurrencyForTimezone, getCurrencyInfo } from '../lib/currencies';
 
 export const detectHandler = (c: Context) => {
-  const cf = (c.req.raw as any).cf;
+  const cf = (c.req.raw as Request & { cf?: IncomingRequestCfProperties }).cf;
   const country = cf?.country || 'US';
   const ipCurrency = getCurrencyForCountry(country);
 

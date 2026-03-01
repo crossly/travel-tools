@@ -1,5 +1,5 @@
-export const swJs = `
-var CACHE_NAME = 'tc-v1';
+export const swJs = (version: string) => `
+var CACHE_NAME = 'tc-${version}';
 var STATIC_URLS = ['/', '/setup', '/static/app.js', '/manifest.json'];
 
 self.addEventListener('install', function(e) {

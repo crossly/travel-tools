@@ -1,3 +1,5 @@
+import { buildRatesResult, RATES_TTL, FrankfurterResponse } from './rates-utils';
+
 // Major base currencies to pre-cache
 const BASE_CURRENCIES = ['USD', 'EUR', 'GBP', 'JPY', 'CNY', 'AUD', 'CAD', 'CHF'];
 
@@ -7,15 +9,10 @@ export async function cronHandler(kv: KVNamespace) {
       const res = await fetch(`https://api.frankfurter.app/latest?base=${base}`);
       if (!res.ok) throw new Error(`Failed for ${base}: ${res.status}`);
 
-      const data = await res.json() as any;
-      const result = {
-        base: data.base,
-        date: data.date,
-        rates: data.rates,
-        updatedAt: new Date().toISOString(),
-      };
+      const data = await res.json() as FrankfurterResponse;
+      const result = buildRatesResult(data);
 
-      await kv.put(`rates:${base}`, JSON.stringify(result), { expirationTtl: 3600 });
+      await kv.put(`rates:${base}`, JSON.stringify(result), { expirationTtl: RATES_TTL });
       return base;
     })
   );

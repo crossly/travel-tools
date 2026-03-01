@@ -54,7 +54,7 @@ const homeScript = raw(`
 
   function convert() {
     var input = document.getElementById('amount-input');
-    var val = parseFloat(input.value.replace(/,/g, '')) || 0;
+    var val = parseFloat(input.value.replace(/,/g, '')) || 0; if (!isFinite(val) || val < 0) val = 0;
     var rate = getRate();
     var result = document.getElementById('result');
     if (rate && val > 0) {
@@ -96,7 +96,10 @@ const homeScript = raw(`
           updateRateDisplay();
         }
       })
-      .catch(function() {});
+      .catch(function() {
+        document.getElementById('rate-time').textContent = 'Update failed';
+        document.getElementById('rate-time').style.color = 'var(--accent)';
+      });
   }
 
   // --- Currency Picker ---
@@ -158,15 +161,24 @@ const homeScript = raw(`
     this.style.transform = 'rotate(180deg)';
     var btn = this;
     setTimeout(function() { btn.style.transform = ''; }, 200);
+    var oldRate = getRate();
     var tmp = source; source = target; target = tmp;
     localStorage.setItem('tc_source', source);
     localStorage.setItem('tc_target', target);
-    rates = {};
-    updateDisplay();
-    fetchRates();
+    if (oldRate) {
+      rates = { base: source, rates: {} };
+      rates.rates[target] = 1 / oldRate;
+      updateDisplay();
+      fetchRates();
+    } else {
+      rates = {};
+      updateDisplay();
+      fetchRates();
+    }
   });
 
   document.getElementById('settings-btn').addEventListener('click', function() {
+    if (!confirm('Reset currency settings?')) return;
     localStorage.removeItem('tc_setup_done');
     window.location.href = '/setup';
   });

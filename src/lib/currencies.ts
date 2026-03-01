@@ -59,7 +59,6 @@ export const currencyInfo: Record<string, { name: string; flag: string; symbol: 
   HUF: { name: 'Hungarian Forint', flag: '🇭🇺', symbol: 'Ft' },
   RON: { name: 'Romanian Leu', flag: '🇷🇴', symbol: 'lei' },
   BGN: { name: 'Bulgarian Lev', flag: '🇧🇬', symbol: 'лв' },
-  HRK: { name: 'Croatian Kuna', flag: '🇭🇷', symbol: 'kn' },
   ISK: { name: 'Icelandic Króna', flag: '🇮🇸', symbol: 'kr' },
   RUB: { name: 'Russian Ruble', flag: '🇷🇺', symbol: '₽' },
   TRY: { name: 'Turkish Lira', flag: '🇹🇷', symbol: '₺' },
