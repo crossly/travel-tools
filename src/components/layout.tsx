@@ -3,7 +3,8 @@ import type { FC, PropsWithChildren } from 'hono/jsx';
 import { BUILD_VERSION } from '../lib/version';
 
 const css = raw(`
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  *:focus { outline: none; }
   :root {
     --bg: #fafaf9; --bg-secondary: #ffffff; --text: #1c1917; --text-secondary: #a8a29e;
     --border: #e7e5e4; --accent: #f97316; --accent-hover: #ea580c; --accent-soft: #fff7ed;

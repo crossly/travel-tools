@@ -178,7 +178,15 @@ const homeScript = raw(`
   });
 
   document.getElementById('settings-btn').addEventListener('click', function() {
-    if (!confirm('Reset currency settings?')) return;
+    document.getElementById('confirm-modal').classList.add('open');
+  });
+  document.getElementById('confirm-cancel').addEventListener('click', function() {
+    document.getElementById('confirm-modal').classList.remove('open');
+  });
+  document.getElementById('confirm-backdrop').addEventListener('click', function() {
+    document.getElementById('confirm-modal').classList.remove('open');
+  });
+  document.getElementById('confirm-ok').addEventListener('click', function() {
     localStorage.removeItem('tc_setup_done');
     window.location.href = '/setup';
   });
@@ -264,6 +272,19 @@ export const homePage = (c: Context) => {
         </div>
       </div>
 
+      {/* Confirm Reset Modal */}
+      <div id="confirm-modal" class="confirm-modal">
+        <div id="confirm-backdrop" class="confirm-backdrop"></div>
+        <div class="confirm-dialog">
+          <p style="font-size: 16px; font-weight: 600; margin-bottom: 4px;">Reset settings?</p>
+          <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 20px;">You'll need to set up your currencies again.</p>
+          <div style="display: flex; gap: 10px;">
+            <button id="confirm-cancel" class="confirm-btn" style="flex: 1; background: var(--bg); border: 1px solid var(--border); color: var(--text);">Cancel</button>
+            <button id="confirm-ok" class="confirm-btn" style="flex: 1; background: var(--accent); border: none; color: #fff;">Reset</button>
+          </div>
+        </div>
+      </div>
+
       {/* Currency Picker Modal */}
       <div id="currency-modal" class="picker-modal">
         <div id="currency-modal-backdrop" class="picker-backdrop"></div>
@@ -310,6 +331,26 @@ export const homePage = (c: Context) => {
         .picker-item:active { background: var(--border); }
         .picker-selected { background: var(--accent) !important; color: #fff; }
         .picker-selected span { color: #fff !important; }
+        .confirm-modal {
+          position: fixed; inset: 0; z-index: 200;
+          display: flex; align-items: center; justify-content: center;
+          pointer-events: none; opacity: 0;
+          transition: opacity 0.2s ease;
+        }
+        .confirm-modal.open { pointer-events: auto; opacity: 1; }
+        .confirm-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+        .confirm-dialog {
+          position: relative; background: var(--bg-secondary); border-radius: 16px;
+          padding: 24px; width: 280px; text-align: center;
+          transform: scale(0.9); transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+          box-shadow: 0 8px 32px rgba(0,0,0,0.16);
+        }
+        .confirm-modal.open .confirm-dialog { transform: scale(1); }
+        .confirm-btn {
+          padding: 10px 0; border-radius: 10px; font-family: var(--font-body);
+          font-size: 14px; font-weight: 600; cursor: pointer; transition: opacity 0.15s;
+        }
+        .confirm-btn:active { opacity: 0.7; }
       `)}</style>
     </Layout>
   );
