@@ -27,7 +27,8 @@ const css = raw(`
   body {
     font-family: var(--font-body);
     background: var(--bg); color: var(--text);
-    min-height: 100dvh; display: flex; flex-direction: column;
+    height: 100dvh; display: flex; flex-direction: column;
+    overflow: hidden;
     -webkit-font-smoothing: antialiased;
   }
   .container {
@@ -38,7 +39,8 @@ const css = raw(`
     padding-bottom: max(16px, var(--safe-bottom));
     padding-left: max(16px, var(--safe-left));
     padding-right: max(16px, var(--safe-right));
-    min-height: 100dvh;
+    height: 100%;
+    overflow: hidden;
   }
   .btn {
     display: inline-flex; align-items: center; justify-content: center; gap: 8px;
@@ -100,7 +102,7 @@ export const Layout: FC<PropsWithChildren<{ title?: string }>> = ({ children, ti
     <body>
       <div class="container fade-in">
         {children}
-        <div id="build-footer" style="text-align: center; font-size: 10px; color: var(--text-secondary); opacity: 0.35; padding: 4px 0;">
+        <div id="build-footer" style="text-align: center; font-size: 10px; color: var(--text-secondary); opacity: 0.35; padding: 4px 0; margin-top: auto; flex-shrink: 0;">
           <span>{BUILD_VERSION}</span>
           <span id="detect-info"></span>
         </div>
