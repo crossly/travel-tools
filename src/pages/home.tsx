@@ -213,7 +213,7 @@ const homeScript = raw(`
 export const homePage = (c: Context) => {
   return c.html(
     <Layout title="Tiny Currency">
-      <div id="app-home" style="flex: 1; display: flex; flex-direction: column; padding-top: 48px;">
+      <div id="app-home" style="display: flex; flex-direction: column; padding-top: 48px;">
 
         {/* Settings — top right, absolute */}
         <div style="position: fixed; top: 0; right: 0; padding: max(12px, var(--safe-top)) max(12px, var(--safe-right)) 0 0; z-index: 10;">
