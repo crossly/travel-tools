@@ -84,17 +84,29 @@ const homeScript = raw(`
   }
 
   function fetchRates() {
+    function readJsonOrEmpty(r) {
+      return r.json().catch(function() { return {}; });
+    }
+    function isValidRatesPayload(data) {
+      return data && typeof data.base === 'string' && data.rates && typeof data.rates === 'object';
+    }
+
     fetch('/api/rates?base=' + source)
-      .then(function(r) { return r.json(); })
+      .then(function(r) {
+        return readJsonOrEmpty(r).then(function(data) {
+          if (!r.ok) throw new Error((data && data.error) || ('HTTP_' + r.status));
+          if (!isValidRatesPayload(data)) throw new Error('invalid_rates_payload');
+          return data;
+        });
+      })
       .then(function(data) {
-        if (data.rates) {
-          rates = data;
-          rateUpdatedAt = data.updatedAt || new Date().toISOString();
-          localStorage.setItem('tc_rates', JSON.stringify(data));
-          localStorage.setItem('tc_rates_updated', rateUpdatedAt);
-          convert();
-          updateRateDisplay();
-        }
+        rates = data;
+        rateUpdatedAt = data.updatedAt || new Date().toISOString();
+        localStorage.setItem('tc_rates', JSON.stringify(data));
+        localStorage.setItem('tc_rates_updated', rateUpdatedAt);
+        document.getElementById('rate-time').style.color = '';
+        convert();
+        updateRateDisplay();
       })
       .catch(function() {
         document.getElementById('rate-time').textContent = 'Update failed';

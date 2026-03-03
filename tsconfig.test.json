@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "strict": true,
+    "types": ["@cloudflare/workers-types"],
+    "lib": ["ES2022", "DOM"],
+    "outDir": ".test-dist",
+    "skipLibCheck": true
+  },
+  "include": ["src/api/**/*.ts", "src/lib/**/*.ts", "src/static/**/*.ts"]
+}

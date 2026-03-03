@@ -5,3 +5,4 @@ dist/
 .env
 *.log
 src/lib/version.ts
+.test-dist/

@@ -10,7 +10,23 @@ const setupScript = raw(`
 
   var tz = '';
   try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch(e) {}
-  fetch('/api/detect?tz=' + encodeURIComponent(tz)).then(function(r) { return r.json(); }).then(function(data) {
+  function readJsonOrEmpty(r) {
+    return r.json().catch(function() { return {}; });
+  }
+  function isValidDetectPayload(data) {
+    return data
+      && typeof data.currency === 'string'
+      && typeof data.flag === 'string'
+      && typeof data.name === 'string';
+  }
+
+  fetch('/api/detect?tz=' + encodeURIComponent(tz)).then(function(r) {
+    return readJsonOrEmpty(r).then(function(data) {
+      if (!r.ok) throw new Error((data && data.error) || ('HTTP_' + r.status));
+      if (!isValidDetectPayload(data)) throw new Error('invalid_detect_payload');
+      return data;
+    });
+  }).then(function(data) {
     detectedSource = data.currency;
     document.getElementById('source-flag').textContent = data.flag;
     document.getElementById('source-code').textContent = data.currency;

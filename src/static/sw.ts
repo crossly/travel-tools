@@ -28,11 +28,19 @@ self.addEventListener('fetch', function(e) {
   if (e.request.url.includes('/api/')) {
     e.respondWith(
       fetch(e.request).then(function(res) {
-        var clone = res.clone();
-        caches.open(CACHE_NAME).then(function(cache) { cache.put(e.request, clone); });
+        if (res && res.ok) {
+          var clone = res.clone();
+          caches.open(CACHE_NAME).then(function(cache) { cache.put(e.request, clone); });
+        }
         return res;
       }).catch(function() {
-        return caches.match(e.request);
+        return caches.match(e.request).then(function(cached) {
+          if (cached) return cached;
+          return new Response(
+            JSON.stringify({ error: 'offline_no_cache' }),
+            { status: 503, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } }
+          );
+        });
       })
     );
     return;

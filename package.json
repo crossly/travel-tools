@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "version:gen": "node -e \"const{execSync:e}=require('child_process');const h=e('git rev-parse --short HEAD').toString().trim();const t=new Date().toISOString().replace(/[:.]/g,'-').slice(0,19);const v=require('./package.json').version;const c='export const BUILD_VERSION=\\\"v'+v+' ('+h+' · '+t+')\\\";\\n';require('fs').writeFileSync('src/lib/version.ts',c)\"",
+    "test": "npm run -s version:gen && npx tsc -p tsconfig.test.json && node --test tests/**/*.test.js",
     "dev": "npm run version:gen && wrangler dev",
     "deploy": "npm run version:gen && wrangler deploy"
   },
