@@ -1,0 +1,31 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "travel-tools",
+  "compatibility_date": "2026-03-10",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": "src/server.ts",
+  "assets": {
+    "binding": "ASSETS"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "split-bill",
+      "database_id": "local-split-bill"
+    }
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "APP_KV",
+      "id": "local-app-kv"
+    },
+    {
+      "binding": "RATES_KV",
+      "id": "local-rates-kv"
+    }
+  ],
+  "vars": {
+    "APP_NAME": "Travel Tools",
+    "FX_API_BASE_URL": "https://api.frankfurter.app"
+  }
+}

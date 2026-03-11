@@ -1,62 +1,45 @@
-# Travel Tools Monorepo
+# Travel Tools
 
-一个运行在 Cloudflare 生态中的旅行小工具站，现在已经拆成真正的 workspace monorepo。
-
-当前工具：
-
-- `汇率换算`
-- `旅行 AA`
-
-## 仓库结构
-
-```text
-apps/
-  web/       React + Vite 前端
-  worker/    Hono + Cloudflare Worker
-packages/
-  shared/    共享领域能力、工具注册表、存储 key、汇率工具
-  i18n/      多语言文案与翻译函数
-  ui/        共享 UI 基础组件
-migrations/  D1 数据库迁移
-tests/       仓库级验证
-```
+`Travel Tools` 现在是一个单包、单应用的 TanStack Start 项目。
 
 ## 技术栈
 
-- 前端：React + Vite + Tailwind
-- 后端：Cloudflare Workers + Hono
-- 数据：Cloudflare D1 + KV
-- PWA：manifest + service worker
-- Monorepo：pnpm workspace
+- TanStack Start
+- TanStack Router 文件路由
+- Tailwind CSS
+- 本地 shadcn 风格组件
+- Cloudflare Workers + D1 + KV
 
-## 常用命令
+## 页面路由
 
-```bash
-pnpm install
-pnpm run dev:web
-pnpm run dev:worker
-pnpm run test
-pnpm run typecheck
-pnpm run build
-pnpm --filter @travel-tools/worker exec wrangler deploy --dry-run
-```
-
-## 路由
-
-- `/:locale`
-- `/:locale/tools/currency`
-- `/:locale/tools/split-bill`
-- `/:locale/settings`
+- `/$locale`
+- `/$locale/tools/currency`
+- `/$locale/tools/split-bill`
+- `/$locale/tools/split-bill/$tripId`
+- `/$locale/tools/split-bill/$tripId/add`
+- `/$locale/tools/split-bill/$tripId/settlement`
+- `/$locale/settings`
 
 ## API
 
-- `/api/site/*`
-- `/api/fx/*`
-- `/api/split-bill/*`
+- `GET /api/site/health`
+- `GET /api/fx/detect`
+- `GET /api/fx/rates`
+- `POST /api/split-bill/device/bootstrap`
+- `GET|POST /api/split-bill/trips`
+- `PATCH|DELETE /api/split-bill/trips/:tripId/*`
 
-需要兼容的旧路由仍然保留。
+## 本地开发
 
-## 扩展规范
+```bash
+pnpm install
+pnpm dev
+```
 
-- CI 配置见 [.github/workflows/ci.yml](/Users/ricky/Documents/GitHub/tiny-currency/.github/workflows/ci.yml)
-- 新工具接入说明见 [docs/adding-a-tool.md](/Users/ricky/Documents/GitHub/tiny-currency/docs/adding-a-tool.md)
+## 验证
+
+```bash
+pnpm test
+pnpm typecheck
+pnpm build
+```
