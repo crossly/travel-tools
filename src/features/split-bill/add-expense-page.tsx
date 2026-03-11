@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from '@tanstack/react-router'
 import { AppShell } from '@/components/app/app-shell'
 import { CurrencyCombobox } from '@/components/app/currency-combobox'
+import { DatePickerField } from '@/components/app/date-picker-field'
 import { FormField } from '@/components/app/form-field'
 import { InlineStatus } from '@/components/app/inline-status'
 import { Button } from '@/components/ui/button'
@@ -88,7 +89,7 @@ export function AddExpensePage({ locale, tripId }: { locale: Locale; tripId: str
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             <FormField label={t('addExpense.labelDate')}>
-              <Input type="date" value={spentAt} onChange={(event) => setSpentAt(event.target.value)} />
+              <DatePickerField value={spentAt} onChange={setSpentAt} locale={locale} />
             </FormField>
             <FormField label={t('addExpense.splitCount')}>
               <Input value={splitCount} onChange={(event) => setSplitCount(event.target.value)} inputMode="numeric" className="mono" />

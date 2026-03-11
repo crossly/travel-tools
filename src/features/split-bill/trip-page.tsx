@@ -47,7 +47,6 @@ export function TripPage({ locale, tripId }: { locale: Locale; tripId: string })
   }
 
   async function onDeleteExpense(expenseId: string) {
-    if (!window.confirm(t('trip.deleteTripConfirmBody'))) return
     try {
       await deleteExpense(tripId, expenseId)
       const latest = await fetchSnapshot(tripId)
@@ -58,7 +57,6 @@ export function TripPage({ locale, tripId }: { locale: Locale; tripId: string })
   }
 
   async function onDeleteTrip() {
-    if (!window.confirm(t('trip.deleteTripConfirmBody'))) return
     try {
       await deleteTrip(tripId)
       setStatus({ tone: 'success', title: t('trip.deleteTripSuccess') })
@@ -93,9 +91,16 @@ export function TripPage({ locale, tripId }: { locale: Locale; tripId: string })
                           <p className="font-medium">{expense.title}</p>
                           <p className="mt-1 text-sm text-muted-foreground">{expense.amountOriginal.toFixed(2)} {expense.originalCurrency}</p>
                         </div>
-                        <Button type="button" variant="ghost" size="sm" onClick={() => void onDeleteExpense(expense.id)}>
-                          {t('trip.deleteExpense')}
-                        </Button>
+                        <ConfirmActionDialog
+                          triggerLabel={t('trip.deleteExpense')}
+                          title={t('trip.deleteExpenseConfirmTitle')}
+                          description={t('trip.deleteExpenseConfirmBody')}
+                          confirmLabel={t('trip.deleteExpenseAction')}
+                          cancelLabel={t('common.cancel')}
+                          onConfirm={() => onDeleteExpense(expense.id)}
+                          triggerVariant="ghost"
+                          triggerSize="sm"
+                        />
                       </div>
                     </div>
                   ))
