@@ -74,12 +74,6 @@ export function AppShell({
               </nav>
             </CardHeader>
           </Card>
-          <div className="px-1 md:hidden">
-            <div className="mb-1">
-              <h1 className="display text-2xl">{title}</h1>
-              {description ? <p className="mt-1 text-sm leading-6 text-muted-foreground">{description}</p> : null}
-            </div>
-          </div>
         </header>
         <main className="surface-grid">{children}</main>
       </div>
