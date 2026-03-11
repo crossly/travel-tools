@@ -90,6 +90,7 @@ export interface FxRatesResponse {
   date: string
   rates: Record<string, number>
   updatedAt: string
+  source?: 'openexchangerates' | 'frankfurter'
   cached?: boolean
   stale?: boolean
 }

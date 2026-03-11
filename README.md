@@ -36,6 +36,30 @@ pnpm install
 pnpm dev
 ```
 
+## FX Providers
+
+- Default fallback source: `Frankfurter`
+- Optional primary source: `Open Exchange Rates`
+
+Set these Cloudflare vars or secrets to enable the dual-source strategy:
+
+```bash
+wrangler secret put OPEN_EXCHANGE_RATES_APP_ID
+```
+
+Optional:
+
+```bash
+wrangler secret put OPEN_EXCHANGE_RATES_API_BASE
+```
+
+When `OPEN_EXCHANGE_RATES_APP_ID` is present, the worker will:
+
+- use `Open Exchange Rates` as the primary latest/historical source
+- fall back to `Frankfurter` if the primary source fails
+- sync latest canonical rates into KV every 15 minutes
+- prefer local KV rates for current-day conversions
+
 ## Verification
 
 ```bash

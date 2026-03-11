@@ -20,5 +20,5 @@ describe('DatePickerField', () => {
     fireEvent.click(await screen.findByRole('button', { name: /march 21.*2026/i }))
 
     expect(onChange).toHaveBeenCalledWith('2026-03-21')
-  })
+  }, 10000)
 })

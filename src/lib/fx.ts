@@ -3,6 +3,7 @@ export interface RatesResult {
   date: string
   rates: Record<string, number>
   updatedAt: string
+  source?: FxProviderName
 }
 
 export interface FrankfurterResponse {
@@ -11,8 +12,9 @@ export interface FrankfurterResponse {
   rates: Record<string, number>
 }
 
+export type FxProviderName = 'openexchangerates' | 'frankfurter'
+
 export const RATES_TTL = 3600
-export const CANONICAL_RATES_BASE = 'EUR'
 
 export function buildRatesResult(data: FrankfurterResponse): RatesResult {
   return {
@@ -43,6 +45,7 @@ export function deriveRatesResult(source: RatesResult, nextBase: string): RatesR
     base,
     date: source.date,
     updatedAt: source.updatedAt,
+    source: source.source,
     rates: nextRates,
   }
 }

@@ -227,7 +227,7 @@ export function searchCurrencyCatalog(catalog: CurrencyCatalogItem[], query: str
   return catalog.filter((item) => item.searchText.includes(normalizedQuery))
 }
 
-export const supportedCurrencies = Object.keys(currencyInfo)
+export const supportedCurrencies = getCurrencyCodes()
 export const COMMON_CURRENCIES = ['USD', 'EUR', 'CNY', 'JPY', 'HKD', 'TWD', 'KRW', 'GBP', 'SGD', 'AUD', 'CAD', 'THB']
 
 export function getCurrencyForCountry(country: string) {
