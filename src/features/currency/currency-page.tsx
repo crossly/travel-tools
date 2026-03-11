@@ -1,13 +1,14 @@
 import { useEffect, useMemo, useState } from 'react'
 import { RefreshCw, ScanSearch } from 'lucide-react'
 import { AppShell } from '@/components/app/app-shell'
+import { CurrencyCombobox } from '@/components/app/currency-combobox'
 import { FormField } from '@/components/app/form-field'
 import { InlineStatus } from '@/components/app/inline-status'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
-import { COMMON_CURRENCIES, normalizeCurrency } from '@/lib/currencies'
+import { normalizeCurrency } from '@/lib/currencies'
 import { detectCurrency, fetchCurrencyRates } from '@/lib/api/client'
 import { useI18n } from '@/lib/i18n'
 import { readCachedCurrencyRates, readCurrencyPrefs, writeCachedCurrencyRates, writeCurrencyPrefs, writeLastTool } from '@/lib/storage'
@@ -108,12 +109,6 @@ export function CurrencyPage({ locale }: { locale: Locale }) {
 
   return (
     <AppShell locale={locale} title={t('currency.title')} description={t('currency.description')} activeTool="currency">
-      <datalist id="currency-options">
-        {COMMON_CURRENCIES.map((code) => (
-          <option key={code} value={code} />
-        ))}
-      </datalist>
-
       <Card>
         <CardHeader>
           <div className="flex items-start justify-between gap-3">
@@ -134,7 +129,7 @@ export function CurrencyPage({ locale }: { locale: Locale }) {
           </FormField>
           <div className="grid gap-4 sm:grid-cols-[1fr_auto_1fr] sm:items-end">
             <FormField label={t('currency.fromLabel')}>
-              <Input list="currency-options" value={source} onChange={(event) => setSource(normalizeCurrency(event.target.value))} className="mono" />
+              <CurrencyCombobox value={source} onValueChange={(nextValue) => setSource(normalizeCurrency(nextValue))} locale={locale} />
             </FormField>
             <Button type="button" variant="outline" size="icon" className="sm:mb-1" onClick={() => {
               const nextSource = target
@@ -145,7 +140,7 @@ export function CurrencyPage({ locale }: { locale: Locale }) {
               ⇄
             </Button>
             <FormField label={t('currency.toLabel')}>
-              <Input list="currency-options" value={target} onChange={(event) => setTarget(normalizeCurrency(event.target.value))} className="mono" />
+              <CurrencyCombobox value={target} onValueChange={(nextValue) => setTarget(normalizeCurrency(nextValue))} locale={locale} />
             </FormField>
           </div>
           <FormField label={t('currency.quickAmounts')}>

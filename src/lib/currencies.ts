@@ -1,3 +1,5 @@
+import type { Locale } from '@/lib/types'
+
 export const countryToCurrency: Record<string, string> = {
   AD: 'EUR', AE: 'AED', AF: 'AFN', AG: 'XCD', AI: 'XCD', AL: 'ALL',
   AM: 'AMD', AO: 'AOA', AR: 'ARS', AS: 'USD', AT: 'EUR', AU: 'AUD',
@@ -109,6 +111,122 @@ export const timezoneToCurrency: Record<string, string> = {
   'Australia/Melbourne': 'AUD', 'Australia/Perth': 'AUD', 'Pacific/Auckland': 'NZD',
 }
 
+export type CurrencyCatalogItem = {
+  code: string
+  name: string
+  symbol: string
+  icon: string
+  countryCode: string | null
+  countryName: string
+  countryNames: string[]
+  searchText: string
+}
+
+const localeCatalogCache = new Map<Locale, CurrencyCatalogItem[]>()
+
+const PRIMARY_COUNTRY_OVERRIDES: Record<string, string> = {
+  EUR: 'EU',
+}
+
+const intlWithSupportedValues = Intl as typeof Intl & {
+  supportedValuesOf?: (key: string) => string[]
+}
+
+function getRegionDisplayName(locale: Locale, regionCode: string) {
+  try {
+    return new Intl.DisplayNames([locale, 'en-US'], { type: 'region' }).of(regionCode) ?? regionCode
+  } catch {
+    return regionCode
+  }
+}
+
+function getCurrencyDisplayName(locale: Locale, currencyCode: string) {
+  try {
+    return new Intl.DisplayNames([locale, 'en-US'], { type: 'currency' }).of(currencyCode) ?? currencyInfo[currencyCode]?.name ?? currencyCode
+  } catch {
+    return currencyInfo[currencyCode]?.name ?? currencyCode
+  }
+}
+
+function getCurrencyCodes() {
+  const codes = new Set<string>([
+    ...Object.values(countryToCurrency),
+    ...Object.keys(currencyInfo),
+  ])
+
+  if (typeof intlWithSupportedValues.supportedValuesOf === 'function') {
+    for (const code of intlWithSupportedValues.supportedValuesOf('currency')) {
+      codes.add(code.toUpperCase())
+    }
+  }
+
+  return [...codes]
+}
+
+function getFlagEmoji(countryCode: string | null) {
+  if (!countryCode || countryCode.length !== 2) return '💱'
+  return String.fromCodePoint(...countryCode.toUpperCase().split('').map((char) => char.charCodeAt(0) + 127397))
+}
+
+function getPrimaryCountryCode(currencyCode: string, countryCodes: string[]) {
+  return PRIMARY_COUNTRY_OVERRIDES[currencyCode] ?? currencyInfo[currencyCode]?.flag ?? countryCodes[0] ?? null
+}
+
+function buildCountryIndex() {
+  const currencyToCountryCodes = new Map<string, string[]>()
+  for (const [countryCode, currencyCode] of Object.entries(countryToCurrency)) {
+    const list = currencyToCountryCodes.get(currencyCode) ?? []
+    list.push(countryCode)
+    currencyToCountryCodes.set(currencyCode, list)
+  }
+  return currencyToCountryCodes
+}
+
+export function buildCurrencyCatalog(locale: Locale): CurrencyCatalogItem[] {
+  const cached = localeCatalogCache.get(locale)
+  if (cached) return cached
+
+  const currencyToCountryCodes = buildCountryIndex()
+
+  const items = getCurrencyCodes().map((code) => {
+    const countryCodes = [...new Set(currencyToCountryCodes.get(code) ?? [])]
+    const countryNames = countryCodes.map((countryCode) => getRegionDisplayName(locale, countryCode))
+    const countryCode = getPrimaryCountryCode(code, countryCodes)
+    const countryName = countryCode ? getRegionDisplayName(locale, countryCode) : code
+    const name = getCurrencyDisplayName(locale, code)
+    const symbol = currencyInfo[code]?.symbol ?? code
+    const icon = getFlagEmoji(countryCode)
+    const searchText = [code, name, symbol, countryName, ...countryNames].join(' ').toLowerCase()
+
+    return {
+      code,
+      name,
+      symbol,
+      icon,
+      countryCode,
+      countryName,
+      countryNames,
+      searchText,
+    }
+  })
+
+  items.sort((left, right) => {
+    const leftCommon = COMMON_CURRENCIES.includes(left.code) ? 0 : 1
+    const rightCommon = COMMON_CURRENCIES.includes(right.code) ? 0 : 1
+    if (leftCommon !== rightCommon) return leftCommon - rightCommon
+    return left.code.localeCompare(right.code)
+  })
+
+  localeCatalogCache.set(locale, items)
+  return items
+}
+
+export function searchCurrencyCatalog(catalog: CurrencyCatalogItem[], query: string) {
+  const normalizedQuery = query.trim().toLowerCase()
+  if (!normalizedQuery) return catalog
+  return catalog.filter((item) => item.searchText.includes(normalizedQuery))
+}
+
 export const supportedCurrencies = Object.keys(currencyInfo)
 export const COMMON_CURRENCIES = ['USD', 'EUR', 'CNY', 'JPY', 'HKD', 'TWD', 'KRW', 'GBP', 'SGD', 'AUD', 'CAD', 'THB']
 
@@ -121,7 +239,25 @@ export function getCurrencyForTimezone(tz: string) {
 }
 
 export function getCurrencyInfo(code: string) {
-  return currencyInfo[code] || { name: code, flag: code, symbol: code }
+  const catalog = buildCurrencyCatalog('en-US')
+  const item = catalog.find((entry) => entry.code === code)
+  if (item) {
+    return {
+      ...item,
+      flag: item.countryCode ?? code,
+    }
+  }
+  return {
+    code,
+    name: code,
+    icon: '💱',
+    flag: code,
+    symbol: code,
+    countryCode: null,
+    countryName: code,
+    countryNames: [],
+    searchText: code,
+  }
 }
 
 export function normalizeCurrency(value: string) {

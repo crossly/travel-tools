@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from '@tanstack/react-router'
 import { AppShell } from '@/components/app/app-shell'
+import { CurrencyCombobox } from '@/components/app/currency-combobox'
 import { FormField } from '@/components/app/form-field'
 import { InlineStatus } from '@/components/app/inline-status'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
-import { COMMON_CURRENCIES, normalizeCurrency } from '@/lib/currencies'
+import { normalizeCurrency } from '@/lib/currencies'
 import { bootstrapDevice, createTrip, listTrips } from '@/lib/api/client'
 import { getLocalizedPath } from '@/lib/site'
 import { useI18n } from '@/lib/i18n'
@@ -129,21 +130,16 @@ export function SplitBillHomePage({ locale }: { locale: Locale }) {
               </FormField>
               <div className="grid gap-4 md:grid-cols-2">
                 <FormField label={t('home.expenseCurrency')} helper={t('home.expenseCurrencyHelper')}>
-                  <Input list="currency-options" value={expenseCurrency} onChange={(event) => setExpenseCurrency(event.target.value)} className="mono" disabled={!identityReady} />
+                  <CurrencyCombobox value={expenseCurrency} onValueChange={setExpenseCurrency} locale={locale} disabled={!identityReady} />
                 </FormField>
                 <FormField label={t('home.settlementCurrency')} helper={t('home.settlementCurrencyHelper')}>
-                  <Input list="currency-options" value={settlementCurrency} onChange={(event) => setSettlementCurrency(event.target.value)} className="mono" disabled={!identityReady} />
+                  <CurrencyCombobox value={settlementCurrency} onValueChange={setSettlementCurrency} locale={locale} disabled={!identityReady} />
                 </FormField>
               </div>
               <FormField label={t('home.splitCount')}>
                 <Input value={splitCount} onChange={(event) => setSplitCount(event.target.value)} inputMode="numeric" className="mono" disabled={!identityReady} />
               </FormField>
               <Button type="button" onClick={() => void onCreateTrip()} disabled={!identityReady}>{t('home.createStart')}</Button>
-              <datalist id="currency-options">
-                {COMMON_CURRENCIES.map((code) => (
-                  <option key={code} value={code} />
-                ))}
-              </datalist>
             </CardContent>
           </Card>
         </div>

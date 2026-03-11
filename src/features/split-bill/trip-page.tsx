@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from '@tanstack/react-router'
 import { AppShell } from '@/components/app/app-shell'
+import { ConfirmActionDialog } from '@/components/app/confirm-action-dialog'
 import { FormField } from '@/components/app/form-field'
 import { InlineStatus } from '@/components/app/inline-status'
 import { Button } from '@/components/ui/button'
@@ -126,9 +127,14 @@ export function TripPage({ locale, tripId }: { locale: Locale; tripId: string })
               <Button asChild variant="secondary">
                 <Link to={getLocalizedPath(locale, `/tools/split-bill/${tripId}/settlement`)}>{t('trip.settlement')}</Link>
               </Button>
-              <Button type="button" variant="destructive" onClick={() => void onDeleteTrip()}>
-                {t('trip.deleteTrip')}
-              </Button>
+              <ConfirmActionDialog
+                triggerLabel={t('trip.deleteTrip')}
+                title={t('trip.deleteTripConfirmTitle')}
+                description={t('trip.deleteTripConfirmBody')}
+                confirmLabel={t('trip.deleteTripAction')}
+                cancelLabel={t('common.cancel')}
+                onConfirm={onDeleteTrip}
+              />
             </CardContent>
           </Card>
         </div>

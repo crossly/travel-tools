@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from '@tanstack/react-router'
 import { AppShell } from '@/components/app/app-shell'
+import { CurrencyCombobox } from '@/components/app/currency-combobox'
 import { FormField } from '@/components/app/form-field'
 import { InlineStatus } from '@/components/app/inline-status'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { createExpense, fetchFxQuote, fetchSnapshot } from '@/lib/api/client'
-import { COMMON_CURRENCIES, normalizeCurrency } from '@/lib/currencies'
+import { normalizeCurrency } from '@/lib/currencies'
 import { getLocalizedPath } from '@/lib/site'
 import { useI18n } from '@/lib/i18n'
 import type { Locale, TripSnapshot } from '@/lib/types'
@@ -74,11 +75,6 @@ export function AddExpensePage({ locale, tripId }: { locale: Locale; tripId: str
           <CardTitle>{t('addExpense.title')}</CardTitle>
         </CardHeader>
         <CardContent className="grid gap-4">
-          <datalist id="currency-options-add">
-            {COMMON_CURRENCIES.map((code) => (
-              <option key={code} value={code} />
-            ))}
-          </datalist>
           <FormField label={t('addExpense.labelTitle')}>
             <Input value={title} onChange={(event) => setTitle(event.target.value)} placeholder={t('addExpense.titlePlaceholder')} />
           </FormField>
@@ -87,7 +83,7 @@ export function AddExpensePage({ locale, tripId }: { locale: Locale; tripId: str
               <Input value={amount} onChange={(event) => setAmount(event.target.value)} inputMode="decimal" />
             </FormField>
             <FormField label={t('addExpense.labelCurrency')}>
-              <Input value={currency} onChange={(event) => setCurrency(event.target.value)} list="currency-options-add" className="mono" />
+              <CurrencyCombobox value={currency} onValueChange={setCurrency} locale={locale} />
             </FormField>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
