@@ -1,0 +1,27 @@
+import { Card, Layout } from '@travel-tools/ui';
+import { useI18n } from '../../apps/web/src/hooks/useI18n';
+import { useLocalizedPath } from '../../apps/web/src/lib/routes';
+import { APP_VERSION, BUILD_DATE } from '../../apps/web/src/lib/version';
+
+export function ToolPageTemplate() {
+  const { t } = useI18n();
+  const toLocalizedPath = useLocalizedPath();
+  const buildInfo = t('common.buildInfo', { version: APP_VERSION, date: BUILD_DATE });
+
+  return (
+    <Layout
+      appName={t('app.name')}
+      eyebrow={t('site.eyebrow')}
+      settingsLabel={t('common.settings')}
+      homePath={toLocalizedPath('/')}
+      settingsPath={toLocalizedPath('/settings')}
+      buildInfo={buildInfo}
+      title={t('tool.example.name')}
+      subtitle={t('tool.example.description')}
+    >
+      <Card>
+        <p>Replace this with the new tool UI.</p>
+      </Card>
+    </Layout>
+  );
+}

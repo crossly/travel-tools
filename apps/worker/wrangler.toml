@@ -1,0 +1,29 @@
+name = "travel-tools"
+main = "src/index.ts"
+compatibility_date = "2026-03-11"
+
+[triggers]
+crons = ["0 * * * *"]
+
+[assets]
+directory = "../web/dist"
+binding = "ASSETS"
+not_found_handling = "single-page-application"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "split-bill"
+database_id = "37c57e0d-96f1-4181-acdc-98c9b35a5ebd"
+
+[[kv_namespaces]]
+binding = "RATES_KV"
+id = "a9fed0b89c584406a7692849359a2ce5"
+
+[[kv_namespaces]]
+binding = "APP_KV"
+id = "742b0c83b37742e0b273029d096b0710"
+preview_id = "8b686cb8f76b4502959683ac5c0f4e48"
+
+[vars]
+APP_NAME = "Travel Tools"
+FX_API_BASE_URL = "https://api.frankfurter.app"

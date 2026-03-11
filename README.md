@@ -1,100 +1,62 @@
-# 💱 Tiny Currency
+# Travel Tools Monorepo
 
-A lightweight, offline-capable currency converter PWA for travelers. Built on Cloudflare Workers with zero client-side dependencies.
+A Cloudflare-native travel utility site organized as a real workspace monorepo.
 
-## Features
+Current tools:
 
-- **VPN-Resistant Detection** — Detects your currency via browser timezone, not just IP
-- **Instant Conversion** — Real-time currency conversion as you type
-- **Currency Picker** — Tap source/target to switch between 50+ currencies with search
-- **Offline Support** — Service Worker caches pages and rates for offline use
-- **Dark Mode** — Automatically follows system preference
-- **Mobile-First** — Installable PWA, safe-area support, optimized for phones
+- `Currency Converter`
+- `Split Bill`
 
-## Tech Stack
+## Workspace Layout
 
-| Layer | Technology |
-|-------|-----------|
-| Runtime | Cloudflare Workers |
-| Framework | [Hono](https://hono.dev) |
-| Language | TypeScript + JSX |
-| Storage | Cloudflare KV (rate cache) |
-| Rates API | [Frankfurter](https://frankfurter.app) |
-| Frontend | Vanilla JS (no framework) |
+```text
+apps/
+  web/       React + Vite frontend
+  worker/    Hono + Cloudflare Worker
+packages/
+  shared/    shared domain logic, tool registry, storage keys, FX helpers
+  i18n/      locale messages and translation helpers
+  ui/        shared UI primitives
+migrations/  D1 schema migrations
+tests/       repo-level verification
+```
 
-## Getting Started
+## Stack
 
-### Prerequisites
+- Frontend: React + Vite + Tailwind
+- Backend: Cloudflare Workers + Hono
+- Data: Cloudflare D1 + KV
+- PWA: manifest + service worker
+- Monorepo: pnpm workspace
 
-- Node.js 18+
-- [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/)
-- A Cloudflare account with KV namespace
-
-### Setup
+## Commands
 
 ```bash
-git clone https://github.com/crossly/tiny-currency.git
-cd tiny-currency
-npm install
+pnpm install
+pnpm run dev:web
+pnpm run dev:worker
+pnpm run test
+pnpm run typecheck
+pnpm run build
+pnpm --filter @travel-tools/worker exec wrangler deploy --dry-run
 ```
 
-Create a KV namespace and update `wrangler.toml`:
+## Routes
 
-```toml
-[[kv_namespaces]]
-binding = "RATES_KV"
-id = "your-kv-namespace-id"
-```
+- `/:locale`
+- `/:locale/tools/currency`
+- `/:locale/tools/split-bill`
+- `/:locale/settings`
 
-### Development
+## API
 
-```bash
-npm run dev
-```
+- `/api/site/*`
+- `/api/fx/*`
+- `/api/split-bill/*`
 
-### Deploy
+Legacy compatibility routes are still preserved where needed.
 
-```bash
-npm run deploy
-```
+## Extending
 
-## How It Works
-
-### Currency Detection
-
-1. Browser sends system timezone (e.g. `Asia/Shanghai`) to `/api/detect`
-2. Server maps timezone → currency, IP → currency
-3. When they differ (VPN scenario), timezone wins
-4. User can always manually switch via the currency picker
-
-### Rate Updates
-
-- Hourly cron pre-caches rates for 8 major currencies (USD, EUR, GBP, JPY, CNY, AUD, CAD, CHF)
-- On-demand fetch for other base currencies
-- Rates cached in KV for 1 hour
-
-## Project Structure
-
-```
-src/
-├── index.tsx            # Hono app & routes
-├── api/
-│   ├── detect.ts        # Location detection API
-│   └── rates.ts         # Exchange rate API
-├── pages/
-│   ├── home.tsx         # Converter UI + currency picker
-│   └── setup.tsx        # Onboarding flow
-├── components/
-│   └── layout.tsx       # Shared layout & styles
-├── lib/
-│   ├── currencies.ts    # Currency data & timezone mappings
-│   └── cron.ts          # Scheduled rate updates
-└── static/
-    ├── app.ts           # SW registration
-    ├── sw.ts            # Service Worker
-    └── manifest.ts      # PWA manifest
-```
-
-## License
-
-ISC
+- CI is defined in [.github/workflows/ci.yml](/Users/ricky/Documents/GitHub/tiny-currency/.github/workflows/ci.yml)
+- New tool integration guide: [docs/adding-a-tool.md](/Users/ricky/Documents/GitHub/tiny-currency/docs/adding-a-tool.md)

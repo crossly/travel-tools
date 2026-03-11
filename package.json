@@ -1,30 +1,21 @@
 {
-  "name": "tiny-currency",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "travel-tools",
+  "version": "3.0.0",
+  "private": true,
+  "packageManager": "pnpm@10.11.0",
+  "description": "Travel-focused utility site with currency conversion and split-bill tools.",
   "scripts": {
-    "version:gen": "node -e \"const{execSync:e}=require('child_process');const h=e('git rev-parse --short HEAD').toString().trim();const t=new Date().toISOString().replace(/[:.]/g,'-').slice(0,19);const v=require('./package.json').version;const c='export const BUILD_VERSION=\\\"v'+v+' ('+h+' · '+t+')\\\";\\n';require('fs').writeFileSync('src/lib/version.ts',c)\"",
-    "test": "npm run -s version:gen && npx tsc -p tsconfig.test.json && node --test tests/**/*.test.js",
-    "dev": "npm run version:gen && wrangler dev",
-    "deploy": "npm run version:gen && wrangler deploy"
+    "version:gen": "node -e \"const{execSync:e}=require('child_process');const h=e('git rev-parse --short HEAD').toString().trim();const t=new Date().toISOString().replace(/[:.]/g,'-').slice(0,19);const v=require('./package.json').version;const c='export const BUILD_VERSION=\\\"v'+v+' ('+h+' · '+t+')\\\";\\n';require('fs').mkdirSync('packages/shared/src',{recursive:true});require('fs').writeFileSync('packages/shared/src/version.ts',c)\"",
+    "dev:web": "pnpm --filter @travel-tools/web dev",
+    "dev:worker": "pnpm run version:gen && pnpm --filter @travel-tools/worker dev",
+    "build": "pnpm run version:gen && pnpm --filter @travel-tools/web build",
+    "typecheck": "pnpm -r run typecheck && tsc -p tsconfig.test.json --noEmit",
+    "test": "pnpm run -s version:gen && tsc -p tsconfig.test.json && node scripts/link-test-workspace.cjs && NODE_PATH=.test-dist/node_modules node --test tests/**/*.test.js",
+    "deploy": "pnpm run build && pnpm --filter @travel-tools/worker run deploy",
+    "db:migrate:local": "pnpm --filter @travel-tools/worker db:migrate:local"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/crossly/tiny-currency.git"
-  },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
   "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/crossly/tiny-currency/issues"
-  },
-  "homepage": "https://github.com/crossly/tiny-currency#readme",
-  "dependencies": {
-    "hono": "^4.12.3",
-    "wrangler": "^4.69.0"
-  },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20260305.0",
     "typescript": "^5.9.3"

@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { ratesHandler } = require('../.test-dist/src/api/rates.js');
+const { ratesHandler } = require('../.test-dist/apps/worker/src/api/rates.js');
 const { MemoryKV, createJsonResponder } = require('./helpers.js');
 
 const originalFetch = globalThis.fetch;

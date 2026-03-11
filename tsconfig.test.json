@@ -4,10 +4,19 @@
     "module": "CommonJS",
     "moduleResolution": "node",
     "strict": true,
+    "jsx": "react-jsx",
     "types": ["@cloudflare/workers-types"],
     "lib": ["ES2022", "DOM"],
     "outDir": ".test-dist",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@travel-tools/shared": ["packages/shared/src/index.ts"],
+      "@travel-tools/shared/*": ["packages/shared/src/*"],
+      "@travel-tools/i18n": ["packages/i18n/src/index.ts"],
+      "@travel-tools/ui": ["packages/ui/src/index.ts"],
+      "@travel-tools/ui/*": ["packages/ui/src/*"]
+    }
   },
-  "include": ["src/api/**/*.ts", "src/lib/**/*.ts", "src/static/**/*.ts"]
+  "include": ["apps/worker/src/**/*.ts", "packages/**/*.ts", "src/static/**/*.ts"]
 }

@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { detectHandler } = require('../.test-dist/src/api/detect.js');
+const { detectHandler } = require('../.test-dist/apps/worker/src/api/detect.js');
 const { createJsonResponder } = require('./helpers.js');
 
 test('detectHandler prefers timezone currency when it conflicts with IP country currency', () => {
