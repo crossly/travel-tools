@@ -39,7 +39,7 @@ export function AppShell({
       <div className="page-wrap">
         <header className="mb-6">
           <MobileNavMenu locale={locale} activeTool={activeTool} title={title} />
-          <Card className="overflow-hidden">
+          <Card className="hidden overflow-hidden md:block">
             <CardHeader className="hidden gap-5 md:flex">
               <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                 <div className="hero-copy">

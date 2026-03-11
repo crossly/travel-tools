@@ -25,6 +25,7 @@ export function AddExpensePage({ locale, tripId }: { locale: Locale; tripId: str
   const [note, setNote] = useState('')
   const [manualFx, setManualFx] = useState('')
   const [splitCount, setSplitCount] = useState('1')
+  const [isSaving, setIsSaving] = useState(false)
   const [status, setStatus] = useState<{ tone: 'success' | 'warning' | 'danger'; title: string; description?: string } | null>(null)
 
   useEffect(() => {
@@ -38,6 +39,7 @@ export function AddExpensePage({ locale, tripId }: { locale: Locale; tripId: str
   }, [tripId])
 
   async function onCreate() {
+    if (isSaving) return
     const numericAmount = Number(amount)
     const numericSplitCount = Number(splitCount)
     const normalizedCurrency = normalizeCurrency(currency)
@@ -47,6 +49,8 @@ export function AddExpensePage({ locale, tripId }: { locale: Locale; tripId: str
     }
 
     try {
+      setIsSaving(true)
+      setStatus(null)
       let fxRateOverride: number | undefined
       if (manualFx.trim()) {
         fxRateOverride = Number(manualFx)
@@ -66,6 +70,8 @@ export function AddExpensePage({ locale, tripId }: { locale: Locale; tripId: str
       navigate({ to: getLocalizedPath(locale, `/tools/split-bill/${tripId}`) })
     } catch (error) {
       setStatus({ tone: 'danger', title: tError((error as Error).message) })
+    } finally {
+      setIsSaving(false)
     }
   }
 
@@ -101,7 +107,9 @@ export function AddExpensePage({ locale, tripId }: { locale: Locale; tripId: str
           <FormField label={t('addExpense.labelNote')}>
             <Input value={note} onChange={(event) => setNote(event.target.value)} />
           </FormField>
-          <Button type="button" onClick={() => void onCreate()}>{t('common.save')}</Button>
+          <Button type="button" onClick={() => void onCreate()} disabled={isSaving} aria-busy={isSaving}>
+            {isSaving ? t('common.saving') : t('common.save')}
+          </Button>
         </CardContent>
       </Card>
       {status ? <InlineStatus tone={status.tone} title={status.title} description={status.description} /> : null}

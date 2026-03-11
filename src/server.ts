@@ -1,6 +1,7 @@
 import { createServerEntry } from '@tanstack/react-start/server-entry'
 import { createStartHandler, defaultStreamHandler } from '@tanstack/react-start/server'
 import type { AppRequestContext } from './router'
+import { syncLatestRates } from './server/fx'
 
 const handler = createStartHandler(defaultStreamHandler)
 
@@ -23,4 +24,9 @@ const entry = createServerEntry({
   },
 })
 
-export default entry as any
+export default {
+  fetch: entry.fetch,
+  scheduled(_controller: ScheduledController, env: CloudflareEnv, ctx: ExecutionContext) {
+    ctx.waitUntil(syncLatestRates(env))
+  },
+} as any
