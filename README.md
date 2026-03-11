@@ -1,62 +1,45 @@
-# Travel Tools Monorepo
+# Travel Tools
 
-A Cloudflare-native travel utility site organized as a real workspace monorepo.
-
-Current tools:
-
-- `Currency Converter`
-- `Split Bill`
-
-## Workspace Layout
-
-```text
-apps/
-  web/       React + Vite frontend
-  worker/    Hono + Cloudflare Worker
-packages/
-  shared/    shared domain logic, tool registry, storage keys, FX helpers
-  i18n/      locale messages and translation helpers
-  ui/        shared UI primitives
-migrations/  D1 schema migrations
-tests/       repo-level verification
-```
+`Travel Tools` is a single-package TanStack Start application for travel-focused utilities.
 
 ## Stack
 
-- Frontend: React + Vite + Tailwind
-- Backend: Cloudflare Workers + Hono
-- Data: Cloudflare D1 + KV
-- PWA: manifest + service worker
-- Monorepo: pnpm workspace
-
-## Commands
-
-```bash
-pnpm install
-pnpm run dev:web
-pnpm run dev:worker
-pnpm run test
-pnpm run typecheck
-pnpm run build
-pnpm --filter @travel-tools/worker exec wrangler deploy --dry-run
-```
+- TanStack Start
+- TanStack Router file-based routing
+- Tailwind CSS
+- shadcn-style local UI components
+- Cloudflare Workers + D1 + KV
 
 ## Routes
 
-- `/:locale`
-- `/:locale/tools/currency`
-- `/:locale/tools/split-bill`
-- `/:locale/settings`
+- `/$locale`
+- `/$locale/tools/currency`
+- `/$locale/tools/split-bill`
+- `/$locale/tools/split-bill/$tripId`
+- `/$locale/tools/split-bill/$tripId/add`
+- `/$locale/tools/split-bill/$tripId/settlement`
+- `/$locale/settings`
 
 ## API
 
-- `/api/site/*`
-- `/api/fx/*`
-- `/api/split-bill/*`
+- `GET /api/site/health`
+- `GET /api/fx/detect`
+- `GET /api/fx/rates`
+- `POST /api/split-bill/device/bootstrap`
+- `GET|POST /api/split-bill/trips`
+- `PATCH|DELETE /api/split-bill/trips/:tripId/*`
 
-Legacy compatibility routes are still preserved where needed.
+## Local Development
 
-## Extending
+```bash
+pnpm install
+pnpm dev
+```
 
-- CI is defined in [.github/workflows/ci.yml](/Users/ricky/Documents/GitHub/tiny-currency/.github/workflows/ci.yml)
-- New tool integration guide: [docs/adding-a-tool.md](/Users/ricky/Documents/GitHub/tiny-currency/docs/adding-a-tool.md)
+## Verification
+
+```bash
+pnpm test
+pnpm typecheck
+pnpm build
+```

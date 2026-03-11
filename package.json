@@ -1,23 +1,69 @@
 {
   "name": "travel-tools",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "private": true,
+  "type": "module",
   "packageManager": "pnpm@10.11.0",
   "description": "Travel-focused utility site with currency conversion and split-bill tools.",
+  "imports": {
+    "#/*": "./src/*"
+  },
   "scripts": {
-    "version:gen": "node -e \"const{execSync:e}=require('child_process');const h=e('git rev-parse --short HEAD').toString().trim();const t=new Date().toISOString().replace(/[:.]/g,'-').slice(0,19);const v=require('./package.json').version;const c='export const BUILD_VERSION=\\\"v'+v+' ('+h+' · '+t+')\\\";\\n';require('fs').mkdirSync('packages/shared/src',{recursive:true});require('fs').writeFileSync('packages/shared/src/version.ts',c)\"",
-    "dev:web": "pnpm --filter @travel-tools/web dev",
-    "dev:worker": "pnpm run version:gen && pnpm --filter @travel-tools/worker dev",
-    "build": "pnpm run version:gen && pnpm --filter @travel-tools/web build",
-    "typecheck": "pnpm -r run typecheck && tsc -p tsconfig.test.json --noEmit",
-    "test": "pnpm run -s version:gen && tsc -p tsconfig.test.json && node scripts/link-test-workspace.cjs && NODE_PATH=.test-dist/node_modules node --test tests/*.test.js",
-    "deploy": "pnpm run build && pnpm --filter @travel-tools/worker run deploy",
-    "db:migrate:local": "pnpm --filter @travel-tools/worker db:migrate:local"
+    "dev": "vite dev --port 3000",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run --config vitest.config.ts",
+    "typecheck": "tsc --noEmit",
+    "deploy": "pnpm run build && wrangler deploy",
+    "db:migrate:local": "wrangler d1 execute split-bill --local --file=./migrations/0001_init.sql"
   },
   "license": "ISC",
-  "type": "commonjs",
+  "dependencies": {
+    "@base-ui/react": "^1.2.0",
+    "@cloudflare/vite-plugin": "^1.26.0",
+    "@radix-ui/react-alert-dialog": "^1.1.15",
+    "@radix-ui/react-label": "^2.1.7",
+    "@radix-ui/react-select": "^2.2.6",
+    "@radix-ui/react-separator": "^1.1.7",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@radix-ui/react-tabs": "^1.1.13",
+    "@tailwindcss/vite": "^4.1.18",
+    "@tanstack/react-devtools": "^0.8.4",
+    "@tanstack/react-router": "^1.166.7",
+    "@tanstack/react-router-devtools": "^1.166.7",
+    "@tanstack/react-router-ssr-query": "^1.166.7",
+    "@tanstack/react-start": "^1.166.7",
+    "@tanstack/router-plugin": "^1.166.7",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "idb": "^8.0.3",
+    "lucide-react": "^0.545.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss": "^4.1.18",
+    "zod": "^3.25.76"
+  },
   "devDependencies": {
+    "@tanstack/devtools-vite": "^0.3.3",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/react": "^16.3.0",
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@vitejs/plugin-react": "^5.1.4",
     "@cloudflare/workers-types": "^4.20260305.0",
-    "typescript": "^5.9.3"
+    "jsdom": "^28.1.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^3.2.4",
+    "wrangler": "^4.70.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "lightningcss"
+    ]
   }
 }
