@@ -10,7 +10,7 @@
     "dev:worker": "pnpm run version:gen && pnpm --filter @travel-tools/worker dev",
     "build": "pnpm run version:gen && pnpm --filter @travel-tools/web build",
     "typecheck": "pnpm -r run typecheck && tsc -p tsconfig.test.json --noEmit",
-    "test": "pnpm run -s version:gen && tsc -p tsconfig.test.json && node scripts/link-test-workspace.cjs && NODE_PATH=.test-dist/node_modules node --test tests/**/*.test.js",
+    "test": "pnpm run -s version:gen && tsc -p tsconfig.test.json && node scripts/link-test-workspace.cjs && NODE_PATH=.test-dist/node_modules node --test tests/*.test.js",
     "deploy": "pnpm run build && pnpm --filter @travel-tools/worker run deploy",
     "db:migrate:local": "pnpm --filter @travel-tools/worker db:migrate:local"
   },
