@@ -29,6 +29,7 @@
   --foreground: #1f1914;
   --card: rgba(255, 253, 249, 0.88);
   --card-foreground: #1f1914;
+  --surface-floating: #fffaf4;
   --muted: rgba(255, 249, 242, 0.9);
   --muted-foreground: #6d6053;
   --border: rgba(83, 66, 48, 0.14);
@@ -54,6 +55,7 @@ html[data-theme="dark"] {
   --foreground: #f5efe7;
   --card: rgba(24, 28, 31, 0.92);
   --card-foreground: #f5efe7;
+  --surface-floating: #171b1e;
   --muted: rgba(28, 32, 35, 0.95);
   --muted-foreground: #b3a79a;
   --border: rgba(255, 245, 232, 0.1);

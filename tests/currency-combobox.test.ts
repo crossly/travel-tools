@@ -25,4 +25,21 @@ describe('CurrencyCombobox', () => {
 
     expect(onValueChange).toHaveBeenCalledWith('JPY')
   })
+
+  it('uses a solid floating surface for the dropdown panel', async () => {
+    const { CurrencyCombobox } = await import('@/components/app/currency-combobox')
+
+    render(
+      createElement(CurrencyCombobox, {
+        value: 'USD',
+        onValueChange: vi.fn(),
+        locale: 'en-US',
+      }),
+    )
+
+    fireEvent.click(screen.getByRole('button', { name: /US Dollar|USD/i }))
+
+    const panel = screen.getByRole('listbox')
+    expect(panel.className).toContain('bg-[var(--surface-floating)]')
+  })
 })
