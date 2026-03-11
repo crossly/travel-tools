@@ -4,8 +4,23 @@ import type { AppRequestContext } from './router'
 
 const handler = createStartHandler(defaultStreamHandler)
 
-export default createServerEntry({
-  fetch(request, opts) {
-    return (handler as any)(request, opts as { context: AppRequestContext })
+const entry = createServerEntry({
+  fetch(request: Request, envOrOpts: unknown, executionContext?: ExecutionContext) {
+    const isCloudflareInvocation =
+      executionContext !== undefined || (envOrOpts && typeof envOrOpts === 'object' && 'APP_KV' in (envOrOpts as object))
+
+    if (isCloudflareInvocation) {
+      const context: AppRequestContext = {
+        cloudflare: {
+          env: envOrOpts as CloudflareEnv,
+          ctx: executionContext as ExecutionContext,
+        },
+      }
+      return (handler as any)(request, { context })
+    }
+
+    return (handler as any)(request, envOrOpts as { context?: AppRequestContext })
   },
 })
+
+export default entry as any
