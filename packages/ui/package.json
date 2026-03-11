@@ -6,7 +6,24 @@
   "exports": {
     ".": "./src/index.ts",
     "./Card": "./src/Card.tsx",
-    "./Layout": "./src/Layout.tsx"
+    "./Layout": "./src/Layout.tsx",
+    "./AppShell": "./src/AppShell.tsx",
+    "./ActionButton": "./src/ActionButton.tsx",
+    "./AmountDisplay": "./src/AmountDisplay.tsx",
+    "./BottomNav": "./src/BottomNav.tsx",
+    "./EmptyState": "./src/EmptyState.tsx",
+    "./Field": "./src/Field.tsx",
+    "./HeroPanel": "./src/HeroPanel.tsx",
+    "./IconButton": "./src/IconButton.tsx",
+    "./InfoChip": "./src/InfoChip.tsx",
+    "./Panel": "./src/Panel.tsx",
+    "./SectionHeader": "./src/SectionHeader.tsx",
+    "./SegmentedControl": "./src/SegmentedControl.tsx",
+    "./SettingsGroup": "./src/SettingsGroup.tsx",
+    "./StepPanel": "./src/StepPanel.tsx",
+    "./StatusBanner": "./src/StatusBanner.tsx",
+    "./TopBar": "./src/TopBar.tsx",
+    "./ToolFeatureCard": "./src/ToolFeatureCard.tsx"
   },
   "scripts": {
     "typecheck": "tsc -p tsconfig.json --noEmit"
