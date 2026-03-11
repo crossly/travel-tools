@@ -42,10 +42,19 @@ Create:
 
 Use:
 
-- `@travel-tools/ui` for page shell and cards
+- `SiteLayout` from `apps/web/src/components/SiteLayout.tsx`
+- `@travel-tools/ui` primitives instead of page-local styling
+- `Panel` / `HeroPanel` for surfaces
+- `Field` for labeled inputs
+- `ActionButton` for actions
+- `StatusBanner` for primary page-state feedback
+- `SegmentedControl` for compact switching controls
+- `StepPanel` and `EmptyState` when the workflow needs them
 - `useI18n`
 - `useLocalizedPath` / `useLocalizedNavigate`
 - shared storage keys only when persistence is needed
+
+Do not default back to raw repeated utility classes if an existing shared primitive already covers the need.
 
 ### 4. Wire the route
 
@@ -73,6 +82,15 @@ Before adding new code, check whether it belongs in:
 - `packages/ui`
 
 If the capability is useful for more than one tool, do not keep it inside a single page module.
+
+### 7. Respect theme and feedback conventions
+
+Every new tool must:
+
+- work in both light and dark modes
+- avoid hard-coded theme colors inside page components
+- use inline `StatusBanner` for primary state or error feedback
+- reserve toast for lightweight confirmation only
 
 ## Acceptance Checklist
 

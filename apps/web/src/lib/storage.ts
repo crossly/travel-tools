@@ -1,5 +1,5 @@
 import { openDB } from 'idb';
-import { STORAGE_KEYS, migrateLegacyStorage } from '@travel-tools/shared/storage';
+import { STORAGE_KEYS, migrateLegacyStorage, readTheme, writeTheme, type SiteTheme } from '@travel-tools/shared/storage';
 import type { DeviceIdentity, OfflineOperation } from './types';
 
 const dbPromise = openDB('travel-tools-offline', 1, {
@@ -19,6 +19,17 @@ function getStorage(): Storage | null {
     migrated = true;
   }
   return localStorage;
+}
+
+export function readSiteTheme(): SiteTheme {
+  const storage = getStorage();
+  return storage ? readTheme(storage) : 'system';
+}
+
+export function writeSiteTheme(theme: SiteTheme): void {
+  const storage = getStorage();
+  if (!storage) return;
+  writeTheme(theme, storage);
 }
 
 export function readDevice(): DeviceIdentity | null {

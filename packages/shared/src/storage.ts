@@ -4,6 +4,8 @@ export type StorageLike = {
   removeItem(key: string): void;
 };
 
+export type SiteTheme = 'light' | 'dark' | 'system';
+
 export const STORAGE_KEYS = {
   locale: 'travel-tools:site:locale',
   lastTool: 'travel-tools:site:last-tool',
@@ -15,6 +17,8 @@ export const STORAGE_KEYS = {
   currencyRates: 'travel-tools:currency:rates',
   currencyRatesUpdatedAt: 'travel-tools:currency:rates-updated-at',
 } as const;
+
+const VALID_THEMES: SiteTheme[] = ['light', 'dark', 'system'];
 
 export type LegacyMigrationResult = {
   deviceJson: string | null;
@@ -51,4 +55,13 @@ export function migrateLegacyStorage(storage: StorageLike): LegacyMigrationResul
     currencySource: storage.getItem(STORAGE_KEYS.currencySource),
     currencyTarget: storage.getItem(STORAGE_KEYS.currencyTarget),
   };
+}
+
+export function readTheme(storage: StorageLike): SiteTheme {
+  const raw = storage.getItem(STORAGE_KEYS.theme);
+  return VALID_THEMES.includes(raw as SiteTheme) ? (raw as SiteTheme) : 'system';
+}
+
+export function writeTheme(theme: SiteTheme, storage: StorageLike): void {
+  storage.setItem(STORAGE_KEYS.theme, VALID_THEMES.includes(theme) ? theme : 'system');
 }

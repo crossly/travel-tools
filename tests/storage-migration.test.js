@@ -4,6 +4,8 @@ const assert = require('node:assert/strict');
 const {
   migrateLegacyStorage,
   STORAGE_KEYS,
+  readTheme,
+  writeTheme,
 } = require('../.test-dist/packages/shared/src/storage.js');
 
 function createMemoryStorage(seed = {}) {
@@ -49,4 +51,17 @@ test('migrateLegacyStorage keeps split-bill device and active trip under new nam
   assert.equal(result.activeTripId, 'trip_1');
   assert.equal(storage.getItem(STORAGE_KEYS.device), deviceJson);
   assert.equal(storage.getItem(STORAGE_KEYS.activeTripId), 'trip_1');
+});
+
+test('readTheme falls back to system and writeTheme persists valid values', () => {
+  const storage = createMemoryStorage();
+
+  assert.equal(readTheme(storage), 'system');
+
+  writeTheme('dark', storage);
+  assert.equal(readTheme(storage), 'dark');
+  assert.equal(storage.getItem(STORAGE_KEYS.theme), 'dark');
+
+  storage.setItem(STORAGE_KEYS.theme, 'broken');
+  assert.equal(readTheme(storage), 'system');
 });
