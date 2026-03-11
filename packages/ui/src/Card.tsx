@@ -1,5 +1,10 @@
 import type { PropsWithChildren } from 'react';
+import { Panel } from './Panel';
 
 export function Card({ className, children }: PropsWithChildren<{ className?: string }>) {
-  return <section className={['rounded-card border border-borderc bg-card p-4 shadow-card', className].filter(Boolean).join(' ')}>{children}</section>;
+  return (
+    <Panel className={className}>
+      {children}
+    </Panel>
+  );
 }

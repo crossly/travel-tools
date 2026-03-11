@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Card, Layout } from '@travel-tools/ui';
+import { ActionButton, AmountDisplay, HeroPanel, Panel } from '@travel-tools/ui';
 import { fetchSettlement, fetchSnapshot } from '../lib/api';
 import type { SettlementResponse, TripSnapshot } from '../lib/types';
 import { useI18n } from '../hooks/useI18n';
 import { useToast } from '../hooks/useToast';
 import { useLocalizedPath } from '../lib/routes';
 import { APP_VERSION, BUILD_DATE } from '../lib/version';
+import { SiteLayout } from '../components/SiteLayout';
 
 export function SettlementPage() {
   const { tripId = '' } = useParams();
@@ -188,7 +189,7 @@ export function SettlementPage() {
   };
 
   return (
-    <Layout
+    <SiteLayout
       appName={t('app.name')}
       eyebrow={t('site.eyebrow')}
       settingsLabel={t('common.settings')}
@@ -203,65 +204,80 @@ export function SettlementPage() {
         </Link>
       </div>
 
-      <Card className="mb-4">
-        <h2 className="text-sm font-medium">{t('settlement.currencySummary')}</h2>
-        <p className="mt-2 text-sm text-texts">
-          {t('settlement.expenseCurrency')}: <span className="font-display tabular-nums">{settlement?.currencySummary.expenseCurrency ?? '---'}</span>
-        </p>
-        <p className="mt-1 text-sm text-texts">
-          {t('settlement.settlementCurrency')}: <span className="font-display tabular-nums">{settlement?.currencySummary.settlementCurrency ?? '---'}</span>
-        </p>
-      </Card>
+      <HeroPanel
+        className="mb-4"
+        eyebrow={t('settlement.currencySummary')}
+        title={
+          <AmountDisplay
+            value={(settlement?.balances.reduce((sum, row) => sum + Math.abs(row.net), 0) ?? 0).toFixed(2)}
+            currency={settlement?.currencySummary.settlementCurrency}
+          />
+        }
+        subtitle={
+          <div className="space-y-1">
+            <p>
+              {t('settlement.expenseCurrency')}: <span className="font-mono tabular-nums text-textp">{settlement?.currencySummary.expenseCurrency ?? '---'}</span>
+            </p>
+            <p>
+              {t('settlement.settlementCurrency')}: <span className="font-mono tabular-nums text-textp">{settlement?.currencySummary.settlementCurrency ?? '---'}</span>
+            </p>
+          </div>
+        }
+      />
 
-      <Card className="mb-4">
+      <Panel className="mb-4">
         <h2 className="text-sm font-medium">{t('settlement.transferSuggestion')}</h2>
         <div className="mt-2 space-y-2">
           {settlement?.transfers.map((transfer, idx) => (
-            <div key={`${transfer.fromMemberId}-${transfer.toMemberId}-${idx}`} className="rounded-card border border-borderc px-3 py-2 text-sm">
-              {displayMember(transfer.fromMemberId)} {'->'} {displayMember(transfer.toMemberId)}
-              <span className="ml-2 font-display tabular-nums">{transfer.amountBase.toFixed(2)}</span>
+            <div key={`${transfer.fromMemberId}-${transfer.toMemberId}-${idx}`} className="rounded-card border border-borderc bg-card px-3 py-3 text-sm">
+              <div className="flex items-center justify-between gap-3">
+                <span className="text-textp">
+                  {displayMember(transfer.fromMemberId)} {'->'} {displayMember(transfer.toMemberId)}
+                </span>
+                <span className="font-mono tabular-nums text-textp">{transfer.amountBase.toFixed(2)}</span>
+              </div>
             </div>
           ))}
           {settlement && settlement.transfers.length === 0 ? <p className="text-sm text-texts">{t('settlement.noTransfer')}</p> : null}
         </div>
-      </Card>
+      </Panel>
 
-      <Card className="mb-4">
+      <Panel className="mb-4">
         <h2 className="text-sm font-medium">{t('settlement.netBalance')}</h2>
         <div className="mt-2 space-y-2 text-sm">
           {settlement?.balances.map((row) => (
-            <div key={row.memberId} className="flex items-center justify-between rounded-card border border-borderc px-3 py-2">
-              <span>{displayMember(row.memberId)}</span>
-              <span className="font-display tabular-nums">{row.net.toFixed(2)}</span>
+            <div key={row.memberId} className="flex items-center justify-between rounded-card border border-borderc bg-card px-3 py-3">
+              <span className="text-textp">{displayMember(row.memberId)}</span>
+              <span className="font-mono tabular-nums text-textp">{row.net > 0 ? '+' : ''}{row.net.toFixed(2)}</span>
             </div>
           ))}
         </div>
-      </Card>
+      </Panel>
 
-      <Card className="mb-4">
+      <Panel className="mb-4">
         <h2 className="text-sm font-medium">{t('settlement.fxDetails')}</h2>
         <div className="mt-2 space-y-2">
           {settlement?.expenseConversions.map((row) => (
-            <div key={row.expenseId} className="rounded-card border border-borderc px-3 py-2 text-xs text-texts">
+            <div key={row.expenseId} className="rounded-card border border-borderc bg-card px-3 py-3 text-xs text-texts">
               <p className="font-medium text-textp">{row.title}</p>
               <p className="mt-1">{row.spentAt.slice(0, 10)}</p>
-              <p className="mt-1 font-display tabular-nums">
+              <p className="mt-1 font-mono tabular-nums">
                 {row.originalAmount.toFixed(2)} {row.originalCurrency} {'->'} {row.settlementAmount.toFixed(2)} {settlement?.currencySummary.settlementCurrency}
               </p>
-              <p className="mt-1 font-display tabular-nums">{t('settlement.rateLabel')}: {row.fxRateToSettlement.toFixed(6)}</p>
+              <p className="mt-1 font-mono tabular-nums">{t('settlement.rateLabel')}: {row.fxRateToSettlement.toFixed(6)}</p>
             </div>
           ))}
         </div>
-      </Card>
+      </Panel>
 
       <div className="grid grid-cols-2 gap-2">
-        <button onClick={() => void onCopy()} className="rounded-card bg-accent px-4 py-3 text-sm font-semibold text-white">
+        <ActionButton onClick={() => void onCopy()}>
           {t('settlement.copyText')}
-        </button>
-        <button onClick={onGenerateImage} className="rounded-card border border-accent px-4 py-3 text-sm font-semibold text-accent">
+        </ActionButton>
+        <ActionButton onClick={onGenerateImage} variant="secondary">
           {t('settlement.generateImage')}
-        </button>
+        </ActionButton>
       </div>
-    </Layout>
+    </SiteLayout>
   );
 }

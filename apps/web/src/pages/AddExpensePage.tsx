@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { Card, Layout } from '@travel-tools/ui';
+import { ActionButton, Field, Panel, StatusBanner } from '@travel-tools/ui';
 import { createExpense, fetchFxQuote, fetchSnapshot } from '../lib/api';
 import { COMMON_CURRENCIES, formatCurrencyOption, normalizeCurrency } from '../lib/currencies';
 import type { TripSnapshot } from '../lib/types';
@@ -8,6 +8,7 @@ import { useI18n } from '../hooks/useI18n';
 import { useToast } from '../hooks/useToast';
 import { useLocalizedPath } from '../lib/routes';
 import { APP_VERSION, BUILD_DATE } from '../lib/version';
+import { SiteLayout } from '../components/SiteLayout';
 
 export function AddExpensePage() {
   const { tripId = '' } = useParams();
@@ -26,6 +27,7 @@ export function AddExpensePage() {
   const [fxRateOverride, setFxRateOverride] = useState('');
   const [autoFxRate, setAutoFxRate] = useState<number | null>(null);
   const [saving, setSaving] = useState(false);
+  const [fxNotice, setFxNotice] = useState<'auto' | 'manual' | 'missing'>('auto');
 
   const settlementCurrency = snapshot?.trip.settlementCurrency ?? snapshot?.trip.baseCurrency ?? '';
 
@@ -45,18 +47,30 @@ export function AddExpensePage() {
     const to = normalizeCurrency(settlementCurrency);
     if (!/^[A-Z]{3}$/.test(from) || !/^[A-Z]{3}$/.test(to) || !spentAt) {
       setAutoFxRate(null);
+      setFxNotice('missing');
       return;
     }
 
     if (from === to) {
       setAutoFxRate(1);
+      setFxNotice('auto');
       return;
     }
 
     void fetchFxQuote(tripId, from, to, spentAt)
-      .then((quote) => setAutoFxRate(quote.rate))
-      .catch(() => setAutoFxRate(null));
+      .then((quote) => {
+        setAutoFxRate(quote.rate);
+        setFxNotice('auto');
+      })
+      .catch(() => {
+        setAutoFxRate(null);
+        setFxNotice('missing');
+      });
   }, [tripId, originalCurrency, settlementCurrency, spentAt, snapshot]);
+
+  useEffect(() => {
+    setFxNotice(fxRateOverride.trim() ? 'manual' : autoFxRate !== null ? 'auto' : 'missing');
+  }, [autoFxRate, fxRateOverride]);
 
   const canSubmit = useMemo(() => {
     const from = normalizeCurrency(originalCurrency);
@@ -104,7 +118,7 @@ export function AddExpensePage() {
   };
 
   return (
-    <Layout
+    <SiteLayout
       appName={t('app.name')}
       eyebrow={t('site.eyebrow')}
       settingsLabel={t('common.settings')}
@@ -126,67 +140,77 @@ export function AddExpensePage() {
           {t('addExpense.backToTrip')}
         </Link>
       </div>
-      <Card>
-        <label className="text-sm">{t('addExpense.labelTitle')}</label>
-        <input value={title} onChange={(e) => setTitle(e.target.value)} className="mt-2 w-full rounded-card border border-borderc px-4 py-3" placeholder={t('addExpense.titlePlaceholder')} />
+      <Panel>
+        <Field label={t('addExpense.labelTitle')}>
+          <input value={title} onChange={(e) => setTitle(e.target.value)} className="w-full rounded-card border border-borderc bg-card px-4 py-3 text-textp" placeholder={t('addExpense.titlePlaceholder')} />
+        </Field>
 
-        <label className="mt-3 block text-sm">{t('addExpense.labelAmount')}</label>
-        <input
-          value={amountOriginal}
-          onChange={(e) => setAmountOriginal(e.target.value)}
-          inputMode="decimal"
-          className="mt-2 w-full rounded-card border border-borderc px-4 py-3 font-display text-3xl tabular-nums"
-          placeholder="0.00"
-        />
+        <Field className="mt-3" label={t('addExpense.labelAmount')}>
+          <input
+            value={amountOriginal}
+            onChange={(e) => setAmountOriginal(e.target.value)}
+            inputMode="decimal"
+            className="w-full rounded-card border border-borderc bg-card px-4 py-3 font-mono text-3xl tabular-nums text-textp"
+            placeholder="0.00"
+          />
+        </Field>
 
         <div className="mt-3 grid grid-cols-2 gap-2">
-          <div>
-            <label className="text-sm">{t('addExpense.labelCurrency')}</label>
+          <Field label={t('addExpense.labelCurrency')}>
             <input
               value={originalCurrency}
               onChange={(e) => setOriginalCurrency(e.target.value)}
               list="currency-list"
-              className="mt-2 w-full rounded-card border border-borderc px-4 py-3 font-display tabular-nums"
+              className="w-full rounded-card border border-borderc bg-card px-4 py-3 font-mono tabular-nums text-textp"
             />
-          </div>
-          <div>
-            <label className="text-sm">{t('addExpense.labelDate')}</label>
-            <input value={spentAt} onChange={(e) => setSpentAt(e.target.value)} type="date" className="mt-2 w-full rounded-card border border-borderc px-4 py-3" />
-          </div>
+          </Field>
+          <Field label={t('addExpense.labelDate')}>
+            <input value={spentAt} onChange={(e) => setSpentAt(e.target.value)} type="date" className="w-full rounded-card border border-borderc bg-card px-4 py-3 text-textp" />
+          </Field>
         </div>
 
-        <div className="mt-3 rounded-card border border-borderc p-3 text-xs">
-          <p className="text-texts">{t('addExpense.settlementCurrency')}: <span className="font-display tabular-nums">{settlementCurrency || '---'}</span></p>
-          <p className="mt-1 text-texts">
-            {t('addExpense.autoFx')}: <span className="font-display tabular-nums">{autoFxRate ? autoFxRate.toFixed(6) : '---'}</span>
-          </p>
-          <label className="mt-2 block text-sm text-textp">{t('addExpense.manualFx')}</label>
-          <input
-            value={fxRateOverride}
-            onChange={(e) => setFxRateOverride(e.target.value)}
-            inputMode="decimal"
-            placeholder={t('addExpense.manualFxPlaceholder')}
-            className="mt-1 w-full rounded-card border border-borderc px-4 py-2 font-display tabular-nums"
+        <Panel tone="subtle" className="mt-3">
+          <div className="space-y-2 text-xs text-texts">
+            <p>{t('addExpense.settlementCurrency')}: <span className="font-mono tabular-nums text-textp">{settlementCurrency || '---'}</span></p>
+            <p>{t('addExpense.autoFx')}: <span className="font-mono tabular-nums text-textp">{autoFxRate ? autoFxRate.toFixed(6) : '---'}</span></p>
+          </div>
+          <Field className="mt-3" label={t('addExpense.manualFx')}>
+            <input
+              value={fxRateOverride}
+              onChange={(e) => setFxRateOverride(e.target.value)}
+              inputMode="decimal"
+              placeholder={t('addExpense.manualFxPlaceholder')}
+              className="w-full rounded-card border border-borderc bg-card px-4 py-2 font-mono tabular-nums text-textp"
+            />
+          </Field>
+        </Panel>
+
+        {fxNotice === 'missing' ? (
+          <StatusBanner
+            className="mt-3"
+            status="warning"
+            title={t('addExpense.autoFx')}
+            description={t('addExpense.manualFx')}
           />
-        </div>
+        ) : null}
 
-        <label className="mt-3 block text-sm">{t('addExpense.splitCount')}</label>
-        <div className="mt-2">
+        <Field className="mt-3" label={t('addExpense.splitCount')}>
           <input
             value={splitCount}
             onChange={(e) => setSplitCount(e.target.value)}
             inputMode="numeric"
-            className="mt-1 w-full rounded-card border border-borderc px-4 py-2 font-display tabular-nums"
+            className="w-full rounded-card border border-borderc bg-card px-4 py-2 font-mono tabular-nums text-textp"
           />
-        </div>
+        </Field>
 
-        <label className="mt-3 block text-sm">{t('addExpense.labelNote')}</label>
-        <textarea value={note} onChange={(e) => setNote(e.target.value)} className="mt-2 w-full rounded-card border border-borderc px-4 py-3" rows={3} />
+        <Field className="mt-3" label={t('addExpense.labelNote')}>
+          <textarea value={note} onChange={(e) => setNote(e.target.value)} className="w-full rounded-card border border-borderc bg-card px-4 py-3 text-textp" rows={3} />
+        </Field>
 
-        <button onClick={onSubmit} className="mt-4 w-full rounded-card bg-accent px-4 py-3 font-semibold text-white" disabled={saving}>
+        <ActionButton onClick={onSubmit} className="mt-4 w-full" loading={saving}>
           {t('common.save')}
-        </button>
-      </Card>
-    </Layout>
+        </ActionButton>
+      </Panel>
+    </SiteLayout>
   );
 }

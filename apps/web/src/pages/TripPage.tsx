@@ -1,7 +1,7 @@
 import * as AlertDialog from '@radix-ui/react-alert-dialog';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { Card, Layout } from '@travel-tools/ui';
+import { ActionButton, Field, Panel, StatusBanner } from '@travel-tools/ui';
 import { deleteExpense, deleteTrip, fetchSnapshot, flushOfflineQueue, updateTripSettings } from '../lib/api';
 import type { Expense, TripSnapshot } from '../lib/types';
 import { useInterval } from '../hooks/useInterval';
@@ -10,6 +10,7 @@ import { writeActiveTripId } from '../lib/storage';
 import { useI18n } from '../hooks/useI18n';
 import { useLocalizedNavigate, useLocalizedPath } from '../lib/routes';
 import { APP_VERSION, BUILD_DATE } from '../lib/version';
+import { SiteLayout } from '../components/SiteLayout';
 
 export function TripPage() {
   const { tripId = '' } = useParams();
@@ -101,7 +102,7 @@ export function TripPage() {
   };
 
   return (
-    <Layout
+    <SiteLayout
       appName={t('app.name')}
       eyebrow={t('site.eyebrow')}
       settingsLabel={t('common.settings')}
@@ -111,13 +112,13 @@ export function TripPage() {
       title={snapshot?.trip.name ?? t('trip.titleFallback')}
     >
       <div className="mb-4 flex gap-2">
-        <button onClick={() => navigateLocalized('/tools/split-bill')} className="rounded-card border border-borderc px-4 py-2 text-sm">
+        <ActionButton variant="secondary" onClick={() => navigateLocalized('/tools/split-bill')}>
           {t('common.back')}
-        </button>
-        <Link to={toLocalizedPath(`/tools/split-bill/trip/${tripId}/settlement`)} className="rounded-card border border-accent px-4 py-2 text-sm text-accent">
+        </ActionButton>
+        <Link to={toLocalizedPath(`/tools/split-bill/trip/${tripId}/settlement`)} className="inline-flex items-center rounded-card border border-[var(--accent-primary)] px-4 py-2 text-sm font-medium text-[var(--accent-primary)]">
           {t('trip.settlement')}
         </Link>
-        <Link to={toLocalizedPath(`/tools/split-bill/trip/${tripId}/add`)} className="flex-1 rounded-card bg-accent px-4 py-2 text-center text-sm font-semibold text-white">
+        <Link to={toLocalizedPath(`/tools/split-bill/trip/${tripId}/add`)} className="inline-flex flex-1 items-center justify-center rounded-card bg-accent px-4 py-2 text-center text-sm font-semibold text-white shadow-card">
           {t('trip.addExpense')}
         </Link>
       </div>
@@ -125,9 +126,9 @@ export function TripPage() {
       {canDeleteTrip ? (
         <AlertDialog.Root open={confirmOpen} onOpenChange={setConfirmOpen}>
           <AlertDialog.Trigger asChild>
-            <button className="mb-4 w-full rounded-card border border-red-400 px-4 py-2 text-sm text-red-600" disabled={deletingTrip}>
+            <ActionButton className="mb-4 w-full" variant="danger" disabled={deletingTrip}>
               {t('trip.deleteTrip')}
-            </button>
+            </ActionButton>
           </AlertDialog.Trigger>
           <AlertDialog.Portal>
             <AlertDialog.Overlay className="fixed inset-0 z-overlay bg-black/40" />
@@ -136,16 +137,17 @@ export function TripPage() {
               <AlertDialog.Description className="mt-2 text-sm text-texts text-pretty">{t('trip.deleteTripConfirmBody')}</AlertDialog.Description>
               <div className="mt-4 flex gap-2">
                 <AlertDialog.Cancel asChild>
-                  <button className="flex-1 rounded-card border border-borderc px-4 py-2 text-sm">{t('common.cancel')}</button>
+                  <ActionButton className="flex-1" variant="secondary">{t('common.cancel')}</ActionButton>
                 </AlertDialog.Cancel>
                 <AlertDialog.Action asChild>
-                  <button
+                  <ActionButton
                     onClick={() => void onDeleteTrip()}
-                    className="flex-1 rounded-card bg-red-600 px-4 py-2 text-sm font-semibold text-white"
+                    className="flex-1"
+                    variant="danger"
                     disabled={deletingTrip}
                   >
                     {t('trip.deleteTripAction')}
-                  </button>
+                  </ActionButton>
                 </AlertDialog.Action>
               </div>
             </AlertDialog.Content>
@@ -153,53 +155,56 @@ export function TripPage() {
         </AlertDialog.Root>
       ) : null}
 
-      <Card className="mb-4">
+      <Panel className="mb-4">
         <p className="text-xs text-texts">
           {t('trip.splitCount')}: <span className="font-display tabular-nums">{snapshot?.trip.splitCount ?? 1}</span>
         </p>
         {canDeleteTrip ? (
           <div className="mt-2 flex gap-2">
-            <input
-              value={splitCountInput}
-              onChange={(e) => setSplitCountInput(e.target.value)}
-              inputMode="numeric"
-              className="flex-1 rounded-card border border-borderc px-3 py-2 text-sm font-display tabular-nums"
-            />
-            <button onClick={() => void onUpdateSplitCount()} className="rounded-card border border-borderc px-3 py-2 text-sm">
+            <Field className="flex-1">
+              <input
+                value={splitCountInput}
+                onChange={(e) => setSplitCountInput(e.target.value)}
+                inputMode="numeric"
+                className="w-full rounded-card border border-borderc bg-card px-3 py-2 text-sm font-mono tabular-nums text-textp"
+              />
+            </Field>
+            <ActionButton variant="secondary" onClick={() => void onUpdateSplitCount()}>
               {t('trip.saveSplitCount')}
-            </button>
+            </ActionButton>
           </div>
         ) : null}
-      </Card>
+      </Panel>
 
-      <Card>
+      <Panel>
         <h2 className="text-sm font-medium">{t('trip.expenseList')}</h2>
         <div className="mt-2 space-y-2">
           {(snapshot?.expenses ?? []).filter((expense) => !expense.deletedAt).map((expense) => (
-            <div key={expense.id} className="rounded-card border border-borderc px-3 py-3">
+            <div key={expense.id} className="rounded-card border border-borderc bg-card px-3 py-3">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <p className="font-medium">{expense.title}</p>
+                  <p className="font-medium text-textp">{expense.title}</p>
                   <p className="mt-1 text-xs text-texts">{expense.spentAt.slice(0, 10)}</p>
                 </div>
-                <button
+                <ActionButton
                   onClick={() => void onDeleteExpense(expense)}
+                  variant="ghost"
+                  size="sm"
                   aria-label={t('trip.deleteExpense')}
-                  className="rounded-card border border-borderc px-2 py-1 text-xs text-texts"
                 >
                   {t('trip.deleteExpense')}
-                </button>
+                </ActionButton>
               </div>
-              <p className="mt-2 font-display text-xl tabular-nums">
+              <p className="mt-2 font-mono text-xl tabular-nums text-textp">
                 {expense.amountBase.toFixed(2)} {snapshot?.trip.baseCurrency}
               </p>
             </div>
           ))}
           {snapshot && snapshot.expenses.filter((expense) => !expense.deletedAt).length === 0 ? <p className="text-sm text-texts">{t('trip.noExpenses')}</p> : null}
         </div>
-      </Card>
+      </Panel>
 
-      {syncMsg ? <p className="mt-3 text-xs text-accent">{syncMsg}</p> : null}
-    </Layout>
+      {syncMsg ? <StatusBanner className="mt-3" status="success" title={syncMsg} /> : null}
+    </SiteLayout>
   );
 }

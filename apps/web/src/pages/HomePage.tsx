@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
-import { Card, Layout } from '@travel-tools/ui';
+import { HeroPanel, InfoChip, Panel, ToolFeatureCard } from '@travel-tools/ui';
 import { useI18n } from '../hooks/useI18n';
 import { useLocalizedPath } from '../lib/routes';
 import { readLastTool, writeLastTool } from '../lib/storage';
 import { getEnabledTools } from '@travel-tools/shared/site';
 import { APP_VERSION, BUILD_DATE } from '../lib/version';
+import { SiteLayout } from '../components/SiteLayout';
 
 export function HomePage() {
   const { t } = useI18n();
@@ -14,7 +15,7 @@ export function HomePage() {
   const buildInfo = t('common.buildInfo', { version: APP_VERSION, date: BUILD_DATE });
 
   return (
-    <Layout
+    <SiteLayout
       appName={t('app.name')}
       eyebrow={t('site.eyebrow')}
       settingsLabel={t('common.settings')}
@@ -24,42 +25,73 @@ export function HomePage() {
       title={t('site.homeTitle')}
       subtitle={t('site.homeDescription')}
     >
-      {lastTool ? (
-        <Card className="mb-4 bg-[linear-gradient(135deg,rgba(249,115,22,0.12),rgba(255,255,255,0.9))]">
-          <p className="text-xs uppercase tracking-[0.22em] text-texts">{t('site.recentToolLabel')}</p>
-          <p className="mt-2 text-lg font-semibold">{t(`tool.${lastTool}.name`)}</p>
-          <Link
-            to={toLocalizedPath(lastTool === 'currency' ? '/tools/currency' : '/tools/split-bill')}
-            className="mt-3 inline-flex rounded-card bg-accent px-4 py-2 text-sm font-semibold text-white"
-          >
-            {t('site.openRecentTool')}
-          </Link>
-        </Card>
-      ) : null}
+      <HeroPanel
+        className="mb-5"
+        eyebrow={t('site.eyebrow')}
+        title={t('site.heroTitle')}
+        subtitle={t('site.heroDescription')}
+        actions={lastTool ? <InfoChip tone="accent">{t('site.recentToolLabel')}</InfoChip> : undefined}
+      >
+        <div className="flex flex-wrap gap-3">
+          {lastTool ? (
+            <Link
+              to={toLocalizedPath(lastTool === 'currency' ? '/tools/currency' : '/tools/split-bill')}
+              className="inline-flex rounded-card bg-accent px-4 py-2 text-sm font-semibold text-white shadow-card"
+            >
+              {t('site.openRecentTool')}
+            </Link>
+          ) : null}
+          <a href="#tool-grid" className="inline-flex rounded-card border border-borderc bg-card px-4 py-2 text-sm font-medium text-textp shadow-card">
+            {t('site.exploreTools')}
+          </a>
+        </div>
+      </HeroPanel>
 
-      <div className="space-y-4">
+      <div id="tool-grid" className="space-y-4">
         {tools.map((tool) => (
-          <Link
+          <div
             key={tool.id}
-            to={toLocalizedPath(tool.entryPath)}
             onClick={() => writeLastTool(tool.slug)}
-            className="block"
           >
-            <Card className="overflow-hidden border-transparent bg-[linear-gradient(160deg,rgba(255,247,237,0.98),rgba(255,255,255,0.92))] transition-transform hover:-translate-y-0.5 dark:bg-[linear-gradient(160deg,rgba(28,20,16,0.96),rgba(28,25,23,0.92))]">
-              <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-card bg-accent-soft text-2xl">{tool.icon}</div>
-                <div className="flex-1">
-                  <div className="flex items-center justify-between gap-3">
-                    <h2 className="text-lg font-semibold">{t(`tool.${tool.slug}.name`)}</h2>
-                    <span className="font-display text-xs uppercase tracking-[0.18em] text-texts">{t('site.toolReady')}</span>
+            <ToolFeatureCard
+              title={t(`tool.${tool.slug}.name`)}
+              description={t(`tool.${tool.slug}.description`)}
+              icon={tool.icon}
+              href={toLocalizedPath(tool.entryPath)}
+              tone={tool.slug === 'currency' ? 'hero' : 'accent'}
+              meta={
+                tool.slug === 'currency'
+                  ? [t('site.homeCurrencyMeta'), t('site.homeCurrencyMeta2')]
+                  : [t('site.homeSplitMeta'), t('site.homeSplitMeta2')]
+              }
+              ctaLabel={t('site.openRecentTool')}
+              preview={
+                tool.slug === 'currency' ? (
+                  <div className="rounded-card border border-borderc bg-card px-4 py-3">
+                    <div className="font-mono text-2xl tabular-nums text-textp">100 USD → 728.42 CNY</div>
+                    <div className="mt-2 text-xs uppercase tracking-[0.18em] text-texts">{t('site.toolReady')}</div>
                   </div>
-                  <p className="mt-2 text-sm leading-6 text-texts">{t(`tool.${tool.slug}.description`)}</p>
-                </div>
-              </div>
-            </Card>
-          </Link>
+                ) : (
+                  <div className="rounded-card border border-borderc bg-card px-4 py-3">
+                    <div className="font-mono text-2xl tabular-nums text-textp">6 people · 2 currencies</div>
+                    <div className="mt-2 text-xs uppercase tracking-[0.18em] text-texts">1 unsettled trip</div>
+                  </div>
+                )
+              }
+            />
+          </div>
         ))}
       </div>
-    </Layout>
+
+      <Panel tone="subtle" className="mt-5">
+        <p className="text-xs uppercase tracking-[0.22em] text-texts">{t('site.futureToolsTitle')}</p>
+        <p className="mt-2 text-sm leading-6 text-texts">{t('site.futureToolsDescription')}</p>
+        <div className="mt-4 flex flex-wrap gap-2">
+          <InfoChip>{t('site.futureTool.taxRefund')}</InfoChip>
+          <InfoChip>{t('site.futureTool.packing')}</InfoChip>
+          <InfoChip>{t('site.futureTool.tips')}</InfoChip>
+        </div>
+      </Panel>
+    </SiteLayout>
   );
 }

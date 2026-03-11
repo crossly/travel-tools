@@ -70,3 +70,12 @@ export function getLocalizedPath(locale: Locale, pathname: string): string {
 export function getEnabledTools(): ToolDefinition[] {
   return TOOLS.filter((tool) => tool.enabled);
 }
+
+export function getToolBySlug(slug: ToolDefinition['slug']): ToolDefinition | undefined {
+  return TOOLS.find((tool) => tool.slug === slug);
+}
+
+export function getToolFromPathname(pathname: string): ToolDefinition | undefined {
+  const { pathname: normalized } = resolveLocaleFromPath(pathname);
+  return TOOLS.find((tool) => normalized === tool.entryPath || normalized.startsWith(`${tool.entryPath}/`));
+}

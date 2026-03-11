@@ -8,10 +8,12 @@ interface ToastItem {
   title: string;
   description?: string;
   type: ToastType;
+  duration: number;
 }
 
 interface ToastContextValue {
-  pushToast: (toast: Omit<ToastItem, 'id'>) => void;
+  pushToast: (toast: Omit<ToastItem, 'id' | 'duration'> & { duration?: number }) => void;
+  dismissToast: (id: string) => void;
 }
 
 const ToastContext = createContext<ToastContextValue | null>(null);
@@ -23,16 +25,23 @@ export function ToastProvider({ children }: { children: ReactNode }) {
     setToasts((prev) => prev.filter((item) => item.id !== id));
   }, []);
 
+  const defaultDuration = useCallback((type: ToastType) => {
+    if (type === 'success') return 2500;
+    if (type === 'error') return 5000;
+    return 3500;
+  }, []);
+
   const pushToast = useCallback(
-    (toast: Omit<ToastItem, 'id'>) => {
+    (toast: Omit<ToastItem, 'id' | 'duration'> & { duration?: number }) => {
       const id = crypto.randomUUID();
-      setToasts((prev) => [...prev, { ...toast, id }]);
-      window.setTimeout(() => removeToast(id), 2600);
+      const duration = toast.duration ?? defaultDuration(toast.type);
+      setToasts((prev) => [...prev, { ...toast, id, duration }]);
+      window.setTimeout(() => removeToast(id), duration);
     },
-    [removeToast],
+    [defaultDuration, removeToast],
   );
 
-  const value = useMemo<ToastContextValue>(() => ({ pushToast }), [pushToast]);
+  const value = useMemo<ToastContextValue>(() => ({ pushToast, dismissToast: removeToast }), [pushToast, removeToast]);
 
   return (
     <ToastContext.Provider value={value}>
@@ -46,16 +55,28 @@ export function ToastProvider({ children }: { children: ReactNode }) {
             key={toast.id}
             className={
               toast.type === 'error'
-                ? 'pointer-events-auto rounded-card border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-700 shadow-card dark:border-red-900 dark:bg-red-950 dark:text-red-200'
+                ? 'pointer-events-auto animate-[pageEnter_0.18s_ease-out] rounded-card border border-transparent bg-[var(--status-danger-soft)] px-4 py-3 text-sm text-[var(--status-danger)] shadow-card'
                 : toast.type === 'success'
-                  ? 'pointer-events-auto rounded-card border border-green-300 bg-green-50 px-4 py-3 text-sm text-green-700 shadow-card dark:border-green-900 dark:bg-green-950 dark:text-green-200'
-                  : 'pointer-events-auto rounded-card border border-borderc bg-card px-4 py-3 text-sm text-textp shadow-card'
+                  ? 'pointer-events-auto animate-[pageEnter_0.18s_ease-out] rounded-card border border-transparent bg-[var(--status-success-soft)] px-4 py-3 text-sm text-[var(--status-success)] shadow-card'
+                  : 'pointer-events-auto animate-[pageEnter_0.18s_ease-out] rounded-card border border-transparent bg-[var(--status-info-soft)] px-4 py-3 text-sm text-[var(--status-info)] shadow-card'
             }
             role="status"
             aria-live="polite"
           >
-            <p className="font-medium">{toast.title}</p>
-            {toast.description ? <p className="mt-1 text-xs opacity-90">{toast.description}</p> : null}
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <p className="font-medium">{toast.title}</p>
+                {toast.description ? <p className="mt-1 text-xs opacity-90">{toast.description}</p> : null}
+              </div>
+              <button
+                type="button"
+                onClick={() => removeToast(toast.id)}
+                className="pointer-events-auto rounded-full px-2 py-1 text-xs opacity-80 transition-opacity hover:opacity-100"
+                aria-label="Dismiss notification"
+              >
+                ×
+              </button>
+            </div>
           </div>
         ))}
       </div>
@@ -68,5 +89,7 @@ export function useToast(): ToastContextValue {
   if (!ctx) {
     throw new Error('useToast must be used within ToastProvider');
   }
+
+  // Use toasts for lightweight confirmations. Primary page-state feedback belongs inline.
   return ctx;
 }
