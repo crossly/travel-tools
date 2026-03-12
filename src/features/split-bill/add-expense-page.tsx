@@ -14,21 +14,28 @@ import { getLocalizedPath } from '@/lib/site'
 import { useI18n } from '@/lib/i18n'
 import type { Locale, TripSnapshot } from '@/lib/types'
 
-export function AddExpensePage({ locale, tripId }: { locale: Locale; tripId: string }) {
+export function AddExpensePage({ locale, tripId, initialSnapshot = null }: { locale: Locale; tripId: string; initialSnapshot?: TripSnapshot | null }) {
   const { t, tError } = useI18n()
   const navigate = useNavigate()
-  const [snapshot, setSnapshot] = useState<TripSnapshot | null>(null)
+  const [snapshot, setSnapshot] = useState<TripSnapshot | null>(initialSnapshot)
   const [title, setTitle] = useState('')
   const [amount, setAmount] = useState('')
-  const [currency, setCurrency] = useState('CNY')
+  const [currency, setCurrency] = useState(initialSnapshot?.trip.expenseCurrency ?? 'CNY')
   const [spentAt, setSpentAt] = useState(new Date().toISOString().slice(0, 10))
   const [note, setNote] = useState('')
   const [manualFx, setManualFx] = useState('')
-  const [splitCount, setSplitCount] = useState('1')
+  const [splitCount, setSplitCount] = useState(initialSnapshot ? String(initialSnapshot.trip.splitCount) : '1')
   const [isSaving, setIsSaving] = useState(false)
   const [status, setStatus] = useState<{ tone: 'success' | 'warning' | 'danger'; title: string; description?: string } | null>(null)
 
   useEffect(() => {
+    if (initialSnapshot) {
+      setSnapshot(initialSnapshot)
+      setCurrency(initialSnapshot.trip.expenseCurrency)
+      setSplitCount(String(initialSnapshot.trip.splitCount))
+      return
+    }
+
     void fetchSnapshot(tripId)
       .then((data) => {
         setSnapshot(data)
@@ -36,7 +43,7 @@ export function AddExpensePage({ locale, tripId }: { locale: Locale; tripId: str
         setSplitCount(String(data.trip.splitCount))
       })
       .catch((error) => setStatus({ tone: 'danger', title: tError((error as Error).message) }))
-  }, [tripId])
+  }, [initialSnapshot, tError, tripId])
 
   async function onCreate() {
     if (isSaving) return
@@ -83,31 +90,31 @@ export function AddExpensePage({ locale, tripId }: { locale: Locale; tripId: str
         </CardHeader>
         <CardContent className="grid gap-4">
           <FormField label={t('addExpense.labelTitle')}>
-            <Input value={title} onChange={(event) => setTitle(event.target.value)} placeholder={t('addExpense.titlePlaceholder')} />
+            <Input value={title} onChange={(event) => setTitle(event.target.value)} placeholder={t('addExpense.titlePlaceholder')} disabled={!snapshot || isSaving} />
           </FormField>
           <div className="grid gap-4 md:grid-cols-2">
             <FormField label={t('addExpense.labelAmount')}>
-              <Input value={amount} onChange={(event) => setAmount(event.target.value)} inputMode="decimal" />
+              <Input value={amount} onChange={(event) => setAmount(event.target.value)} inputMode="decimal" disabled={!snapshot || isSaving} />
             </FormField>
             <FormField label={t('addExpense.labelCurrency')}>
-              <CurrencyCombobox value={currency} onValueChange={setCurrency} locale={locale} />
+              <CurrencyCombobox value={currency} onValueChange={setCurrency} locale={locale} disabled={!snapshot || isSaving} />
             </FormField>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             <FormField label={t('addExpense.labelDate')}>
-              <DatePickerField value={spentAt} onChange={setSpentAt} locale={locale} />
+              <DatePickerField value={spentAt} onChange={setSpentAt} locale={locale} disabled={!snapshot || isSaving} />
             </FormField>
             <FormField label={t('addExpense.splitCount')}>
-              <Input value={splitCount} onChange={(event) => setSplitCount(event.target.value)} inputMode="numeric" className="mono" />
+              <Input value={splitCount} onChange={(event) => setSplitCount(event.target.value)} inputMode="numeric" className="mono" disabled={!snapshot || isSaving} />
             </FormField>
           </div>
           <FormField label={t('addExpense.manualFx')}>
-            <Input value={manualFx} onChange={(event) => setManualFx(event.target.value)} placeholder={t('addExpense.manualFxPlaceholder')} inputMode="decimal" />
+            <Input value={manualFx} onChange={(event) => setManualFx(event.target.value)} placeholder={t('addExpense.manualFxPlaceholder')} inputMode="decimal" disabled={!snapshot || isSaving} />
           </FormField>
           <FormField label={t('addExpense.labelNote')}>
-            <Input value={note} onChange={(event) => setNote(event.target.value)} />
+            <Input value={note} onChange={(event) => setNote(event.target.value)} disabled={!snapshot || isSaving} />
           </FormField>
-          <Button type="button" onClick={() => void onCreate()} disabled={isSaving} aria-busy={isSaving}>
+          <Button type="button" onClick={() => void onCreate()} disabled={!snapshot || isSaving} aria-busy={isSaving}>
             {isSaving ? t('common.saving') : t('common.save')}
           </Button>
         </CardContent>

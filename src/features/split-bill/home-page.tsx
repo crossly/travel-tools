@@ -14,17 +14,22 @@ import { useI18n } from '@/lib/i18n'
 import { readDevice, writeActiveTripId, writeDevice, writeLastTool } from '@/lib/storage'
 import type { DeviceIdentity, Locale, Trip } from '@/lib/types'
 
-export function SplitBillHomePage({ locale }: { locale: Locale }) {
+type SplitBillHomePageData = {
+  device: DeviceIdentity | null
+  trips: Trip[]
+}
+
+export function SplitBillHomePage({ locale, initialData }: { locale: Locale; initialData: SplitBillHomePageData }) {
   const { t, tError } = useI18n()
   const navigate = useNavigate()
-  const [device, setDevice] = useState<DeviceIdentity | null>(null)
+  const [device, setDevice] = useState<DeviceIdentity | null>(initialData.device)
   const [tripName, setTripName] = useState('')
   const [expenseCurrency, setExpenseCurrency] = useState('CNY')
   const [settlementCurrency, setSettlementCurrency] = useState('CNY')
   const [splitCount, setSplitCount] = useState('2')
   const [bootstrappingIdentity, setBootstrappingIdentity] = useState(false)
   const [status, setStatus] = useState<{ tone: 'success' | 'warning' | 'danger'; title: string; description?: string } | null>(null)
-  const [trips, setTrips] = useState<Trip[]>([])
+  const [trips, setTrips] = useState<Trip[]>(initialData.trips)
   const [loadingTrips, setLoadingTrips] = useState(false)
   const identityReady = device !== null
 
@@ -37,6 +42,11 @@ export function SplitBillHomePage({ locale }: { locale: Locale }) {
 
   useEffect(() => {
     writeLastTool('split-bill')
+    if (initialData.device) {
+      writeDevice(initialData.device)
+      return
+    }
+
     const existingDevice = readDevice()
     if (existingDevice) {
       setDevice(existingDevice)
@@ -49,11 +59,11 @@ export function SplitBillHomePage({ locale }: { locale: Locale }) {
       .then((nextDevice) => {
         writeDevice(nextDevice)
         setDevice(nextDevice)
-        return loadTrips()
+        setTrips([])
       })
       .catch((error) => setStatus({ tone: 'danger', title: tError((error as Error).message) }))
       .finally(() => setBootstrappingIdentity(false))
-  }, [])
+  }, [initialData.device])
 
   async function onCreateTrip() {
     if (!identityReady) {

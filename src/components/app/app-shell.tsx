@@ -1,3 +1,4 @@
+import { Suspense, lazy } from 'react'
 import type { ReactNode } from 'react'
 import { Link } from '@tanstack/react-router'
 import { Home, ReceiptText, Settings, WalletCards } from 'lucide-react'
@@ -6,10 +7,16 @@ import { cn } from '@/lib/utils'
 import { getLocalizedPath, getToolBySlug } from '@/lib/site'
 import { useI18n } from '@/lib/i18n'
 import type { Locale, ToolDefinition } from '@/lib/types'
-import { LocaleSwitcher } from './locale-switcher'
-import { MobileNavMenu } from './mobile-nav-menu'
-import { ThemeToggle } from './theme-toggle'
-import { ToolSwitcher } from './tool-switcher'
+
+const MobileNavMenu = lazy(async () => {
+  const module = await import('./mobile-nav-menu')
+  return { default: module.MobileNavMenu }
+})
+
+const AppShellHeaderControls = lazy(async () => {
+  const module = await import('./app-shell-header-controls')
+  return { default: module.AppShellHeaderControls }
+})
 
 const NAV_ITEMS: Array<{ key: string; icon: typeof Home; path: string; tool?: ToolDefinition['slug'] }> = [
   { key: 'nav.home', icon: Home, path: '/' },
@@ -38,7 +45,9 @@ export function AppShell({
     <div className="app-shell">
       <div className="page-wrap">
         <header className="mb-6">
-          <MobileNavMenu locale={locale} activeTool={activeTool} title={title} />
+          <Suspense fallback={<MobileHeaderFallback title={title} subtitle={t('app.name')} />}>
+            <MobileNavMenu locale={locale} activeTool={activeTool} title={title} />
+          </Suspense>
           <Card className="hidden overflow-hidden md:block">
             <CardHeader className="hidden gap-5 md:flex">
               <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
@@ -48,11 +57,9 @@ export function AppShell({
                   {description ? <CardDescription className="mt-1 max-w-2xl text-sm leading-6">{description}</CardDescription> : null}
                   {currentTool ? <p className="mt-3 text-sm text-muted-foreground">{t(currentTool.descriptionKey)}</p> : null}
                 </div>
-                <div className="flex flex-wrap items-center gap-2">
-                  <ToolSwitcher locale={locale} activeTool={activeTool} />
-                  <LocaleSwitcher />
-                  <ThemeToggle />
-                </div>
+                <Suspense fallback={<DesktopControlsFallback />}>
+                  <AppShellHeaderControls locale={locale} activeTool={activeTool} />
+                </Suspense>
               </div>
               <nav className="grid grid-cols-2 gap-2 md:grid-cols-4">
                 {NAV_ITEMS.map((item) => {
@@ -77,6 +84,28 @@ export function AppShell({
         </header>
         <main className="surface-grid">{children}</main>
       </div>
+    </div>
+  )
+}
+
+function MobileHeaderFallback({ title, subtitle }: { title: string; subtitle: string }) {
+  return (
+    <div className="mb-4 flex items-center justify-between gap-3 rounded-2xl border border-border bg-card px-4 py-3 shadow-sm md:hidden">
+      <div className="min-w-0">
+        <p className="truncate text-[11px] font-semibold tracking-[0.22em] text-muted-foreground uppercase">{subtitle}</p>
+        <p className="truncate text-base font-semibold text-foreground">{title}</p>
+      </div>
+      <div className="size-10 rounded-xl border border-border bg-[var(--input)]" aria-hidden="true" />
+    </div>
+  )
+}
+
+function DesktopControlsFallback() {
+  return (
+    <div className="hidden h-10 items-center gap-2 lg:flex" aria-hidden="true">
+      <div className="h-10 w-36 rounded-full border border-border bg-[var(--input)]" />
+      <div className="h-10 w-28 rounded-full border border-border bg-[var(--input)]" />
+      <div className="h-10 w-32 rounded-full border border-border bg-[var(--input)]" />
     </div>
   )
 }

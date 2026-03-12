@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { Link } from '@tanstack/react-router'
 import { ArrowRight, ReceiptText, WalletCards } from 'lucide-react'
 import { AppShell } from '@/components/app/app-shell'
@@ -11,7 +12,11 @@ import type { Locale } from '@/lib/types'
 
 export function HomePage({ locale }: { locale: Locale }) {
   const { t } = useI18n()
-  const lastTool = readLastTool()
+  const [lastTool, setLastTool] = useState<string | null>(null)
+
+  useEffect(() => {
+    setLastTool(readLastTool())
+  }, [])
 
   return (
     <AppShell locale={locale} title={t('site.homeTitle')} description={t('site.homeDescription')}>

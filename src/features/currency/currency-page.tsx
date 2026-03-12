@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { RefreshCw, ScanSearch } from 'lucide-react'
 import { AppShell } from '@/components/app/app-shell'
 import { CurrencyCombobox } from '@/components/app/currency-combobox'
@@ -13,29 +13,39 @@ import { detectCurrency, fetchCurrencyRates } from '@/lib/api/client'
 import { useI18n } from '@/lib/i18n'
 import { readCachedCurrencyRates, readCurrencyPrefs, writeCachedCurrencyRates, writeCurrencyPrefs, writeLastTool } from '@/lib/storage'
 import type { FxRatesResponse, Locale } from '@/lib/types'
+import type { CurrencyPageData } from '@/server/currency-page-data'
 
 type Status =
   | { tone: 'success' | 'warning' | 'danger'; title: string; description?: string }
   | null
 
-export function CurrencyPage({ locale }: { locale: Locale }) {
+export function CurrencyPage({ locale, initialData }: { locale: Locale; initialData?: CurrencyPageData }) {
   const { t, tError } = useI18n()
   const [amount, setAmount] = useState('1')
-  const [source, setSource] = useState('USD')
-  const [target, setTarget] = useState('EUR')
-  const [rates, setRates] = useState<FxRatesResponse | null>(null)
-  const [updatedAt, setUpdatedAt] = useState<string | null>(null)
+  const [source, setSource] = useState(initialData?.source ?? 'USD')
+  const [target, setTarget] = useState(initialData?.target ?? 'EUR')
+  const [prefsReady, setPrefsReady] = useState(Boolean(initialData))
+  const [rates, setRates] = useState<FxRatesResponse | null>(initialData?.rates ?? null)
+  const [updatedAt, setUpdatedAt] = useState<string | null>(initialData?.rates?.updatedAt ?? null)
   const [loading, setLoading] = useState(false)
   const [detecting, setDetecting] = useState(false)
   const [status, setStatus] = useState<Status>(null)
+  const skipInitialFetchRef = useRef(Boolean(initialData?.rates))
 
   useEffect(() => {
     writeLastTool('currency')
+    if (initialData) {
+      writeCurrencyPrefs(initialData.source, initialData.target)
+      if (initialData.rates) {
+        writeCachedCurrencyRates(JSON.stringify(initialData.rates), initialData.rates.updatedAt)
+      }
+    }
+
     const prefs = readCurrencyPrefs()
     setSource(prefs.source)
     setTarget(prefs.target)
     const cached = readCachedCurrencyRates()
-    if (cached.raw) {
+    if (!initialData?.rates && cached.raw) {
       try {
         const parsed = JSON.parse(cached.raw) as FxRatesResponse
         setRates(parsed)
@@ -44,17 +54,38 @@ export function CurrencyPage({ locale }: { locale: Locale }) {
         // ignore invalid local cache
       }
     }
-  }, [])
+    setPrefsReady(true)
+    if (!initialData) {
+      setPrefsReady(true)
+      return
+    }
+
+    if (initialData.rates) {
+      if (!navigator.onLine || initialData.rates.stale) {
+        setStatus({ tone: 'warning', title: t('currency.freshnessOffline'), description: t('currency.offlineNotice') })
+      } else if (initialData.rates.cached) {
+        setStatus({ tone: 'warning', title: t('currency.freshnessCached'), description: t('currency.cacheNotice') })
+      }
+    }
+
+    setPrefsReady(true)
+  }, [initialData, t])
 
   useEffect(() => {
+    if (!prefsReady) return
     writeCurrencyPrefs(source, target)
-  }, [source, target])
+  }, [prefsReady, source, target])
 
   useEffect(() => {
+    if (!prefsReady) return
+    if (skipInitialFetchRef.current && initialData?.rates && normalizeCurrency(source) === normalizeCurrency(initialData.source)) {
+      skipInitialFetchRef.current = false
+      return
+    }
     if (/^[A-Z]{3}$/.test(source)) {
       void loadRates(source, false)
     }
-  }, [source])
+  }, [initialData?.rates, initialData?.source, prefsReady, source])
 
   async function loadRates(base: string, manual: boolean) {
     setLoading(manual)
@@ -131,12 +162,19 @@ export function CurrencyPage({ locale }: { locale: Locale }) {
             <FormField label={t('currency.fromLabel')}>
               <CurrencyCombobox value={source} onValueChange={(nextValue) => setSource(normalizeCurrency(nextValue))} locale={locale} />
             </FormField>
-            <Button type="button" variant="outline" size="icon" className="sm:mb-1" onClick={() => {
-              const nextSource = target
-              const nextTarget = source
-              setSource(nextSource)
-              setTarget(nextTarget)
-            }}>
+            <Button
+              type="button"
+              variant="outline"
+              size="icon"
+              className="sm:mb-1"
+              aria-label={t('currency.swap')}
+              onClick={() => {
+                const nextSource = target
+                const nextTarget = source
+                setSource(nextSource)
+                setTarget(nextTarget)
+              }}
+            >
               ⇄
             </Button>
             <FormField label={t('currency.toLabel')}>

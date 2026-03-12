@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { DEFAULT_LOCALE, getLocalizedPath, replaceLocaleInPath, resolveLocaleFromPath } from '@/lib/site'
+import { DEFAULT_LOCALE, getLocalizedPath, replaceLocaleInPath, resolveLocaleFromPath, resolveRequestLocale } from '@/lib/site'
 
 describe('site helpers', () => {
   it('resolves locale and pathname from localized path', () => {
@@ -16,5 +16,13 @@ describe('site helpers', () => {
   it('builds localized paths', () => {
     expect(getLocalizedPath('zh-CN', '/settings')).toBe('/zh-CN/settings')
     expect(replaceLocaleInPath('/zh-CN/tools/currency', 'en-US')).toBe('/en-US/tools/currency')
+  })
+
+  it('prefers locale cookie over accept-language', () => {
+    expect(resolveRequestLocale('tt_site_locale=en-US', 'zh-CN,zh;q=0.9,en;q=0.8')).toBe('en-US')
+  })
+
+  it('falls back to accept-language when no locale cookie exists', () => {
+    expect(resolveRequestLocale(null, 'en-US,en;q=0.9')).toBe('en-US')
   })
 })

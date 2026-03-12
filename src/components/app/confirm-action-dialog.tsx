@@ -21,6 +21,7 @@ type ConfirmActionDialogProps = {
   onConfirm: () => void | Promise<void>
   triggerVariant?: ButtonProps['variant']
   triggerSize?: ButtonProps['size']
+  triggerDisabled?: boolean
 }
 
 export function ConfirmActionDialog({
@@ -32,11 +33,12 @@ export function ConfirmActionDialog({
   onConfirm,
   triggerVariant = 'destructive',
   triggerSize = 'default',
+  triggerDisabled = false,
 }: ConfirmActionDialogProps) {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button type="button" variant={triggerVariant} size={triggerSize}>
+        <Button type="button" variant={triggerVariant} size={triggerSize} disabled={triggerDisabled}>
           {triggerLabel}
         </Button>
       </AlertDialogTrigger>

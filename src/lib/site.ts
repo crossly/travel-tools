@@ -1,8 +1,14 @@
+import { parseCookieHeader } from './cookie'
 import type { Locale, ToolDefinition } from './types'
 
 export const APP_NAME = 'Travel Tools'
 export const DEFAULT_LOCALE: Locale = 'zh-CN'
 export const SUPPORTED_LOCALES: Locale[] = ['zh-CN', 'en-US']
+export const SITE_COOKIE_KEYS = {
+  locale: 'tt_site_locale',
+  currencySource: 'tt_currency_source',
+  currencyTarget: 'tt_currency_target',
+} as const
 
 export const TOOLS: ToolDefinition[] = [
   {
@@ -48,4 +54,21 @@ export function replaceLocaleInPath(pathname: string, locale: Locale) {
 
 export function getToolBySlug(slug: ToolDefinition['slug']) {
   return TOOLS.find((tool) => tool.slug === slug)
+}
+
+export function resolveLocaleFromCookie(cookieHeader: string | null | undefined) {
+  const locale = parseCookieHeader(cookieHeader).get(SITE_COOKIE_KEYS.locale)?.trim()
+  return isLocale(locale) ? locale : null
+}
+
+export function resolveLocaleFromAcceptLanguage(acceptLanguage: string | null | undefined): Locale | null {
+  if (!acceptLanguage) return null
+  const normalized = acceptLanguage.toLowerCase()
+  if (normalized.includes('zh')) return 'zh-CN'
+  if (normalized.includes('en')) return 'en-US'
+  return null
+}
+
+export function resolveRequestLocale(cookieHeader: string | null | undefined, acceptLanguage: string | null | undefined) {
+  return resolveLocaleFromCookie(cookieHeader) ?? resolveLocaleFromAcceptLanguage(acceptLanguage) ?? DEFAULT_LOCALE
 }

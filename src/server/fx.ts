@@ -1,4 +1,5 @@
-import { getCurrencyForCountry, getCurrencyForTimezone, getCurrencyInfo, supportedCurrencies } from '@/lib/currencies'
+import { getCurrencyForCountry, getCurrencyForTimezone, getCurrencyInfo } from '@/lib/currency-detect'
+import { supportedCurrencies } from '@/lib/currencies'
 import { RATES_TTL, buildRatesResult, deriveRatesResult, type FrankfurterResponse, type FxProviderName, type RatesResult } from '@/lib/fx'
 
 const FRANKFURTER_CANONICAL_BASE = 'EUR'

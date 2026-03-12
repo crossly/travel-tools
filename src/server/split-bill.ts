@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { getDeviceIdentityFromCookie } from '@/lib/device-cookie'
 import { generateDeviceDisplayName } from '@/lib/device-identity'
 import { round2, round6 } from '@/lib/utils'
 import { fetchFxRate } from './fx'
@@ -62,7 +63,10 @@ function id(prefix: string) {
 }
 
 export function getDeviceId(request: Request) {
-  return request.headers.get('x-device-id')?.trim() || null
+  const headerDeviceId = request.headers.get('x-device-id')?.trim()
+  if (headerDeviceId) return headerDeviceId
+
+  return getDeviceIdentityFromCookie(request.headers.get('cookie'))?.deviceId ?? null
 }
 
 async function parseJson<T>(request: Request, schema: z.Schema<T>) {

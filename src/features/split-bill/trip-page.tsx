@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, useNavigate } from '@tanstack/react-router'
+import { useNavigate } from '@tanstack/react-router'
 import { AppShell } from '@/components/app/app-shell'
 import { ConfirmActionDialog } from '@/components/app/confirm-action-dialog'
 import { FormField } from '@/components/app/form-field'
@@ -13,22 +13,28 @@ import { useI18n } from '@/lib/i18n'
 import { writeActiveTripId } from '@/lib/storage'
 import type { Locale, TripSnapshot } from '@/lib/types'
 
-export function TripPage({ locale, tripId }: { locale: Locale; tripId: string }) {
+export function TripPage({ locale, tripId, initialSnapshot = null }: { locale: Locale; tripId: string; initialSnapshot?: TripSnapshot | null }) {
   const { t, tError } = useI18n()
   const navigate = useNavigate()
-  const [snapshot, setSnapshot] = useState<TripSnapshot | null>(null)
-  const [splitCount, setSplitCount] = useState('1')
+  const [snapshot, setSnapshot] = useState<TripSnapshot | null>(initialSnapshot)
+  const [splitCount, setSplitCount] = useState(initialSnapshot ? String(initialSnapshot.trip.splitCount) : '1')
   const [status, setStatus] = useState<{ tone: 'success' | 'warning' | 'danger'; title: string; description?: string } | null>(null)
 
   useEffect(() => {
     writeActiveTripId(tripId)
+    if (initialSnapshot) {
+      setSnapshot(initialSnapshot)
+      setSplitCount(String(initialSnapshot.trip.splitCount))
+      return
+    }
+
     void fetchSnapshot(tripId)
       .then((data) => {
         setSnapshot(data)
         setSplitCount(String(data.trip.splitCount))
       })
       .catch((error) => setStatus({ tone: 'danger', title: tError((error as Error).message) }))
-  }, [tripId])
+  }, [initialSnapshot, tripId, tError])
 
   async function onSaveSplitCount() {
     const count = Number(splitCount)
@@ -81,7 +87,18 @@ export function TripPage({ locale, tripId }: { locale: Locale; tripId: string })
               <CardDescription>{snapshot?.trip.name ?? t('common.loading')}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-3">
-              {snapshot?.expenses.filter((item) => !item.deletedAt).length ? (
+              {!snapshot ? (
+                <>
+                  <div className="rounded-2xl border border-border bg-muted p-4">
+                    <div className="h-5 w-32 rounded bg-background/70" />
+                    <div className="mt-2 h-4 w-24 rounded bg-background/60" />
+                  </div>
+                  <div className="rounded-2xl border border-border bg-muted p-4">
+                    <div className="h-5 w-28 rounded bg-background/70" />
+                    <div className="mt-2 h-4 w-20 rounded bg-background/60" />
+                  </div>
+                </>
+              ) : snapshot.expenses.filter((item) => !item.deletedAt).length ? (
                 snapshot.expenses
                   .filter((item) => !item.deletedAt)
                   .map((expense) => (
@@ -118,19 +135,28 @@ export function TripPage({ locale, tripId }: { locale: Locale; tripId: string })
             </CardHeader>
             <CardContent className="space-y-4">
               <FormField label={t('trip.splitCount')}>
-                <Input value={splitCount} onChange={(event) => setSplitCount(event.target.value)} inputMode="numeric" className="mono" />
+                <Input value={splitCount} onChange={(event) => setSplitCount(event.target.value)} inputMode="numeric" className="mono" disabled={!snapshot} />
               </FormField>
-              <Button type="button" onClick={() => void onSaveSplitCount()}>{t('trip.saveSplitCount')}</Button>
+              <Button type="button" onClick={() => void onSaveSplitCount()} disabled={!snapshot}>{t('trip.saveSplitCount')}</Button>
             </CardContent>
           </Card>
 
           <Card>
             <CardContent className="grid gap-3 pt-6">
-              <Button asChild>
-                <Link to={getLocalizedPath(locale, `/tools/split-bill/${tripId}/add`)}>{t('trip.addExpense')}</Link>
+              <Button
+                type="button"
+                disabled={!snapshot}
+                onClick={() => navigate({ to: getLocalizedPath(locale, `/tools/split-bill/${tripId}/add`) })}
+              >
+                {t('trip.addExpense')}
               </Button>
-              <Button asChild variant="secondary">
-                <Link to={getLocalizedPath(locale, `/tools/split-bill/${tripId}/settlement`)}>{t('trip.settlement')}</Link>
+              <Button
+                type="button"
+                variant="secondary"
+                disabled={!snapshot}
+                onClick={() => navigate({ to: getLocalizedPath(locale, `/tools/split-bill/${tripId}/settlement`) })}
+              >
+                {t('trip.settlement')}
               </Button>
               <ConfirmActionDialog
                 triggerLabel={t('trip.deleteTrip')}
@@ -139,6 +165,7 @@ export function TripPage({ locale, tripId }: { locale: Locale; tripId: string })
                 confirmLabel={t('trip.deleteTripAction')}
                 cancelLabel={t('common.cancel')}
                 onConfirm={onDeleteTrip}
+                triggerDisabled={!snapshot}
               />
             </CardContent>
           </Card>

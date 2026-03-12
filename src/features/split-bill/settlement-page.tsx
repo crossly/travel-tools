@@ -6,14 +6,21 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { fetchSettlement, fetchSnapshot } from '@/lib/api/client'
 import { useI18n } from '@/lib/i18n'
-import { readDevice } from '@/lib/storage'
-import type { Locale, SettlementResponse, TripSnapshot } from '@/lib/types'
+import { readDevice, writeDevice } from '@/lib/storage'
+import type { DeviceIdentity, Locale, SettlementResponse, TripSnapshot } from '@/lib/types'
 
-export function SettlementPage({ locale, tripId }: { locale: Locale; tripId: string }) {
+type SettlementPageData = {
+  device: DeviceIdentity | null
+  trip: TripSnapshot | null
+  settlement: SettlementResponse | null
+}
+
+export function SettlementPage({ locale, tripId, initialData }: { locale: Locale; tripId: string; initialData?: SettlementPageData }) {
   const { t, tError } = useI18n()
-  const device = readDevice()
-  const [trip, setTrip] = useState<TripSnapshot | null>(null)
-  const [settlement, setSettlement] = useState<SettlementResponse | null>(null)
+  const resolvedInitialData = initialData ?? { device: null, trip: null, settlement: null }
+  const [device, setDevice] = useState<DeviceIdentity | null>(resolvedInitialData.device)
+  const [trip, setTrip] = useState<TripSnapshot | null>(resolvedInitialData.trip)
+  const [settlement, setSettlement] = useState<SettlementResponse | null>(resolvedInitialData.settlement)
   const [status, setStatus] = useState<{ tone: 'success' | 'warning' | 'danger'; title: string; description?: string } | null>(null)
 
   function getParticipantLabel(memberId: string) {
@@ -29,13 +36,31 @@ export function SettlementPage({ locale, tripId }: { locale: Locale; tripId: str
     : 'NO_TRANSFER_NEEDED'
 
   useEffect(() => {
+    if (resolvedInitialData.device) {
+      writeDevice(resolvedInitialData.device)
+      return
+    }
+
+    const existingDevice = readDevice()
+    if (existingDevice) {
+      setDevice(existingDevice)
+    }
+  }, [resolvedInitialData.device])
+
+  useEffect(() => {
+    if (resolvedInitialData.trip && resolvedInitialData.settlement) {
+      setTrip(resolvedInitialData.trip)
+      setSettlement(resolvedInitialData.settlement)
+      return
+    }
+
     void Promise.all([fetchSnapshot(tripId), fetchSettlement(tripId)])
       .then(([snapshot, result]) => {
         setTrip(snapshot)
         setSettlement(result)
       })
       .catch((error) => setStatus({ tone: 'danger', title: tError((error as Error).message) }))
-  }, [tripId])
+  }, [resolvedInitialData.settlement, resolvedInitialData.trip, tripId, tError])
 
   return (
     <AppShell locale={locale} title={t('settlement.title')} description={trip?.trip.name ?? ''} activeTool="split-bill">
@@ -46,7 +71,18 @@ export function SettlementPage({ locale, tripId }: { locale: Locale; tripId: str
             <CardDescription>{trip?.trip.settlementCurrency ?? ''}</CardDescription>
           </CardHeader>
           <CardContent className="space-y-3">
-            {settlement?.transfers.length ? settlement.transfers.map((transfer) => (
+            {!settlement ? (
+              <>
+                <div className="rounded-2xl border border-border bg-muted p-4">
+                  <div className="h-5 w-40 rounded bg-background/70" />
+                  <div className="mt-2 h-4 w-24 rounded bg-background/60" />
+                </div>
+                <div className="rounded-2xl border border-border bg-muted p-4">
+                  <div className="h-5 w-36 rounded bg-background/70" />
+                  <div className="mt-2 h-4 w-20 rounded bg-background/60" />
+                </div>
+              </>
+            ) : settlement.transfers.length ? settlement.transfers.map((transfer) => (
               <div key={`${transfer.fromMemberId}-${transfer.toMemberId}`} className="rounded-2xl border border-border bg-muted p-4">
                 <p className="font-medium">{getParticipantLabel(transfer.fromMemberId)} → {getParticipantLabel(transfer.toMemberId)}</p>
                 <p className="mt-1 mono text-sm text-muted-foreground">{transfer.amountBase.toFixed(2)} {trip?.trip.settlementCurrency}</p>
@@ -73,14 +109,29 @@ export function SettlementPage({ locale, tripId }: { locale: Locale; tripId: str
               <CardTitle>{t('settlement.currencySummary')}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-2 text-sm">
-              <div className="flex items-center justify-between">
-                <span>{t('settlement.expenseCurrency')}</span>
-                <Badge variant="outline">{settlement?.currencySummary.expenseCurrency ?? '---'}</Badge>
-              </div>
-              <div className="flex items-center justify-between">
-                <span>{t('settlement.settlementCurrency')}</span>
-                <Badge variant="outline">{settlement?.currencySummary.settlementCurrency ?? '---'}</Badge>
-              </div>
+              {!settlement ? (
+                <>
+                  <div className="flex items-center justify-between">
+                    <span>{t('settlement.expenseCurrency')}</span>
+                    <div className="h-6 w-16 rounded bg-muted" />
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span>{t('settlement.settlementCurrency')}</span>
+                    <div className="h-6 w-16 rounded bg-muted" />
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="flex items-center justify-between">
+                    <span>{t('settlement.expenseCurrency')}</span>
+                    <Badge variant="outline">{settlement.currencySummary.expenseCurrency}</Badge>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span>{t('settlement.settlementCurrency')}</span>
+                    <Badge variant="outline">{settlement.currencySummary.settlementCurrency}</Badge>
+                  </div>
+                </>
+              )}
             </CardContent>
           </Card>
           <Card>
@@ -88,7 +139,18 @@ export function SettlementPage({ locale, tripId }: { locale: Locale; tripId: str
               <CardTitle>{t('settlement.fxDetails')}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              {settlement?.expenseConversions.map((row) => (
+              {!settlement ? (
+                <>
+                  <div className="rounded-2xl border border-border bg-muted p-4">
+                    <div className="h-5 w-28 rounded bg-background/70" />
+                    <div className="mt-2 h-4 w-44 rounded bg-background/60" />
+                  </div>
+                  <div className="rounded-2xl border border-border bg-muted p-4">
+                    <div className="h-5 w-24 rounded bg-background/70" />
+                    <div className="mt-2 h-4 w-40 rounded bg-background/60" />
+                  </div>
+                </>
+              ) : settlement.expenseConversions.map((row) => (
                 <div key={row.expenseId} className="rounded-2xl border border-border bg-muted p-4">
                   <p className="font-medium">{row.title}</p>
                   <p className="mt-1 text-sm text-muted-foreground">

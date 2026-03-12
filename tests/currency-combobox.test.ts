@@ -17,7 +17,7 @@ describe('CurrencyCombobox', () => {
     )
 
     fireEvent.click(screen.getByRole('button', { name: /US Dollar|USD/i }))
-    fireEvent.change(screen.getByPlaceholderText('Search currency or country'), {
+    fireEvent.change(await screen.findByPlaceholderText('Search currency or country'), {
       target: { value: 'japan' },
     })
 
@@ -39,7 +39,7 @@ describe('CurrencyCombobox', () => {
 
     fireEvent.click(screen.getByRole('button', { name: /US Dollar|USD/i }))
 
-    const panel = screen.getByRole('listbox')
+    const panel = await screen.findByRole('listbox')
     expect(panel.className).toContain('bg-[var(--surface-floating)]')
   })
 })

@@ -1,3 +1,6 @@
+import { buildPersistentCookieString, parseCookieHeader } from './cookie'
+import { DEVICE_COOKIE_KEYS, buildDeviceCookieString, getDeviceIdentityFromCookie } from './device-cookie'
+import { SITE_COOKIE_KEYS } from './site'
 import type { DeviceIdentity, SiteTheme } from './types'
 
 export const STORAGE_KEYS = {
@@ -15,6 +18,11 @@ export const STORAGE_KEYS = {
 function getStorage() {
   if (typeof window === 'undefined') return null
   return window.localStorage
+}
+
+function writeCookieValue(key: string, value: string) {
+  if (typeof document === 'undefined') return
+  document.cookie = buildDeviceCookieString(key, value)
 }
 
 let migrated = false
@@ -58,11 +66,22 @@ export function writeTheme(theme: SiteTheme) {
 export function readStoredLocale() {
   migrateLegacyStorage()
   const raw = getStorage()?.getItem(STORAGE_KEYS.locale)
-  return raw === 'zh-CN' || raw === 'en-US' ? raw : null
+  if (raw === 'zh-CN' || raw === 'en-US') return raw
+
+  const cookieLocale = parseCookieHeader(typeof document === 'undefined' ? null : document.cookie).get(SITE_COOKIE_KEYS.locale)
+  if (cookieLocale === 'zh-CN' || cookieLocale === 'en-US') {
+    getStorage()?.setItem(STORAGE_KEYS.locale, cookieLocale)
+    return cookieLocale
+  }
+
+  return null
 }
 
 export function writeStoredLocale(locale: string) {
   getStorage()?.setItem(STORAGE_KEYS.locale, locale)
+  if (typeof document !== 'undefined') {
+    document.cookie = buildPersistentCookieString(SITE_COOKIE_KEYS.locale, locale)
+  }
 }
 
 export function readLastTool() {
@@ -77,11 +96,21 @@ export function writeLastTool(slug: string) {
 export function readDevice() {
   migrateLegacyStorage()
   const raw = getStorage()?.getItem(STORAGE_KEYS.device)
-  return raw ? (JSON.parse(raw) as DeviceIdentity) : null
+  if (raw) return JSON.parse(raw) as DeviceIdentity
+
+  const device = getDeviceIdentityFromCookie(typeof document === 'undefined' ? null : document.cookie)
+  if (device) {
+    getStorage()?.setItem(STORAGE_KEYS.device, JSON.stringify(device))
+    return device
+  }
+
+  return null
 }
 
 export function writeDevice(device: DeviceIdentity) {
   getStorage()?.setItem(STORAGE_KEYS.device, JSON.stringify(device))
+  writeCookieValue(DEVICE_COOKIE_KEYS.id, device.deviceId)
+  writeCookieValue(DEVICE_COOKIE_KEYS.displayName, device.displayName)
 }
 
 export function readActiveTripId() {
@@ -96,9 +125,20 @@ export function writeActiveTripId(tripId: string) {
 export function readCurrencyPrefs() {
   migrateLegacyStorage()
   const storage = getStorage()
+  const cookies = parseCookieHeader(typeof document === 'undefined' ? null : document.cookie)
+  const source = storage?.getItem(STORAGE_KEYS.currencySource) ?? cookies.get(SITE_COOKIE_KEYS.currencySource) ?? 'USD'
+  const target = storage?.getItem(STORAGE_KEYS.currencyTarget) ?? cookies.get(SITE_COOKIE_KEYS.currencyTarget) ?? 'EUR'
+
+  if (!storage?.getItem(STORAGE_KEYS.currencySource) && source) {
+    storage?.setItem(STORAGE_KEYS.currencySource, source)
+  }
+  if (!storage?.getItem(STORAGE_KEYS.currencyTarget) && target) {
+    storage?.setItem(STORAGE_KEYS.currencyTarget, target)
+  }
+
   return {
-    source: storage?.getItem(STORAGE_KEYS.currencySource) ?? 'USD',
-    target: storage?.getItem(STORAGE_KEYS.currencyTarget) ?? 'EUR',
+    source,
+    target,
   }
 }
 
@@ -107,6 +147,10 @@ export function writeCurrencyPrefs(source: string, target: string) {
   if (!storage) return
   storage.setItem(STORAGE_KEYS.currencySource, source)
   storage.setItem(STORAGE_KEYS.currencyTarget, target)
+  if (typeof document !== 'undefined') {
+    document.cookie = buildPersistentCookieString(SITE_COOKIE_KEYS.currencySource, source)
+    document.cookie = buildPersistentCookieString(SITE_COOKIE_KEYS.currencyTarget, target)
+  }
 }
 
 export function readCachedCurrencyRates() {

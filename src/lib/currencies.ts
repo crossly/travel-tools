@@ -85,32 +85,6 @@ export const currencyInfo: Record<string, { name: string; flag: string; symbol: 
   KES: { name: 'Kenyan Shilling', flag: 'KE', symbol: 'KSh' },
 }
 
-export const timezoneToCurrency: Record<string, string> = {
-  'America/New_York': 'USD', 'America/Chicago': 'USD', 'America/Denver': 'USD',
-  'America/Los_Angeles': 'USD', 'America/Anchorage': 'USD', 'Pacific/Honolulu': 'USD',
-  'America/Toronto': 'CAD', 'America/Vancouver': 'CAD', 'America/Edmonton': 'CAD',
-  'America/Mexico_City': 'MXN', 'America/Cancun': 'MXN', 'America/Tijuana': 'MXN',
-  'America/Sao_Paulo': 'BRL', 'America/Argentina/Buenos_Aires': 'ARS', 'America/Santiago': 'CLP',
-  'America/Bogota': 'COP', 'America/Lima': 'PEN',
-  'Europe/London': 'GBP', 'Europe/Paris': 'EUR', 'Europe/Berlin': 'EUR',
-  'Europe/Madrid': 'EUR', 'Europe/Rome': 'EUR', 'Europe/Amsterdam': 'EUR',
-  'Europe/Brussels': 'EUR', 'Europe/Vienna': 'EUR', 'Europe/Dublin': 'EUR',
-  'Europe/Helsinki': 'EUR', 'Europe/Lisbon': 'EUR', 'Europe/Athens': 'EUR',
-  'Europe/Bucharest': 'RON', 'Europe/Sofia': 'BGN', 'Europe/Warsaw': 'PLN',
-  'Europe/Prague': 'CZK', 'Europe/Budapest': 'HUF', 'Europe/Stockholm': 'SEK',
-  'Europe/Oslo': 'NOK', 'Europe/Copenhagen': 'DKK', 'Atlantic/Reykjavik': 'ISK',
-  'Europe/Zurich': 'CHF', 'Europe/Moscow': 'RUB', 'Europe/Istanbul': 'TRY',
-  'Asia/Shanghai': 'CNY', 'Asia/Chongqing': 'CNY', 'Asia/Urumqi': 'CNY',
-  'Asia/Hong_Kong': 'HKD', 'Asia/Taipei': 'TWD', 'Asia/Tokyo': 'JPY',
-  'Asia/Seoul': 'KRW', 'Asia/Singapore': 'SGD', 'Asia/Kuala_Lumpur': 'MYR',
-  'Asia/Bangkok': 'THB', 'Asia/Ho_Chi_Minh': 'VND', 'Asia/Manila': 'PHP',
-  'Asia/Jakarta': 'IDR', 'Asia/Kolkata': 'INR', 'Asia/Dubai': 'AED',
-  'Asia/Riyadh': 'SAR', 'Asia/Qatar': 'QAR', 'Asia/Kuwait': 'KWD',
-  'Asia/Jerusalem': 'ILS', 'Africa/Cairo': 'EGP', 'Africa/Johannesburg': 'ZAR',
-  'Africa/Lagos': 'NGN', 'Africa/Nairobi': 'KES', 'Australia/Sydney': 'AUD',
-  'Australia/Melbourne': 'AUD', 'Australia/Perth': 'AUD', 'Pacific/Auckland': 'NZD',
-}
-
 export type CurrencyCatalogItem = {
   code: string
   name: string
@@ -123,6 +97,7 @@ export type CurrencyCatalogItem = {
 }
 
 const localeCatalogCache = new Map<Locale, CurrencyCatalogItem[]>()
+const currencyToCountryCodes = buildCountryIndex()
 
 const PRIMARY_COUNTRY_OVERRIDES: Record<string, string> = {
   EUR: 'EU',
@@ -185,30 +160,7 @@ function buildCountryIndex() {
 export function buildCurrencyCatalog(locale: Locale): CurrencyCatalogItem[] {
   const cached = localeCatalogCache.get(locale)
   if (cached) return cached
-
-  const currencyToCountryCodes = buildCountryIndex()
-
-  const items = getCurrencyCodes().map((code) => {
-    const countryCodes = [...new Set(currencyToCountryCodes.get(code) ?? [])]
-    const countryNames = countryCodes.map((countryCode) => getRegionDisplayName(locale, countryCode))
-    const countryCode = getPrimaryCountryCode(code, countryCodes)
-    const countryName = countryCode ? getRegionDisplayName(locale, countryCode) : code
-    const name = getCurrencyDisplayName(locale, code)
-    const symbol = currencyInfo[code]?.symbol ?? code
-    const icon = getFlagEmoji(countryCode)
-    const searchText = [code, name, symbol, countryName, ...countryNames].join(' ').toLowerCase()
-
-    return {
-      code,
-      name,
-      symbol,
-      icon,
-      countryCode,
-      countryName,
-      countryNames,
-      searchText,
-    }
-  })
+  const items = getCurrencyCodes().map((code) => getCurrencyCatalogItem(locale, code))
 
   items.sort((left, right) => {
     const leftCommon = COMMON_CURRENCIES.includes(left.code) ? 0 : 1
@@ -230,33 +182,26 @@ export function searchCurrencyCatalog(catalog: CurrencyCatalogItem[], query: str
 export const supportedCurrencies = getCurrencyCodes()
 export const COMMON_CURRENCIES = ['USD', 'EUR', 'CNY', 'JPY', 'HKD', 'TWD', 'KRW', 'GBP', 'SGD', 'AUD', 'CAD', 'THB']
 
-export function getCurrencyForCountry(country: string) {
-  return countryToCurrency[country.toUpperCase()] || 'USD'
-}
+export function getCurrencyCatalogItem(locale: Locale, code: string): CurrencyCatalogItem {
+  const normalizedCode = normalizeCurrency(code)
+  const countryCodes = [...new Set(currencyToCountryCodes.get(normalizedCode) ?? [])]
+  const countryNames = countryCodes.map((countryCode) => getRegionDisplayName(locale, countryCode))
+  const countryCode = getPrimaryCountryCode(normalizedCode, countryCodes)
+  const countryName = countryCode ? getRegionDisplayName(locale, countryCode) : normalizedCode
+  const name = getCurrencyDisplayName(locale, normalizedCode)
+  const symbol = currencyInfo[normalizedCode]?.symbol ?? normalizedCode
+  const icon = getFlagEmoji(countryCode)
+  const searchText = [normalizedCode, name, symbol, countryName, ...countryNames].join(' ').toLowerCase()
 
-export function getCurrencyForTimezone(tz: string) {
-  return timezoneToCurrency[tz] || null
-}
-
-export function getCurrencyInfo(code: string) {
-  const catalog = buildCurrencyCatalog('en-US')
-  const item = catalog.find((entry) => entry.code === code)
-  if (item) {
-    return {
-      ...item,
-      flag: item.countryCode ?? code,
-    }
-  }
   return {
-    code,
-    name: code,
-    icon: '💱',
-    flag: code,
-    symbol: code,
-    countryCode: null,
-    countryName: code,
-    countryNames: [],
-    searchText: code,
+    code: normalizedCode,
+    name,
+    symbol,
+    icon,
+    countryCode,
+    countryName,
+    countryNames,
+    searchText,
   }
 }
 

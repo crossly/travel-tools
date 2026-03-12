@@ -15,6 +15,49 @@ vi.mock('@/features/split-bill/settlement-page', () => ({
   SettlementPage: ({ tripId }: { tripId: string }) => createElement('div', null, `settlement page ${tripId}`),
 }))
 
+vi.mock('@/server/split-bill-page-data', () => ({
+  loadTripSnapshotData: vi.fn(async ({ data }: { data: { tripId: string } }) => ({
+    trip: {
+      id: data.tripId,
+      name: 'Trip',
+      expenseCurrency: 'CNY',
+      settlementCurrency: 'CNY',
+      splitCount: 2,
+      baseCurrency: 'CNY',
+      createdAt: '',
+      updatedAt: '',
+    },
+    members: [],
+    expenses: [],
+    cursor: '',
+  })),
+  loadSettlementPageData: vi.fn(async ({ data }: { data: { tripId: string } }) => ({
+    device: { deviceId: 'dev_123', displayName: '🐼 Panda' },
+    trip: {
+      trip: {
+        id: data.tripId,
+        name: 'Trip',
+        expenseCurrency: 'CNY',
+        settlementCurrency: 'CNY',
+        splitCount: 2,
+        baseCurrency: 'CNY',
+        createdAt: '',
+        updatedAt: '',
+      },
+      members: [],
+      expenses: [],
+      cursor: '',
+    },
+    settlement: {
+      balances: [],
+      transfers: [],
+      summaryText: 'NO_TRANSFER_NEEDED',
+      currencySummary: { expenseCurrency: 'CNY', settlementCurrency: 'CNY' },
+      expenseConversions: [],
+    },
+  })),
+}))
+
 vi.mock('@/routes/__root', async () => {
   const { Outlet, createRootRoute } = await import('@tanstack/react-router')
   return {
