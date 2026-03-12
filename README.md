@@ -1,6 +1,6 @@
-# Travel Tools
+# Route Crate
 
-`Travel Tools` is a single-package TanStack Start application for travel-focused utilities.
+`Route Crate` is a single-package TanStack Start application for travel-focused utilities.
 
 ## Stack
 

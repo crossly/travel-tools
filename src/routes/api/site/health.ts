@@ -6,7 +6,7 @@ export const Route = createFileRoute('/api/site/health')({
     handlers: {
       GET: ({ context }: any) => {
         const env = getEnv(context)
-        return Response.json({ ok: true, now: new Date().toISOString(), app: env.APP_NAME ?? 'Travel Tools' })
+        return Response.json({ ok: true, now: new Date().toISOString(), app: env.APP_NAME ?? 'Route Crate' })
       },
     },
   },

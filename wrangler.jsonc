@@ -1,12 +1,18 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "travel-tools",
+  "name": "route-crate",
   "compatibility_date": "2026-03-10",
   "compatibility_flags": ["nodejs_compat"],
   "main": "src/server.ts",
   "triggers": {
-    "crons": ["0 * * * *"]
+    "crons": ["*/15 * * * *"]
   },
+  "routes": [
+    {
+      "pattern": "routecrate.com",
+      "custom_domain": true
+    }
+  ],
   "assets": {
     "binding": "ASSETS"
   },
@@ -29,7 +35,7 @@
     }
   ],
   "vars": {
-    "APP_NAME": "Travel Tools",
+    "APP_NAME": "Route Crate",
     "FX_API_BASE_URL": "https://api.frankfurter.app",
     "GOOGLE_ANALYTICS_ID": ""
   }

@@ -9,7 +9,7 @@ type TranslationValues = Record<string, string | number>
 
 const messages: Messages = {
   'zh-CN': {
-    'app.name': '旅行箱',
+    'app.name': 'Route Crate',
     'nav.home': '首页',
     'nav.currency': '汇率',
     'nav.splitBill': 'AA',
@@ -23,7 +23,7 @@ const messages: Messages = {
     'common.cancel': '取消',
     'common.system': '跟随系统',
     'common.you': '你',
-    'site.tagline': '旅行工具站',
+    'site.tagline': 'Route Crate',
     'site.homeTitle': '旅行中真正常用的小工具',
     'site.homeDescription': '统一壳、统一交互、统一主题。首发汇率换算和旅行 AA。',
     'site.heroTitle': '把旅行里的高频小工具，收进一个轻量站点',
@@ -163,7 +163,7 @@ const messages: Messages = {
     'error.INVALID_JSON_FORMAT': 'JSON 格式错误',
   },
   'en-US': {
-    'app.name': 'Travel Tools',
+    'app.name': 'Route Crate',
     'nav.home': 'Home',
     'nav.currency': 'Currency',
     'nav.splitBill': 'Split Bill',
@@ -177,7 +177,7 @@ const messages: Messages = {
     'common.cancel': 'Cancel',
     'common.system': 'System',
     'common.you': 'You',
-    'site.tagline': 'Travel Toolkit',
+    'site.tagline': 'Route Crate',
     'site.homeTitle': 'Travel tools that stay useful on the road',
     'site.homeDescription': 'One shell, one design system, two launch tools: currency and split bill.',
     'site.heroTitle': 'Keep your travel utilities in one clean entry point',

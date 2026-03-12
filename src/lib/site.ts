@@ -1,7 +1,7 @@
 import { parseCookieHeader } from './cookie'
 import type { Locale, ToolDefinition } from './types'
 
-export const APP_NAME = 'Travel Tools'
+export const APP_NAME = 'Route Crate'
 export const DEFAULT_LOCALE: Locale = 'en-US'
 export const SUPPORTED_LOCALES: Locale[] = ['en-US', 'zh-CN']
 export const SITE_COOKIE_KEYS = {
