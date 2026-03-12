@@ -1,11 +1,26 @@
 // @vitest-environment jsdom
 import { createElement } from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
-import { describe, expect, it, vi } from 'vitest'
+import { beforeAll, describe, expect, it, vi } from 'vitest'
 
 const navigateMock = vi.fn()
 const setThemeMock = vi.fn()
 const setLocaleMock = vi.fn()
+
+beforeAll(() => {
+  if (!HTMLElement.prototype.scrollIntoView) {
+    HTMLElement.prototype.scrollIntoView = () => {}
+  }
+  if (!HTMLElement.prototype.hasPointerCapture) {
+    HTMLElement.prototype.hasPointerCapture = () => false
+  }
+  if (!HTMLElement.prototype.setPointerCapture) {
+    HTMLElement.prototype.setPointerCapture = () => {}
+  }
+  if (!HTMLElement.prototype.releasePointerCapture) {
+    HTMLElement.prototype.releasePointerCapture = () => {}
+  }
+})
 
 vi.mock('@tanstack/react-router', () => ({
   Link: ({ children, ...props }: { children?: React.ReactNode } & Record<string, unknown>) => createElement('a', props, children),
@@ -31,11 +46,36 @@ vi.mock('@/lib/i18n', () => ({
         'nav.splitBill': 'AA',
         'nav.settings': '设置',
         'settings.language': '语言',
+        'settings.languageChinese': '中文',
+        'settings.languageEnglish': 'English',
         'settings.appearance': '外观',
         'settings.themeLight': '亮色',
         'settings.themeDark': '暗色',
       })[key] ?? key,
   }),
+}))
+
+vi.mock('@/components/app/locale-switcher', () => ({
+  LocaleSwitcher: ({
+    className,
+    onAfterChange,
+  }: {
+    className?: string
+    onAfterChange?: () => void
+  }) =>
+    createElement(
+      'button',
+      {
+        type: 'button',
+        className,
+        'aria-label': '语言',
+        onClick: () => {
+          setLocaleMock('en-US')
+          onAfterChange?.()
+        },
+      },
+      'English',
+    ),
 }))
 
 describe('MobileNavMenu', () => {
@@ -56,7 +96,7 @@ describe('MobileNavMenu', () => {
     expect(screen.getByRole('button', { name: 'AA' })).toBeTruthy()
 
     fireEvent.click(screen.getByRole('button', { name: '暗色' }))
-    fireEvent.change(screen.getByRole('combobox'), { target: { value: 'en-US' } })
+    fireEvent.click(screen.getByRole('button', { name: '语言' }))
 
     expect(setThemeMock).toHaveBeenCalledWith('dark')
     expect(setLocaleMock).toHaveBeenCalledWith('en-US')
