@@ -1,14 +1,15 @@
 import { createContext, useContext, useMemo } from 'react'
 import type { ReactNode } from 'react'
-import { DEFAULT_LOCALE, isLocale } from '@/lib/site'
+import { APP_NAME, DEFAULT_LOCALE, isLocale } from '@/lib/site'
 import { readStoredLocale, writeStoredLocale } from '@/lib/storage'
 import type { Locale } from '@/lib/types'
 
 type Messages = Record<Locale, Record<string, string>>
+type TranslationValues = Record<string, string | number>
 
 const messages: Messages = {
   'zh-CN': {
-    'app.name': 'Travel Tools',
+    'app.name': '旅行箱',
     'nav.home': '首页',
     'nav.currency': '汇率',
     'nav.splitBill': 'AA',
@@ -141,6 +142,7 @@ const messages: Messages = {
     'settlement.expenseCurrency': '消费币种',
     'settlement.settlementCurrency': '结算币种',
     'settlement.fxDetails': '汇率明细',
+    'meta.trip.sectionTitle': '{tripName} · {section}',
     'error.REQUEST_FAILED': '请求失败，请稍后重试',
     'error.MISSING_DEVICE_PROFILE': '缺少设备身份，请重新进入旅行 AA',
     'error.MISSING_DEVICE_ID': '缺少设备身份，请重新进入旅行 AA',
@@ -290,6 +292,7 @@ const messages: Messages = {
     'settlement.expenseCurrency': 'Expense currency',
     'settlement.settlementCurrency': 'Settlement currency',
     'settlement.fxDetails': 'FX details',
+    'meta.trip.sectionTitle': '{tripName} · {section}',
     'error.REQUEST_FAILED': 'Request failed. Please try again.',
     'error.MISSING_DEVICE_PROFILE': 'Missing device identity. Re-open Split Bill and try again.',
     'error.MISSING_DEVICE_ID': 'Missing device identity. Re-open Split Bill and try again.',
@@ -307,9 +310,23 @@ const messages: Messages = {
   },
 }
 
-export function interpolate(template: string, values?: Record<string, string | number>) {
+export function interpolate(template: string, values?: TranslationValues) {
   if (!values) return template
   return template.replace(/\{(\w+)\}/g, (_, key) => String(values[key] ?? ''))
+}
+
+export function translate(locale: Locale, key: string, values?: TranslationValues) {
+  return interpolate(messages[locale][key] ?? messages[DEFAULT_LOCALE][key] ?? key, values)
+}
+
+export function translateError(locale: Locale, code: string) {
+  return messages[locale][`error.${code}`] ?? messages[DEFAULT_LOCALE][`error.${code}`] ?? code
+}
+
+export function buildDocumentTitle(locale: Locale, pageTitle?: string | null) {
+  const appName = translate(locale, 'app.name') || APP_NAME
+  if (!pageTitle || pageTitle === appName) return appName
+  return `${pageTitle} · ${appName}`
 }
 
 export function detectInitialLocale(pathLocale?: string): Locale {
@@ -344,8 +361,8 @@ export function I18nProvider({
   const value = useMemo<I18nContextValue>(
     () => ({
       locale,
-      t: (key, values) => interpolate(messages[locale][key] ?? messages[DEFAULT_LOCALE][key] ?? key, values),
-      tError: (code) => messages[locale][`error.${code}`] ?? messages[DEFAULT_LOCALE][`error.${code}`] ?? code,
+      t: (key, values) => translate(locale, key, values),
+      tError: (code) => translateError(locale, code),
       setLocale: (nextLocale) => {
         writeStoredLocale(nextLocale)
         onLocaleChange(nextLocale)

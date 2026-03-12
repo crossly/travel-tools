@@ -23,7 +23,7 @@ vi.mock('@/lib/i18n', () => ({
     setLocale: setLocaleMock,
     t: (key: string) =>
       ({
-        'app.name': 'Travel Tools',
+        'app.name': '旅行箱',
         'site.mobileMenu': '菜单',
         'site.mobileCloseMenu': '关闭菜单',
         'nav.home': '首页',
