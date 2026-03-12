@@ -13,7 +13,10 @@ export const Route = createRootRoute({
       { title: APP_NAME },
       { name: 'description', content: 'Travel-focused tools built on TanStack Start.' },
     ],
-    links: [{ rel: 'stylesheet', href: appCss }],
+    links: [
+      { rel: 'stylesheet', href: appCss },
+      { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
+    ],
   }),
   shellComponent: RootDocument,
 })

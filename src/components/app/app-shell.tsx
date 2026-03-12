@@ -66,6 +66,17 @@ export function AppShell({
           </section>
         ) : null}
         <main className="surface-grid">{children}</main>
+        <footer className="mt-10 border-t border-border/80 pt-5">
+          <div className="flex flex-col gap-2 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+            <p>{t('site.footerCopyright', { year: new Date().getFullYear(), appName: t('app.name') })}</p>
+            <p>
+              {t('site.footerMadeWithPrefix')}{' '}
+              <a href="https://www.peeg.org/" target="_blank" rel="noreferrer" className="font-medium text-foreground transition-colors hover:text-primary">
+                ricky
+              </a>
+            </p>
+          </div>
+        </footer>
       </div>
     </div>
   )
