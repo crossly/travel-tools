@@ -1,7 +1,8 @@
 import { Suspense, lazy } from 'react'
 import type { ReactNode } from 'react'
-import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { getToolBySlug } from '@/lib/site'
+import { Link } from '@tanstack/react-router'
+import { Card, CardHeader } from '@/components/ui/card'
+import { getLocalizedPath, getToolBySlug } from '@/lib/site'
 import { useI18n } from '@/lib/i18n'
 import type { Locale, ToolDefinition } from '@/lib/types'
 
@@ -20,12 +21,14 @@ export function AppShell({
   title,
   description,
   activeTool,
+  showPageIntro = true,
   children,
 }: {
   locale: Locale
   title: string
   description?: string
   activeTool?: ToolDefinition['slug']
+  showPageIntro?: boolean
   children: ReactNode
 }) {
   const { t } = useI18n()
@@ -35,18 +38,15 @@ export function AppShell({
     <div className="app-shell">
       <div className="page-wrap">
         <header className="mb-6">
-          <Suspense fallback={<MobileHeaderFallback title={title} subtitle={t('app.name')} />}>
-            <MobileNavMenu locale={locale} activeTool={activeTool} title={title} />
+          <Suspense fallback={<MobileHeaderFallback brand={t('app.name')} homePath={getLocalizedPath(locale, '/')} />}>
+            <MobileNavMenu locale={locale} activeTool={activeTool} />
           </Suspense>
-          <Card className="hidden overflow-hidden md:block">
-            <CardHeader className="hidden gap-6 md:flex">
-              <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
-                <div className="hero-copy">
-                  <p className="text-xs font-semibold tracking-[0.28em] text-muted-foreground uppercase">{t('site.tagline')}</p>
-                  <CardTitle className="mt-2 text-3xl">{title}</CardTitle>
-                  {description ? <CardDescription className="mt-1 max-w-2xl text-sm leading-6">{description}</CardDescription> : null}
-                  {currentTool ? <p className="mt-3 text-sm text-muted-foreground">{t(currentTool.descriptionKey)}</p> : null}
-                </div>
+          <Card className="hidden md:block">
+            <CardHeader className="hidden md:flex">
+              <div className="flex items-center justify-between gap-6">
+                <Link to={getLocalizedPath(locale, '/')} className="min-w-0">
+                  <p className="display truncate text-2xl font-semibold text-foreground">{t('app.name')}</p>
+                </Link>
                 <Suspense fallback={<DesktopControlsFallback />}>
                   <AppShellHeaderControls locale={locale} activeTool={activeTool} />
                 </Suspense>
@@ -54,19 +54,29 @@ export function AppShell({
             </CardHeader>
           </Card>
         </header>
+        {showPageIntro ? (
+          <section className="mb-6">
+            <div className="max-w-3xl">
+              <p className="text-xs font-semibold tracking-[0.24em] text-muted-foreground uppercase">
+                {activeTool ? t(currentTool?.nameKey ?? 'app.name') : t('site.tagline')}
+              </p>
+              <h1 className="mt-2 display text-3xl font-semibold text-foreground md:text-4xl">{title}</h1>
+              {description ? <p className="mt-2 text-pretty text-sm leading-6 text-muted-foreground md:text-base">{description}</p> : null}
+            </div>
+          </section>
+        ) : null}
         <main className="surface-grid">{children}</main>
       </div>
     </div>
   )
 }
 
-function MobileHeaderFallback({ title, subtitle }: { title: string; subtitle: string }) {
+function MobileHeaderFallback({ brand, homePath }: { brand: string; homePath: string }) {
   return (
     <div className="mb-4 flex items-center justify-between gap-3 rounded-2xl border border-border bg-card px-4 py-3 shadow-sm md:hidden">
-      <div className="min-w-0">
-        <p className="truncate text-[11px] font-semibold tracking-[0.22em] text-muted-foreground uppercase">{subtitle}</p>
-        <p className="truncate text-base font-semibold text-foreground">{title}</p>
-      </div>
+      <Link to={homePath} className="min-w-0">
+        <p className="truncate text-[11px] font-semibold tracking-[0.22em] text-muted-foreground uppercase">{brand}</p>
+      </Link>
       <div className="size-10 rounded-xl border border-border bg-[var(--input)]" aria-hidden="true" />
     </div>
   )

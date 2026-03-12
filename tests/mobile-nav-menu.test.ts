@@ -46,7 +46,6 @@ describe('MobileNavMenu', () => {
       createElement(MobileNavMenu, {
         locale: 'zh-CN',
         activeTool: 'currency',
-        title: '汇率',
       }),
     )
 

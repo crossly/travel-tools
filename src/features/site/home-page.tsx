@@ -19,7 +19,7 @@ export function HomePage({ locale }: { locale: Locale }) {
   }, [])
 
   return (
-    <AppShell locale={locale} title={t('site.homeTitle')} description={t('site.homeDescription')}>
+    <AppShell locale={locale} title={t('site.homeTitle')} description={t('site.homeDescription')} showPageIntro={false}>
       <Card className="overflow-hidden">
         <CardHeader className="gap-4">
           <Badge variant="outline" className="w-fit">

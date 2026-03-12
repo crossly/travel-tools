@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useLocation, useNavigate } from '@tanstack/react-router'
+import { Link, useLocation, useNavigate } from '@tanstack/react-router'
 import { Home, Menu, ReceiptText, Settings, WalletCards, X } from 'lucide-react'
 import { LocaleSwitcher } from './locale-switcher'
 import { ThemeToggle } from './theme-toggle'
@@ -19,11 +19,9 @@ const MOBILE_NAV_ITEMS: Array<{ key: string; path: string; icon: typeof Home; to
 export function MobileNavMenu({
   locale,
   activeTool,
-  title,
 }: {
   locale: Locale
   activeTool?: ToolDefinition['slug']
-  title: string
 }) {
   const [open, setOpen] = useState(false)
   const navigate = useNavigate()
@@ -40,10 +38,7 @@ export function MobileNavMenu({
   return (
     <div className="md:hidden">
       <div className="mb-4 flex items-center justify-between gap-3 rounded-2xl border border-border bg-card px-4 py-3 shadow-sm">
-        <div className="min-w-0">
-          <p className="truncate text-[11px] font-semibold tracking-[0.22em] text-muted-foreground uppercase">{t('app.name')}</p>
-          <p className="truncate text-base font-semibold text-foreground">{title}</p>
-        </div>
+        <LinkBrand locale={locale} label={t('app.name')} />
         <Button
           type="button"
           variant="outline"
@@ -103,5 +98,13 @@ export function MobileNavMenu({
         </div>
       ) : null}
     </div>
+  )
+}
+
+function LinkBrand({ locale, label }: { locale: Locale; label: string }) {
+  return (
+    <Link to={getLocalizedPath(locale, '/')} className="min-w-0 text-left">
+      <p className="truncate text-[11px] font-semibold tracking-[0.22em] text-muted-foreground uppercase">{label}</p>
+    </Link>
   )
 }
