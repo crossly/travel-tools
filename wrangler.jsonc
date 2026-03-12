@@ -42,6 +42,8 @@
     "APP_NAME": "Route Crate",
     "FX_API_BASE_URL": "https://api.frankfurter.app",
     "GA_MEASUREMENT_ID": "G-41BFL5B41F",
-    "GOOGLE_ANALYTICS_ID": "G-41BFL5B41F"
+    "GOOGLE_ANALYTICS_ID": "G-41BFL5B41F",
+    "UMAMI_WEBSITE_ID": "a9367edf-7fe2-46c4-ba26-8dd04cbd66ff",
+    "UMAMI_SCRIPT_URL": "https://cloud.umami.is/script.js"
   }
 }

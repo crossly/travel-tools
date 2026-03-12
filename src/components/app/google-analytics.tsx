@@ -5,6 +5,9 @@ declare global {
   interface Window {
     dataLayer?: unknown[]
     gtag?: (...args: unknown[]) => void
+    umami?: {
+      track: (...args: unknown[]) => void
+    }
   }
 }
 
@@ -43,6 +46,35 @@ export function GoogleAnalyticsPageviews({ measurementId }: { measurementId: str
       page_path: `${location.pathname}${search}${location.hash ?? ''}`,
     })
   }, [location.hash, location.pathname, location.search, measurementId])
+
+  return null
+}
+
+export function UmamiScripts({
+  websiteId,
+  scriptUrl,
+}: {
+  websiteId: string
+  scriptUrl: string
+}) {
+  return (
+    <script
+      defer
+      src={scriptUrl}
+      data-website-id={websiteId}
+      data-auto-track="false"
+    />
+  )
+}
+
+export function UmamiPageviews({ websiteId }: { websiteId: string }) {
+  const location = useLocation()
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || typeof window.umami?.track !== 'function') return
+    void websiteId
+    window.umami.track()
+  }, [location.hash, location.pathname, location.search, websiteId])
 
   return null
 }

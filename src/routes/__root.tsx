@@ -1,5 +1,10 @@
 import { HeadContent, Outlet, Scripts, createRootRoute } from '@tanstack/react-router'
-import { GoogleAnalyticsPageviews, GoogleAnalyticsScripts } from '@/components/app/google-analytics'
+import {
+  GoogleAnalyticsPageviews,
+  GoogleAnalyticsScripts,
+  UmamiPageviews,
+  UmamiScripts,
+} from '@/components/app/google-analytics'
 import appCss from '@/styles.css?url'
 import { buildDocumentTitle, translate } from '@/lib/i18n'
 import { ThemeProvider } from '@/lib/theme'
@@ -28,19 +33,23 @@ export const Route = createRootRoute({
 })
 
 function RootDocument() {
-  const { googleAnalyticsId, locale } = Route.useLoaderData()
+  const { googleAnalyticsId, locale, umamiScriptUrl, umamiWebsiteId } = Route.useLoaderData()
 
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
         {googleAnalyticsId ? <GoogleAnalyticsScripts measurementId={googleAnalyticsId} /> : null}
+        {umamiWebsiteId && umamiScriptUrl ? (
+          <UmamiScripts scriptUrl={umamiScriptUrl} websiteId={umamiWebsiteId} />
+        ) : null}
         <HeadContent />
       </head>
       <body>
         <ThemeProvider>
           <Outlet />
           {googleAnalyticsId ? <GoogleAnalyticsPageviews measurementId={googleAnalyticsId} /> : null}
+          {umamiWebsiteId ? <UmamiPageviews websiteId={umamiWebsiteId} /> : null}
         </ThemeProvider>
         <Scripts />
       </body>
