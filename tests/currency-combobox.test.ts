@@ -3,6 +3,26 @@ import { createElement } from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 
+vi.mock('@/components/app/currency-combobox-panel', () => ({
+  CurrencyComboboxPanel: ({
+    onValueChange,
+  }: {
+    onValueChange: (nextValue: string) => void
+  }) => createElement(
+    'div',
+    { role: 'listbox', className: 'bg-[var(--surface-floating)]' },
+    createElement('input', { placeholder: 'Search currency or country' }),
+    createElement(
+      'button',
+      {
+        type: 'button',
+        onClick: () => onValueChange('JPY'),
+      },
+      'JPY Japanese Yen',
+    ),
+  ),
+}))
+
 describe('CurrencyCombobox', () => {
   it('filters currencies and returns the selected code', async () => {
     const onValueChange = vi.fn()

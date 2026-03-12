@@ -7,13 +7,21 @@ describe('canonical host redirects', () => {
     const response = redirectToCanonicalHost(request)
 
     expect(response?.status).toBe(308)
-    expect(response?.headers.get('location')).toBe('https://www.routecrate.com/en-US/tools/currency?base=USD')
+    expect(response?.headers.get('location')).toBe('https://www.routecrate.com/en-us/tools/currency?base=USD')
   })
 
   it('does not redirect requests that already use the www host', () => {
-    const request = new Request('https://www.routecrate.com/en-US')
+    const request = new Request('https://www.routecrate.com/en-us')
 
     expect(buildCanonicalRequest(request)).toBeNull()
     expect(redirectToCanonicalHost(request)).toBeNull()
+  })
+
+  it('redirects legacy mixed-case locale URLs on the canonical host to lowercase locale slugs', () => {
+    const request = new Request('https://www.routecrate.com/zh-CN/tools/split-bill')
+    const response = redirectToCanonicalHost(request)
+
+    expect(response?.status).toBe(308)
+    expect(response?.headers.get('location')).toBe('https://www.routecrate.com/zh-cn/tools/split-bill')
   })
 })

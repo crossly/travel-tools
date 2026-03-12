@@ -4,6 +4,10 @@ import type { Locale, ToolDefinition } from './types'
 export const APP_NAME = 'Route Crate'
 export const DEFAULT_LOCALE: Locale = 'en-US'
 export const SUPPORTED_LOCALES: Locale[] = ['en-US', 'zh-CN']
+const LOCALE_SLUGS: Record<Locale, string> = {
+  'en-US': 'en-us',
+  'zh-CN': 'zh-cn',
+}
 export const SITE_COOKIE_KEYS = {
   locale: 'tt_site_locale',
   currencySource: 'tt_currency_source',
@@ -31,16 +35,32 @@ export function isLocale(value: string | undefined | null): value is Locale {
   return SUPPORTED_LOCALES.includes(value as Locale)
 }
 
+export function toLocaleSlug(locale: Locale) {
+  return LOCALE_SLUGS[locale]
+}
+
+export function resolveLocaleSegment(value: string | undefined | null): Locale | null {
+  if (!value) return null
+  if (isLocale(value)) return value
+
+  const normalized = value.toLowerCase()
+  const matched = (Object.entries(LOCALE_SLUGS) as Array<[Locale, string]>)
+    .find(([, slug]) => slug === normalized)
+
+  return matched?.[0] ?? null
+}
+
 export function getLocalizedPath(locale: Locale, pathname: string) {
   const normalized = pathname.startsWith('/') ? pathname : `/${pathname}`
-  return normalized === '/' ? `/${locale}` : `/${locale}${normalized}`
+  const slug = toLocaleSlug(locale)
+  return normalized === '/' ? `/${slug}` : `/${slug}${normalized}`
 }
 
 export function resolveLocaleFromPath(pathname: string) {
   const normalized = pathname.startsWith('/') ? pathname : `/${pathname}`
   const segments = normalized.split('/').filter(Boolean)
-  const locale = isLocale(segments[0]) ? segments[0] : DEFAULT_LOCALE
-  const rest = isLocale(segments[0]) ? `/${segments.slice(1).join('/')}` : normalized
+  const locale = resolveLocaleSegment(segments[0]) ?? DEFAULT_LOCALE
+  const rest = resolveLocaleSegment(segments[0]) ? `/${segments.slice(1).join('/')}` : normalized
   return {
     locale,
     pathname: rest === '/' ? '/' : rest.replace(/\/+$/, '') || '/',
@@ -50,6 +70,19 @@ export function resolveLocaleFromPath(pathname: string) {
 export function replaceLocaleInPath(pathname: string, locale: Locale) {
   const { pathname: rest } = resolveLocaleFromPath(pathname)
   return getLocalizedPath(locale, rest)
+}
+
+export function canonicalizeLocalePath(pathname: string) {
+  const normalized = pathname.startsWith('/') ? pathname : `/${pathname}`
+  const segments = normalized.split('/').filter(Boolean)
+  const locale = resolveLocaleSegment(segments[0])
+  if (!locale) return null
+
+  const canonical = toLocaleSlug(locale)
+  if (segments[0] === canonical) return null
+
+  const rest = segments.slice(1).join('/')
+  return rest ? `/${canonical}/${rest}` : `/${canonical}`
 }
 
 export function getToolBySlug(slug: ToolDefinition['slug']) {

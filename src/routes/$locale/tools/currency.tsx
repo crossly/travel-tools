@@ -1,12 +1,13 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { CurrencyPage } from '@/features/currency/currency-page'
 import { buildDocumentTitle, translate } from '@/lib/i18n'
+import { DEFAULT_LOCALE, resolveLocaleSegment } from '@/lib/site'
 import { loadCurrencyPageData } from '@/server/currency-page-data'
 
 export const Route = createFileRoute('/$locale/tools/currency')({
   loader: () => loadCurrencyPageData(),
   head: ({ params }) => {
-    const locale = params.locale as 'zh-CN' | 'en-US'
+    const locale = resolveLocaleSegment(params.locale) ?? DEFAULT_LOCALE
     return {
       meta: [
         { title: buildDocumentTitle(locale, translate(locale, 'currency.title')) },
@@ -20,5 +21,5 @@ export const Route = createFileRoute('/$locale/tools/currency')({
 function CurrencyRoute() {
   const { locale } = Route.useParams()
   const initialData = Route.useLoaderData()
-  return <CurrencyPage locale={locale as 'zh-CN' | 'en-US'} initialData={initialData} />
+  return <CurrencyPage locale={resolveLocaleSegment(locale) ?? DEFAULT_LOCALE} initialData={initialData} />
 }

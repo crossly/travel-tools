@@ -1,10 +1,11 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { SettingsPage } from '@/features/site/settings-page'
 import { buildDocumentTitle, translate } from '@/lib/i18n'
+import { DEFAULT_LOCALE, resolveLocaleSegment } from '@/lib/site'
 
 export const Route = createFileRoute('/$locale/settings')({
   head: ({ params }) => {
-    const locale = params.locale as 'zh-CN' | 'en-US'
+    const locale = resolveLocaleSegment(params.locale) ?? DEFAULT_LOCALE
     return {
       meta: [{ title: buildDocumentTitle(locale, translate(locale, 'settings.title')) }],
     }
@@ -14,5 +15,5 @@ export const Route = createFileRoute('/$locale/settings')({
 
 function SettingsRoute() {
   const { locale } = Route.useParams()
-  return <SettingsPage locale={locale as 'zh-CN' | 'en-US'} />
+  return <SettingsPage locale={resolveLocaleSegment(locale) ?? DEFAULT_LOCALE} />
 }

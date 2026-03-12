@@ -1,13 +1,25 @@
+import { canonicalizeLocalePath } from '@/lib/site'
+
 const APEX_HOST = 'routecrate.com'
 const WWW_HOST = 'www.routecrate.com'
 
 export function buildCanonicalRequest(request: Request) {
   const url = new URL(request.url)
-  if (url.hostname !== APEX_HOST) return null
+  let changed = false
 
-  url.hostname = WWW_HOST
-  url.protocol = 'https:'
+  if (url.hostname === APEX_HOST) {
+    url.hostname = WWW_HOST
+    url.protocol = 'https:'
+    changed = true
+  }
 
+  const canonicalPath = canonicalizeLocalePath(url.pathname)
+  if (canonicalPath) {
+    url.pathname = canonicalPath
+    changed = true
+  }
+
+  if (!changed) return null
   return new Request(url.toString(), request)
 }
 

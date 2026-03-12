@@ -1,9 +1,16 @@
 import { describe, expect, it } from 'vitest'
-import { DEFAULT_LOCALE, getLocalizedPath, replaceLocaleInPath, resolveLocaleFromPath, resolveRequestLocale } from '@/lib/site'
+import {
+  DEFAULT_LOCALE,
+  getLocalizedPath,
+  replaceLocaleInPath,
+  resolveLocaleFromPath,
+  resolveRequestLocale,
+  toLocaleSlug,
+} from '@/lib/site'
 
 describe('site helpers', () => {
   it('resolves locale and pathname from localized path', () => {
-    expect(resolveLocaleFromPath('/en-US/tools/currency')).toEqual({
+    expect(resolveLocaleFromPath('/en-us/tools/currency')).toEqual({
       locale: 'en-US',
       pathname: '/tools/currency',
     })
@@ -14,8 +21,20 @@ describe('site helpers', () => {
   })
 
   it('builds localized paths', () => {
-    expect(getLocalizedPath('zh-CN', '/settings')).toBe('/zh-CN/settings')
-    expect(replaceLocaleInPath('/zh-CN/tools/currency', 'en-US')).toBe('/en-US/tools/currency')
+    expect(getLocalizedPath('zh-CN', '/settings')).toBe('/zh-cn/settings')
+    expect(replaceLocaleInPath('/zh-cn/tools/currency', 'en-US')).toBe('/en-us/tools/currency')
+  })
+
+  it('maps standard locale values to lowercase URL slugs', () => {
+    expect(toLocaleSlug('en-US')).toBe('en-us')
+    expect(toLocaleSlug('zh-CN')).toBe('zh-cn')
+  })
+
+  it('understands legacy mixed-case locale segments', () => {
+    expect(resolveLocaleFromPath('/zh-CN/tools/currency')).toEqual({
+      locale: 'zh-CN',
+      pathname: '/tools/currency',
+    })
   })
 
   it('prefers locale cookie over accept-language', () => {
