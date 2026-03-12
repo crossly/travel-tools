@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { CalendarIcon } from 'lucide-react'
 import { format, parse, isValid } from 'date-fns'
 import { enUS, zhCN } from 'date-fns/locale'
@@ -34,11 +35,12 @@ function toDate(value: string) {
 }
 
 export function DatePickerField({ value, onChange, locale, className }: DatePickerFieldProps) {
+  const [open, setOpen] = useState(false)
   const selectedDate = toDate(value)
   const copy = pickerCopy[locale]
 
   return (
-    <Popover>
+    <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
           type="button"
@@ -56,6 +58,7 @@ export function DatePickerField({ value, onChange, locale, className }: DatePick
           onSelect={(nextDate) => {
             if (!nextDate) return
             onChange(format(nextDate, 'yyyy-MM-dd'))
+            setOpen(false)
           }}
           locale={dateLocales[locale]}
           initialFocus

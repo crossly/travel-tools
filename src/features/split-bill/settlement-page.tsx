@@ -6,13 +6,27 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { fetchSettlement, fetchSnapshot } from '@/lib/api/client'
 import { useI18n } from '@/lib/i18n'
+import { readDevice } from '@/lib/storage'
 import type { Locale, SettlementResponse, TripSnapshot } from '@/lib/types'
 
 export function SettlementPage({ locale, tripId }: { locale: Locale; tripId: string }) {
   const { t, tError } = useI18n()
+  const device = readDevice()
   const [trip, setTrip] = useState<TripSnapshot | null>(null)
   const [settlement, setSettlement] = useState<SettlementResponse | null>(null)
   const [status, setStatus] = useState<{ tone: 'success' | 'warning' | 'danger'; title: string; description?: string } | null>(null)
+
+  function getParticipantLabel(memberId: string) {
+    const index = Number(memberId.slice(1))
+    if (memberId === 'p1') {
+      return device?.displayName ? t('settlement.ownerLabel', { name: device.displayName }) : t('common.you')
+    }
+    return Number.isFinite(index) ? t('settlement.teammateLabel', { index: index - 1 }) : memberId
+  }
+
+  const summaryText = settlement?.transfers.length
+    ? settlement.transfers.map((item) => `${getParticipantLabel(item.fromMemberId)} -> ${getParticipantLabel(item.toMemberId)}: ${item.amountBase.toFixed(2)}`).join('\n')
+    : 'NO_TRANSFER_NEEDED'
 
   useEffect(() => {
     void Promise.all([fetchSnapshot(tripId), fetchSettlement(tripId)])
@@ -34,7 +48,7 @@ export function SettlementPage({ locale, tripId }: { locale: Locale; tripId: str
           <CardContent className="space-y-3">
             {settlement?.transfers.length ? settlement.transfers.map((transfer) => (
               <div key={`${transfer.fromMemberId}-${transfer.toMemberId}`} className="rounded-2xl border border-border bg-muted p-4">
-                <p className="font-medium">{transfer.fromMemberId} → {transfer.toMemberId}</p>
+                <p className="font-medium">{getParticipantLabel(transfer.fromMemberId)} → {getParticipantLabel(transfer.toMemberId)}</p>
                 <p className="mt-1 mono text-sm text-muted-foreground">{transfer.amountBase.toFixed(2)} {trip?.trip.settlementCurrency}</p>
               </div>
             )) : <p className="text-sm text-muted-foreground">{t('settlement.noTransfer')}</p>}
@@ -43,7 +57,7 @@ export function SettlementPage({ locale, tripId }: { locale: Locale; tripId: str
                 type="button"
                 variant="secondary"
                 onClick={async () => {
-                  await navigator.clipboard.writeText(settlement.summaryText)
+                  await navigator.clipboard.writeText(summaryText)
                   setStatus({ tone: 'success', title: t('settlement.copySuccess') })
                 }}
               >
