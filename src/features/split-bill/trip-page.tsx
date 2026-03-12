@@ -137,7 +137,9 @@ export function TripPage({ locale, tripId, initialSnapshot = null }: { locale: L
               <FormField label={t('trip.splitCount')}>
                 <Input value={splitCount} onChange={(event) => setSplitCount(event.target.value)} inputMode="numeric" className="mono" disabled={!snapshot} />
               </FormField>
-              <Button type="button" onClick={() => void onSaveSplitCount()} disabled={!snapshot}>{t('trip.saveSplitCount')}</Button>
+              <Button type="button" variant="secondary" className="w-full" onClick={() => void onSaveSplitCount()} disabled={!snapshot}>
+                {t('trip.saveSplitCount')}
+              </Button>
             </CardContent>
           </Card>
 
@@ -145,6 +147,8 @@ export function TripPage({ locale, tripId, initialSnapshot = null }: { locale: L
             <CardContent className="grid gap-3 pt-6">
               <Button
                 type="button"
+                size="lg"
+                className="w-full"
                 disabled={!snapshot}
                 onClick={() => navigate({ to: getLocalizedPath(locale, `/tools/split-bill/${tripId}/add`) })}
               >
@@ -153,6 +157,8 @@ export function TripPage({ locale, tripId, initialSnapshot = null }: { locale: L
               <Button
                 type="button"
                 variant="secondary"
+                size="lg"
+                className="w-full"
                 disabled={!snapshot}
                 onClick={() => navigate({ to: getLocalizedPath(locale, `/tools/split-bill/${tripId}/settlement`) })}
               >
@@ -166,6 +172,8 @@ export function TripPage({ locale, tripId, initialSnapshot = null }: { locale: L
                 cancelLabel={t('common.cancel')}
                 onConfirm={onDeleteTrip}
                 triggerDisabled={!snapshot}
+                triggerSize="lg"
+                triggerClassName="w-full"
               />
             </CardContent>
           </Card>

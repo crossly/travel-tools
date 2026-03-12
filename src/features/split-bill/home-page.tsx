@@ -129,7 +129,9 @@ export function SplitBillHomePage({ locale, initialData }: { locale: Locale; ini
               <FormField label={t('home.splitCount')}>
                 <Input value={splitCount} onChange={(event) => setSplitCount(event.target.value)} inputMode="numeric" className="mono" disabled={!identityReady} />
               </FormField>
-              <Button type="button" onClick={() => void onCreateTrip()} disabled={!identityReady}>{t('home.createStart')}</Button>
+              <Button type="button" size="lg" className="w-full" onClick={() => void onCreateTrip()} disabled={!identityReady}>
+                {t('home.createStart')}
+              </Button>
             </CardContent>
           </Card>
         </div>

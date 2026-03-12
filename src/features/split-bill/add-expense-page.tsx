@@ -114,7 +114,7 @@ export function AddExpensePage({ locale, tripId, initialSnapshot = null }: { loc
           <FormField label={t('addExpense.labelNote')}>
             <Input value={note} onChange={(event) => setNote(event.target.value)} disabled={!snapshot || isSaving} />
           </FormField>
-          <Button type="button" onClick={() => void onCreate()} disabled={!snapshot || isSaving} aria-busy={isSaving}>
+          <Button type="button" size="lg" className="w-full" onClick={() => void onCreate()} disabled={!snapshot || isSaving} aria-busy={isSaving}>
             {isSaving ? t('common.saving') : t('common.save')}
           </Button>
         </CardContent>

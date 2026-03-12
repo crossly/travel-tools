@@ -191,11 +191,11 @@ export function CurrencyPage({ locale, initialData }: { locale: Locale; initialD
             </div>
           </FormField>
           <div className="grid gap-2 sm:grid-cols-2">
-            <Button type="button" variant="secondary" onClick={() => void onDetect()} disabled={detecting}>
+            <Button type="button" variant="secondary" size="lg" onClick={() => void onDetect()} disabled={detecting}>
               <ScanSearch className="h-4 w-4" />
               {t('currency.detectAction')}
             </Button>
-            <Button type="button" onClick={() => void loadRates(source, true)} disabled={loading}>
+            <Button type="button" variant="secondary" size="lg" onClick={() => void loadRates(source, true)} disabled={loading}>
               <RefreshCw className="h-4 w-4" />
               {t('currency.refreshAction')}
             </Button>

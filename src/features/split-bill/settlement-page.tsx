@@ -91,7 +91,8 @@ export function SettlementPage({ locale, tripId, initialData }: { locale: Locale
             {settlement ? (
               <Button
                 type="button"
-                variant="secondary"
+                size="lg"
+                className="w-full"
                 onClick={async () => {
                   await navigator.clipboard.writeText(summaryText)
                   setStatus({ tone: 'success', title: t('settlement.copySuccess') })

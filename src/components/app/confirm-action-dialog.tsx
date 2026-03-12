@@ -11,6 +11,7 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog'
 import { Button, type ButtonProps } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 
 type ConfirmActionDialogProps = {
   triggerLabel: ReactNode
@@ -22,6 +23,7 @@ type ConfirmActionDialogProps = {
   triggerVariant?: ButtonProps['variant']
   triggerSize?: ButtonProps['size']
   triggerDisabled?: boolean
+  triggerClassName?: string
 }
 
 export function ConfirmActionDialog({
@@ -34,11 +36,12 @@ export function ConfirmActionDialog({
   triggerVariant = 'destructive',
   triggerSize = 'default',
   triggerDisabled = false,
+  triggerClassName,
 }: ConfirmActionDialogProps) {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button type="button" variant={triggerVariant} size={triggerSize} disabled={triggerDisabled}>
+        <Button type="button" variant={triggerVariant} size={triggerSize} disabled={triggerDisabled} className={cn(triggerClassName)}>
           {triggerLabel}
         </Button>
       </AlertDialogTrigger>

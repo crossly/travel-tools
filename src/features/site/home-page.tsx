@@ -29,14 +29,18 @@ export function HomePage({ locale }: { locale: Locale }) {
           <CardDescription className="max-w-2xl text-base leading-7">{t('site.heroDescription')}</CardDescription>
           <div className="flex flex-wrap gap-3">
             {lastTool ? (
-              <Button asChild>
+              <Button asChild size="lg" className="min-w-40 justify-between">
                 <Link to={getLocalizedPath(locale, lastTool === 'currency' ? '/tools/currency' : '/tools/split-bill')}>
                   {t('site.openRecentTool')}
+                  <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
             ) : null}
-            <Button asChild variant="secondary">
-              <Link to={getLocalizedPath(locale, '/tools/currency')}>{t('site.exploreTools')}</Link>
+            <Button asChild variant="secondary" size="lg" className="min-w-40 justify-between">
+              <Link to={getLocalizedPath(locale, '/tools/currency')}>
+                {t('site.exploreTools')}
+                <ArrowRight className="h-4 w-4" />
+              </Link>
             </Button>
           </div>
         </CardHeader>
@@ -56,7 +60,7 @@ export function HomePage({ locale }: { locale: Locale }) {
             <div className="rounded-2xl border border-border bg-muted p-4">
               <p className="mono text-2xl font-medium">100 USD → 728.42 CNY</p>
             </div>
-            <Button asChild className="w-full justify-between">
+            <Button asChild variant="secondary" size="lg" className="w-full justify-between">
               <Link to={getLocalizedPath(locale, '/tools/currency')}>
                 {t('tool.currency.name')}
                 <ArrowRight className="h-4 w-4" />
@@ -78,7 +82,7 @@ export function HomePage({ locale }: { locale: Locale }) {
             <div className="rounded-2xl border border-border bg-muted p-4">
               <p className="mono text-2xl font-medium">6 people · 2 currencies</p>
             </div>
-            <Button asChild className="w-full justify-between">
+            <Button asChild variant="secondary" size="lg" className="w-full justify-between">
               <Link to={getLocalizedPath(locale, '/tools/split-bill')}>
                 {t('tool.splitBill.name')}
                 <ArrowRight className="h-4 w-4" />
