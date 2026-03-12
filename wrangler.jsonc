@@ -37,6 +37,7 @@
   "vars": {
     "APP_NAME": "Route Crate",
     "FX_API_BASE_URL": "https://api.frankfurter.app",
-    "GOOGLE_ANALYTICS_ID": ""
+    "GA_MEASUREMENT_ID": "G-41BFL5B41F",
+    "GOOGLE_ANALYTICS_ID": "G-41BFL5B41F"
   }
 }

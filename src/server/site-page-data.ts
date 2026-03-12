@@ -23,7 +23,7 @@ export const loadRootPageData = createServerFn({ method: 'GET' })
   .handler(async ({ context }) => {
     const pageData: RootPageData = {
       locale: context.locale,
-      googleAnalyticsId: context.cloudflare?.env.GOOGLE_ANALYTICS_ID?.trim() || null,
+      googleAnalyticsId: context.cloudflare?.env.GA_MEASUREMENT_ID?.trim() || context.cloudflare?.env.GOOGLE_ANALYTICS_ID?.trim() || null,
     }
 
     return pageData

@@ -5,7 +5,7 @@ import { APP_NAME } from '@/lib/site'
 import { ThemeProvider } from '@/lib/theme'
 import { loadRootPageData } from '@/server/site-page-data'
 
-const THEME_INIT_SCRIPT = `(function(){try{var stored=localStorage.getItem('travel-tools:site:theme');var mode=(stored==='light'||stored==='dark'||stored==='system')?stored:'system';var prefersDark=window.matchMedia('(prefers-color-scheme: dark)').matches;var resolved=mode==='system'?(prefersDark?'dark':'light'):mode;document.documentElement.dataset.theme=mode;document.documentElement.classList.toggle('dark',resolved==='dark');}catch(e){}})();`
+const THEME_INIT_SCRIPT = `(function(){try{var stored=localStorage.getItem('route-crate:site:theme')||localStorage.getItem('travel-tools:site:theme');var mode=(stored==='light'||stored==='dark'||stored==='system')?stored:'system';var prefersDark=window.matchMedia('(prefers-color-scheme: dark)').matches;var resolved=mode==='system'?(prefersDark?'dark':'light'):mode;document.documentElement.dataset.theme=mode;document.documentElement.classList.toggle('dark',resolved==='dark');}catch(e){}})();`
 
 export const Route = createRootRoute({
   loader: () => loadRootPageData(),

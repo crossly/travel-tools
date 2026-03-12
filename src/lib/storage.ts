@@ -4,6 +4,18 @@ import { SITE_COOKIE_KEYS } from './site'
 import type { DeviceIdentity, SiteTheme } from './types'
 
 export const STORAGE_KEYS = {
+  locale: 'route-crate:site:locale',
+  theme: 'route-crate:site:theme',
+  lastTool: 'route-crate:site:last-tool',
+  device: 'route-crate:split-bill:device',
+  activeTripId: 'route-crate:split-bill:active-trip',
+  currencySource: 'route-crate:currency:source',
+  currencyTarget: 'route-crate:currency:target',
+  currencyRates: 'route-crate:currency:rates',
+  currencyRatesUpdatedAt: 'route-crate:currency:rates-updated-at',
+} as const
+
+const PREVIOUS_STORAGE_KEYS = {
   locale: 'travel-tools:site:locale',
   theme: 'travel-tools:site:theme',
   lastTool: 'travel-tools:site:last-tool',
@@ -27,6 +39,10 @@ function writeCookieValue(key: string, value: string) {
 
 let migrated = false
 
+export function resetStorageMigrationForTests() {
+  migrated = false
+}
+
 export function migrateLegacyStorage() {
   if (migrated) return
   const storage = getStorage()
@@ -37,6 +53,16 @@ export function migrateLegacyStorage() {
       storage.setItem(nextKey, storage.getItem(legacyKey) as string)
     }
   }
+
+  copyIfMissing(STORAGE_KEYS.locale, PREVIOUS_STORAGE_KEYS.locale)
+  copyIfMissing(STORAGE_KEYS.theme, PREVIOUS_STORAGE_KEYS.theme)
+  copyIfMissing(STORAGE_KEYS.lastTool, PREVIOUS_STORAGE_KEYS.lastTool)
+  copyIfMissing(STORAGE_KEYS.device, PREVIOUS_STORAGE_KEYS.device)
+  copyIfMissing(STORAGE_KEYS.activeTripId, PREVIOUS_STORAGE_KEYS.activeTripId)
+  copyIfMissing(STORAGE_KEYS.currencySource, PREVIOUS_STORAGE_KEYS.currencySource)
+  copyIfMissing(STORAGE_KEYS.currencyTarget, PREVIOUS_STORAGE_KEYS.currencyTarget)
+  copyIfMissing(STORAGE_KEYS.currencyRates, PREVIOUS_STORAGE_KEYS.currencyRates)
+  copyIfMissing(STORAGE_KEYS.currencyRatesUpdatedAt, PREVIOUS_STORAGE_KEYS.currencyRatesUpdatedAt)
 
   copyIfMissing(STORAGE_KEYS.device, 'split-bill-device')
   copyIfMissing(STORAGE_KEYS.activeTripId, 'split-bill-active-trip')

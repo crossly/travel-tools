@@ -3,7 +3,17 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 import { DEVICE_COOKIE_KEYS } from '@/lib/device-cookie'
 import { SITE_COOKIE_KEYS } from '@/lib/site'
-import { readCurrencyPrefs, readDevice, readStoredLocale, readTheme, STORAGE_KEYS, writeDevice, writeStoredLocale, writeTheme } from '@/lib/storage'
+import {
+  readCurrencyPrefs,
+  readDevice,
+  readStoredLocale,
+  readTheme,
+  resetStorageMigrationForTests,
+  STORAGE_KEYS,
+  writeDevice,
+  writeStoredLocale,
+  writeTheme,
+} from '@/lib/storage'
 
 const createStorage = () => {
   const store = new Map<string, string>()
@@ -24,6 +34,7 @@ describe('theme storage', () => {
     Object.defineProperty(window, 'localStorage', { value: localStorage, configurable: true })
     Object.defineProperty(globalThis, 'localStorage', { value: localStorage, configurable: true })
     localStorage.clear()
+    resetStorageMigrationForTests()
   })
 
   it('defaults to system', () => {
@@ -35,6 +46,13 @@ describe('theme storage', () => {
     expect(localStorage.getItem(STORAGE_KEYS.theme)).toBe('dark')
     expect(readTheme()).toBe('dark')
   })
+
+  it('migrates the previous travel-tools theme key', () => {
+    localStorage.setItem('travel-tools:site:theme', 'light')
+
+    expect(readTheme()).toBe('light')
+    expect(localStorage.getItem(STORAGE_KEYS.theme)).toBe('light')
+  })
 })
 
 describe('device storage', () => {
@@ -42,6 +60,7 @@ describe('device storage', () => {
     document.cookie = `${DEVICE_COOKIE_KEYS.id}=; Max-Age=0; Path=/`
     document.cookie = `${DEVICE_COOKIE_KEYS.displayName}=; Max-Age=0; Path=/`
     localStorage.clear()
+    resetStorageMigrationForTests()
   })
 
   it('writes device identity to localStorage and cookies', () => {
@@ -65,6 +84,7 @@ describe('locale storage', () => {
   beforeEach(() => {
     document.cookie = `${SITE_COOKIE_KEYS.locale}=; Max-Age=0; Path=/`
     localStorage.clear()
+    resetStorageMigrationForTests()
   })
 
   it('writes locale to localStorage and cookie', () => {
@@ -88,5 +108,14 @@ describe('locale storage', () => {
     expect(readCurrencyPrefs()).toEqual({ source: 'JPY', target: 'CNY' })
     expect(localStorage.getItem(STORAGE_KEYS.currencySource)).toBe('JPY')
     expect(localStorage.getItem(STORAGE_KEYS.currencyTarget)).toBe('CNY')
+  })
+
+  it('migrates the previous travel-tools currency keys', () => {
+    localStorage.setItem('travel-tools:currency:source', 'GBP')
+    localStorage.setItem('travel-tools:currency:target', 'JPY')
+
+    expect(readCurrencyPrefs()).toEqual({ source: 'GBP', target: 'JPY' })
+    expect(localStorage.getItem(STORAGE_KEYS.currencySource)).toBe('GBP')
+    expect(localStorage.getItem(STORAGE_KEYS.currencyTarget)).toBe('JPY')
   })
 })

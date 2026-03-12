@@ -7,5 +7,6 @@ interface CloudflareEnv {
   OPEN_EXCHANGE_RATES_APP_ID?: string
   OPEN_EXCHANGE_RATES_API_BASE?: string
   APP_NAME?: string
+  GA_MEASUREMENT_ID?: string
   GOOGLE_ANALYTICS_ID?: string
 }
