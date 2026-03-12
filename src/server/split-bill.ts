@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { generateDeviceDisplayName } from '@/lib/device-identity'
 import { round2, round6 } from '@/lib/utils'
 import { fetchFxRate } from './fx'
 
@@ -32,7 +33,6 @@ type ExpenseRow = {
   deleted_at: string | null
 }
 
-const bootstrapSchema = z.object({ displayName: z.string().trim().min(1).max(30) })
 const createTripSchema = z.object({
   name: z.string().trim().min(1).max(80),
   expenseCurrency: z.string().trim().length(3),
@@ -123,9 +123,8 @@ async function listExpenses(db: D1Database, tripId: string) {
   }))
 }
 
-export async function bootstrapDevice(request: Request) {
-  const body = await parseJson(request, bootstrapSchema)
-  return { deviceId: id('dev'), displayName: body.displayName }
+export async function bootstrapDevice() {
+  return { deviceId: id('dev'), displayName: generateDeviceDisplayName() }
 }
 
 export async function listTrips(env: CloudflareEnv, deviceId: string) {

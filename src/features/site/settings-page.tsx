@@ -1,15 +1,15 @@
+import { Link } from '@tanstack/react-router'
 import { useState } from 'react'
 import { AppShell } from '@/components/app/app-shell'
-import { FormField } from '@/components/app/form-field'
 import { InlineStatus } from '@/components/app/inline-status'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { exportTrip, importTrip } from '@/lib/api/client'
 import { useI18n } from '@/lib/i18n'
+import { getLocalizedPath } from '@/lib/site'
 import { useTheme } from '@/lib/theme'
-import { readActiveTripId, readDevice, writeDevice } from '@/lib/storage'
+import { readActiveTripId, readDevice } from '@/lib/storage'
 import type { Locale, SiteTheme } from '@/lib/types'
 
 const THEMES: SiteTheme[] = ['light', 'dark', 'system']
@@ -18,7 +18,6 @@ export function SettingsPage({ locale }: { locale: Locale }) {
   const { t } = useI18n()
   const { theme, setTheme } = useTheme()
   const device = readDevice()
-  const [displayName, setDisplayName] = useState(device?.displayName ?? '')
   const [importContent, setImportContent] = useState('')
   const [status, setStatus] = useState<{ tone: 'success' | 'warning' | 'danger'; title: string } | null>(null)
 
@@ -63,24 +62,23 @@ export function SettingsPage({ locale }: { locale: Locale }) {
 
         <Card>
           <CardHeader>
-            <CardTitle>{t('settings.deviceNickname')}</CardTitle>
-            <CardDescription>{t('home.identityStepDescription')}</CardDescription>
+            <CardTitle>{t('settings.deviceIdentity')}</CardTitle>
+            <CardDescription>{t('settings.deviceIdentityDescription')}</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <FormField label={t('settings.deviceNickname')}>
-              <Input value={displayName} onChange={(event) => setDisplayName(event.target.value)} />
-            </FormField>
-            <Button
-              type="button"
-              onClick={() => {
-                if (device) {
-                  writeDevice({ ...device, displayName: displayName.trim() })
-                  setStatus({ tone: 'success', title: t('settings.profileSaved') })
-                }
-              }}
-            >
-              {t('common.save')}
-            </Button>
+            {device ? (
+              <div className="rounded-2xl border border-border bg-muted px-4 py-5">
+                <p className="text-lg font-semibold text-foreground">{device.displayName}</p>
+                <p className="mt-1 text-sm text-muted-foreground">{t('settings.deviceIdentityNote')}</p>
+              </div>
+            ) : (
+              <div className="space-y-3 rounded-2xl border border-dashed border-border p-4 text-sm text-muted-foreground">
+                <p>{t('settings.deviceIdentityMissing')}</p>
+                <Button asChild type="button" variant="outline">
+                  <Link to={getLocalizedPath(locale, '/tools/split-bill')}>{t('settings.openSplitBill')}</Link>
+                </Button>
+              </div>
+            )}
           </CardContent>
         </Card>
       </div>

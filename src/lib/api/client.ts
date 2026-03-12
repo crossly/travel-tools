@@ -27,11 +27,9 @@ async function request<T>(url: string, init?: RequestInit): Promise<T> {
   return (await response.json()) as T
 }
 
-export async function bootstrapDevice(displayName: string) {
+export async function bootstrapDevice() {
   return request<DeviceIdentity>('/api/split-bill/device/bootstrap', {
     method: 'POST',
-    headers: jsonHeaders,
-    body: JSON.stringify({ displayName }),
   })
 }
 

@@ -6,7 +6,7 @@ export const Route = createFileRoute('/api/split-bill/device/bootstrap')({
     handlers: {
       POST: async ({ request }: any) => {
         try {
-          return Response.json(await bootstrapDevice(request))
+          return Response.json(await bootstrapDevice())
         } catch (error) {
           return Response.json({ error: (error as Error).message }, { status: 400 })
         }

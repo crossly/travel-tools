@@ -12,54 +12,48 @@ import { bootstrapDevice, createTrip, listTrips } from '@/lib/api/client'
 import { getLocalizedPath } from '@/lib/site'
 import { useI18n } from '@/lib/i18n'
 import { readDevice, writeActiveTripId, writeDevice, writeLastTool } from '@/lib/storage'
-import type { Locale, Trip } from '@/lib/types'
+import type { DeviceIdentity, Locale, Trip } from '@/lib/types'
 
 export function SplitBillHomePage({ locale }: { locale: Locale }) {
   const { t, tError } = useI18n()
   const navigate = useNavigate()
-  const [displayName, setDisplayName] = useState('')
+  const [device, setDevice] = useState<DeviceIdentity | null>(null)
   const [tripName, setTripName] = useState('')
   const [expenseCurrency, setExpenseCurrency] = useState('CNY')
   const [settlementCurrency, setSettlementCurrency] = useState('CNY')
   const [splitCount, setSplitCount] = useState('2')
-  const [editingIdentity, setEditingIdentity] = useState(true)
+  const [bootstrappingIdentity, setBootstrappingIdentity] = useState(false)
   const [status, setStatus] = useState<{ tone: 'success' | 'warning' | 'danger'; title: string; description?: string } | null>(null)
   const [trips, setTrips] = useState<Trip[]>([])
   const [loadingTrips, setLoadingTrips] = useState(false)
-  const identityReady = !editingIdentity && displayName.trim().length > 0
+  const identityReady = device !== null
+
+  async function loadTrips() {
+    setLoadingTrips(true)
+    const nextTrips = await listTrips().catch(() => [])
+    setTrips(nextTrips)
+    setLoadingTrips(false)
+  }
 
   useEffect(() => {
     writeLastTool('split-bill')
-    const device = readDevice()
-    if (!device) return
-    setDisplayName(device.displayName)
-    setEditingIdentity(false)
-    setLoadingTrips(true)
-    void listTrips()
-      .then(setTrips)
-      .catch(() => setTrips([]))
-      .finally(() => setLoadingTrips(false))
-  }, [])
-
-  async function onSaveIdentity() {
-    const trimmed = displayName.trim()
-    if (!trimmed) {
-      setStatus({ tone: 'danger', title: t('home.enterNickname') })
+    const existingDevice = readDevice()
+    if (existingDevice) {
+      setDevice(existingDevice)
+      void loadTrips()
       return
     }
-    try {
-      const existing = readDevice()
-      const device = existing ? { ...existing, displayName: trimmed } : await bootstrapDevice(trimmed)
-      writeDevice(device)
-      setDisplayName(trimmed)
-      setEditingIdentity(false)
-      setStatus({ tone: 'success', title: t('settings.profileSaved') })
-      const latestTrips = await listTrips().catch(() => [])
-      setTrips(latestTrips)
-    } catch (error) {
-      setStatus({ tone: 'danger', title: tError((error as Error).message) })
-    }
-  }
+
+    setBootstrappingIdentity(true)
+    void bootstrapDevice()
+      .then((nextDevice) => {
+        writeDevice(nextDevice)
+        setDevice(nextDevice)
+        return loadTrips()
+      })
+      .catch((error) => setStatus({ tone: 'danger', title: tError((error as Error).message) }))
+      .finally(() => setBootstrappingIdentity(false))
+  }, [])
 
   async function onCreateTrip() {
     if (!identityReady) {
@@ -101,28 +95,23 @@ export function SplitBillHomePage({ locale }: { locale: Locale }) {
               <CardDescription>{t('home.identityStepDescription')}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              {editingIdentity ? (
-                <>
-                  <FormField label={t('home.deviceNickname')}>
-                    <Input value={displayName} onChange={(event) => setDisplayName(event.target.value)} placeholder={t('home.nicknamePlaceholder')} />
-                  </FormField>
-                  <Button type="button" onClick={() => void onSaveIdentity()}>{t('home.saveNickname')}</Button>
-                </>
-              ) : (
-                <div className="rounded-2xl border border-border bg-muted p-4">
-                  <p className="font-medium">{displayName}</p>
-                  <button type="button" className="mt-1 text-sm text-muted-foreground" onClick={() => setEditingIdentity(true)}>
-                    {t('home.tapToEditNickname')}
-                  </button>
+              {bootstrappingIdentity ? (
+                <div className="rounded-2xl border border-dashed border-border bg-muted p-4 text-sm text-muted-foreground">
+                  {t('home.identityGenerating')}
                 </div>
-              )}
+              ) : device ? (
+                <div className="rounded-2xl border border-border bg-muted p-4">
+                  <p className="text-lg font-semibold text-foreground">{device.displayName}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">{t('home.identityReadyHint')}</p>
+                </div>
+              ) : null}
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader>
               <CardTitle>{t('home.tripStepTitle')}</CardTitle>
-              <CardDescription>{identityReady ? t('home.tripStepDescription') : t('home.createTripLocked')}</CardDescription>
+              <CardDescription>{bootstrappingIdentity ? t('home.createTripLocked') : t('home.tripStepDescription')}</CardDescription>
             </CardHeader>
             <CardContent className="grid gap-4">
               <FormField label={t('home.createTrip')}>
