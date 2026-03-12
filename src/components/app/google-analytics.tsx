@@ -1,0 +1,41 @@
+import { useEffect } from 'react'
+import { useLocation } from '@tanstack/react-router'
+
+declare global {
+  interface Window {
+    dataLayer?: unknown[]
+    gtag?: (...args: unknown[]) => void
+  }
+}
+
+export function GoogleAnalyticsScripts({ measurementId }: { measurementId: string }) {
+  const initScript = [
+    'window.dataLayer = window.dataLayer || [];',
+    'function gtag(){dataLayer.push(arguments);}',
+    'window.gtag = gtag;',
+    "gtag('js', new Date());",
+    `gtag('config', ${JSON.stringify(measurementId)}, { send_page_view: false });`,
+  ].join('')
+
+  return (
+    <>
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`} />
+      <script dangerouslySetInnerHTML={{ __html: initScript }} />
+    </>
+  )
+}
+
+export function GoogleAnalyticsPageviews({ measurementId }: { measurementId: string }) {
+  const location = useLocation()
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || typeof window.gtag !== 'function') return
+    window.gtag('event', 'page_view', {
+      page_title: document.title,
+      page_location: window.location.href,
+      page_path: `${location.pathname}${location.search?.toString() ?? ''}${location.hash ?? ''}`,
+    })
+  }, [location.hash, location.pathname, location.search, measurementId])
+
+  return null
+}

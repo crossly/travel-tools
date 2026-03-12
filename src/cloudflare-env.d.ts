@@ -7,4 +7,5 @@ interface CloudflareEnv {
   OPEN_EXCHANGE_RATES_APP_ID?: string
   OPEN_EXCHANGE_RATES_API_BASE?: string
   APP_NAME?: string
+  GOOGLE_ANALYTICS_ID?: string
 }

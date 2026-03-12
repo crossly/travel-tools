@@ -30,6 +30,7 @@
   ],
   "vars": {
     "APP_NAME": "Travel Tools",
-    "FX_API_BASE_URL": "https://api.frankfurter.app"
+    "FX_API_BASE_URL": "https://api.frankfurter.app",
+    "GOOGLE_ANALYTICS_ID": ""
   }
 }
