@@ -116,12 +116,12 @@ function HeroArtwork({
       <svg viewBox="0 0 520 360" className="hero-art-svg">
         <defs>
           <linearGradient id="heroRouteGlow" x1="0%" x2="100%" y1="0%" y2="100%">
-            <stop offset="0%" stopColor="rgba(240,138,55,0.95)" />
-            <stop offset="100%" stopColor="rgba(214,105,32,0.35)" />
+            <stop offset="0%" stopColor="var(--hero-route-glow-start)" />
+            <stop offset="100%" stopColor="var(--hero-route-glow-end)" />
           </linearGradient>
           <linearGradient id="heroSurface" x1="0%" x2="100%" y1="0%" y2="100%">
-            <stop offset="0%" stopColor="rgba(255,251,245,0.96)" />
-            <stop offset="100%" stopColor="rgba(246,234,220,0.72)" />
+            <stop offset="0%" stopColor="var(--hero-surface-start)" />
+            <stop offset="100%" stopColor="var(--hero-surface-end)" />
           </linearGradient>
         </defs>
 

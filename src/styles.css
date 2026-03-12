@@ -47,6 +47,20 @@
   --warning-soft: rgba(192, 122, 22, 0.12);
   --danger: #c04646;
   --danger-soft: rgba(192, 70, 70, 0.12);
+  --hero-card-bg:
+    radial-gradient(circle at top left, rgba(240, 138, 55, 0.12), transparent 30%),
+    linear-gradient(135deg, rgba(255, 250, 244, 0.92), rgba(246, 235, 220, 0.74));
+  --hero-pill-bg: rgba(255, 252, 247, 0.76);
+  --hero-pill-border: rgba(83, 66, 48, 0.12);
+  --hero-orb-fill: rgba(240, 138, 55, 0.1);
+  --hero-route-dash: rgba(211, 106, 34, 0.24);
+  --hero-route-glow-start: rgba(240, 138, 55, 0.88);
+  --hero-route-glow-end: rgba(214, 105, 32, 0.3);
+  --hero-route-shadow: rgba(211, 106, 34, 0.14);
+  --hero-surface-start: rgba(255, 250, 244, 0.94);
+  --hero-surface-end: rgba(244, 231, 215, 0.76);
+  --hero-node-stroke: rgba(255, 250, 244, 0.94);
+  --hero-node-shadow: rgba(211, 106, 34, 0.18);
 }
 
 html.dark,
@@ -73,6 +87,20 @@ html[data-theme="dark"] {
   --warning-soft: rgba(240, 177, 74, 0.12);
   --danger: #f17575;
   --danger-soft: rgba(241, 117, 117, 0.12);
+  --hero-card-bg:
+    radial-gradient(circle at top left, rgba(240, 138, 55, 0.1), transparent 22%),
+    linear-gradient(135deg, rgba(26, 30, 33, 0.96), rgba(19, 22, 25, 0.92));
+  --hero-pill-bg: rgba(23, 27, 30, 0.9);
+  --hero-pill-border: rgba(255, 245, 232, 0.08);
+  --hero-orb-fill: rgba(240, 138, 55, 0.07);
+  --hero-route-dash: rgba(240, 138, 55, 0.18);
+  --hero-route-glow-start: rgba(240, 138, 55, 0.78);
+  --hero-route-glow-end: rgba(240, 138, 55, 0.16);
+  --hero-route-shadow: rgba(240, 138, 55, 0.08);
+  --hero-surface-start: rgba(27, 31, 34, 0.96);
+  --hero-surface-end: rgba(19, 22, 25, 0.88);
+  --hero-node-stroke: rgba(17, 20, 22, 0.96);
+  --hero-node-shadow: rgba(0, 0, 0, 0.26);
 }
 
 * {
@@ -141,9 +169,7 @@ select {
 .hero-card {
   position: relative;
   overflow: hidden;
-  background:
-    radial-gradient(circle at top left, rgba(240, 138, 55, 0.16), transparent 32%),
-    linear-gradient(135deg, rgba(255, 249, 241, 0.88), rgba(250, 239, 224, 0.72));
+  background: var(--hero-card-bg);
 }
 
 .hero-grid {
@@ -159,10 +185,10 @@ select {
   display: inline-flex;
   max-width: max-content;
   align-items: center;
-  border: 1px solid var(--border);
+  border: 1px solid var(--hero-pill-border);
   border-radius: 999px;
   padding: 0.6rem 0.95rem;
-  background: rgba(255, 252, 247, 0.66);
+  background: var(--hero-pill-bg);
   backdrop-filter: blur(14px);
 }
 
@@ -179,7 +205,7 @@ select {
 }
 
 .hero-orb {
-  fill: rgba(240, 138, 55, 0.12);
+  fill: var(--hero-orb-fill);
   transform-origin: center;
   animation: hero-float 8s ease-in-out infinite;
 }
@@ -190,7 +216,7 @@ select {
 
 .hero-route-dash {
   fill: none;
-  stroke: rgba(211, 106, 34, 0.26);
+  stroke: var(--hero-route-dash);
   stroke-width: 3;
   stroke-linecap: round;
   stroke-dasharray: 10 12;
@@ -202,7 +228,7 @@ select {
   stroke: url(#heroRouteGlow);
   stroke-width: 6;
   stroke-linecap: round;
-  filter: drop-shadow(0 10px 26px rgba(211, 106, 34, 0.18));
+  filter: drop-shadow(0 10px 26px var(--hero-route-shadow));
 }
 
 .hero-cardlet {
@@ -234,9 +260,9 @@ select {
 
 .hero-node {
   fill: var(--primary);
-  stroke: rgba(255, 250, 244, 0.95);
+  stroke: var(--hero-node-stroke);
   stroke-width: 5;
-  filter: drop-shadow(0 8px 18px rgba(211, 106, 34, 0.18));
+  filter: drop-shadow(0 8px 18px var(--hero-node-shadow));
 }
 
 .metric-grid {
