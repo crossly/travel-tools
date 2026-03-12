@@ -1,7 +1,7 @@
 import { HeadContent, Outlet, Scripts, createRootRoute } from '@tanstack/react-router'
 import { GoogleAnalyticsPageviews, GoogleAnalyticsScripts } from '@/components/app/google-analytics'
 import appCss from '@/styles.css?url'
-import { APP_NAME } from '@/lib/site'
+import { buildDocumentTitle, translate } from '@/lib/i18n'
 import { ThemeProvider } from '@/lib/theme'
 import { loadRootPageData } from '@/server/site-page-data'
 
@@ -9,18 +9,21 @@ const THEME_INIT_SCRIPT = `(function(){try{var stored=localStorage.getItem('rout
 
 export const Route = createRootRoute({
   loader: () => loadRootPageData(),
-  head: () => ({
-    meta: [
-      { charSet: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: APP_NAME },
-      { name: 'description', content: 'Travel-focused tools built on TanStack Start.' },
-    ],
-    links: [
-      { rel: 'stylesheet', href: appCss },
-      { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
-    ],
-  }),
+  head: ({ loaderData }) => {
+    const locale = loaderData?.locale ?? 'en-US'
+    return {
+      meta: [
+        { charSet: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { title: buildDocumentTitle(locale) },
+        { name: 'description', content: translate(locale, 'site.homeDescription') },
+      ],
+      links: [
+        { rel: 'stylesheet', href: appCss },
+        { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
+      ],
+    }
+  },
   shellComponent: RootDocument,
 })
 

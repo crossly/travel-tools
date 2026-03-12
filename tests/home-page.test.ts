@@ -25,7 +25,6 @@ vi.mock('@/lib/i18n', () => ({
       'site.heroDescription': '在信号不稳、时间很赶、币种很杂的时候，也能快速看清数字、继续记账、完成结算。',
       'site.heroEyebrow': '为移动中和弱网场景而做',
       'site.heroHighlights': '弱网优先 · 多币种 · 移动端顺手',
-      'site.openRecentTool': '继续使用',
       'site.exploreTools': '查看工具',
       'site.currencyPreview': '实时汇率，适合付款前快速确认',
       'site.splitPreview': '多人出行记账与结算',
@@ -36,8 +35,6 @@ vi.mock('@/lib/i18n', () => ({
       'site.heroMetricSettle': '2 笔转账',
       'tool.currency.name': '汇率换算',
       'tool.splitBill.name': '旅行 AA',
-      'site.nextTitle': '后续还会继续扩展',
-      'site.nextBody': '未来可以继续接入退税、小费、打包等旅行工具。',
     })[key] ?? key,
   }),
 }))

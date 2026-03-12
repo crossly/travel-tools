@@ -11,7 +11,7 @@ import { readActiveTripId } from '@/lib/storage'
 import type { Locale } from '@/lib/types'
 
 export function SettingsPage({ locale }: { locale: Locale }) {
-  const { t } = useI18n()
+  const { t, tError } = useI18n()
   const [importContent, setImportContent] = useState('')
   const [status, setStatus] = useState<{ tone: 'success' | 'warning' | 'danger'; title: string } | null>(null)
 
@@ -21,9 +21,13 @@ export function SettingsPage({ locale }: { locale: Locale }) {
       setStatus({ tone: 'warning', title: t('settings.noTripToExport') })
       return
     }
-    const content = await exportTrip(tripId)
-    await navigator.clipboard.writeText(content)
-    setStatus({ tone: 'success', title: t('settings.exportSuccess') })
+    try {
+      const content = await exportTrip(tripId)
+      await navigator.clipboard.writeText(content)
+      setStatus({ tone: 'success', title: t('settings.exportSuccess') })
+    } catch (error) {
+      setStatus({ tone: 'danger', title: tError((error as Error).message) })
+    }
   }
 
   async function onImport() {
@@ -32,9 +36,13 @@ export function SettingsPage({ locale }: { locale: Locale }) {
       setStatus({ tone: 'warning', title: t('settings.noTripToImport') })
       return
     }
-    await importTrip(tripId, importContent)
-    setStatus({ tone: 'success', title: t('settings.importSuccess') })
-    setImportContent('')
+    try {
+      await importTrip(tripId, importContent)
+      setStatus({ tone: 'success', title: t('settings.importSuccess') })
+      setImportContent('')
+    } catch (error) {
+      setStatus({ tone: 'danger', title: tError((error as Error).message) })
+    }
   }
 
   return (

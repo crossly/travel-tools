@@ -7,7 +7,10 @@ export const Route = createFileRoute('/$locale/settings')({
   head: ({ params }) => {
     const locale = resolveLocaleSegment(params.locale) ?? DEFAULT_LOCALE
     return {
-      meta: [{ title: buildDocumentTitle(locale, translate(locale, 'settings.title')) }],
+      meta: [
+        { title: buildDocumentTitle(locale, translate(locale, 'settings.title')) },
+        { name: 'description', content: translate(locale, 'settings.title') },
+      ],
     }
   },
   component: SettingsRoute,

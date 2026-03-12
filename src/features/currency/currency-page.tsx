@@ -136,7 +136,7 @@ export function CurrencyPage({ locale, initialData }: { locale: Locale; initialD
     return (numeric * rate).toFixed(numeric >= 100 ? 2 : 4)
   }, [amount, rates, target])
 
-  const freshnessVariant = status?.tone === 'warning' ? 'warning' : 'success'
+  const freshnessVariant = status?.tone === 'danger' ? 'danger' : status?.tone === 'warning' ? 'warning' : 'success'
 
   return (
     <AppShell locale={locale} title={t('currency.title')} description={t('currency.description')} activeTool="currency">
