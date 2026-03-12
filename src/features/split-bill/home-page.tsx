@@ -91,29 +91,20 @@ export function SplitBillHomePage({ locale }: { locale: Locale }) {
         <div className="grid gap-4">
           <Card>
             <CardHeader>
-              <CardTitle>{t('home.identityStepTitle')}</CardTitle>
-              <CardDescription>{t('home.identityStepDescription')}</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              {bootstrappingIdentity ? (
-                <div className="rounded-2xl border border-dashed border-border bg-muted p-4 text-sm text-muted-foreground">
-                  {t('home.identityGenerating')}
-                </div>
-              ) : device ? (
-                <div className="rounded-2xl border border-border bg-muted p-4">
-                  <p className="text-lg font-semibold text-foreground">{device.displayName}</p>
-                  <p className="mt-1 text-sm text-muted-foreground">{t('home.identityReadyHint')}</p>
-                </div>
-              ) : null}
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
               <CardTitle>{t('home.tripStepTitle')}</CardTitle>
               <CardDescription>{bootstrappingIdentity ? t('home.createTripLocked') : t('home.tripStepDescription')}</CardDescription>
             </CardHeader>
             <CardContent className="grid gap-4">
+              {bootstrappingIdentity ? (
+                <div className="rounded-xl border border-dashed border-border bg-muted px-4 py-3 text-sm text-muted-foreground">
+                  {t('home.identityGenerating')}
+                </div>
+              ) : device ? (
+                <div className="rounded-xl border border-border bg-muted px-4 py-3">
+                  <p className="text-xs text-muted-foreground">{t('home.identityInlineLabel')}</p>
+                  <p className="mt-1 font-medium text-foreground">{device.displayName}</p>
+                </div>
+              ) : null}
               <FormField label={t('home.createTrip')}>
                 <Input value={tripName} onChange={(event) => setTripName(event.target.value)} placeholder={t('home.tripNamePlaceholder')} disabled={!identityReady} />
               </FormField>
