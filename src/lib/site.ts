@@ -2,8 +2,8 @@ import { parseCookieHeader } from './cookie'
 import type { Locale, ToolDefinition } from './types'
 
 export const APP_NAME = 'Travel Tools'
-export const DEFAULT_LOCALE: Locale = 'zh-CN'
-export const SUPPORTED_LOCALES: Locale[] = ['zh-CN', 'en-US']
+export const DEFAULT_LOCALE: Locale = 'en-US'
+export const SUPPORTED_LOCALES: Locale[] = ['en-US', 'zh-CN']
 export const SITE_COOKIE_KEYS = {
   locale: 'tt_site_locale',
   currencySource: 'tt_currency_source',

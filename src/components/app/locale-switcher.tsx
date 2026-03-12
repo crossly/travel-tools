@@ -29,8 +29,8 @@ export function LocaleSwitcher({ className, onAfterChange }: { className?: strin
         </span>
       </SelectTrigger>
       <SelectContent align="end">
-        <SelectItem value="zh-CN">{t('settings.languageChinese')}</SelectItem>
         <SelectItem value="en-US">{t('settings.languageEnglish')}</SelectItem>
+        <SelectItem value="zh-CN">{t('settings.languageChinese')}</SelectItem>
       </SelectContent>
     </Select>
   )

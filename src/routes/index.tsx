@@ -6,7 +6,7 @@ import { loadRootPageData } from '@/server/site-page-data'
 export const Route = createFileRoute('/')({
   loader: () => loadRootPageData(),
   head: ({ loaderData }) => {
-    const locale = loaderData?.locale ?? 'zh-CN'
+    const locale = loaderData?.locale ?? 'en-US'
     return {
       meta: [
         { title: buildDocumentTitle(locale, translate(locale, 'site.homeTitle')) },
