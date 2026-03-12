@@ -1,20 +1,20 @@
 import { useState } from 'react'
 import { useLocation, useNavigate } from '@tanstack/react-router'
-import { ChevronDown, Menu, X } from 'lucide-react'
+import { Home, Menu, ReceiptText, Settings, WalletCards, X } from 'lucide-react'
+import { LocaleSwitcher } from './locale-switcher'
+import { ThemeToggle } from './theme-toggle'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
-import { getLocalizedPath, replaceLocaleInPath, TOOLS } from '@/lib/site'
+import { getLocalizedPath } from '@/lib/site'
 import { useI18n } from '@/lib/i18n'
 import { writeLastTool } from '@/lib/storage'
-import { useTheme } from '@/lib/theme'
-import type { Locale, SiteTheme, ToolDefinition } from '@/lib/types'
+import type { Locale, ToolDefinition } from '@/lib/types'
 
-const NAV_LINKS: Array<{ key: string; path: string }> = [
-  { key: 'nav.home', path: '/' },
-  { key: 'nav.settings', path: '/settings' },
+const MOBILE_NAV_ITEMS: Array<{ key: string; path: string; icon: typeof Home; tool?: ToolDefinition['slug'] }> = [
+  { key: 'nav.home', path: '/', icon: Home },
+  { key: 'nav.currency', path: '/tools/currency', icon: WalletCards, tool: 'currency' },
+  { key: 'nav.splitBill', path: '/tools/split-bill', icon: ReceiptText, tool: 'split-bill' },
 ]
-
-type SectionKey = 'browse' | 'tools' | 'preferences'
 
 export function MobileNavMenu({
   locale,
@@ -26,30 +26,15 @@ export function MobileNavMenu({
   title: string
 }) {
   const [open, setOpen] = useState(false)
-  const [expanded, setExpanded] = useState<SectionKey | null>('tools')
   const navigate = useNavigate()
   const location = useLocation()
-  const { t, setLocale } = useI18n()
-  const { theme, setTheme } = useTheme()
-
-  function toggleSection(section: SectionKey) {
-    setExpanded((current) => (current === section ? null : section))
-  }
+  const { t } = useI18n()
+  const settingsPath = getLocalizedPath(locale, '/settings')
 
   function onNavigate(path: string, tool?: ToolDefinition['slug']) {
     if (tool) writeLastTool(tool)
     setOpen(false)
     navigate({ to: getLocalizedPath(locale, path), search: location.search })
-  }
-
-  function onLocaleChange(nextLocale: Locale) {
-    setLocale(nextLocale)
-    setOpen(false)
-    navigate({ to: replaceLocaleInPath(location.pathname, nextLocale) })
-  }
-
-  function onThemeChange(nextTheme: SiteTheme) {
-    setTheme(nextTheme)
   }
 
   return (
@@ -63,7 +48,7 @@ export function MobileNavMenu({
           type="button"
           variant="outline"
           size="icon"
-          className="h-10 w-10 rounded-xl"
+          className="rounded-xl"
           aria-label={open ? t('site.mobileCloseMenu') : t('site.mobileMenu')}
           onClick={() => setOpen((current) => !current)}
         >
@@ -73,122 +58,50 @@ export function MobileNavMenu({
 
       {open ? (
         <div className="mb-4 rounded-3xl border border-border bg-card p-3 shadow-xl">
-          <MobileAccordionSection
-            title={t('site.mobileBrowse')}
-            open={expanded === 'browse'}
-            onToggle={() => toggleSection('browse')}
-          >
-            <div className="grid gap-2">
-              {NAV_LINKS.map((item) => (
+          <nav className="grid gap-2">
+            {MOBILE_NAV_ITEMS.map((item) => {
+              const Icon = item.icon
+              const isActive = item.tool ? activeTool === item.tool : getLocalizedPath(locale, item.path) === location.pathname
+              return (
                 <button
                   key={item.key}
                   type="button"
                   className={cn(
-                    'rounded-2xl border border-border px-4 py-3 text-left text-sm text-foreground',
-                    getLocalizedPath(locale, item.path) === location.pathname && 'border-primary/40 bg-primary/10',
+                    'flex items-center gap-3 rounded-2xl border border-border bg-[color:var(--surface-floating)] px-4 py-3 text-left text-sm font-medium text-foreground shadow-sm',
+                    isActive && 'border-primary/40 bg-primary/10',
                   )}
-                  onClick={() => onNavigate(item.path)}
+                  onClick={() => onNavigate(item.path, item.tool)}
                 >
+                  <Icon className="h-4 w-4" />
                   {t(item.key)}
                 </button>
-              ))}
-            </div>
-          </MobileAccordionSection>
+              )
+            })}
+          </nav>
 
-          <MobileAccordionSection
-            title={t('site.mobileTools')}
-            open={expanded === 'tools'}
-            onToggle={() => toggleSection('tools')}
-          >
-            <div className="grid gap-2">
-              {TOOLS.map((tool) => (
-                <button
-                  key={tool.id}
-                  type="button"
-                  className={cn(
-                    'rounded-2xl border border-border px-4 py-3 text-left text-sm text-foreground',
-                    activeTool === tool.slug && 'border-primary/40 bg-primary/10',
-                  )}
-                  onClick={() => onNavigate(tool.entryPath, tool.slug)}
-                >
-                  <span className="block font-medium">{t(tool.nameKey)}</span>
-                  <span className="mt-1 block text-xs text-muted-foreground">{t(tool.descriptionKey)}</span>
-                </button>
-              ))}
-            </div>
-          </MobileAccordionSection>
+          <div className="mt-3 border-t border-border/80 pt-3">
+            <p className="mb-2 text-xs font-medium text-muted-foreground">{t('settings.language')}</p>
+            <LocaleSwitcher className="w-full justify-between" onAfterChange={() => setOpen(false)} />
+          </div>
 
-          <MobileAccordionSection
-            title={t('site.mobilePreferences')}
-            open={expanded === 'preferences'}
-            onToggle={() => toggleSection('preferences')}
-          >
-            <div className="grid gap-4">
-              <div>
-                <p className="mb-2 text-xs font-medium text-muted-foreground">{t('settings.language')}</p>
-                <div className="grid grid-cols-2 gap-2">
-                  <Button type="button" variant={locale === 'zh-CN' ? 'default' : 'outline'} onClick={() => onLocaleChange('zh-CN')}>
-                    中文
-                  </Button>
-                  <Button type="button" variant={locale === 'en-US' ? 'default' : 'outline'} onClick={() => onLocaleChange('en-US')}>
-                    English
-                  </Button>
-                </div>
-              </div>
-              <div>
-                <p className="mb-2 text-xs font-medium text-muted-foreground">{t('settings.theme')}</p>
-                <div className="grid grid-cols-3 gap-2">
-                  <ThemeChoiceButton label={t('settings.themeLight')} active={theme === 'light'} onClick={() => onThemeChange('light')} />
-                  <ThemeChoiceButton label={t('settings.themeDark')} active={theme === 'dark'} onClick={() => onThemeChange('dark')} />
-                  <ThemeChoiceButton label={t('settings.themeSystem')} active={theme === 'system'} onClick={() => onThemeChange('system')} />
-                </div>
-              </div>
+          <div className="mt-3 flex items-center justify-between gap-2 border-t border-border/80 pt-3">
+            <p className="text-xs font-medium text-muted-foreground">{t('settings.appearance')}</p>
+            <div className="flex items-center gap-2">
+              <ThemeToggle />
+              <Button
+                type="button"
+                variant="secondary"
+                size="icon"
+                className={cn('rounded-full', location.pathname === settingsPath && 'border-primary/40 bg-primary/10')}
+                aria-label={t('nav.settings')}
+                onClick={() => onNavigate('/settings')}
+              >
+                <Settings className="h-4 w-4" />
+              </Button>
             </div>
-          </MobileAccordionSection>
+          </div>
         </div>
       ) : null}
     </div>
-  )
-}
-
-function MobileAccordionSection({
-  title,
-  open,
-  onToggle,
-  children,
-}: {
-  title: string
-  open: boolean
-  onToggle: () => void
-  children: React.ReactNode
-}) {
-  return (
-    <section className="border-b border-border/80 py-1 last:border-b-0">
-      <button
-        type="button"
-        className="flex w-full items-center justify-between rounded-2xl px-2 py-3 text-left"
-        onClick={onToggle}
-      >
-        <span className="text-sm font-semibold text-foreground">{title}</span>
-        <ChevronDown className={cn('h-4 w-4 text-muted-foreground transition-transform', open && 'rotate-180')} />
-      </button>
-      {open ? <div className="px-2 pb-3">{children}</div> : null}
-    </section>
-  )
-}
-
-function ThemeChoiceButton({
-  label,
-  active,
-  onClick,
-}: {
-  label: string
-  active: boolean
-  onClick: () => void
-}) {
-  return (
-    <Button type="button" variant={active ? 'default' : 'outline'} className="h-10 px-3" onClick={onClick}>
-      {label}
-    </Button>
   )
 }

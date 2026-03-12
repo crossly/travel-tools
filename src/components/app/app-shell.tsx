@@ -1,10 +1,7 @@
 import { Suspense, lazy } from 'react'
 import type { ReactNode } from 'react'
-import { Link } from '@tanstack/react-router'
-import { Home, ReceiptText, Settings, WalletCards } from 'lucide-react'
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { cn } from '@/lib/utils'
-import { getLocalizedPath, getToolBySlug } from '@/lib/site'
+import { getToolBySlug } from '@/lib/site'
 import { useI18n } from '@/lib/i18n'
 import type { Locale, ToolDefinition } from '@/lib/types'
 
@@ -17,13 +14,6 @@ const AppShellHeaderControls = lazy(async () => {
   const module = await import('./app-shell-header-controls')
   return { default: module.AppShellHeaderControls }
 })
-
-const NAV_ITEMS: Array<{ key: string; icon: typeof Home; path: string; tool?: ToolDefinition['slug'] }> = [
-  { key: 'nav.home', icon: Home, path: '/' },
-  { key: 'nav.currency', icon: WalletCards, path: '/tools/currency', tool: 'currency' },
-  { key: 'nav.splitBill', icon: ReceiptText, path: '/tools/split-bill', tool: 'split-bill' },
-  { key: 'nav.settings', icon: Settings, path: '/settings' },
-]
 
 export function AppShell({
   locale,
@@ -49,8 +39,8 @@ export function AppShell({
             <MobileNavMenu locale={locale} activeTool={activeTool} title={title} />
           </Suspense>
           <Card className="hidden overflow-hidden md:block">
-            <CardHeader className="hidden gap-5 md:flex">
-              <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+            <CardHeader className="hidden gap-6 md:flex">
+              <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:justify-between">
                 <div className="hero-copy">
                   <p className="text-xs font-semibold tracking-[0.28em] text-muted-foreground uppercase">{t('site.tagline')}</p>
                   <CardTitle className="mt-2 text-3xl">{title}</CardTitle>
@@ -61,24 +51,6 @@ export function AppShell({
                   <AppShellHeaderControls locale={locale} activeTool={activeTool} />
                 </Suspense>
               </div>
-              <nav className="grid grid-cols-2 gap-2 md:grid-cols-4">
-                {NAV_ITEMS.map((item) => {
-                  const Icon = item.icon
-                  return (
-                    <Link
-                      key={item.key}
-                      to={getLocalizedPath(locale, item.path)}
-                      className={cn(
-                        'flex items-center gap-3 rounded-2xl border border-border bg-[var(--input)] px-4 py-3 text-sm transition-colors hover:bg-muted',
-                        activeTool === item.tool && 'border-primary/40 bg-primary/10',
-                      )}
-                    >
-                      <Icon className="h-4 w-4" />
-                      <span>{t(item.key)}</span>
-                    </Link>
-                  )
-                })}
-              </nav>
             </CardHeader>
           </Card>
         </header>
@@ -102,10 +74,11 @@ function MobileHeaderFallback({ title, subtitle }: { title: string; subtitle: st
 
 function DesktopControlsFallback() {
   return (
-    <div className="hidden h-10 items-center gap-2 lg:flex" aria-hidden="true">
-      <div className="h-10 w-36 rounded-full border border-border bg-[var(--input)]" />
+    <div className="hidden flex-wrap items-center justify-end gap-2 xl:flex" aria-hidden="true">
+      <div className="h-10 w-72 rounded-full border border-border bg-[var(--input)]" />
       <div className="h-10 w-28 rounded-full border border-border bg-[var(--input)]" />
-      <div className="h-10 w-32 rounded-full border border-border bg-[var(--input)]" />
+      <div className="size-10 rounded-full border border-border bg-[var(--input)]" />
+      <div className="size-10 rounded-full border border-border bg-[var(--input)]" />
     </div>
   )
 }

@@ -26,24 +26,20 @@ vi.mock('@/lib/i18n', () => ({
         'app.name': 'Travel Tools',
         'site.mobileMenu': '菜单',
         'site.mobileCloseMenu': '关闭菜单',
-        'site.mobileBrowse': '导航',
-        'site.mobileTools': '工具',
-        'site.mobilePreferences': '偏好',
         'nav.home': '首页',
         'nav.currency': '汇率',
         'nav.splitBill': 'AA',
         'nav.settings': '设置',
         'settings.language': '语言',
-        'settings.theme': '主题',
+        'settings.appearance': '外观',
         'settings.themeLight': '亮色',
         'settings.themeDark': '暗色',
-        'settings.themeSystem': '跟随系统',
       })[key] ?? key,
   }),
 }))
 
 describe('MobileNavMenu', () => {
-  it('opens menu and exposes accordion sections for tools and preferences', async () => {
+  it('opens a flat menu with nav items and top-level controls', async () => {
     const { MobileNavMenu } = await import('@/components/app/mobile-nav-menu')
 
     render(
@@ -56,13 +52,12 @@ describe('MobileNavMenu', () => {
 
     fireEvent.click(screen.getByRole('button', { name: '菜单' }))
 
-    expect(screen.getByRole('button', { name: '导航' })).toBeTruthy()
-    expect(screen.getByRole('button', { name: '工具' })).toBeTruthy()
-    expect(screen.getByRole('button', { name: '偏好' })).toBeTruthy()
+    expect(screen.getByRole('button', { name: '首页' })).toBeTruthy()
+    expect(screen.getByRole('button', { name: '汇率' })).toBeTruthy()
+    expect(screen.getByRole('button', { name: 'AA' })).toBeTruthy()
 
-    fireEvent.click(screen.getByRole('button', { name: '偏好' }))
     fireEvent.click(screen.getByRole('button', { name: '暗色' }))
-    fireEvent.click(screen.getByRole('button', { name: 'English' }))
+    fireEvent.change(screen.getByRole('combobox'), { target: { value: 'en-US' } })
 
     expect(setThemeMock).toHaveBeenCalledWith('dark')
     expect(setLocaleMock).toHaveBeenCalledWith('en-US')
