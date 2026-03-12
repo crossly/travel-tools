@@ -90,8 +90,9 @@ describe('fx provider strategy', () => {
 
     expect(result.base).toBe('USD')
     expect(result.source).toBe('openexchangerates')
-    const cnyRates = await env.RATES_KV.get('rates:CNY', 'json')
-    expect((cnyRates as { rates: Record<string, number>; source: string }).source).toBe('openexchangerates')
+    const canonicalRates = await env.RATES_KV.get('rates:__canonical__', 'json')
+    expect((canonicalRates as { base: string; source: string }).base).toBe('USD')
+    expect((canonicalRates as { base: string; source: string }).source).toBe('openexchangerates')
   })
 
   it('falls back to Frankfurter when the primary source fails', async () => {
@@ -142,7 +143,24 @@ describe('fx provider strategy', () => {
 
     expect(rate).toBe(7)
     expect(fetchSpy).not.toHaveBeenCalled()
-    expect(await env.APP_KV.get(`fx:USD:CNY:${today}`)).toBe('7')
+    expect(await env.APP_KV.get(`fx:USD:CNY:${today}`)).toBeNull()
+  })
+
+  it('caches historical pair rates after a remote fetch', async () => {
+    const env = createEnv()
+
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async () =>
+        Response.json({
+          rates: { CNY: 7.2 },
+        })),
+    )
+
+    const rate = await fetchFxRate(env, 'USD', 'CNY', '2026-03-10')
+
+    expect(rate).toBe(7.2)
+    expect(await env.APP_KV.get('fx:USD:CNY:2026-03-10')).toBe('7.2')
   })
 
   it('returns cached source metadata from the rates endpoint', async () => {

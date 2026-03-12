@@ -57,8 +57,9 @@ When `OPEN_EXCHANGE_RATES_APP_ID` is present, the worker will:
 
 - use `Open Exchange Rates` as the primary latest/historical source
 - fall back to `Frankfurter` if the primary source fails
-- sync latest canonical rates into KV every 15 minutes
-- prefer local KV rates for current-day conversions
+- sync the canonical latest-rate snapshot into KV every hour
+- derive non-canonical base rates in memory instead of prewriting every currency into KV
+- prefer local canonical rates for current-day conversions without writing per-request latest-day cache entries
 
 ## Verification
 

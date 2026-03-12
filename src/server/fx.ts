@@ -101,19 +101,18 @@ function resolveRateFromCanonicalBase(base: string, rates: Record<string, number
 
 async function storeRatesResult(env: CloudflareEnv, result: RatesResult, options?: { canonical?: boolean }) {
   const payload = JSON.stringify(result)
-  const writes: Array<Promise<void>> = [
-    env.RATES_KV.put(ratesCacheKey(result.base), payload, { expirationTtl: RATES_TTL }),
-    env.RATES_KV.put(`rates_backup:${result.base}`, payload),
-  ]
-
   if (options?.canonical) {
-    writes.push(
+    await Promise.all([
       env.RATES_KV.put(CANONICAL_RATES_KEY, payload, { expirationTtl: RATES_TTL }),
       env.RATES_KV.put(CANONICAL_BACKUP_KEY, payload),
-    )
+    ])
+    return
   }
 
-  await Promise.all(writes)
+  await Promise.all([
+    env.RATES_KV.put(ratesCacheKey(result.base), payload, { expirationTtl: RATES_TTL }),
+    env.RATES_KV.put(`rates_backup:${result.base}`, payload),
+  ])
 }
 
 async function getCanonicalRates(env: CloudflareEnv, options?: { backup?: boolean }) {
@@ -127,11 +126,11 @@ async function getCachedRates(env: CloudflareEnv, base: string) {
   if (cached) return cached
 
   const canonical = await getCanonicalRates(env)
-  const derived = canonical ? deriveRatesResult(canonical, normalizedBase) : null
-  if (derived) {
-    await env.RATES_KV.put(ratesCacheKey(normalizedBase), JSON.stringify(derived), { expirationTtl: RATES_TTL })
-    return derived
-  }
+  if (!canonical) return null
+  if (canonical.base === normalizedBase) return canonical
+
+  const derived = deriveRatesResult(canonical, normalizedBase)
+  if (derived) return derived
 
   return null
 }
@@ -199,18 +198,11 @@ export async function syncLatestRates(env: CloudflareEnv) {
   const canonical = await fetchLiveCanonicalRates(env)
   await storeRatesResult(env, canonical, { canonical: true })
 
-  const derivedEntries = supportedCurrencies
-    .filter((base) => base !== canonical.base)
-    .map((base) => deriveRatesResult(canonical, base))
-    .filter((entry): entry is RatesResult => Boolean(entry))
-
-  await Promise.all(derivedEntries.map((entry) => storeRatesResult(env, entry)))
-
   return {
     base: canonical.base,
     date: canonical.date,
     source: canonical.source,
-    syncedCurrencies: derivedEntries.length + 1,
+    syncedCurrencies: 1,
   }
 }
 
@@ -265,18 +257,20 @@ export async function fetchFxRate(env: CloudflareEnv, from: string, to: string, 
 
   const day = spentAt.slice(0, 10)
   const cacheKey = `fx:${from}:${to}:${day}`
+  const latestRequest = isLatestRequestDay(day)
   const cached = await env.APP_KV.get(cacheKey)
   if (cached) return Number(cached)
 
-  if (isLatestRequestDay(day)) {
+  if (latestRequest) {
     const cachedLatestRate = await getLatestRateFromCache(env, from, to)
     if (cachedLatestRate) {
-      await env.APP_KV.put(cacheKey, String(cachedLatestRate), { expirationTtl: FX_PAIR_TTL })
       return cachedLatestRate
     }
   }
 
   const rate = await fetchHistoricalRateFromProviders(env, from, to, /^\d{4}-\d{2}-\d{2}$/.test(day) ? day : 'latest')
+  if (latestRequest) return rate
+
   await env.APP_KV.put(cacheKey, String(rate), { expirationTtl: FX_PAIR_TTL })
   return rate
 }

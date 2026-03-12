@@ -15,6 +15,15 @@ vi.mock('@/features/split-bill/settlement-page', () => ({
   SettlementPage: ({ tripId }: { tripId: string }) => createElement('div', null, `settlement page ${tripId}`),
 }))
 
+vi.mock('@/routes/__root', async () => {
+  const { Outlet, createRootRoute } = await import('@tanstack/react-router')
+  return {
+    Route: createRootRoute({
+      component: () => createElement('div', null, createElement(Outlet)),
+    }),
+  }
+})
+
 describe('split bill nested routes', () => {
   beforeEach(() => {
     const store = new Map<string, string>()
