@@ -30,10 +30,17 @@ export function GoogleAnalyticsPageviews({ measurementId }: { measurementId: str
 
   useEffect(() => {
     if (typeof window === 'undefined' || typeof window.gtag !== 'function') return
+    const search =
+      typeof window.location?.search === 'string'
+        ? window.location.search
+        : typeof location.search === 'string'
+          ? location.search
+          : ''
+
     window.gtag('event', 'page_view', {
       page_title: document.title,
       page_location: window.location.href,
-      page_path: `${location.pathname}${location.search?.toString() ?? ''}${location.hash ?? ''}`,
+      page_path: `${location.pathname}${search}${location.hash ?? ''}`,
     })
   }, [location.hash, location.pathname, location.search, measurementId])
 

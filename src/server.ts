@@ -2,11 +2,15 @@ import { createServerEntry } from '@tanstack/react-start/server-entry'
 import { createStartHandler, defaultStreamHandler } from '@tanstack/react-start/server'
 import type { AppRequestContext } from './router'
 import { syncLatestRates } from './server/fx'
+import { redirectToCanonicalHost } from './server/redirects'
 
 const handler = createStartHandler(defaultStreamHandler)
 
 const entry = createServerEntry({
   fetch(request: Request, envOrOpts: unknown, executionContext?: ExecutionContext) {
+    const redirect = redirectToCanonicalHost(request)
+    if (redirect) return redirect
+
     const isCloudflareInvocation =
       executionContext !== undefined || (envOrOpts && typeof envOrOpts === 'object' && 'APP_KV' in (envOrOpts as object))
 

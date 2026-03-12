@@ -11,6 +11,10 @@
     {
       "pattern": "routecrate.com",
       "custom_domain": true
+    },
+    {
+      "pattern": "www.routecrate.com",
+      "custom_domain": true
     }
   ],
   "assets": {

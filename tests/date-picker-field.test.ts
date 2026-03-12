@@ -3,6 +3,21 @@ import { createElement, useState } from 'react'
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 
+vi.mock('@/components/app/date-picker-panel', () => ({
+  DatePickerPanel: ({ onChange }: { onChange: (nextValue: string) => void }) => createElement(
+    'div',
+    { role: 'grid' },
+    createElement(
+      'button',
+      {
+        type: 'button',
+        onClick: () => onChange('2026-03-21'),
+      },
+      'March 21, 2026',
+    ),
+  ),
+}))
+
 describe('DatePickerField', () => {
   it('opens a calendar panel, reports the selected date, and closes after selection', async () => {
     const onChange = vi.fn()
