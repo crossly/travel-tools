@@ -78,6 +78,29 @@ vi.mock('@/components/app/locale-switcher', () => ({
     ),
 }))
 
+vi.mock('@/components/app/theme-toggle', () => ({
+  ThemeToggle: ({
+    className,
+    onAfterChange,
+  }: {
+    className?: string
+    onAfterChange?: () => void
+  }) =>
+    createElement(
+      'button',
+      {
+        type: 'button',
+        className,
+        'aria-label': '外观',
+        onClick: () => {
+          setThemeMock('dark')
+          onAfterChange?.()
+        },
+      },
+      '暗色',
+    ),
+}))
+
 describe('MobileNavMenu', () => {
   it('opens a flat menu with nav items and top-level controls', async () => {
     const { MobileNavMenu } = await import('@/components/app/mobile-nav-menu')
@@ -95,7 +118,7 @@ describe('MobileNavMenu', () => {
     expect(screen.getByRole('button', { name: '汇率' })).toBeTruthy()
     expect(screen.getByRole('button', { name: 'AA' })).toBeTruthy()
 
-    fireEvent.click(screen.getByRole('button', { name: '暗色' }))
+    fireEvent.click(screen.getByRole('button', { name: '外观' }))
     fireEvent.click(screen.getByRole('button', { name: '语言' }))
 
     expect(setThemeMock).toHaveBeenCalledWith('dark')

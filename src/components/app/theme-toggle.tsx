@@ -1,38 +1,40 @@
-import { Moon, Sun } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { Monitor, SunMoon } from 'lucide-react'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { cn } from '@/lib/utils'
 import { useI18n } from '@/lib/i18n'
 import { useTheme } from '@/lib/theme'
 import type { SiteTheme } from '@/lib/types'
 
-function getNextTheme(theme: SiteTheme): 'light' | 'dark' {
-  if (theme === 'dark') return 'light'
-  if (theme === 'light') return 'dark'
-  if (typeof window !== 'undefined' && typeof window.matchMedia === 'function' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    return 'light'
-  }
-  return 'dark'
-}
-
 export function ThemeToggle({ className, onAfterChange }: { className?: string; onAfterChange?: () => void } = {}) {
   const { theme, setTheme } = useTheme()
   const { t } = useI18n()
-  const nextTheme = getNextTheme(theme)
-  const Icon = nextTheme === 'dark' ? Moon : Sun
 
   return (
-    <Button
-      type="button"
-      variant="secondary"
-      size="icon"
-      className={cn('rounded-full', className)}
-      onClick={() => {
-        setTheme(nextTheme)
+    <Select
+      value={theme}
+      onValueChange={(nextTheme) => {
+        const resolvedTheme = nextTheme as SiteTheme
+        if (resolvedTheme === theme) return
+        setTheme(resolvedTheme)
         onAfterChange?.()
       }}
-      aria-label={nextTheme === 'dark' ? t('settings.themeDark') : t('settings.themeLight')}
     >
-      <Icon className="h-4 w-4" />
-    </Button>
+      <SelectTrigger className={cn('gap-3', className)} aria-label={t('settings.appearance')}>
+        <span className="flex min-w-0 items-center gap-2">
+          <SunMoon className="h-4 w-4 text-muted-foreground" />
+          <SelectValue />
+        </span>
+      </SelectTrigger>
+      <SelectContent align="end">
+        <SelectItem value="light">{t('settings.themeLight')}</SelectItem>
+        <SelectItem value="dark">{t('settings.themeDark')}</SelectItem>
+        <SelectItem value="system">
+          <span className="flex items-center gap-2">
+            <Monitor className="h-4 w-4 text-muted-foreground" />
+            {t('settings.themeSystem')}
+          </span>
+        </SelectItem>
+      </SelectContent>
+    </Select>
   )
 }

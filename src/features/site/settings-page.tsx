@@ -1,20 +1,17 @@
 import { useState } from 'react'
 import { AppShell } from '@/components/app/app-shell'
 import { InlineStatus } from '@/components/app/inline-status'
+import { ThemeToggle } from '@/components/app/theme-toggle'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Textarea } from '@/components/ui/textarea'
 import { exportTrip, importTrip } from '@/lib/api/client'
 import { useI18n } from '@/lib/i18n'
-import { useTheme } from '@/lib/theme'
 import { readActiveTripId } from '@/lib/storage'
-import type { Locale, SiteTheme } from '@/lib/types'
-
-const THEMES: SiteTheme[] = ['light', 'dark', 'system']
+import type { Locale } from '@/lib/types'
 
 export function SettingsPage({ locale }: { locale: Locale }) {
   const { t } = useI18n()
-  const { theme, setTheme } = useTheme()
   const [importContent, setImportContent] = useState('')
   const [status, setStatus] = useState<{ tone: 'success' | 'warning' | 'danger'; title: string } | null>(null)
 
@@ -47,12 +44,8 @@ export function SettingsPage({ locale }: { locale: Locale }) {
           <CardTitle>{t('settings.appearance')}</CardTitle>
           <CardDescription>{t('settings.theme')}</CardDescription>
         </CardHeader>
-        <CardContent className="flex flex-wrap gap-2">
-          {THEMES.map((item) => (
-            <Button key={item} type="button" variant={theme === item ? 'default' : 'outline'} onClick={() => setTheme(item)}>
-              {item === 'light' ? t('settings.themeLight') : item === 'dark' ? t('settings.themeDark') : t('settings.themeSystem')}
-            </Button>
-          ))}
+        <CardContent>
+          <ThemeToggle className="min-w-[10rem]" />
         </CardContent>
       </Card>
 
