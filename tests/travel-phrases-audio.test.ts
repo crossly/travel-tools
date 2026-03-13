@@ -52,6 +52,27 @@ describe('travel phrase audio serving', () => {
     expect(await response.text()).toBe('')
   })
 
+  it('passes through range requests and returns partial content headers', async () => {
+    const env = {
+      PHRASE_AUDIO: {
+        get: vi.fn().mockResolvedValue({
+          body: createAudioStream(),
+          httpMetadata: { contentType: 'audio/mp4' },
+          httpEtag: '"range123"',
+          size: 8016,
+        }),
+      },
+    } as unknown as Pick<CloudflareEnv, 'PHRASE_AUDIO'>
+
+    const headers = new Headers({ Range: 'bytes=0-' })
+    const response = await servePhraseAudio(env, 'france', 'hello', { requestHeaders: headers })
+
+    expect(env.PHRASE_AUDIO?.get).toHaveBeenCalledWith('travel-phrases/france/hello.mp3', { range: headers })
+    expect(response.status).toBe(206)
+    expect(response.headers.get('content-range')).toBe('bytes 0-8015/8016')
+    expect(response.headers.get('accept-ranges')).toBe('bytes')
+  })
+
   it('returns 404 when the phrase audio object is missing', async () => {
     const env = {
       PHRASE_AUDIO: {
