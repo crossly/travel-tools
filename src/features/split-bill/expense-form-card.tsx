@@ -11,6 +11,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { createExpense, fetchFxQuote } from '@/lib/api/client'
+import { createExpenseFormSchema } from '@/lib/form-schemas'
 import { useI18n } from '@/lib/i18n'
 import { normalizeCurrency } from '@/lib/currencies'
 import { getLocalizedPath } from '@/lib/site'
@@ -19,6 +20,8 @@ import type { Locale, TripSnapshot } from '@/lib/types'
 function getToday() {
   return new Date().toISOString().slice(0, 10)
 }
+
+type ExpenseFormValues = z.infer<ReturnType<typeof createExpenseFormSchema>>
 
 export function ExpenseFormCard({
   locale,
@@ -39,19 +42,15 @@ export function ExpenseFormCard({
   const navigate = useNavigate()
   const [isSaving, setIsSaving] = useState(false)
   const [status, setStatus] = useState<{ tone: 'success' | 'warning' | 'danger'; title: string; description?: string } | null>(null)
-  const expenseSchema = useMemo(() => z.object({
-    title: z.string().trim().min(1, t('addExpense.titleRequired')),
-    amount: z.string().trim().refine((value) => Number(value) > 0, t('addExpense.amountRequired')),
-    currency: z.string().refine((value) => /^[A-Z]{3}$/.test(normalizeCurrency(value)), t('addExpense.currencyInvalid')),
-    spentAt: z.string().trim().min(8, t('addExpense.labelDate')),
-    splitCount: z.string().trim().refine((value) => {
-      const count = Number(value)
-      return Number.isInteger(count) && count >= 1
-    }, t('home.invalidSplitCount')),
-    manualFx: z.string().trim().refine((value) => !value || Number(value) > 0, t('addExpense.manualFxInvalid')),
-    note: z.string(),
+  const expenseSchema = useMemo(() => createExpenseFormSchema({
+    titleRequired: t('addExpense.titleRequired'),
+    amountRequired: t('addExpense.amountRequired'),
+    currencyInvalid: t('addExpense.currencyInvalid'),
+    splitCountInvalid: t('home.invalidSplitCount'),
+    manualFxInvalid: t('addExpense.manualFxInvalid'),
+    dateRequired: t('addExpense.labelDate'),
   }), [t])
-  const form = useForm<z.infer<typeof expenseSchema>>({
+  const form = useForm<ExpenseFormValues>({
     resolver: zodResolver(expenseSchema),
     defaultValues: {
       title: '',
@@ -70,7 +69,7 @@ export function ExpenseFormCard({
     form.setValue('splitCount', String(snapshot.trip.splitCount))
   }, [form, snapshot])
 
-  async function onCreate(values: z.infer<typeof expenseSchema>) {
+  async function onCreate(values: ExpenseFormValues) {
     if (isSaving) return
 
     try {

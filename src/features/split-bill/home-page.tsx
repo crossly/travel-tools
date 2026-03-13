@@ -12,6 +12,7 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { Input } from '@/components/ui/input'
 import { normalizeCurrency } from '@/lib/currencies'
 import { bootstrapDevice, createTrip, listTrips } from '@/lib/api/client'
+import { createTripFormSchema } from '@/lib/form-schemas'
 import { getLocalizedPath } from '@/lib/site'
 import { useI18n } from '@/lib/i18n'
 import { readDevice, writeActiveTripId, writeDevice, writeLastTool } from '@/lib/storage'
@@ -22,6 +23,8 @@ type SplitBillHomePageData = {
   trips: Trip[]
 }
 
+type TripFormValues = z.infer<ReturnType<typeof createTripFormSchema>>
+
 export function SplitBillHomePage({ locale, initialData }: { locale: Locale; initialData: SplitBillHomePageData }) {
   const { t, tError } = useI18n()
   const navigate = useNavigate()
@@ -31,16 +34,12 @@ export function SplitBillHomePage({ locale, initialData }: { locale: Locale; ini
   const [trips, setTrips] = useState<Trip[]>(initialData.trips)
   const [loadingTrips, setLoadingTrips] = useState(false)
   const identityReady = device !== null
-  const tripSchema = useMemo(() => z.object({
-    tripName: z.string().trim().min(1, t('home.enterTripName')),
-    expenseCurrency: z.string().refine((value) => /^[A-Z]{3}$/.test(normalizeCurrency(value)), t('home.invalidCurrency')),
-    settlementCurrency: z.string().refine((value) => /^[A-Z]{3}$/.test(normalizeCurrency(value)), t('home.invalidCurrency')),
-    splitCount: z.string().trim().refine((value) => {
-      const count = Number(value)
-      return Number.isInteger(count) && count >= 1
-    }, t('home.invalidSplitCount')),
+  const tripSchema = useMemo(() => createTripFormSchema({
+    tripNameRequired: t('home.enterTripName'),
+    currencyInvalid: t('home.invalidCurrency'),
+    splitCountInvalid: t('home.invalidSplitCount'),
   }), [t])
-  const form = useForm<z.infer<typeof tripSchema>>({
+  const form = useForm<TripFormValues>({
     resolver: zodResolver(tripSchema),
     defaultValues: {
       tripName: '',
@@ -82,7 +81,7 @@ export function SplitBillHomePage({ locale, initialData }: { locale: Locale; ini
       .finally(() => setBootstrappingIdentity(false))
   }, [initialData.device])
 
-  async function onCreateTrip(values: z.infer<typeof tripSchema>) {
+  async function onCreateTrip(values: TripFormValues) {
     if (!identityReady) {
       setStatus({ tone: 'warning', title: t('home.createTripLocked') })
       return

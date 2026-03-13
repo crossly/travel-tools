@@ -11,6 +11,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Textarea } from '@/components/ui/textarea'
 import { exportTrip, importTrip } from '@/lib/api/client'
 import { buildDatedJsonFilename, downloadTextFile } from '@/lib/files'
+import { createImportFormSchema } from '@/lib/form-schemas'
 import { useI18n } from '@/lib/i18n'
 import { readActiveTripId } from '@/lib/storage'
 import type { Locale } from '@/lib/types'
@@ -24,16 +25,16 @@ function resolveExportFilename(tripId: string, content: string) {
   }
 }
 
+type ImportFormValues = z.infer<ReturnType<typeof createImportFormSchema>>
+
 export function SettingsPage({ locale }: { locale: Locale }) {
   const { t, tError } = useI18n()
   const [exportStatus, setExportStatus] = useState<{ tone: 'success' | 'warning' | 'danger'; title: string } | null>(null)
   const [importStatus, setImportStatus] = useState<{ tone: 'success' | 'warning' | 'danger'; title: string } | null>(null)
   const [isExporting, setIsExporting] = useState(false)
   const [isImporting, setIsImporting] = useState(false)
-  const importSchema = useMemo(() => z.object({
-    content: z.string().trim().min(1, tError('MISSING_IMPORT_CONTENT')),
-  }), [tError])
-  const importForm = useForm<z.input<typeof importSchema>, undefined, z.output<typeof importSchema>>({
+  const importSchema = useMemo(() => createImportFormSchema(tError('MISSING_IMPORT_CONTENT')), [tError])
+  const importForm = useForm<ImportFormValues>({
     resolver: zodResolver(importSchema),
     defaultValues: {
       content: '',
@@ -61,7 +62,7 @@ export function SettingsPage({ locale }: { locale: Locale }) {
     }
   }
 
-  async function onImport(values: z.output<typeof importSchema>) {
+  async function onImport(values: ImportFormValues) {
     const tripId = readActiveTripId()
     if (!tripId) {
       setImportStatus({ tone: 'warning', title: t('settings.noTripToImport') })
