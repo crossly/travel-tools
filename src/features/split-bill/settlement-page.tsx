@@ -75,7 +75,7 @@ export function SettlementPage({ locale, tripId, initialData }: { locale: Locale
           title={pageStatus.title}
           description={pageStatus.description}
           action={
-            <Button type="button" variant="secondary" onClick={() => navigate({ to: getLocalizedPath(locale, '/tools/split-bill') })}>
+            <Button type="button" variant="secondary" onClick={() => navigate({ to: getLocalizedPath(locale, '/bill-splitter') })}>
               {t('common.backToSplitBill')}
             </Button>
           }

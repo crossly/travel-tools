@@ -56,7 +56,7 @@ export function HomePage({ locale }: { locale: Locale }) {
               <p className="mono text-2xl font-medium">{t('site.currencyMetric')}</p>
             </div>
             <Button asChild variant="secondary" size="lg" className="w-full justify-between">
-              <Link to={getLocalizedPath(locale, '/tools/currency')}>
+              <Link to={getLocalizedPath(locale, '/currency')}>
                 {t('tool.currency.name')}
                 <ArrowRight className="h-4 w-4" />
               </Link>
@@ -78,7 +78,7 @@ export function HomePage({ locale }: { locale: Locale }) {
               <p className="mono text-2xl font-medium">{t('site.splitMetric')}</p>
             </div>
             <Button asChild variant="secondary" size="lg" className="w-full justify-between">
-              <Link to={getLocalizedPath(locale, '/tools/split-bill')}>
+              <Link to={getLocalizedPath(locale, '/bill-splitter')}>
                 {t('tool.splitBill.name')}
                 <ArrowRight className="h-4 w-4" />
               </Link>

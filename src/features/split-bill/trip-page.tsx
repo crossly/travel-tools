@@ -66,7 +66,7 @@ export function TripPage({ locale, tripId, initialSnapshot = null }: { locale: L
     try {
       await deleteTrip(tripId)
       setStatus({ tone: 'success', title: t('trip.deleteTripSuccess') })
-      navigate({ to: getLocalizedPath(locale, '/tools/split-bill') })
+      navigate({ to: getLocalizedPath(locale, '/bill-splitter') })
     } catch (error) {
       setStatus({ tone: 'danger', title: tError((error as Error).message) })
     }
@@ -85,7 +85,7 @@ export function TripPage({ locale, tripId, initialSnapshot = null }: { locale: L
           title={pageStatus.title}
           description={pageStatus.description}
           action={
-            <Button type="button" variant="secondary" onClick={() => navigate({ to: getLocalizedPath(locale, '/tools/split-bill') })}>
+            <Button type="button" variant="secondary" onClick={() => navigate({ to: getLocalizedPath(locale, '/bill-splitter') })}>
               {t('common.backToSplitBill')}
             </Button>
           }
@@ -197,7 +197,7 @@ export function TripPage({ locale, tripId, initialSnapshot = null }: { locale: L
                 size="lg"
                 className="w-full"
                 disabled={!snapshot}
-                onClick={() => navigate({ to: getLocalizedPath(locale, `/tools/split-bill/${tripId}/settlement`) })}
+                onClick={() => navigate({ to: getLocalizedPath(locale, `/bill-splitter/${tripId}/settlement`) })}
               >
                 {t('trip.settlement')}
               </Button>

@@ -13,14 +13,20 @@ import { Route as LocaleRouteRouteImport } from './routes/$locale/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LocaleIndexRouteImport } from './routes/$locale/index'
 import { Route as LocaleSettingsRouteImport } from './routes/$locale/settings'
+import { Route as LocaleCurrencyRouteImport } from './routes/$locale/currency'
+import { Route as LocaleBillSplitterIndexRouteImport } from './routes/$locale/bill-splitter/index'
 import { Route as ApiSiteHealthRouteImport } from './routes/api/site/health'
 import { Route as ApiFxRatesRouteImport } from './routes/api/fx/rates'
 import { Route as ApiFxDetectRouteImport } from './routes/api/fx/detect'
 import { Route as LocaleToolsCurrencyRouteImport } from './routes/$locale/tools/currency'
+import { Route as LocaleBillSplitterTripIdRouteRouteImport } from './routes/$locale/bill-splitter/$tripId/route'
 import { Route as ApiSplitBillTripsIndexRouteImport } from './routes/api/split-bill/trips/index'
 import { Route as LocaleToolsSplitBillIndexRouteImport } from './routes/$locale/tools/split-bill/index'
+import { Route as LocaleBillSplitterTripIdIndexRouteImport } from './routes/$locale/bill-splitter/$tripId/index'
 import { Route as ApiSplitBillTripsTripIdRouteImport } from './routes/api/split-bill/trips/$tripId'
 import { Route as ApiSplitBillDeviceBootstrapRouteImport } from './routes/api/split-bill/device/bootstrap'
+import { Route as LocaleBillSplitterTripIdSettlementRouteImport } from './routes/$locale/bill-splitter/$tripId/settlement'
+import { Route as LocaleBillSplitterTripIdAddRouteImport } from './routes/$locale/bill-splitter/$tripId/add'
 import { Route as LocaleToolsSplitBillTripIdRouteRouteImport } from './routes/$locale/tools/split-bill/$tripId/route'
 import { Route as LocaleToolsSplitBillTripIdIndexRouteImport } from './routes/$locale/tools/split-bill/$tripId/index'
 import { Route as ApiSplitBillTripsTripIdSnapshotRouteImport } from './routes/api/split-bill/trips/$tripId/snapshot'
@@ -54,6 +60,16 @@ const LocaleSettingsRoute = LocaleSettingsRouteImport.update({
   path: '/settings',
   getParentRoute: () => LocaleRouteRoute,
 } as any)
+const LocaleCurrencyRoute = LocaleCurrencyRouteImport.update({
+  id: '/currency',
+  path: '/currency',
+  getParentRoute: () => LocaleRouteRoute,
+} as any)
+const LocaleBillSplitterIndexRoute = LocaleBillSplitterIndexRouteImport.update({
+  id: '/bill-splitter/',
+  path: '/bill-splitter/',
+  getParentRoute: () => LocaleRouteRoute,
+} as any)
 const ApiSiteHealthRoute = ApiSiteHealthRouteImport.update({
   id: '/api/site/health',
   path: '/api/site/health',
@@ -74,6 +90,12 @@ const LocaleToolsCurrencyRoute = LocaleToolsCurrencyRouteImport.update({
   path: '/tools/currency',
   getParentRoute: () => LocaleRouteRoute,
 } as any)
+const LocaleBillSplitterTripIdRouteRoute =
+  LocaleBillSplitterTripIdRouteRouteImport.update({
+    id: '/bill-splitter/$tripId',
+    path: '/bill-splitter/$tripId',
+    getParentRoute: () => LocaleRouteRoute,
+  } as any)
 const ApiSplitBillTripsIndexRoute = ApiSplitBillTripsIndexRouteImport.update({
   id: '/api/split-bill/trips/',
   path: '/api/split-bill/trips/',
@@ -85,6 +107,12 @@ const LocaleToolsSplitBillIndexRoute =
     path: '/tools/split-bill/',
     getParentRoute: () => LocaleRouteRoute,
   } as any)
+const LocaleBillSplitterTripIdIndexRoute =
+  LocaleBillSplitterTripIdIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => LocaleBillSplitterTripIdRouteRoute,
+  } as any)
 const ApiSplitBillTripsTripIdRoute = ApiSplitBillTripsTripIdRouteImport.update({
   id: '/api/split-bill/trips/$tripId',
   path: '/api/split-bill/trips/$tripId',
@@ -95,6 +123,18 @@ const ApiSplitBillDeviceBootstrapRoute =
     id: '/api/split-bill/device/bootstrap',
     path: '/api/split-bill/device/bootstrap',
     getParentRoute: () => rootRouteImport,
+  } as any)
+const LocaleBillSplitterTripIdSettlementRoute =
+  LocaleBillSplitterTripIdSettlementRouteImport.update({
+    id: '/settlement',
+    path: '/settlement',
+    getParentRoute: () => LocaleBillSplitterTripIdRouteRoute,
+  } as any)
+const LocaleBillSplitterTripIdAddRoute =
+  LocaleBillSplitterTripIdAddRouteImport.update({
+    id: '/add',
+    path: '/add',
+    getParentRoute: () => LocaleBillSplitterTripIdRouteRoute,
   } as any)
 const LocaleToolsSplitBillTripIdRouteRoute =
   LocaleToolsSplitBillTripIdRouteRouteImport.update({
@@ -172,15 +212,21 @@ const ApiSplitBillTripsTripIdExpensesExpenseIdRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$locale': typeof LocaleRouteRouteWithChildren
+  '/$locale/currency': typeof LocaleCurrencyRoute
   '/$locale/settings': typeof LocaleSettingsRoute
   '/$locale/': typeof LocaleIndexRoute
+  '/$locale/bill-splitter/$tripId': typeof LocaleBillSplitterTripIdRouteRouteWithChildren
   '/$locale/tools/currency': typeof LocaleToolsCurrencyRoute
   '/api/fx/detect': typeof ApiFxDetectRoute
   '/api/fx/rates': typeof ApiFxRatesRoute
   '/api/site/health': typeof ApiSiteHealthRoute
+  '/$locale/bill-splitter/': typeof LocaleBillSplitterIndexRoute
   '/$locale/tools/split-bill/$tripId': typeof LocaleToolsSplitBillTripIdRouteRouteWithChildren
+  '/$locale/bill-splitter/$tripId/add': typeof LocaleBillSplitterTripIdAddRoute
+  '/$locale/bill-splitter/$tripId/settlement': typeof LocaleBillSplitterTripIdSettlementRoute
   '/api/split-bill/device/bootstrap': typeof ApiSplitBillDeviceBootstrapRoute
   '/api/split-bill/trips/$tripId': typeof ApiSplitBillTripsTripIdRouteWithChildren
+  '/$locale/bill-splitter/$tripId/': typeof LocaleBillSplitterTripIdIndexRoute
   '/$locale/tools/split-bill/': typeof LocaleToolsSplitBillIndexRoute
   '/api/split-bill/trips/': typeof ApiSplitBillTripsIndexRoute
   '/$locale/tools/split-bill/$tripId/add': typeof LocaleToolsSplitBillTripIdAddRoute
@@ -197,14 +243,19 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/$locale/currency': typeof LocaleCurrencyRoute
   '/$locale/settings': typeof LocaleSettingsRoute
   '/$locale': typeof LocaleIndexRoute
   '/$locale/tools/currency': typeof LocaleToolsCurrencyRoute
   '/api/fx/detect': typeof ApiFxDetectRoute
   '/api/fx/rates': typeof ApiFxRatesRoute
   '/api/site/health': typeof ApiSiteHealthRoute
+  '/$locale/bill-splitter': typeof LocaleBillSplitterIndexRoute
+  '/$locale/bill-splitter/$tripId/add': typeof LocaleBillSplitterTripIdAddRoute
+  '/$locale/bill-splitter/$tripId/settlement': typeof LocaleBillSplitterTripIdSettlementRoute
   '/api/split-bill/device/bootstrap': typeof ApiSplitBillDeviceBootstrapRoute
   '/api/split-bill/trips/$tripId': typeof ApiSplitBillTripsTripIdRouteWithChildren
+  '/$locale/bill-splitter/$tripId': typeof LocaleBillSplitterTripIdIndexRoute
   '/$locale/tools/split-bill': typeof LocaleToolsSplitBillIndexRoute
   '/api/split-bill/trips': typeof ApiSplitBillTripsIndexRoute
   '/$locale/tools/split-bill/$tripId/add': typeof LocaleToolsSplitBillTripIdAddRoute
@@ -223,15 +274,21 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/$locale': typeof LocaleRouteRouteWithChildren
+  '/$locale/currency': typeof LocaleCurrencyRoute
   '/$locale/settings': typeof LocaleSettingsRoute
   '/$locale/': typeof LocaleIndexRoute
+  '/$locale/bill-splitter/$tripId': typeof LocaleBillSplitterTripIdRouteRouteWithChildren
   '/$locale/tools/currency': typeof LocaleToolsCurrencyRoute
   '/api/fx/detect': typeof ApiFxDetectRoute
   '/api/fx/rates': typeof ApiFxRatesRoute
   '/api/site/health': typeof ApiSiteHealthRoute
+  '/$locale/bill-splitter/': typeof LocaleBillSplitterIndexRoute
   '/$locale/tools/split-bill/$tripId': typeof LocaleToolsSplitBillTripIdRouteRouteWithChildren
+  '/$locale/bill-splitter/$tripId/add': typeof LocaleBillSplitterTripIdAddRoute
+  '/$locale/bill-splitter/$tripId/settlement': typeof LocaleBillSplitterTripIdSettlementRoute
   '/api/split-bill/device/bootstrap': typeof ApiSplitBillDeviceBootstrapRoute
   '/api/split-bill/trips/$tripId': typeof ApiSplitBillTripsTripIdRouteWithChildren
+  '/$locale/bill-splitter/$tripId/': typeof LocaleBillSplitterTripIdIndexRoute
   '/$locale/tools/split-bill/': typeof LocaleToolsSplitBillIndexRoute
   '/api/split-bill/trips/': typeof ApiSplitBillTripsIndexRoute
   '/$locale/tools/split-bill/$tripId/add': typeof LocaleToolsSplitBillTripIdAddRoute
@@ -251,15 +308,21 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/$locale'
+    | '/$locale/currency'
     | '/$locale/settings'
     | '/$locale/'
+    | '/$locale/bill-splitter/$tripId'
     | '/$locale/tools/currency'
     | '/api/fx/detect'
     | '/api/fx/rates'
     | '/api/site/health'
+    | '/$locale/bill-splitter/'
     | '/$locale/tools/split-bill/$tripId'
+    | '/$locale/bill-splitter/$tripId/add'
+    | '/$locale/bill-splitter/$tripId/settlement'
     | '/api/split-bill/device/bootstrap'
     | '/api/split-bill/trips/$tripId'
+    | '/$locale/bill-splitter/$tripId/'
     | '/$locale/tools/split-bill/'
     | '/api/split-bill/trips/'
     | '/$locale/tools/split-bill/$tripId/add'
@@ -276,14 +339,19 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/$locale/currency'
     | '/$locale/settings'
     | '/$locale'
     | '/$locale/tools/currency'
     | '/api/fx/detect'
     | '/api/fx/rates'
     | '/api/site/health'
+    | '/$locale/bill-splitter'
+    | '/$locale/bill-splitter/$tripId/add'
+    | '/$locale/bill-splitter/$tripId/settlement'
     | '/api/split-bill/device/bootstrap'
     | '/api/split-bill/trips/$tripId'
+    | '/$locale/bill-splitter/$tripId'
     | '/$locale/tools/split-bill'
     | '/api/split-bill/trips'
     | '/$locale/tools/split-bill/$tripId/add'
@@ -301,15 +369,21 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/$locale'
+    | '/$locale/currency'
     | '/$locale/settings'
     | '/$locale/'
+    | '/$locale/bill-splitter/$tripId'
     | '/$locale/tools/currency'
     | '/api/fx/detect'
     | '/api/fx/rates'
     | '/api/site/health'
+    | '/$locale/bill-splitter/'
     | '/$locale/tools/split-bill/$tripId'
+    | '/$locale/bill-splitter/$tripId/add'
+    | '/$locale/bill-splitter/$tripId/settlement'
     | '/api/split-bill/device/bootstrap'
     | '/api/split-bill/trips/$tripId'
+    | '/$locale/bill-splitter/$tripId/'
     | '/$locale/tools/split-bill/'
     | '/api/split-bill/trips/'
     | '/$locale/tools/split-bill/$tripId/add'
@@ -366,6 +440,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleSettingsRouteImport
       parentRoute: typeof LocaleRouteRoute
     }
+    '/$locale/currency': {
+      id: '/$locale/currency'
+      path: '/currency'
+      fullPath: '/$locale/currency'
+      preLoaderRoute: typeof LocaleCurrencyRouteImport
+      parentRoute: typeof LocaleRouteRoute
+    }
+    '/$locale/bill-splitter/': {
+      id: '/$locale/bill-splitter/'
+      path: '/bill-splitter'
+      fullPath: '/$locale/bill-splitter/'
+      preLoaderRoute: typeof LocaleBillSplitterIndexRouteImport
+      parentRoute: typeof LocaleRouteRoute
+    }
     '/api/site/health': {
       id: '/api/site/health'
       path: '/api/site/health'
@@ -394,6 +482,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleToolsCurrencyRouteImport
       parentRoute: typeof LocaleRouteRoute
     }
+    '/$locale/bill-splitter/$tripId': {
+      id: '/$locale/bill-splitter/$tripId'
+      path: '/bill-splitter/$tripId'
+      fullPath: '/$locale/bill-splitter/$tripId'
+      preLoaderRoute: typeof LocaleBillSplitterTripIdRouteRouteImport
+      parentRoute: typeof LocaleRouteRoute
+    }
     '/api/split-bill/trips/': {
       id: '/api/split-bill/trips/'
       path: '/api/split-bill/trips'
@@ -408,6 +503,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleToolsSplitBillIndexRouteImport
       parentRoute: typeof LocaleRouteRoute
     }
+    '/$locale/bill-splitter/$tripId/': {
+      id: '/$locale/bill-splitter/$tripId/'
+      path: '/'
+      fullPath: '/$locale/bill-splitter/$tripId/'
+      preLoaderRoute: typeof LocaleBillSplitterTripIdIndexRouteImport
+      parentRoute: typeof LocaleBillSplitterTripIdRouteRoute
+    }
     '/api/split-bill/trips/$tripId': {
       id: '/api/split-bill/trips/$tripId'
       path: '/api/split-bill/trips/$tripId'
@@ -421,6 +523,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/api/split-bill/device/bootstrap'
       preLoaderRoute: typeof ApiSplitBillDeviceBootstrapRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/$locale/bill-splitter/$tripId/settlement': {
+      id: '/$locale/bill-splitter/$tripId/settlement'
+      path: '/settlement'
+      fullPath: '/$locale/bill-splitter/$tripId/settlement'
+      preLoaderRoute: typeof LocaleBillSplitterTripIdSettlementRouteImport
+      parentRoute: typeof LocaleBillSplitterTripIdRouteRoute
+    }
+    '/$locale/bill-splitter/$tripId/add': {
+      id: '/$locale/bill-splitter/$tripId/add'
+      path: '/add'
+      fullPath: '/$locale/bill-splitter/$tripId/add'
+      preLoaderRoute: typeof LocaleBillSplitterTripIdAddRouteImport
+      parentRoute: typeof LocaleBillSplitterTripIdRouteRoute
     }
     '/$locale/tools/split-bill/$tripId': {
       id: '/$locale/tools/split-bill/$tripId'
@@ -509,6 +625,25 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface LocaleBillSplitterTripIdRouteRouteChildren {
+  LocaleBillSplitterTripIdAddRoute: typeof LocaleBillSplitterTripIdAddRoute
+  LocaleBillSplitterTripIdSettlementRoute: typeof LocaleBillSplitterTripIdSettlementRoute
+  LocaleBillSplitterTripIdIndexRoute: typeof LocaleBillSplitterTripIdIndexRoute
+}
+
+const LocaleBillSplitterTripIdRouteRouteChildren: LocaleBillSplitterTripIdRouteRouteChildren =
+  {
+    LocaleBillSplitterTripIdAddRoute: LocaleBillSplitterTripIdAddRoute,
+    LocaleBillSplitterTripIdSettlementRoute:
+      LocaleBillSplitterTripIdSettlementRoute,
+    LocaleBillSplitterTripIdIndexRoute: LocaleBillSplitterTripIdIndexRoute,
+  }
+
+const LocaleBillSplitterTripIdRouteRouteWithChildren =
+  LocaleBillSplitterTripIdRouteRoute._addFileChildren(
+    LocaleBillSplitterTripIdRouteRouteChildren,
+  )
+
 interface LocaleToolsSplitBillTripIdRouteRouteChildren {
   LocaleToolsSplitBillTripIdAddRoute: typeof LocaleToolsSplitBillTripIdAddRoute
   LocaleToolsSplitBillTripIdSettlementRoute: typeof LocaleToolsSplitBillTripIdSettlementRoute
@@ -529,17 +664,24 @@ const LocaleToolsSplitBillTripIdRouteRouteWithChildren =
   )
 
 interface LocaleRouteRouteChildren {
+  LocaleCurrencyRoute: typeof LocaleCurrencyRoute
   LocaleSettingsRoute: typeof LocaleSettingsRoute
   LocaleIndexRoute: typeof LocaleIndexRoute
+  LocaleBillSplitterTripIdRouteRoute: typeof LocaleBillSplitterTripIdRouteRouteWithChildren
   LocaleToolsCurrencyRoute: typeof LocaleToolsCurrencyRoute
+  LocaleBillSplitterIndexRoute: typeof LocaleBillSplitterIndexRoute
   LocaleToolsSplitBillTripIdRouteRoute: typeof LocaleToolsSplitBillTripIdRouteRouteWithChildren
   LocaleToolsSplitBillIndexRoute: typeof LocaleToolsSplitBillIndexRoute
 }
 
 const LocaleRouteRouteChildren: LocaleRouteRouteChildren = {
+  LocaleCurrencyRoute: LocaleCurrencyRoute,
   LocaleSettingsRoute: LocaleSettingsRoute,
   LocaleIndexRoute: LocaleIndexRoute,
+  LocaleBillSplitterTripIdRouteRoute:
+    LocaleBillSplitterTripIdRouteRouteWithChildren,
   LocaleToolsCurrencyRoute: LocaleToolsCurrencyRoute,
+  LocaleBillSplitterIndexRoute: LocaleBillSplitterIndexRoute,
   LocaleToolsSplitBillTripIdRouteRoute:
     LocaleToolsSplitBillTripIdRouteRouteWithChildren,
   LocaleToolsSplitBillIndexRoute: LocaleToolsSplitBillIndexRoute,

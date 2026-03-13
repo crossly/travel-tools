@@ -20,14 +20,14 @@ export const TOOLS: ToolDefinition[] = [
     slug: 'currency',
     nameKey: 'tool.currency.name',
     descriptionKey: 'tool.currency.description',
-    entryPath: '/tools/currency',
+    entryPath: '/currency',
   },
   {
     id: 'tool_split_bill',
     slug: 'split-bill',
     nameKey: 'tool.splitBill.name',
     descriptionKey: 'tool.splitBill.description',
-    entryPath: '/tools/split-bill',
+    entryPath: '/bill-splitter',
   },
 ]
 

@@ -34,7 +34,7 @@ export function AddExpensePage({ locale, tripId, initialSnapshot = null }: { loc
           title={status.title}
           description={status.description}
           action={
-            <Button type="button" variant="secondary" onClick={() => navigate({ to: getLocalizedPath(locale, '/tools/split-bill') })}>
+            <Button type="button" variant="secondary" onClick={() => navigate({ to: getLocalizedPath(locale, '/bill-splitter') })}>
               {t('common.backToSplitBill')}
             </Button>
           }

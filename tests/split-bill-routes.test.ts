@@ -106,7 +106,7 @@ describe('split bill nested routes', () => {
   })
 
   it('renders the add expense child route', async () => {
-    window.history.pushState({}, '', '/zh-CN/tools/split-bill/trip-123/add')
+    window.history.pushState({}, '', '/zh-CN/bill-splitter/trip-123/add')
 
     const [{ RouterProvider }, { getRouter }] = await Promise.all([
       import('@tanstack/react-router'),
@@ -120,7 +120,7 @@ describe('split bill nested routes', () => {
   })
 
   it('renders the settlement child route', async () => {
-    window.history.pushState({}, '', '/zh-CN/tools/split-bill/trip-123/settlement')
+    window.history.pushState({}, '', '/zh-CN/bill-splitter/trip-123/settlement')
 
     const [{ RouterProvider }, { getRouter }] = await Promise.all([
       import('@tanstack/react-router'),

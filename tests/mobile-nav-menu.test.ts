@@ -24,7 +24,7 @@ beforeAll(() => {
 
 vi.mock('@tanstack/react-router', () => ({
   Link: ({ children, ...props }: { children?: React.ReactNode } & Record<string, unknown>) => createElement('a', props, children),
-  useLocation: () => ({ pathname: '/zh-CN/tools/currency', search: '' }),
+  useLocation: () => ({ pathname: '/zh-CN/currency', search: '' }),
   useNavigate: () => navigateMock,
 }))
 

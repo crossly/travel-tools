@@ -13,11 +13,11 @@
 ## Routes
 
 - `/$locale`
-- `/$locale/tools/currency`
-- `/$locale/tools/split-bill`
-- `/$locale/tools/split-bill/$tripId`
-- `/$locale/tools/split-bill/$tripId/add`
-- `/$locale/tools/split-bill/$tripId/settlement`
+- `/$locale/currency`
+- `/$locale/bill-splitter`
+- `/$locale/bill-splitter/$tripId`
+- `/$locale/bill-splitter/$tripId/add`
+- `/$locale/bill-splitter/$tripId/settlement`
 - `/$locale/settings`
 
 ## API

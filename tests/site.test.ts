@@ -10,19 +10,19 @@ import {
 
 describe('site helpers', () => {
   it('resolves locale and pathname from localized path', () => {
-    expect(resolveLocaleFromPath('/en-us/tools/currency')).toEqual({
+    expect(resolveLocaleFromPath('/en-us/currency')).toEqual({
       locale: 'en-US',
-      pathname: '/tools/currency',
+      pathname: '/currency',
     })
   })
 
   it('falls back to default locale for non-localized path', () => {
-    expect(resolveLocaleFromPath('/tools/currency').locale).toBe(DEFAULT_LOCALE)
+    expect(resolveLocaleFromPath('/currency').locale).toBe(DEFAULT_LOCALE)
   })
 
   it('builds localized paths', () => {
     expect(getLocalizedPath('zh-CN', '/settings')).toBe('/zh-cn/settings')
-    expect(replaceLocaleInPath('/zh-cn/tools/currency', 'en-US')).toBe('/en-us/tools/currency')
+    expect(replaceLocaleInPath('/zh-cn/currency', 'en-US')).toBe('/en-us/currency')
   })
 
   it('maps standard locale values to lowercase URL slugs', () => {
@@ -31,9 +31,9 @@ describe('site helpers', () => {
   })
 
   it('understands legacy mixed-case locale segments', () => {
-    expect(resolveLocaleFromPath('/zh-CN/tools/currency')).toEqual({
+    expect(resolveLocaleFromPath('/zh-CN/currency')).toEqual({
       locale: 'zh-CN',
-      pathname: '/tools/currency',
+      pathname: '/currency',
     })
   })
 

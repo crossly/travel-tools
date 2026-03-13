@@ -96,7 +96,7 @@ export function ExpenseFormCard({
       })
       await onSaved?.()
       if (navigateAfterSave) {
-        navigate({ to: getLocalizedPath(locale, `/tools/split-bill/${tripId}`) })
+        navigate({ to: getLocalizedPath(locale, `/bill-splitter/${tripId}`) })
         return
       }
       form.reset({

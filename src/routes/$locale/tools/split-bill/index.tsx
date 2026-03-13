@@ -1,25 +1,11 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { SplitBillHomePage } from '@/features/split-bill/home-page'
-import { buildDocumentTitle, translate } from '@/lib/i18n'
-import { DEFAULT_LOCALE, resolveLocaleSegment } from '@/lib/site'
-import { loadSplitBillHomeData } from '@/server/split-bill-page-data'
+import { createFileRoute, redirect } from '@tanstack/react-router'
+import { DEFAULT_LOCALE, getLocalizedPath, resolveLocaleSegment } from '@/lib/site'
 
 export const Route = createFileRoute('/$locale/tools/split-bill/')({
-  loader: () => loadSplitBillHomeData(),
-  head: ({ params }) => {
+  beforeLoad: ({ params, location }) => {
     const locale = resolveLocaleSegment(params.locale) ?? DEFAULT_LOCALE
-    return {
-      meta: [
-        { title: buildDocumentTitle(locale, translate(locale, 'split.title')) },
-        { name: 'description', content: translate(locale, 'split.description') },
-      ],
-    }
+    const search = typeof location.search === 'string' ? location.search : ''
+    const hash = typeof location.hash === 'string' ? location.hash : ''
+    throw redirect({ href: `${getLocalizedPath(locale, '/bill-splitter')}${search}${hash}` })
   },
-  component: SplitBillHomeRoute,
 })
-
-function SplitBillHomeRoute() {
-  const { locale } = Route.useParams()
-  const initialData = Route.useLoaderData()
-  return <SplitBillHomePage locale={resolveLocaleSegment(locale) ?? DEFAULT_LOCALE} initialData={initialData} />
-}

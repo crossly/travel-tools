@@ -9,7 +9,7 @@ const umamiTrackMock = vi.fn()
 
 vi.mock('@tanstack/react-router', () => ({
   useLocation: () => ({
-    pathname: '/en-US/tools/currency',
+    pathname: '/en-US/currency',
     search: { base: 'USD' },
     hash: '',
   }),
@@ -21,7 +21,7 @@ describe('GoogleAnalyticsPageviews', () => {
     Object.defineProperty(window, 'umami', { value: { track: umamiTrackMock }, configurable: true })
     Object.defineProperty(window, 'location', {
       value: {
-        href: 'https://routecrate.com/en-US/tools/currency?base=USD',
+        href: 'https://routecrate.com/en-US/currency?base=USD',
         search: '?base=USD',
       },
       configurable: true,
@@ -34,8 +34,8 @@ describe('GoogleAnalyticsPageviews', () => {
     render(createElement(UmamiPageviews, { websiteId: 'a9367edf-7fe2-46c4-ba26-8dd04cbd66ff' }))
 
     expect(gtagMock).toHaveBeenCalledWith('event', 'page_view', expect.objectContaining({
-      page_location: 'https://routecrate.com/en-US/tools/currency?base=USD',
-      page_path: '/en-US/tools/currency?base=USD',
+      page_location: 'https://routecrate.com/en-US/currency?base=USD',
+      page_path: '/en-US/currency?base=USD',
     }))
 
     expect(umamiTrackMock).toHaveBeenCalledTimes(1)

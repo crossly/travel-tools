@@ -1,25 +1,11 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { TripPage } from '@/features/split-bill/trip-page'
-import { buildDocumentTitle, translate } from '@/lib/i18n'
-import { DEFAULT_LOCALE, resolveLocaleSegment } from '@/lib/site'
-import { loadTripSnapshotData } from '@/server/split-bill-page-data'
+import { createFileRoute, redirect } from '@tanstack/react-router'
+import { DEFAULT_LOCALE, getLocalizedPath, resolveLocaleSegment } from '@/lib/site'
 
 export const Route = createFileRoute('/$locale/tools/split-bill/$tripId/')({
-  loader: ({ params }) => loadTripSnapshotData({ data: { tripId: params.tripId } }),
-  head: ({ params, loaderData }) => {
+  beforeLoad: ({ params, location }) => {
     const locale = resolveLocaleSegment(params.locale) ?? DEFAULT_LOCALE
-    return {
-      meta: [
-        { title: buildDocumentTitle(locale, loaderData?.trip.name ?? translate(locale, 'trip.titleFallback')) },
-        { name: 'description', content: loaderData ? `${loaderData.trip.expenseCurrency} / ${loaderData.trip.settlementCurrency}` : '' },
-      ],
-    }
+    const search = typeof location.search === 'string' ? location.search : ''
+    const hash = typeof location.hash === 'string' ? location.hash : ''
+    throw redirect({ href: `${getLocalizedPath(locale, `/bill-splitter/${params.tripId}`)}${search}${hash}` })
   },
-  component: TripRoute,
 })
-
-function TripRoute() {
-  const { locale, tripId } = Route.useParams()
-  const initialSnapshot = Route.useLoaderData()
-  return <TripPage locale={resolveLocaleSegment(locale) ?? DEFAULT_LOCALE} tripId={tripId} initialSnapshot={initialSnapshot} />
-}

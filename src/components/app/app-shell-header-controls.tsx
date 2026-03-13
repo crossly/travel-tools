@@ -16,8 +16,8 @@ const HEADER_NAV_ITEMS: Array<{
   tool?: ToolDefinition['slug']
 }> = [
   { key: 'nav.home', icon: Home, path: '/' },
-  { key: 'nav.currency', icon: WalletCards, path: '/tools/currency', tool: 'currency' },
-  { key: 'nav.splitBill', icon: ReceiptText, path: '/tools/split-bill', tool: 'split-bill' },
+  { key: 'nav.currency', icon: WalletCards, path: '/currency', tool: 'currency' },
+  { key: 'nav.splitBill', icon: ReceiptText, path: '/bill-splitter', tool: 'split-bill' },
 ]
 
 export function AppShellHeaderControls({

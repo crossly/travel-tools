@@ -95,7 +95,7 @@ export function SplitBillHomePage({ locale, initialData }: { locale: Locale; ini
         Number(values.splitCount),
       )
       writeActiveTripId(trip.id)
-      navigate({ to: getLocalizedPath(locale, `/tools/split-bill/${trip.id}`) })
+      navigate({ to: getLocalizedPath(locale, `/bill-splitter/${trip.id}`) })
     } catch (error) {
       setStatus({ tone: 'danger', title: tError((error as Error).message) })
     }
@@ -241,7 +241,7 @@ export function SplitBillHomePage({ locale, initialData }: { locale: Locale; ini
               </div>
             ) : null}
             {trips.slice(0, 6).map((trip) => (
-              <Link key={trip.id} to={getLocalizedPath(locale, `/tools/split-bill/${trip.id}`)} className="block rounded-2xl border border-border bg-muted p-4">
+              <Link key={trip.id} to={getLocalizedPath(locale, `/bill-splitter/${trip.id}`)} className="block rounded-2xl border border-border bg-muted p-4">
                 <p className="font-medium">{trip.name}</p>
                 <p className="mt-1 text-sm text-muted-foreground">{trip.expenseCurrency} / {trip.settlementCurrency}</p>
               </Link>

@@ -12,8 +12,8 @@ import type { Locale, ToolDefinition } from '@/lib/types'
 
 const MOBILE_NAV_ITEMS: Array<{ key: string; path: string; icon: typeof Home; tool?: ToolDefinition['slug'] }> = [
   { key: 'nav.home', path: '/', icon: Home },
-  { key: 'nav.currency', path: '/tools/currency', icon: WalletCards, tool: 'currency' },
-  { key: 'nav.splitBill', path: '/tools/split-bill', icon: ReceiptText, tool: 'split-bill' },
+  { key: 'nav.currency', path: '/currency', icon: WalletCards, tool: 'currency' },
+  { key: 'nav.splitBill', path: '/bill-splitter', icon: ReceiptText, tool: 'split-bill' },
 ]
 
 export function MobileNavMenu({
