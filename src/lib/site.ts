@@ -29,6 +29,13 @@ export const TOOLS: ToolDefinition[] = [
     descriptionKey: 'tool.splitBill.description',
     entryPath: '/bill-splitter',
   },
+  {
+    id: 'tool_travel_phrases',
+    slug: 'travel-phrases',
+    nameKey: 'tool.travelPhrases.name',
+    descriptionKey: 'tool.travelPhrases.description',
+    entryPath: '/travel-phrases',
+  },
 ]
 
 export function isLocale(value: string | undefined | null): value is Locale {

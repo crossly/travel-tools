@@ -1,0 +1,51 @@
+{
+  "country": { "en-US": "Indonesia", "zh-CN": "印度尼西亚" },
+  "slug": "indonesia",
+  "region": "asia",
+  "languageName": { "en-US": "Indonesian", "zh-CN": "印尼语" },
+  "languageCode": "id-ID",
+  "flag": "🇮🇩",
+  "phrases": [
+    { "id": "hello", "nativeText": "Halo", "romanization": null, "audioKey": "travel-phrases/indonesia/hello.mp3" },
+    { "id": "thank_you", "nativeText": "Terima kasih", "romanization": null, "audioKey": "travel-phrases/indonesia/thank_you.mp3" },
+    { "id": "yes", "nativeText": "Ya", "romanization": null, "audioKey": "travel-phrases/indonesia/yes.mp3" },
+    { "id": "no", "nativeText": "Tidak", "romanization": null, "audioKey": "travel-phrases/indonesia/no.mp3" },
+    { "id": "excuse_me", "nativeText": "Permisi", "romanization": null, "audioKey": "travel-phrases/indonesia/excuse_me.mp3" },
+    { "id": "help_me", "nativeText": "Tolong bantu saya", "romanization": null, "audioKey": "travel-phrases/indonesia/help_me.mp3" },
+
+    { "id": "where_station", "nativeText": "Di mana stasiun?", "romanization": null, "audioKey": "travel-phrases/indonesia/where_station.mp3" },
+    { "id": "one_ticket", "nativeText": "Satu tiket, tolong", "romanization": null, "audioKey": "travel-phrases/indonesia/one_ticket.mp3" },
+    { "id": "where_bathroom", "nativeText": "Di mana kamar kecil?", "romanization": null, "audioKey": "travel-phrases/indonesia/where_bathroom.mp3" },
+    { "id": "when_depart", "nativeText": "Berangkat jam berapa?", "romanization": null, "audioKey": "travel-phrases/indonesia/when_depart.mp3" },
+    { "id": "please_stop_here", "nativeText": "Tolong berhenti di sini", "romanization": null, "audioKey": "travel-phrases/indonesia/please_stop_here.mp3" },
+    { "id": "airport_please", "nativeText": "Ke bandara, tolong", "romanization": null, "audioKey": "travel-phrases/indonesia/airport_please.mp3" },
+
+    { "id": "i_have_booking", "nativeText": "Saya punya reservasi", "romanization": null, "audioKey": "travel-phrases/indonesia/i_have_booking.mp3" },
+    { "id": "check_in_please", "nativeText": "Saya mau check-in", "romanization": null, "audioKey": "travel-phrases/indonesia/check_in_please.mp3" },
+    { "id": "check_out_time", "nativeText": "Jam berapa check-out?", "romanization": null, "audioKey": "travel-phrases/indonesia/check_out_time.mp3" },
+    { "id": "wifi_password", "nativeText": "Apa kata sandi Wi-Fi?", "romanization": null, "audioKey": "travel-phrases/indonesia/wifi_password.mp3" },
+    { "id": "more_towel", "nativeText": "Tolong tambah handuk", "romanization": null, "audioKey": "travel-phrases/indonesia/more_towel.mp3" },
+    { "id": "room_key", "nativeText": "Saya lupa kunci kamar", "romanization": null, "audioKey": "travel-phrases/indonesia/room_key.mp3" },
+
+    { "id": "table_for_two", "nativeText": "Meja untuk dua orang", "romanization": null, "audioKey": "travel-phrases/indonesia/table_for_two.mp3" },
+    { "id": "menu_please", "nativeText": "Menu, tolong", "romanization": null, "audioKey": "travel-phrases/indonesia/menu_please.mp3" },
+    { "id": "no_spicy", "nativeText": "Jangan pedas, tolong", "romanization": null, "audioKey": "travel-phrases/indonesia/no_spicy.mp3" },
+    { "id": "vegetarian", "nativeText": "Saya vegetarian", "romanization": null, "audioKey": "travel-phrases/indonesia/vegetarian.mp3" },
+    { "id": "water_please", "nativeText": "Air, tolong", "romanization": null, "audioKey": "travel-phrases/indonesia/water_please.mp3" },
+    { "id": "bill_please", "nativeText": "Tagihannya, tolong", "romanization": null, "audioKey": "travel-phrases/indonesia/bill_please.mp3" },
+
+    { "id": "how_much", "nativeText": "Berapa harganya?", "romanization": null, "audioKey": "travel-phrases/indonesia/how_much.mp3" },
+    { "id": "too_expensive", "nativeText": "Terlalu mahal", "romanization": null, "audioKey": "travel-phrases/indonesia/too_expensive.mp3" },
+    { "id": "card_ok", "nativeText": "Bisa bayar pakai kartu?", "romanization": null, "audioKey": "travel-phrases/indonesia/card_ok.mp3" },
+    { "id": "looking_only", "nativeText": "Saya cuma lihat-lihat", "romanization": null, "audioKey": "travel-phrases/indonesia/looking_only.mp3" },
+    { "id": "different_size", "nativeText": "Ada ukuran lain?", "romanization": null, "audioKey": "travel-phrases/indonesia/different_size.mp3" },
+    { "id": "tax_free", "nativeText": "Apakah ini bebas pajak?", "romanization": null, "audioKey": "travel-phrases/indonesia/tax_free.mp3" },
+
+    { "id": "call_police", "nativeText": "Tolong panggil polisi", "romanization": null, "audioKey": "travel-phrases/indonesia/call_police.mp3" },
+    { "id": "call_ambulance", "nativeText": "Tolong panggil ambulans", "romanization": null, "audioKey": "travel-phrases/indonesia/call_ambulance.mp3" },
+    { "id": "i_am_lost", "nativeText": "Saya tersesat", "romanization": null, "audioKey": "travel-phrases/indonesia/i_am_lost.mp3" },
+    { "id": "need_pharmacy", "nativeText": "Saya butuh apotek", "romanization": null, "audioKey": "travel-phrases/indonesia/need_pharmacy.mp3" },
+    { "id": "need_doctor", "nativeText": "Saya butuh dokter", "romanization": null, "audioKey": "travel-phrases/indonesia/need_doctor.mp3" },
+    { "id": "i_need_help", "nativeText": "Saya butuh bantuan sekarang", "romanization": null, "audioKey": "travel-phrases/indonesia/i_need_help.mp3" }
+  ]
+}

@@ -1,6 +1,6 @@
 <svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">Route Crate</title>
-  <desc id="desc">Travel-ready currency and bill splitter tools.</desc>
+  <desc id="desc">Travel-ready currency, phrase, and bill-splitting tools.</desc>
   <rect width="1200" height="630" rx="48" fill="#F4EFE8"/>
   <rect x="34" y="34" width="1132" height="562" rx="40" fill="#FCFAF6" stroke="#E4D8CA" stroke-width="4"/>
   <g opacity="0.8">
@@ -15,7 +15,7 @@
     <path d="M74 166H150" stroke="#D86F20" stroke-width="18" stroke-linecap="round"/>
   </g>
   <text x="392" y="248" fill="#251A12" font-size="88" font-weight="700" font-family="ui-sans-serif, system-ui, sans-serif">Route Crate</text>
-  <text x="392" y="328" fill="#6F5E50" font-size="34" font-weight="500" font-family="ui-sans-serif, system-ui, sans-serif">Travel-ready currency conversion and bill splitting.</text>
+  <text x="392" y="328" fill="#6F5E50" font-size="34" font-weight="500" font-family="ui-sans-serif, system-ui, sans-serif">Currency, phrase cards, and bill splitting for travel.</text>
   <g transform="translate(392 392)">
     <rect width="236" height="74" rx="26" fill="#FCFAF6" stroke="#E4D8CA" stroke-width="3"/>
     <text x="38" y="47" fill="#251A12" font-size="28" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Currency</text>
@@ -23,5 +23,9 @@
   <g transform="translate(650 392)">
     <rect width="302" height="74" rx="26" fill="#FCFAF6" stroke="#E4D8CA" stroke-width="3"/>
     <text x="38" y="47" fill="#251A12" font-size="28" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Bill Splitter</text>
+  </g>
+  <g transform="translate(972 392)">
+    <rect width="176" height="74" rx="26" fill="#FCFAF6" stroke="#E4D8CA" stroke-width="3"/>
+    <text x="34" y="47" fill="#251A12" font-size="28" font-weight="600" font-family="ui-sans-serif, system-ui, sans-serif">Phrases</text>
   </g>
 </svg>

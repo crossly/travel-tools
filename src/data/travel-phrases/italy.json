@@ -1,0 +1,51 @@
+{
+  "country": { "en-US": "Italy", "zh-CN": "意大利" },
+  "slug": "italy",
+  "region": "europe",
+  "languageName": { "en-US": "Italian", "zh-CN": "意大利语" },
+  "languageCode": "it-IT",
+  "flag": "🇮🇹",
+  "phrases": [
+    { "id": "hello", "nativeText": "Ciao", "romanization": null, "audioKey": "travel-phrases/italy/hello.mp3" },
+    { "id": "thank_you", "nativeText": "Grazie", "romanization": null, "audioKey": "travel-phrases/italy/thank_you.mp3" },
+    { "id": "yes", "nativeText": "Sì", "romanization": null, "audioKey": "travel-phrases/italy/yes.mp3" },
+    { "id": "no", "nativeText": "No", "romanization": null, "audioKey": "travel-phrases/italy/no.mp3" },
+    { "id": "excuse_me", "nativeText": "Mi scusi", "romanization": null, "audioKey": "travel-phrases/italy/excuse_me.mp3" },
+    { "id": "help_me", "nativeText": "Per favore, mi aiuti", "romanization": null, "audioKey": "travel-phrases/italy/help_me.mp3" },
+
+    { "id": "where_station", "nativeText": "Dov'è la stazione?", "romanization": null, "audioKey": "travel-phrases/italy/where_station.mp3" },
+    { "id": "one_ticket", "nativeText": "Un biglietto, per favore", "romanization": null, "audioKey": "travel-phrases/italy/one_ticket.mp3" },
+    { "id": "where_bathroom", "nativeText": "Dov'è il bagno?", "romanization": null, "audioKey": "travel-phrases/italy/where_bathroom.mp3" },
+    { "id": "when_depart", "nativeText": "Quando parte?", "romanization": null, "audioKey": "travel-phrases/italy/when_depart.mp3" },
+    { "id": "please_stop_here", "nativeText": "Si fermi qui, per favore", "romanization": null, "audioKey": "travel-phrases/italy/please_stop_here.mp3" },
+    { "id": "airport_please", "nativeText": "All'aeroporto, per favore", "romanization": null, "audioKey": "travel-phrases/italy/airport_please.mp3" },
+
+    { "id": "i_have_booking", "nativeText": "Ho una prenotazione", "romanization": null, "audioKey": "travel-phrases/italy/i_have_booking.mp3" },
+    { "id": "check_in_please", "nativeText": "Vorrei fare il check-in", "romanization": null, "audioKey": "travel-phrases/italy/check_in_please.mp3" },
+    { "id": "check_out_time", "nativeText": "A che ora è il check-out?", "romanization": null, "audioKey": "travel-phrases/italy/check_out_time.mp3" },
+    { "id": "wifi_password", "nativeText": "Qual è la password del Wi-Fi?", "romanization": null, "audioKey": "travel-phrases/italy/wifi_password.mp3" },
+    { "id": "more_towel", "nativeText": "Più asciugamani, per favore", "romanization": null, "audioKey": "travel-phrases/italy/more_towel.mp3" },
+    { "id": "room_key", "nativeText": "Ho dimenticato la chiave della camera", "romanization": null, "audioKey": "travel-phrases/italy/room_key.mp3" },
+
+    { "id": "table_for_two", "nativeText": "Un tavolo per due, per favore", "romanization": null, "audioKey": "travel-phrases/italy/table_for_two.mp3" },
+    { "id": "menu_please", "nativeText": "Il menu, per favore", "romanization": null, "audioKey": "travel-phrases/italy/menu_please.mp3" },
+    { "id": "no_spicy", "nativeText": "Non piccante, per favore", "romanization": null, "audioKey": "travel-phrases/italy/no_spicy.mp3" },
+    { "id": "vegetarian", "nativeText": "Sono vegetariano/a", "romanization": null, "audioKey": "travel-phrases/italy/vegetarian.mp3" },
+    { "id": "water_please", "nativeText": "Acqua, per favore", "romanization": null, "audioKey": "travel-phrases/italy/water_please.mp3" },
+    { "id": "bill_please", "nativeText": "Il conto, per favore", "romanization": null, "audioKey": "travel-phrases/italy/bill_please.mp3" },
+
+    { "id": "how_much", "nativeText": "Quanto costa?", "romanization": null, "audioKey": "travel-phrases/italy/how_much.mp3" },
+    { "id": "too_expensive", "nativeText": "È troppo caro", "romanization": null, "audioKey": "travel-phrases/italy/too_expensive.mp3" },
+    { "id": "card_ok", "nativeText": "Posso pagare con carta?", "romanization": null, "audioKey": "travel-phrases/italy/card_ok.mp3" },
+    { "id": "looking_only", "nativeText": "Sto solo guardando", "romanization": null, "audioKey": "travel-phrases/italy/looking_only.mp3" },
+    { "id": "different_size", "nativeText": "Ha un'altra taglia?", "romanization": null, "audioKey": "travel-phrases/italy/different_size.mp3" },
+    { "id": "tax_free", "nativeText": "C'è il tax-free?", "romanization": null, "audioKey": "travel-phrases/italy/tax_free.mp3" },
+
+    { "id": "call_police", "nativeText": "Chiami la polizia, per favore", "romanization": null, "audioKey": "travel-phrases/italy/call_police.mp3" },
+    { "id": "call_ambulance", "nativeText": "Chiami un'ambulanza, per favore", "romanization": null, "audioKey": "travel-phrases/italy/call_ambulance.mp3" },
+    { "id": "i_am_lost", "nativeText": "Mi sono perso/a", "romanization": null, "audioKey": "travel-phrases/italy/i_am_lost.mp3" },
+    { "id": "need_pharmacy", "nativeText": "Ho bisogno di una farmacia", "romanization": null, "audioKey": "travel-phrases/italy/need_pharmacy.mp3" },
+    { "id": "need_doctor", "nativeText": "Ho bisogno di un medico", "romanization": null, "audioKey": "travel-phrases/italy/need_doctor.mp3" },
+    { "id": "i_need_help", "nativeText": "Ho bisogno di aiuto subito", "romanization": null, "audioKey": "travel-phrases/italy/i_need_help.mp3" }
+  ]
+}

@@ -1,5 +1,5 @@
 import { Link, useLocation } from '@tanstack/react-router'
-import { Home, ReceiptText, Settings, WalletCards } from 'lucide-react'
+import { Home, Languages, ReceiptText, Settings, WalletCards } from 'lucide-react'
 import { LocaleSwitcher } from './locale-switcher'
 import { ThemeToggle } from './theme-toggle'
 import { Button } from '@/components/ui/button'
@@ -17,6 +17,7 @@ const HEADER_NAV_ITEMS: Array<{
 }> = [
   { key: 'nav.home', icon: Home, path: '/' },
   { key: 'nav.currency', icon: WalletCards, path: '/currency', tool: 'currency' },
+  { key: 'nav.travelPhrases', icon: Languages, path: '/travel-phrases', tool: 'travel-phrases' },
   { key: 'nav.splitBill', icon: ReceiptText, path: '/bill-splitter', tool: 'split-bill' },
 ]
 

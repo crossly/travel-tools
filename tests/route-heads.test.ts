@@ -20,7 +20,7 @@ describe('route heads', () => {
 
     expect(head.meta).toEqual(expect.arrayContaining([
       expect.objectContaining({ title: '旅行箱' }),
-      expect.objectContaining({ name: 'description', content: '统一壳、统一交互、统一主题。首发汇率换算和旅行 AA。' }),
+      expect.objectContaining({ name: 'description', content: '统一壳、统一交互、统一主题。首发汇率换算、旅行短语卡和旅行 AA。' }),
     ]))
     expect(head.links).toEqual(expect.arrayContaining([
       expect.objectContaining({ rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' }),
@@ -89,6 +89,63 @@ describe('route heads', () => {
     expect(head.meta).toEqual(expect.arrayContaining([
       expect.objectContaining({ title: 'Settings · Route Crate' }),
       expect.objectContaining({ name: 'robots', content: 'noindex, nofollow' }),
+    ]))
+  })
+
+  it('emits public metadata for travel phrases routes', async () => {
+    const { Route } = await import('@/routes/$locale/travel-phrases/index')
+    const head = (Route as unknown as {
+      options: {
+        head: (args: { params: { locale: string } }) => {
+          meta: Array<Record<string, string>>
+          links: Array<Record<string, string>>
+        }
+      }
+    }).options.head({
+      params: { locale: 'en-us' },
+    })
+
+    expect(head.meta).toEqual(expect.arrayContaining([
+      expect.objectContaining({ title: 'Travel Phrases · Route Crate' }),
+      expect.objectContaining({ name: 'description', content: 'Country-based travel phrase packs with playable audio for transport, hotels, dining, shopping, and emergencies.' }),
+    ]))
+    expect(head.links).toEqual(expect.arrayContaining([
+      expect.objectContaining({ rel: 'canonical', href: 'https://www.routecrate.com/en-us/travel-phrases' }),
+    ]))
+  })
+
+  it('emits public metadata for travel phrase country pages', async () => {
+    const { Route } = await import('@/routes/$locale/travel-phrases/$country')
+    const head = (Route as unknown as {
+      options: {
+        head: (args: {
+          params: { locale: string; country: string }
+          loaderData?: {
+            pack: { title: string; description: string; slug: string } | null
+          }
+        }) => {
+          meta: Array<Record<string, string>>
+          links: Array<Record<string, string>>
+        }
+      }
+    }).options.head({
+      params: { locale: 'en-us', country: 'japan' },
+      loaderData: {
+        pack: {
+          title: 'Japan Travel Phrases',
+          description: 'Useful local phrases for transport, hotels, dining, shopping, and emergencies in Japan.',
+          slug: 'japan',
+        },
+      },
+    })
+
+    expect(head.meta).toEqual(expect.arrayContaining([
+      expect.objectContaining({ title: 'Japan Travel Phrases · Route Crate' }),
+      expect.objectContaining({ name: 'description', content: 'Useful local phrases for transport, hotels, dining, shopping, and emergencies in Japan.' }),
+      expect.objectContaining({ property: 'og:url', content: 'https://www.routecrate.com/en-us/travel-phrases/japan' }),
+    ]))
+    expect(head.links).toEqual(expect.arrayContaining([
+      expect.objectContaining({ rel: 'canonical', href: 'https://www.routecrate.com/en-us/travel-phrases/japan' }),
     ]))
   })
 })

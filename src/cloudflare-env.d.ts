@@ -2,6 +2,7 @@ interface CloudflareEnv {
   DB: D1Database
   APP_KV: KVNamespace
   RATES_KV: KVNamespace
+  PHRASE_AUDIO?: R2Bucket
   ASSETS: Fetcher
   FX_API_BASE_URL?: string
   OPEN_EXCHANGE_RATES_APP_ID?: string

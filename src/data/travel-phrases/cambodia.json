@@ -1,0 +1,51 @@
+{
+  "country": { "en-US": "Cambodia", "zh-CN": "柬埔寨" },
+  "slug": "cambodia",
+  "region": "asia",
+  "languageName": { "en-US": "Khmer", "zh-CN": "高棉语" },
+  "languageCode": "km-KH",
+  "flag": "🇰🇭",
+  "phrases": [
+    { "id": "hello", "nativeText": "សួស្តី", "romanization": "Suostei", "audioKey": null },
+    { "id": "thank_you", "nativeText": "អរគុណ", "romanization": "Orkun", "audioKey": null },
+    { "id": "yes", "nativeText": "បាទ/ចាស", "romanization": "Baat / Chaas", "audioKey": null },
+    { "id": "no", "nativeText": "ទេ", "romanization": "Te", "audioKey": null },
+    { "id": "excuse_me", "nativeText": "សុំទោស", "romanization": "Somtos", "audioKey": null },
+    { "id": "help_me", "nativeText": "ជួយខ្ញុំផង", "romanization": "Chuoy khnhom phong", "audioKey": null },
+
+    { "id": "where_station", "nativeText": "ស្ថានីយនៅឯណា?", "romanization": "Sathaniy nov ae na?", "audioKey": null },
+    { "id": "one_ticket", "nativeText": "សំបុត្រមួយសន្លឹក សូម", "romanization": "Sambot muoy sanlek, som", "audioKey": null },
+    { "id": "where_bathroom", "nativeText": "បន្ទប់ទឹកនៅឯណា?", "romanization": "Bantob teuk nov ae na?", "audioKey": null },
+    { "id": "when_depart", "nativeText": "ចេញម៉ោងប៉ុន្មាន?", "romanization": "Chenh maong bonman?", "audioKey": null },
+    { "id": "please_stop_here", "nativeText": "ឈប់ទីនេះសូម", "romanization": "Chhop ti nih som", "audioKey": null },
+    { "id": "airport_please", "nativeText": "ទៅអាកាសយានដ្ឋានសូម", "romanization": "Tov akas yeanthan som", "audioKey": null },
+
+    { "id": "i_have_booking", "nativeText": "ខ្ញុំមានការកក់", "romanization": "Khnhom mean kar kak", "audioKey": null },
+    { "id": "check_in_please", "nativeText": "សូមចុះឈ្មោះចូល", "romanization": "Som choh chhmoh chol", "audioKey": null },
+    { "id": "check_out_time", "nativeText": "ចេញពីបន្ទប់ម៉ោងប៉ុន្មាន?", "romanization": "Chenh pi bantob maong bonman?", "audioKey": null },
+    { "id": "wifi_password", "nativeText": "ពាក្យសម្ងាត់ Wi-Fi គឺអ្វី?", "romanization": "Peak samngat Wi-Fi ku ey?", "audioKey": null },
+    { "id": "more_towel", "nativeText": "សូមកន្សែងបន្ថែម", "romanization": "Som kansaeng banthem", "audioKey": null },
+    { "id": "room_key", "nativeText": "ខ្ញុំភ្លេចសោបន្ទប់", "romanization": "Khnhom phlech sao bantob", "audioKey": null },
+
+    { "id": "table_for_two", "nativeText": "តុសម្រាប់ពីរនាក់ សូម", "romanization": "To samrab pi neak, som", "audioKey": null },
+    { "id": "menu_please", "nativeText": "សូមម៉ឺនុយ", "romanization": "Som menu", "audioKey": null },
+    { "id": "no_spicy", "nativeText": "សូមកុំហឹរ", "romanization": "Som kom her", "audioKey": null },
+    { "id": "vegetarian", "nativeText": "ខ្ញុំជាមនុស្សបួស", "romanization": "Khnhom chea monus boas", "audioKey": null },
+    { "id": "water_please", "nativeText": "សូមទឹក", "romanization": "Som teuk", "audioKey": null },
+    { "id": "bill_please", "nativeText": "សូមគិតលុយ", "romanization": "Som kit luy", "audioKey": null },
+
+    { "id": "how_much", "nativeText": "នេះថ្លៃប៉ុន្មាន?", "romanization": "Nih thlai bonman?", "audioKey": null },
+    { "id": "too_expensive", "nativeText": "ថ្លៃពេក", "romanization": "Thlai pek", "audioKey": null },
+    { "id": "card_ok", "nativeText": "អាចបង់កាតបានទេ?", "romanization": "Ach bang kat ban te?", "audioKey": null },
+    { "id": "looking_only", "nativeText": "ខ្ញុំមើលសិន", "romanization": "Khnhom merl sen", "audioKey": null },
+    { "id": "different_size", "nativeText": "មានទំហំផ្សេងទៀតទេ?", "romanization": "Mean tomhom pseng tiet te?", "audioKey": null },
+    { "id": "tax_free", "nativeText": "អាចដកពន្ធបានទេ?", "romanization": "Ach dok pon ban te?", "audioKey": null },
+
+    { "id": "call_police", "nativeText": "សូមហៅប៉ូលិស", "romanization": "Som hav polis", "audioKey": null },
+    { "id": "call_ambulance", "nativeText": "សូមហៅរថយន្តសង្គ្រោះ", "romanization": "Som hav roth yun sangkroh", "audioKey": null },
+    { "id": "i_am_lost", "nativeText": "ខ្ញុំវង្វេងផ្លូវ", "romanization": "Khnhom vongveng phlov", "audioKey": null },
+    { "id": "need_pharmacy", "nativeText": "ខ្ញុំត្រូវការហាងឱសថ", "romanization": "Khnhom trovkar hang osot", "audioKey": null },
+    { "id": "need_doctor", "nativeText": "ខ្ញុំត្រូវការវេជ្ជបណ្ឌិត", "romanization": "Khnhom trovkar vejabondit", "audioKey": null },
+    { "id": "i_need_help", "nativeText": "ខ្ញុំត្រូវការជំនួយឥឡូវនេះ", "romanization": "Khnhom trovkar chuoy ilov nih", "audioKey": null }
+  ]
+}

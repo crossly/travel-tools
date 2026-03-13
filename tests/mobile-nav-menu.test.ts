@@ -43,6 +43,7 @@ vi.mock('@/lib/i18n', () => ({
         'site.mobileCloseMenu': '关闭菜单',
         'nav.home': '首页',
         'nav.currency': '汇率',
+        'nav.travelPhrases': '短语卡',
         'nav.splitBill': 'AA',
         'nav.settings': '设置',
         'settings.language': '语言',
@@ -116,6 +117,7 @@ describe('MobileNavMenu', () => {
 
     expect(screen.getByRole('button', { name: '首页' })).toBeTruthy()
     expect(screen.getByRole('button', { name: '汇率' })).toBeTruthy()
+    expect(screen.getByRole('button', { name: '短语卡' })).toBeTruthy()
     expect(screen.getByRole('button', { name: 'AA' })).toBeTruthy()
 
     fireEvent.click(screen.getByRole('button', { name: '外观' }))

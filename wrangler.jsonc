@@ -27,6 +27,12 @@
       "database_id": "37c57e0d-96f1-4181-acdc-98c9b35a5ebd"
     }
   ],
+  "r2_buckets": [
+    {
+      "binding": "PHRASE_AUDIO",
+      "bucket_name": "route-crate-phrase-audio"
+    }
+  ],
   "kv_namespaces": [
     {
       "binding": "APP_KV",

@@ -1,0 +1,51 @@
+{
+  "country": { "en-US": "Vietnam", "zh-CN": "越南" },
+  "slug": "vietnam",
+  "region": "asia",
+  "languageName": { "en-US": "Vietnamese", "zh-CN": "越南语" },
+  "languageCode": "vi-VN",
+  "flag": "🇻🇳",
+  "phrases": [
+    { "id": "hello", "nativeText": "Xin chào", "romanization": null, "audioKey": "travel-phrases/vietnam/hello.mp3" },
+    { "id": "thank_you", "nativeText": "Cảm ơn", "romanization": null, "audioKey": "travel-phrases/vietnam/thank_you.mp3" },
+    { "id": "yes", "nativeText": "Vâng", "romanization": null, "audioKey": "travel-phrases/vietnam/yes.mp3" },
+    { "id": "no", "nativeText": "Không", "romanization": null, "audioKey": "travel-phrases/vietnam/no.mp3" },
+    { "id": "excuse_me", "nativeText": "Xin lỗi", "romanization": null, "audioKey": "travel-phrases/vietnam/excuse_me.mp3" },
+    { "id": "help_me", "nativeText": "Làm ơn giúp tôi", "romanization": null, "audioKey": "travel-phrases/vietnam/help_me.mp3" },
+
+    { "id": "where_station", "nativeText": "Nhà ga ở đâu?", "romanization": null, "audioKey": "travel-phrases/vietnam/where_station.mp3" },
+    { "id": "one_ticket", "nativeText": "Cho tôi một vé", "romanization": null, "audioKey": "travel-phrases/vietnam/one_ticket.mp3" },
+    { "id": "where_bathroom", "nativeText": "Nhà vệ sinh ở đâu?", "romanization": null, "audioKey": "travel-phrases/vietnam/where_bathroom.mp3" },
+    { "id": "when_depart", "nativeText": "Khi nào khởi hành?", "romanization": null, "audioKey": "travel-phrases/vietnam/when_depart.mp3" },
+    { "id": "please_stop_here", "nativeText": "Làm ơn dừng ở đây", "romanization": null, "audioKey": "travel-phrases/vietnam/please_stop_here.mp3" },
+    { "id": "airport_please", "nativeText": "Cho tôi đến sân bay", "romanization": null, "audioKey": "travel-phrases/vietnam/airport_please.mp3" },
+
+    { "id": "i_have_booking", "nativeText": "Tôi có đặt phòng", "romanization": null, "audioKey": "travel-phrases/vietnam/i_have_booking.mp3" },
+    { "id": "check_in_please", "nativeText": "Tôi muốn nhận phòng", "romanization": null, "audioKey": "travel-phrases/vietnam/check_in_please.mp3" },
+    { "id": "check_out_time", "nativeText": "Mấy giờ trả phòng?", "romanization": null, "audioKey": "travel-phrases/vietnam/check_out_time.mp3" },
+    { "id": "wifi_password", "nativeText": "Mật khẩu Wi-Fi là gì?", "romanization": null, "audioKey": "travel-phrases/vietnam/wifi_password.mp3" },
+    { "id": "more_towel", "nativeText": "Cho tôi thêm khăn", "romanization": null, "audioKey": "travel-phrases/vietnam/more_towel.mp3" },
+    { "id": "room_key", "nativeText": "Tôi quên chìa khóa phòng", "romanization": null, "audioKey": "travel-phrases/vietnam/room_key.mp3" },
+
+    { "id": "table_for_two", "nativeText": "Cho hai người", "romanization": null, "audioKey": "travel-phrases/vietnam/table_for_two.mp3" },
+    { "id": "menu_please", "nativeText": "Cho tôi xem thực đơn", "romanization": null, "audioKey": "travel-phrases/vietnam/menu_please.mp3" },
+    { "id": "no_spicy", "nativeText": "Xin đừng cay", "romanization": null, "audioKey": "travel-phrases/vietnam/no_spicy.mp3" },
+    { "id": "vegetarian", "nativeText": "Tôi ăn chay", "romanization": null, "audioKey": "travel-phrases/vietnam/vegetarian.mp3" },
+    { "id": "water_please", "nativeText": "Cho tôi nước", "romanization": null, "audioKey": "travel-phrases/vietnam/water_please.mp3" },
+    { "id": "bill_please", "nativeText": "Cho tôi thanh toán", "romanization": null, "audioKey": "travel-phrases/vietnam/bill_please.mp3" },
+
+    { "id": "how_much", "nativeText": "Cái này bao nhiêu?", "romanization": null, "audioKey": "travel-phrases/vietnam/how_much.mp3" },
+    { "id": "too_expensive", "nativeText": "Đắt quá", "romanization": null, "audioKey": "travel-phrases/vietnam/too_expensive.mp3" },
+    { "id": "card_ok", "nativeText": "Tôi có thể trả bằng thẻ không?", "romanization": null, "audioKey": "travel-phrases/vietnam/card_ok.mp3" },
+    { "id": "looking_only", "nativeText": "Tôi chỉ xem thôi", "romanization": null, "audioKey": "travel-phrases/vietnam/looking_only.mp3" },
+    { "id": "different_size", "nativeText": "Có cỡ khác không?", "romanization": null, "audioKey": "travel-phrases/vietnam/different_size.mp3" },
+    { "id": "tax_free", "nativeText": "Có hoàn thuế không?", "romanization": null, "audioKey": "travel-phrases/vietnam/tax_free.mp3" },
+
+    { "id": "call_police", "nativeText": "Làm ơn gọi cảnh sát", "romanization": null, "audioKey": "travel-phrases/vietnam/call_police.mp3" },
+    { "id": "call_ambulance", "nativeText": "Làm ơn gọi xe cứu thương", "romanization": null, "audioKey": "travel-phrases/vietnam/call_ambulance.mp3" },
+    { "id": "i_am_lost", "nativeText": "Tôi bị lạc", "romanization": null, "audioKey": "travel-phrases/vietnam/i_am_lost.mp3" },
+    { "id": "need_pharmacy", "nativeText": "Tôi cần nhà thuốc", "romanization": null, "audioKey": "travel-phrases/vietnam/need_pharmacy.mp3" },
+    { "id": "need_doctor", "nativeText": "Tôi cần bác sĩ", "romanization": null, "audioKey": "travel-phrases/vietnam/need_doctor.mp3" },
+    { "id": "i_need_help", "nativeText": "Tôi cần giúp đỡ ngay", "romanization": null, "audioKey": "travel-phrases/vietnam/i_need_help.mp3" }
+  ]
+}

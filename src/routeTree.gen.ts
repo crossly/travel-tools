@@ -14,15 +14,18 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as LocaleIndexRouteImport } from './routes/$locale/index'
 import { Route as LocaleSettingsRouteImport } from './routes/$locale/settings'
 import { Route as LocaleCurrencyRouteImport } from './routes/$locale/currency'
+import { Route as LocaleTravelPhrasesIndexRouteImport } from './routes/$locale/travel-phrases/index'
 import { Route as LocaleBillSplitterIndexRouteImport } from './routes/$locale/bill-splitter/index'
 import { Route as ApiSiteHealthRouteImport } from './routes/api/site/health'
 import { Route as ApiFxRatesRouteImport } from './routes/api/fx/rates'
 import { Route as ApiFxDetectRouteImport } from './routes/api/fx/detect'
+import { Route as LocaleTravelPhrasesCountryRouteImport } from './routes/$locale/travel-phrases/$country'
 import { Route as LocaleBillSplitterTripIdRouteRouteImport } from './routes/$locale/bill-splitter/$tripId/route'
 import { Route as ApiSplitBillTripsIndexRouteImport } from './routes/api/split-bill/trips/index'
 import { Route as LocaleBillSplitterTripIdIndexRouteImport } from './routes/$locale/bill-splitter/$tripId/index'
 import { Route as ApiSplitBillTripsTripIdRouteImport } from './routes/api/split-bill/trips/$tripId'
 import { Route as ApiSplitBillDeviceBootstrapRouteImport } from './routes/api/split-bill/device/bootstrap'
+import { Route as ApiPhraseAudioCountryPhraseIdRouteImport } from './routes/api/phrase-audio/$country/$phraseId'
 import { Route as LocaleBillSplitterTripIdSettlementRouteImport } from './routes/$locale/bill-splitter/$tripId/settlement'
 import { Route as LocaleBillSplitterTripIdAddRouteImport } from './routes/$locale/bill-splitter/$tripId/add'
 import { Route as ApiSplitBillTripsTripIdSnapshotRouteImport } from './routes/api/split-bill/trips/$tripId/snapshot'
@@ -59,6 +62,12 @@ const LocaleCurrencyRoute = LocaleCurrencyRouteImport.update({
   path: '/currency',
   getParentRoute: () => LocaleRouteRoute,
 } as any)
+const LocaleTravelPhrasesIndexRoute =
+  LocaleTravelPhrasesIndexRouteImport.update({
+    id: '/travel-phrases/',
+    path: '/travel-phrases/',
+    getParentRoute: () => LocaleRouteRoute,
+  } as any)
 const LocaleBillSplitterIndexRoute = LocaleBillSplitterIndexRouteImport.update({
   id: '/bill-splitter/',
   path: '/bill-splitter/',
@@ -79,6 +88,12 @@ const ApiFxDetectRoute = ApiFxDetectRouteImport.update({
   path: '/api/fx/detect',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LocaleTravelPhrasesCountryRoute =
+  LocaleTravelPhrasesCountryRouteImport.update({
+    id: '/travel-phrases/$country',
+    path: '/travel-phrases/$country',
+    getParentRoute: () => LocaleRouteRoute,
+  } as any)
 const LocaleBillSplitterTripIdRouteRoute =
   LocaleBillSplitterTripIdRouteRouteImport.update({
     id: '/bill-splitter/$tripId',
@@ -105,6 +120,12 @@ const ApiSplitBillDeviceBootstrapRoute =
   ApiSplitBillDeviceBootstrapRouteImport.update({
     id: '/api/split-bill/device/bootstrap',
     path: '/api/split-bill/device/bootstrap',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiPhraseAudioCountryPhraseIdRoute =
+  ApiPhraseAudioCountryPhraseIdRouteImport.update({
+    id: '/api/phrase-audio/$country/$phraseId',
+    path: '/api/phrase-audio/$country/$phraseId',
     getParentRoute: () => rootRouteImport,
   } as any)
 const LocaleBillSplitterTripIdSettlementRoute =
@@ -175,12 +196,15 @@ export interface FileRoutesByFullPath {
   '/$locale/settings': typeof LocaleSettingsRoute
   '/$locale/': typeof LocaleIndexRoute
   '/$locale/bill-splitter/$tripId': typeof LocaleBillSplitterTripIdRouteRouteWithChildren
+  '/$locale/travel-phrases/$country': typeof LocaleTravelPhrasesCountryRoute
   '/api/fx/detect': typeof ApiFxDetectRoute
   '/api/fx/rates': typeof ApiFxRatesRoute
   '/api/site/health': typeof ApiSiteHealthRoute
   '/$locale/bill-splitter/': typeof LocaleBillSplitterIndexRoute
+  '/$locale/travel-phrases/': typeof LocaleTravelPhrasesIndexRoute
   '/$locale/bill-splitter/$tripId/add': typeof LocaleBillSplitterTripIdAddRoute
   '/$locale/bill-splitter/$tripId/settlement': typeof LocaleBillSplitterTripIdSettlementRoute
+  '/api/phrase-audio/$country/$phraseId': typeof ApiPhraseAudioCountryPhraseIdRoute
   '/api/split-bill/device/bootstrap': typeof ApiSplitBillDeviceBootstrapRoute
   '/api/split-bill/trips/$tripId': typeof ApiSplitBillTripsTripIdRouteWithChildren
   '/$locale/bill-splitter/$tripId/': typeof LocaleBillSplitterTripIdIndexRoute
@@ -199,12 +223,15 @@ export interface FileRoutesByTo {
   '/$locale/currency': typeof LocaleCurrencyRoute
   '/$locale/settings': typeof LocaleSettingsRoute
   '/$locale': typeof LocaleIndexRoute
+  '/$locale/travel-phrases/$country': typeof LocaleTravelPhrasesCountryRoute
   '/api/fx/detect': typeof ApiFxDetectRoute
   '/api/fx/rates': typeof ApiFxRatesRoute
   '/api/site/health': typeof ApiSiteHealthRoute
   '/$locale/bill-splitter': typeof LocaleBillSplitterIndexRoute
+  '/$locale/travel-phrases': typeof LocaleTravelPhrasesIndexRoute
   '/$locale/bill-splitter/$tripId/add': typeof LocaleBillSplitterTripIdAddRoute
   '/$locale/bill-splitter/$tripId/settlement': typeof LocaleBillSplitterTripIdSettlementRoute
+  '/api/phrase-audio/$country/$phraseId': typeof ApiPhraseAudioCountryPhraseIdRoute
   '/api/split-bill/device/bootstrap': typeof ApiSplitBillDeviceBootstrapRoute
   '/api/split-bill/trips/$tripId': typeof ApiSplitBillTripsTripIdRouteWithChildren
   '/$locale/bill-splitter/$tripId': typeof LocaleBillSplitterTripIdIndexRoute
@@ -226,12 +253,15 @@ export interface FileRoutesById {
   '/$locale/settings': typeof LocaleSettingsRoute
   '/$locale/': typeof LocaleIndexRoute
   '/$locale/bill-splitter/$tripId': typeof LocaleBillSplitterTripIdRouteRouteWithChildren
+  '/$locale/travel-phrases/$country': typeof LocaleTravelPhrasesCountryRoute
   '/api/fx/detect': typeof ApiFxDetectRoute
   '/api/fx/rates': typeof ApiFxRatesRoute
   '/api/site/health': typeof ApiSiteHealthRoute
   '/$locale/bill-splitter/': typeof LocaleBillSplitterIndexRoute
+  '/$locale/travel-phrases/': typeof LocaleTravelPhrasesIndexRoute
   '/$locale/bill-splitter/$tripId/add': typeof LocaleBillSplitterTripIdAddRoute
   '/$locale/bill-splitter/$tripId/settlement': typeof LocaleBillSplitterTripIdSettlementRoute
+  '/api/phrase-audio/$country/$phraseId': typeof ApiPhraseAudioCountryPhraseIdRoute
   '/api/split-bill/device/bootstrap': typeof ApiSplitBillDeviceBootstrapRoute
   '/api/split-bill/trips/$tripId': typeof ApiSplitBillTripsTripIdRouteWithChildren
   '/$locale/bill-splitter/$tripId/': typeof LocaleBillSplitterTripIdIndexRoute
@@ -254,12 +284,15 @@ export interface FileRouteTypes {
     | '/$locale/settings'
     | '/$locale/'
     | '/$locale/bill-splitter/$tripId'
+    | '/$locale/travel-phrases/$country'
     | '/api/fx/detect'
     | '/api/fx/rates'
     | '/api/site/health'
     | '/$locale/bill-splitter/'
+    | '/$locale/travel-phrases/'
     | '/$locale/bill-splitter/$tripId/add'
     | '/$locale/bill-splitter/$tripId/settlement'
+    | '/api/phrase-audio/$country/$phraseId'
     | '/api/split-bill/device/bootstrap'
     | '/api/split-bill/trips/$tripId'
     | '/$locale/bill-splitter/$tripId/'
@@ -278,12 +311,15 @@ export interface FileRouteTypes {
     | '/$locale/currency'
     | '/$locale/settings'
     | '/$locale'
+    | '/$locale/travel-phrases/$country'
     | '/api/fx/detect'
     | '/api/fx/rates'
     | '/api/site/health'
     | '/$locale/bill-splitter'
+    | '/$locale/travel-phrases'
     | '/$locale/bill-splitter/$tripId/add'
     | '/$locale/bill-splitter/$tripId/settlement'
+    | '/api/phrase-audio/$country/$phraseId'
     | '/api/split-bill/device/bootstrap'
     | '/api/split-bill/trips/$tripId'
     | '/$locale/bill-splitter/$tripId'
@@ -304,12 +340,15 @@ export interface FileRouteTypes {
     | '/$locale/settings'
     | '/$locale/'
     | '/$locale/bill-splitter/$tripId'
+    | '/$locale/travel-phrases/$country'
     | '/api/fx/detect'
     | '/api/fx/rates'
     | '/api/site/health'
     | '/$locale/bill-splitter/'
+    | '/$locale/travel-phrases/'
     | '/$locale/bill-splitter/$tripId/add'
     | '/$locale/bill-splitter/$tripId/settlement'
+    | '/api/phrase-audio/$country/$phraseId'
     | '/api/split-bill/device/bootstrap'
     | '/api/split-bill/trips/$tripId'
     | '/$locale/bill-splitter/$tripId/'
@@ -330,6 +369,7 @@ export interface RootRouteChildren {
   ApiFxDetectRoute: typeof ApiFxDetectRoute
   ApiFxRatesRoute: typeof ApiFxRatesRoute
   ApiSiteHealthRoute: typeof ApiSiteHealthRoute
+  ApiPhraseAudioCountryPhraseIdRoute: typeof ApiPhraseAudioCountryPhraseIdRoute
   ApiSplitBillDeviceBootstrapRoute: typeof ApiSplitBillDeviceBootstrapRoute
   ApiSplitBillTripsTripIdRoute: typeof ApiSplitBillTripsTripIdRouteWithChildren
   ApiSplitBillTripsIndexRoute: typeof ApiSplitBillTripsIndexRoute
@@ -372,6 +412,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleCurrencyRouteImport
       parentRoute: typeof LocaleRouteRoute
     }
+    '/$locale/travel-phrases/': {
+      id: '/$locale/travel-phrases/'
+      path: '/travel-phrases'
+      fullPath: '/$locale/travel-phrases/'
+      preLoaderRoute: typeof LocaleTravelPhrasesIndexRouteImport
+      parentRoute: typeof LocaleRouteRoute
+    }
     '/$locale/bill-splitter/': {
       id: '/$locale/bill-splitter/'
       path: '/bill-splitter'
@@ -399,6 +446,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/api/fx/detect'
       preLoaderRoute: typeof ApiFxDetectRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/$locale/travel-phrases/$country': {
+      id: '/$locale/travel-phrases/$country'
+      path: '/travel-phrases/$country'
+      fullPath: '/$locale/travel-phrases/$country'
+      preLoaderRoute: typeof LocaleTravelPhrasesCountryRouteImport
+      parentRoute: typeof LocaleRouteRoute
     }
     '/$locale/bill-splitter/$tripId': {
       id: '/$locale/bill-splitter/$tripId'
@@ -433,6 +487,13 @@ declare module '@tanstack/react-router' {
       path: '/api/split-bill/device/bootstrap'
       fullPath: '/api/split-bill/device/bootstrap'
       preLoaderRoute: typeof ApiSplitBillDeviceBootstrapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/phrase-audio/$country/$phraseId': {
+      id: '/api/phrase-audio/$country/$phraseId'
+      path: '/api/phrase-audio/$country/$phraseId'
+      fullPath: '/api/phrase-audio/$country/$phraseId'
+      preLoaderRoute: typeof ApiPhraseAudioCountryPhraseIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/$locale/bill-splitter/$tripId/settlement': {
@@ -532,7 +593,9 @@ interface LocaleRouteRouteChildren {
   LocaleSettingsRoute: typeof LocaleSettingsRoute
   LocaleIndexRoute: typeof LocaleIndexRoute
   LocaleBillSplitterTripIdRouteRoute: typeof LocaleBillSplitterTripIdRouteRouteWithChildren
+  LocaleTravelPhrasesCountryRoute: typeof LocaleTravelPhrasesCountryRoute
   LocaleBillSplitterIndexRoute: typeof LocaleBillSplitterIndexRoute
+  LocaleTravelPhrasesIndexRoute: typeof LocaleTravelPhrasesIndexRoute
 }
 
 const LocaleRouteRouteChildren: LocaleRouteRouteChildren = {
@@ -541,7 +604,9 @@ const LocaleRouteRouteChildren: LocaleRouteRouteChildren = {
   LocaleIndexRoute: LocaleIndexRoute,
   LocaleBillSplitterTripIdRouteRoute:
     LocaleBillSplitterTripIdRouteRouteWithChildren,
+  LocaleTravelPhrasesCountryRoute: LocaleTravelPhrasesCountryRoute,
   LocaleBillSplitterIndexRoute: LocaleBillSplitterIndexRoute,
+  LocaleTravelPhrasesIndexRoute: LocaleTravelPhrasesIndexRoute,
 }
 
 const LocaleRouteRouteWithChildren = LocaleRouteRoute._addFileChildren(
@@ -597,6 +662,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiFxDetectRoute: ApiFxDetectRoute,
   ApiFxRatesRoute: ApiFxRatesRoute,
   ApiSiteHealthRoute: ApiSiteHealthRoute,
+  ApiPhraseAudioCountryPhraseIdRoute: ApiPhraseAudioCountryPhraseIdRoute,
   ApiSplitBillDeviceBootstrapRoute: ApiSplitBillDeviceBootstrapRoute,
   ApiSplitBillTripsTripIdRoute: ApiSplitBillTripsTripIdRouteWithChildren,
   ApiSplitBillTripsIndexRoute: ApiSplitBillTripsIndexRoute,

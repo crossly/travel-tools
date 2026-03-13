@@ -1,0 +1,51 @@
+{
+  "country": { "en-US": "Brazil", "zh-CN": "巴西" },
+  "slug": "brazil",
+  "region": "americas",
+  "languageName": { "en-US": "Portuguese", "zh-CN": "葡萄牙语" },
+  "languageCode": "pt-BR",
+  "flag": "🇧🇷",
+  "phrases": [
+    { "id": "hello", "nativeText": "Olá", "romanization": null, "audioKey": "travel-phrases/brazil/hello.mp3" },
+    { "id": "thank_you", "nativeText": "Obrigado", "romanization": null, "audioKey": "travel-phrases/brazil/thank_you.mp3" },
+    { "id": "yes", "nativeText": "Sim", "romanization": null, "audioKey": "travel-phrases/brazil/yes.mp3" },
+    { "id": "no", "nativeText": "Não", "romanization": null, "audioKey": "travel-phrases/brazil/no.mp3" },
+    { "id": "excuse_me", "nativeText": "Com licença", "romanization": null, "audioKey": "travel-phrases/brazil/excuse_me.mp3" },
+    { "id": "help_me", "nativeText": "Por favor, me ajude", "romanization": null, "audioKey": "travel-phrases/brazil/help_me.mp3" },
+
+    { "id": "where_station", "nativeText": "Onde fica a estação?", "romanization": null, "audioKey": "travel-phrases/brazil/where_station.mp3" },
+    { "id": "one_ticket", "nativeText": "Uma passagem, por favor", "romanization": null, "audioKey": "travel-phrases/brazil/one_ticket.mp3" },
+    { "id": "where_bathroom", "nativeText": "Onde fica o banheiro?", "romanization": null, "audioKey": "travel-phrases/brazil/where_bathroom.mp3" },
+    { "id": "when_depart", "nativeText": "Que horas sai?", "romanization": null, "audioKey": "travel-phrases/brazil/when_depart.mp3" },
+    { "id": "please_stop_here", "nativeText": "Pare aqui, por favor", "romanization": null, "audioKey": "travel-phrases/brazil/please_stop_here.mp3" },
+    { "id": "airport_please", "nativeText": "Para o aeroporto, por favor", "romanization": null, "audioKey": "travel-phrases/brazil/airport_please.mp3" },
+
+    { "id": "i_have_booking", "nativeText": "Tenho uma reserva", "romanization": null, "audioKey": "travel-phrases/brazil/i_have_booking.mp3" },
+    { "id": "check_in_please", "nativeText": "Quero fazer o check-in, por favor", "romanization": null, "audioKey": "travel-phrases/brazil/check_in_please.mp3" },
+    { "id": "check_out_time", "nativeText": "A que horas é o check-out?", "romanization": null, "audioKey": "travel-phrases/brazil/check_out_time.mp3" },
+    { "id": "wifi_password", "nativeText": "Qual é a senha do Wi-Fi?", "romanization": null, "audioKey": "travel-phrases/brazil/wifi_password.mp3" },
+    { "id": "more_towel", "nativeText": "Mais toalhas, por favor", "romanization": null, "audioKey": "travel-phrases/brazil/more_towel.mp3" },
+    { "id": "room_key", "nativeText": "Esqueci a chave do meu quarto", "romanization": null, "audioKey": "travel-phrases/brazil/room_key.mp3" },
+
+    { "id": "table_for_two", "nativeText": "Mesa para dois, por favor", "romanization": null, "audioKey": "travel-phrases/brazil/table_for_two.mp3" },
+    { "id": "menu_please", "nativeText": "O cardápio, por favor", "romanization": null, "audioKey": "travel-phrases/brazil/menu_please.mp3" },
+    { "id": "no_spicy", "nativeText": "Sem pimenta, por favor", "romanization": null, "audioKey": "travel-phrases/brazil/no_spicy.mp3" },
+    { "id": "vegetarian", "nativeText": "Sou vegetariano/a", "romanization": null, "audioKey": "travel-phrases/brazil/vegetarian.mp3" },
+    { "id": "water_please", "nativeText": "Água, por favor", "romanization": null, "audioKey": "travel-phrases/brazil/water_please.mp3" },
+    { "id": "bill_please", "nativeText": "A conta, por favor", "romanization": null, "audioKey": "travel-phrases/brazil/bill_please.mp3" },
+
+    { "id": "how_much", "nativeText": "Quanto custa isso?", "romanization": null, "audioKey": "travel-phrases/brazil/how_much.mp3" },
+    { "id": "too_expensive", "nativeText": "Está muito caro", "romanization": null, "audioKey": "travel-phrases/brazil/too_expensive.mp3" },
+    { "id": "card_ok", "nativeText": "Posso pagar com cartão?", "romanization": null, "audioKey": "travel-phrases/brazil/card_ok.mp3" },
+    { "id": "looking_only", "nativeText": "Só estou olhando", "romanization": null, "audioKey": "travel-phrases/brazil/looking_only.mp3" },
+    { "id": "different_size", "nativeText": "Tem outro tamanho?", "romanization": null, "audioKey": "travel-phrases/brazil/different_size.mp3" },
+    { "id": "tax_free", "nativeText": "Tem reembolso de imposto?", "romanization": null, "audioKey": "travel-phrases/brazil/tax_free.mp3" },
+
+    { "id": "call_police", "nativeText": "Chame a polícia, por favor", "romanization": null, "audioKey": "travel-phrases/brazil/call_police.mp3" },
+    { "id": "call_ambulance", "nativeText": "Chame uma ambulância, por favor", "romanization": null, "audioKey": "travel-phrases/brazil/call_ambulance.mp3" },
+    { "id": "i_am_lost", "nativeText": "Estou perdido/a", "romanization": null, "audioKey": "travel-phrases/brazil/i_am_lost.mp3" },
+    { "id": "need_pharmacy", "nativeText": "Preciso de uma farmácia", "romanization": null, "audioKey": "travel-phrases/brazil/need_pharmacy.mp3" },
+    { "id": "need_doctor", "nativeText": "Preciso de um médico", "romanization": null, "audioKey": "travel-phrases/brazil/need_doctor.mp3" },
+    { "id": "i_need_help", "nativeText": "Preciso de ajuda agora", "romanization": null, "audioKey": "travel-phrases/brazil/i_need_help.mp3" }
+  ]
+}

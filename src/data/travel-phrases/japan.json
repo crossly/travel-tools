@@ -1,0 +1,51 @@
+{
+  "country": { "en-US": "Japan", "zh-CN": "日本" },
+  "slug": "japan",
+  "region": "asia",
+  "languageName": { "en-US": "Japanese", "zh-CN": "日语" },
+  "languageCode": "ja-JP",
+  "flag": "🇯🇵",
+  "phrases": [
+    { "id": "hello", "nativeText": "こんにちは", "romanization": "Konnichiwa", "audioKey": "travel-phrases/japan/hello.mp3" },
+    { "id": "thank_you", "nativeText": "ありがとうございます", "romanization": "Arigatou gozaimasu", "audioKey": "travel-phrases/japan/thank_you.mp3" },
+    { "id": "yes", "nativeText": "はい", "romanization": "Hai", "audioKey": "travel-phrases/japan/yes.mp3" },
+    { "id": "no", "nativeText": "いいえ", "romanization": "Iie", "audioKey": "travel-phrases/japan/no.mp3" },
+    { "id": "excuse_me", "nativeText": "すみません", "romanization": "Sumimasen", "audioKey": "travel-phrases/japan/excuse_me.mp3" },
+    { "id": "help_me", "nativeText": "助けてください", "romanization": "Tasukete kudasai", "audioKey": "travel-phrases/japan/help_me.mp3" },
+
+    { "id": "where_station", "nativeText": "駅はどこですか？", "romanization": "Eki wa doko desu ka?", "audioKey": "travel-phrases/japan/where_station.mp3" },
+    { "id": "one_ticket", "nativeText": "切符を一枚ください", "romanization": "Kippu o ichimai kudasai", "audioKey": "travel-phrases/japan/one_ticket.mp3" },
+    { "id": "where_bathroom", "nativeText": "トイレはどこですか？", "romanization": "Toire wa doko desu ka?", "audioKey": "travel-phrases/japan/where_bathroom.mp3" },
+    { "id": "when_depart", "nativeText": "いつ出発しますか？", "romanization": "Itsu shuppatsu shimasu ka?", "audioKey": "travel-phrases/japan/when_depart.mp3" },
+    { "id": "please_stop_here", "nativeText": "ここで止めてください", "romanization": "Koko de tomete kudasai", "audioKey": "travel-phrases/japan/please_stop_here.mp3" },
+    { "id": "airport_please", "nativeText": "空港までお願いします", "romanization": "Kuukou made onegaishimasu", "audioKey": "travel-phrases/japan/airport_please.mp3" },
+
+    { "id": "i_have_booking", "nativeText": "予約しています", "romanization": "Yoyaku shiteimasu", "audioKey": "travel-phrases/japan/i_have_booking.mp3" },
+    { "id": "check_in_please", "nativeText": "チェックインをお願いします", "romanization": "Chekkuin o onegaishimasu", "audioKey": "travel-phrases/japan/check_in_please.mp3" },
+    { "id": "check_out_time", "nativeText": "チェックアウトは何時ですか？", "romanization": "Chekkuauto wa nanji desu ka?", "audioKey": "travel-phrases/japan/check_out_time.mp3" },
+    { "id": "wifi_password", "nativeText": "Wi-Fiのパスワードは何ですか？", "romanization": "Wi-Fi no pasuwaado wa nan desu ka?", "audioKey": "travel-phrases/japan/wifi_password.mp3" },
+    { "id": "more_towel", "nativeText": "タオルをもう少しください", "romanization": "Taoru o mou sukoshi kudasai", "audioKey": "travel-phrases/japan/more_towel.mp3" },
+    { "id": "room_key", "nativeText": "部屋の鍵を忘れました", "romanization": "Heya no kagi o wasuremashita", "audioKey": "travel-phrases/japan/room_key.mp3" },
+
+    { "id": "table_for_two", "nativeText": "二人です、お願いします", "romanization": "Futari desu, onegaishimasu", "audioKey": "travel-phrases/japan/table_for_two.mp3" },
+    { "id": "menu_please", "nativeText": "メニューをお願いします", "romanization": "Menyuu o onegaishimasu", "audioKey": "travel-phrases/japan/menu_please.mp3" },
+    { "id": "no_spicy", "nativeText": "辛くしないでください", "romanization": "Karaku shinaide kudasai", "audioKey": "travel-phrases/japan/no_spicy.mp3" },
+    { "id": "vegetarian", "nativeText": "ベジタリアンです", "romanization": "Bejitarian desu", "audioKey": "travel-phrases/japan/vegetarian.mp3" },
+    { "id": "water_please", "nativeText": "お水をください", "romanization": "Omizu o kudasai", "audioKey": "travel-phrases/japan/water_please.mp3" },
+    { "id": "bill_please", "nativeText": "お会計お願いします", "romanization": "Okaikei onegaishimasu", "audioKey": "travel-phrases/japan/bill_please.mp3" },
+
+    { "id": "how_much", "nativeText": "これはいくらですか？", "romanization": "Kore wa ikura desu ka?", "audioKey": "travel-phrases/japan/how_much.mp3" },
+    { "id": "too_expensive", "nativeText": "高すぎます", "romanization": "Takasugimasu", "audioKey": "travel-phrases/japan/too_expensive.mp3" },
+    { "id": "card_ok", "nativeText": "カードで払えますか？", "romanization": "Kaado de haraemasu ka?", "audioKey": "travel-phrases/japan/card_ok.mp3" },
+    { "id": "looking_only", "nativeText": "見ているだけです", "romanization": "Mite iru dake desu", "audioKey": "travel-phrases/japan/looking_only.mp3" },
+    { "id": "different_size", "nativeText": "別のサイズはありますか？", "romanization": "Betsu no saizu wa arimasu ka?", "audioKey": "travel-phrases/japan/different_size.mp3" },
+    { "id": "tax_free", "nativeText": "免税できますか？", "romanization": "Menzei dekimasu ka?", "audioKey": "travel-phrases/japan/tax_free.mp3" },
+
+    { "id": "call_police", "nativeText": "警察を呼んでください", "romanization": "Keisatsu o yonde kudasai", "audioKey": "travel-phrases/japan/call_police.mp3" },
+    { "id": "call_ambulance", "nativeText": "救急車を呼んでください", "romanization": "Kyuukyuusha o yonde kudasai", "audioKey": "travel-phrases/japan/call_ambulance.mp3" },
+    { "id": "i_am_lost", "nativeText": "道に迷いました", "romanization": "Michi ni mayoimashita", "audioKey": "travel-phrases/japan/i_am_lost.mp3" },
+    { "id": "need_pharmacy", "nativeText": "薬局が必要です", "romanization": "Yakkyoku ga hitsuyou desu", "audioKey": "travel-phrases/japan/need_pharmacy.mp3" },
+    { "id": "need_doctor", "nativeText": "医者が必要です", "romanization": "Isha ga hitsuyou desu", "audioKey": "travel-phrases/japan/need_doctor.mp3" },
+    { "id": "i_need_help", "nativeText": "今すぐ助けが必要です", "romanization": "Ima sugu tasuke ga hitsuyou desu", "audioKey": "travel-phrases/japan/i_need_help.mp3" }
+  ]
+}

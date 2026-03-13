@@ -1,0 +1,51 @@
+{
+  "country": { "en-US": "Germany", "zh-CN": "德国" },
+  "slug": "germany",
+  "region": "europe",
+  "languageName": { "en-US": "German", "zh-CN": "德语" },
+  "languageCode": "de-DE",
+  "flag": "🇩🇪",
+  "phrases": [
+    { "id": "hello", "nativeText": "Hallo", "romanization": null, "audioKey": "travel-phrases/germany/hello.mp3" },
+    { "id": "thank_you", "nativeText": "Danke", "romanization": null, "audioKey": "travel-phrases/germany/thank_you.mp3" },
+    { "id": "yes", "nativeText": "Ja", "romanization": null, "audioKey": "travel-phrases/germany/yes.mp3" },
+    { "id": "no", "nativeText": "Nein", "romanization": null, "audioKey": "travel-phrases/germany/no.mp3" },
+    { "id": "excuse_me", "nativeText": "Entschuldigung", "romanization": null, "audioKey": "travel-phrases/germany/excuse_me.mp3" },
+    { "id": "help_me", "nativeText": "Bitte helfen Sie mir", "romanization": null, "audioKey": "travel-phrases/germany/help_me.mp3" },
+
+    { "id": "where_station", "nativeText": "Wo ist der Bahnhof?", "romanization": null, "audioKey": "travel-phrases/germany/where_station.mp3" },
+    { "id": "one_ticket", "nativeText": "Ein Ticket, bitte", "romanization": null, "audioKey": "travel-phrases/germany/one_ticket.mp3" },
+    { "id": "where_bathroom", "nativeText": "Wo ist die Toilette?", "romanization": null, "audioKey": "travel-phrases/germany/where_bathroom.mp3" },
+    { "id": "when_depart", "nativeText": "Wann fährt es ab?", "romanization": null, "audioKey": "travel-phrases/germany/when_depart.mp3" },
+    { "id": "please_stop_here", "nativeText": "Bitte halten Sie hier an", "romanization": null, "audioKey": "travel-phrases/germany/please_stop_here.mp3" },
+    { "id": "airport_please", "nativeText": "Zum Flughafen, bitte", "romanization": null, "audioKey": "travel-phrases/germany/airport_please.mp3" },
+
+    { "id": "i_have_booking", "nativeText": "Ich habe eine Reservierung", "romanization": null, "audioKey": "travel-phrases/germany/i_have_booking.mp3" },
+    { "id": "check_in_please", "nativeText": "Ich möchte einchecken, bitte", "romanization": null, "audioKey": "travel-phrases/germany/check_in_please.mp3" },
+    { "id": "check_out_time", "nativeText": "Wann ist Check-out?", "romanization": null, "audioKey": "travel-phrases/germany/check_out_time.mp3" },
+    { "id": "wifi_password", "nativeText": "Wie lautet das WLAN-Passwort?", "romanization": null, "audioKey": "travel-phrases/germany/wifi_password.mp3" },
+    { "id": "more_towel", "nativeText": "Mehr Handtücher, bitte", "romanization": null, "audioKey": "travel-phrases/germany/more_towel.mp3" },
+    { "id": "room_key", "nativeText": "Ich habe meinen Zimmerschlüssel vergessen", "romanization": null, "audioKey": "travel-phrases/germany/room_key.mp3" },
+
+    { "id": "table_for_two", "nativeText": "Einen Tisch für zwei, bitte", "romanization": null, "audioKey": "travel-phrases/germany/table_for_two.mp3" },
+    { "id": "menu_please", "nativeText": "Die Speisekarte, bitte", "romanization": null, "audioKey": "travel-phrases/germany/menu_please.mp3" },
+    { "id": "no_spicy", "nativeText": "Nicht scharf, bitte", "romanization": null, "audioKey": "travel-phrases/germany/no_spicy.mp3" },
+    { "id": "vegetarian", "nativeText": "Ich bin Vegetarier/in", "romanization": null, "audioKey": "travel-phrases/germany/vegetarian.mp3" },
+    { "id": "water_please", "nativeText": "Wasser, bitte", "romanization": null, "audioKey": "travel-phrases/germany/water_please.mp3" },
+    { "id": "bill_please", "nativeText": "Die Rechnung, bitte", "romanization": null, "audioKey": "travel-phrases/germany/bill_please.mp3" },
+
+    { "id": "how_much", "nativeText": "Wie viel kostet das?", "romanization": null, "audioKey": "travel-phrases/germany/how_much.mp3" },
+    { "id": "too_expensive", "nativeText": "Das ist zu teuer", "romanization": null, "audioKey": "travel-phrases/germany/too_expensive.mp3" },
+    { "id": "card_ok", "nativeText": "Kann ich mit Karte zahlen?", "romanization": null, "audioKey": "travel-phrases/germany/card_ok.mp3" },
+    { "id": "looking_only", "nativeText": "Ich schaue nur", "romanization": null, "audioKey": "travel-phrases/germany/looking_only.mp3" },
+    { "id": "different_size", "nativeText": "Haben Sie eine andere Größe?", "romanization": null, "audioKey": "travel-phrases/germany/different_size.mp3" },
+    { "id": "tax_free", "nativeText": "Ist das steuerfrei?", "romanization": null, "audioKey": "travel-phrases/germany/tax_free.mp3" },
+
+    { "id": "call_police", "nativeText": "Rufen Sie bitte die Polizei", "romanization": null, "audioKey": "travel-phrases/germany/call_police.mp3" },
+    { "id": "call_ambulance", "nativeText": "Rufen Sie bitte einen Krankenwagen", "romanization": null, "audioKey": "travel-phrases/germany/call_ambulance.mp3" },
+    { "id": "i_am_lost", "nativeText": "Ich habe mich verlaufen", "romanization": null, "audioKey": "travel-phrases/germany/i_am_lost.mp3" },
+    { "id": "need_pharmacy", "nativeText": "Ich brauche eine Apotheke", "romanization": null, "audioKey": "travel-phrases/germany/need_pharmacy.mp3" },
+    { "id": "need_doctor", "nativeText": "Ich brauche einen Arzt", "romanization": null, "audioKey": "travel-phrases/germany/need_doctor.mp3" },
+    { "id": "i_need_help", "nativeText": "Ich brauche sofort Hilfe", "romanization": null, "audioKey": "travel-phrases/germany/i_need_help.mp3" }
+  ]
+}

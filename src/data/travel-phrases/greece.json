@@ -1,0 +1,51 @@
+{
+  "country": { "en-US": "Greece", "zh-CN": "希腊" },
+  "slug": "greece",
+  "region": "europe",
+  "languageName": { "en-US": "Greek", "zh-CN": "希腊语" },
+  "languageCode": "el-GR",
+  "flag": "🇬🇷",
+  "phrases": [
+    { "id": "hello", "nativeText": "Γεια σας", "romanization": "Yia sas", "audioKey": "travel-phrases/greece/hello.mp3" },
+    { "id": "thank_you", "nativeText": "Ευχαριστώ", "romanization": "Efharisto", "audioKey": "travel-phrases/greece/thank_you.mp3" },
+    { "id": "yes", "nativeText": "Ναι", "romanization": "Ne", "audioKey": "travel-phrases/greece/yes.mp3" },
+    { "id": "no", "nativeText": "Όχι", "romanization": "Ohi", "audioKey": "travel-phrases/greece/no.mp3" },
+    { "id": "excuse_me", "nativeText": "Συγγνώμη", "romanization": "Signomi", "audioKey": "travel-phrases/greece/excuse_me.mp3" },
+    { "id": "help_me", "nativeText": "Παρακαλώ, βοηθήστε με", "romanization": "Parakalo, voithiste me", "audioKey": "travel-phrases/greece/help_me.mp3" },
+
+    { "id": "where_station", "nativeText": "Πού είναι ο σταθμός;", "romanization": "Pou ine o stathmos?", "audioKey": "travel-phrases/greece/where_station.mp3" },
+    { "id": "one_ticket", "nativeText": "Ένα εισιτήριο, παρακαλώ", "romanization": "Enaisitiriο, parakalo", "audioKey": "travel-phrases/greece/one_ticket.mp3" },
+    { "id": "where_bathroom", "nativeText": "Πού είναι η τουαλέτα;", "romanization": "Pou ine i toualeta?", "audioKey": "travel-phrases/greece/where_bathroom.mp3" },
+    { "id": "when_depart", "nativeText": "Πότε φεύγει;", "romanization": "Pote fevgi?", "audioKey": "travel-phrases/greece/when_depart.mp3" },
+    { "id": "please_stop_here", "nativeText": "Σταματήστε εδώ, παρακαλώ", "romanization": "Stamatiste edo, parakalo", "audioKey": "travel-phrases/greece/please_stop_here.mp3" },
+    { "id": "airport_please", "nativeText": "Στο αεροδρόμιο, παρακαλώ", "romanization": "Sto aerodromio, parakalo", "audioKey": "travel-phrases/greece/airport_please.mp3" },
+
+    { "id": "i_have_booking", "nativeText": "Έχω κράτηση", "romanization": "Echo kratisi", "audioKey": "travel-phrases/greece/i_have_booking.mp3" },
+    { "id": "check_in_please", "nativeText": "Θέλω να κάνω check-in", "romanization": "Thelo na kano check-in", "audioKey": "travel-phrases/greece/check_in_please.mp3" },
+    { "id": "check_out_time", "nativeText": "Τι ώρα είναι το check-out;", "romanization": "Ti ora ine to check-out?", "audioKey": "travel-phrases/greece/check_out_time.mp3" },
+    { "id": "wifi_password", "nativeText": "Ποιος είναι ο κωδικός του Wi-Fi;", "romanization": "Pios ine o kodikos tou Wi-Fi?", "audioKey": "travel-phrases/greece/wifi_password.mp3" },
+    { "id": "more_towel", "nativeText": "Περισσότερες πετσέτες, παρακαλώ", "romanization": "Perissoteres petsetes, parakalo", "audioKey": "travel-phrases/greece/more_towel.mp3" },
+    { "id": "room_key", "nativeText": "Ξέχασα το κλειδί του δωματίου μου", "romanization": "Xechasa to kleidi tou domatiou mou", "audioKey": "travel-phrases/greece/room_key.mp3" },
+
+    { "id": "table_for_two", "nativeText": "Ένα τραπέζι για δύο, παρακαλώ", "romanization": "Ena trapezi yia dyo, parakalo", "audioKey": "travel-phrases/greece/table_for_two.mp3" },
+    { "id": "menu_please", "nativeText": "Το μενού, παρακαλώ", "romanization": "To menou, parakalo", "audioKey": "travel-phrases/greece/menu_please.mp3" },
+    { "id": "no_spicy", "nativeText": "Χωρίς πικάντικο, παρακαλώ", "romanization": "Horis pikantiko, parakalo", "audioKey": "travel-phrases/greece/no_spicy.mp3" },
+    { "id": "vegetarian", "nativeText": "Είμαι χορτοφάγος", "romanization": "Ime hortofagos", "audioKey": "travel-phrases/greece/vegetarian.mp3" },
+    { "id": "water_please", "nativeText": "Νερό, παρακαλώ", "romanization": "Nero, parakalo", "audioKey": "travel-phrases/greece/water_please.mp3" },
+    { "id": "bill_please", "nativeText": "Τον λογαριασμό, παρακαλώ", "romanization": "Ton logariasmo, parakalo", "audioKey": "travel-phrases/greece/bill_please.mp3" },
+
+    { "id": "how_much", "nativeText": "Πόσο κοστίζει αυτό;", "romanization": "Poso kostizei afto?", "audioKey": "travel-phrases/greece/how_much.mp3" },
+    { "id": "too_expensive", "nativeText": "Είναι πολύ ακριβό", "romanization": "Ine poly akrivo", "audioKey": "travel-phrases/greece/too_expensive.mp3" },
+    { "id": "card_ok", "nativeText": "Μπορώ να πληρώσω με κάρτα;", "romanization": "Boro na pliroso me karta?", "audioKey": "travel-phrases/greece/card_ok.mp3" },
+    { "id": "looking_only", "nativeText": "Απλώς κοιτάζω", "romanization": "Aplos kitazo", "audioKey": "travel-phrases/greece/looking_only.mp3" },
+    { "id": "different_size", "nativeText": "Έχετε άλλο μέγεθος;", "romanization": "Ehete allo megethos?", "audioKey": "travel-phrases/greece/different_size.mp3" },
+    { "id": "tax_free", "nativeText": "Είναι tax-free;", "romanization": "Ine tax-free?", "audioKey": "travel-phrases/greece/tax_free.mp3" },
+
+    { "id": "call_police", "nativeText": "Καλέστε την αστυνομία, παρακαλώ", "romanization": "Kaleste tin astynomia, parakalo", "audioKey": "travel-phrases/greece/call_police.mp3" },
+    { "id": "call_ambulance", "nativeText": "Καλέστε ασθενοφόρο, παρακαλώ", "romanization": "Kaleste asthenoforo, parakalo", "audioKey": "travel-phrases/greece/call_ambulance.mp3" },
+    { "id": "i_am_lost", "nativeText": "Έχω χαθεί", "romanization": "Echo hathi", "audioKey": "travel-phrases/greece/i_am_lost.mp3" },
+    { "id": "need_pharmacy", "nativeText": "Χρειάζομαι φαρμακείο", "romanization": "Hreiazomai farmakeio", "audioKey": "travel-phrases/greece/need_pharmacy.mp3" },
+    { "id": "need_doctor", "nativeText": "Χρειάζομαι γιατρό", "romanization": "Hreiazomai yatro", "audioKey": "travel-phrases/greece/need_doctor.mp3" },
+    { "id": "i_need_help", "nativeText": "Χρειάζομαι βοήθεια τώρα", "romanization": "Hreiazomai voitheia tora", "audioKey": "travel-phrases/greece/i_need_help.mp3" }
+  ]
+}

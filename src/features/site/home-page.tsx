@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router'
-import { ArrowRight, ReceiptText, WalletCards } from 'lucide-react'
+import { ArrowRight, Languages, ReceiptText, WalletCards } from 'lucide-react'
 import { AppShell } from '@/components/app/app-shell'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -41,7 +41,7 @@ export function HomePage({ locale }: { locale: Locale }) {
         </CardHeader>
       </Card>
 
-      <div className="grid gap-4 lg:grid-cols-2">
+      <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-3">
         <Card>
           <CardHeader>
             <div className="flex items-center justify-between">
@@ -58,6 +58,28 @@ export function HomePage({ locale }: { locale: Locale }) {
             <Button asChild variant="secondary" size="lg" className="w-full justify-between">
               <Link to={getLocalizedPath(locale, '/currency')}>
                 {t('tool.currency.name')}
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Button>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <div className="flex items-center justify-between">
+              <Languages className="h-6 w-6 text-primary" />
+              <Badge variant="outline">{t('phrases.audioBadge')}</Badge>
+            </div>
+            <CardTitle>{t('tool.travelPhrases.name')}</CardTitle>
+            <CardDescription>{t('site.phrasesPreview')}</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="rounded-2xl border border-border bg-muted p-4">
+              <p className="mono text-2xl font-medium">{t('site.phrasesMetric')}</p>
+            </div>
+            <Button asChild variant="secondary" size="lg" className="w-full justify-between">
+              <Link to={getLocalizedPath(locale, '/travel-phrases')}>
+                {t('tool.travelPhrases.name')}
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>

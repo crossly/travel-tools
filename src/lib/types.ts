@@ -1,12 +1,49 @@
 export type Locale = 'zh-CN' | 'en-US'
 export type SiteTheme = 'light' | 'dark' | 'system'
+export type PhraseCategory = 'basics' | 'transport' | 'hotel' | 'dining' | 'shopping' | 'emergency'
+export type PhraseRegion = 'asia' | 'europe' | 'americas'
 
 export type ToolDefinition = {
   id: string
-  slug: 'currency' | 'split-bill'
+  slug: 'currency' | 'split-bill' | 'travel-phrases'
   nameKey: string
   descriptionKey: string
   entryPath: string
+}
+
+export interface PhraseCard {
+  id: string
+  category: PhraseCategory
+  nativeText: string
+  translation: string
+  romanization: string | null
+  audioKey: string | null
+}
+
+export interface PhraseCountryPack {
+  country: string
+  slug: string
+  region: PhraseRegion
+  languageName: string
+  languageCode: string
+  flag: string
+  title: string
+  description: string
+  hasAudio: boolean
+  phrases: PhraseCard[]
+}
+
+export interface PhraseCountrySummary {
+  country: string
+  slug: string
+  region: PhraseRegion
+  languageName: string
+  languageCode: string
+  flag: string
+  title: string
+  description: string
+  phraseCount: number
+  hasAudio: boolean
 }
 
 export interface DeviceIdentity {
