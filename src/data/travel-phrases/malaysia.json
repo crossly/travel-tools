@@ -16,253 +16,253 @@
       "id": "hello",
       "nativeText": "Halo",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/hello.mp3"
     },
     {
       "id": "thank_you",
       "nativeText": "Terima kasih",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/thank_you.mp3"
     },
     {
       "id": "yes",
       "nativeText": "Ya",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/yes.mp3"
     },
     {
       "id": "no",
       "nativeText": "Tidak",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/no.mp3"
     },
     {
       "id": "excuse_me",
       "nativeText": "Tumpang tanya",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/excuse_me.mp3"
     },
     {
       "id": "help_me",
       "nativeText": "Tolong saya",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/help_me.mp3"
     },
     {
       "id": "do_you_speak_english",
       "nativeText": "Awak boleh cakap Bahasa Inggeris?",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/do_you_speak_english.mp3"
     },
     {
       "id": "where_station",
       "nativeText": "Di mana stesen?",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/where_station.mp3"
     },
     {
       "id": "one_ticket",
       "nativeText": "Satu tiket, tolong",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/one_ticket.mp3"
     },
     {
       "id": "where_bathroom",
       "nativeText": "Tandas di mana?",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/where_bathroom.mp3"
     },
     {
       "id": "when_depart",
       "nativeText": "Bila berlepas?",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/when_depart.mp3"
     },
     {
       "id": "please_stop_here",
       "nativeText": "Berhenti di sini, tolong",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/please_stop_here.mp3"
     },
     {
       "id": "airport_please",
       "nativeText": "Ke lapangan terbang, tolong",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/airport_please.mp3"
     },
     {
       "id": "where_metro",
       "nativeText": "Di mana stesen metro?",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/where_metro.mp3"
     },
     {
       "id": "i_have_booking",
       "nativeText": "Saya ada tempahan",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/i_have_booking.mp3"
     },
     {
       "id": "check_in_please",
       "nativeText": "Saya mahu daftar masuk",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/check_in_please.mp3"
     },
     {
       "id": "check_out_time",
       "nativeText": "Pukul berapa daftar keluar?",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/check_out_time.mp3"
     },
     {
       "id": "wifi_password",
       "nativeText": "Apa kata laluan Wi-Fi?",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/wifi_password.mp3"
     },
     {
       "id": "more_towel",
       "nativeText": "Tolong tambah tuala",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/more_towel.mp3"
     },
     {
       "id": "room_key",
       "nativeText": "Saya terlupa kad bilik saya",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/room_key.mp3"
     },
     {
       "id": "late_check_out",
       "nativeText": "Boleh saya daftar keluar lewat?",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/late_check_out.mp3"
     },
     {
       "id": "table_for_two",
       "nativeText": "Meja untuk dua orang, tolong",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/table_for_two.mp3"
     },
     {
       "id": "menu_please",
       "nativeText": "Menu, tolong",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/menu_please.mp3"
     },
     {
       "id": "no_spicy",
       "nativeText": "Jangan pedas",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/no_spicy.mp3"
     },
     {
       "id": "vegetarian",
       "nativeText": "Saya vegetarian",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/vegetarian.mp3"
     },
     {
       "id": "water_please",
       "nativeText": "Air, tolong",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/water_please.mp3"
     },
     {
       "id": "bill_please",
       "nativeText": "Bil, tolong",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/bill_please.mp3"
     },
     {
       "id": "no_ice",
       "nativeText": "Tanpa ais, tolong",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/no_ice.mp3"
     },
     {
       "id": "how_much",
       "nativeText": "Berapa harga ini?",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/how_much.mp3"
     },
     {
       "id": "too_expensive",
       "nativeText": "Terlalu mahal",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/too_expensive.mp3"
     },
     {
       "id": "card_ok",
       "nativeText": "Boleh bayar dengan kad?",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/card_ok.mp3"
     },
     {
       "id": "looking_only",
       "nativeText": "Saya tengok sahaja",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/looking_only.mp3"
     },
     {
       "id": "different_size",
       "nativeText": "Ada saiz lain?",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/different_size.mp3"
     },
     {
       "id": "tax_free",
       "nativeText": "Boleh dapat pulangan cukai?",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/tax_free.mp3"
     },
     {
       "id": "can_cheaper",
       "nativeText": "Boleh kurang sikit?",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/can_cheaper.mp3"
     },
     {
       "id": "call_police",
       "nativeText": "Tolong panggil polis",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/call_police.mp3"
     },
     {
       "id": "call_ambulance",
       "nativeText": "Tolong panggil ambulans",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/call_ambulance.mp3"
     },
     {
       "id": "i_am_lost",
       "nativeText": "Saya sesat",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/i_am_lost.mp3"
     },
     {
       "id": "need_pharmacy",
       "nativeText": "Saya perlukan farmasi",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/need_pharmacy.mp3"
     },
     {
       "id": "need_doctor",
       "nativeText": "Saya perlukan doktor",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/need_doctor.mp3"
     },
     {
       "id": "i_need_help",
       "nativeText": "Saya perlukan bantuan sekarang",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/i_need_help.mp3"
     },
     {
       "id": "lost_passport",
       "nativeText": "Saya kehilangan pasport",
       "romanization": null,
-      "audioKey": null
+      "audioKey": "travel-phrases/malaysia/lost_passport.mp3"
     }
   ]
 }
