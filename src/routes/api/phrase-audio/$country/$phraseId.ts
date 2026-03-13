@@ -6,6 +6,7 @@ export const Route = createFileRoute('/api/phrase-audio/$country/$phraseId')({
   server: {
     handlers: {
       GET: ({ params, context }: any) => servePhraseAudio(getEnv(context), params.country, params.phraseId),
+      HEAD: ({ params, context }: any) => servePhraseAudio(getEnv(context), params.country, params.phraseId, { headOnly: true }),
     },
   },
 })

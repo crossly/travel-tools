@@ -18,6 +18,7 @@ describe('travel phrase audio serving', () => {
           body: createAudioStream(),
           httpMetadata: { contentType: 'audio/mpeg' },
           httpEtag: '"abc123"',
+          size: 3,
         }),
       },
     } as unknown as Pick<CloudflareEnv, 'PHRASE_AUDIO'>
@@ -27,6 +28,28 @@ describe('travel phrase audio serving', () => {
     expect(response.status).toBe(200)
     expect(response.headers.get('content-type')).toBe('audio/mpeg')
     expect(response.headers.get('cache-control')).toBe('public, max-age=31536000, immutable')
+    expect(response.headers.get('accept-ranges')).toBe('bytes')
+    expect(response.headers.get('content-length')).toBe('3')
+  })
+
+  it('returns audio metadata for HEAD requests', async () => {
+    const env = {
+      PHRASE_AUDIO: {
+        head: vi.fn().mockResolvedValue({
+          httpMetadata: { contentType: 'audio/mp4' },
+          httpEtag: '"head123"',
+          size: 2048,
+        }),
+      },
+    } as unknown as Pick<CloudflareEnv, 'PHRASE_AUDIO'>
+
+    const response = await servePhraseAudio(env, 'france', 'hello', { headOnly: true })
+
+    expect(response.status).toBe(200)
+    expect(response.headers.get('content-type')).toBe('audio/mp4')
+    expect(response.headers.get('content-length')).toBe('2048')
+    expect(response.headers.get('accept-ranges')).toBe('bytes')
+    expect(await response.text()).toBe('')
   })
 
   it('returns 404 when the phrase audio object is missing', async () => {
