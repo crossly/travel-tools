@@ -1,0 +1,268 @@
+{
+  "country": {
+    "en-US": "India",
+    "zh-CN": "印度"
+  },
+  "slug": "india",
+  "region": "asia",
+  "languageName": {
+    "en-US": "Hindi",
+    "zh-CN": "印地语"
+  },
+  "languageCode": "hi-IN",
+  "flag": "🇮🇳",
+  "phrases": [
+    {
+      "id": "hello",
+      "nativeText": "नमस्ते",
+      "romanization": "Namaste",
+      "audioKey": "travel-phrases/india/hello.mp3"
+    },
+    {
+      "id": "thank_you",
+      "nativeText": "धन्यवाद",
+      "romanization": "Dhanyavaad",
+      "audioKey": "travel-phrases/india/thank_you.mp3"
+    },
+    {
+      "id": "yes",
+      "nativeText": "हाँ",
+      "romanization": "Haan",
+      "audioKey": "travel-phrases/india/yes.mp3"
+    },
+    {
+      "id": "no",
+      "nativeText": "नहीं",
+      "romanization": "Nahin",
+      "audioKey": "travel-phrases/india/no.mp3"
+    },
+    {
+      "id": "excuse_me",
+      "nativeText": "माफ़ कीजिए",
+      "romanization": "Maaf kijiye",
+      "audioKey": "travel-phrases/india/excuse_me.mp3"
+    },
+    {
+      "id": "help_me",
+      "nativeText": "कृपया मेरी मदद कीजिए",
+      "romanization": "Kripya meri madad kijiye",
+      "audioKey": "travel-phrases/india/help_me.mp3"
+    },
+    {
+      "id": "do_you_speak_english",
+      "nativeText": "क्या आप अंग्रेज़ी बोलते हैं?",
+      "romanization": "Kya aap angrezi bolte hain?",
+      "audioKey": "travel-phrases/india/do_you_speak_english.mp3"
+    },
+    {
+      "id": "where_station",
+      "nativeText": "स्टेशन कहाँ है?",
+      "romanization": "Station kahan hai?",
+      "audioKey": "travel-phrases/india/where_station.mp3"
+    },
+    {
+      "id": "one_ticket",
+      "nativeText": "एक टिकट, कृपया",
+      "romanization": "Ek ticket, kripya",
+      "audioKey": "travel-phrases/india/one_ticket.mp3"
+    },
+    {
+      "id": "where_bathroom",
+      "nativeText": "बाथरूम कहाँ है?",
+      "romanization": "Bathroom kahan hai?",
+      "audioKey": "travel-phrases/india/where_bathroom.mp3"
+    },
+    {
+      "id": "when_depart",
+      "nativeText": "यह कब निकलती है?",
+      "romanization": "Yah kab nikalti hai?",
+      "audioKey": "travel-phrases/india/when_depart.mp3"
+    },
+    {
+      "id": "please_stop_here",
+      "nativeText": "कृपया यहाँ रोकिए",
+      "romanization": "Kripya yahan rokiye",
+      "audioKey": "travel-phrases/india/please_stop_here.mp3"
+    },
+    {
+      "id": "airport_please",
+      "nativeText": "एयरपोर्ट चलिए, कृपया",
+      "romanization": "Airport chaliye, kripya",
+      "audioKey": "travel-phrases/india/airport_please.mp3"
+    },
+    {
+      "id": "where_metro",
+      "nativeText": "मेट्रो कहाँ है?",
+      "romanization": "Metro kahan hai?",
+      "audioKey": "travel-phrases/india/where_metro.mp3"
+    },
+    {
+      "id": "i_have_booking",
+      "nativeText": "मेरी बुकिंग है",
+      "romanization": "Meri booking hai",
+      "audioKey": "travel-phrases/india/i_have_booking.mp3"
+    },
+    {
+      "id": "check_in_please",
+      "nativeText": "मुझे चेक-इन करना है",
+      "romanization": "Mujhe check-in karna hai",
+      "audioKey": "travel-phrases/india/check_in_please.mp3"
+    },
+    {
+      "id": "check_out_time",
+      "nativeText": "चेक-आउट कब है?",
+      "romanization": "Check-out kab hai?",
+      "audioKey": "travel-phrases/india/check_out_time.mp3"
+    },
+    {
+      "id": "wifi_password",
+      "nativeText": "Wi-Fi का पासवर्ड क्या है?",
+      "romanization": "Wi-Fi ka password kya hai?",
+      "audioKey": "travel-phrases/india/wifi_password.mp3"
+    },
+    {
+      "id": "more_towel",
+      "nativeText": "मुझे एक और तौलिया चाहिए",
+      "romanization": "Mujhe ek aur tauliya chahiye",
+      "audioKey": "travel-phrases/india/more_towel.mp3"
+    },
+    {
+      "id": "room_key",
+      "nativeText": "मेरे कमरे की चाबी कहाँ है?",
+      "romanization": "Mere kamre ki chaabi kahan hai?",
+      "audioKey": "travel-phrases/india/room_key.mp3"
+    },
+    {
+      "id": "late_check_out",
+      "nativeText": "क्या लेट चेक-आउट मिल सकता है?",
+      "romanization": "Kya late check-out mil sakta hai?",
+      "audioKey": "travel-phrases/india/late_check_out.mp3"
+    },
+    {
+      "id": "table_for_two",
+      "nativeText": "दो लोगों के लिए मेज़",
+      "romanization": "Do logon ke liye mez",
+      "audioKey": "travel-phrases/india/table_for_two.mp3"
+    },
+    {
+      "id": "menu_please",
+      "nativeText": "मेन्यू दीजिए",
+      "romanization": "Menu dijiye",
+      "audioKey": "travel-phrases/india/menu_please.mp3"
+    },
+    {
+      "id": "no_spicy",
+      "nativeText": "तीखा मत रखिए",
+      "romanization": "Teekha mat rakhiye",
+      "audioKey": "travel-phrases/india/no_spicy.mp3"
+    },
+    {
+      "id": "vegetarian",
+      "nativeText": "मैं शाकाहारी हूँ",
+      "romanization": "Main shakahari hoon",
+      "audioKey": "travel-phrases/india/vegetarian.mp3"
+    },
+    {
+      "id": "water_please",
+      "nativeText": "पानी दीजिए",
+      "romanization": "Paani dijiye",
+      "audioKey": "travel-phrases/india/water_please.mp3"
+    },
+    {
+      "id": "bill_please",
+      "nativeText": "बिल दीजिए",
+      "romanization": "Bill dijiye",
+      "audioKey": "travel-phrases/india/bill_please.mp3"
+    },
+    {
+      "id": "no_ice",
+      "nativeText": "बर्फ मत डालिए",
+      "romanization": "Barf mat daaliye",
+      "audioKey": "travel-phrases/india/no_ice.mp3"
+    },
+    {
+      "id": "how_much",
+      "nativeText": "यह कितने का है?",
+      "romanization": "Yah kitne ka hai?",
+      "audioKey": "travel-phrases/india/how_much.mp3"
+    },
+    {
+      "id": "too_expensive",
+      "nativeText": "यह बहुत महंगा है",
+      "romanization": "Yah bahut mehenga hai",
+      "audioKey": "travel-phrases/india/too_expensive.mp3"
+    },
+    {
+      "id": "card_ok",
+      "nativeText": "क्या कार्ड चलेगा?",
+      "romanization": "Kya card chalega?",
+      "audioKey": "travel-phrases/india/card_ok.mp3"
+    },
+    {
+      "id": "looking_only",
+      "nativeText": "मैं सिर्फ देख रहा हूँ",
+      "romanization": "Main sirf dekh raha hoon",
+      "audioKey": "travel-phrases/india/looking_only.mp3"
+    },
+    {
+      "id": "different_size",
+      "nativeText": "क्या दूसरा साइज़ है?",
+      "romanization": "Kya doosra size hai?",
+      "audioKey": "travel-phrases/india/different_size.mp3"
+    },
+    {
+      "id": "tax_free",
+      "nativeText": "क्या टैक्स-फ्री है?",
+      "romanization": "Kya tax-free hai?",
+      "audioKey": "travel-phrases/india/tax_free.mp3"
+    },
+    {
+      "id": "can_cheaper",
+      "nativeText": "थोड़ा कम हो सकता है?",
+      "romanization": "Thoda kam ho sakta hai?",
+      "audioKey": "travel-phrases/india/can_cheaper.mp3"
+    },
+    {
+      "id": "call_police",
+      "nativeText": "पुलिस को बुलाइए",
+      "romanization": "Police ko bulaiye",
+      "audioKey": "travel-phrases/india/call_police.mp3"
+    },
+    {
+      "id": "call_ambulance",
+      "nativeText": "एम्बुलेंस बुलाइए",
+      "romanization": "Ambulance bulaiye",
+      "audioKey": "travel-phrases/india/call_ambulance.mp3"
+    },
+    {
+      "id": "i_am_lost",
+      "nativeText": "मैं रास्ता भटक गया हूँ",
+      "romanization": "Main rasta bhatak gaya hoon",
+      "audioKey": "travel-phrases/india/i_am_lost.mp3"
+    },
+    {
+      "id": "need_pharmacy",
+      "nativeText": "मुझे फ़ार्मेसी चाहिए",
+      "romanization": "Mujhe pharmacy chahiye",
+      "audioKey": "travel-phrases/india/need_pharmacy.mp3"
+    },
+    {
+      "id": "need_doctor",
+      "nativeText": "मुझे डॉक्टर चाहिए",
+      "romanization": "Mujhe doctor chahiye",
+      "audioKey": "travel-phrases/india/need_doctor.mp3"
+    },
+    {
+      "id": "i_need_help",
+      "nativeText": "मुझे मदद चाहिए",
+      "romanization": "Mujhe madad chahiye",
+      "audioKey": "travel-phrases/india/i_need_help.mp3"
+    },
+    {
+      "id": "lost_passport",
+      "nativeText": "मेरा पासपोर्ट खो गया है",
+      "romanization": "Mera passport kho gaya hai",
+      "audioKey": "travel-phrases/india/lost_passport.mp3"
+    }
+  ]
+}

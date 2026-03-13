@@ -38,6 +38,7 @@ const macVoiceByLanguage = {
   'fr-CA': 'Amélie',
   'de-DE': 'Anna',
   'de-AT': 'Anna',
+  'de-CH': 'Anna',
   'it-IT': 'Alice',
   'nl-NL': 'Xander',
   'el-GR': 'Melina',
@@ -48,7 +49,10 @@ const macVoiceByLanguage = {
   'id-ID': 'Damayanti',
   'ms-MY': 'Amira',
   'zh-CN': 'Tingting',
+  'zh-TW': 'Meijia',
+  'zh-HK': 'Sinji',
   'ar_001': 'Majed',
+  'hi-IN': 'Lekha',
   'tr-TR': 'Yelda',
 }
 
@@ -72,6 +76,7 @@ const openAiVoiceByLanguage = {
   'fr-CA': 'shimmer',
   'de-DE': 'ash',
   'de-AT': 'ash',
+  'de-CH': 'ash',
   'it-IT': 'sage',
   'nl-NL': 'ash',
   'el-GR': 'shimmer',
@@ -82,7 +87,10 @@ const openAiVoiceByLanguage = {
   'id-ID': 'alloy',
   'ms-MY': 'alloy',
   'zh-CN': 'alloy',
+  'zh-TW': 'alloy',
+  'zh-HK': 'alloy',
   'ar_001': 'alloy',
+  'hi-IN': 'alloy',
   'tr-TR': 'alloy',
 }
 

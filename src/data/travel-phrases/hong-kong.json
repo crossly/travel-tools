@@ -1,0 +1,268 @@
+{
+  "country": {
+    "en-US": "Hong Kong",
+    "zh-CN": "中国香港"
+  },
+  "slug": "hong-kong",
+  "region": "asia",
+  "languageName": {
+    "en-US": "Cantonese",
+    "zh-CN": "粤语"
+  },
+  "languageCode": "zh-HK",
+  "flag": "🇭🇰",
+  "phrases": [
+    {
+      "id": "hello",
+      "nativeText": "你好",
+      "romanization": "Nei5 hou2",
+      "audioKey": "travel-phrases/hong-kong/hello.mp3"
+    },
+    {
+      "id": "thank_you",
+      "nativeText": "多謝",
+      "romanization": "Do1 ze6",
+      "audioKey": "travel-phrases/hong-kong/thank_you.mp3"
+    },
+    {
+      "id": "yes",
+      "nativeText": "係",
+      "romanization": "Hai6",
+      "audioKey": "travel-phrases/hong-kong/yes.mp3"
+    },
+    {
+      "id": "no",
+      "nativeText": "唔係",
+      "romanization": "M4 hai6",
+      "audioKey": "travel-phrases/hong-kong/no.mp3"
+    },
+    {
+      "id": "excuse_me",
+      "nativeText": "唔好意思",
+      "romanization": "M4 hou2 ji3 si3",
+      "audioKey": "travel-phrases/hong-kong/excuse_me.mp3"
+    },
+    {
+      "id": "help_me",
+      "nativeText": "請幫幫我",
+      "romanization": "Cing2 bong1 bong1 ngo5",
+      "audioKey": "travel-phrases/hong-kong/help_me.mp3"
+    },
+    {
+      "id": "do_you_speak_english",
+      "nativeText": "你識講英文嗎？",
+      "romanization": "Nei5 sik1 gong2 jing1 man4 maa3?",
+      "audioKey": "travel-phrases/hong-kong/do_you_speak_english.mp3"
+    },
+    {
+      "id": "where_station",
+      "nativeText": "車站喺邊度？",
+      "romanization": "Ce1 zaam6 hai2 bin1 dou6?",
+      "audioKey": "travel-phrases/hong-kong/where_station.mp3"
+    },
+    {
+      "id": "one_ticket",
+      "nativeText": "一張票，唔該",
+      "romanization": "Jat1 zoeng1 piu3, m4 goi1",
+      "audioKey": "travel-phrases/hong-kong/one_ticket.mp3"
+    },
+    {
+      "id": "where_bathroom",
+      "nativeText": "洗手間喺邊度？",
+      "romanization": "Sai2 sau2 gaan1 hai2 bin1 dou6?",
+      "audioKey": "travel-phrases/hong-kong/where_bathroom.mp3"
+    },
+    {
+      "id": "when_depart",
+      "nativeText": "幾時開？",
+      "romanization": "Gei2 si4 hoi1?",
+      "audioKey": "travel-phrases/hong-kong/when_depart.mp3"
+    },
+    {
+      "id": "please_stop_here",
+      "nativeText": "請喺呢度停",
+      "romanization": "Cing2 hai2 ni1 dou6 ting4",
+      "audioKey": "travel-phrases/hong-kong/please_stop_here.mp3"
+    },
+    {
+      "id": "airport_please",
+      "nativeText": "去機場，唔該",
+      "romanization": "Heoi3 gei1 coeng4, m4 goi1",
+      "audioKey": "travel-phrases/hong-kong/airport_please.mp3"
+    },
+    {
+      "id": "where_metro",
+      "nativeText": "地鐵喺邊度？",
+      "romanization": "Dei6 tit3 hai2 bin1 dou6?",
+      "audioKey": "travel-phrases/hong-kong/where_metro.mp3"
+    },
+    {
+      "id": "i_have_booking",
+      "nativeText": "我有預訂",
+      "romanization": "Ngo5 jau5 jyu6 ding6",
+      "audioKey": "travel-phrases/hong-kong/i_have_booking.mp3"
+    },
+    {
+      "id": "check_in_please",
+      "nativeText": "我想辦理入住",
+      "romanization": "Ngo5 soeng2 baan6 lei5 jap6 zyu6",
+      "audioKey": "travel-phrases/hong-kong/check_in_please.mp3"
+    },
+    {
+      "id": "check_out_time",
+      "nativeText": "幾點退房？",
+      "romanization": "Gei2 dim2 teoi3 fong4?",
+      "audioKey": "travel-phrases/hong-kong/check_out_time.mp3"
+    },
+    {
+      "id": "wifi_password",
+      "nativeText": "Wi-Fi 密碼係咩？",
+      "romanization": "Wi-Fi mat6 maa5 hai6 me1?",
+      "audioKey": "travel-phrases/hong-kong/wifi_password.mp3"
+    },
+    {
+      "id": "more_towel",
+      "nativeText": "我想要多條毛巾",
+      "romanization": "Ngo5 soeng2 jiu3 do1 tiu4 mou4 gan1",
+      "audioKey": "travel-phrases/hong-kong/more_towel.mp3"
+    },
+    {
+      "id": "room_key",
+      "nativeText": "我間房嘅房卡喺邊？",
+      "romanization": "Ngo5 gaan1 fong4 ge3 fong4 kaat1 hai2 bin1?",
+      "audioKey": "travel-phrases/hong-kong/room_key.mp3"
+    },
+    {
+      "id": "late_check_out",
+      "nativeText": "可以遲啲退房嗎？",
+      "romanization": "Ho2 ji5 ci4 di1 teoi3 fong4 maa3?",
+      "audioKey": "travel-phrases/hong-kong/late_check_out.mp3"
+    },
+    {
+      "id": "table_for_two",
+      "nativeText": "兩位，唔該",
+      "romanization": "Loeng5 wai2, m4 goi1",
+      "audioKey": "travel-phrases/hong-kong/table_for_two.mp3"
+    },
+    {
+      "id": "menu_please",
+      "nativeText": "麻煩俾我餐牌",
+      "romanization": "Maa4 faan4 bei2 ngo5 caan1 paai4",
+      "audioKey": "travel-phrases/hong-kong/menu_please.mp3"
+    },
+    {
+      "id": "no_spicy",
+      "nativeText": "唔好辣",
+      "romanization": "M4 hou2 laat6",
+      "audioKey": "travel-phrases/hong-kong/no_spicy.mp3"
+    },
+    {
+      "id": "vegetarian",
+      "nativeText": "我食素",
+      "romanization": "Ngo5 sik6 sou3",
+      "audioKey": "travel-phrases/hong-kong/vegetarian.mp3"
+    },
+    {
+      "id": "water_please",
+      "nativeText": "請俾我水",
+      "romanization": "Cing2 bei2 ngo5 seoi2",
+      "audioKey": "travel-phrases/hong-kong/water_please.mp3"
+    },
+    {
+      "id": "bill_please",
+      "nativeText": "麻煩埋單",
+      "romanization": "Maa4 faan4 maai4 daan1",
+      "audioKey": "travel-phrases/hong-kong/bill_please.mp3"
+    },
+    {
+      "id": "no_ice",
+      "nativeText": "唔好加冰",
+      "romanization": "M4 hou2 gaa1 bing1",
+      "audioKey": "travel-phrases/hong-kong/no_ice.mp3"
+    },
+    {
+      "id": "how_much",
+      "nativeText": "幾多錢？",
+      "romanization": "Gei2 do1 cin2?",
+      "audioKey": "travel-phrases/hong-kong/how_much.mp3"
+    },
+    {
+      "id": "too_expensive",
+      "nativeText": "太貴喇",
+      "romanization": "Taai3 gwai3 laa3",
+      "audioKey": "travel-phrases/hong-kong/too_expensive.mp3"
+    },
+    {
+      "id": "card_ok",
+      "nativeText": "可以碌卡嗎？",
+      "romanization": "Ho2 ji5 luk1 kaat1 maa3?",
+      "audioKey": "travel-phrases/hong-kong/card_ok.mp3"
+    },
+    {
+      "id": "looking_only",
+      "nativeText": "我淨係睇吓",
+      "romanization": "Ngo5 zing6 hai6 tai2 haa5",
+      "audioKey": "travel-phrases/hong-kong/looking_only.mp3"
+    },
+    {
+      "id": "different_size",
+      "nativeText": "有冇其他碼？",
+      "romanization": "Jau5 mou5 kei4 taa1 maa5?",
+      "audioKey": "travel-phrases/hong-kong/different_size.mp3"
+    },
+    {
+      "id": "tax_free",
+      "nativeText": "可以退稅嗎？",
+      "romanization": "Ho2 ji5 teoi3 seoi3 maa3?",
+      "audioKey": "travel-phrases/hong-kong/tax_free.mp3"
+    },
+    {
+      "id": "can_cheaper",
+      "nativeText": "可以平啲嗎？",
+      "romanization": "Ho2 ji5 peng4 di1 maa3?",
+      "audioKey": "travel-phrases/hong-kong/can_cheaper.mp3"
+    },
+    {
+      "id": "call_police",
+      "nativeText": "請幫我報警",
+      "romanization": "Cing2 bong1 ngo5 bou3 ging2",
+      "audioKey": "travel-phrases/hong-kong/call_police.mp3"
+    },
+    {
+      "id": "call_ambulance",
+      "nativeText": "請幫我叫白車",
+      "romanization": "Cing2 bong1 ngo5 giu3 baak6 ce1",
+      "audioKey": "travel-phrases/hong-kong/call_ambulance.mp3"
+    },
+    {
+      "id": "i_am_lost",
+      "nativeText": "我迷路咗",
+      "romanization": "Ngo5 mai4 lou6 zo2",
+      "audioKey": "travel-phrases/hong-kong/i_am_lost.mp3"
+    },
+    {
+      "id": "need_pharmacy",
+      "nativeText": "我需要藥房",
+      "romanization": "Ngo5 seoi1 jiu3 joek6 fong4",
+      "audioKey": "travel-phrases/hong-kong/need_pharmacy.mp3"
+    },
+    {
+      "id": "need_doctor",
+      "nativeText": "我需要醫生",
+      "romanization": "Ngo5 seoi1 jiu3 ji1 sang1",
+      "audioKey": "travel-phrases/hong-kong/need_doctor.mp3"
+    },
+    {
+      "id": "i_need_help",
+      "nativeText": "我需要幫手",
+      "romanization": "Ngo5 seoi1 jiu3 bong1 sau2",
+      "audioKey": "travel-phrases/hong-kong/i_need_help.mp3"
+    },
+    {
+      "id": "lost_passport",
+      "nativeText": "我本護照唔見咗",
+      "romanization": "Ngo5 bun2 wu6 ziu3 m4 gin3 zo2",
+      "audioKey": "travel-phrases/hong-kong/lost_passport.mp3"
+    }
+  ]
+}

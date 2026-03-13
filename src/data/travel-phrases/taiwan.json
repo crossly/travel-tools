@@ -1,0 +1,268 @@
+{
+  "country": {
+    "en-US": "Taiwan",
+    "zh-CN": "中国台湾"
+  },
+  "slug": "taiwan",
+  "region": "asia",
+  "languageName": {
+    "en-US": "Chinese (Traditional Mandarin)",
+    "zh-CN": "繁体中文"
+  },
+  "languageCode": "zh-TW",
+  "flag": "🇹🇼",
+  "phrases": [
+    {
+      "id": "hello",
+      "nativeText": "你好",
+      "romanization": "Ni hao",
+      "audioKey": "travel-phrases/taiwan/hello.mp3"
+    },
+    {
+      "id": "thank_you",
+      "nativeText": "謝謝",
+      "romanization": "Xie xie",
+      "audioKey": "travel-phrases/taiwan/thank_you.mp3"
+    },
+    {
+      "id": "yes",
+      "nativeText": "是的",
+      "romanization": "Shi de",
+      "audioKey": "travel-phrases/taiwan/yes.mp3"
+    },
+    {
+      "id": "no",
+      "nativeText": "不是",
+      "romanization": "Bu shi",
+      "audioKey": "travel-phrases/taiwan/no.mp3"
+    },
+    {
+      "id": "excuse_me",
+      "nativeText": "不好意思",
+      "romanization": "Bu hao yi si",
+      "audioKey": "travel-phrases/taiwan/excuse_me.mp3"
+    },
+    {
+      "id": "help_me",
+      "nativeText": "請幫幫我",
+      "romanization": "Qing bang bang wo",
+      "audioKey": "travel-phrases/taiwan/help_me.mp3"
+    },
+    {
+      "id": "do_you_speak_english",
+      "nativeText": "你會說英語嗎？",
+      "romanization": "Ni hui shuo Ying yu ma?",
+      "audioKey": "travel-phrases/taiwan/do_you_speak_english.mp3"
+    },
+    {
+      "id": "where_station",
+      "nativeText": "車站在哪裡？",
+      "romanization": "Che zhan zai na li?",
+      "audioKey": "travel-phrases/taiwan/where_station.mp3"
+    },
+    {
+      "id": "one_ticket",
+      "nativeText": "請給我一張票",
+      "romanization": "Qing gei wo yi zhang piao",
+      "audioKey": "travel-phrases/taiwan/one_ticket.mp3"
+    },
+    {
+      "id": "where_bathroom",
+      "nativeText": "洗手間在哪裡？",
+      "romanization": "Xi shou jian zai na li?",
+      "audioKey": "travel-phrases/taiwan/where_bathroom.mp3"
+    },
+    {
+      "id": "when_depart",
+      "nativeText": "什麼時候出發？",
+      "romanization": "Shen me shi hou chu fa?",
+      "audioKey": "travel-phrases/taiwan/when_depart.mp3"
+    },
+    {
+      "id": "please_stop_here",
+      "nativeText": "請在這裡停車",
+      "romanization": "Qing zai zhe li ting che",
+      "audioKey": "travel-phrases/taiwan/please_stop_here.mp3"
+    },
+    {
+      "id": "airport_please",
+      "nativeText": "請帶我去機場",
+      "romanization": "Qing dai wo qu ji chang",
+      "audioKey": "travel-phrases/taiwan/airport_please.mp3"
+    },
+    {
+      "id": "where_metro",
+      "nativeText": "捷運在哪裡？",
+      "romanization": "Jie yun zai na li?",
+      "audioKey": "travel-phrases/taiwan/where_metro.mp3"
+    },
+    {
+      "id": "i_have_booking",
+      "nativeText": "我有預訂",
+      "romanization": "Wo you yu ding",
+      "audioKey": "travel-phrases/taiwan/i_have_booking.mp3"
+    },
+    {
+      "id": "check_in_please",
+      "nativeText": "我想辦理入住",
+      "romanization": "Wo xiang ban li ru zhu",
+      "audioKey": "travel-phrases/taiwan/check_in_please.mp3"
+    },
+    {
+      "id": "check_out_time",
+      "nativeText": "什麼時候退房？",
+      "romanization": "Shen me shi hou tui fang?",
+      "audioKey": "travel-phrases/taiwan/check_out_time.mp3"
+    },
+    {
+      "id": "wifi_password",
+      "nativeText": "Wi-Fi密碼是什麼？",
+      "romanization": "Wi-Fi mi ma shi shen me?",
+      "audioKey": "travel-phrases/taiwan/wifi_password.mp3"
+    },
+    {
+      "id": "more_towel",
+      "nativeText": "我需要多一條毛巾",
+      "romanization": "Wo xu yao duo yi tiao mao jin",
+      "audioKey": "travel-phrases/taiwan/more_towel.mp3"
+    },
+    {
+      "id": "room_key",
+      "nativeText": "我的房卡在哪裡？",
+      "romanization": "Wo de fang ka zai na li?",
+      "audioKey": "travel-phrases/taiwan/room_key.mp3"
+    },
+    {
+      "id": "late_check_out",
+      "nativeText": "可以延後退房嗎？",
+      "romanization": "Ke yi yan hou tui fang ma?",
+      "audioKey": "travel-phrases/taiwan/late_check_out.mp3"
+    },
+    {
+      "id": "table_for_two",
+      "nativeText": "兩位，謝謝",
+      "romanization": "Liang wei, xie xie",
+      "audioKey": "travel-phrases/taiwan/table_for_two.mp3"
+    },
+    {
+      "id": "menu_please",
+      "nativeText": "請給我菜單",
+      "romanization": "Qing gei wo cai dan",
+      "audioKey": "travel-phrases/taiwan/menu_please.mp3"
+    },
+    {
+      "id": "no_spicy",
+      "nativeText": "不要辣",
+      "romanization": "Bu yao la",
+      "audioKey": "travel-phrases/taiwan/no_spicy.mp3"
+    },
+    {
+      "id": "vegetarian",
+      "nativeText": "我吃素",
+      "romanization": "Wo chi su",
+      "audioKey": "travel-phrases/taiwan/vegetarian.mp3"
+    },
+    {
+      "id": "water_please",
+      "nativeText": "請給我水",
+      "romanization": "Qing gei wo shui",
+      "audioKey": "travel-phrases/taiwan/water_please.mp3"
+    },
+    {
+      "id": "bill_please",
+      "nativeText": "麻煩買單",
+      "romanization": "Ma fan mai dan",
+      "audioKey": "travel-phrases/taiwan/bill_please.mp3"
+    },
+    {
+      "id": "no_ice",
+      "nativeText": "不要冰",
+      "romanization": "Bu yao bing",
+      "audioKey": "travel-phrases/taiwan/no_ice.mp3"
+    },
+    {
+      "id": "how_much",
+      "nativeText": "多少錢？",
+      "romanization": "Duo shao qian?",
+      "audioKey": "travel-phrases/taiwan/how_much.mp3"
+    },
+    {
+      "id": "too_expensive",
+      "nativeText": "太貴了",
+      "romanization": "Tai gui le",
+      "audioKey": "travel-phrases/taiwan/too_expensive.mp3"
+    },
+    {
+      "id": "card_ok",
+      "nativeText": "可以刷卡嗎？",
+      "romanization": "Ke yi shua ka ma?",
+      "audioKey": "travel-phrases/taiwan/card_ok.mp3"
+    },
+    {
+      "id": "looking_only",
+      "nativeText": "我只是看看",
+      "romanization": "Wo zhi shi kan kan",
+      "audioKey": "travel-phrases/taiwan/looking_only.mp3"
+    },
+    {
+      "id": "different_size",
+      "nativeText": "有其他尺寸嗎？",
+      "romanization": "You qi ta chi cun ma?",
+      "audioKey": "travel-phrases/taiwan/different_size.mp3"
+    },
+    {
+      "id": "tax_free",
+      "nativeText": "可以退稅嗎？",
+      "romanization": "Ke yi tui shui ma?",
+      "audioKey": "travel-phrases/taiwan/tax_free.mp3"
+    },
+    {
+      "id": "can_cheaper",
+      "nativeText": "可以便宜一點嗎？",
+      "romanization": "Ke yi pian yi yi dian ma?",
+      "audioKey": "travel-phrases/taiwan/can_cheaper.mp3"
+    },
+    {
+      "id": "call_police",
+      "nativeText": "請幫我報警",
+      "romanization": "Qing bang wo bao jing",
+      "audioKey": "travel-phrases/taiwan/call_police.mp3"
+    },
+    {
+      "id": "call_ambulance",
+      "nativeText": "請幫我叫救護車",
+      "romanization": "Qing bang wo jiao jiu hu che",
+      "audioKey": "travel-phrases/taiwan/call_ambulance.mp3"
+    },
+    {
+      "id": "i_am_lost",
+      "nativeText": "我迷路了",
+      "romanization": "Wo mi lu le",
+      "audioKey": "travel-phrases/taiwan/i_am_lost.mp3"
+    },
+    {
+      "id": "need_pharmacy",
+      "nativeText": "我需要藥局",
+      "romanization": "Wo xu yao yao ju",
+      "audioKey": "travel-phrases/taiwan/need_pharmacy.mp3"
+    },
+    {
+      "id": "need_doctor",
+      "nativeText": "我需要醫生",
+      "romanization": "Wo xu yao yi sheng",
+      "audioKey": "travel-phrases/taiwan/need_doctor.mp3"
+    },
+    {
+      "id": "i_need_help",
+      "nativeText": "我需要幫助",
+      "romanization": "Wo xu yao bang zhu",
+      "audioKey": "travel-phrases/taiwan/i_need_help.mp3"
+    },
+    {
+      "id": "lost_passport",
+      "nativeText": "我的護照丟了",
+      "romanization": "Wo de hu zhao diu le",
+      "audioKey": "travel-phrases/taiwan/lost_passport.mp3"
+    }
+  ]
+}

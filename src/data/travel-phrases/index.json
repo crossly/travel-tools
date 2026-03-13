@@ -33,6 +33,38 @@
   },
   {
     "country": {
+      "en-US": "Hong Kong",
+      "zh-CN": "中国香港"
+    },
+    "slug": "hong-kong",
+    "region": "asia",
+    "languageName": {
+      "en-US": "Cantonese",
+      "zh-CN": "粤语"
+    },
+    "languageCode": "zh-HK",
+    "flag": "🇭🇰",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
+      "en-US": "India",
+      "zh-CN": "印度"
+    },
+    "slug": "india",
+    "region": "asia",
+    "languageName": {
+      "en-US": "Hindi",
+      "zh-CN": "印地语"
+    },
+    "languageCode": "hi-IN",
+    "flag": "🇮🇳",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
       "en-US": "Indonesia",
       "zh-CN": "印度尼西亚"
     },
@@ -124,6 +156,22 @@
     },
     "languageCode": "ko-KR",
     "flag": "🇰🇷",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
+      "en-US": "Taiwan",
+      "zh-CN": "中国台湾"
+    },
+    "slug": "taiwan",
+    "region": "asia",
+    "languageName": {
+      "en-US": "Chinese (Traditional Mandarin)",
+      "zh-CN": "繁体中文"
+    },
+    "languageCode": "zh-TW",
+    "flag": "🇹🇼",
     "phraseCount": 42,
     "hasAudio": true
   },
@@ -316,6 +364,22 @@
     },
     "languageCode": "es-ES",
     "flag": "🇪🇸",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
+      "en-US": "Switzerland",
+      "zh-CN": "瑞士"
+    },
+    "slug": "switzerland",
+    "region": "europe",
+    "languageName": {
+      "en-US": "German",
+      "zh-CN": "德语"
+    },
+    "languageCode": "de-CH",
+    "flag": "🇨🇭",
     "phraseCount": 42,
     "hasAudio": true
   },
