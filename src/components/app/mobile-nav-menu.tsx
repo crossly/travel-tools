@@ -82,7 +82,7 @@ export function MobileNavMenu({
           <div className="mt-3 flex items-center justify-between gap-2 border-t border-border/80 pt-3">
             <p className="text-xs font-medium text-muted-foreground">{t('settings.appearance')}</p>
             <div className="flex items-center gap-2">
-              <ThemeToggle className="min-w-[7.5rem]" />
+              <ThemeToggle iconOnly />
               <Button
                 type="button"
                 variant="secondary"

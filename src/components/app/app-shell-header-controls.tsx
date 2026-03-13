@@ -56,7 +56,7 @@ export function AppShellHeaderControls({
         })}
       </nav>
       <LocaleSwitcher className="min-w-[7.5rem]" />
-      <ThemeToggle className="min-w-[7.5rem]" />
+      <ThemeToggle iconOnly />
       <Button
         asChild
         variant="secondary"
