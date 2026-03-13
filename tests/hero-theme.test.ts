@@ -17,7 +17,7 @@ vi.mock('@/lib/i18n', () => ({
   useI18n: () => ({
     t: (key: string) => ({
       'site.homeTitle': 'Travel tools that stay useful on the road',
-      'site.homeDescription': 'One shell, one design system, two launch tools: currency and split bill.',
+      'site.homeDescription': 'One shell, one design system, two launch tools: currency and bill splitting.',
       'site.tagline': 'Route Crate',
       'site.heroTitle': 'Keep travel-time decisions in one small, dependable place',
       'site.heroDescription': 'When the connection is weak, the currencies are mixed, and the decision needs to be quick, Route Crate stays legible and fast.',
@@ -31,7 +31,7 @@ vi.mock('@/lib/i18n', () => ({
       'site.heroMetricSplit': '4 people · 2 expenses',
       'site.heroMetricSettle': '2 transfers',
       'tool.currency.name': 'Currency Converter',
-      'tool.splitBill.name': 'Split Bill',
+      'tool.splitBill.name': 'Bill Splitter',
     })[key] ?? key,
   }),
 }))
