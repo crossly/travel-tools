@@ -1,4 +1,5 @@
 import phraseDefinitionsRaw from '@/data/travel-phrases/phrase-definitions.json'
+import phraseCountryIndexRaw from '@/data/travel-phrases/index.json'
 import { translate } from '@/lib/i18n'
 import type { Locale, PhraseCard, PhraseCategory, PhraseCountryPack, PhraseCountrySummary, PhraseRegion } from '@/lib/types'
 
@@ -27,32 +28,33 @@ type RawPhraseCountryPack = {
   phrases: RawPhraseEntry[]
 }
 
+type RawPhraseCountrySummary = {
+  country: LocalizedCopy
+  slug: string
+  region: PhraseRegion
+  languageName: LocalizedCopy
+  languageCode: string
+  flag: string
+  phraseCount: number
+  hasAudio: boolean
+}
+
 export const PHRASE_CATEGORIES: PhraseCategory[] = ['basics', 'transport', 'hotel', 'dining', 'shopping', 'emergency']
 export const PHRASE_REGIONS: Array<PhraseRegion | 'all'> = ['all', 'asia', 'europe', 'americas', 'africa']
 
 const phraseDefinitions = phraseDefinitionsRaw as RawPhraseDefinition[]
-const rawCountryModules = import.meta.glob('../data/travel-phrases/*.json', {
-  eager: true,
-}) as Record<string, { default: RawPhraseCountryPack }>
-
-const regionOrder: Record<PhraseRegion, number> = {
-  asia: 0,
-  europe: 1,
-  americas: 2,
-  africa: 3,
-}
-
-const rawCountryPacks = Object.entries(rawCountryModules)
-  .filter(([path]) => !path.endsWith('/phrase-definitions.json'))
-  .map(([, mod]) => mod.default)
-  .sort(
-    (left, right) =>
-      regionOrder[left.region] - regionOrder[right.region]
-      || left.country['en-US'].localeCompare(right.country['en-US']),
-  )
+const phraseCountryIndex = phraseCountryIndexRaw as RawPhraseCountrySummary[]
+const rawCountryModules = import.meta.glob([
+  '../data/travel-phrases/*.json',
+  '!../data/travel-phrases/index.json',
+  '!../data/travel-phrases/phrase-definitions.json',
+]) as Record<
+  string,
+  () => Promise<{ default: RawPhraseCountryPack }>
+>
 
 const definitionMap = new Map(phraseDefinitions.map((definition) => [definition.id, definition]))
-const rawPackMap = new Map(rawCountryPacks.map((pack) => [pack.slug, pack]))
+const rawPackCache = new Map<string, RawPhraseCountryPack>()
 
 function buildCountryTitle(locale: Locale, country: string) {
   return translate(locale, 'phrases.countryPageTitle', { country })
@@ -66,16 +68,28 @@ export function buildPhraseAudioPath(country: string, phraseId: string) {
   return `/api/phrase-audio/${country}/${phraseId}`
 }
 
-export function getAllRawPhraseCountryPacks() {
-  return rawCountryPacks
+export function listRawPhraseCountrySummaries() {
+  return phraseCountryIndex
 }
 
-export function getRawPhraseCountryPack(country: string) {
-  return rawPackMap.get(country) ?? null
+export async function getAllRawPhraseCountryPacks() {
+  return Promise.all(phraseCountryIndex.map((pack) => getRawPhraseCountryPack(pack.slug))) as Promise<RawPhraseCountryPack[]>
+}
+
+export async function getRawPhraseCountryPack(country: string) {
+  const cached = rawPackCache.get(country)
+  if (cached) return cached
+
+  const loader = rawCountryModules[`../data/travel-phrases/${country}.json`]
+  if (!loader) return null
+
+  const mod = await loader()
+  rawPackCache.set(country, mod.default)
+  return mod.default
 }
 
 export function listPhraseCountrySummaries(locale: Locale, region: PhraseRegion | 'all' = 'all'): PhraseCountrySummary[] {
-  return rawCountryPacks
+  return phraseCountryIndex
     .filter((pack) => region === 'all' || pack.region === region)
     .map((pack) => ({
       country: pack.country[locale],
@@ -86,13 +100,13 @@ export function listPhraseCountrySummaries(locale: Locale, region: PhraseRegion 
       flag: pack.flag,
       title: buildCountryTitle(locale, pack.country[locale]),
       description: buildCountryDescription(locale, pack.country[locale]),
-      phraseCount: pack.phrases.length,
-      hasAudio: pack.phrases.every((phrase) => Boolean(phrase.audioKey)),
+      phraseCount: pack.phraseCount,
+      hasAudio: pack.hasAudio,
     }))
 }
 
-export function getPhraseCountryPack(locale: Locale, country: string): PhraseCountryPack | null {
-  const pack = rawPackMap.get(country)
+export async function getPhraseCountryPack(locale: Locale, country: string): Promise<PhraseCountryPack | null> {
+  const pack = await getRawPhraseCountryPack(country)
   if (!pack) return null
 
   const phrases: PhraseCard[] = pack.phrases.map((entry) => {

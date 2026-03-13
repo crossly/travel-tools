@@ -70,7 +70,7 @@ describe('TravelPhrasesCountryPage', () => {
   it('switches categories without navigation and plays audio from the country route', async () => {
     const { getPhraseCountryPack } = await import('@/lib/travel-phrases')
     const { TravelPhrasesCountryPage } = await import('@/features/travel-phrases/country-page')
-    const pack = getPhraseCountryPack('en-US', 'japan')
+    const pack = await getPhraseCountryPack('en-US', 'japan')
 
     render(createElement(TravelPhrasesCountryPage, { locale: 'en-US', pack }))
 
@@ -95,7 +95,7 @@ describe('TravelPhrasesCountryPage', () => {
   it('disables playback for packs without audio', async () => {
     const { getPhraseCountryPack } = await import('@/lib/travel-phrases')
     const { TravelPhrasesCountryPage } = await import('@/features/travel-phrases/country-page')
-    const pack = getPhraseCountryPack('en-US', 'cambodia')
+    const pack = await getPhraseCountryPack('en-US', 'cambodia')
 
     render(createElement(TravelPhrasesCountryPage, { locale: 'en-US', pack }))
 

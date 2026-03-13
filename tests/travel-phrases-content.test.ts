@@ -1,9 +1,14 @@
 import { describe, expect, it } from 'vitest'
-import { getAllRawPhraseCountryPacks, getPhraseCountryPack, validateRawPhraseCountryPack } from '@/lib/travel-phrases'
+import {
+  getAllRawPhraseCountryPacks,
+  getPhraseCountryPack,
+  listRawPhraseCountrySummaries,
+  validateRawPhraseCountryPack,
+} from '@/lib/travel-phrases'
 
 describe('travel phrase content', () => {
-  it('ships 27 country packs with valid phrase definitions', () => {
-    const packs = getAllRawPhraseCountryPacks()
+  it('ships 27 country packs with valid phrase definitions', async () => {
+    const packs = await getAllRawPhraseCountryPacks()
     expect(packs).toHaveLength(27)
 
     for (const pack of packs) {
@@ -11,12 +16,12 @@ describe('travel phrase content', () => {
     }
   })
 
-  it('localizes country packs for the active site locale', () => {
-    const englishPack = getPhraseCountryPack('en-US', 'japan')
-    const chinesePack = getPhraseCountryPack('zh-CN', 'japan')
-    const cambodiaPack = getPhraseCountryPack('en-US', 'cambodia')
-    const malaysiaPack = getPhraseCountryPack('en-US', 'malaysia')
-    const chinaPack = getPhraseCountryPack('zh-CN', 'china')
+  it('localizes country packs for the active site locale', async () => {
+    const englishPack = await getPhraseCountryPack('en-US', 'japan')
+    const chinesePack = await getPhraseCountryPack('zh-CN', 'japan')
+    const cambodiaPack = await getPhraseCountryPack('en-US', 'cambodia')
+    const malaysiaPack = await getPhraseCountryPack('en-US', 'malaysia')
+    const chinaPack = await getPhraseCountryPack('zh-CN', 'china')
 
     expect(englishPack?.title).toBe('Japan Travel Phrases')
     expect(chinesePack?.title).toBe('日本旅行短语卡')
@@ -28,5 +33,12 @@ describe('travel phrase content', () => {
     expect(cambodiaPack?.phrases.every((phrase) => phrase.audioKey === null)).toBe(true)
     expect(malaysiaPack?.phrases.every((phrase) => phrase.audioKey === null)).toBe(true)
     expect(chinesePack?.phrases[0]?.translation).toBe('你好')
+  })
+
+  it('ships a lightweight country index for summaries', () => {
+    const summaries = listRawPhraseCountrySummaries()
+    expect(summaries).toHaveLength(27)
+    expect(summaries.some((pack) => pack.slug === 'china' && pack.phraseCount === 42)).toBe(true)
+    expect(summaries.some((pack) => pack.slug === 'malaysia' && pack.hasAudio === false)).toBe(true)
   })
 })

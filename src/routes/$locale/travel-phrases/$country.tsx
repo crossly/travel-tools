@@ -6,11 +6,11 @@ import { DEFAULT_LOCALE, resolveLocaleSegment } from '@/lib/site'
 import { getPhraseCountryPack } from '@/lib/travel-phrases'
 
 export const Route = createFileRoute('/$locale/travel-phrases/$country')({
-  loader: ({ params }) => {
+  loader: async ({ params }) => {
     const locale = resolveLocaleSegment(params.locale) ?? DEFAULT_LOCALE
     return {
       locale,
-      pack: getPhraseCountryPack(locale, params.country),
+      pack: await getPhraseCountryPack(locale, params.country),
     }
   },
   head: ({ params, loaderData }) => {

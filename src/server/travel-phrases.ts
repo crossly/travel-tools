@@ -11,7 +11,7 @@ export async function servePhraseAudio(
   options: { headOnly?: boolean; requestHeaders?: Headers } = {},
 ) {
   const { headOnly = false, requestHeaders } = options
-  const pack = getRawPhraseCountryPack(country)
+  const pack = await getRawPhraseCountryPack(country)
   if (!pack) {
     return jsonError('PHRASE_PACK_NOT_FOUND', 404)
   }

@@ -1,0 +1,434 @@
+[
+  {
+    "country": {
+      "en-US": "Cambodia",
+      "zh-CN": "柬埔寨"
+    },
+    "slug": "cambodia",
+    "region": "asia",
+    "languageName": {
+      "en-US": "Khmer",
+      "zh-CN": "高棉语"
+    },
+    "languageCode": "km-KH",
+    "flag": "🇰🇭",
+    "phraseCount": 42,
+    "hasAudio": false
+  },
+  {
+    "country": {
+      "en-US": "China",
+      "zh-CN": "中国"
+    },
+    "slug": "china",
+    "region": "asia",
+    "languageName": {
+      "en-US": "Chinese (Mandarin)",
+      "zh-CN": "中文"
+    },
+    "languageCode": "zh-CN",
+    "flag": "🇨🇳",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
+      "en-US": "Indonesia",
+      "zh-CN": "印度尼西亚"
+    },
+    "slug": "indonesia",
+    "region": "asia",
+    "languageName": {
+      "en-US": "Indonesian",
+      "zh-CN": "印尼语"
+    },
+    "languageCode": "id-ID",
+    "flag": "🇮🇩",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
+      "en-US": "Japan",
+      "zh-CN": "日本"
+    },
+    "slug": "japan",
+    "region": "asia",
+    "languageName": {
+      "en-US": "Japanese",
+      "zh-CN": "日语"
+    },
+    "languageCode": "ja-JP",
+    "flag": "🇯🇵",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
+      "en-US": "Malaysia",
+      "zh-CN": "马来西亚"
+    },
+    "slug": "malaysia",
+    "region": "asia",
+    "languageName": {
+      "en-US": "Malay",
+      "zh-CN": "马来语"
+    },
+    "languageCode": "ms-MY",
+    "flag": "🇲🇾",
+    "phraseCount": 42,
+    "hasAudio": false
+  },
+  {
+    "country": {
+      "en-US": "South Korea",
+      "zh-CN": "韩国"
+    },
+    "slug": "south-korea",
+    "region": "asia",
+    "languageName": {
+      "en-US": "Korean",
+      "zh-CN": "韩语"
+    },
+    "languageCode": "ko-KR",
+    "flag": "🇰🇷",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
+      "en-US": "Thailand",
+      "zh-CN": "泰国"
+    },
+    "slug": "thailand",
+    "region": "asia",
+    "languageName": {
+      "en-US": "Thai",
+      "zh-CN": "泰语"
+    },
+    "languageCode": "th-TH",
+    "flag": "🇹🇭",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
+      "en-US": "Vietnam",
+      "zh-CN": "越南"
+    },
+    "slug": "vietnam",
+    "region": "asia",
+    "languageName": {
+      "en-US": "Vietnamese",
+      "zh-CN": "越南语"
+    },
+    "languageCode": "vi-VN",
+    "flag": "🇻🇳",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
+      "en-US": "France",
+      "zh-CN": "法国"
+    },
+    "slug": "france",
+    "region": "europe",
+    "languageName": {
+      "en-US": "French",
+      "zh-CN": "法语"
+    },
+    "languageCode": "fr-FR",
+    "flag": "🇫🇷",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
+      "en-US": "Germany",
+      "zh-CN": "德国"
+    },
+    "slug": "germany",
+    "region": "europe",
+    "languageName": {
+      "en-US": "German",
+      "zh-CN": "德语"
+    },
+    "languageCode": "de-DE",
+    "flag": "🇩🇪",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
+      "en-US": "Greece",
+      "zh-CN": "希腊"
+    },
+    "slug": "greece",
+    "region": "europe",
+    "languageName": {
+      "en-US": "Greek",
+      "zh-CN": "希腊语"
+    },
+    "languageCode": "el-GR",
+    "flag": "🇬🇷",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
+      "en-US": "Italy",
+      "zh-CN": "意大利"
+    },
+    "slug": "italy",
+    "region": "europe",
+    "languageName": {
+      "en-US": "Italian",
+      "zh-CN": "意大利语"
+    },
+    "languageCode": "it-IT",
+    "flag": "🇮🇹",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
+      "en-US": "Netherlands",
+      "zh-CN": "荷兰"
+    },
+    "slug": "netherlands",
+    "region": "europe",
+    "languageName": {
+      "en-US": "Dutch",
+      "zh-CN": "荷兰语"
+    },
+    "languageCode": "nl-NL",
+    "flag": "🇳🇱",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
+      "en-US": "Portugal",
+      "zh-CN": "葡萄牙"
+    },
+    "slug": "portugal",
+    "region": "europe",
+    "languageName": {
+      "en-US": "Portuguese",
+      "zh-CN": "葡萄牙语"
+    },
+    "languageCode": "pt-PT",
+    "flag": "🇵🇹",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
+      "en-US": "Spain",
+      "zh-CN": "西班牙"
+    },
+    "slug": "spain",
+    "region": "europe",
+    "languageName": {
+      "en-US": "Spanish",
+      "zh-CN": "西班牙语"
+    },
+    "languageCode": "es-ES",
+    "flag": "🇪🇸",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
+      "en-US": "Argentina",
+      "zh-CN": "阿根廷"
+    },
+    "slug": "argentina",
+    "region": "americas",
+    "languageName": {
+      "en-US": "Spanish",
+      "zh-CN": "西班牙语"
+    },
+    "languageCode": "es-AR",
+    "flag": "🇦🇷",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
+      "en-US": "Brazil",
+      "zh-CN": "巴西"
+    },
+    "slug": "brazil",
+    "region": "americas",
+    "languageName": {
+      "en-US": "Portuguese",
+      "zh-CN": "葡萄牙语"
+    },
+    "languageCode": "pt-BR",
+    "flag": "🇧🇷",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
+      "en-US": "Canada",
+      "zh-CN": "加拿大"
+    },
+    "slug": "canada",
+    "region": "americas",
+    "languageName": {
+      "en-US": "English",
+      "zh-CN": "英语"
+    },
+    "languageCode": "en-CA",
+    "flag": "🇨🇦",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
+      "en-US": "Chile",
+      "zh-CN": "智利"
+    },
+    "slug": "chile",
+    "region": "americas",
+    "languageName": {
+      "en-US": "Spanish",
+      "zh-CN": "西班牙语"
+    },
+    "languageCode": "es-CL",
+    "flag": "🇨🇱",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
+      "en-US": "Mexico",
+      "zh-CN": "墨西哥"
+    },
+    "slug": "mexico",
+    "region": "americas",
+    "languageName": {
+      "en-US": "Spanish",
+      "zh-CN": "西班牙语"
+    },
+    "languageCode": "es-MX",
+    "flag": "🇲🇽",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
+      "en-US": "Peru",
+      "zh-CN": "秘鲁"
+    },
+    "slug": "peru",
+    "region": "americas",
+    "languageName": {
+      "en-US": "Spanish",
+      "zh-CN": "西班牙语"
+    },
+    "languageCode": "es-PE",
+    "flag": "🇵🇪",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
+      "en-US": "United States",
+      "zh-CN": "美国"
+    },
+    "slug": "united-states",
+    "region": "americas",
+    "languageName": {
+      "en-US": "English",
+      "zh-CN": "英语"
+    },
+    "languageCode": "en-US",
+    "flag": "🇺🇸",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
+      "en-US": "Kenya",
+      "zh-CN": "肯尼亚"
+    },
+    "slug": "kenya",
+    "region": "africa",
+    "languageName": {
+      "en-US": "English",
+      "zh-CN": "英语"
+    },
+    "languageCode": "en-US",
+    "flag": "🇰🇪",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
+      "en-US": "Mauritius",
+      "zh-CN": "毛里求斯"
+    },
+    "slug": "mauritius",
+    "region": "africa",
+    "languageName": {
+      "en-US": "French",
+      "zh-CN": "法语"
+    },
+    "languageCode": "fr-FR",
+    "flag": "🇲🇺",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
+      "en-US": "Morocco",
+      "zh-CN": "摩洛哥"
+    },
+    "slug": "morocco",
+    "region": "africa",
+    "languageName": {
+      "en-US": "French",
+      "zh-CN": "法语"
+    },
+    "languageCode": "fr-FR",
+    "flag": "🇲🇦",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
+      "en-US": "South Africa",
+      "zh-CN": "南非"
+    },
+    "slug": "south-africa",
+    "region": "africa",
+    "languageName": {
+      "en-US": "English",
+      "zh-CN": "英语"
+    },
+    "languageCode": "en-US",
+    "flag": "🇿🇦",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
+      "en-US": "Tanzania",
+      "zh-CN": "坦桑尼亚"
+    },
+    "slug": "tanzania",
+    "region": "africa",
+    "languageName": {
+      "en-US": "English",
+      "zh-CN": "英语"
+    },
+    "languageCode": "en-US",
+    "flag": "🇹🇿",
+    "phraseCount": 42,
+    "hasAudio": true
+  }
+]
