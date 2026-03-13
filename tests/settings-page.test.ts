@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { createElement } from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
-import { describe, expect, it, vi } from 'vitest'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 
 vi.mock('@/components/app/app-shell', () => ({
   AppShell: ({ children }: { children?: React.ReactNode }) => createElement('div', null, children),
@@ -13,6 +13,9 @@ vi.mock('@/components/app/theme-toggle', () => ({
 
 const exportTrip = vi.fn()
 const importTrip = vi.fn()
+const createObjectURL = vi.fn(() => 'blob:mock')
+const revokeObjectURL = vi.fn()
+const anchorClick = vi.fn()
 
 vi.mock('@/lib/api/client', () => ({
   exportTrip,
@@ -47,6 +50,16 @@ vi.mock('@/lib/i18n', () => ({
 }))
 
 describe('SettingsPage', () => {
+  afterEach(() => {
+    exportTrip.mockReset()
+    importTrip.mockReset()
+    readActiveTripId.mockReset()
+    readActiveTripId.mockReturnValue('trip_123')
+    createObjectURL.mockClear()
+    revokeObjectURL.mockClear()
+    anchorClick.mockClear()
+  })
+
   it('shows an inline field error when import content is empty', async () => {
     const { SettingsPage } = await import('@/features/site/settings-page')
 
@@ -75,6 +88,36 @@ describe('SettingsPage', () => {
     fireEvent.click(screen.getByRole('button', { name: '导出当前行程' }))
 
     expect(await screen.findByText('错误:REQUEST_FAILED')).toBeTruthy()
+  })
+
+  it('downloads a json file when export succeeds', async () => {
+    exportTrip.mockResolvedValueOnce('{"trip":true}')
+    const appendChildSpy = vi.spyOn(document.body, 'appendChild')
+    const createElementSpy = vi.spyOn(document, 'createElement').mockImplementation(((tagName: string) => {
+      if (tagName === 'a') {
+        const anchor = document.createElementNS('http://www.w3.org/1999/xhtml', 'a') as HTMLAnchorElement
+        anchor.click = anchorClick
+        return anchor
+      }
+      return document.createElementNS('http://www.w3.org/1999/xhtml', tagName)
+    }) as typeof document.createElement)
+
+    vi.stubGlobal('URL', {
+      createObjectURL,
+      revokeObjectURL,
+    })
+
+    const { SettingsPage } = await import('@/features/site/settings-page')
+
+    render(createElement(SettingsPage, { locale: 'zh-CN' }))
+    fireEvent.click(screen.getByRole('button', { name: '导出当前行程' }))
+
+    expect(await screen.findByText('导出成功')).toBeTruthy()
+    expect(createObjectURL).toHaveBeenCalled()
+    expect(anchorClick).toHaveBeenCalled()
+
+    createElementSpy.mockRestore()
+    appendChildSpy.mockRestore()
   })
 
   it('shows local warning state when no active trip exists for import', async () => {

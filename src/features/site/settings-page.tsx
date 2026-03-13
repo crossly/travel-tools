@@ -11,6 +11,23 @@ import { useI18n } from '@/lib/i18n'
 import { readActiveTripId } from '@/lib/storage'
 import type { Locale } from '@/lib/types'
 
+function buildExportFilename(tripId: string) {
+  const date = new Date().toISOString().slice(0, 10)
+  return `trip-${tripId}-${date}.json`
+}
+
+function downloadExportFile(filename: string, content: string) {
+  const blob = new Blob([content], { type: 'application/json;charset=utf-8' })
+  const url = URL.createObjectURL(blob)
+  const link = document.createElement('a')
+  link.href = url
+  link.download = filename
+  document.body.appendChild(link)
+  link.click()
+  link.remove()
+  URL.revokeObjectURL(url)
+}
+
 export function SettingsPage({ locale }: { locale: Locale }) {
   const { t, tError } = useI18n()
   const [importContent, setImportContent] = useState('')
@@ -32,7 +49,7 @@ export function SettingsPage({ locale }: { locale: Locale }) {
 
     try {
       const content = await exportTrip(tripId)
-      await navigator.clipboard.writeText(content)
+      downloadExportFile(buildExportFilename(tripId), content)
       setExportStatus({ tone: 'success', title: t('settings.exportSuccess') })
     } catch (error) {
       setExportStatus({ tone: 'danger', title: tError((error as Error).message) })
