@@ -10,7 +10,8 @@
   },
   "scripts": {
     "dev": "vite dev --port 3000",
-    "build": "vite build",
+    "sitemap": "node ./scripts/generate-sitemap.mjs",
+    "build": "pnpm run sitemap && vite build",
     "preview": "vite preview",
     "test": "vitest run --config vitest.config.ts",
     "typecheck": "tsc --noEmit",

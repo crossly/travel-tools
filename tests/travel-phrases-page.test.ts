@@ -43,6 +43,7 @@ vi.mock('@/lib/i18n', async (importOriginal) => {
       'phrases.audioComingSoonShort': 'Audio coming soon',
       'phrases.stopAudio': 'Stop audio',
       'phrases.playAudio': 'Play audio',
+      'phrases.loadingAudio': 'Loading audio',
       'phrases.audioUnavailable': 'Audio is unavailable right now. Try again in a moment.',
       'phrases.emptyTitle': 'Empty',
       'phrases.emptyDescription': 'No phrases',

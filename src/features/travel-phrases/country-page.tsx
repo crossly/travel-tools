@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from '@tanstack/react-router'
-import { Languages, Play, Square, Volume2 } from 'lucide-react'
+import { Languages, LoaderCircle, Play, Square, Volume2 } from 'lucide-react'
 import { AppShell } from '@/components/app/app-shell'
 import { InlineStatus } from '@/components/app/inline-status'
 import { PageState } from '@/components/app/page-state'
@@ -37,6 +37,7 @@ export function TravelPhrasesCountryPage({
   const audioLoadMapRef = useRef(new Map<string, Promise<string>>())
   const [activeCategory, setActiveCategory] = useState<PhraseCategory>('basics')
   const [activePhraseId, setActivePhraseId] = useState<string | null>(null)
+  const [loadingPhraseId, setLoadingPhraseId] = useState<string | null>(null)
   const [errorPhraseId, setErrorPhraseId] = useState<string | null>(null)
 
   useEffect(() => {
@@ -58,22 +59,13 @@ export function TravelPhrasesCountryPage({
   }, [])
 
   useEffect(() => {
-    if (!pack?.hasAudio || typeof fetch !== 'function' || typeof URL.createObjectURL !== 'function') {
-      return
-    }
-
-    for (const phrase of pack.phrases) {
-      void primePhraseAudio(phrase)
-    }
-  }, [pack])
-
-  useEffect(() => {
     const audio = audioRef.current
     if (!audio) return
 
     const handleEnded = () => setActivePhraseId(null)
     const handleError = () => {
       setErrorPhraseId((current) => current ?? activePhraseIdRef.current)
+      setLoadingPhraseId(null)
       setActivePhraseId(null)
     }
 
@@ -92,6 +84,16 @@ export function TravelPhrasesCountryPage({
     [activeCategory, pack],
   )
 
+  useEffect(() => {
+    if (!pack?.hasAudio || typeof fetch !== 'function' || typeof URL.createObjectURL !== 'function') {
+      return
+    }
+
+    for (const phrase of visiblePhrases) {
+      void primePhraseAudio(phrase)
+    }
+  }, [pack, visiblePhrases])
+
   function changeCategory(nextCategory: PhraseCategory) {
     stopPlayback()
     setErrorPhraseId(null)
@@ -103,6 +105,7 @@ export function TravelPhrasesCountryPage({
     if (!audio) return
     audio.pause()
     audio.currentTime = 0
+    setLoadingPhraseId(null)
     setActivePhraseId(null)
   }
 
@@ -116,16 +119,18 @@ export function TravelPhrasesCountryPage({
     }
 
     setErrorPhraseId(null)
+    setLoadingPhraseId(phrase.id)
     audio.pause()
     audio.currentTime = 0
 
-    const audioSrc = await primePhraseAudio(phrase)
-    audio.src = audioSrc
-    setActivePhraseId(phrase.id)
-
     try {
+      const audioSrc = await primePhraseAudio(phrase)
+      audio.src = audioSrc
+      setActivePhraseId(phrase.id)
+      setLoadingPhraseId(null)
       await audio.play()
     } catch {
+      setLoadingPhraseId(null)
       setActivePhraseId(null)
       setErrorPhraseId(phrase.id)
     }
@@ -235,6 +240,7 @@ export function TravelPhrasesCountryPage({
             <div className="grid gap-4 md:grid-cols-2">
               {visiblePhrases.map((phrase) => {
                 const isPlaying = activePhraseId === phrase.id
+                const isLoading = loadingPhraseId === phrase.id
                 const audioDisabled = !phrase.audioKey
                 return (
                   <Card key={phrase.id} className="h-full">
@@ -257,10 +263,12 @@ export function TravelPhrasesCountryPage({
                         className="w-full justify-center"
                         aria-label={audioDisabled
                           ? t('phrases.audioComingSoonShort')
+                          : isLoading
+                            ? t('phrases.loadingAudio')
                           : isPlaying
                             ? t('phrases.stopAudio')
                             : t('phrases.playAudio')}
-                        disabled={audioDisabled}
+                        disabled={audioDisabled || isLoading}
                         onPointerDown={() => {
                           if (!audioDisabled) {
                             void primePhraseAudio(phrase)
@@ -268,8 +276,22 @@ export function TravelPhrasesCountryPage({
                         }}
                         onClick={() => void togglePlayback(phrase)}
                       >
-                        {audioDisabled ? <Volume2 className="size-4" /> : isPlaying ? <Square className="size-4" /> : <Play className="size-4" />}
-                        {audioDisabled ? t('phrases.audioComingSoonShort') : isPlaying ? t('phrases.stopAudio') : t('phrases.playAudio')}
+                        {audioDisabled ? (
+                          <Volume2 className="size-4" />
+                        ) : isLoading ? (
+                          <LoaderCircle className="size-4 animate-spin" />
+                        ) : isPlaying ? (
+                          <Square className="size-4" />
+                        ) : (
+                          <Play className="size-4" />
+                        )}
+                        {audioDisabled
+                          ? t('phrases.audioComingSoonShort')
+                          : isLoading
+                            ? t('phrases.loadingAudio')
+                            : isPlaying
+                              ? t('phrases.stopAudio')
+                              : t('phrases.playAudio')}
                       </Button>
                       {errorPhraseId === phrase.id ? (
                         <InlineStatus tone="danger" title={t('phrases.audioUnavailable')} />

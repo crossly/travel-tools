@@ -1,31 +1,4 @@
 import phraseDefinitionsRaw from '@/data/travel-phrases/phrase-definitions.json'
-import argentinaRaw from '@/data/travel-phrases/argentina.json'
-import brazilRaw from '@/data/travel-phrases/brazil.json'
-import cambodiaRaw from '@/data/travel-phrases/cambodia.json'
-import canadaRaw from '@/data/travel-phrases/canada.json'
-import chileRaw from '@/data/travel-phrases/chile.json'
-import chinaRaw from '@/data/travel-phrases/china.json'
-import franceRaw from '@/data/travel-phrases/france.json'
-import germanyRaw from '@/data/travel-phrases/germany.json'
-import greeceRaw from '@/data/travel-phrases/greece.json'
-import indonesiaRaw from '@/data/travel-phrases/indonesia.json'
-import italyRaw from '@/data/travel-phrases/italy.json'
-import japanRaw from '@/data/travel-phrases/japan.json'
-import kenyaRaw from '@/data/travel-phrases/kenya.json'
-import malaysiaRaw from '@/data/travel-phrases/malaysia.json'
-import mauritiusRaw from '@/data/travel-phrases/mauritius.json'
-import mexicoRaw from '@/data/travel-phrases/mexico.json'
-import moroccoRaw from '@/data/travel-phrases/morocco.json'
-import netherlandsRaw from '@/data/travel-phrases/netherlands.json'
-import peruRaw from '@/data/travel-phrases/peru.json'
-import portugalRaw from '@/data/travel-phrases/portugal.json'
-import southKoreaRaw from '@/data/travel-phrases/south-korea.json'
-import southAfricaRaw from '@/data/travel-phrases/south-africa.json'
-import spainRaw from '@/data/travel-phrases/spain.json'
-import tanzaniaRaw from '@/data/travel-phrases/tanzania.json'
-import thailandRaw from '@/data/travel-phrases/thailand.json'
-import unitedStatesRaw from '@/data/travel-phrases/united-states.json'
-import vietnamRaw from '@/data/travel-phrases/vietnam.json'
 import { translate } from '@/lib/i18n'
 import type { Locale, PhraseCard, PhraseCategory, PhraseCountryPack, PhraseCountrySummary, PhraseRegion } from '@/lib/types'
 
@@ -58,35 +31,25 @@ export const PHRASE_CATEGORIES: PhraseCategory[] = ['basics', 'transport', 'hote
 export const PHRASE_REGIONS: Array<PhraseRegion | 'all'> = ['all', 'asia', 'europe', 'americas', 'africa']
 
 const phraseDefinitions = phraseDefinitionsRaw as RawPhraseDefinition[]
-const rawCountryPacks = [
-  japanRaw,
-  southKoreaRaw,
-  thailandRaw,
-  vietnamRaw,
-  indonesiaRaw,
-  cambodiaRaw,
-  chinaRaw,
-  malaysiaRaw,
-  franceRaw,
-  germanyRaw,
-  italyRaw,
-  spainRaw,
-  portugalRaw,
-  greeceRaw,
-  netherlandsRaw,
-  unitedStatesRaw,
-  canadaRaw,
-  mexicoRaw,
-  brazilRaw,
-  argentinaRaw,
-  chileRaw,
-  peruRaw,
-  moroccoRaw,
-  southAfricaRaw,
-  kenyaRaw,
-  tanzaniaRaw,
-  mauritiusRaw,
-] as RawPhraseCountryPack[]
+const rawCountryModules = import.meta.glob('../data/travel-phrases/*.json', {
+  eager: true,
+}) as Record<string, { default: RawPhraseCountryPack }>
+
+const regionOrder: Record<PhraseRegion, number> = {
+  asia: 0,
+  europe: 1,
+  americas: 2,
+  africa: 3,
+}
+
+const rawCountryPacks = Object.entries(rawCountryModules)
+  .filter(([path]) => !path.endsWith('/phrase-definitions.json'))
+  .map(([, mod]) => mod.default)
+  .sort(
+    (left, right) =>
+      regionOrder[left.region] - regionOrder[right.region]
+      || left.country['en-US'].localeCompare(right.country['en-US']),
+  )
 
 const definitionMap = new Map(phraseDefinitions.map((definition) => [definition.id, definition]))
 const rawPackMap = new Map(rawCountryPacks.map((pack) => [pack.slug, pack]))
