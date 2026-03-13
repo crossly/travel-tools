@@ -32,6 +32,7 @@ export function TravelPhrasesCountryPage({
 }) {
   const { t } = useI18n()
   const audioRef = useRef<HTMLAudioElement | null>(null)
+  const activePhraseIdRef = useRef<string | null>(null)
   const [activeCategory, setActiveCategory] = useState<PhraseCategory>('basics')
   const [activePhraseId, setActivePhraseId] = useState<string | null>(null)
   const [errorPhraseId, setErrorPhraseId] = useState<string | null>(null)
@@ -41,12 +42,16 @@ export function TravelPhrasesCountryPage({
   }, [])
 
   useEffect(() => {
+    activePhraseIdRef.current = activePhraseId
+  }, [activePhraseId])
+
+  useEffect(() => {
     const audio = audioRef.current
     if (!audio) return
 
     const handleEnded = () => setActivePhraseId(null)
     const handleError = () => {
-      setErrorPhraseId((current) => current ?? activePhraseId)
+      setErrorPhraseId((current) => current ?? activePhraseIdRef.current)
       setActivePhraseId(null)
     }
 
@@ -58,7 +63,7 @@ export function TravelPhrasesCountryPage({
       audio.removeEventListener('ended', handleEnded)
       audio.removeEventListener('error', handleError)
     }
-  }, [activePhraseId])
+  }, [])
 
   const visiblePhrases = useMemo(
     () => pack?.phrases.filter((phrase) => phrase.category === activeCategory) ?? [],
