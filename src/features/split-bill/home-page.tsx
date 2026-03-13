@@ -27,6 +27,7 @@ export function SplitBillHomePage({ locale, initialData }: { locale: Locale; ini
   const [expenseCurrency, setExpenseCurrency] = useState('CNY')
   const [settlementCurrency, setSettlementCurrency] = useState('CNY')
   const [splitCount, setSplitCount] = useState('2')
+  const [fieldErrors, setFieldErrors] = useState<{ tripName?: string; expenseCurrency?: string; settlementCurrency?: string; splitCount?: string }>({})
   const [bootstrappingIdentity, setBootstrappingIdentity] = useState(false)
   const [status, setStatus] = useState<{ tone: 'success' | 'warning' | 'danger'; title: string; description?: string } | null>(null)
   const [trips, setTrips] = useState<Trip[]>(initialData.trips)
@@ -70,23 +71,30 @@ export function SplitBillHomePage({ locale, initialData }: { locale: Locale; ini
       setStatus({ tone: 'warning', title: t('home.createTripLocked') })
       return
     }
+    const nextErrors: { tripName?: string; expenseCurrency?: string; settlementCurrency?: string; splitCount?: string } = {}
     if (!tripName.trim()) {
-      setStatus({ tone: 'danger', title: t('home.enterTripName') })
-      return
+      nextErrors.tripName = t('home.enterTripName')
     }
     const expense = normalizeCurrency(expenseCurrency)
     const settlement = normalizeCurrency(settlementCurrency)
-    if (!/^[A-Z]{3}$/.test(expense) || !/^[A-Z]{3}$/.test(settlement)) {
-      setStatus({ tone: 'danger', title: t('home.invalidCurrency') })
-      return
+    if (!/^[A-Z]{3}$/.test(expense)) {
+      nextErrors.expenseCurrency = t('home.invalidCurrency')
+    }
+    if (!/^[A-Z]{3}$/.test(settlement)) {
+      nextErrors.settlementCurrency = t('home.invalidCurrency')
     }
     const count = Number(splitCount)
     if (!Number.isInteger(count) || count < 1) {
-      setStatus({ tone: 'danger', title: t('home.invalidSplitCount') })
+      nextErrors.splitCount = t('home.invalidSplitCount')
+    }
+
+    if (Object.keys(nextErrors).length) {
+      setFieldErrors(nextErrors)
       return
     }
 
     try {
+      setFieldErrors({})
       const trip = await createTrip(tripName.trim(), expense, settlement, count)
       writeActiveTripId(trip.id)
       navigate({ to: getLocalizedPath(locale, `/tools/split-bill/${trip.id}`) })
@@ -115,19 +123,62 @@ export function SplitBillHomePage({ locale, initialData }: { locale: Locale; ini
                   <p className="mt-1 font-medium text-foreground">{device.displayName}</p>
                 </div>
               ) : null}
-              <FormField label={t('home.createTrip')}>
-                <Input value={tripName} onChange={(event) => setTripName(event.target.value)} placeholder={t('home.tripNamePlaceholder')} disabled={!identityReady} />
+              <FormField label={t('home.createTrip')} error={fieldErrors.tripName}>
+                <Input
+                  value={tripName}
+                  onChange={(event) => {
+                    setTripName(event.target.value)
+                    if (fieldErrors.tripName) {
+                      setFieldErrors((current) => ({ ...current, tripName: undefined }))
+                    }
+                  }}
+                  placeholder={t('home.tripNamePlaceholder')}
+                  disabled={!identityReady}
+                  aria-invalid={fieldErrors.tripName ? 'true' : undefined}
+                />
               </FormField>
               <div className="grid gap-4 md:grid-cols-2">
-                <FormField label={t('home.expenseCurrency')} helper={t('home.expenseCurrencyHelper')}>
-                  <CurrencyCombobox value={expenseCurrency} onValueChange={setExpenseCurrency} locale={locale} disabled={!identityReady} />
+                <FormField label={t('home.expenseCurrency')} helper={t('home.expenseCurrencyHelper')} error={fieldErrors.expenseCurrency}>
+                  <CurrencyCombobox
+                    value={expenseCurrency}
+                    onValueChange={(value) => {
+                      setExpenseCurrency(value)
+                      if (fieldErrors.expenseCurrency) {
+                        setFieldErrors((current) => ({ ...current, expenseCurrency: undefined }))
+                      }
+                    }}
+                    locale={locale}
+                    disabled={!identityReady}
+                  />
                 </FormField>
-                <FormField label={t('home.settlementCurrency')} helper={t('home.settlementCurrencyHelper')}>
-                  <CurrencyCombobox value={settlementCurrency} onValueChange={setSettlementCurrency} locale={locale} disabled={!identityReady} />
+                <FormField label={t('home.settlementCurrency')} helper={t('home.settlementCurrencyHelper')} error={fieldErrors.settlementCurrency}>
+                  <CurrencyCombobox
+                    value={settlementCurrency}
+                    onValueChange={(value) => {
+                      setSettlementCurrency(value)
+                      if (fieldErrors.settlementCurrency) {
+                        setFieldErrors((current) => ({ ...current, settlementCurrency: undefined }))
+                      }
+                    }}
+                    locale={locale}
+                    disabled={!identityReady}
+                  />
                 </FormField>
               </div>
-              <FormField label={t('home.splitCount')}>
-                <Input value={splitCount} onChange={(event) => setSplitCount(event.target.value)} inputMode="numeric" className="mono" disabled={!identityReady} />
+              <FormField label={t('home.splitCount')} error={fieldErrors.splitCount}>
+                <Input
+                  value={splitCount}
+                  onChange={(event) => {
+                    setSplitCount(event.target.value)
+                    if (fieldErrors.splitCount) {
+                      setFieldErrors((current) => ({ ...current, splitCount: undefined }))
+                    }
+                  }}
+                  inputMode="numeric"
+                  className="mono"
+                  disabled={!identityReady}
+                  aria-invalid={fieldErrors.splitCount ? 'true' : undefined}
+                />
               </FormField>
               <Button type="button" size="lg" className="w-full" onClick={() => void onCreateTrip()} disabled={!identityReady}>
                 {t('home.createStart')}

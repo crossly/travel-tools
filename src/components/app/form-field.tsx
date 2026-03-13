@@ -5,11 +5,13 @@ import { cn } from '@/lib/utils'
 export function FormField({
   label,
   helper,
+  error,
   className,
   children,
 }: {
   label: string
   helper?: string
+  error?: string
   className?: string
   children: ReactNode
 }) {
@@ -17,7 +19,7 @@ export function FormField({
     <div className={cn('space-y-2', className)}>
       <Label>{label}</Label>
       {children}
-      {helper ? <p className="text-xs leading-5 text-muted-foreground">{helper}</p> : null}
+      {error ? <p className="text-xs leading-5 text-[var(--danger)]">{error}</p> : helper ? <p className="text-xs leading-5 text-muted-foreground">{helper}</p> : null}
     </div>
   )
 }

@@ -41,6 +41,12 @@ export function ExpenseFormCard({
   const [note, setNote] = useState('')
   const [manualFx, setManualFx] = useState('')
   const [splitCount, setSplitCount] = useState(snapshot ? String(snapshot.trip.splitCount) : '1')
+  const [fieldErrors, setFieldErrors] = useState<{
+    title?: string
+    amount?: string
+    currency?: string
+    splitCount?: string
+  }>({})
   const [isSaving, setIsSaving] = useState(false)
   const [status, setStatus] = useState<{ tone: 'success' | 'warning' | 'danger'; title: string; description?: string } | null>(null)
 
@@ -55,13 +61,32 @@ export function ExpenseFormCard({
     const numericAmount = Number(amount)
     const numericSplitCount = Number(splitCount)
     const normalizedCurrency = normalizeCurrency(currency)
-    if (!title.trim() || !numericAmount || !/^[A-Z]{3}$/.test(normalizedCurrency)) {
-      setStatus({ tone: 'danger', title: t('addExpense.incomplete') })
+    const nextErrors: {
+      title?: string
+      amount?: string
+      currency?: string
+      splitCount?: string
+    } = {}
+    if (!title.trim()) {
+      nextErrors.title = t('addExpense.titleRequired')
+    }
+    if (!numericAmount) {
+      nextErrors.amount = t('addExpense.amountRequired')
+    }
+    if (!/^[A-Z]{3}$/.test(normalizedCurrency)) {
+      nextErrors.currency = t('addExpense.currencyInvalid')
+    }
+    if (!Number.isInteger(numericSplitCount) || numericSplitCount < 1) {
+      nextErrors.splitCount = t('home.invalidSplitCount')
+    }
+    if (Object.keys(nextErrors).length) {
+      setFieldErrors(nextErrors)
       return
     }
 
     try {
       setIsSaving(true)
+      setFieldErrors({})
       setStatus(null)
       let fxRateOverride: number | undefined
       if (manualFx.trim()) {
@@ -103,23 +128,67 @@ export function ExpenseFormCard({
         <CardTitle>{t('addExpense.title')}</CardTitle>
       </CardHeader>
       <CardContent className="grid gap-4">
-        <FormField label={t('addExpense.labelTitle')}>
-          <Input value={title} onChange={(event) => setTitle(event.target.value)} placeholder={t('addExpense.titlePlaceholder')} disabled={!snapshot || isSaving} />
+        <FormField label={t('addExpense.labelTitle')} error={fieldErrors.title}>
+          <Input
+            value={title}
+            onChange={(event) => {
+              setTitle(event.target.value)
+              if (fieldErrors.title) {
+                setFieldErrors((current) => ({ ...current, title: undefined }))
+              }
+            }}
+            placeholder={t('addExpense.titlePlaceholder')}
+            disabled={!snapshot || isSaving}
+            aria-invalid={fieldErrors.title ? 'true' : undefined}
+          />
         </FormField>
         <div className="grid gap-4 md:grid-cols-2">
-          <FormField label={t('addExpense.labelAmount')}>
-            <Input value={amount} onChange={(event) => setAmount(event.target.value)} inputMode="decimal" disabled={!snapshot || isSaving} />
+          <FormField label={t('addExpense.labelAmount')} error={fieldErrors.amount}>
+            <Input
+              value={amount}
+              onChange={(event) => {
+                setAmount(event.target.value)
+                if (fieldErrors.amount) {
+                  setFieldErrors((current) => ({ ...current, amount: undefined }))
+                }
+              }}
+              inputMode="decimal"
+              disabled={!snapshot || isSaving}
+              aria-invalid={fieldErrors.amount ? 'true' : undefined}
+            />
           </FormField>
-          <FormField label={t('addExpense.labelCurrency')}>
-            <CurrencyCombobox value={currency} onValueChange={setCurrency} locale={locale} disabled={!snapshot || isSaving} />
+          <FormField label={t('addExpense.labelCurrency')} error={fieldErrors.currency}>
+            <CurrencyCombobox
+              value={currency}
+              onValueChange={(value) => {
+                setCurrency(value)
+                if (fieldErrors.currency) {
+                  setFieldErrors((current) => ({ ...current, currency: undefined }))
+                }
+              }}
+              locale={locale}
+              disabled={!snapshot || isSaving}
+            />
           </FormField>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           <FormField label={t('addExpense.labelDate')}>
             <DatePickerField value={spentAt} onChange={setSpentAt} locale={locale} disabled={!snapshot || isSaving} />
           </FormField>
-          <FormField label={t('addExpense.splitCount')}>
-            <Input value={splitCount} onChange={(event) => setSplitCount(event.target.value)} inputMode="numeric" className="mono" disabled={!snapshot || isSaving} />
+          <FormField label={t('addExpense.splitCount')} error={fieldErrors.splitCount}>
+            <Input
+              value={splitCount}
+              onChange={(event) => {
+                setSplitCount(event.target.value)
+                if (fieldErrors.splitCount) {
+                  setFieldErrors((current) => ({ ...current, splitCount: undefined }))
+                }
+              }}
+              inputMode="numeric"
+              className="mono"
+              disabled={!snapshot || isSaving}
+              aria-invalid={fieldErrors.splitCount ? 'true' : undefined}
+            />
           </FormField>
         </div>
         <FormField label={t('addExpense.manualFx')}>
