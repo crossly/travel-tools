@@ -104,7 +104,7 @@ export function MobileNavMenu({
 function LinkBrand({ locale, label }: { locale: Locale; label: string }) {
   return (
     <Link to={getLocalizedPath(locale, '/')} className="flex min-w-0 items-center gap-2 text-left">
-      <img src="/favicon.svg" alt="" className="size-8 rounded-xl" aria-hidden="true" />
+      <img src="/logo.svg" alt="" className="size-8 rounded-xl" aria-hidden="true" />
       <p className="truncate text-base font-semibold text-foreground">{label}</p>
     </Link>
   )

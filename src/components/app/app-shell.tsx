@@ -96,7 +96,7 @@ function MobileHeaderFallback({ brand, homePath }: { brand: string; homePath: st
 }
 
 function BrandMark({ className = 'size-10 rounded-2xl' }: { className?: string }) {
-  return <img src="/favicon.svg" alt="" className={className} aria-hidden="true" />
+  return <img src="/logo.svg" alt="" className={className} aria-hidden="true" />
 }
 
 function DesktopControlsFallback() {
