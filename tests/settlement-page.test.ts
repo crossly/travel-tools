@@ -7,6 +7,10 @@ import { describe, expect, it, vi } from 'vitest'
 const fetchSnapshotMock = vi.fn()
 const fetchSettlementMock = vi.fn()
 
+vi.mock('@tanstack/react-router', () => ({
+  useNavigate: () => vi.fn(),
+}))
+
 vi.mock('@/components/app/app-shell', () => ({
   AppShell: ({ children }: { children?: ReactNode }) => createElement('div', null, children),
 }))

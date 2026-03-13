@@ -4,6 +4,7 @@ import { Minus, Plus } from 'lucide-react'
 import { AppShell } from '@/components/app/app-shell'
 import { ConfirmActionDialog } from '@/components/app/confirm-action-dialog'
 import { InlineStatus } from '@/components/app/inline-status'
+import { PageState } from '@/components/app/page-state'
 import { ExpenseFormCard } from './expense-form-card'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -18,6 +19,7 @@ export function TripPage({ locale, tripId, initialSnapshot = null }: { locale: L
   const navigate = useNavigate()
   const [snapshot, setSnapshot] = useState<TripSnapshot | null>(initialSnapshot)
   const [isSavingSplitCount, setIsSavingSplitCount] = useState(false)
+  const [pageStatus, setPageStatus] = useState<{ tone: 'danger'; title: string; description?: string } | null>(null)
   const [status, setStatus] = useState<{ tone: 'success' | 'warning' | 'danger'; title: string; description?: string } | null>(null)
 
   useEffect(() => {
@@ -29,7 +31,7 @@ export function TripPage({ locale, tripId, initialSnapshot = null }: { locale: L
 
     void fetchSnapshot(tripId)
       .then((data) => setSnapshot(data))
-      .catch((error) => setStatus({ tone: 'danger', title: tError((error as Error).message) }))
+      .catch((error) => setPageStatus({ tone: 'danger', title: tError((error as Error).message) }))
   }, [initialSnapshot, tripId, tError])
 
   async function onChangeSplitCount(nextCount: number) {
@@ -77,6 +79,19 @@ export function TripPage({ locale, tripId, initialSnapshot = null }: { locale: L
       description={snapshot ? `${snapshot.trip.expenseCurrency} / ${snapshot.trip.settlementCurrency}` : t('split.description')}
       activeTool="split-bill"
     >
+      {pageStatus && !snapshot ? (
+        <PageState
+          tone="danger"
+          title={pageStatus.title}
+          description={pageStatus.description}
+          action={
+            <Button type="button" variant="secondary" onClick={() => navigate({ to: getLocalizedPath(locale, '/tools/split-bill') })}>
+              {t('common.backToSplitBill')}
+            </Button>
+          }
+        />
+      ) : null}
+      {!pageStatus || snapshot ? (
       <div className="grid gap-4 xl:grid-cols-[minmax(0,0.9fr)_minmax(0,1.8fr)]">
         <div className="xl:order-1">
           <Card>
@@ -201,8 +216,9 @@ export function TripPage({ locale, tripId, initialSnapshot = null }: { locale: L
           </Card>
         </div>
       </div>
+      ) : null}
 
-      {status ? <InlineStatus tone={status.tone} title={status.title} description={status.description} /> : null}
+      {status && (!pageStatus || snapshot) ? <InlineStatus tone={status.tone} title={status.title} description={status.description} /> : null}
     </AppShell>
   )
 }

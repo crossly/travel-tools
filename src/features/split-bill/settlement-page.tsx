@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from '@tanstack/react-router'
 import { AppShell } from '@/components/app/app-shell'
 import { InlineStatus } from '@/components/app/inline-status'
+import { PageState } from '@/components/app/page-state'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { fetchSettlement, fetchSnapshot } from '@/lib/api/client'
 import { useI18n } from '@/lib/i18n'
+import { getLocalizedPath } from '@/lib/site'
 import { readDevice, writeDevice } from '@/lib/storage'
 import type { DeviceIdentity, Locale, SettlementResponse, TripSnapshot } from '@/lib/types'
 
@@ -17,10 +20,12 @@ type SettlementPageData = {
 
 export function SettlementPage({ locale, tripId, initialData }: { locale: Locale; tripId: string; initialData?: SettlementPageData }) {
   const { t, tError } = useI18n()
+  const navigate = useNavigate()
   const resolvedInitialData = initialData ?? { device: null, trip: null, settlement: null }
   const [device, setDevice] = useState<DeviceIdentity | null>(resolvedInitialData.device)
   const [trip, setTrip] = useState<TripSnapshot | null>(resolvedInitialData.trip)
   const [settlement, setSettlement] = useState<SettlementResponse | null>(resolvedInitialData.settlement)
+  const [pageStatus, setPageStatus] = useState<{ tone: 'danger'; title: string; description?: string } | null>(null)
   const [status, setStatus] = useState<{ tone: 'success' | 'warning' | 'danger'; title: string; description?: string } | null>(null)
 
   function getParticipantLabel(memberId: string) {
@@ -59,11 +64,24 @@ export function SettlementPage({ locale, tripId, initialData }: { locale: Locale
         setTrip(snapshot)
         setSettlement(result)
       })
-      .catch((error) => setStatus({ tone: 'danger', title: tError((error as Error).message) }))
+      .catch((error) => setPageStatus({ tone: 'danger', title: tError((error as Error).message) }))
   }, [resolvedInitialData.settlement, resolvedInitialData.trip, tripId, tError])
 
   return (
     <AppShell locale={locale} title={t('settlement.title')} description={trip?.trip.name ?? ''} activeTool="split-bill">
+      {pageStatus && (!trip || !settlement) ? (
+        <PageState
+          tone="danger"
+          title={pageStatus.title}
+          description={pageStatus.description}
+          action={
+            <Button type="button" variant="secondary" onClick={() => navigate({ to: getLocalizedPath(locale, '/tools/split-bill') })}>
+              {t('common.backToSplitBill')}
+            </Button>
+          }
+        />
+      ) : null}
+      {!pageStatus || (trip && settlement) ? (
       <div className="grid gap-4 xl:grid-cols-[1.1fr_0.9fr]">
         <Card>
           <CardHeader>
@@ -163,7 +181,8 @@ export function SettlementPage({ locale, tripId, initialData }: { locale: Locale
           </Card>
         </div>
       </div>
-      {status ? <InlineStatus tone={status.tone} title={status.title} description={status.description} /> : null}
+      ) : null}
+      {status && (!pageStatus || (trip && settlement)) ? <InlineStatus tone={status.tone} title={status.title} description={status.description} /> : null}
     </AppShell>
   )
 }
