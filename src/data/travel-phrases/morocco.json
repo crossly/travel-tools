@@ -1,0 +1,268 @@
+{
+  "country": {
+    "en-US": "Morocco",
+    "zh-CN": "摩洛哥"
+  },
+  "slug": "morocco",
+  "region": "africa",
+  "languageName": {
+    "en-US": "French",
+    "zh-CN": "法语"
+  },
+  "languageCode": "fr-FR",
+  "flag": "🇲🇦",
+  "phrases": [
+    {
+      "id": "hello",
+      "nativeText": "Bonjour",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/hello.mp3"
+    },
+    {
+      "id": "thank_you",
+      "nativeText": "Merci",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/thank_you.mp3"
+    },
+    {
+      "id": "yes",
+      "nativeText": "Oui",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/yes.mp3"
+    },
+    {
+      "id": "no",
+      "nativeText": "Non",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/no.mp3"
+    },
+    {
+      "id": "excuse_me",
+      "nativeText": "Excusez-moi",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/excuse_me.mp3"
+    },
+    {
+      "id": "help_me",
+      "nativeText": "Aidez-moi, s'il vous plaît",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/help_me.mp3"
+    },
+    {
+      "id": "do_you_speak_english",
+      "nativeText": "Parlez-vous anglais ?",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/do_you_speak_english.mp3"
+    },
+    {
+      "id": "where_station",
+      "nativeText": "Où est la gare ?",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/where_station.mp3"
+    },
+    {
+      "id": "one_ticket",
+      "nativeText": "Un billet, s'il vous plaît",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/one_ticket.mp3"
+    },
+    {
+      "id": "where_bathroom",
+      "nativeText": "Où sont les toilettes ?",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/where_bathroom.mp3"
+    },
+    {
+      "id": "when_depart",
+      "nativeText": "À quelle heure ça part ?",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/when_depart.mp3"
+    },
+    {
+      "id": "please_stop_here",
+      "nativeText": "Arrêtez-vous ici, s'il vous plaît",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/please_stop_here.mp3"
+    },
+    {
+      "id": "airport_please",
+      "nativeText": "À l'aéroport, s'il vous plaît",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/airport_please.mp3"
+    },
+    {
+      "id": "where_metro",
+      "nativeText": "Où est le métro ?",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/where_metro.mp3"
+    },
+    {
+      "id": "i_have_booking",
+      "nativeText": "J'ai une réservation",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/i_have_booking.mp3"
+    },
+    {
+      "id": "check_in_please",
+      "nativeText": "Je voudrais m'enregistrer, s'il vous plaît",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/check_in_please.mp3"
+    },
+    {
+      "id": "check_out_time",
+      "nativeText": "À quelle heure est le départ ?",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/check_out_time.mp3"
+    },
+    {
+      "id": "wifi_password",
+      "nativeText": "Quel est le mot de passe du Wi-Fi ?",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/wifi_password.mp3"
+    },
+    {
+      "id": "more_towel",
+      "nativeText": "Plus de serviettes, s'il vous plaît",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/more_towel.mp3"
+    },
+    {
+      "id": "room_key",
+      "nativeText": "J'ai oublié la clé de ma chambre",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/room_key.mp3"
+    },
+    {
+      "id": "late_check_out",
+      "nativeText": "Puis-je partir plus tard ?",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/late_check_out.mp3"
+    },
+    {
+      "id": "table_for_two",
+      "nativeText": "Une table pour deux, s'il vous plaît",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/table_for_two.mp3"
+    },
+    {
+      "id": "menu_please",
+      "nativeText": "Le menu, s'il vous plaît",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/menu_please.mp3"
+    },
+    {
+      "id": "no_spicy",
+      "nativeText": "Pas épicé, s'il vous plaît",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/no_spicy.mp3"
+    },
+    {
+      "id": "vegetarian",
+      "nativeText": "Je suis végétarien(ne)",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/vegetarian.mp3"
+    },
+    {
+      "id": "water_please",
+      "nativeText": "De l'eau, s'il vous plaît",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/water_please.mp3"
+    },
+    {
+      "id": "bill_please",
+      "nativeText": "L'addition, s'il vous plaît",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/bill_please.mp3"
+    },
+    {
+      "id": "no_ice",
+      "nativeText": "Sans glace, s'il vous plaît",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/no_ice.mp3"
+    },
+    {
+      "id": "how_much",
+      "nativeText": "Combien ça coûte ?",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/how_much.mp3"
+    },
+    {
+      "id": "too_expensive",
+      "nativeText": "C'est trop cher",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/too_expensive.mp3"
+    },
+    {
+      "id": "card_ok",
+      "nativeText": "Puis-je payer par carte ?",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/card_ok.mp3"
+    },
+    {
+      "id": "looking_only",
+      "nativeText": "Je regarde seulement",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/looking_only.mp3"
+    },
+    {
+      "id": "different_size",
+      "nativeText": "Avez-vous une autre taille ?",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/different_size.mp3"
+    },
+    {
+      "id": "tax_free",
+      "nativeText": "C'est détaxé ?",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/tax_free.mp3"
+    },
+    {
+      "id": "can_cheaper",
+      "nativeText": "Vous pouvez faire un meilleur prix ?",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/can_cheaper.mp3"
+    },
+    {
+      "id": "call_police",
+      "nativeText": "Appelez la police, s'il vous plaît",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/call_police.mp3"
+    },
+    {
+      "id": "call_ambulance",
+      "nativeText": "Appelez une ambulance, s'il vous plaît",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/call_ambulance.mp3"
+    },
+    {
+      "id": "i_am_lost",
+      "nativeText": "Je suis perdu(e)",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/i_am_lost.mp3"
+    },
+    {
+      "id": "need_pharmacy",
+      "nativeText": "J'ai besoin d'une pharmacie",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/need_pharmacy.mp3"
+    },
+    {
+      "id": "need_doctor",
+      "nativeText": "J'ai besoin d'un médecin",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/need_doctor.mp3"
+    },
+    {
+      "id": "i_need_help",
+      "nativeText": "J'ai besoin d'aide tout de suite",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/i_need_help.mp3"
+    },
+    {
+      "id": "lost_passport",
+      "nativeText": "J'ai perdu mon passeport",
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/lost_passport.mp3"
+    }
+  ]
+}

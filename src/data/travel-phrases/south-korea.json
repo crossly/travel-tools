@@ -1,51 +1,268 @@
 {
-  "country": { "en-US": "South Korea", "zh-CN": "韩国" },
+  "country": {
+    "en-US": "South Korea",
+    "zh-CN": "韩国"
+  },
   "slug": "south-korea",
   "region": "asia",
-  "languageName": { "en-US": "Korean", "zh-CN": "韩语" },
+  "languageName": {
+    "en-US": "Korean",
+    "zh-CN": "韩语"
+  },
   "languageCode": "ko-KR",
   "flag": "🇰🇷",
   "phrases": [
-    { "id": "hello", "nativeText": "안녕하세요", "romanization": "Annyeonghaseyo", "audioKey": "travel-phrases/south-korea/hello.mp3" },
-    { "id": "thank_you", "nativeText": "감사합니다", "romanization": "Gamsahamnida", "audioKey": "travel-phrases/south-korea/thank_you.mp3" },
-    { "id": "yes", "nativeText": "네", "romanization": "Ne", "audioKey": "travel-phrases/south-korea/yes.mp3" },
-    { "id": "no", "nativeText": "아니요", "romanization": "Aniyo", "audioKey": "travel-phrases/south-korea/no.mp3" },
-    { "id": "excuse_me", "nativeText": "실례합니다", "romanization": "Sillyehamnida", "audioKey": "travel-phrases/south-korea/excuse_me.mp3" },
-    { "id": "help_me", "nativeText": "도와주세요", "romanization": "Dowajuseyo", "audioKey": "travel-phrases/south-korea/help_me.mp3" },
-
-    { "id": "where_station", "nativeText": "기차역이 어디예요?", "romanization": "Gichayeogi eodiyeyo?", "audioKey": "travel-phrases/south-korea/where_station.mp3" },
-    { "id": "one_ticket", "nativeText": "표 한 장 주세요", "romanization": "Pyo han jang juseyo", "audioKey": "travel-phrases/south-korea/one_ticket.mp3" },
-    { "id": "where_bathroom", "nativeText": "화장실이 어디예요?", "romanization": "Hwajangsil-i eodiyeyo?", "audioKey": "travel-phrases/south-korea/where_bathroom.mp3" },
-    { "id": "when_depart", "nativeText": "언제 출발해요?", "romanization": "Eonje chulbalhaeyo?", "audioKey": "travel-phrases/south-korea/when_depart.mp3" },
-    { "id": "please_stop_here", "nativeText": "여기서 세워 주세요", "romanization": "Yeogiseo sewo juseyo", "audioKey": "travel-phrases/south-korea/please_stop_here.mp3" },
-    { "id": "airport_please", "nativeText": "공항으로 가 주세요", "romanization": "Gonghang-euro ga juseyo", "audioKey": "travel-phrases/south-korea/airport_please.mp3" },
-
-    { "id": "i_have_booking", "nativeText": "예약했어요", "romanization": "Yeyakhaesseoyo", "audioKey": "travel-phrases/south-korea/i_have_booking.mp3" },
-    { "id": "check_in_please", "nativeText": "체크인 부탁합니다", "romanization": "Chekeuin butakhamnida", "audioKey": "travel-phrases/south-korea/check_in_please.mp3" },
-    { "id": "check_out_time", "nativeText": "체크아웃은 몇 시예요?", "romanization": "Chekeuaus-eun myeot siyeyo?", "audioKey": "travel-phrases/south-korea/check_out_time.mp3" },
-    { "id": "wifi_password", "nativeText": "와이파이 비밀번호가 뭐예요?", "romanization": "Waipai bimilbeonhoga mwoyeyo?", "audioKey": "travel-phrases/south-korea/wifi_password.mp3" },
-    { "id": "more_towel", "nativeText": "수건 좀 더 주세요", "romanization": "Sugeon jom deo juseyo", "audioKey": "travel-phrases/south-korea/more_towel.mp3" },
-    { "id": "room_key", "nativeText": "방 키를 잊어버렸어요", "romanization": "Bang kireul ijeobeoryeosseoyo", "audioKey": "travel-phrases/south-korea/room_key.mp3" },
-
-    { "id": "table_for_two", "nativeText": "두 명이에요", "romanization": "Du myeong-ieyo", "audioKey": "travel-phrases/south-korea/table_for_two.mp3" },
-    { "id": "menu_please", "nativeText": "메뉴 주세요", "romanization": "Menyu juseyo", "audioKey": "travel-phrases/south-korea/menu_please.mp3" },
-    { "id": "no_spicy", "nativeText": "안 맵게 해 주세요", "romanization": "An maepge hae juseyo", "audioKey": "travel-phrases/south-korea/no_spicy.mp3" },
-    { "id": "vegetarian", "nativeText": "저는 채식주의자예요", "romanization": "Jeoneun chaesikjuuijayeyo", "audioKey": "travel-phrases/south-korea/vegetarian.mp3" },
-    { "id": "water_please", "nativeText": "물 주세요", "romanization": "Mul juseyo", "audioKey": "travel-phrases/south-korea/water_please.mp3" },
-    { "id": "bill_please", "nativeText": "계산서 주세요", "romanization": "Gyesanseo juseyo", "audioKey": "travel-phrases/south-korea/bill_please.mp3" },
-
-    { "id": "how_much", "nativeText": "이거 얼마예요?", "romanization": "Igeo eolmayeyo?", "audioKey": "travel-phrases/south-korea/how_much.mp3" },
-    { "id": "too_expensive", "nativeText": "너무 비싸요", "romanization": "Neomu bissayo", "audioKey": "travel-phrases/south-korea/too_expensive.mp3" },
-    { "id": "card_ok", "nativeText": "카드로 결제할 수 있나요?", "romanization": "Kadeuro gyeoljehal su innayo?", "audioKey": "travel-phrases/south-korea/card_ok.mp3" },
-    { "id": "looking_only", "nativeText": "그냥 보고 있어요", "romanization": "Geunyang bogo isseoyo", "audioKey": "travel-phrases/south-korea/looking_only.mp3" },
-    { "id": "different_size", "nativeText": "다른 사이즈 있나요?", "romanization": "Dareun saijeu innayo?", "audioKey": "travel-phrases/south-korea/different_size.mp3" },
-    { "id": "tax_free", "nativeText": "택스프리 되나요?", "romanization": "Taekseupeuri doenayo?", "audioKey": "travel-phrases/south-korea/tax_free.mp3" },
-
-    { "id": "call_police", "nativeText": "경찰을 불러 주세요", "romanization": "Gyeongchareul bulleo juseyo", "audioKey": "travel-phrases/south-korea/call_police.mp3" },
-    { "id": "call_ambulance", "nativeText": "구급차를 불러 주세요", "romanization": "Guguppchareul bulleo juseyo", "audioKey": "travel-phrases/south-korea/call_ambulance.mp3" },
-    { "id": "i_am_lost", "nativeText": "길을 잃었어요", "romanization": "Gireul ireosseoyo", "audioKey": "travel-phrases/south-korea/i_am_lost.mp3" },
-    { "id": "need_pharmacy", "nativeText": "약국이 필요해요", "romanization": "Yakgug-i piryohaeyo", "audioKey": "travel-phrases/south-korea/need_pharmacy.mp3" },
-    { "id": "need_doctor", "nativeText": "의사가 필요해요", "romanization": "Uisaga piryohaeyo", "audioKey": "travel-phrases/south-korea/need_doctor.mp3" },
-    { "id": "i_need_help", "nativeText": "지금 도움이 필요해요", "romanization": "Jigeum doumi piryohaeyo", "audioKey": "travel-phrases/south-korea/i_need_help.mp3" }
+    {
+      "id": "hello",
+      "nativeText": "안녕하세요",
+      "romanization": "Annyeonghaseyo",
+      "audioKey": "travel-phrases/south-korea/hello.mp3"
+    },
+    {
+      "id": "thank_you",
+      "nativeText": "감사합니다",
+      "romanization": "Gamsahamnida",
+      "audioKey": "travel-phrases/south-korea/thank_you.mp3"
+    },
+    {
+      "id": "yes",
+      "nativeText": "네",
+      "romanization": "Ne",
+      "audioKey": "travel-phrases/south-korea/yes.mp3"
+    },
+    {
+      "id": "no",
+      "nativeText": "아니요",
+      "romanization": "Aniyo",
+      "audioKey": "travel-phrases/south-korea/no.mp3"
+    },
+    {
+      "id": "excuse_me",
+      "nativeText": "실례합니다",
+      "romanization": "Sillyehamnida",
+      "audioKey": "travel-phrases/south-korea/excuse_me.mp3"
+    },
+    {
+      "id": "help_me",
+      "nativeText": "도와주세요",
+      "romanization": "Dowajuseyo",
+      "audioKey": "travel-phrases/south-korea/help_me.mp3"
+    },
+    {
+      "id": "do_you_speak_english",
+      "nativeText": "영어를 하세요?",
+      "romanization": "Yeongeoreul haseyo?",
+      "audioKey": "travel-phrases/south-korea/do_you_speak_english.mp3"
+    },
+    {
+      "id": "where_station",
+      "nativeText": "기차역이 어디예요?",
+      "romanization": "Gichayeogi eodiyeyo?",
+      "audioKey": "travel-phrases/south-korea/where_station.mp3"
+    },
+    {
+      "id": "one_ticket",
+      "nativeText": "표 한 장 주세요",
+      "romanization": "Pyo han jang juseyo",
+      "audioKey": "travel-phrases/south-korea/one_ticket.mp3"
+    },
+    {
+      "id": "where_bathroom",
+      "nativeText": "화장실이 어디예요?",
+      "romanization": "Hwajangsil-i eodiyeyo?",
+      "audioKey": "travel-phrases/south-korea/where_bathroom.mp3"
+    },
+    {
+      "id": "when_depart",
+      "nativeText": "언제 출발해요?",
+      "romanization": "Eonje chulbalhaeyo?",
+      "audioKey": "travel-phrases/south-korea/when_depart.mp3"
+    },
+    {
+      "id": "please_stop_here",
+      "nativeText": "여기서 세워 주세요",
+      "romanization": "Yeogiseo sewo juseyo",
+      "audioKey": "travel-phrases/south-korea/please_stop_here.mp3"
+    },
+    {
+      "id": "airport_please",
+      "nativeText": "공항으로 가 주세요",
+      "romanization": "Gonghang-euro ga juseyo",
+      "audioKey": "travel-phrases/south-korea/airport_please.mp3"
+    },
+    {
+      "id": "where_metro",
+      "nativeText": "지하철이 어디에 있나요?",
+      "romanization": "Jihacheori eodie innayo?",
+      "audioKey": "travel-phrases/south-korea/where_metro.mp3"
+    },
+    {
+      "id": "i_have_booking",
+      "nativeText": "예약했어요",
+      "romanization": "Yeyakhaesseoyo",
+      "audioKey": "travel-phrases/south-korea/i_have_booking.mp3"
+    },
+    {
+      "id": "check_in_please",
+      "nativeText": "체크인 부탁합니다",
+      "romanization": "Chekeuin butakhamnida",
+      "audioKey": "travel-phrases/south-korea/check_in_please.mp3"
+    },
+    {
+      "id": "check_out_time",
+      "nativeText": "체크아웃은 몇 시예요?",
+      "romanization": "Chekeuaus-eun myeot siyeyo?",
+      "audioKey": "travel-phrases/south-korea/check_out_time.mp3"
+    },
+    {
+      "id": "wifi_password",
+      "nativeText": "와이파이 비밀번호가 뭐예요?",
+      "romanization": "Waipai bimilbeonhoga mwoyeyo?",
+      "audioKey": "travel-phrases/south-korea/wifi_password.mp3"
+    },
+    {
+      "id": "more_towel",
+      "nativeText": "수건 좀 더 주세요",
+      "romanization": "Sugeon jom deo juseyo",
+      "audioKey": "travel-phrases/south-korea/more_towel.mp3"
+    },
+    {
+      "id": "room_key",
+      "nativeText": "방 키를 잊어버렸어요",
+      "romanization": "Bang kireul ijeobeoryeosseoyo",
+      "audioKey": "travel-phrases/south-korea/room_key.mp3"
+    },
+    {
+      "id": "late_check_out",
+      "nativeText": "체크아웃을 늦출 수 있을까요?",
+      "romanization": "Chekeuauteul neutchul su isseulkkayo?",
+      "audioKey": "travel-phrases/south-korea/late_check_out.mp3"
+    },
+    {
+      "id": "table_for_two",
+      "nativeText": "두 명이에요",
+      "romanization": "Du myeong-ieyo",
+      "audioKey": "travel-phrases/south-korea/table_for_two.mp3"
+    },
+    {
+      "id": "menu_please",
+      "nativeText": "메뉴 주세요",
+      "romanization": "Menyu juseyo",
+      "audioKey": "travel-phrases/south-korea/menu_please.mp3"
+    },
+    {
+      "id": "no_spicy",
+      "nativeText": "안 맵게 해 주세요",
+      "romanization": "An maepge hae juseyo",
+      "audioKey": "travel-phrases/south-korea/no_spicy.mp3"
+    },
+    {
+      "id": "vegetarian",
+      "nativeText": "저는 채식주의자예요",
+      "romanization": "Jeoneun chaesikjuuijayeyo",
+      "audioKey": "travel-phrases/south-korea/vegetarian.mp3"
+    },
+    {
+      "id": "water_please",
+      "nativeText": "물 주세요",
+      "romanization": "Mul juseyo",
+      "audioKey": "travel-phrases/south-korea/water_please.mp3"
+    },
+    {
+      "id": "bill_please",
+      "nativeText": "계산서 주세요",
+      "romanization": "Gyesanseo juseyo",
+      "audioKey": "travel-phrases/south-korea/bill_please.mp3"
+    },
+    {
+      "id": "no_ice",
+      "nativeText": "얼음은 빼 주세요",
+      "romanization": "Eoreumeun ppae juseyo",
+      "audioKey": "travel-phrases/south-korea/no_ice.mp3"
+    },
+    {
+      "id": "how_much",
+      "nativeText": "이거 얼마예요?",
+      "romanization": "Igeo eolmayeyo?",
+      "audioKey": "travel-phrases/south-korea/how_much.mp3"
+    },
+    {
+      "id": "too_expensive",
+      "nativeText": "너무 비싸요",
+      "romanization": "Neomu bissayo",
+      "audioKey": "travel-phrases/south-korea/too_expensive.mp3"
+    },
+    {
+      "id": "card_ok",
+      "nativeText": "카드로 결제할 수 있나요?",
+      "romanization": "Kadeuro gyeoljehal su innayo?",
+      "audioKey": "travel-phrases/south-korea/card_ok.mp3"
+    },
+    {
+      "id": "looking_only",
+      "nativeText": "그냥 보고 있어요",
+      "romanization": "Geunyang bogo isseoyo",
+      "audioKey": "travel-phrases/south-korea/looking_only.mp3"
+    },
+    {
+      "id": "different_size",
+      "nativeText": "다른 사이즈 있나요?",
+      "romanization": "Dareun saijeu innayo?",
+      "audioKey": "travel-phrases/south-korea/different_size.mp3"
+    },
+    {
+      "id": "tax_free",
+      "nativeText": "택스프리 되나요?",
+      "romanization": "Taekseupeuri doenayo?",
+      "audioKey": "travel-phrases/south-korea/tax_free.mp3"
+    },
+    {
+      "id": "can_cheaper",
+      "nativeText": "조금만 더 싸게 해주실 수 있나요?",
+      "romanization": "Jogeumman deo ssage hae jusil su innayo?",
+      "audioKey": "travel-phrases/south-korea/can_cheaper.mp3"
+    },
+    {
+      "id": "call_police",
+      "nativeText": "경찰을 불러 주세요",
+      "romanization": "Gyeongchareul bulleo juseyo",
+      "audioKey": "travel-phrases/south-korea/call_police.mp3"
+    },
+    {
+      "id": "call_ambulance",
+      "nativeText": "구급차를 불러 주세요",
+      "romanization": "Guguppchareul bulleo juseyo",
+      "audioKey": "travel-phrases/south-korea/call_ambulance.mp3"
+    },
+    {
+      "id": "i_am_lost",
+      "nativeText": "길을 잃었어요",
+      "romanization": "Gireul ireosseoyo",
+      "audioKey": "travel-phrases/south-korea/i_am_lost.mp3"
+    },
+    {
+      "id": "need_pharmacy",
+      "nativeText": "약국이 필요해요",
+      "romanization": "Yakgug-i piryohaeyo",
+      "audioKey": "travel-phrases/south-korea/need_pharmacy.mp3"
+    },
+    {
+      "id": "need_doctor",
+      "nativeText": "의사가 필요해요",
+      "romanization": "Uisaga piryohaeyo",
+      "audioKey": "travel-phrases/south-korea/need_doctor.mp3"
+    },
+    {
+      "id": "i_need_help",
+      "nativeText": "지금 도움이 필요해요",
+      "romanization": "Jigeum doumi piryohaeyo",
+      "audioKey": "travel-phrases/south-korea/i_need_help.mp3"
+    },
+    {
+      "id": "lost_passport",
+      "nativeText": "여권을 잃어버렸어요",
+      "romanization": "Yeogwoneul ireobeoryeosseoyo",
+      "audioKey": "travel-phrases/south-korea/lost_passport.mp3"
+    }
   ]
 }

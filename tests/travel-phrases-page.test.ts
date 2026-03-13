@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { createElement } from 'react'
-import { fireEvent, render, screen } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { beforeAll, describe, expect, it, vi } from 'vitest'
 
 beforeAll(() => {
@@ -83,7 +83,9 @@ describe('TravelPhrasesCountryPage', () => {
     fireEvent.click(screen.getAllByRole('button', { name: 'Play audio' })[0] as HTMLButtonElement)
 
     const audio = document.querySelector('audio') as HTMLAudioElement
-    expect(audio.src).toContain('/api/phrase-audio/japan/table_for_two')
+    await waitFor(() => {
+      expect(audio.src).toContain('/api/phrase-audio/japan/table_for_two')
+    })
 
     fireEvent.error(audio)
     expect(screen.getByText('Audio is unavailable right now. Try again in a moment.')).toBeTruthy()

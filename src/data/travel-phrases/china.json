@@ -1,0 +1,268 @@
+{
+  "country": {
+    "en-US": "China",
+    "zh-CN": "中国"
+  },
+  "slug": "china",
+  "region": "asia",
+  "languageName": {
+    "en-US": "Chinese (Mandarin)",
+    "zh-CN": "中文"
+  },
+  "languageCode": "zh-CN",
+  "flag": "🇨🇳",
+  "phrases": [
+    {
+      "id": "hello",
+      "nativeText": "你好",
+      "romanization": "Ni hao",
+      "audioKey": "travel-phrases/china/hello.mp3"
+    },
+    {
+      "id": "thank_you",
+      "nativeText": "谢谢",
+      "romanization": "Xie xie",
+      "audioKey": "travel-phrases/china/thank_you.mp3"
+    },
+    {
+      "id": "yes",
+      "nativeText": "是的",
+      "romanization": "Shi de",
+      "audioKey": "travel-phrases/china/yes.mp3"
+    },
+    {
+      "id": "no",
+      "nativeText": "不是",
+      "romanization": "Bu shi",
+      "audioKey": "travel-phrases/china/no.mp3"
+    },
+    {
+      "id": "excuse_me",
+      "nativeText": "不好意思",
+      "romanization": "Bu hao yi si",
+      "audioKey": "travel-phrases/china/excuse_me.mp3"
+    },
+    {
+      "id": "help_me",
+      "nativeText": "请帮帮我",
+      "romanization": "Qing bang bang wo",
+      "audioKey": "travel-phrases/china/help_me.mp3"
+    },
+    {
+      "id": "do_you_speak_english",
+      "nativeText": "你会说英语吗？",
+      "romanization": "Ni hui shuo Ying yu ma?",
+      "audioKey": "travel-phrases/china/do_you_speak_english.mp3"
+    },
+    {
+      "id": "where_station",
+      "nativeText": "车站在哪里？",
+      "romanization": "Che zhan zai na li?",
+      "audioKey": "travel-phrases/china/where_station.mp3"
+    },
+    {
+      "id": "one_ticket",
+      "nativeText": "请给我一张票",
+      "romanization": "Qing gei wo yi zhang piao",
+      "audioKey": "travel-phrases/china/one_ticket.mp3"
+    },
+    {
+      "id": "where_bathroom",
+      "nativeText": "洗手间在哪里？",
+      "romanization": "Xi shou jian zai na li?",
+      "audioKey": "travel-phrases/china/where_bathroom.mp3"
+    },
+    {
+      "id": "when_depart",
+      "nativeText": "什么时候出发？",
+      "romanization": "Shen me shi hou chu fa?",
+      "audioKey": "travel-phrases/china/when_depart.mp3"
+    },
+    {
+      "id": "please_stop_here",
+      "nativeText": "请在这里停车",
+      "romanization": "Qing zai zhe li ting che",
+      "audioKey": "travel-phrases/china/please_stop_here.mp3"
+    },
+    {
+      "id": "airport_please",
+      "nativeText": "请带我去机场",
+      "romanization": "Qing dai wo qu ji chang",
+      "audioKey": "travel-phrases/china/airport_please.mp3"
+    },
+    {
+      "id": "where_metro",
+      "nativeText": "地铁在哪里？",
+      "romanization": "Di tie zai na li?",
+      "audioKey": "travel-phrases/china/where_metro.mp3"
+    },
+    {
+      "id": "i_have_booking",
+      "nativeText": "我有预订",
+      "romanization": "Wo you yu ding",
+      "audioKey": "travel-phrases/china/i_have_booking.mp3"
+    },
+    {
+      "id": "check_in_please",
+      "nativeText": "我想办理入住",
+      "romanization": "Wo xiang ban li ru zhu",
+      "audioKey": "travel-phrases/china/check_in_please.mp3"
+    },
+    {
+      "id": "check_out_time",
+      "nativeText": "什么时候退房？",
+      "romanization": "Shen me shi hou tui fang?",
+      "audioKey": "travel-phrases/china/check_out_time.mp3"
+    },
+    {
+      "id": "wifi_password",
+      "nativeText": "Wi-Fi密码是什么？",
+      "romanization": "Wi-Fi mi ma shi shen me?",
+      "audioKey": "travel-phrases/china/wifi_password.mp3"
+    },
+    {
+      "id": "more_towel",
+      "nativeText": "请再给我一些毛巾",
+      "romanization": "Qing zai gei wo yi xie mao jin",
+      "audioKey": "travel-phrases/china/more_towel.mp3"
+    },
+    {
+      "id": "room_key",
+      "nativeText": "我忘带房卡了",
+      "romanization": "Wo wang dai fang ka le",
+      "audioKey": "travel-phrases/china/room_key.mp3"
+    },
+    {
+      "id": "late_check_out",
+      "nativeText": "可以延迟退房吗？",
+      "romanization": "Ke yi yan chi tui fang ma?",
+      "audioKey": "travel-phrases/china/late_check_out.mp3"
+    },
+    {
+      "id": "table_for_two",
+      "nativeText": "两位，谢谢",
+      "romanization": "Liang wei, xie xie",
+      "audioKey": "travel-phrases/china/table_for_two.mp3"
+    },
+    {
+      "id": "menu_please",
+      "nativeText": "请给我菜单",
+      "romanization": "Qing gei wo cai dan",
+      "audioKey": "travel-phrases/china/menu_please.mp3"
+    },
+    {
+      "id": "no_spicy",
+      "nativeText": "请不要辣",
+      "romanization": "Qing bu yao la",
+      "audioKey": "travel-phrases/china/no_spicy.mp3"
+    },
+    {
+      "id": "vegetarian",
+      "nativeText": "我吃素",
+      "romanization": "Wo chi su",
+      "audioKey": "travel-phrases/china/vegetarian.mp3"
+    },
+    {
+      "id": "water_please",
+      "nativeText": "请给我水",
+      "romanization": "Qing gei wo shui",
+      "audioKey": "travel-phrases/china/water_please.mp3"
+    },
+    {
+      "id": "bill_please",
+      "nativeText": "请结账",
+      "romanization": "Qing jie zhang",
+      "audioKey": "travel-phrases/china/bill_please.mp3"
+    },
+    {
+      "id": "no_ice",
+      "nativeText": "请不要冰",
+      "romanization": "Qing bu yao bing",
+      "audioKey": "travel-phrases/china/no_ice.mp3"
+    },
+    {
+      "id": "how_much",
+      "nativeText": "这个多少钱？",
+      "romanization": "Zhe ge duo shao qian?",
+      "audioKey": "travel-phrases/china/how_much.mp3"
+    },
+    {
+      "id": "too_expensive",
+      "nativeText": "太贵了",
+      "romanization": "Tai gui le",
+      "audioKey": "travel-phrases/china/too_expensive.mp3"
+    },
+    {
+      "id": "card_ok",
+      "nativeText": "可以刷卡吗？",
+      "romanization": "Ke yi shua ka ma?",
+      "audioKey": "travel-phrases/china/card_ok.mp3"
+    },
+    {
+      "id": "looking_only",
+      "nativeText": "我先看看",
+      "romanization": "Wo xian kan kan",
+      "audioKey": "travel-phrases/china/looking_only.mp3"
+    },
+    {
+      "id": "different_size",
+      "nativeText": "有别的尺码吗？",
+      "romanization": "You bie de chi ma ma?",
+      "audioKey": "travel-phrases/china/different_size.mp3"
+    },
+    {
+      "id": "tax_free",
+      "nativeText": "这个可以退税吗？",
+      "romanization": "Zhe ge ke yi tui shui ma?",
+      "audioKey": "travel-phrases/china/tax_free.mp3"
+    },
+    {
+      "id": "can_cheaper",
+      "nativeText": "可以便宜一点吗？",
+      "romanization": "Ke yi pian yi yi dian ma?",
+      "audioKey": "travel-phrases/china/can_cheaper.mp3"
+    },
+    {
+      "id": "call_police",
+      "nativeText": "请帮我报警",
+      "romanization": "Qing bang wo bao jing",
+      "audioKey": "travel-phrases/china/call_police.mp3"
+    },
+    {
+      "id": "call_ambulance",
+      "nativeText": "请帮我叫救护车",
+      "romanization": "Qing bang wo jiao jiu hu che",
+      "audioKey": "travel-phrases/china/call_ambulance.mp3"
+    },
+    {
+      "id": "i_am_lost",
+      "nativeText": "我迷路了",
+      "romanization": "Wo mi lu le",
+      "audioKey": "travel-phrases/china/i_am_lost.mp3"
+    },
+    {
+      "id": "need_pharmacy",
+      "nativeText": "我需要药店",
+      "romanization": "Wo xu yao yao dian",
+      "audioKey": "travel-phrases/china/need_pharmacy.mp3"
+    },
+    {
+      "id": "need_doctor",
+      "nativeText": "我需要医生",
+      "romanization": "Wo xu yao yi sheng",
+      "audioKey": "travel-phrases/china/need_doctor.mp3"
+    },
+    {
+      "id": "i_need_help",
+      "nativeText": "我现在需要帮助",
+      "romanization": "Wo xian zai xu yao bang zhu",
+      "audioKey": "travel-phrases/china/i_need_help.mp3"
+    },
+    {
+      "id": "lost_passport",
+      "nativeText": "我护照丢了",
+      "romanization": "Wo hu zhao diu le",
+      "audioKey": "travel-phrases/china/lost_passport.mp3"
+    }
+  ]
+}

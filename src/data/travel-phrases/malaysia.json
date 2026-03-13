@@ -1,0 +1,268 @@
+{
+  "country": {
+    "en-US": "Malaysia",
+    "zh-CN": "马来西亚"
+  },
+  "slug": "malaysia",
+  "region": "asia",
+  "languageName": {
+    "en-US": "Malay",
+    "zh-CN": "马来语"
+  },
+  "languageCode": "ms-MY",
+  "flag": "🇲🇾",
+  "phrases": [
+    {
+      "id": "hello",
+      "nativeText": "Halo",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "thank_you",
+      "nativeText": "Terima kasih",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "yes",
+      "nativeText": "Ya",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "no",
+      "nativeText": "Tidak",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "excuse_me",
+      "nativeText": "Tumpang tanya",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "help_me",
+      "nativeText": "Tolong saya",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "do_you_speak_english",
+      "nativeText": "Awak boleh cakap Bahasa Inggeris?",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "where_station",
+      "nativeText": "Di mana stesen?",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "one_ticket",
+      "nativeText": "Satu tiket, tolong",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "where_bathroom",
+      "nativeText": "Tandas di mana?",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "when_depart",
+      "nativeText": "Bila berlepas?",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "please_stop_here",
+      "nativeText": "Berhenti di sini, tolong",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "airport_please",
+      "nativeText": "Ke lapangan terbang, tolong",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "where_metro",
+      "nativeText": "Di mana stesen metro?",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "i_have_booking",
+      "nativeText": "Saya ada tempahan",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "check_in_please",
+      "nativeText": "Saya mahu daftar masuk",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "check_out_time",
+      "nativeText": "Pukul berapa daftar keluar?",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "wifi_password",
+      "nativeText": "Apa kata laluan Wi-Fi?",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "more_towel",
+      "nativeText": "Tolong tambah tuala",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "room_key",
+      "nativeText": "Saya terlupa kad bilik saya",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "late_check_out",
+      "nativeText": "Boleh saya daftar keluar lewat?",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "table_for_two",
+      "nativeText": "Meja untuk dua orang, tolong",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "menu_please",
+      "nativeText": "Menu, tolong",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "no_spicy",
+      "nativeText": "Jangan pedas",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "vegetarian",
+      "nativeText": "Saya vegetarian",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "water_please",
+      "nativeText": "Air, tolong",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "bill_please",
+      "nativeText": "Bil, tolong",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "no_ice",
+      "nativeText": "Tanpa ais, tolong",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "how_much",
+      "nativeText": "Berapa harga ini?",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "too_expensive",
+      "nativeText": "Terlalu mahal",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "card_ok",
+      "nativeText": "Boleh bayar dengan kad?",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "looking_only",
+      "nativeText": "Saya tengok sahaja",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "different_size",
+      "nativeText": "Ada saiz lain?",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "tax_free",
+      "nativeText": "Boleh dapat pulangan cukai?",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "can_cheaper",
+      "nativeText": "Boleh kurang sikit?",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "call_police",
+      "nativeText": "Tolong panggil polis",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "call_ambulance",
+      "nativeText": "Tolong panggil ambulans",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "i_am_lost",
+      "nativeText": "Saya sesat",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "need_pharmacy",
+      "nativeText": "Saya perlukan farmasi",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "need_doctor",
+      "nativeText": "Saya perlukan doktor",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "i_need_help",
+      "nativeText": "Saya perlukan bantuan sekarang",
+      "romanization": null,
+      "audioKey": null
+    },
+    {
+      "id": "lost_passport",
+      "nativeText": "Saya kehilangan pasport",
+      "romanization": null,
+      "audioKey": null
+    }
+  ]
+}

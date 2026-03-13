@@ -1,51 +1,268 @@
 {
-  "country": { "en-US": "Netherlands", "zh-CN": "荷兰" },
+  "country": {
+    "en-US": "Netherlands",
+    "zh-CN": "荷兰"
+  },
   "slug": "netherlands",
   "region": "europe",
-  "languageName": { "en-US": "Dutch", "zh-CN": "荷兰语" },
+  "languageName": {
+    "en-US": "Dutch",
+    "zh-CN": "荷兰语"
+  },
   "languageCode": "nl-NL",
   "flag": "🇳🇱",
   "phrases": [
-    { "id": "hello", "nativeText": "Hallo", "romanization": null, "audioKey": "travel-phrases/netherlands/hello.mp3" },
-    { "id": "thank_you", "nativeText": "Dank u", "romanization": null, "audioKey": "travel-phrases/netherlands/thank_you.mp3" },
-    { "id": "yes", "nativeText": "Ja", "romanization": null, "audioKey": "travel-phrases/netherlands/yes.mp3" },
-    { "id": "no", "nativeText": "Nee", "romanization": null, "audioKey": "travel-phrases/netherlands/no.mp3" },
-    { "id": "excuse_me", "nativeText": "Pardon", "romanization": null, "audioKey": "travel-phrases/netherlands/excuse_me.mp3" },
-    { "id": "help_me", "nativeText": "Help me alstublieft", "romanization": null, "audioKey": "travel-phrases/netherlands/help_me.mp3" },
-
-    { "id": "where_station", "nativeText": "Waar is het station?", "romanization": null, "audioKey": "travel-phrases/netherlands/where_station.mp3" },
-    { "id": "one_ticket", "nativeText": "Eén kaartje alstublieft", "romanization": null, "audioKey": "travel-phrases/netherlands/one_ticket.mp3" },
-    { "id": "where_bathroom", "nativeText": "Waar is het toilet?", "romanization": null, "audioKey": "travel-phrases/netherlands/where_bathroom.mp3" },
-    { "id": "when_depart", "nativeText": "Wanneer vertrekt het?", "romanization": null, "audioKey": "travel-phrases/netherlands/when_depart.mp3" },
-    { "id": "please_stop_here", "nativeText": "Stop hier alstublieft", "romanization": null, "audioKey": "travel-phrases/netherlands/please_stop_here.mp3" },
-    { "id": "airport_please", "nativeText": "Naar de luchthaven alstublieft", "romanization": null, "audioKey": "travel-phrases/netherlands/airport_please.mp3" },
-
-    { "id": "i_have_booking", "nativeText": "Ik heb een reservering", "romanization": null, "audioKey": "travel-phrases/netherlands/i_have_booking.mp3" },
-    { "id": "check_in_please", "nativeText": "Ik wil graag inchecken", "romanization": null, "audioKey": "travel-phrases/netherlands/check_in_please.mp3" },
-    { "id": "check_out_time", "nativeText": "Hoe laat is het uitchecken?", "romanization": null, "audioKey": "travel-phrases/netherlands/check_out_time.mp3" },
-    { "id": "wifi_password", "nativeText": "Wat is het wifi-wachtwoord?", "romanization": null, "audioKey": "travel-phrases/netherlands/wifi_password.mp3" },
-    { "id": "more_towel", "nativeText": "Meer handdoeken alstublieft", "romanization": null, "audioKey": "travel-phrases/netherlands/more_towel.mp3" },
-    { "id": "room_key", "nativeText": "Ik ben mijn kamersleutel vergeten", "romanization": null, "audioKey": "travel-phrases/netherlands/room_key.mp3" },
-
-    { "id": "table_for_two", "nativeText": "Een tafel voor twee alstublieft", "romanization": null, "audioKey": "travel-phrases/netherlands/table_for_two.mp3" },
-    { "id": "menu_please", "nativeText": "De menukaart alstublieft", "romanization": null, "audioKey": "travel-phrases/netherlands/menu_please.mp3" },
-    { "id": "no_spicy", "nativeText": "Niet pittig alstublieft", "romanization": null, "audioKey": "travel-phrases/netherlands/no_spicy.mp3" },
-    { "id": "vegetarian", "nativeText": "Ik ben vegetariër", "romanization": null, "audioKey": "travel-phrases/netherlands/vegetarian.mp3" },
-    { "id": "water_please", "nativeText": "Water alstublieft", "romanization": null, "audioKey": "travel-phrases/netherlands/water_please.mp3" },
-    { "id": "bill_please", "nativeText": "De rekening alstublieft", "romanization": null, "audioKey": "travel-phrases/netherlands/bill_please.mp3" },
-
-    { "id": "how_much", "nativeText": "Hoeveel kost dit?", "romanization": null, "audioKey": "travel-phrases/netherlands/how_much.mp3" },
-    { "id": "too_expensive", "nativeText": "Het is te duur", "romanization": null, "audioKey": "travel-phrases/netherlands/too_expensive.mp3" },
-    { "id": "card_ok", "nativeText": "Kan ik met kaart betalen?", "romanization": null, "audioKey": "travel-phrases/netherlands/card_ok.mp3" },
-    { "id": "looking_only", "nativeText": "Ik kijk alleen maar", "romanization": null, "audioKey": "travel-phrases/netherlands/looking_only.mp3" },
-    { "id": "different_size", "nativeText": "Heeft u een andere maat?", "romanization": null, "audioKey": "travel-phrases/netherlands/different_size.mp3" },
-    { "id": "tax_free", "nativeText": "Is dit belastingvrij?", "romanization": null, "audioKey": "travel-phrases/netherlands/tax_free.mp3" },
-
-    { "id": "call_police", "nativeText": "Bel alstublieft de politie", "romanization": null, "audioKey": "travel-phrases/netherlands/call_police.mp3" },
-    { "id": "call_ambulance", "nativeText": "Bel alstublieft een ambulance", "romanization": null, "audioKey": "travel-phrases/netherlands/call_ambulance.mp3" },
-    { "id": "i_am_lost", "nativeText": "Ik ben verdwaald", "romanization": null, "audioKey": "travel-phrases/netherlands/i_am_lost.mp3" },
-    { "id": "need_pharmacy", "nativeText": "Ik heb een apotheek nodig", "romanization": null, "audioKey": "travel-phrases/netherlands/need_pharmacy.mp3" },
-    { "id": "need_doctor", "nativeText": "Ik heb een dokter nodig", "romanization": null, "audioKey": "travel-phrases/netherlands/need_doctor.mp3" },
-    { "id": "i_need_help", "nativeText": "Ik heb nu hulp nodig", "romanization": null, "audioKey": "travel-phrases/netherlands/i_need_help.mp3" }
+    {
+      "id": "hello",
+      "nativeText": "Hallo",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/hello.mp3"
+    },
+    {
+      "id": "thank_you",
+      "nativeText": "Dank u",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/thank_you.mp3"
+    },
+    {
+      "id": "yes",
+      "nativeText": "Ja",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/yes.mp3"
+    },
+    {
+      "id": "no",
+      "nativeText": "Nee",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/no.mp3"
+    },
+    {
+      "id": "excuse_me",
+      "nativeText": "Pardon",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/excuse_me.mp3"
+    },
+    {
+      "id": "help_me",
+      "nativeText": "Help me alstublieft",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/help_me.mp3"
+    },
+    {
+      "id": "do_you_speak_english",
+      "nativeText": "Spreekt u Engels?",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/do_you_speak_english.mp3"
+    },
+    {
+      "id": "where_station",
+      "nativeText": "Waar is het station?",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/where_station.mp3"
+    },
+    {
+      "id": "one_ticket",
+      "nativeText": "Eén kaartje alstublieft",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/one_ticket.mp3"
+    },
+    {
+      "id": "where_bathroom",
+      "nativeText": "Waar is het toilet?",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/where_bathroom.mp3"
+    },
+    {
+      "id": "when_depart",
+      "nativeText": "Wanneer vertrekt het?",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/when_depart.mp3"
+    },
+    {
+      "id": "please_stop_here",
+      "nativeText": "Stop hier alstublieft",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/please_stop_here.mp3"
+    },
+    {
+      "id": "airport_please",
+      "nativeText": "Naar de luchthaven alstublieft",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/airport_please.mp3"
+    },
+    {
+      "id": "where_metro",
+      "nativeText": "Waar is de metro?",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/where_metro.mp3"
+    },
+    {
+      "id": "i_have_booking",
+      "nativeText": "Ik heb een reservering",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/i_have_booking.mp3"
+    },
+    {
+      "id": "check_in_please",
+      "nativeText": "Ik wil graag inchecken",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/check_in_please.mp3"
+    },
+    {
+      "id": "check_out_time",
+      "nativeText": "Hoe laat is het uitchecken?",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/check_out_time.mp3"
+    },
+    {
+      "id": "wifi_password",
+      "nativeText": "Wat is het wifi-wachtwoord?",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/wifi_password.mp3"
+    },
+    {
+      "id": "more_towel",
+      "nativeText": "Meer handdoeken alstublieft",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/more_towel.mp3"
+    },
+    {
+      "id": "room_key",
+      "nativeText": "Ik ben mijn kamersleutel vergeten",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/room_key.mp3"
+    },
+    {
+      "id": "late_check_out",
+      "nativeText": "Kan ik later uitchecken?",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/late_check_out.mp3"
+    },
+    {
+      "id": "table_for_two",
+      "nativeText": "Een tafel voor twee alstublieft",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/table_for_two.mp3"
+    },
+    {
+      "id": "menu_please",
+      "nativeText": "De menukaart alstublieft",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/menu_please.mp3"
+    },
+    {
+      "id": "no_spicy",
+      "nativeText": "Niet pittig alstublieft",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/no_spicy.mp3"
+    },
+    {
+      "id": "vegetarian",
+      "nativeText": "Ik ben vegetariër",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/vegetarian.mp3"
+    },
+    {
+      "id": "water_please",
+      "nativeText": "Water alstublieft",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/water_please.mp3"
+    },
+    {
+      "id": "bill_please",
+      "nativeText": "De rekening alstublieft",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/bill_please.mp3"
+    },
+    {
+      "id": "no_ice",
+      "nativeText": "Geen ijs, alstublieft",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/no_ice.mp3"
+    },
+    {
+      "id": "how_much",
+      "nativeText": "Hoeveel kost dit?",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/how_much.mp3"
+    },
+    {
+      "id": "too_expensive",
+      "nativeText": "Het is te duur",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/too_expensive.mp3"
+    },
+    {
+      "id": "card_ok",
+      "nativeText": "Kan ik met kaart betalen?",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/card_ok.mp3"
+    },
+    {
+      "id": "looking_only",
+      "nativeText": "Ik kijk alleen maar",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/looking_only.mp3"
+    },
+    {
+      "id": "different_size",
+      "nativeText": "Heeft u een andere maat?",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/different_size.mp3"
+    },
+    {
+      "id": "tax_free",
+      "nativeText": "Is dit belastingvrij?",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/tax_free.mp3"
+    },
+    {
+      "id": "can_cheaper",
+      "nativeText": "Kan het goedkoper?",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/can_cheaper.mp3"
+    },
+    {
+      "id": "call_police",
+      "nativeText": "Bel alstublieft de politie",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/call_police.mp3"
+    },
+    {
+      "id": "call_ambulance",
+      "nativeText": "Bel alstublieft een ambulance",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/call_ambulance.mp3"
+    },
+    {
+      "id": "i_am_lost",
+      "nativeText": "Ik ben verdwaald",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/i_am_lost.mp3"
+    },
+    {
+      "id": "need_pharmacy",
+      "nativeText": "Ik heb een apotheek nodig",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/need_pharmacy.mp3"
+    },
+    {
+      "id": "need_doctor",
+      "nativeText": "Ik heb een dokter nodig",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/need_doctor.mp3"
+    },
+    {
+      "id": "i_need_help",
+      "nativeText": "Ik heb nu hulp nodig",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/i_need_help.mp3"
+    },
+    {
+      "id": "lost_passport",
+      "nativeText": "Ik ben mijn paspoort kwijt",
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/lost_passport.mp3"
+    }
   ]
 }

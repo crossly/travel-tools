@@ -1,51 +1,268 @@
 {
-  "country": { "en-US": "Thailand", "zh-CN": "泰国" },
+  "country": {
+    "en-US": "Thailand",
+    "zh-CN": "泰国"
+  },
   "slug": "thailand",
   "region": "asia",
-  "languageName": { "en-US": "Thai", "zh-CN": "泰语" },
+  "languageName": {
+    "en-US": "Thai",
+    "zh-CN": "泰语"
+  },
   "languageCode": "th-TH",
   "flag": "🇹🇭",
   "phrases": [
-    { "id": "hello", "nativeText": "สวัสดี", "romanization": "Sawatdee", "audioKey": "travel-phrases/thailand/hello.mp3" },
-    { "id": "thank_you", "nativeText": "ขอบคุณ", "romanization": "Khob khun", "audioKey": "travel-phrases/thailand/thank_you.mp3" },
-    { "id": "yes", "nativeText": "ใช่", "romanization": "Chai", "audioKey": "travel-phrases/thailand/yes.mp3" },
-    { "id": "no", "nativeText": "ไม่ใช่", "romanization": "Mai chai", "audioKey": "travel-phrases/thailand/no.mp3" },
-    { "id": "excuse_me", "nativeText": "ขอโทษ", "romanization": "Khor thot", "audioKey": "travel-phrases/thailand/excuse_me.mp3" },
-    { "id": "help_me", "nativeText": "ช่วยด้วย", "romanization": "Chuay duay", "audioKey": "travel-phrases/thailand/help_me.mp3" },
-
-    { "id": "where_station", "nativeText": "สถานีอยู่ที่ไหน", "romanization": "Sathaanee yoo thi nai?", "audioKey": "travel-phrases/thailand/where_station.mp3" },
-    { "id": "one_ticket", "nativeText": "ตั๋วหนึ่งใบครับ", "romanization": "Tua nueng bai khrap", "audioKey": "travel-phrases/thailand/one_ticket.mp3" },
-    { "id": "where_bathroom", "nativeText": "ห้องน้ำอยู่ที่ไหน", "romanization": "Hong nam yoo thi nai?", "audioKey": "travel-phrases/thailand/where_bathroom.mp3" },
-    { "id": "when_depart", "nativeText": "ออกกี่โมง", "romanization": "Ok gee mong?", "audioKey": "travel-phrases/thailand/when_depart.mp3" },
-    { "id": "please_stop_here", "nativeText": "จอดที่นี่ด้วย", "romanization": "Jod thi ni duay", "audioKey": "travel-phrases/thailand/please_stop_here.mp3" },
-    { "id": "airport_please", "nativeText": "ไปสนามบินครับ", "romanization": "Pai sanam bin khrap", "audioKey": "travel-phrases/thailand/airport_please.mp3" },
-
-    { "id": "i_have_booking", "nativeText": "ผมมีการจอง", "romanization": "Phom mi kan jong", "audioKey": "travel-phrases/thailand/i_have_booking.mp3" },
-    { "id": "check_in_please", "nativeText": "ขอเช็คอินครับ", "romanization": "Khor check-in khrap", "audioKey": "travel-phrases/thailand/check_in_please.mp3" },
-    { "id": "check_out_time", "nativeText": "เช็คเอาต์กี่โมง", "romanization": "Check-out gee mong?", "audioKey": "travel-phrases/thailand/check_out_time.mp3" },
-    { "id": "wifi_password", "nativeText": "รหัสไวไฟคืออะไร", "romanization": "Rahat Wi-Fi khue arai?", "audioKey": "travel-phrases/thailand/wifi_password.mp3" },
-    { "id": "more_towel", "nativeText": "ขอผ้าเช็ดตัวเพิ่ม", "romanization": "Khor pha chet tua phoem", "audioKey": "travel-phrases/thailand/more_towel.mp3" },
-    { "id": "room_key", "nativeText": "ผมลืมกุญแจห้อง", "romanization": "Phom luem kunjae hong", "audioKey": "travel-phrases/thailand/room_key.mp3" },
-
-    { "id": "table_for_two", "nativeText": "โต๊ะสำหรับสองคน", "romanization": "To samrap song khon", "audioKey": "travel-phrases/thailand/table_for_two.mp3" },
-    { "id": "menu_please", "nativeText": "ขอเมนูหน่อย", "romanization": "Khor menu noi", "audioKey": "travel-phrases/thailand/menu_please.mp3" },
-    { "id": "no_spicy", "nativeText": "ไม่เผ็ด", "romanization": "Mai phet", "audioKey": "travel-phrases/thailand/no_spicy.mp3" },
-    { "id": "vegetarian", "nativeText": "ฉันกินมังสวิรัติ", "romanization": "Chan gin mangsawirat", "audioKey": "travel-phrases/thailand/vegetarian.mp3" },
-    { "id": "water_please", "nativeText": "ขอน้ำหน่อย", "romanization": "Khor nam noi", "audioKey": "travel-phrases/thailand/water_please.mp3" },
-    { "id": "bill_please", "nativeText": "คิดเงินด้วย", "romanization": "Khit ngern duay", "audioKey": "travel-phrases/thailand/bill_please.mp3" },
-
-    { "id": "how_much", "nativeText": "อันนี้เท่าไหร่", "romanization": "An ni thao rai?", "audioKey": "travel-phrases/thailand/how_much.mp3" },
-    { "id": "too_expensive", "nativeText": "แพงเกินไป", "romanization": "Phaeng gern pai", "audioKey": "travel-phrases/thailand/too_expensive.mp3" },
-    { "id": "card_ok", "nativeText": "จ่ายบัตรได้ไหม", "romanization": "Jai bat dai mai?", "audioKey": "travel-phrases/thailand/card_ok.mp3" },
-    { "id": "looking_only", "nativeText": "ขอดูก่อน", "romanization": "Khor du kon", "audioKey": "travel-phrases/thailand/looking_only.mp3" },
-    { "id": "different_size", "nativeText": "มีไซซ์อื่นไหม", "romanization": "Mi saizu uen mai?", "audioKey": "travel-phrases/thailand/different_size.mp3" },
-    { "id": "tax_free", "nativeText": "คืนภาษีได้ไหม", "romanization": "Khuen phasi dai mai?", "audioKey": "travel-phrases/thailand/tax_free.mp3" },
-
-    { "id": "call_police", "nativeText": "ช่วยเรียกตำรวจด้วย", "romanization": "Chuay riak tamruat duay", "audioKey": "travel-phrases/thailand/call_police.mp3" },
-    { "id": "call_ambulance", "nativeText": "ช่วยเรียกรถพยาบาลด้วย", "romanization": "Chuay riak rot phayaban duay", "audioKey": "travel-phrases/thailand/call_ambulance.mp3" },
-    { "id": "i_am_lost", "nativeText": "ฉันหลงทาง", "romanization": "Chan long thang", "audioKey": "travel-phrases/thailand/i_am_lost.mp3" },
-    { "id": "need_pharmacy", "nativeText": "ฉันต้องการร้านขายยา", "romanization": "Chan tongkan ran khai ya", "audioKey": "travel-phrases/thailand/need_pharmacy.mp3" },
-    { "id": "need_doctor", "nativeText": "ฉันต้องการหมอ", "romanization": "Chan tongkan mo", "audioKey": "travel-phrases/thailand/need_doctor.mp3" },
-    { "id": "i_need_help", "nativeText": "ตอนนี้ฉันต้องการความช่วยเหลือ", "romanization": "Ton ni chan tongkan khwam chuay luea", "audioKey": "travel-phrases/thailand/i_need_help.mp3" }
+    {
+      "id": "hello",
+      "nativeText": "สวัสดี",
+      "romanization": "Sawatdee",
+      "audioKey": "travel-phrases/thailand/hello.mp3"
+    },
+    {
+      "id": "thank_you",
+      "nativeText": "ขอบคุณ",
+      "romanization": "Khob khun",
+      "audioKey": "travel-phrases/thailand/thank_you.mp3"
+    },
+    {
+      "id": "yes",
+      "nativeText": "ใช่",
+      "romanization": "Chai",
+      "audioKey": "travel-phrases/thailand/yes.mp3"
+    },
+    {
+      "id": "no",
+      "nativeText": "ไม่ใช่",
+      "romanization": "Mai chai",
+      "audioKey": "travel-phrases/thailand/no.mp3"
+    },
+    {
+      "id": "excuse_me",
+      "nativeText": "ขอโทษ",
+      "romanization": "Khor thot",
+      "audioKey": "travel-phrases/thailand/excuse_me.mp3"
+    },
+    {
+      "id": "help_me",
+      "nativeText": "ช่วยด้วย",
+      "romanization": "Chuay duay",
+      "audioKey": "travel-phrases/thailand/help_me.mp3"
+    },
+    {
+      "id": "do_you_speak_english",
+      "nativeText": "พูดภาษาอังกฤษได้ไหม",
+      "romanization": "Phut phasa angkrit dai mai?",
+      "audioKey": "travel-phrases/thailand/do_you_speak_english.mp3"
+    },
+    {
+      "id": "where_station",
+      "nativeText": "สถานีอยู่ที่ไหน",
+      "romanization": "Sathaanee yoo thi nai?",
+      "audioKey": "travel-phrases/thailand/where_station.mp3"
+    },
+    {
+      "id": "one_ticket",
+      "nativeText": "ตั๋วหนึ่งใบครับ",
+      "romanization": "Tua nueng bai khrap",
+      "audioKey": "travel-phrases/thailand/one_ticket.mp3"
+    },
+    {
+      "id": "where_bathroom",
+      "nativeText": "ห้องน้ำอยู่ที่ไหน",
+      "romanization": "Hong nam yoo thi nai?",
+      "audioKey": "travel-phrases/thailand/where_bathroom.mp3"
+    },
+    {
+      "id": "when_depart",
+      "nativeText": "ออกกี่โมง",
+      "romanization": "Ok gee mong?",
+      "audioKey": "travel-phrases/thailand/when_depart.mp3"
+    },
+    {
+      "id": "please_stop_here",
+      "nativeText": "จอดที่นี่ด้วย",
+      "romanization": "Jod thi ni duay",
+      "audioKey": "travel-phrases/thailand/please_stop_here.mp3"
+    },
+    {
+      "id": "airport_please",
+      "nativeText": "ไปสนามบินครับ",
+      "romanization": "Pai sanam bin khrap",
+      "audioKey": "travel-phrases/thailand/airport_please.mp3"
+    },
+    {
+      "id": "where_metro",
+      "nativeText": "รถไฟฟ้าใต้ดินอยู่ที่ไหน",
+      "romanization": "Rot fai fa tai din yu thi nai?",
+      "audioKey": "travel-phrases/thailand/where_metro.mp3"
+    },
+    {
+      "id": "i_have_booking",
+      "nativeText": "ผมมีการจอง",
+      "romanization": "Phom mi kan jong",
+      "audioKey": "travel-phrases/thailand/i_have_booking.mp3"
+    },
+    {
+      "id": "check_in_please",
+      "nativeText": "ขอเช็คอินครับ",
+      "romanization": "Khor check-in khrap",
+      "audioKey": "travel-phrases/thailand/check_in_please.mp3"
+    },
+    {
+      "id": "check_out_time",
+      "nativeText": "เช็คเอาต์กี่โมง",
+      "romanization": "Check-out gee mong?",
+      "audioKey": "travel-phrases/thailand/check_out_time.mp3"
+    },
+    {
+      "id": "wifi_password",
+      "nativeText": "รหัสไวไฟคืออะไร",
+      "romanization": "Rahat Wi-Fi khue arai?",
+      "audioKey": "travel-phrases/thailand/wifi_password.mp3"
+    },
+    {
+      "id": "more_towel",
+      "nativeText": "ขอผ้าเช็ดตัวเพิ่ม",
+      "romanization": "Khor pha chet tua phoem",
+      "audioKey": "travel-phrases/thailand/more_towel.mp3"
+    },
+    {
+      "id": "room_key",
+      "nativeText": "ผมลืมกุญแจห้อง",
+      "romanization": "Phom luem kunjae hong",
+      "audioKey": "travel-phrases/thailand/room_key.mp3"
+    },
+    {
+      "id": "late_check_out",
+      "nativeText": "ขอเช็กเอาต์ช้าหน่อยได้ไหม",
+      "romanization": "Kho check-out cha noi dai mai?",
+      "audioKey": "travel-phrases/thailand/late_check_out.mp3"
+    },
+    {
+      "id": "table_for_two",
+      "nativeText": "โต๊ะสำหรับสองคน",
+      "romanization": "To samrap song khon",
+      "audioKey": "travel-phrases/thailand/table_for_two.mp3"
+    },
+    {
+      "id": "menu_please",
+      "nativeText": "ขอเมนูหน่อย",
+      "romanization": "Khor menu noi",
+      "audioKey": "travel-phrases/thailand/menu_please.mp3"
+    },
+    {
+      "id": "no_spicy",
+      "nativeText": "ไม่เผ็ด",
+      "romanization": "Mai phet",
+      "audioKey": "travel-phrases/thailand/no_spicy.mp3"
+    },
+    {
+      "id": "vegetarian",
+      "nativeText": "ฉันกินมังสวิรัติ",
+      "romanization": "Chan gin mangsawirat",
+      "audioKey": "travel-phrases/thailand/vegetarian.mp3"
+    },
+    {
+      "id": "water_please",
+      "nativeText": "ขอน้ำหน่อย",
+      "romanization": "Khor nam noi",
+      "audioKey": "travel-phrases/thailand/water_please.mp3"
+    },
+    {
+      "id": "bill_please",
+      "nativeText": "คิดเงินด้วย",
+      "romanization": "Khit ngern duay",
+      "audioKey": "travel-phrases/thailand/bill_please.mp3"
+    },
+    {
+      "id": "no_ice",
+      "nativeText": "ไม่เอาน้ำแข็ง",
+      "romanization": "Mai ao nam khaeng",
+      "audioKey": "travel-phrases/thailand/no_ice.mp3"
+    },
+    {
+      "id": "how_much",
+      "nativeText": "อันนี้เท่าไหร่",
+      "romanization": "An ni thao rai?",
+      "audioKey": "travel-phrases/thailand/how_much.mp3"
+    },
+    {
+      "id": "too_expensive",
+      "nativeText": "แพงเกินไป",
+      "romanization": "Phaeng gern pai",
+      "audioKey": "travel-phrases/thailand/too_expensive.mp3"
+    },
+    {
+      "id": "card_ok",
+      "nativeText": "จ่ายบัตรได้ไหม",
+      "romanization": "Jai bat dai mai?",
+      "audioKey": "travel-phrases/thailand/card_ok.mp3"
+    },
+    {
+      "id": "looking_only",
+      "nativeText": "ขอดูก่อน",
+      "romanization": "Khor du kon",
+      "audioKey": "travel-phrases/thailand/looking_only.mp3"
+    },
+    {
+      "id": "different_size",
+      "nativeText": "มีไซซ์อื่นไหม",
+      "romanization": "Mi saizu uen mai?",
+      "audioKey": "travel-phrases/thailand/different_size.mp3"
+    },
+    {
+      "id": "tax_free",
+      "nativeText": "คืนภาษีได้ไหม",
+      "romanization": "Khuen phasi dai mai?",
+      "audioKey": "travel-phrases/thailand/tax_free.mp3"
+    },
+    {
+      "id": "can_cheaper",
+      "nativeText": "ลดได้ไหม",
+      "romanization": "Lot dai mai?",
+      "audioKey": "travel-phrases/thailand/can_cheaper.mp3"
+    },
+    {
+      "id": "call_police",
+      "nativeText": "ช่วยเรียกตำรวจด้วย",
+      "romanization": "Chuay riak tamruat duay",
+      "audioKey": "travel-phrases/thailand/call_police.mp3"
+    },
+    {
+      "id": "call_ambulance",
+      "nativeText": "ช่วยเรียกรถพยาบาลด้วย",
+      "romanization": "Chuay riak rot phayaban duay",
+      "audioKey": "travel-phrases/thailand/call_ambulance.mp3"
+    },
+    {
+      "id": "i_am_lost",
+      "nativeText": "ฉันหลงทาง",
+      "romanization": "Chan long thang",
+      "audioKey": "travel-phrases/thailand/i_am_lost.mp3"
+    },
+    {
+      "id": "need_pharmacy",
+      "nativeText": "ฉันต้องการร้านขายยา",
+      "romanization": "Chan tongkan ran khai ya",
+      "audioKey": "travel-phrases/thailand/need_pharmacy.mp3"
+    },
+    {
+      "id": "need_doctor",
+      "nativeText": "ฉันต้องการหมอ",
+      "romanization": "Chan tongkan mo",
+      "audioKey": "travel-phrases/thailand/need_doctor.mp3"
+    },
+    {
+      "id": "i_need_help",
+      "nativeText": "ตอนนี้ฉันต้องการความช่วยเหลือ",
+      "romanization": "Ton ni chan tongkan khwam chuay luea",
+      "audioKey": "travel-phrases/thailand/i_need_help.mp3"
+    },
+    {
+      "id": "lost_passport",
+      "nativeText": "ฉันทำพาสปอร์ตหาย",
+      "romanization": "Chan tham passport hai",
+      "audioKey": "travel-phrases/thailand/lost_passport.mp3"
+    }
   ]
 }

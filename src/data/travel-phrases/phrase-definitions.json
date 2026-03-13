@@ -1,43 +1,338 @@
 [
-  { "id": "hello", "category": "basics", "translation": { "en-US": "Hello", "zh-CN": "你好" } },
-  { "id": "thank_you", "category": "basics", "translation": { "en-US": "Thank you", "zh-CN": "谢谢" } },
-  { "id": "yes", "category": "basics", "translation": { "en-US": "Yes", "zh-CN": "是的" } },
-  { "id": "no", "category": "basics", "translation": { "en-US": "No", "zh-CN": "不" } },
-  { "id": "excuse_me", "category": "basics", "translation": { "en-US": "Excuse me", "zh-CN": "不好意思" } },
-  { "id": "help_me", "category": "basics", "translation": { "en-US": "Please help me", "zh-CN": "请帮帮我" } },
-
-  { "id": "where_station", "category": "transport", "translation": { "en-US": "Where is the station?", "zh-CN": "车站在哪里？" } },
-  { "id": "one_ticket", "category": "transport", "translation": { "en-US": "One ticket, please", "zh-CN": "请给我一张票" } },
-  { "id": "where_bathroom", "category": "transport", "translation": { "en-US": "Where is the bathroom?", "zh-CN": "洗手间在哪里？" } },
-  { "id": "when_depart", "category": "transport", "translation": { "en-US": "When does it leave?", "zh-CN": "什么时候出发？" } },
-  { "id": "please_stop_here", "category": "transport", "translation": { "en-US": "Please stop here", "zh-CN": "请在这里停车" } },
-  { "id": "airport_please", "category": "transport", "translation": { "en-US": "To the airport, please", "zh-CN": "请带我去机场" } },
-
-  { "id": "i_have_booking", "category": "hotel", "translation": { "en-US": "I have a reservation", "zh-CN": "我有预订" } },
-  { "id": "check_in_please", "category": "hotel", "translation": { "en-US": "Check in, please", "zh-CN": "我想办理入住" } },
-  { "id": "check_out_time", "category": "hotel", "translation": { "en-US": "What time is check-out?", "zh-CN": "什么时候退房？" } },
-  { "id": "wifi_password", "category": "hotel", "translation": { "en-US": "What is the Wi-Fi password?", "zh-CN": "Wi-Fi 密码是什么？" } },
-  { "id": "more_towel", "category": "hotel", "translation": { "en-US": "More towels, please", "zh-CN": "请再给我一些毛巾" } },
-  { "id": "room_key", "category": "hotel", "translation": { "en-US": "I forgot my room key", "zh-CN": "我忘带房卡了" } },
-
-  { "id": "table_for_two", "category": "dining", "translation": { "en-US": "A table for two, please", "zh-CN": "两个人，谢谢" } },
-  { "id": "menu_please", "category": "dining", "translation": { "en-US": "Menu, please", "zh-CN": "请给我菜单" } },
-  { "id": "no_spicy", "category": "dining", "translation": { "en-US": "Not spicy, please", "zh-CN": "请不要辣" } },
-  { "id": "vegetarian", "category": "dining", "translation": { "en-US": "I am vegetarian", "zh-CN": "我吃素" } },
-  { "id": "water_please", "category": "dining", "translation": { "en-US": "Water, please", "zh-CN": "请给我水" } },
-  { "id": "bill_please", "category": "dining", "translation": { "en-US": "The bill, please", "zh-CN": "请结账" } },
-
-  { "id": "how_much", "category": "shopping", "translation": { "en-US": "How much is this?", "zh-CN": "这个多少钱？" } },
-  { "id": "too_expensive", "category": "shopping", "translation": { "en-US": "It's too expensive", "zh-CN": "太贵了" } },
-  { "id": "card_ok", "category": "shopping", "translation": { "en-US": "Can I pay by card?", "zh-CN": "可以刷卡吗？" } },
-  { "id": "looking_only", "category": "shopping", "translation": { "en-US": "I'm just looking", "zh-CN": "我先看看" } },
-  { "id": "different_size", "category": "shopping", "translation": { "en-US": "Do you have another size?", "zh-CN": "有别的尺码吗？" } },
-  { "id": "tax_free", "category": "shopping", "translation": { "en-US": "Is this tax-free?", "zh-CN": "这个可以退税吗？" } },
-
-  { "id": "call_police", "category": "emergency", "translation": { "en-US": "Call the police, please", "zh-CN": "请帮我报警" } },
-  { "id": "call_ambulance", "category": "emergency", "translation": { "en-US": "Call an ambulance, please", "zh-CN": "请帮我叫救护车" } },
-  { "id": "i_am_lost", "category": "emergency", "translation": { "en-US": "I am lost", "zh-CN": "我迷路了" } },
-  { "id": "need_pharmacy", "category": "emergency", "translation": { "en-US": "I need a pharmacy", "zh-CN": "我需要药店" } },
-  { "id": "need_doctor", "category": "emergency", "translation": { "en-US": "I need a doctor", "zh-CN": "我需要医生" } },
-  { "id": "i_need_help", "category": "emergency", "translation": { "en-US": "I need help right now", "zh-CN": "我现在需要帮助" } }
+  {
+    "id": "hello",
+    "category": "basics",
+    "translation": {
+      "en-US": "Hello",
+      "zh-CN": "你好"
+    }
+  },
+  {
+    "id": "thank_you",
+    "category": "basics",
+    "translation": {
+      "en-US": "Thank you",
+      "zh-CN": "谢谢"
+    }
+  },
+  {
+    "id": "yes",
+    "category": "basics",
+    "translation": {
+      "en-US": "Yes",
+      "zh-CN": "是的"
+    }
+  },
+  {
+    "id": "no",
+    "category": "basics",
+    "translation": {
+      "en-US": "No",
+      "zh-CN": "不"
+    }
+  },
+  {
+    "id": "excuse_me",
+    "category": "basics",
+    "translation": {
+      "en-US": "Excuse me",
+      "zh-CN": "不好意思"
+    }
+  },
+  {
+    "id": "help_me",
+    "category": "basics",
+    "translation": {
+      "en-US": "Please help me",
+      "zh-CN": "请帮帮我"
+    }
+  },
+  {
+    "id": "do_you_speak_english",
+    "category": "basics",
+    "translation": {
+      "en-US": "Do you speak English?",
+      "zh-CN": "你会说英语吗？"
+    }
+  },
+  {
+    "id": "where_station",
+    "category": "transport",
+    "translation": {
+      "en-US": "Where is the station?",
+      "zh-CN": "车站在哪里？"
+    }
+  },
+  {
+    "id": "one_ticket",
+    "category": "transport",
+    "translation": {
+      "en-US": "One ticket, please",
+      "zh-CN": "请给我一张票"
+    }
+  },
+  {
+    "id": "where_bathroom",
+    "category": "transport",
+    "translation": {
+      "en-US": "Where is the bathroom?",
+      "zh-CN": "洗手间在哪里？"
+    }
+  },
+  {
+    "id": "when_depart",
+    "category": "transport",
+    "translation": {
+      "en-US": "When does it leave?",
+      "zh-CN": "什么时候出发？"
+    }
+  },
+  {
+    "id": "please_stop_here",
+    "category": "transport",
+    "translation": {
+      "en-US": "Please stop here",
+      "zh-CN": "请在这里停车"
+    }
+  },
+  {
+    "id": "airport_please",
+    "category": "transport",
+    "translation": {
+      "en-US": "To the airport, please",
+      "zh-CN": "请带我去机场"
+    }
+  },
+  {
+    "id": "where_metro",
+    "category": "transport",
+    "translation": {
+      "en-US": "Where is the metro?",
+      "zh-CN": "地铁在哪里？"
+    }
+  },
+  {
+    "id": "i_have_booking",
+    "category": "hotel",
+    "translation": {
+      "en-US": "I have a reservation",
+      "zh-CN": "我有预订"
+    }
+  },
+  {
+    "id": "check_in_please",
+    "category": "hotel",
+    "translation": {
+      "en-US": "Check in, please",
+      "zh-CN": "我想办理入住"
+    }
+  },
+  {
+    "id": "check_out_time",
+    "category": "hotel",
+    "translation": {
+      "en-US": "What time is check-out?",
+      "zh-CN": "什么时候退房？"
+    }
+  },
+  {
+    "id": "wifi_password",
+    "category": "hotel",
+    "translation": {
+      "en-US": "What is the Wi-Fi password?",
+      "zh-CN": "Wi-Fi 密码是什么？"
+    }
+  },
+  {
+    "id": "more_towel",
+    "category": "hotel",
+    "translation": {
+      "en-US": "More towels, please",
+      "zh-CN": "请再给我一些毛巾"
+    }
+  },
+  {
+    "id": "room_key",
+    "category": "hotel",
+    "translation": {
+      "en-US": "I forgot my room key",
+      "zh-CN": "我忘带房卡了"
+    }
+  },
+  {
+    "id": "late_check_out",
+    "category": "hotel",
+    "translation": {
+      "en-US": "Can I check out later?",
+      "zh-CN": "可以延迟退房吗？"
+    }
+  },
+  {
+    "id": "table_for_two",
+    "category": "dining",
+    "translation": {
+      "en-US": "A table for two, please",
+      "zh-CN": "两个人，谢谢"
+    }
+  },
+  {
+    "id": "menu_please",
+    "category": "dining",
+    "translation": {
+      "en-US": "Menu, please",
+      "zh-CN": "请给我菜单"
+    }
+  },
+  {
+    "id": "no_spicy",
+    "category": "dining",
+    "translation": {
+      "en-US": "Not spicy, please",
+      "zh-CN": "请不要辣"
+    }
+  },
+  {
+    "id": "vegetarian",
+    "category": "dining",
+    "translation": {
+      "en-US": "I am vegetarian",
+      "zh-CN": "我吃素"
+    }
+  },
+  {
+    "id": "water_please",
+    "category": "dining",
+    "translation": {
+      "en-US": "Water, please",
+      "zh-CN": "请给我水"
+    }
+  },
+  {
+    "id": "bill_please",
+    "category": "dining",
+    "translation": {
+      "en-US": "The bill, please",
+      "zh-CN": "请结账"
+    }
+  },
+  {
+    "id": "no_ice",
+    "category": "dining",
+    "translation": {
+      "en-US": "No ice, please",
+      "zh-CN": "请不要冰"
+    }
+  },
+  {
+    "id": "how_much",
+    "category": "shopping",
+    "translation": {
+      "en-US": "How much is this?",
+      "zh-CN": "这个多少钱？"
+    }
+  },
+  {
+    "id": "too_expensive",
+    "category": "shopping",
+    "translation": {
+      "en-US": "It's too expensive",
+      "zh-CN": "太贵了"
+    }
+  },
+  {
+    "id": "card_ok",
+    "category": "shopping",
+    "translation": {
+      "en-US": "Can I pay by card?",
+      "zh-CN": "可以刷卡吗？"
+    }
+  },
+  {
+    "id": "looking_only",
+    "category": "shopping",
+    "translation": {
+      "en-US": "I'm just looking",
+      "zh-CN": "我先看看"
+    }
+  },
+  {
+    "id": "different_size",
+    "category": "shopping",
+    "translation": {
+      "en-US": "Do you have another size?",
+      "zh-CN": "有别的尺码吗？"
+    }
+  },
+  {
+    "id": "tax_free",
+    "category": "shopping",
+    "translation": {
+      "en-US": "Is this tax-free?",
+      "zh-CN": "这个可以退税吗？"
+    }
+  },
+  {
+    "id": "can_cheaper",
+    "category": "shopping",
+    "translation": {
+      "en-US": "Can it be cheaper?",
+      "zh-CN": "可以便宜一点吗？"
+    }
+  },
+  {
+    "id": "call_police",
+    "category": "emergency",
+    "translation": {
+      "en-US": "Call the police, please",
+      "zh-CN": "请帮我报警"
+    }
+  },
+  {
+    "id": "call_ambulance",
+    "category": "emergency",
+    "translation": {
+      "en-US": "Call an ambulance, please",
+      "zh-CN": "请帮我叫救护车"
+    }
+  },
+  {
+    "id": "i_am_lost",
+    "category": "emergency",
+    "translation": {
+      "en-US": "I am lost",
+      "zh-CN": "我迷路了"
+    }
+  },
+  {
+    "id": "need_pharmacy",
+    "category": "emergency",
+    "translation": {
+      "en-US": "I need a pharmacy",
+      "zh-CN": "我需要药店"
+    }
+  },
+  {
+    "id": "need_doctor",
+    "category": "emergency",
+    "translation": {
+      "en-US": "I need a doctor",
+      "zh-CN": "我需要医生"
+    }
+  },
+  {
+    "id": "i_need_help",
+    "category": "emergency",
+    "translation": {
+      "en-US": "I need help right now",
+      "zh-CN": "我现在需要帮助"
+    }
+  },
+  {
+    "id": "lost_passport",
+    "category": "emergency",
+    "translation": {
+      "en-US": "I lost my passport",
+      "zh-CN": "我护照丢了"
+    }
+  }
 ]

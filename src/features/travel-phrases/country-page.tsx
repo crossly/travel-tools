@@ -33,6 +33,8 @@ export function TravelPhrasesCountryPage({
   const { t } = useI18n()
   const audioRef = useRef<HTMLAudioElement | null>(null)
   const activePhraseIdRef = useRef<string | null>(null)
+  const audioUrlMapRef = useRef(new Map<string, string>())
+  const audioLoadMapRef = useRef(new Map<string, Promise<string>>())
   const [activeCategory, setActiveCategory] = useState<PhraseCategory>('basics')
   const [activePhraseId, setActivePhraseId] = useState<string | null>(null)
   const [errorPhraseId, setErrorPhraseId] = useState<string | null>(null)
@@ -44,6 +46,26 @@ export function TravelPhrasesCountryPage({
   useEffect(() => {
     activePhraseIdRef.current = activePhraseId
   }, [activePhraseId])
+
+  useEffect(() => {
+    return () => {
+      for (const objectUrl of audioUrlMapRef.current.values()) {
+        URL.revokeObjectURL(objectUrl)
+      }
+      audioUrlMapRef.current.clear()
+      audioLoadMapRef.current.clear()
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!pack?.hasAudio || typeof fetch !== 'function' || typeof URL.createObjectURL !== 'function') {
+      return
+    }
+
+    for (const phrase of pack.phrases) {
+      void primePhraseAudio(phrase)
+    }
+  }, [pack])
 
   useEffect(() => {
     const audio = audioRef.current
@@ -96,7 +118,9 @@ export function TravelPhrasesCountryPage({
     setErrorPhraseId(null)
     audio.pause()
     audio.currentTime = 0
-    audio.src = buildPhraseAudioPath(pack.slug, phrase.id)
+
+    const audioSrc = await primePhraseAudio(phrase)
+    audio.src = audioSrc
     setActivePhraseId(phrase.id)
 
     try {
@@ -105,6 +129,40 @@ export function TravelPhrasesCountryPage({
       setActivePhraseId(null)
       setErrorPhraseId(phrase.id)
     }
+  }
+
+  function primePhraseAudio(phrase: PhraseCard) {
+    if (!pack || !phrase.audioKey || typeof fetch !== 'function' || typeof URL.createObjectURL !== 'function') {
+      return Promise.resolve(buildPhraseAudioPath(pack?.slug ?? '', phrase.id))
+    }
+
+    const cachedAudioUrl = audioUrlMapRef.current.get(phrase.id)
+    if (cachedAudioUrl) {
+      return Promise.resolve(cachedAudioUrl)
+    }
+
+    const pendingRequest = audioLoadMapRef.current.get(phrase.id)
+    if (pendingRequest) {
+      return pendingRequest
+    }
+
+    const request = fetch(buildPhraseAudioPath(pack.slug, phrase.id))
+      .then(async (response) => {
+        if (!response.ok) {
+          throw new Error(`AUDIO_FETCH_FAILED_${response.status}`)
+        }
+        const blob = await response.blob()
+        const objectUrl = URL.createObjectURL(blob)
+        audioUrlMapRef.current.set(phrase.id, objectUrl)
+        return objectUrl
+      })
+      .catch(() => buildPhraseAudioPath(pack.slug, phrase.id))
+      .finally(() => {
+        audioLoadMapRef.current.delete(phrase.id)
+      })
+
+    audioLoadMapRef.current.set(phrase.id, request)
+    return request
   }
 
   if (!pack) {
@@ -203,6 +261,11 @@ export function TravelPhrasesCountryPage({
                             ? t('phrases.stopAudio')
                             : t('phrases.playAudio')}
                         disabled={audioDisabled}
+                        onPointerDown={() => {
+                          if (!audioDisabled) {
+                            void primePhraseAudio(phrase)
+                          }
+                        }}
                         onClick={() => void togglePlayback(phrase)}
                       >
                         {audioDisabled ? <Volume2 className="size-4" /> : isPlaying ? <Square className="size-4" /> : <Play className="size-4" />}

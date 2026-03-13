@@ -4,18 +4,25 @@ import brazilRaw from '@/data/travel-phrases/brazil.json'
 import cambodiaRaw from '@/data/travel-phrases/cambodia.json'
 import canadaRaw from '@/data/travel-phrases/canada.json'
 import chileRaw from '@/data/travel-phrases/chile.json'
+import chinaRaw from '@/data/travel-phrases/china.json'
 import franceRaw from '@/data/travel-phrases/france.json'
 import germanyRaw from '@/data/travel-phrases/germany.json'
 import greeceRaw from '@/data/travel-phrases/greece.json'
 import indonesiaRaw from '@/data/travel-phrases/indonesia.json'
 import italyRaw from '@/data/travel-phrases/italy.json'
 import japanRaw from '@/data/travel-phrases/japan.json'
+import kenyaRaw from '@/data/travel-phrases/kenya.json'
+import malaysiaRaw from '@/data/travel-phrases/malaysia.json'
+import mauritiusRaw from '@/data/travel-phrases/mauritius.json'
 import mexicoRaw from '@/data/travel-phrases/mexico.json'
+import moroccoRaw from '@/data/travel-phrases/morocco.json'
 import netherlandsRaw from '@/data/travel-phrases/netherlands.json'
 import peruRaw from '@/data/travel-phrases/peru.json'
 import portugalRaw from '@/data/travel-phrases/portugal.json'
 import southKoreaRaw from '@/data/travel-phrases/south-korea.json'
+import southAfricaRaw from '@/data/travel-phrases/south-africa.json'
 import spainRaw from '@/data/travel-phrases/spain.json'
+import tanzaniaRaw from '@/data/travel-phrases/tanzania.json'
 import thailandRaw from '@/data/travel-phrases/thailand.json'
 import unitedStatesRaw from '@/data/travel-phrases/united-states.json'
 import vietnamRaw from '@/data/travel-phrases/vietnam.json'
@@ -48,7 +55,7 @@ type RawPhraseCountryPack = {
 }
 
 export const PHRASE_CATEGORIES: PhraseCategory[] = ['basics', 'transport', 'hotel', 'dining', 'shopping', 'emergency']
-export const PHRASE_REGIONS: Array<PhraseRegion | 'all'> = ['all', 'asia', 'europe', 'americas']
+export const PHRASE_REGIONS: Array<PhraseRegion | 'all'> = ['all', 'asia', 'europe', 'americas', 'africa']
 
 const phraseDefinitions = phraseDefinitionsRaw as RawPhraseDefinition[]
 const rawCountryPacks = [
@@ -58,6 +65,8 @@ const rawCountryPacks = [
   vietnamRaw,
   indonesiaRaw,
   cambodiaRaw,
+  chinaRaw,
+  malaysiaRaw,
   franceRaw,
   germanyRaw,
   italyRaw,
@@ -72,6 +81,11 @@ const rawCountryPacks = [
   argentinaRaw,
   chileRaw,
   peruRaw,
+  moroccoRaw,
+  southAfricaRaw,
+  kenyaRaw,
+  tanzaniaRaw,
+  mauritiusRaw,
 ] as RawPhraseCountryPack[]
 
 const definitionMap = new Map(phraseDefinitions.map((definition) => [definition.id, definition]))
@@ -152,7 +166,6 @@ export function getPhraseCountryPack(locale: Locale, country: string): PhraseCou
 
 export function validateRawPhraseCountryPack(pack: RawPhraseCountryPack) {
   const errors: string[] = []
-  const supportsAudio = pack.slug !== 'cambodia'
   const hasAnyAudio = pack.phrases.some((entry) => Boolean(entry.audioKey))
   const hasAllAudio = pack.phrases.every((entry) => Boolean(entry.audioKey))
 
@@ -160,12 +173,8 @@ export function validateRawPhraseCountryPack(pack: RawPhraseCountryPack) {
     errors.push(`${pack.slug}: expected ${phraseDefinitions.length} phrases, received ${pack.phrases.length}`)
   }
 
-  if (supportsAudio && !hasAllAudio) {
-    errors.push(`${pack.slug}: all phrases must include audioKey`)
-  }
-
-  if (!supportsAudio && hasAnyAudio) {
-    errors.push(`${pack.slug}: audio must be disabled for this pack`)
+  if (hasAnyAudio && !hasAllAudio) {
+    errors.push(`${pack.slug}: phrases must either all include audioKey or all disable audio`)
   }
 
   const seen = new Set<string>()
@@ -184,7 +193,7 @@ export function validateRawPhraseCountryPack(pack: RawPhraseCountryPack) {
     }
 
     const expectedAudioKey = `travel-phrases/${pack.slug}/${entry.id}.mp3`
-    if (supportsAudio) {
+    if (hasAllAudio) {
       if (!entry.audioKey || entry.audioKey !== expectedAudioKey) {
         errors.push(`${pack.slug}: invalid audioKey for "${entry.id}"`)
       }

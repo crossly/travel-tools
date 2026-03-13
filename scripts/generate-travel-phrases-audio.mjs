@@ -39,6 +39,7 @@ const macVoiceByLanguage = {
   'th-TH': 'Kanya',
   'vi-VN': 'Linh',
   'id-ID': 'Damayanti',
+  'zh-CN': 'Tingting',
 }
 
 const openAiVoiceByLanguage = {
@@ -62,6 +63,7 @@ const openAiVoiceByLanguage = {
   'th-TH': 'coral',
   'vi-VN': 'sage',
   'id-ID': 'alloy',
+  'zh-CN': 'alloy',
 }
 
 async function main() {
