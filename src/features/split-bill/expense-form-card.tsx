@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
-import { z } from 'zod'
+import { type output as Output } from 'zod/v4-mini'
 import { useNavigate } from '@tanstack/react-router'
 import { CurrencyCombobox } from '@/components/app/currency-combobox'
 import { DatePickerField } from '@/components/app/date-picker-field'
@@ -21,7 +21,7 @@ function getToday() {
   return new Date().toISOString().slice(0, 10)
 }
 
-type ExpenseFormValues = z.infer<ReturnType<typeof createExpenseFormSchema>>
+type ExpenseFormValues = Output<ReturnType<typeof createExpenseFormSchema>>
 
 export function ExpenseFormCard({
   locale,

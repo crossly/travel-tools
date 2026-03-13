@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
-import { z } from 'zod'
+import { type output as Output } from 'zod/v4-mini'
 import { AppShell } from '@/components/app/app-shell'
 import { InlineStatus } from '@/components/app/inline-status'
 import { ThemeToggle } from '@/components/app/theme-toggle'
@@ -25,7 +25,7 @@ function resolveExportFilename(tripId: string, content: string) {
   }
 }
 
-type ImportFormValues = z.infer<ReturnType<typeof createImportFormSchema>>
+type ImportFormValues = Output<ReturnType<typeof createImportFormSchema>>
 
 export function SettingsPage({ locale }: { locale: Locale }) {
   const { t, tError } = useI18n()

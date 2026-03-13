@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
-import { z } from 'zod'
+import { type output as Output } from 'zod/v4-mini'
 import { Link, useNavigate } from '@tanstack/react-router'
 import { AppShell } from '@/components/app/app-shell'
 import { CurrencyCombobox } from '@/components/app/currency-combobox'
@@ -23,7 +23,7 @@ type SplitBillHomePageData = {
   trips: Trip[]
 }
 
-type TripFormValues = z.infer<ReturnType<typeof createTripFormSchema>>
+type TripFormValues = Output<ReturnType<typeof createTripFormSchema>>
 
 export function SplitBillHomePage({ locale, initialData }: { locale: Locale; initialData: SplitBillHomePageData }) {
   const { t, tError } = useI18n()

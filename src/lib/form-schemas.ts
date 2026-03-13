@@ -1,27 +1,39 @@
-import { z } from 'zod'
+import { z } from 'zod/v4-mini'
 import { normalizeCurrency } from '@/lib/currencies'
 
 export function requiredTextField(message: string) {
-  return z.string().trim().min(1, message)
+  return z.string().check(z.trim(), z.minLength(1, message))
 }
 
 export function currencyCodeField(message: string) {
-  return z.string().refine((value) => /^[A-Z]{3}$/.test(normalizeCurrency(value)), message)
+  return z.string().check(
+    z.trim(),
+    z.refine((value) => /^[A-Z]{3}$/.test(normalizeCurrency(value)), message),
+  )
 }
 
 export function positiveIntegerStringField(message: string) {
-  return z.string().trim().refine((value) => {
-    const count = Number(value)
-    return Number.isInteger(count) && count >= 1
-  }, message)
+  return z.string().check(
+    z.trim(),
+    z.refine((value) => {
+      const count = Number(value)
+      return Number.isInteger(count) && count >= 1
+    }, message),
+  )
 }
 
 export function positiveNumberStringField(message: string) {
-  return z.string().trim().refine((value) => Number(value) > 0, message)
+  return z.string().check(
+    z.trim(),
+    z.refine((value) => Number(value) > 0, message),
+  )
 }
 
 export function optionalPositiveNumberStringField(message: string) {
-  return z.string().trim().refine((value) => !value || Number(value) > 0, message)
+  return z.string().check(
+    z.trim(),
+    z.refine((value) => !value || Number(value) > 0, message),
+  )
 }
 
 export function createTripFormSchema(messages: {
@@ -49,7 +61,7 @@ export function createExpenseFormSchema(messages: {
     title: requiredTextField(messages.titleRequired),
     amount: positiveNumberStringField(messages.amountRequired),
     currency: currencyCodeField(messages.currencyInvalid),
-    spentAt: z.string().trim().min(8, messages.dateRequired),
+    spentAt: z.string().check(z.trim(), z.minLength(8, messages.dateRequired)),
     splitCount: positiveIntegerStringField(messages.splitCountInvalid),
     manualFx: optionalPositiveNumberStringField(messages.manualFxInvalid),
     note: z.string(),
