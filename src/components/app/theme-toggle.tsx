@@ -53,9 +53,24 @@ export function ThemeToggle({
         )}
       </SelectTrigger>
       <SelectContent align="end">
-        <SelectItem value="light">{t('settings.themeLight')}</SelectItem>
-        <SelectItem value="dark">{t('settings.themeDark')}</SelectItem>
-        <SelectItem value="system">{t('settings.themeSystem')}</SelectItem>
+        <SelectItem value="light">
+          <span className="flex items-center gap-2">
+            <Sun className="h-4 w-4" aria-hidden="true" />
+            <span>{t('settings.themeLight')}</span>
+          </span>
+        </SelectItem>
+        <SelectItem value="dark">
+          <span className="flex items-center gap-2">
+            <Moon className="h-4 w-4" aria-hidden="true" />
+            <span>{t('settings.themeDark')}</span>
+          </span>
+        </SelectItem>
+        <SelectItem value="system">
+          <span className="flex items-center gap-2">
+            <SunMoon className="h-4 w-4" aria-hidden="true" />
+            <span>{t('settings.themeSystem')}</span>
+          </span>
+        </SelectItem>
       </SelectContent>
     </Select>
   )
