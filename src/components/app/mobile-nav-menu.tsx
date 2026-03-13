@@ -74,14 +74,10 @@ export function MobileNavMenu({
             })}
           </nav>
 
-          <div className="mt-3 border-t border-border/80 pt-3">
-            <p className="mb-2 text-xs font-medium text-muted-foreground">{t('settings.language')}</p>
-            <LocaleSwitcher className="w-full justify-between" onAfterChange={() => setOpen(false)} />
-          </div>
-
           <div className="mt-3 flex items-center justify-between gap-2 border-t border-border/80 pt-3">
             <p className="text-xs font-medium text-muted-foreground">{t('settings.appearance')}</p>
             <div className="flex items-center gap-2">
+              <LocaleSwitcher iconOnly onAfterChange={() => setOpen(false)} />
               <ThemeToggle iconOnly />
               <Button
                 type="button"
