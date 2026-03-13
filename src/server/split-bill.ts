@@ -52,7 +52,7 @@ const createExpenseSchema = z.object({
   splitCount: z.number().int().min(1).max(999).optional(),
   updatedAt: z.string().trim().optional(),
 })
-const importSchema = z.object({ content: z.string().min(1) })
+const importSchema = z.object({ content: z.string().trim().min(1) })
 
 function nowIso() {
   return new Date().toISOString()

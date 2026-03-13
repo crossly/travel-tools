@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { AppShell } from '@/components/app/app-shell'
+import { FormField } from '@/components/app/form-field'
 import { InlineStatus } from '@/components/app/inline-status'
 import { ThemeToggle } from '@/components/app/theme-toggle'
 import { Button } from '@/components/ui/button'
@@ -13,35 +14,64 @@ import type { Locale } from '@/lib/types'
 export function SettingsPage({ locale }: { locale: Locale }) {
   const { t, tError } = useI18n()
   const [importContent, setImportContent] = useState('')
-  const [status, setStatus] = useState<{ tone: 'success' | 'warning' | 'danger'; title: string } | null>(null)
+  const [exportStatus, setExportStatus] = useState<{ tone: 'success' | 'warning' | 'danger'; title: string } | null>(null)
+  const [importStatus, setImportStatus] = useState<{ tone: 'success' | 'warning' | 'danger'; title: string } | null>(null)
+  const [importError, setImportError] = useState<string | null>(null)
+  const [isExporting, setIsExporting] = useState(false)
+  const [isImporting, setIsImporting] = useState(false)
 
   async function onExport() {
     const tripId = readActiveTripId()
     if (!tripId) {
-      setStatus({ tone: 'warning', title: t('settings.noTripToExport') })
+      setExportStatus({ tone: 'warning', title: t('settings.noTripToExport') })
       return
     }
+
+    setIsExporting(true)
+    setExportStatus(null)
+
     try {
       const content = await exportTrip(tripId)
       await navigator.clipboard.writeText(content)
-      setStatus({ tone: 'success', title: t('settings.exportSuccess') })
+      setExportStatus({ tone: 'success', title: t('settings.exportSuccess') })
     } catch (error) {
-      setStatus({ tone: 'danger', title: tError((error as Error).message) })
+      setExportStatus({ tone: 'danger', title: tError((error as Error).message) })
+    } finally {
+      setIsExporting(false)
     }
   }
 
   async function onImport() {
     const tripId = readActiveTripId()
     if (!tripId) {
-      setStatus({ tone: 'warning', title: t('settings.noTripToImport') })
+      setImportStatus({ tone: 'warning', title: t('settings.noTripToImport') })
       return
     }
+
+    const trimmedContent = importContent.trim()
+    if (!trimmedContent) {
+      setImportError(tError('MISSING_IMPORT_CONTENT'))
+      setImportStatus(null)
+      return
+    }
+
+    setIsImporting(true)
+    setImportError(null)
+    setImportStatus(null)
+
     try {
-      await importTrip(tripId, importContent)
-      setStatus({ tone: 'success', title: t('settings.importSuccess') })
+      await importTrip(tripId, trimmedContent)
+      setImportStatus({ tone: 'success', title: t('settings.importSuccess') })
       setImportContent('')
     } catch (error) {
-      setStatus({ tone: 'danger', title: tError((error as Error).message) })
+      const message = tError((error as Error).message)
+      if ((error as Error).message === 'MISSING_IMPORT_CONTENT' || (error as Error).message === 'INVALID_JSON_FORMAT') {
+        setImportError(message)
+      } else {
+        setImportStatus({ tone: 'danger', title: message })
+      }
+    } finally {
+      setIsImporting(false)
     }
   }
 
@@ -62,8 +92,11 @@ export function SettingsPage({ locale }: { locale: Locale }) {
           <CardHeader>
             <CardTitle>{t('settings.exportCurrentTrip')}</CardTitle>
           </CardHeader>
-          <CardContent>
-            <Button type="button" onClick={() => void onExport()}>{t('settings.exportCurrentTrip')}</Button>
+          <CardContent className="space-y-4">
+            <Button type="button" onClick={() => void onExport()} disabled={isExporting}>
+              {isExporting ? t('settings.exportPending') : t('settings.exportCurrentTrip')}
+            </Button>
+            {exportStatus ? <InlineStatus tone={exportStatus.tone} title={exportStatus.title} /> : null}
           </CardContent>
         </Card>
         <Card>
@@ -71,13 +104,26 @@ export function SettingsPage({ locale }: { locale: Locale }) {
             <CardTitle>{t('settings.importTitle')}</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <Textarea value={importContent} onChange={(event) => setImportContent(event.target.value)} placeholder={t('settings.importPlaceholder')} />
-            <Button type="button" onClick={() => void onImport()}>{t('settings.importAction')}</Button>
+            <FormField label={t('settings.importTitle')} error={importError ?? undefined}>
+              <Textarea
+                value={importContent}
+                onChange={(event) => {
+                  setImportContent(event.target.value)
+                  setImportError(null)
+                  setImportStatus(null)
+                }}
+                placeholder={t('settings.importPlaceholder')}
+                aria-invalid={importError ? 'true' : undefined}
+                disabled={isImporting}
+              />
+            </FormField>
+            <Button type="button" onClick={() => void onImport()} disabled={isImporting}>
+              {isImporting ? t('settings.importPending') : t('settings.importAction')}
+            </Button>
+            {importStatus ? <InlineStatus tone={importStatus.tone} title={importStatus.title} /> : null}
           </CardContent>
         </Card>
       </div>
-
-      {status ? <InlineStatus tone={status.tone} title={status.title} /> : null}
     </AppShell>
   )
 }
