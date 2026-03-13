@@ -1,0 +1,268 @@
+{
+  "country": {
+    "en-US": "Turkey",
+    "zh-CN": "土耳其"
+  },
+  "slug": "turkey",
+  "region": "middle-east",
+  "languageName": {
+    "en-US": "Turkish",
+    "zh-CN": "土耳其语"
+  },
+  "languageCode": "tr-TR",
+  "flag": "🇹🇷",
+  "phrases": [
+    {
+      "id": "hello",
+      "nativeText": "Merhaba",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/hello.mp3"
+    },
+    {
+      "id": "thank_you",
+      "nativeText": "Teşekkür ederim",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/thank_you.mp3"
+    },
+    {
+      "id": "yes",
+      "nativeText": "Evet",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/yes.mp3"
+    },
+    {
+      "id": "no",
+      "nativeText": "Hayır",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/no.mp3"
+    },
+    {
+      "id": "excuse_me",
+      "nativeText": "Affedersiniz",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/excuse_me.mp3"
+    },
+    {
+      "id": "help_me",
+      "nativeText": "Lütfen bana yardım edin",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/help_me.mp3"
+    },
+    {
+      "id": "do_you_speak_english",
+      "nativeText": "İngilizce konuşuyor musunuz?",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/do_you_speak_english.mp3"
+    },
+    {
+      "id": "where_station",
+      "nativeText": "İstasyon nerede?",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/where_station.mp3"
+    },
+    {
+      "id": "one_ticket",
+      "nativeText": "Bir bilet lütfen",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/one_ticket.mp3"
+    },
+    {
+      "id": "where_bathroom",
+      "nativeText": "Tuvalet nerede?",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/where_bathroom.mp3"
+    },
+    {
+      "id": "when_depart",
+      "nativeText": "Ne zaman kalkıyor?",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/when_depart.mp3"
+    },
+    {
+      "id": "please_stop_here",
+      "nativeText": "Lütfen burada durun",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/please_stop_here.mp3"
+    },
+    {
+      "id": "airport_please",
+      "nativeText": "Havalimanına lütfen",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/airport_please.mp3"
+    },
+    {
+      "id": "where_metro",
+      "nativeText": "Metro nerede?",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/where_metro.mp3"
+    },
+    {
+      "id": "i_have_booking",
+      "nativeText": "Rezervasyonum var",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/i_have_booking.mp3"
+    },
+    {
+      "id": "check_in_please",
+      "nativeText": "Giriş yapmak istiyorum",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/check_in_please.mp3"
+    },
+    {
+      "id": "check_out_time",
+      "nativeText": "Çıkış saati ne zaman?",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/check_out_time.mp3"
+    },
+    {
+      "id": "wifi_password",
+      "nativeText": "Wi-Fi şifresi nedir?",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/wifi_password.mp3"
+    },
+    {
+      "id": "more_towel",
+      "nativeText": "Bir havlu daha lütfen",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/more_towel.mp3"
+    },
+    {
+      "id": "room_key",
+      "nativeText": "Oda anahtarı lütfen",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/room_key.mp3"
+    },
+    {
+      "id": "late_check_out",
+      "nativeText": "Geç çıkış mümkün mü?",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/late_check_out.mp3"
+    },
+    {
+      "id": "table_for_two",
+      "nativeText": "İki kişilik masa lütfen",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/table_for_two.mp3"
+    },
+    {
+      "id": "menu_please",
+      "nativeText": "Menü lütfen",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/menu_please.mp3"
+    },
+    {
+      "id": "no_spicy",
+      "nativeText": "Acısız lütfen",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/no_spicy.mp3"
+    },
+    {
+      "id": "vegetarian",
+      "nativeText": "Ben vejetaryenim",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/vegetarian.mp3"
+    },
+    {
+      "id": "water_please",
+      "nativeText": "Su lütfen",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/water_please.mp3"
+    },
+    {
+      "id": "bill_please",
+      "nativeText": "Hesap lütfen",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/bill_please.mp3"
+    },
+    {
+      "id": "no_ice",
+      "nativeText": "Buz olmasın lütfen",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/no_ice.mp3"
+    },
+    {
+      "id": "how_much",
+      "nativeText": "Bu ne kadar?",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/how_much.mp3"
+    },
+    {
+      "id": "too_expensive",
+      "nativeText": "Bu çok pahalı",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/too_expensive.mp3"
+    },
+    {
+      "id": "card_ok",
+      "nativeText": "Kart geçerli mi?",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/card_ok.mp3"
+    },
+    {
+      "id": "looking_only",
+      "nativeText": "Sadece bakıyorum",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/looking_only.mp3"
+    },
+    {
+      "id": "different_size",
+      "nativeText": "Başka beden var mı?",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/different_size.mp3"
+    },
+    {
+      "id": "tax_free",
+      "nativeText": "Vergisiz var mı?",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/tax_free.mp3"
+    },
+    {
+      "id": "can_cheaper",
+      "nativeText": "Daha ucuz olabilir mi?",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/can_cheaper.mp3"
+    },
+    {
+      "id": "call_police",
+      "nativeText": "Polisi arayın",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/call_police.mp3"
+    },
+    {
+      "id": "call_ambulance",
+      "nativeText": "Ambulans çağırın",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/call_ambulance.mp3"
+    },
+    {
+      "id": "i_am_lost",
+      "nativeText": "Kayboldum",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/i_am_lost.mp3"
+    },
+    {
+      "id": "need_pharmacy",
+      "nativeText": "Eczaneye ihtiyacım var",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/need_pharmacy.mp3"
+    },
+    {
+      "id": "need_doctor",
+      "nativeText": "Doktora ihtiyacım var",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/need_doctor.mp3"
+    },
+    {
+      "id": "i_need_help",
+      "nativeText": "Yardıma ihtiyacım var",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/i_need_help.mp3"
+    },
+    {
+      "id": "lost_passport",
+      "nativeText": "Pasaportumu kaybettim",
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/lost_passport.mp3"
+    }
+  ]
+}

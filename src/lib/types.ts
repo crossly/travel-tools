@@ -1,7 +1,7 @@
 export type Locale = 'zh-CN' | 'en-US'
 export type SiteTheme = 'light' | 'dark' | 'system'
 export type PhraseCategory = 'basics' | 'transport' | 'hotel' | 'dining' | 'shopping' | 'emergency'
-export type PhraseRegion = 'asia' | 'europe' | 'americas' | 'africa'
+export type PhraseRegion = 'asia' | 'europe' | 'americas' | 'africa' | 'middle-east' | 'oceania'
 
 export type ToolDefinition = {
   id: string

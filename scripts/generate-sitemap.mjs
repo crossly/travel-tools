@@ -4,7 +4,7 @@ import { basename, join } from 'node:path'
 const SITE_URL = 'https://www.routecrate.com'
 const locales = ['en-us', 'zh-cn']
 const staticPaths = ['', '/currency', '/bill-splitter', '/travel-phrases']
-const regionOrder = { asia: 0, europe: 1, americas: 2, africa: 3 }
+const regionOrder = { asia: 0, 'middle-east': 1, europe: 2, americas: 3, africa: 4, oceania: 5 }
 
 async function main() {
   const countriesDir = join(process.cwd(), 'src/data/travel-phrases')

@@ -7,9 +7,9 @@ import {
 } from '@/lib/travel-phrases'
 
 describe('travel phrase content', () => {
-  it('ships 27 country packs with valid phrase definitions', async () => {
+  it('ships 32 country packs with valid phrase definitions', async () => {
     const packs = await getAllRawPhraseCountryPacks()
-    expect(packs).toHaveLength(27)
+    expect(packs).toHaveLength(32)
 
     for (const pack of packs) {
       expect(validateRawPhraseCountryPack(pack)).toEqual([])
@@ -37,8 +37,10 @@ describe('travel phrase content', () => {
 
   it('ships a lightweight country index for summaries', () => {
     const summaries = listRawPhraseCountrySummaries()
-    expect(summaries).toHaveLength(27)
+    expect(summaries).toHaveLength(32)
     expect(summaries.some((pack) => pack.slug === 'china' && pack.phraseCount === 42)).toBe(true)
     expect(summaries.some((pack) => pack.slug === 'malaysia' && pack.hasAudio === false)).toBe(true)
+    expect(summaries.some((pack) => pack.slug === 'united-arab-emirates' && pack.region === 'middle-east')).toBe(true)
+    expect(summaries.some((pack) => pack.slug === 'australia' && pack.region === 'oceania')).toBe(true)
   })
 })

@@ -4,12 +4,15 @@ import { AppShell } from '@/components/app/app-shell'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { listRawPhraseCountrySummaries } from '@/lib/travel-phrases'
 import { getLocalizedPath } from '@/lib/site'
 import { useI18n } from '@/lib/i18n'
 import type { Locale } from '@/lib/types'
 
 export function HomePage({ locale }: { locale: Locale }) {
   const { t } = useI18n()
+  const phraseStats = listRawPhraseCountrySummaries()
+  const totalPhrases = phraseStats.reduce((sum, pack) => sum + pack.phraseCount, 0)
 
   return (
     <AppShell locale={locale} title={t('site.homeTitle')} description={t('site.homeDescription')} showPageIntro={false}>
@@ -75,7 +78,9 @@ export function HomePage({ locale }: { locale: Locale }) {
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="rounded-2xl border border-border bg-muted p-4">
-              <p className="mono text-2xl font-medium">{t('site.phrasesMetric')}</p>
+              <p className="mono text-2xl font-medium">
+                {t('site.phrasesMetric', { packs: phraseStats.length, phrases: totalPhrases })}
+              </p>
             </div>
             <Button asChild variant="secondary" size="lg" className="w-full justify-between">
               <Link to={getLocalizedPath(locale, '/travel-phrases')}>

@@ -81,6 +81,22 @@
   },
   {
     "country": {
+      "en-US": "Singapore",
+      "zh-CN": "新加坡"
+    },
+    "slug": "singapore",
+    "region": "asia",
+    "languageName": {
+      "en-US": "English",
+      "zh-CN": "英语"
+    },
+    "languageCode": "en-SG",
+    "flag": "🇸🇬",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
       "en-US": "South Korea",
       "zh-CN": "韩国"
     },
@@ -124,6 +140,38 @@
     },
     "languageCode": "vi-VN",
     "flag": "🇻🇳",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
+      "en-US": "Turkey",
+      "zh-CN": "土耳其"
+    },
+    "slug": "turkey",
+    "region": "middle-east",
+    "languageName": {
+      "en-US": "Turkish",
+      "zh-CN": "土耳其语"
+    },
+    "languageCode": "tr-TR",
+    "flag": "🇹🇷",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
+      "en-US": "United Arab Emirates",
+      "zh-CN": "阿联酋"
+    },
+    "slug": "united-arab-emirates",
+    "region": "middle-east",
+    "languageName": {
+      "en-US": "Arabic",
+      "zh-CN": "阿拉伯语"
+    },
+    "languageCode": "ar_001",
+    "flag": "🇦🇪",
     "phraseCount": 42,
     "hasAudio": true
   },
@@ -353,6 +401,22 @@
   },
   {
     "country": {
+      "en-US": "Egypt",
+      "zh-CN": "埃及"
+    },
+    "slug": "egypt",
+    "region": "africa",
+    "languageName": {
+      "en-US": "Arabic",
+      "zh-CN": "阿拉伯语"
+    },
+    "languageCode": "ar_001",
+    "flag": "🇪🇬",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
       "en-US": "Kenya",
       "zh-CN": "肯尼亚"
     },
@@ -428,6 +492,22 @@
     },
     "languageCode": "en-US",
     "flag": "🇹🇿",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
+      "en-US": "Australia",
+      "zh-CN": "澳大利亚"
+    },
+    "slug": "australia",
+    "region": "oceania",
+    "languageName": {
+      "en-US": "English",
+      "zh-CN": "英语"
+    },
+    "languageCode": "en-AU",
+    "flag": "🇦🇺",
     "phraseCount": 42,
     "hasAudio": true
   }

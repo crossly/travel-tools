@@ -18,6 +18,8 @@ const regionLabelKey: Record<typeof PHRASE_REGIONS[number], string> = {
   europe: 'phrases.regionEurope',
   americas: 'phrases.regionAmericas',
   africa: 'phrases.regionAfrica',
+  'middle-east': 'phrases.regionMiddleEast',
+  oceania: 'phrases.regionOceania',
 }
 
 export function TravelPhrasesHomePage({

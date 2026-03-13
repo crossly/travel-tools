@@ -1,0 +1,268 @@
+{
+  "country": {
+    "en-US": "Egypt",
+    "zh-CN": "埃及"
+  },
+  "slug": "egypt",
+  "region": "africa",
+  "languageName": {
+    "en-US": "Arabic",
+    "zh-CN": "阿拉伯语"
+  },
+  "languageCode": "ar_001",
+  "flag": "🇪🇬",
+  "phrases": [
+    {
+      "id": "hello",
+      "nativeText": "مرحباً",
+      "romanization": "Marhaban",
+      "audioKey": "travel-phrases/egypt/hello.mp3"
+    },
+    {
+      "id": "thank_you",
+      "nativeText": "شكراً",
+      "romanization": "Shukran",
+      "audioKey": "travel-phrases/egypt/thank_you.mp3"
+    },
+    {
+      "id": "yes",
+      "nativeText": "نعم",
+      "romanization": "Na'am",
+      "audioKey": "travel-phrases/egypt/yes.mp3"
+    },
+    {
+      "id": "no",
+      "nativeText": "لا",
+      "romanization": "La",
+      "audioKey": "travel-phrases/egypt/no.mp3"
+    },
+    {
+      "id": "excuse_me",
+      "nativeText": "عفواً",
+      "romanization": "Afwan",
+      "audioKey": "travel-phrases/egypt/excuse_me.mp3"
+    },
+    {
+      "id": "help_me",
+      "nativeText": "ساعدني من فضلك",
+      "romanization": "Sa'idni min fadlik",
+      "audioKey": "travel-phrases/egypt/help_me.mp3"
+    },
+    {
+      "id": "do_you_speak_english",
+      "nativeText": "هل تتحدث الإنجليزية؟",
+      "romanization": "Hal tatakallam al-ingliziyya?",
+      "audioKey": "travel-phrases/egypt/do_you_speak_english.mp3"
+    },
+    {
+      "id": "where_station",
+      "nativeText": "أين المحطة؟",
+      "romanization": "Ayna al-mahatta?",
+      "audioKey": "travel-phrases/egypt/where_station.mp3"
+    },
+    {
+      "id": "one_ticket",
+      "nativeText": "تذكرة واحدة من فضلك",
+      "romanization": "Tadhkira wahida min fadlik",
+      "audioKey": "travel-phrases/egypt/one_ticket.mp3"
+    },
+    {
+      "id": "where_bathroom",
+      "nativeText": "أين الحمام؟",
+      "romanization": "Ayna al-hammam?",
+      "audioKey": "travel-phrases/egypt/where_bathroom.mp3"
+    },
+    {
+      "id": "when_depart",
+      "nativeText": "متى يغادر؟",
+      "romanization": "Mata yughadir?",
+      "audioKey": "travel-phrases/egypt/when_depart.mp3"
+    },
+    {
+      "id": "please_stop_here",
+      "nativeText": "من فضلك توقف هنا",
+      "romanization": "Min fadlik tawwaqaf huna",
+      "audioKey": "travel-phrases/egypt/please_stop_here.mp3"
+    },
+    {
+      "id": "airport_please",
+      "nativeText": "إلى المطار من فضلك",
+      "romanization": "Ila al-matar min fadlik",
+      "audioKey": "travel-phrases/egypt/airport_please.mp3"
+    },
+    {
+      "id": "where_metro",
+      "nativeText": "أين المترو؟",
+      "romanization": "Ayna al-mitro?",
+      "audioKey": "travel-phrases/egypt/where_metro.mp3"
+    },
+    {
+      "id": "i_have_booking",
+      "nativeText": "لدي حجز",
+      "romanization": "Ladayya hajz",
+      "audioKey": "travel-phrases/egypt/i_have_booking.mp3"
+    },
+    {
+      "id": "check_in_please",
+      "nativeText": "أريد تسجيل الدخول",
+      "romanization": "Urid tasjil al-dukhul",
+      "audioKey": "travel-phrases/egypt/check_in_please.mp3"
+    },
+    {
+      "id": "check_out_time",
+      "nativeText": "متى وقت تسجيل الخروج؟",
+      "romanization": "Mata waqt tasjil al-khuruj?",
+      "audioKey": "travel-phrases/egypt/check_out_time.mp3"
+    },
+    {
+      "id": "wifi_password",
+      "nativeText": "ما هي كلمة سر الواي فاي؟",
+      "romanization": "Ma hiya kalimat sirr al-wi-fi?",
+      "audioKey": "travel-phrases/egypt/wifi_password.mp3"
+    },
+    {
+      "id": "more_towel",
+      "nativeText": "أريد منشفة إضافية",
+      "romanization": "Urid minshafa idafiyya",
+      "audioKey": "travel-phrases/egypt/more_towel.mp3"
+    },
+    {
+      "id": "room_key",
+      "nativeText": "مفتاح الغرفة من فضلك",
+      "romanization": "Miftah al-ghurfa min fadlik",
+      "audioKey": "travel-phrases/egypt/room_key.mp3"
+    },
+    {
+      "id": "late_check_out",
+      "nativeText": "هل يمكن تسجيل خروج متأخر؟",
+      "romanization": "Hal yumkin tasjil khuruj muta'akhkhir?",
+      "audioKey": "travel-phrases/egypt/late_check_out.mp3"
+    },
+    {
+      "id": "table_for_two",
+      "nativeText": "طاولة لشخصين من فضلك",
+      "romanization": "Tawila li-shakhsayn min fadlik",
+      "audioKey": "travel-phrases/egypt/table_for_two.mp3"
+    },
+    {
+      "id": "menu_please",
+      "nativeText": "القائمة من فضلك",
+      "romanization": "Al-qa'ima min fadlik",
+      "audioKey": "travel-phrases/egypt/menu_please.mp3"
+    },
+    {
+      "id": "no_spicy",
+      "nativeText": "بدون حار من فضلك",
+      "romanization": "Bidun harr min fadlik",
+      "audioKey": "travel-phrases/egypt/no_spicy.mp3"
+    },
+    {
+      "id": "vegetarian",
+      "nativeText": "أنا نباتي",
+      "romanization": "Ana nabati",
+      "audioKey": "travel-phrases/egypt/vegetarian.mp3"
+    },
+    {
+      "id": "water_please",
+      "nativeText": "ماء من فضلك",
+      "romanization": "Ma' min fadlik",
+      "audioKey": "travel-phrases/egypt/water_please.mp3"
+    },
+    {
+      "id": "bill_please",
+      "nativeText": "الحساب من فضلك",
+      "romanization": "Al-hisab min fadlik",
+      "audioKey": "travel-phrases/egypt/bill_please.mp3"
+    },
+    {
+      "id": "no_ice",
+      "nativeText": "بدون ثلج",
+      "romanization": "Bidun thalj",
+      "audioKey": "travel-phrases/egypt/no_ice.mp3"
+    },
+    {
+      "id": "how_much",
+      "nativeText": "بكم هذا؟",
+      "romanization": "Bikam hatha?",
+      "audioKey": "travel-phrases/egypt/how_much.mp3"
+    },
+    {
+      "id": "too_expensive",
+      "nativeText": "هذا غالٍ جداً",
+      "romanization": "Hatha ghalin jiddan",
+      "audioKey": "travel-phrases/egypt/too_expensive.mp3"
+    },
+    {
+      "id": "card_ok",
+      "nativeText": "هل البطاقة مقبولة؟",
+      "romanization": "Hal al-bitaqa maqbula?",
+      "audioKey": "travel-phrases/egypt/card_ok.mp3"
+    },
+    {
+      "id": "looking_only",
+      "nativeText": "أنا فقط أنظر",
+      "romanization": "Ana faqat anzur",
+      "audioKey": "travel-phrases/egypt/looking_only.mp3"
+    },
+    {
+      "id": "different_size",
+      "nativeText": "هل يوجد مقاس آخر؟",
+      "romanization": "Hal yujad miqas akhar?",
+      "audioKey": "travel-phrases/egypt/different_size.mp3"
+    },
+    {
+      "id": "tax_free",
+      "nativeText": "هل يوجد إعفاء ضريبي؟",
+      "romanization": "Hal yujad i'fa daribi?",
+      "audioKey": "travel-phrases/egypt/tax_free.mp3"
+    },
+    {
+      "id": "can_cheaper",
+      "nativeText": "هل يمكن أن يكون أرخص؟",
+      "romanization": "Hal yumkin an yakun arkhas?",
+      "audioKey": "travel-phrases/egypt/can_cheaper.mp3"
+    },
+    {
+      "id": "call_police",
+      "nativeText": "اتصل بالشرطة",
+      "romanization": "Ittasil bil-shurta",
+      "audioKey": "travel-phrases/egypt/call_police.mp3"
+    },
+    {
+      "id": "call_ambulance",
+      "nativeText": "اتصل بالإسعاف",
+      "romanization": "Ittasil bil-is'af",
+      "audioKey": "travel-phrases/egypt/call_ambulance.mp3"
+    },
+    {
+      "id": "i_am_lost",
+      "nativeText": "أنا تائه",
+      "romanization": "Ana ta'ih",
+      "audioKey": "travel-phrases/egypt/i_am_lost.mp3"
+    },
+    {
+      "id": "need_pharmacy",
+      "nativeText": "أحتاج إلى صيدلية",
+      "romanization": "Ahtaj ila saydaliyya",
+      "audioKey": "travel-phrases/egypt/need_pharmacy.mp3"
+    },
+    {
+      "id": "need_doctor",
+      "nativeText": "أحتاج إلى طبيب",
+      "romanization": "Ahtaj ila tabib",
+      "audioKey": "travel-phrases/egypt/need_doctor.mp3"
+    },
+    {
+      "id": "i_need_help",
+      "nativeText": "أحتاج إلى مساعدة",
+      "romanization": "Ahtaj ila musa'ada",
+      "audioKey": "travel-phrases/egypt/i_need_help.mp3"
+    },
+    {
+      "id": "lost_passport",
+      "nativeText": "لقد فقدت جواز سفري",
+      "romanization": "Laqad faqadtu jawaz safari",
+      "audioKey": "travel-phrases/egypt/lost_passport.mp3"
+    }
+  ]
+}

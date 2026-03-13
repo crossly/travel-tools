@@ -20,7 +20,9 @@ const API_KEY = process.env.OPENAI_API_KEY
 
 const macVoiceByLanguage = {
   'en-US': 'Samantha',
+  'en-SG': 'Daniel',
   'en-CA': 'Samantha',
+  'en-AU': 'Karen',
   'es-ES': 'Mónica',
   'es-MX': 'Paulina',
   'es-AR': 'Paulina',
@@ -39,12 +41,17 @@ const macVoiceByLanguage = {
   'th-TH': 'Kanya',
   'vi-VN': 'Linh',
   'id-ID': 'Damayanti',
+  'ms-MY': 'Amira',
   'zh-CN': 'Tingting',
+  'ar_001': 'Majed',
+  'tr-TR': 'Yelda',
 }
 
 const openAiVoiceByLanguage = {
   'en-US': 'alloy',
+  'en-SG': 'alloy',
   'en-CA': 'alloy',
+  'en-AU': 'alloy',
   'es-ES': 'verse',
   'es-MX': 'verse',
   'es-AR': 'verse',
@@ -63,14 +70,17 @@ const openAiVoiceByLanguage = {
   'th-TH': 'coral',
   'vi-VN': 'sage',
   'id-ID': 'alloy',
+  'ms-MY': 'alloy',
   'zh-CN': 'alloy',
+  'ar_001': 'alloy',
+  'tr-TR': 'alloy',
 }
 
 async function main() {
   await mkdir(OUTPUT_ROOT, { recursive: true })
 
   const files = (await readdir(DATA_DIR))
-    .filter((file) => file.endsWith('.json') && file !== 'phrase-definitions.json')
+    .filter((file) => file.endsWith('.json') && file !== 'phrase-definitions.json' && file !== 'index.json')
     .filter((file) => !onlyCountry || file === `${onlyCountry}.json`)
 
   for (const file of files) {

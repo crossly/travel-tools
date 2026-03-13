@@ -1,0 +1,268 @@
+{
+  "country": {
+    "en-US": "United Arab Emirates",
+    "zh-CN": "阿联酋"
+  },
+  "slug": "united-arab-emirates",
+  "region": "middle-east",
+  "languageName": {
+    "en-US": "Arabic",
+    "zh-CN": "阿拉伯语"
+  },
+  "languageCode": "ar_001",
+  "flag": "🇦🇪",
+  "phrases": [
+    {
+      "id": "hello",
+      "nativeText": "مرحباً",
+      "romanization": "Marhaban",
+      "audioKey": "travel-phrases/united-arab-emirates/hello.mp3"
+    },
+    {
+      "id": "thank_you",
+      "nativeText": "شكراً",
+      "romanization": "Shukran",
+      "audioKey": "travel-phrases/united-arab-emirates/thank_you.mp3"
+    },
+    {
+      "id": "yes",
+      "nativeText": "نعم",
+      "romanization": "Na'am",
+      "audioKey": "travel-phrases/united-arab-emirates/yes.mp3"
+    },
+    {
+      "id": "no",
+      "nativeText": "لا",
+      "romanization": "La",
+      "audioKey": "travel-phrases/united-arab-emirates/no.mp3"
+    },
+    {
+      "id": "excuse_me",
+      "nativeText": "عفواً",
+      "romanization": "Afwan",
+      "audioKey": "travel-phrases/united-arab-emirates/excuse_me.mp3"
+    },
+    {
+      "id": "help_me",
+      "nativeText": "ساعدني من فضلك",
+      "romanization": "Sa'idni min fadlik",
+      "audioKey": "travel-phrases/united-arab-emirates/help_me.mp3"
+    },
+    {
+      "id": "do_you_speak_english",
+      "nativeText": "هل تتحدث الإنجليزية؟",
+      "romanization": "Hal tatakallam al-ingliziyya?",
+      "audioKey": "travel-phrases/united-arab-emirates/do_you_speak_english.mp3"
+    },
+    {
+      "id": "where_station",
+      "nativeText": "أين المحطة؟",
+      "romanization": "Ayna al-mahatta?",
+      "audioKey": "travel-phrases/united-arab-emirates/where_station.mp3"
+    },
+    {
+      "id": "one_ticket",
+      "nativeText": "تذكرة واحدة من فضلك",
+      "romanization": "Tadhkira wahida min fadlik",
+      "audioKey": "travel-phrases/united-arab-emirates/one_ticket.mp3"
+    },
+    {
+      "id": "where_bathroom",
+      "nativeText": "أين الحمام؟",
+      "romanization": "Ayna al-hammam?",
+      "audioKey": "travel-phrases/united-arab-emirates/where_bathroom.mp3"
+    },
+    {
+      "id": "when_depart",
+      "nativeText": "متى يغادر؟",
+      "romanization": "Mata yughadir?",
+      "audioKey": "travel-phrases/united-arab-emirates/when_depart.mp3"
+    },
+    {
+      "id": "please_stop_here",
+      "nativeText": "من فضلك توقف هنا",
+      "romanization": "Min fadlik tawwaqaf huna",
+      "audioKey": "travel-phrases/united-arab-emirates/please_stop_here.mp3"
+    },
+    {
+      "id": "airport_please",
+      "nativeText": "إلى المطار من فضلك",
+      "romanization": "Ila al-matar min fadlik",
+      "audioKey": "travel-phrases/united-arab-emirates/airport_please.mp3"
+    },
+    {
+      "id": "where_metro",
+      "nativeText": "أين المترو؟",
+      "romanization": "Ayna al-mitro?",
+      "audioKey": "travel-phrases/united-arab-emirates/where_metro.mp3"
+    },
+    {
+      "id": "i_have_booking",
+      "nativeText": "لدي حجز",
+      "romanization": "Ladayya hajz",
+      "audioKey": "travel-phrases/united-arab-emirates/i_have_booking.mp3"
+    },
+    {
+      "id": "check_in_please",
+      "nativeText": "أريد تسجيل الدخول",
+      "romanization": "Urid tasjil al-dukhul",
+      "audioKey": "travel-phrases/united-arab-emirates/check_in_please.mp3"
+    },
+    {
+      "id": "check_out_time",
+      "nativeText": "متى وقت تسجيل الخروج؟",
+      "romanization": "Mata waqt tasjil al-khuruj?",
+      "audioKey": "travel-phrases/united-arab-emirates/check_out_time.mp3"
+    },
+    {
+      "id": "wifi_password",
+      "nativeText": "ما هي كلمة سر الواي فاي؟",
+      "romanization": "Ma hiya kalimat sirr al-wi-fi?",
+      "audioKey": "travel-phrases/united-arab-emirates/wifi_password.mp3"
+    },
+    {
+      "id": "more_towel",
+      "nativeText": "أريد منشفة إضافية",
+      "romanization": "Urid minshafa idafiyya",
+      "audioKey": "travel-phrases/united-arab-emirates/more_towel.mp3"
+    },
+    {
+      "id": "room_key",
+      "nativeText": "مفتاح الغرفة من فضلك",
+      "romanization": "Miftah al-ghurfa min fadlik",
+      "audioKey": "travel-phrases/united-arab-emirates/room_key.mp3"
+    },
+    {
+      "id": "late_check_out",
+      "nativeText": "هل يمكن تسجيل خروج متأخر؟",
+      "romanization": "Hal yumkin tasjil khuruj muta'akhkhir?",
+      "audioKey": "travel-phrases/united-arab-emirates/late_check_out.mp3"
+    },
+    {
+      "id": "table_for_two",
+      "nativeText": "طاولة لشخصين من فضلك",
+      "romanization": "Tawila li-shakhsayn min fadlik",
+      "audioKey": "travel-phrases/united-arab-emirates/table_for_two.mp3"
+    },
+    {
+      "id": "menu_please",
+      "nativeText": "القائمة من فضلك",
+      "romanization": "Al-qa'ima min fadlik",
+      "audioKey": "travel-phrases/united-arab-emirates/menu_please.mp3"
+    },
+    {
+      "id": "no_spicy",
+      "nativeText": "بدون حار من فضلك",
+      "romanization": "Bidun harr min fadlik",
+      "audioKey": "travel-phrases/united-arab-emirates/no_spicy.mp3"
+    },
+    {
+      "id": "vegetarian",
+      "nativeText": "أنا نباتي",
+      "romanization": "Ana nabati",
+      "audioKey": "travel-phrases/united-arab-emirates/vegetarian.mp3"
+    },
+    {
+      "id": "water_please",
+      "nativeText": "ماء من فضلك",
+      "romanization": "Ma' min fadlik",
+      "audioKey": "travel-phrases/united-arab-emirates/water_please.mp3"
+    },
+    {
+      "id": "bill_please",
+      "nativeText": "الحساب من فضلك",
+      "romanization": "Al-hisab min fadlik",
+      "audioKey": "travel-phrases/united-arab-emirates/bill_please.mp3"
+    },
+    {
+      "id": "no_ice",
+      "nativeText": "بدون ثلج",
+      "romanization": "Bidun thalj",
+      "audioKey": "travel-phrases/united-arab-emirates/no_ice.mp3"
+    },
+    {
+      "id": "how_much",
+      "nativeText": "بكم هذا؟",
+      "romanization": "Bikam hatha?",
+      "audioKey": "travel-phrases/united-arab-emirates/how_much.mp3"
+    },
+    {
+      "id": "too_expensive",
+      "nativeText": "هذا غالٍ جداً",
+      "romanization": "Hatha ghalin jiddan",
+      "audioKey": "travel-phrases/united-arab-emirates/too_expensive.mp3"
+    },
+    {
+      "id": "card_ok",
+      "nativeText": "هل البطاقة مقبولة؟",
+      "romanization": "Hal al-bitaqa maqbula?",
+      "audioKey": "travel-phrases/united-arab-emirates/card_ok.mp3"
+    },
+    {
+      "id": "looking_only",
+      "nativeText": "أنا فقط أنظر",
+      "romanization": "Ana faqat anzur",
+      "audioKey": "travel-phrases/united-arab-emirates/looking_only.mp3"
+    },
+    {
+      "id": "different_size",
+      "nativeText": "هل يوجد مقاس آخر؟",
+      "romanization": "Hal yujad miqas akhar?",
+      "audioKey": "travel-phrases/united-arab-emirates/different_size.mp3"
+    },
+    {
+      "id": "tax_free",
+      "nativeText": "هل يوجد إعفاء ضريبي؟",
+      "romanization": "Hal yujad i'fa daribi?",
+      "audioKey": "travel-phrases/united-arab-emirates/tax_free.mp3"
+    },
+    {
+      "id": "can_cheaper",
+      "nativeText": "هل يمكن أن يكون أرخص؟",
+      "romanization": "Hal yumkin an yakun arkhas?",
+      "audioKey": "travel-phrases/united-arab-emirates/can_cheaper.mp3"
+    },
+    {
+      "id": "call_police",
+      "nativeText": "اتصل بالشرطة",
+      "romanization": "Ittasil bil-shurta",
+      "audioKey": "travel-phrases/united-arab-emirates/call_police.mp3"
+    },
+    {
+      "id": "call_ambulance",
+      "nativeText": "اتصل بالإسعاف",
+      "romanization": "Ittasil bil-is'af",
+      "audioKey": "travel-phrases/united-arab-emirates/call_ambulance.mp3"
+    },
+    {
+      "id": "i_am_lost",
+      "nativeText": "أنا تائه",
+      "romanization": "Ana ta'ih",
+      "audioKey": "travel-phrases/united-arab-emirates/i_am_lost.mp3"
+    },
+    {
+      "id": "need_pharmacy",
+      "nativeText": "أحتاج إلى صيدلية",
+      "romanization": "Ahtaj ila saydaliyya",
+      "audioKey": "travel-phrases/united-arab-emirates/need_pharmacy.mp3"
+    },
+    {
+      "id": "need_doctor",
+      "nativeText": "أحتاج إلى طبيب",
+      "romanization": "Ahtaj ila tabib",
+      "audioKey": "travel-phrases/united-arab-emirates/need_doctor.mp3"
+    },
+    {
+      "id": "i_need_help",
+      "nativeText": "أحتاج إلى مساعدة",
+      "romanization": "Ahtaj ila musa'ada",
+      "audioKey": "travel-phrases/united-arab-emirates/i_need_help.mp3"
+    },
+    {
+      "id": "lost_passport",
+      "nativeText": "لقد فقدت جواز سفري",
+      "romanization": "Laqad faqadtu jawaz safari",
+      "audioKey": "travel-phrases/united-arab-emirates/lost_passport.mp3"
+    }
+  ]
+}

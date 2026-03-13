@@ -40,7 +40,15 @@ type RawPhraseCountrySummary = {
 }
 
 export const PHRASE_CATEGORIES: PhraseCategory[] = ['basics', 'transport', 'hotel', 'dining', 'shopping', 'emergency']
-export const PHRASE_REGIONS: Array<PhraseRegion | 'all'> = ['all', 'asia', 'europe', 'americas', 'africa']
+export const PHRASE_REGIONS: Array<PhraseRegion | 'all'> = [
+  'all',
+  'asia',
+  'middle-east',
+  'europe',
+  'americas',
+  'africa',
+  'oceania',
+]
 
 const phraseDefinitions = phraseDefinitionsRaw as RawPhraseDefinition[]
 const phraseCountryIndex = phraseCountryIndexRaw as RawPhraseCountrySummary[]
