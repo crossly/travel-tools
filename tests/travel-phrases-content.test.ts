@@ -7,9 +7,11 @@ import {
 } from '@/lib/travel-phrases'
 
 describe('travel phrase content', () => {
-  it('ships 32 country packs with valid phrase definitions', async () => {
+  it('ships valid country packs with valid phrase definitions', async () => {
     const packs = await getAllRawPhraseCountryPacks()
-    expect(packs).toHaveLength(32)
+    const summaries = listRawPhraseCountrySummaries()
+    expect(packs).toHaveLength(summaries.length)
+    expect(new Set(packs.map((pack) => pack.slug)).size).toBe(packs.length)
 
     for (const pack of packs) {
       expect(validateRawPhraseCountryPack(pack)).toEqual([])
@@ -37,10 +39,15 @@ describe('travel phrase content', () => {
 
   it('ships a lightweight country index for summaries', () => {
     const summaries = listRawPhraseCountrySummaries()
-    expect(summaries).toHaveLength(32)
+    expect(new Set(summaries.map((pack) => pack.slug)).size).toBe(summaries.length)
     expect(summaries.some((pack) => pack.slug === 'china' && pack.phraseCount === 42)).toBe(true)
     expect(summaries.some((pack) => pack.slug === 'malaysia' && pack.hasAudio === false)).toBe(true)
     expect(summaries.some((pack) => pack.slug === 'united-arab-emirates' && pack.region === 'middle-east')).toBe(true)
     expect(summaries.some((pack) => pack.slug === 'australia' && pack.region === 'oceania')).toBe(true)
+    expect(summaries.some((pack) => pack.slug === 'new-zealand' && pack.region === 'oceania')).toBe(true)
+    expect(summaries.some((pack) => pack.slug === 'philippines' && pack.region === 'asia')).toBe(true)
+    expect(summaries.some((pack) => pack.slug === 'austria' && pack.languageCode === 'de-AT')).toBe(true)
+    expect(summaries.some((pack) => pack.slug === 'colombia' && pack.languageCode === 'es-CO')).toBe(true)
+    expect(summaries.some((pack) => pack.slug === 'costa-rica' && pack.languageCode === 'es-CR')).toBe(true)
   })
 })

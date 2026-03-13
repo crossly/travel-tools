@@ -1,0 +1,268 @@
+{
+  "country": {
+    "en-US": "Austria",
+    "zh-CN": "奥地利"
+  },
+  "slug": "austria",
+  "region": "europe",
+  "languageName": {
+    "en-US": "German",
+    "zh-CN": "德语"
+  },
+  "languageCode": "de-AT",
+  "flag": "🇦🇹",
+  "phrases": [
+    {
+      "id": "hello",
+      "nativeText": "Hallo",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/hello.mp3"
+    },
+    {
+      "id": "thank_you",
+      "nativeText": "Danke",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/thank_you.mp3"
+    },
+    {
+      "id": "yes",
+      "nativeText": "Ja",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/yes.mp3"
+    },
+    {
+      "id": "no",
+      "nativeText": "Nein",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/no.mp3"
+    },
+    {
+      "id": "excuse_me",
+      "nativeText": "Entschuldigung",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/excuse_me.mp3"
+    },
+    {
+      "id": "help_me",
+      "nativeText": "Bitte helfen Sie mir",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/help_me.mp3"
+    },
+    {
+      "id": "do_you_speak_english",
+      "nativeText": "Sprechen Sie Englisch?",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/do_you_speak_english.mp3"
+    },
+    {
+      "id": "where_station",
+      "nativeText": "Wo ist der Bahnhof?",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/where_station.mp3"
+    },
+    {
+      "id": "one_ticket",
+      "nativeText": "Ein Ticket, bitte",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/one_ticket.mp3"
+    },
+    {
+      "id": "where_bathroom",
+      "nativeText": "Wo ist die Toilette?",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/where_bathroom.mp3"
+    },
+    {
+      "id": "when_depart",
+      "nativeText": "Wann fährt es ab?",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/when_depart.mp3"
+    },
+    {
+      "id": "please_stop_here",
+      "nativeText": "Bitte halten Sie hier an",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/please_stop_here.mp3"
+    },
+    {
+      "id": "airport_please",
+      "nativeText": "Zum Flughafen, bitte",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/airport_please.mp3"
+    },
+    {
+      "id": "where_metro",
+      "nativeText": "Wo ist die U-Bahn?",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/where_metro.mp3"
+    },
+    {
+      "id": "i_have_booking",
+      "nativeText": "Ich habe eine Reservierung",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/i_have_booking.mp3"
+    },
+    {
+      "id": "check_in_please",
+      "nativeText": "Ich möchte einchecken, bitte",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/check_in_please.mp3"
+    },
+    {
+      "id": "check_out_time",
+      "nativeText": "Wann ist Check-out?",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/check_out_time.mp3"
+    },
+    {
+      "id": "wifi_password",
+      "nativeText": "Wie lautet das WLAN-Passwort?",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/wifi_password.mp3"
+    },
+    {
+      "id": "more_towel",
+      "nativeText": "Mehr Handtücher, bitte",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/more_towel.mp3"
+    },
+    {
+      "id": "room_key",
+      "nativeText": "Ich habe meinen Zimmerschlüssel vergessen",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/room_key.mp3"
+    },
+    {
+      "id": "late_check_out",
+      "nativeText": "Kann ich später auschecken?",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/late_check_out.mp3"
+    },
+    {
+      "id": "table_for_two",
+      "nativeText": "Einen Tisch für zwei, bitte",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/table_for_two.mp3"
+    },
+    {
+      "id": "menu_please",
+      "nativeText": "Die Speisekarte, bitte",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/menu_please.mp3"
+    },
+    {
+      "id": "no_spicy",
+      "nativeText": "Nicht scharf, bitte",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/no_spicy.mp3"
+    },
+    {
+      "id": "vegetarian",
+      "nativeText": "Ich bin Vegetarier/in",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/vegetarian.mp3"
+    },
+    {
+      "id": "water_please",
+      "nativeText": "Wasser, bitte",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/water_please.mp3"
+    },
+    {
+      "id": "bill_please",
+      "nativeText": "Die Rechnung, bitte",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/bill_please.mp3"
+    },
+    {
+      "id": "no_ice",
+      "nativeText": "Bitte ohne Eis",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/no_ice.mp3"
+    },
+    {
+      "id": "how_much",
+      "nativeText": "Wie viel kostet das?",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/how_much.mp3"
+    },
+    {
+      "id": "too_expensive",
+      "nativeText": "Das ist zu teuer",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/too_expensive.mp3"
+    },
+    {
+      "id": "card_ok",
+      "nativeText": "Kann ich mit Karte zahlen?",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/card_ok.mp3"
+    },
+    {
+      "id": "looking_only",
+      "nativeText": "Ich schaue nur",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/looking_only.mp3"
+    },
+    {
+      "id": "different_size",
+      "nativeText": "Haben Sie eine andere Größe?",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/different_size.mp3"
+    },
+    {
+      "id": "tax_free",
+      "nativeText": "Ist das steuerfrei?",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/tax_free.mp3"
+    },
+    {
+      "id": "can_cheaper",
+      "nativeText": "Kann es günstiger sein?",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/can_cheaper.mp3"
+    },
+    {
+      "id": "call_police",
+      "nativeText": "Rufen Sie bitte die Polizei",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/call_police.mp3"
+    },
+    {
+      "id": "call_ambulance",
+      "nativeText": "Rufen Sie bitte einen Krankenwagen",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/call_ambulance.mp3"
+    },
+    {
+      "id": "i_am_lost",
+      "nativeText": "Ich habe mich verlaufen",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/i_am_lost.mp3"
+    },
+    {
+      "id": "need_pharmacy",
+      "nativeText": "Ich brauche eine Apotheke",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/need_pharmacy.mp3"
+    },
+    {
+      "id": "need_doctor",
+      "nativeText": "Ich brauche einen Arzt",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/need_doctor.mp3"
+    },
+    {
+      "id": "i_need_help",
+      "nativeText": "Ich brauche sofort Hilfe",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/i_need_help.mp3"
+    },
+    {
+      "id": "lost_passport",
+      "nativeText": "Ich habe meinen Pass verloren",
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/lost_passport.mp3"
+    }
+  ]
+}

@@ -81,6 +81,22 @@
   },
   {
     "country": {
+      "en-US": "Philippines",
+      "zh-CN": "菲律宾"
+    },
+    "slug": "philippines",
+    "region": "asia",
+    "languageName": {
+      "en-US": "English",
+      "zh-CN": "英语"
+    },
+    "languageCode": "en-PH",
+    "flag": "🇵🇭",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
       "en-US": "Singapore",
       "zh-CN": "新加坡"
     },
@@ -172,6 +188,22 @@
     },
     "languageCode": "ar_001",
     "flag": "🇦🇪",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
+      "en-US": "Austria",
+      "zh-CN": "奥地利"
+    },
+    "slug": "austria",
+    "region": "europe",
+    "languageName": {
+      "en-US": "German",
+      "zh-CN": "德语"
+    },
+    "languageCode": "de-AT",
+    "flag": "🇦🇹",
     "phraseCount": 42,
     "hasAudio": true
   },
@@ -353,6 +385,38 @@
   },
   {
     "country": {
+      "en-US": "Colombia",
+      "zh-CN": "哥伦比亚"
+    },
+    "slug": "colombia",
+    "region": "americas",
+    "languageName": {
+      "en-US": "Spanish",
+      "zh-CN": "西班牙语"
+    },
+    "languageCode": "es-CO",
+    "flag": "🇨🇴",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
+      "en-US": "Costa Rica",
+      "zh-CN": "哥斯达黎加"
+    },
+    "slug": "costa-rica",
+    "region": "americas",
+    "languageName": {
+      "en-US": "Spanish",
+      "zh-CN": "西班牙语"
+    },
+    "languageCode": "es-CR",
+    "flag": "🇨🇷",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
       "en-US": "Mexico",
       "zh-CN": "墨西哥"
     },
@@ -508,6 +572,22 @@
     },
     "languageCode": "en-AU",
     "flag": "🇦🇺",
+    "phraseCount": 42,
+    "hasAudio": true
+  },
+  {
+    "country": {
+      "en-US": "New Zealand",
+      "zh-CN": "新西兰"
+    },
+    "slug": "new-zealand",
+    "region": "oceania",
+    "languageName": {
+      "en-US": "English",
+      "zh-CN": "英语"
+    },
+    "languageCode": "en-NZ",
+    "flag": "🇳🇿",
     "phraseCount": 42,
     "hasAudio": true
   }

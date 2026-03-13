@@ -1,0 +1,268 @@
+{
+  "country": {
+    "en-US": "New Zealand",
+    "zh-CN": "新西兰"
+  },
+  "slug": "new-zealand",
+  "region": "oceania",
+  "languageName": {
+    "en-US": "English",
+    "zh-CN": "英语"
+  },
+  "languageCode": "en-NZ",
+  "flag": "🇳🇿",
+  "phrases": [
+    {
+      "id": "hello",
+      "nativeText": "Hello",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/hello.mp3"
+    },
+    {
+      "id": "thank_you",
+      "nativeText": "Thank you",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/thank_you.mp3"
+    },
+    {
+      "id": "yes",
+      "nativeText": "Yes",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/yes.mp3"
+    },
+    {
+      "id": "no",
+      "nativeText": "No",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/no.mp3"
+    },
+    {
+      "id": "excuse_me",
+      "nativeText": "Excuse me",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/excuse_me.mp3"
+    },
+    {
+      "id": "help_me",
+      "nativeText": "Please help me",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/help_me.mp3"
+    },
+    {
+      "id": "do_you_speak_english",
+      "nativeText": "Do you speak English?",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/do_you_speak_english.mp3"
+    },
+    {
+      "id": "where_station",
+      "nativeText": "Where is the station?",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/where_station.mp3"
+    },
+    {
+      "id": "one_ticket",
+      "nativeText": "One ticket, please",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/one_ticket.mp3"
+    },
+    {
+      "id": "where_bathroom",
+      "nativeText": "Where is the bathroom?",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/where_bathroom.mp3"
+    },
+    {
+      "id": "when_depart",
+      "nativeText": "When does it leave?",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/when_depart.mp3"
+    },
+    {
+      "id": "please_stop_here",
+      "nativeText": "Please stop here",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/please_stop_here.mp3"
+    },
+    {
+      "id": "airport_please",
+      "nativeText": "To the airport, please",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/airport_please.mp3"
+    },
+    {
+      "id": "where_metro",
+      "nativeText": "Where is the metro?",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/where_metro.mp3"
+    },
+    {
+      "id": "i_have_booking",
+      "nativeText": "I have a reservation",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/i_have_booking.mp3"
+    },
+    {
+      "id": "check_in_please",
+      "nativeText": "Check in, please",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/check_in_please.mp3"
+    },
+    {
+      "id": "check_out_time",
+      "nativeText": "What time is check-out?",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/check_out_time.mp3"
+    },
+    {
+      "id": "wifi_password",
+      "nativeText": "What is the Wi-Fi password?",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/wifi_password.mp3"
+    },
+    {
+      "id": "more_towel",
+      "nativeText": "More towels, please",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/more_towel.mp3"
+    },
+    {
+      "id": "room_key",
+      "nativeText": "I forgot my room key",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/room_key.mp3"
+    },
+    {
+      "id": "late_check_out",
+      "nativeText": "Can I check out later?",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/late_check_out.mp3"
+    },
+    {
+      "id": "table_for_two",
+      "nativeText": "A table for two, please",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/table_for_two.mp3"
+    },
+    {
+      "id": "menu_please",
+      "nativeText": "Menu, please",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/menu_please.mp3"
+    },
+    {
+      "id": "no_spicy",
+      "nativeText": "Not spicy, please",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/no_spicy.mp3"
+    },
+    {
+      "id": "vegetarian",
+      "nativeText": "I am vegetarian",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/vegetarian.mp3"
+    },
+    {
+      "id": "water_please",
+      "nativeText": "Water, please",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/water_please.mp3"
+    },
+    {
+      "id": "bill_please",
+      "nativeText": "The bill, please",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/bill_please.mp3"
+    },
+    {
+      "id": "no_ice",
+      "nativeText": "No ice, please",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/no_ice.mp3"
+    },
+    {
+      "id": "how_much",
+      "nativeText": "How much is this?",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/how_much.mp3"
+    },
+    {
+      "id": "too_expensive",
+      "nativeText": "It's too expensive",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/too_expensive.mp3"
+    },
+    {
+      "id": "card_ok",
+      "nativeText": "Can I pay by card?",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/card_ok.mp3"
+    },
+    {
+      "id": "looking_only",
+      "nativeText": "I'm just looking",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/looking_only.mp3"
+    },
+    {
+      "id": "different_size",
+      "nativeText": "Do you have another size?",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/different_size.mp3"
+    },
+    {
+      "id": "tax_free",
+      "nativeText": "Is this tax-free?",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/tax_free.mp3"
+    },
+    {
+      "id": "can_cheaper",
+      "nativeText": "Can it be cheaper?",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/can_cheaper.mp3"
+    },
+    {
+      "id": "call_police",
+      "nativeText": "Call the police, please",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/call_police.mp3"
+    },
+    {
+      "id": "call_ambulance",
+      "nativeText": "Call an ambulance, please",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/call_ambulance.mp3"
+    },
+    {
+      "id": "i_am_lost",
+      "nativeText": "I am lost",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/i_am_lost.mp3"
+    },
+    {
+      "id": "need_pharmacy",
+      "nativeText": "I need a pharmacy",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/need_pharmacy.mp3"
+    },
+    {
+      "id": "need_doctor",
+      "nativeText": "I need a doctor",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/need_doctor.mp3"
+    },
+    {
+      "id": "i_need_help",
+      "nativeText": "I need help right now",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/i_need_help.mp3"
+    },
+    {
+      "id": "lost_passport",
+      "nativeText": "I lost my passport",
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/lost_passport.mp3"
+    }
+  ]
+}

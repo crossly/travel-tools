@@ -1,0 +1,268 @@
+{
+  "country": {
+    "en-US": "Colombia",
+    "zh-CN": "哥伦比亚"
+  },
+  "slug": "colombia",
+  "region": "americas",
+  "languageName": {
+    "en-US": "Spanish",
+    "zh-CN": "西班牙语"
+  },
+  "languageCode": "es-CO",
+  "flag": "🇨🇴",
+  "phrases": [
+    {
+      "id": "hello",
+      "nativeText": "Hola",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/hello.mp3"
+    },
+    {
+      "id": "thank_you",
+      "nativeText": "Gracias",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/thank_you.mp3"
+    },
+    {
+      "id": "yes",
+      "nativeText": "Sí",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/yes.mp3"
+    },
+    {
+      "id": "no",
+      "nativeText": "No",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/no.mp3"
+    },
+    {
+      "id": "excuse_me",
+      "nativeText": "Perdón",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/excuse_me.mp3"
+    },
+    {
+      "id": "help_me",
+      "nativeText": "Por favor, ayúdeme",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/help_me.mp3"
+    },
+    {
+      "id": "do_you_speak_english",
+      "nativeText": "¿Habla inglés?",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/do_you_speak_english.mp3"
+    },
+    {
+      "id": "where_station",
+      "nativeText": "¿Dónde está la estación?",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/where_station.mp3"
+    },
+    {
+      "id": "one_ticket",
+      "nativeText": "Un boleto, por favor",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/one_ticket.mp3"
+    },
+    {
+      "id": "where_bathroom",
+      "nativeText": "¿Dónde está el baño?",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/where_bathroom.mp3"
+    },
+    {
+      "id": "when_depart",
+      "nativeText": "¿Cuándo sale?",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/when_depart.mp3"
+    },
+    {
+      "id": "please_stop_here",
+      "nativeText": "Pare aquí, por favor",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/please_stop_here.mp3"
+    },
+    {
+      "id": "airport_please",
+      "nativeText": "Al aeropuerto, por favor",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/airport_please.mp3"
+    },
+    {
+      "id": "where_metro",
+      "nativeText": "¿Dónde está el metro?",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/where_metro.mp3"
+    },
+    {
+      "id": "i_have_booking",
+      "nativeText": "Tengo una reserva",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/i_have_booking.mp3"
+    },
+    {
+      "id": "check_in_please",
+      "nativeText": "Quiero registrarme, por favor",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/check_in_please.mp3"
+    },
+    {
+      "id": "check_out_time",
+      "nativeText": "¿A qué hora es el check-out?",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/check_out_time.mp3"
+    },
+    {
+      "id": "wifi_password",
+      "nativeText": "¿Cuál es la contraseña del wifi?",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/wifi_password.mp3"
+    },
+    {
+      "id": "more_towel",
+      "nativeText": "Más toallas, por favor",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/more_towel.mp3"
+    },
+    {
+      "id": "room_key",
+      "nativeText": "Olvidé la llave de mi habitación",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/room_key.mp3"
+    },
+    {
+      "id": "late_check_out",
+      "nativeText": "¿Puedo hacer el check-out más tarde?",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/late_check_out.mp3"
+    },
+    {
+      "id": "table_for_two",
+      "nativeText": "Una mesa para dos, por favor",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/table_for_two.mp3"
+    },
+    {
+      "id": "menu_please",
+      "nativeText": "El menú, por favor",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/menu_please.mp3"
+    },
+    {
+      "id": "no_spicy",
+      "nativeText": "Sin picante, por favor",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/no_spicy.mp3"
+    },
+    {
+      "id": "vegetarian",
+      "nativeText": "Soy vegetariano/a",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/vegetarian.mp3"
+    },
+    {
+      "id": "water_please",
+      "nativeText": "Agua, por favor",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/water_please.mp3"
+    },
+    {
+      "id": "bill_please",
+      "nativeText": "La cuenta, por favor",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/bill_please.mp3"
+    },
+    {
+      "id": "no_ice",
+      "nativeText": "Sin hielo, por favor",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/no_ice.mp3"
+    },
+    {
+      "id": "how_much",
+      "nativeText": "¿Cuánto cuesta esto?",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/how_much.mp3"
+    },
+    {
+      "id": "too_expensive",
+      "nativeText": "Es demasiado caro",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/too_expensive.mp3"
+    },
+    {
+      "id": "card_ok",
+      "nativeText": "¿Puedo pagar con tarjeta?",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/card_ok.mp3"
+    },
+    {
+      "id": "looking_only",
+      "nativeText": "Solo estoy mirando",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/looking_only.mp3"
+    },
+    {
+      "id": "different_size",
+      "nativeText": "¿Tiene otra talla?",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/different_size.mp3"
+    },
+    {
+      "id": "tax_free",
+      "nativeText": "¿Tiene devolución de impuestos?",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/tax_free.mp3"
+    },
+    {
+      "id": "can_cheaper",
+      "nativeText": "¿Puede ser más barato?",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/can_cheaper.mp3"
+    },
+    {
+      "id": "call_police",
+      "nativeText": "Llame a la policía, por favor",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/call_police.mp3"
+    },
+    {
+      "id": "call_ambulance",
+      "nativeText": "Llame a una ambulancia, por favor",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/call_ambulance.mp3"
+    },
+    {
+      "id": "i_am_lost",
+      "nativeText": "Estoy perdido/a",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/i_am_lost.mp3"
+    },
+    {
+      "id": "need_pharmacy",
+      "nativeText": "Necesito una farmacia",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/need_pharmacy.mp3"
+    },
+    {
+      "id": "need_doctor",
+      "nativeText": "Necesito un médico",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/need_doctor.mp3"
+    },
+    {
+      "id": "i_need_help",
+      "nativeText": "Necesito ayuda ahora mismo",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/i_need_help.mp3"
+    },
+    {
+      "id": "lost_passport",
+      "nativeText": "He perdido mi pasaporte",
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/lost_passport.mp3"
+    }
+  ]
+}
