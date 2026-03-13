@@ -1,10 +1,13 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
 import { AppShell } from '@/components/app/app-shell'
-import { FormField } from '@/components/app/form-field'
 import { InlineStatus } from '@/components/app/inline-status'
 import { ThemeToggle } from '@/components/app/theme-toggle'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Textarea } from '@/components/ui/textarea'
 import { exportTrip, importTrip } from '@/lib/api/client'
 import { buildDatedJsonFilename, downloadTextFile } from '@/lib/files'
@@ -23,12 +26,19 @@ function resolveExportFilename(tripId: string, content: string) {
 
 export function SettingsPage({ locale }: { locale: Locale }) {
   const { t, tError } = useI18n()
-  const [importContent, setImportContent] = useState('')
   const [exportStatus, setExportStatus] = useState<{ tone: 'success' | 'warning' | 'danger'; title: string } | null>(null)
   const [importStatus, setImportStatus] = useState<{ tone: 'success' | 'warning' | 'danger'; title: string } | null>(null)
-  const [importError, setImportError] = useState<string | null>(null)
   const [isExporting, setIsExporting] = useState(false)
   const [isImporting, setIsImporting] = useState(false)
+  const importSchema = useMemo(() => z.object({
+    content: z.string().trim().min(1, tError('MISSING_IMPORT_CONTENT')),
+  }), [tError])
+  const importForm = useForm<z.input<typeof importSchema>, undefined, z.output<typeof importSchema>>({
+    resolver: zodResolver(importSchema),
+    defaultValues: {
+      content: '',
+    },
+  })
 
   async function onExport() {
     const tripId = readActiveTripId()
@@ -51,32 +61,24 @@ export function SettingsPage({ locale }: { locale: Locale }) {
     }
   }
 
-  async function onImport() {
+  async function onImport(values: z.output<typeof importSchema>) {
     const tripId = readActiveTripId()
     if (!tripId) {
       setImportStatus({ tone: 'warning', title: t('settings.noTripToImport') })
       return
     }
 
-    const trimmedContent = importContent.trim()
-    if (!trimmedContent) {
-      setImportError(tError('MISSING_IMPORT_CONTENT'))
-      setImportStatus(null)
-      return
-    }
-
     setIsImporting(true)
-    setImportError(null)
     setImportStatus(null)
 
     try {
-      await importTrip(tripId, trimmedContent)
+      await importTrip(tripId, values.content)
       setImportStatus({ tone: 'success', title: t('settings.importSuccess') })
-      setImportContent('')
+      importForm.reset()
     } catch (error) {
       const message = tError((error as Error).message)
       if ((error as Error).message === 'MISSING_IMPORT_CONTENT' || (error as Error).message === 'INVALID_JSON_FORMAT' || (error as Error).message === 'INVALID_IMPORT_FORMAT') {
-        setImportError(message)
+        importForm.setError('content', { message })
       } else {
         setImportStatus({ tone: 'danger', title: message })
       }
@@ -114,22 +116,41 @@ export function SettingsPage({ locale }: { locale: Locale }) {
             <CardTitle>{t('settings.importTitle')}</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <FormField label={t('settings.importTitle')} error={importError ?? undefined}>
-              <Textarea
-                value={importContent}
-                onChange={(event) => {
-                  setImportContent(event.target.value)
-                  setImportError(null)
-                  setImportStatus(null)
+            <Form {...importForm}>
+              <form
+                className="space-y-4"
+                onSubmit={(event) => {
+                  event.preventDefault()
+                  void importForm.handleSubmit((values) => onImport(values))(event)
                 }}
-                placeholder={t('settings.importPlaceholder')}
-                aria-invalid={importError ? 'true' : undefined}
-                disabled={isImporting}
-              />
-            </FormField>
-            <Button type="button" onClick={() => void onImport()} disabled={isImporting}>
-              {isImporting ? t('settings.importPending') : t('settings.importAction')}
-            </Button>
+              >
+                <FormField
+                  control={importForm.control}
+                  name="content"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{t('settings.importTitle')}</FormLabel>
+                      <FormControl>
+                        <Textarea
+                          {...field}
+                          placeholder={t('settings.importPlaceholder')}
+                          disabled={isImporting}
+                          onChange={(event) => {
+                            field.onChange(event)
+                            importForm.clearErrors('content')
+                            setImportStatus(null)
+                          }}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <Button type="submit" disabled={isImporting}>
+                  {isImporting ? t('settings.importPending') : t('settings.importAction')}
+                </Button>
+              </form>
+            </Form>
             {importStatus ? <InlineStatus tone={importStatus.tone} title={importStatus.title} /> : null}
           </CardContent>
         </Card>

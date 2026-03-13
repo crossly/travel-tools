@@ -1,11 +1,14 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
 import { useNavigate } from '@tanstack/react-router'
 import { CurrencyCombobox } from '@/components/app/currency-combobox'
 import { DatePickerField } from '@/components/app/date-picker-field'
-import { FormField } from '@/components/app/form-field'
 import { InlineStatus } from '@/components/app/inline-status'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { createExpense, fetchFxQuote } from '@/lib/api/client'
 import { useI18n } from '@/lib/i18n'
@@ -34,73 +37,61 @@ export function ExpenseFormCard({
 }) {
   const { t, tError } = useI18n()
   const navigate = useNavigate()
-  const [title, setTitle] = useState('')
-  const [amount, setAmount] = useState('')
-  const [currency, setCurrency] = useState(snapshot?.trip.expenseCurrency ?? 'CNY')
-  const [spentAt, setSpentAt] = useState(getToday())
-  const [note, setNote] = useState('')
-  const [manualFx, setManualFx] = useState('')
-  const [splitCount, setSplitCount] = useState(snapshot ? String(snapshot.trip.splitCount) : '1')
-  const [fieldErrors, setFieldErrors] = useState<{
-    title?: string
-    amount?: string
-    currency?: string
-    splitCount?: string
-  }>({})
   const [isSaving, setIsSaving] = useState(false)
   const [status, setStatus] = useState<{ tone: 'success' | 'warning' | 'danger'; title: string; description?: string } | null>(null)
+  const expenseSchema = useMemo(() => z.object({
+    title: z.string().trim().min(1, t('addExpense.titleRequired')),
+    amount: z.string().trim().refine((value) => Number(value) > 0, t('addExpense.amountRequired')),
+    currency: z.string().refine((value) => /^[A-Z]{3}$/.test(normalizeCurrency(value)), t('addExpense.currencyInvalid')),
+    spentAt: z.string().trim().min(8, t('addExpense.labelDate')),
+    splitCount: z.string().trim().refine((value) => {
+      const count = Number(value)
+      return Number.isInteger(count) && count >= 1
+    }, t('home.invalidSplitCount')),
+    manualFx: z.string().trim().refine((value) => !value || Number(value) > 0, t('addExpense.manualFxInvalid')),
+    note: z.string(),
+  }), [t])
+  const form = useForm<z.infer<typeof expenseSchema>>({
+    resolver: zodResolver(expenseSchema),
+    defaultValues: {
+      title: '',
+      amount: '',
+      currency: snapshot?.trip.expenseCurrency ?? 'CNY',
+      spentAt: getToday(),
+      splitCount: snapshot ? String(snapshot.trip.splitCount) : '1',
+      manualFx: '',
+      note: '',
+    },
+  })
 
   useEffect(() => {
     if (!snapshot) return
-    setCurrency(snapshot.trip.expenseCurrency)
-    setSplitCount(String(snapshot.trip.splitCount))
-  }, [snapshot])
+    form.setValue('currency', snapshot.trip.expenseCurrency)
+    form.setValue('splitCount', String(snapshot.trip.splitCount))
+  }, [form, snapshot])
 
-  async function onCreate() {
+  async function onCreate(values: z.infer<typeof expenseSchema>) {
     if (isSaving) return
-    const numericAmount = Number(amount)
-    const numericSplitCount = Number(splitCount)
-    const normalizedCurrency = normalizeCurrency(currency)
-    const nextErrors: {
-      title?: string
-      amount?: string
-      currency?: string
-      splitCount?: string
-    } = {}
-    if (!title.trim()) {
-      nextErrors.title = t('addExpense.titleRequired')
-    }
-    if (!numericAmount) {
-      nextErrors.amount = t('addExpense.amountRequired')
-    }
-    if (!/^[A-Z]{3}$/.test(normalizedCurrency)) {
-      nextErrors.currency = t('addExpense.currencyInvalid')
-    }
-    if (!Number.isInteger(numericSplitCount) || numericSplitCount < 1) {
-      nextErrors.splitCount = t('home.invalidSplitCount')
-    }
-    if (Object.keys(nextErrors).length) {
-      setFieldErrors(nextErrors)
-      return
-    }
 
     try {
       setIsSaving(true)
-      setFieldErrors({})
       setStatus(null)
       let fxRateOverride: number | undefined
-      if (manualFx.trim()) {
-        fxRateOverride = Number(manualFx)
+      const normalizedCurrency = normalizeCurrency(values.currency)
+      const numericAmount = Number(values.amount)
+      const numericSplitCount = Number(values.splitCount)
+      if (values.manualFx.trim()) {
+        fxRateOverride = Number(values.manualFx)
       } else if (snapshot && normalizedCurrency !== snapshot.trip.settlementCurrency) {
-        const quote = await fetchFxQuote(tripId, normalizedCurrency, snapshot.trip.settlementCurrency, spentAt)
+        const quote = await fetchFxQuote(tripId, normalizedCurrency, snapshot.trip.settlementCurrency, values.spentAt)
         fxRateOverride = quote.rate
       }
       await createExpense(tripId, {
-        title: title.trim(),
-        note: note.trim() || undefined,
+        title: values.title.trim(),
+        note: values.note.trim() || undefined,
         amountOriginal: numericAmount,
         originalCurrency: normalizedCurrency,
-        spentAt,
+        spentAt: values.spentAt,
         splitCount: numericSplitCount,
         fxRateOverride,
       })
@@ -109,11 +100,15 @@ export function ExpenseFormCard({
         navigate({ to: getLocalizedPath(locale, `/tools/split-bill/${tripId}`) })
         return
       }
-      setTitle('')
-      setAmount('')
-      setNote('')
-      setManualFx('')
-      setSpentAt(getToday())
+      form.reset({
+        title: '',
+        amount: '',
+        currency: snapshot?.trip.expenseCurrency ?? 'CNY',
+        spentAt: getToday(),
+        splitCount: snapshot ? String(snapshot.trip.splitCount) : '1',
+        manualFx: '',
+        note: '',
+      })
       setStatus({ tone: 'success', title: t('addExpense.saved') })
     } catch (error) {
       setStatus({ tone: 'danger', title: tError((error as Error).message) })
@@ -127,79 +122,172 @@ export function ExpenseFormCard({
       <CardHeader>
         <CardTitle>{t('addExpense.title')}</CardTitle>
       </CardHeader>
-      <CardContent className="grid gap-4">
-        <FormField label={t('addExpense.labelTitle')} error={fieldErrors.title}>
-          <Input
-            value={title}
-            onChange={(event) => {
-              setTitle(event.target.value)
-              if (fieldErrors.title) {
-                setFieldErrors((current) => ({ ...current, title: undefined }))
-              }
+      <CardContent>
+        <Form {...form}>
+          <form
+            className="grid gap-4"
+            onSubmit={(event) => {
+              event.preventDefault()
+              void form.handleSubmit((values) => onCreate(values))(event)
             }}
-            placeholder={t('addExpense.titlePlaceholder')}
-            disabled={!snapshot || isSaving}
-            aria-invalid={fieldErrors.title ? 'true' : undefined}
-          />
-        </FormField>
-        <div className="grid gap-4 md:grid-cols-2">
-          <FormField label={t('addExpense.labelAmount')} error={fieldErrors.amount}>
-            <Input
-              value={amount}
-              onChange={(event) => {
-                setAmount(event.target.value)
-                if (fieldErrors.amount) {
-                  setFieldErrors((current) => ({ ...current, amount: undefined }))
-                }
-              }}
-              inputMode="decimal"
-              disabled={!snapshot || isSaving}
-              aria-invalid={fieldErrors.amount ? 'true' : undefined}
+          >
+            <FormField
+              control={form.control}
+              name="title"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t('addExpense.labelTitle')}</FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      placeholder={t('addExpense.titlePlaceholder')}
+                      disabled={!snapshot || isSaving}
+                      onChange={(event) => {
+                        field.onChange(event)
+                        setStatus(null)
+                      }}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
-          </FormField>
-          <FormField label={t('addExpense.labelCurrency')} error={fieldErrors.currency}>
-            <CurrencyCombobox
-              value={currency}
-              onValueChange={(value) => {
-                setCurrency(value)
-                if (fieldErrors.currency) {
-                  setFieldErrors((current) => ({ ...current, currency: undefined }))
-                }
-              }}
-              locale={locale}
-              disabled={!snapshot || isSaving}
+            <div className="grid gap-4 md:grid-cols-2">
+              <FormField
+                control={form.control}
+                name="amount"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{t('addExpense.labelAmount')}</FormLabel>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        inputMode="decimal"
+                        disabled={!snapshot || isSaving}
+                        onChange={(event) => {
+                          field.onChange(event)
+                          setStatus(null)
+                        }}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="currency"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{t('addExpense.labelCurrency')}</FormLabel>
+                    <FormControl>
+                      <CurrencyCombobox
+                        value={field.value}
+                        onValueChange={(value) => {
+                          field.onChange(value)
+                          setStatus(null)
+                        }}
+                        locale={locale}
+                        disabled={!snapshot || isSaving}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <div className="grid gap-4 md:grid-cols-2">
+              <FormField
+                control={form.control}
+                name="spentAt"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{t('addExpense.labelDate')}</FormLabel>
+                    <FormControl>
+                      <DatePickerField
+                        value={field.value}
+                        onChange={(value) => {
+                          field.onChange(value)
+                          setStatus(null)
+                        }}
+                        locale={locale}
+                        disabled={!snapshot || isSaving}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="splitCount"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{t('addExpense.splitCount')}</FormLabel>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        inputMode="numeric"
+                        className="mono"
+                        disabled={!snapshot || isSaving}
+                        onChange={(event) => {
+                          field.onChange(event)
+                          setStatus(null)
+                        }}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <FormField
+              control={form.control}
+              name="manualFx"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t('addExpense.manualFx')}</FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      placeholder={t('addExpense.manualFxPlaceholder')}
+                      inputMode="decimal"
+                      disabled={!snapshot || isSaving}
+                      onChange={(event) => {
+                        field.onChange(event)
+                        setStatus(null)
+                      }}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
-          </FormField>
-        </div>
-        <div className="grid gap-4 md:grid-cols-2">
-          <FormField label={t('addExpense.labelDate')}>
-            <DatePickerField value={spentAt} onChange={setSpentAt} locale={locale} disabled={!snapshot || isSaving} />
-          </FormField>
-          <FormField label={t('addExpense.splitCount')} error={fieldErrors.splitCount}>
-            <Input
-              value={splitCount}
-              onChange={(event) => {
-                setSplitCount(event.target.value)
-                if (fieldErrors.splitCount) {
-                  setFieldErrors((current) => ({ ...current, splitCount: undefined }))
-                }
-              }}
-              inputMode="numeric"
-              className="mono"
-              disabled={!snapshot || isSaving}
-              aria-invalid={fieldErrors.splitCount ? 'true' : undefined}
+            <FormField
+              control={form.control}
+              name="note"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t('addExpense.labelNote')}</FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      disabled={!snapshot || isSaving}
+                      onChange={(event) => {
+                        field.onChange(event)
+                        setStatus(null)
+                      }}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
-          </FormField>
-        </div>
-        <FormField label={t('addExpense.manualFx')}>
-          <Input value={manualFx} onChange={(event) => setManualFx(event.target.value)} placeholder={t('addExpense.manualFxPlaceholder')} inputMode="decimal" disabled={!snapshot || isSaving} />
-        </FormField>
-        <FormField label={t('addExpense.labelNote')}>
-          <Input value={note} onChange={(event) => setNote(event.target.value)} disabled={!snapshot || isSaving} />
-        </FormField>
-        <Button type="button" size="lg" className="w-full" onClick={() => void onCreate()} disabled={!snapshot || isSaving} aria-busy={isSaving}>
-          {isSaving ? t('common.saving') : submitLabel}
-        </Button>
+            <Button type="submit" size="lg" className="w-full" disabled={!snapshot || isSaving} aria-busy={isSaving}>
+              {isSaving ? t('common.saving') : submitLabel}
+            </Button>
+          </form>
+        </Form>
         {status ? <InlineStatus tone={status.tone} title={status.title} description={status.description} /> : null}
       </CardContent>
     </Card>
