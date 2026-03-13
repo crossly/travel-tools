@@ -1,17 +1,20 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { HomePage } from '@/features/site/home-page'
-import { buildDocumentTitle, translate } from '@/lib/i18n'
+import { translate } from '@/lib/i18n'
+import { buildPublicPageHead } from '@/lib/seo'
 import { DEFAULT_LOCALE, resolveLocaleSegment } from '@/lib/site'
 
 export const Route = createFileRoute('/$locale/')({
   head: ({ params }) => {
     const locale = resolveLocaleSegment(params.locale) ?? DEFAULT_LOCALE
-    return {
-      meta: [
-        { title: buildDocumentTitle(locale, translate(locale, 'site.homeTitle')) },
-        { name: 'description', content: translate(locale, 'site.homeDescription') },
-      ],
-    }
+    return buildPublicPageHead({
+      locale,
+      title: translate(locale, 'site.homeTitle'),
+      description: translate(locale, 'site.homeDescription'),
+      pathname: '/',
+      xDefaultPath: '/',
+      structuredData: 'website',
+    })
   },
   component: HomeRoute,
 })

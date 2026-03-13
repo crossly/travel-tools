@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { SettlementPage } from '@/features/split-bill/settlement-page'
-import { buildDocumentTitle, translate } from '@/lib/i18n'
+import { translate } from '@/lib/i18n'
+import { buildPrivatePageHead } from '@/lib/seo'
 import { DEFAULT_LOCALE, resolveLocaleSegment } from '@/lib/site'
 import { loadSettlementPageData } from '@/server/split-bill-page-data'
 
@@ -12,9 +13,7 @@ export const Route = createFileRoute('/$locale/bill-splitter/$tripId/settlement'
     const section = translate(locale, 'settlement.title')
     const pageTitle = tripName ? translate(locale, 'meta.trip.sectionTitle', { tripName, section }) : section
 
-    return {
-      meta: [{ title: buildDocumentTitle(locale, pageTitle) }],
-    }
+    return buildPrivatePageHead({ locale, title: pageTitle })
   },
   component: SettlementRoute,
 })

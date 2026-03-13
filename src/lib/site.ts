@@ -67,6 +67,12 @@ export function resolveLocaleFromPath(pathname: string) {
   }
 }
 
+export function resolveExplicitLocaleFromPath(pathname: string) {
+  const normalized = pathname.startsWith('/') ? pathname : `/${pathname}`
+  const segments = normalized.split('/').filter(Boolean)
+  return resolveLocaleSegment(segments[0])
+}
+
 export function replaceLocaleInPath(pathname: string, locale: Locale) {
   const { pathname: rest } = resolveLocaleFromPath(pathname)
   return getLocalizedPath(locale, rest)

@@ -1,6 +1,6 @@
 import { createMiddleware, createServerFn } from '@tanstack/react-start'
 import type { Locale } from '@/lib/types'
-import { resolveRequestLocale } from '@/lib/site'
+import { resolveExplicitLocaleFromPath, resolveRequestLocale } from '@/lib/site'
 import type { AppRequestContext } from '@/router'
 
 type RootPageData = {
@@ -12,10 +12,12 @@ type RootPageData = {
 
 const siteLocaleMiddleware = createMiddleware({ type: 'request' }).server(async ({ request, context, next }) => {
   const requestContext = context as unknown as AppRequestContext
+  const pathnameLocale = resolveExplicitLocaleFromPath(new URL(request.url).pathname)
+
   return next({
     context: {
       cloudflare: requestContext.cloudflare,
-      locale: resolveRequestLocale(request.headers.get('cookie'), request.headers.get('accept-language')),
+      locale: pathnameLocale ?? resolveRequestLocale(request.headers.get('cookie'), request.headers.get('accept-language')),
     },
   })
 })

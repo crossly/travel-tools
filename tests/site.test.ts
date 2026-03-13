@@ -3,6 +3,7 @@ import {
   DEFAULT_LOCALE,
   getLocalizedPath,
   replaceLocaleInPath,
+  resolveExplicitLocaleFromPath,
   resolveLocaleFromPath,
   resolveRequestLocale,
   toLocaleSlug,
@@ -35,6 +36,11 @@ describe('site helpers', () => {
       locale: 'zh-CN',
       pathname: '/currency',
     })
+  })
+
+  it('detects an explicit locale segment without falling back', () => {
+    expect(resolveExplicitLocaleFromPath('/zh-cn/currency')).toBe('zh-CN')
+    expect(resolveExplicitLocaleFromPath('/currency')).toBeNull()
   })
 
   it('prefers locale cookie over accept-language', () => {
