@@ -28,6 +28,10 @@ vi.mock('@/components/app/inline-status', () => ({
   InlineStatus: ({ title }: { title: string }) => createElement('div', null, title),
 }))
 
+vi.mock('@/features/split-bill/expense-form-card', () => ({
+  ExpenseFormCard: () => createElement('div', null, 'expense form'),
+}))
+
 vi.mock('@/lib/api/client', () => ({
   fetchSnapshot: (...args: unknown[]) => fetchSnapshotMock(...args),
   deleteExpense: (...args: unknown[]) => deleteExpenseMock(...args),

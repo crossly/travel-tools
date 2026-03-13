@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from '@tanstack/react-router'
+import { Minus, Plus } from 'lucide-react'
 import { AppShell } from '@/components/app/app-shell'
 import { ConfirmActionDialog } from '@/components/app/confirm-action-dialog'
-import { FormField } from '@/components/app/form-field'
 import { InlineStatus } from '@/components/app/inline-status'
+import { ExpenseFormCard } from './expense-form-card'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
 import { deleteExpense, deleteTrip, fetchSnapshot, updateTripSettings } from '@/lib/api/client'
 import { getLocalizedPath } from '@/lib/site'
 import { useI18n } from '@/lib/i18n'
@@ -17,38 +17,36 @@ export function TripPage({ locale, tripId, initialSnapshot = null }: { locale: L
   const { t, tError } = useI18n()
   const navigate = useNavigate()
   const [snapshot, setSnapshot] = useState<TripSnapshot | null>(initialSnapshot)
-  const [splitCount, setSplitCount] = useState(initialSnapshot ? String(initialSnapshot.trip.splitCount) : '1')
+  const [isSavingSplitCount, setIsSavingSplitCount] = useState(false)
   const [status, setStatus] = useState<{ tone: 'success' | 'warning' | 'danger'; title: string; description?: string } | null>(null)
 
   useEffect(() => {
     writeActiveTripId(tripId)
     if (initialSnapshot) {
       setSnapshot(initialSnapshot)
-      setSplitCount(String(initialSnapshot.trip.splitCount))
       return
     }
 
     void fetchSnapshot(tripId)
-      .then((data) => {
-        setSnapshot(data)
-        setSplitCount(String(data.trip.splitCount))
-      })
+      .then((data) => setSnapshot(data))
       .catch((error) => setStatus({ tone: 'danger', title: tError((error as Error).message) }))
   }, [initialSnapshot, tripId, tError])
 
-  async function onSaveSplitCount() {
-    const count = Number(splitCount)
-    if (!Number.isInteger(count) || count < 1) {
+  async function onChangeSplitCount(nextCount: number) {
+    if (!Number.isInteger(nextCount) || nextCount < 1 || !snapshot || isSavingSplitCount) {
       setStatus({ tone: 'danger', title: t('home.invalidSplitCount') })
       return
     }
     try {
-      await updateTripSettings(tripId, count)
-      setStatus({ tone: 'success', title: t('trip.splitCountSaved') })
+      setIsSavingSplitCount(true)
+      setStatus(null)
+      await updateTripSettings(tripId, nextCount)
       const latest = await fetchSnapshot(tripId)
       setSnapshot(latest)
     } catch (error) {
       setStatus({ tone: 'danger', title: tError((error as Error).message) })
+    } finally {
+      setIsSavingSplitCount(false)
     }
   }
 
@@ -79,8 +77,8 @@ export function TripPage({ locale, tripId, initialSnapshot = null }: { locale: L
       description={snapshot ? `${snapshot.trip.expenseCurrency} / ${snapshot.trip.settlementCurrency}` : t('split.description')}
       activeTool="split-bill"
     >
-      <div className="grid gap-4 xl:grid-cols-[1.1fr_0.9fr]">
-        <div className="grid gap-4">
+      <div className="grid gap-4 xl:grid-cols-[minmax(0,0.9fr)_minmax(0,1.8fr)]">
+        <div className="xl:order-1">
           <Card>
             <CardHeader>
               <CardTitle>{t('trip.expenseList')}</CardTitle>
@@ -128,32 +126,56 @@ export function TripPage({ locale, tripId, initialSnapshot = null }: { locale: L
           </Card>
         </div>
 
-        <div className="grid gap-4">
+        <div className="grid gap-4 xl:order-2">
           <Card>
-            <CardHeader>
-              <CardTitle>{t('trip.splitCount')}</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <FormField label={t('trip.splitCount')}>
-                <Input value={splitCount} onChange={(event) => setSplitCount(event.target.value)} inputMode="numeric" className="mono" disabled={!snapshot} />
-              </FormField>
-              <Button type="button" variant="secondary" className="w-full" onClick={() => void onSaveSplitCount()} disabled={!snapshot}>
-                {t('trip.saveSplitCount')}
-              </Button>
+            <CardContent className="flex flex-wrap items-center justify-between gap-4 pt-6">
+              <div>
+                <p className="text-sm font-medium text-muted-foreground">{t('trip.splitCount')}</p>
+                <p className="mt-1 text-3xl font-semibold tabular-nums">{snapshot?.trip.splitCount ?? '--'}</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <Button
+                  type="button"
+                  variant="secondary"
+                  size="icon"
+                  className="rounded-full"
+                  disabled={!snapshot || isSavingSplitCount || snapshot.trip.splitCount <= 1}
+                  aria-label={t('trip.decreaseSplitCount')}
+                  onClick={() => void onChangeSplitCount((snapshot?.trip.splitCount ?? 1) - 1)}
+                >
+                  <Minus className="h-4 w-4" />
+                </Button>
+                <Button
+                  type="button"
+                  variant="secondary"
+                  size="icon"
+                  className="rounded-full"
+                  disabled={!snapshot || isSavingSplitCount}
+                  aria-label={t('trip.increaseSplitCount')}
+                  onClick={() => void onChangeSplitCount((snapshot?.trip.splitCount ?? 0) + 1)}
+                >
+                  <Plus className="h-4 w-4" />
+                </Button>
+              </div>
+              <p className="w-full text-sm text-muted-foreground">
+                {isSavingSplitCount ? t('common.saving') : t('trip.splitCountSavedInline')}
+              </p>
             </CardContent>
           </Card>
 
+          <ExpenseFormCard
+            locale={locale}
+            tripId={tripId}
+            snapshot={snapshot}
+            submitLabel={t('trip.addExpense')}
+            onSaved={async () => {
+              const latest = await fetchSnapshot(tripId)
+              setSnapshot(latest)
+            }}
+          />
+
           <Card>
-            <CardContent className="grid gap-3 pt-6">
-              <Button
-                type="button"
-                size="lg"
-                className="w-full"
-                disabled={!snapshot}
-                onClick={() => navigate({ to: getLocalizedPath(locale, `/tools/split-bill/${tripId}/add`) })}
-              >
-                {t('trip.addExpense')}
-              </Button>
+            <CardContent className="grid gap-3 pt-6 md:grid-cols-2">
               <Button
                 type="button"
                 variant="secondary"

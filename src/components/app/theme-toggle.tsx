@@ -1,4 +1,4 @@
-import { Monitor, SunMoon } from 'lucide-react'
+import { SunMoon } from 'lucide-react'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { cn } from '@/lib/utils'
 import { useI18n } from '@/lib/i18n'
@@ -28,12 +28,7 @@ export function ThemeToggle({ className, onAfterChange }: { className?: string; 
       <SelectContent align="end">
         <SelectItem value="light">{t('settings.themeLight')}</SelectItem>
         <SelectItem value="dark">{t('settings.themeDark')}</SelectItem>
-        <SelectItem value="system">
-          <span className="flex items-center gap-2">
-            <Monitor className="h-4 w-4 text-muted-foreground" />
-            {t('settings.themeSystem')}
-          </span>
-        </SelectItem>
+        <SelectItem value="system">{t('settings.themeSystem')}</SelectItem>
       </SelectContent>
     </Select>
   )
