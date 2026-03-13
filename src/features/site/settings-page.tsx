@@ -7,25 +7,18 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Textarea } from '@/components/ui/textarea'
 import { exportTrip, importTrip } from '@/lib/api/client'
+import { buildDatedJsonFilename, downloadTextFile } from '@/lib/files'
 import { useI18n } from '@/lib/i18n'
 import { readActiveTripId } from '@/lib/storage'
 import type { Locale } from '@/lib/types'
 
-function buildExportFilename(tripId: string) {
-  const date = new Date().toISOString().slice(0, 10)
-  return `trip-${tripId}-${date}.json`
-}
-
-function downloadExportFile(filename: string, content: string) {
-  const blob = new Blob([content], { type: 'application/json;charset=utf-8' })
-  const url = URL.createObjectURL(blob)
-  const link = document.createElement('a')
-  link.href = url
-  link.download = filename
-  document.body.appendChild(link)
-  link.click()
-  link.remove()
-  URL.revokeObjectURL(url)
+function resolveExportFilename(tripId: string, content: string) {
+  try {
+    const parsed = JSON.parse(content) as { trip?: { name?: string } }
+    return buildDatedJsonFilename(parsed.trip?.name || tripId)
+  } catch {
+    return buildDatedJsonFilename(tripId)
+  }
 }
 
 export function SettingsPage({ locale }: { locale: Locale }) {
@@ -49,7 +42,7 @@ export function SettingsPage({ locale }: { locale: Locale }) {
 
     try {
       const content = await exportTrip(tripId)
-      downloadExportFile(buildExportFilename(tripId), content)
+      downloadTextFile(resolveExportFilename(tripId, content), content)
       setExportStatus({ tone: 'success', title: t('settings.exportSuccess') })
     } catch (error) {
       setExportStatus({ tone: 'danger', title: tError((error as Error).message) })
@@ -82,7 +75,7 @@ export function SettingsPage({ locale }: { locale: Locale }) {
       setImportContent('')
     } catch (error) {
       const message = tError((error as Error).message)
-      if ((error as Error).message === 'MISSING_IMPORT_CONTENT' || (error as Error).message === 'INVALID_JSON_FORMAT') {
+      if ((error as Error).message === 'MISSING_IMPORT_CONTENT' || (error as Error).message === 'INVALID_JSON_FORMAT' || (error as Error).message === 'INVALID_IMPORT_FORMAT') {
         setImportError(message)
       } else {
         setImportStatus({ tone: 'danger', title: message })

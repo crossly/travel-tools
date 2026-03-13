@@ -31,6 +31,9 @@ const messages: Messages = {
     'site.heroTitle': '把旅行里的高频判断，装进一个随手可用的小站',
     'site.heroDescription': '在信号不稳、时间很赶、币种很杂的时候，也能快速看清数字、继续记账、完成结算。',
     'site.heroHighlights': '弱网优先 · 多币种 · 移动端顺手',
+    'site.heroLabelRate': '汇率',
+    'site.heroLabelSplit': 'AA',
+    'site.heroLabelSettle': '结算',
     'site.currencyMetric': '100 美元 → 728.42 人民币',
     'site.splitMetric': '6 人 · 2 个币种',
     'site.heroMetricRate': '100 美元 → 728 人民币',
@@ -175,6 +178,7 @@ const messages: Messages = {
     'error.ONLY_OWNER_CAN_EDIT_TRIP': '只有创建者可以修改行程',
     'error.MISSING_IMPORT_CONTENT': '缺少导入内容',
     'error.INVALID_JSON_FORMAT': 'JSON 格式错误',
+    'error.INVALID_IMPORT_FORMAT': '导入文件格式无效',
   },
   'en-US': {
     'app.name': 'Route Crate',
@@ -199,6 +203,9 @@ const messages: Messages = {
     'site.heroTitle': 'Keep travel-time decisions in one small, dependable place',
     'site.heroDescription': 'When the connection is weak, the currencies are mixed, and the decision needs to be quick, Route Crate stays legible and fast.',
     'site.heroHighlights': 'Weak-network ready · Multi-currency · Mobile-first',
+    'site.heroLabelRate': 'Rates',
+    'site.heroLabelSplit': 'Split',
+    'site.heroLabelSettle': 'Settle',
     'site.currencyMetric': '100 USD → 728.42 CNY',
     'site.splitMetric': '6 people · 2 currencies',
     'site.heroMetricRate': '100 USD → 728 CNY',
@@ -343,6 +350,7 @@ const messages: Messages = {
     'error.ONLY_OWNER_CAN_EDIT_TRIP': 'Only the owner can edit this trip',
     'error.MISSING_IMPORT_CONTENT': 'Missing import content',
     'error.INVALID_JSON_FORMAT': 'Invalid JSON format',
+    'error.INVALID_IMPORT_FORMAT': 'Invalid trip export format',
   },
 }
 

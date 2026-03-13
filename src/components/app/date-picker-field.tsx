@@ -7,11 +7,14 @@ import { cn } from '@/lib/utils'
 import type { Locale } from '@/lib/types'
 
 type DatePickerFieldProps = {
+  id?: string
   value: string
   onChange: (nextValue: string) => void
   locale: Locale
   className?: string
   disabled?: boolean
+  'aria-describedby'?: string
+  'aria-invalid'?: boolean | 'true' | 'false'
 }
 
 const pickerCopy = {
@@ -39,7 +42,16 @@ function formatDisplayDate(value: Date, locale: Locale) {
   return new Intl.DateTimeFormat(locale, { dateStyle: 'long' }).format(value)
 }
 
-export function DatePickerField({ value, onChange, locale, className, disabled = false }: DatePickerFieldProps) {
+export function DatePickerField({
+  id,
+  value,
+  onChange,
+  locale,
+  className,
+  disabled = false,
+  'aria-describedby': ariaDescribedBy,
+  'aria-invalid': ariaInvalid,
+}: DatePickerFieldProps) {
   const [open, setOpen] = useState(false)
   const selectedDate = toDate(value)
   const copy = pickerCopy[locale]
@@ -48,10 +60,13 @@ export function DatePickerField({ value, onChange, locale, className, disabled =
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
+          id={id}
           type="button"
           variant="outline"
           className={cn('h-11 w-full justify-start rounded-xl px-3 text-left font-normal', className)}
           disabled={disabled}
+          aria-describedby={ariaDescribedBy}
+          aria-invalid={ariaInvalid}
         >
           <CalendarIcon className="mr-2 h-4 w-4 shrink-0 text-muted-foreground" />
           {selectedDate ? formatDisplayDate(selectedDate, locale) : copy.empty}

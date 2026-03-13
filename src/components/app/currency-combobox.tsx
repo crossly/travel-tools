@@ -7,11 +7,14 @@ import { cn } from '@/lib/utils'
 import type { Locale } from '@/lib/types'
 
 type CurrencyComboboxProps = {
+  id?: string
   value: string
   onValueChange: (nextValue: string) => void
   locale: Locale
   disabled?: boolean
   className?: string
+  'aria-describedby'?: string
+  'aria-invalid'?: boolean | 'true' | 'false'
 }
 
 const localeText = {
@@ -28,7 +31,7 @@ const CurrencyComboboxPanel = lazy(async () => {
   return { default: module.CurrencyComboboxPanel }
 })
 
-export function CurrencyCombobox({ value, onValueChange, locale, disabled, className }: CurrencyComboboxProps) {
+export function CurrencyCombobox({ id, value, onValueChange, locale, disabled, className, 'aria-describedby': ariaDescribedBy, 'aria-invalid': ariaInvalid }: CurrencyComboboxProps) {
   const [open, setOpen] = useState(false)
   const selected = useMemo(() => getCurrencyCatalogItem(locale, value || 'USD'), [locale, value])
   const copy = localeText[locale]
@@ -37,10 +40,13 @@ export function CurrencyCombobox({ value, onValueChange, locale, disabled, class
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
+          id={id}
           type="button"
           variant="outline"
           className={cn('h-11 w-full justify-between rounded-xl px-3 text-left font-normal', className)}
           disabled={disabled}
+          aria-describedby={ariaDescribedBy}
+          aria-invalid={ariaInvalid}
         >
           <span className="flex min-w-0 items-center gap-3">
             <span className="text-lg leading-none">{selected?.icon ?? '💱'}</span>

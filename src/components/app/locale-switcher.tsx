@@ -18,7 +18,11 @@ export function LocaleSwitcher({ className, onAfterChange }: { className?: strin
         const resolvedLocale = nextLocale as Locale
         if (resolvedLocale === locale) return
         setLocale(resolvedLocale)
-        navigate({ to: replaceLocaleInPath(location.pathname, resolvedLocale) })
+        navigate({
+          to: replaceLocaleInPath(location.pathname, resolvedLocale),
+          search: location.search,
+          hash: typeof location.hash === 'string' ? location.hash : undefined,
+        })
         onAfterChange?.()
       }}
     >

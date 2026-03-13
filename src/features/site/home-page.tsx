@@ -31,7 +31,9 @@ export function HomePage({ locale }: { locale: Locale }) {
             </p>
           </div>
           <HeroArtwork
-            locale={locale}
+            rateLabel={t('site.heroLabelRate')}
+            splitLabel={t('site.heroLabelSplit')}
+            settleLabel={t('site.heroLabelSettle')}
             rateMetric={t('site.heroMetricRate')}
             splitMetric={t('site.heroMetricSplit')}
             settleMetric={t('site.heroMetricSettle')}
@@ -89,28 +91,20 @@ export function HomePage({ locale }: { locale: Locale }) {
 }
 
 function HeroArtwork({
-  locale,
+  rateLabel,
+  splitLabel,
+  settleLabel,
   rateMetric,
   splitMetric,
   settleMetric,
 }: {
-  locale: Locale
+  rateLabel: string
+  splitLabel: string
+  settleLabel: string
   rateMetric: string
   splitMetric: string
   settleMetric: string
 }) {
-  const labels = locale === 'zh-CN'
-    ? {
-        rate: '汇率',
-        split: 'AA',
-        settle: '结算',
-      }
-    : {
-        rate: 'Rates',
-        split: 'Split',
-        settle: 'Settle',
-      }
-
   return (
     <div className="hero-art-wrap" aria-hidden="true">
       <svg viewBox="0 0 520 360" className="hero-art-svg">
@@ -139,19 +133,19 @@ function HeroArtwork({
 
         <g className="hero-cardlet hero-cardlet-top">
           <rect x="66" y="58" width="160" height="88" rx="28" fill="url(#heroSurface)" />
-          <text x="92" y="92" className="hero-cardlet-label">{labels.rate}</text>
+          <text x="92" y="92" className="hero-cardlet-label">{rateLabel}</text>
           <text x="92" y="126" className="hero-cardlet-value">{rateMetric}</text>
         </g>
 
         <g className="hero-cardlet hero-cardlet-mid">
           <rect x="188" y="196" width="148" height="84" rx="28" fill="url(#heroSurface)" />
-          <text x="214" y="228" className="hero-cardlet-label">{labels.split}</text>
+          <text x="214" y="228" className="hero-cardlet-label">{splitLabel}</text>
           <text x="214" y="260" className="hero-cardlet-value">{splitMetric}</text>
         </g>
 
         <g className="hero-cardlet hero-cardlet-side">
           <rect x="344" y="86" width="124" height="74" rx="24" fill="url(#heroSurface)" />
-          <text x="368" y="116" className="hero-cardlet-label">{labels.settle}</text>
+          <text x="368" y="116" className="hero-cardlet-label">{settleLabel}</text>
           <text x="368" y="144" className="hero-cardlet-value">{settleMetric}</text>
         </g>
 

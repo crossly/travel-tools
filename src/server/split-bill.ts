@@ -1,6 +1,7 @@
 import { z } from 'zod'
 import { getDeviceIdentityFromCookie } from '@/lib/device-cookie'
 import { generateDeviceDisplayName } from '@/lib/device-identity'
+import type { Expense, Trip } from '@/lib/types'
 import { round2, round6 } from '@/lib/utils'
 import { fetchFxRate } from './fx'
 
@@ -53,6 +54,38 @@ const createExpenseSchema = z.object({
   updatedAt: z.string().trim().optional(),
 })
 const importSchema = z.object({ content: z.string().trim().min(1) })
+const tripExportTripSchema = z.object({
+  id: z.string().trim().min(1),
+  name: z.string().trim().min(1).max(80),
+  expenseCurrency: z.string().trim().length(3),
+  settlementCurrency: z.string().trim().length(3),
+  splitCount: z.number().int().min(1).max(999),
+  baseCurrency: z.string().trim().length(3),
+  createdAt: z.string().trim().min(1),
+  updatedAt: z.string().trim().min(1),
+})
+const tripExportExpenseSchema = z.object({
+  id: z.string().trim().min(1),
+  tripId: z.string().trim().min(1),
+  creatorDeviceId: z.string().trim().min(1),
+  title: z.string().trim().min(1).max(120),
+  note: z.string().trim().max(500).nullable(),
+  amountOriginal: z.number().positive(),
+  originalCurrency: z.string().trim().length(3),
+  fxRateToBase: z.number().positive(),
+  amountBase: z.number().nonnegative(),
+  splitCount: z.number().int().min(1).max(999),
+  spentAt: z.string().trim().min(8),
+  createdAt: z.string().trim().min(1),
+  updatedAt: z.string().trim().min(1),
+  deletedAt: z.string().trim().min(1).nullable(),
+})
+const tripExportSchema = z.object({
+  version: z.number().int().min(1),
+  exportedAt: z.string().trim().min(1),
+  trip: tripExportTripSchema,
+  expenses: z.array(tripExportExpenseSchema),
+})
 
 function nowIso() {
   return new Date().toISOString()
@@ -60,6 +93,42 @@ function nowIso() {
 
 function id(prefix: string) {
   return `${prefix}_${crypto.randomUUID().replace(/-/g, '').slice(0, 20)}`
+}
+
+export function buildTripExportContent({
+  trip,
+  expenses,
+  exportedAt = nowIso(),
+}: {
+  trip: Trip
+  expenses: Expense[]
+  exportedAt?: string
+}) {
+  return JSON.stringify({ version: 1, exportedAt, trip, expenses }, null, 2)
+}
+
+export function parseTripImportContent(content: string) {
+  let parsed: unknown
+  try {
+    parsed = JSON.parse(content)
+  } catch {
+    throw new Error('INVALID_JSON_FORMAT')
+  }
+
+  const result = tripExportSchema.safeParse(parsed)
+  if (!result.success) {
+    throw new Error('INVALID_IMPORT_FORMAT')
+  }
+
+  const expenseIds = new Set<string>()
+  for (const expense of result.data.expenses) {
+    if (expenseIds.has(expense.id)) {
+      throw new Error('INVALID_IMPORT_FORMAT')
+    }
+    expenseIds.add(expense.id)
+  }
+
+  return result.data
 }
 
 export function getDeviceId(request: Request) {
@@ -347,7 +416,7 @@ export async function exportTrip(env: CloudflareEnv, tripId: string, deviceId: s
   const expenses = await listExpenses(env.DB, tripId)
   return {
     status: 200,
-    body: { content: JSON.stringify({ version: 1, exportedAt: nowIso(), trip: toTrip(trip), expenses }, null, 2) },
+    body: { content: buildTripExportContent({ trip: toTrip(trip), expenses }) },
   }
 }
 
@@ -355,22 +424,59 @@ export async function importTrip(env: CloudflareEnv, tripId: string, deviceId: s
   const trip = await requireOwnedTrip(env.DB, tripId, deviceId)
   if (!trip) return { status: 403, body: { error: 'FORBIDDEN_TRIP_ACCESS' } }
   const body = await parseJson(request, importSchema)
-  let parsed: { expenses?: Array<{ id: string; title: string; note: string | null; updatedAt: string }> }
+  const ownerMemberId = await getOwnerMemberId(env.DB, tripId, deviceId)
+  if (!ownerMemberId) return { status: 404, body: { error: 'TRIP_NOT_FOUND' } }
+
+  let parsed: z.infer<typeof tripExportSchema>
   try {
-    parsed = JSON.parse(body.content) as { expenses?: Array<{ id: string; title: string; note: string | null; updatedAt: string }> }
-  } catch {
-    return { status: 400, body: { error: 'INVALID_JSON_FORMAT' } }
+    parsed = parseTripImportContent(body.content)
+  } catch (error) {
+    return { status: 400, body: { error: (error as Error).message } }
   }
 
-  for (const expense of parsed.expenses ?? []) {
-    await env.DB.prepare('UPDATE expenses SET title = COALESCE(?, title), note = ?, updated_at = ? WHERE id = ? AND trip_id = ?').bind(
-      expense.title,
-      expense.note,
-      expense.updatedAt || nowIso(),
-      expense.id,
+  const statements = [
+    env.DB.prepare(
+      'UPDATE trips SET name = ?, expense_currency = ?, base_currency = ?, split_count = ?, created_at = ?, updated_at = ? WHERE id = ?',
+    ).bind(
+      parsed.trip.name,
+      parsed.trip.expenseCurrency.toUpperCase(),
+      parsed.trip.settlementCurrency.toUpperCase(),
+      parsed.trip.splitCount,
+      parsed.trip.createdAt,
+      parsed.trip.updatedAt,
       tripId,
-    ).run()
+    ),
+    env.DB.prepare('DELETE FROM expense_participants WHERE trip_id = ?').bind(tripId),
+    env.DB.prepare('DELETE FROM expenses WHERE trip_id = ?').bind(tripId),
+  ]
+
+  for (const expense of parsed.expenses) {
+    statements.push(
+      env.DB.prepare(
+        `INSERT INTO expenses
+        (id, trip_id, creator_device_id, payer_member_id, title, note, amount_original, original_currency, fx_rate_to_base, amount_base, split_count, spent_at, created_at, updated_at, deleted_at)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      ).bind(
+        expense.id,
+        tripId,
+        deviceId,
+        ownerMemberId,
+        expense.title,
+        expense.note,
+        expense.amountOriginal,
+        expense.originalCurrency.toUpperCase(),
+        expense.fxRateToBase,
+        expense.amountBase,
+        expense.splitCount,
+        expense.spentAt,
+        expense.createdAt,
+        expense.updatedAt,
+        expense.deletedAt,
+      ),
+    )
   }
+
+  await env.DB.batch(statements)
 
   return { status: 200, body: { ok: true } }
 }
