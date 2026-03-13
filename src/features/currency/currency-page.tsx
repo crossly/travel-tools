@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { RefreshCw, ScanSearch } from 'lucide-react'
 import { AppShell } from '@/components/app/app-shell'
 import { CurrencyCombobox } from '@/components/app/currency-combobox'
-import { FormField } from '@/components/app/form-field'
+import { FieldGroup } from '@/components/app/field-group'
 import { InlineStatus } from '@/components/app/inline-status'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -155,13 +155,13 @@ export function CurrencyPage({ locale, initialData }: { locale: Locale; initialD
           </div>
         </CardHeader>
         <CardContent className="grid gap-4">
-          <FormField label={t('currency.amountLabel')}>
+          <FieldGroup label={t('currency.amountLabel')}>
             <Input value={amount} onChange={(event) => setAmount(event.target.value)} inputMode="decimal" placeholder={t('currency.placeholder')} className="h-14 text-2xl" />
-          </FormField>
+          </FieldGroup>
           <div className="grid gap-4 sm:grid-cols-[1fr_auto_1fr] sm:items-end">
-            <FormField label={t('currency.fromLabel')}>
+            <FieldGroup label={t('currency.fromLabel')}>
               <CurrencyCombobox value={source} onValueChange={(nextValue) => setSource(normalizeCurrency(nextValue))} locale={locale} />
-            </FormField>
+            </FieldGroup>
             <Button
               type="button"
               variant="outline"
@@ -177,11 +177,11 @@ export function CurrencyPage({ locale, initialData }: { locale: Locale; initialD
             >
               ⇄
             </Button>
-            <FormField label={t('currency.toLabel')}>
+            <FieldGroup label={t('currency.toLabel')}>
               <CurrencyCombobox value={target} onValueChange={(nextValue) => setTarget(normalizeCurrency(nextValue))} locale={locale} />
-            </FormField>
+            </FieldGroup>
           </div>
-          <FormField label={t('currency.quickAmounts')}>
+          <FieldGroup label={t('currency.quickAmounts')}>
             <div className="flex flex-wrap gap-2">
               {['10', '50', '100', '500'].map((value) => (
                 <Button key={value} type="button" variant="outline" size="sm" onClick={() => setAmount(value)}>
@@ -189,7 +189,7 @@ export function CurrencyPage({ locale, initialData }: { locale: Locale; initialD
                 </Button>
               ))}
             </div>
-          </FormField>
+          </FieldGroup>
           <div className="grid gap-2 sm:grid-cols-2">
             <Button type="button" variant="secondary" size="lg" onClick={() => void onDetect()} disabled={detecting}>
               <ScanSearch className="h-4 w-4" />

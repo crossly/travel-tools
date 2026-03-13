@@ -3,7 +3,7 @@ import type { ReactElement, ReactNode } from 'react'
 import { Label } from '@/components/ui/label'
 import { cn } from '@/lib/utils'
 
-export function FormField({
+export function FieldGroup({
   id,
   label,
   helper,

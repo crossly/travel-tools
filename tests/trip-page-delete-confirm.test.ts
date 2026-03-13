@@ -19,11 +19,6 @@ vi.mock('@/components/app/app-shell', () => ({
   AppShell: ({ children }: { children?: ReactNode }) => createElement('div', null, children),
 }))
 
-vi.mock('@/components/app/form-field', () => ({
-  FormField: ({ label, children }: { label: string; children?: ReactNode }) =>
-    createElement('label', null, createElement('span', null, label), children),
-}))
-
 vi.mock('@/components/app/inline-status', () => ({
   InlineStatus: ({ title }: { title: string }) => createElement('div', null, title),
 }))
