@@ -44,7 +44,8 @@ export function AppShell({
           <Card className="hidden md:block">
             <CardHeader className="hidden md:flex">
               <div className="flex items-center justify-between gap-6">
-                <Link to={getLocalizedPath(locale, '/')} className="min-w-0">
+                <Link to={getLocalizedPath(locale, '/')} className="flex min-w-0 items-center gap-3">
+                  <BrandMark />
                   <p className="display truncate text-2xl font-semibold text-foreground">{t('app.name')}</p>
                 </Link>
                 <Suspense fallback={<DesktopControlsFallback />}>
@@ -85,12 +86,17 @@ export function AppShell({
 function MobileHeaderFallback({ brand, homePath }: { brand: string; homePath: string }) {
   return (
     <div className="mb-4 flex items-center justify-between gap-3 rounded-2xl border border-border bg-card px-4 py-3 shadow-sm md:hidden">
-      <Link to={homePath} className="min-w-0">
-        <p className="truncate text-[11px] font-semibold tracking-[0.22em] text-muted-foreground uppercase">{brand}</p>
+      <Link to={homePath} className="flex min-w-0 items-center gap-2">
+        <BrandMark className="size-8 rounded-xl" />
+        <p className="truncate text-base font-semibold text-foreground">{brand}</p>
       </Link>
       <div className="size-10 rounded-xl border border-border bg-[var(--input)]" aria-hidden="true" />
     </div>
   )
+}
+
+function BrandMark({ className = 'size-10 rounded-2xl' }: { className?: string }) {
+  return <img src="/favicon.svg" alt="" className={className} aria-hidden="true" />
 }
 
 function DesktopControlsFallback() {
