@@ -103,6 +103,17 @@ vi.mock('@/lib/i18n', async (importOriginal) => {
   }
 })
 
+describe('resolveCategoryJumpCompactState', () => {
+  it('keeps the sticky nav compact while the sentinel stays inside the hysteresis band', async () => {
+    const { resolveCategoryJumpCompactState } = await import('@/features/travel-phrases/country-page')
+
+    expect(resolveCategoryJumpCompactState({ current: false, top: 9, stickyOffset: 8 })).toBe(true)
+    expect(resolveCategoryJumpCompactState({ current: true, top: 24, stickyOffset: 8 })).toBe(true)
+    expect(resolveCategoryJumpCompactState({ current: false, top: 24, stickyOffset: 8 })).toBe(false)
+    expect(resolveCategoryJumpCompactState({ current: true, top: 40, stickyOffset: 8 })).toBe(false)
+  })
+})
+
 describe('TravelPhrasesCountryPage', () => {
   it('renders localized country content in the page html and plays audio from the country route', async () => {
     const { getPhraseCountryPack } = await import('@/lib/travel-phrases')

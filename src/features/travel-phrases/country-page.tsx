@@ -42,6 +42,27 @@ function splitLeadSentence(copy: string) {
   }
 }
 
+const COMPACT_STATE_HYSTERESIS = 24
+
+export function resolveCategoryJumpCompactState({
+  current,
+  top,
+  stickyOffset,
+}: {
+  current: boolean
+  top: number
+  stickyOffset: number
+}) {
+  const enterThreshold = stickyOffset + 1
+  const exitThreshold = stickyOffset + COMPACT_STATE_HYSTERESIS
+
+  if (current) {
+    return top <= exitThreshold
+  }
+
+  return top <= enterThreshold
+}
+
 export function TravelPhrasesCountryPage({
   locale,
   pack,
@@ -57,6 +78,7 @@ export function TravelPhrasesCountryPage({
   const [activePhraseId, setActivePhraseId] = useState<string | null>(null)
   const [loadingPhraseId, setLoadingPhraseId] = useState<string | null>(null)
   const [errorPhraseId, setErrorPhraseId] = useState<string | null>(null)
+  const categoryJumpSentinelRef = useRef<HTMLDivElement | null>(null)
   const categoryJumpRef = useRef<HTMLDivElement | null>(null)
   const [isCategoryJumpCompact, setIsCategoryJumpCompact] = useState(false)
 
@@ -108,13 +130,17 @@ export function TravelPhrasesCountryPage({
 
     const updateCompactState = () => {
       frameId = 0
-      const categoryJump = categoryJumpRef.current
-      if (!categoryJump) {
+      const categoryJumpSentinel = categoryJumpSentinelRef.current
+      if (!categoryJumpSentinel) {
         return
       }
 
       const stickyOffset = window.innerWidth >= 768 ? 16 : 8
-      const shouldCompact = categoryJump.getBoundingClientRect().top <= stickyOffset + 1
+      const shouldCompact = resolveCategoryJumpCompactState({
+        current: isCategoryJumpCompact,
+        top: categoryJumpSentinel.getBoundingClientRect().top,
+        stickyOffset,
+      })
 
       setIsCategoryJumpCompact((current) => (current === shouldCompact ? current : shouldCompact))
     }
@@ -137,7 +163,7 @@ export function TravelPhrasesCountryPage({
       window.removeEventListener('scroll', requestUpdate)
       window.removeEventListener('resize', requestUpdate)
     }
-  }, [])
+  }, [isCategoryJumpCompact])
 
   const phraseSections = useMemo(
     () => PHRASE_CATEGORIES.map((category) => ({
@@ -316,6 +342,7 @@ export function TravelPhrasesCountryPage({
         </Card>
       ) : null}
 
+      <div ref={categoryJumpSentinelRef} aria-hidden="true" className="h-px w-full" />
       <div
         ref={categoryJumpRef}
         className={cn(
