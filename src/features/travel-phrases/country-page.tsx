@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import type { MouseEvent as ReactMouseEvent } from 'react'
 import { Link } from '@tanstack/react-router'
 import { Languages, LoaderCircle, Play, Square, Volume2 } from 'lucide-react'
 import { AppShell } from '@/components/app/app-shell'
@@ -43,40 +42,6 @@ function splitLeadSentence(copy: string) {
   }
 }
 
-const COMPACT_STATE_HYSTERESIS = 24
-const CATEGORY_SCROLL_OFFSET = 12
-
-export function resolveCategoryJumpCompactState({
-  current,
-  top,
-  stickyOffset,
-}: {
-  current: boolean
-  top: number
-  stickyOffset: number
-}) {
-  const enterThreshold = stickyOffset + 1
-  const exitThreshold = stickyOffset + COMPACT_STATE_HYSTERESIS
-
-  if (current) {
-    return top <= exitThreshold
-  }
-
-  return top <= enterThreshold
-}
-
-function resolveCategorySectionScrollTop({
-  scrollY,
-  sectionTop,
-  stickyHeight,
-}: {
-  scrollY: number
-  sectionTop: number
-  stickyHeight: number
-}) {
-  return Math.max(scrollY + sectionTop - stickyHeight - CATEGORY_SCROLL_OFFSET, 0)
-}
-
 export function TravelPhrasesCountryPage({
   locale,
   pack,
@@ -92,11 +57,6 @@ export function TravelPhrasesCountryPage({
   const [activePhraseId, setActivePhraseId] = useState<string | null>(null)
   const [loadingPhraseId, setLoadingPhraseId] = useState<string | null>(null)
   const [errorPhraseId, setErrorPhraseId] = useState<string | null>(null)
-  const categoryJumpSentinelRef = useRef<HTMLDivElement | null>(null)
-  const categoryJumpRef = useRef<HTMLDivElement | null>(null)
-  const categoryJumpScrollFrameRef = useRef<number | null>(null)
-  const [isCategoryJumpCompact, setIsCategoryJumpCompact] = useState(false)
-
   useEffect(() => {
     writeLastTool('travel-phrases')
   }, [])
@@ -107,9 +67,6 @@ export function TravelPhrasesCountryPage({
 
   useEffect(() => {
     return () => {
-      if (categoryJumpScrollFrameRef.current !== null && typeof window !== 'undefined') {
-        window.cancelAnimationFrame(categoryJumpScrollFrameRef.current)
-      }
       for (const objectUrl of audioUrlMapRef.current.values()) {
         URL.revokeObjectURL(objectUrl)
       }
@@ -139,50 +96,6 @@ export function TravelPhrasesCountryPage({
     }
   }, [])
 
-  useEffect(() => {
-    if (typeof window === 'undefined') {
-      return
-    }
-
-    let frameId = 0
-
-    const updateCompactState = () => {
-      frameId = 0
-      const categoryJumpSentinel = categoryJumpSentinelRef.current
-      if (!categoryJumpSentinel) {
-        return
-      }
-
-      const stickyOffset = window.innerWidth >= 768 ? 16 : 8
-      const shouldCompact = resolveCategoryJumpCompactState({
-        current: isCategoryJumpCompact,
-        top: categoryJumpSentinel.getBoundingClientRect().top,
-        stickyOffset,
-      })
-
-      setIsCategoryJumpCompact((current) => (current === shouldCompact ? current : shouldCompact))
-    }
-
-    const requestUpdate = () => {
-      if (frameId) {
-        return
-      }
-      frameId = window.requestAnimationFrame(updateCompactState)
-    }
-
-    updateCompactState()
-    window.addEventListener('scroll', requestUpdate, { passive: true })
-    window.addEventListener('resize', requestUpdate)
-
-    return () => {
-      if (frameId) {
-        window.cancelAnimationFrame(frameId)
-      }
-      window.removeEventListener('scroll', requestUpdate)
-      window.removeEventListener('resize', requestUpdate)
-    }
-  }, [isCategoryJumpCompact])
-
   const phraseSections = useMemo(
     () => PHRASE_CATEGORIES.map((category) => ({
       category,
@@ -193,51 +106,6 @@ export function TravelPhrasesCountryPage({
   const introCopy = useMemo(() => splitLeadSentence(pack?.intro ?? ''), [pack?.intro])
   const visibleTravelTips = useMemo(() => pack?.travelTips.slice(0, 3) ?? [], [pack?.travelTips])
   const overflowTravelTips = useMemo(() => pack?.travelTips.slice(3) ?? [], [pack?.travelTips])
-
-  function handleCategoryJump(event: ReactMouseEvent<HTMLAnchorElement>, category: PhraseCategory) {
-    if (
-      typeof window === 'undefined'
-      || event.button !== 0
-      || event.metaKey
-      || event.ctrlKey
-      || event.shiftKey
-      || event.altKey
-    ) {
-      return
-    }
-
-    const targetId = `${category}-phrases`
-    const section = document.getElementById(targetId)
-    if (!section) {
-      return
-    }
-
-    event.preventDefault()
-    setIsCategoryJumpCompact(true)
-
-    const runScroll = () => {
-      categoryJumpScrollFrameRef.current = window.requestAnimationFrame(() => {
-        categoryJumpScrollFrameRef.current = window.requestAnimationFrame(() => {
-          const stickyHeight = categoryJumpRef.current?.getBoundingClientRect().height ?? 0
-          const nextTop = resolveCategorySectionScrollTop({
-            scrollY: window.scrollY,
-            sectionTop: section.getBoundingClientRect().top,
-            stickyHeight,
-          })
-          window.scrollTo({ top: nextTop, behavior: 'auto' })
-          window.history.replaceState(window.history.state, '', `#${targetId}`)
-          categoryJumpScrollFrameRef.current = null
-        })
-      })
-    }
-
-    if (categoryJumpScrollFrameRef.current !== null) {
-      window.cancelAnimationFrame(categoryJumpScrollFrameRef.current)
-      categoryJumpScrollFrameRef.current = null
-    }
-
-    runScroll()
-  }
 
   function stopPlayback() {
     const audio = audioRef.current
@@ -405,37 +273,12 @@ export function TravelPhrasesCountryPage({
         </Card>
       ) : null}
 
-      <div ref={categoryJumpSentinelRef} aria-hidden="true" className="h-px w-full" />
-      <div
-        ref={categoryJumpRef}
-        className={cn(
-          'sticky z-20 w-full min-w-0 max-w-full',
-          isCategoryJumpCompact ? 'top-2 md:top-4' : 'top-2 md:top-4',
-        )}
-      >
-        <Card
-          className={cn(
-            'w-full max-w-full overflow-hidden transition-all duration-200',
-            isCategoryJumpCompact && 'border-border/80 bg-card/95 shadow-md backdrop-blur supports-[backdrop-filter]:bg-card/80',
-          )}
-        >
-          <CardHeader className={cn('min-w-0 transition-all duration-200', isCategoryJumpCompact ? 'gap-2 px-3 py-3 md:px-4' : 'gap-3')}>
-            <div
-              className={cn(
-                'space-y-1 overflow-hidden transition-all duration-200',
-                isCategoryJumpCompact ? 'max-h-0 -translate-y-2 opacity-0 pointer-events-none' : 'max-h-24 opacity-100',
-              )}
-              aria-hidden={isCategoryJumpCompact}
-            >
-              <CardTitle>{t('phrases.categoryJumpTitle')}</CardTitle>
-              <CardDescription>{t('phrases.categoryJumpDescription')}</CardDescription>
-            </div>
+      <div className="sticky top-2 z-20 w-full min-w-0 max-w-full md:top-4">
+        <Card className="w-full max-w-full overflow-hidden border-border/80 bg-card/95 shadow-md backdrop-blur supports-[backdrop-filter]:bg-card/80">
+          <CardContent className="px-3 py-3 md:px-4">
             <nav
               aria-label={t('phrases.categoryJumpStickyLabel')}
-              className={cn(
-                'flex w-full min-w-0 max-w-full gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
-                isCategoryJumpCompact ? 'flex-nowrap' : 'flex-nowrap md:flex-wrap md:overflow-visible md:pb-0',
-              )}
+              className="flex w-full min-w-0 max-w-full flex-nowrap gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             >
               {phraseSections
                 .filter((section) => section.phrases.length)
@@ -443,17 +286,13 @@ export function TravelPhrasesCountryPage({
                   <a
                     key={section.category}
                     href={`#${section.category}-phrases`}
-                    onClick={(event) => handleCategoryJump(event, section.category)}
-                    className={cn(
-                      'inline-flex h-10 shrink-0 whitespace-nowrap items-center justify-center rounded-xl border border-border bg-[color:var(--surface-floating)] px-4 text-sm font-medium text-foreground transition-colors hover:bg-muted',
-                      isCategoryJumpCompact && 'h-9 rounded-full px-3 text-xs md:text-sm',
-                    )}
+                    className="inline-flex h-9 shrink-0 whitespace-nowrap items-center justify-center rounded-full border border-border bg-[color:var(--surface-floating)] px-3 text-xs font-medium text-foreground transition-colors hover:bg-muted md:text-sm"
                   >
                     {t(categoryLabelKey[section.category])}
                   </a>
                 ))}
             </nav>
-          </CardHeader>
+          </CardContent>
         </Card>
       </div>
 
@@ -461,7 +300,7 @@ export function TravelPhrasesCountryPage({
         <div className="space-y-6">
           {phraseSections.map((section) => (
             section.phrases.length ? (
-              <section key={section.category} id={`${section.category}-phrases`} className="space-y-4 scroll-mt-40 md:scroll-mt-32">
+              <section key={section.category} id={`${section.category}-phrases`} className="space-y-4 scroll-mt-28 md:scroll-mt-32">
                 <div className="space-y-2">
                   <Badge variant="outline">{t(categoryLabelKey[section.category])}</Badge>
                   <h2 className="display text-2xl font-semibold text-foreground md:text-3xl">

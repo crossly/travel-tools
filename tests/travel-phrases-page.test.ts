@@ -107,17 +107,6 @@ vi.mock('@/lib/i18n', async (importOriginal) => {
   }
 })
 
-describe('resolveCategoryJumpCompactState', () => {
-  it('keeps the sticky nav compact while the sentinel stays inside the hysteresis band', async () => {
-    const { resolveCategoryJumpCompactState } = await import('@/features/travel-phrases/country-page')
-
-    expect(resolveCategoryJumpCompactState({ current: false, top: 9, stickyOffset: 8 })).toBe(true)
-    expect(resolveCategoryJumpCompactState({ current: true, top: 24, stickyOffset: 8 })).toBe(true)
-    expect(resolveCategoryJumpCompactState({ current: false, top: 24, stickyOffset: 8 })).toBe(false)
-    expect(resolveCategoryJumpCompactState({ current: true, top: 40, stickyOffset: 8 })).toBe(false)
-  })
-})
-
 describe('TravelPhrasesCountryPage', () => {
   it('renders localized country content in the page html and plays audio from the country route', async () => {
     const { getPhraseCountryPack } = await import('@/lib/travel-phrases')
@@ -135,7 +124,8 @@ describe('TravelPhrasesCountryPage', () => {
     expect(container.querySelector('details')).toBeTruthy()
     expect(screen.getByText(/IC card/i)).toBeTruthy()
     expect(screen.getByText('Extra local phrases')).toBeTruthy()
-    expect(screen.getByText('Jump to phrase sections')).toBeTruthy()
+    expect(screen.queryByText('Jump to phrase sections')).toBeNull()
+    expect(screen.queryByText('Open a situation faster with country-specific phrase groups.')).toBeNull()
     expect(screen.getByRole('link', { name: 'Transport' }).getAttribute('href')).toBe('#transport-phrases')
     expect(screen.getByRole('navigation', { name: 'Sticky phrase sections' })).toBeTruthy()
     expect(screen.getByRole('heading', { name: 'Japan Transport phrases' })).toBeTruthy()
@@ -152,6 +142,11 @@ describe('TravelPhrasesCountryPage', () => {
     expect(stickyCategoryNav.className).toContain('w-full')
     expect(stickyCategoryNav.className).toContain('min-w-0')
     expect(stickyCategoryNav.className).toContain('max-w-full')
+    expect(stickyCategoryNav.className).not.toContain('md:flex-wrap')
+
+    const basicsJumpLink = screen.getByRole('link', { name: 'Basics' })
+    expect(basicsJumpLink.className).toContain('h-9')
+    expect(basicsJumpLink.className).toContain('rounded-full')
 
     fireEvent.click(screen.getAllByRole('button', { name: 'Play audio' })[0] as HTMLButtonElement)
 
@@ -180,51 +175,16 @@ describe('TravelPhrasesCountryPage', () => {
     expect(fetchMock).not.toHaveBeenCalled()
   })
 
-  it('uses controlled scrolling for category jumps instead of relying on native anchor jumps', async () => {
+  it('uses native anchor navigation for category jumps without forcing a manual scroll', async () => {
     const { getPhraseCountryPack } = await import('@/lib/travel-phrases')
     const { TravelPhrasesCountryPage } = await import('@/features/travel-phrases/country-page')
     const pack = await getPhraseCountryPack('en-US', 'japan')
 
     render(createElement(TravelPhrasesCountryPage, { locale: 'en-US', pack }))
 
-    const basicsSection = document.getElementById('basics-phrases')
-    expect(basicsSection).toBeTruthy()
-
-    vi.spyOn(window, 'requestAnimationFrame').mockImplementation((callback: FrameRequestCallback) => {
-      callback(0)
-      return 1
-    })
-
-    vi.spyOn(basicsSection!, 'getBoundingClientRect').mockReturnValue({
-      x: 0,
-      y: 220,
-      width: 0,
-      height: 0,
-      top: 220,
-      right: 0,
-      bottom: 220,
-      left: 0,
-      toJSON: () => ({}),
-    })
-
-    const nav = screen.getByRole('navigation', { name: 'Sticky phrase sections' })
-    const stickyContainer = nav.parentElement?.parentElement?.parentElement
-    expect(stickyContainer).toBeTruthy()
-    vi.spyOn(stickyContainer!, 'getBoundingClientRect').mockReturnValue({
-      x: 0,
-      y: 0,
-      width: 0,
-      height: 72,
-      top: 0,
-      right: 0,
-      bottom: 72,
-      left: 0,
-      toJSON: () => ({}),
-    })
-
     fireEvent.click(screen.getByRole('link', { name: 'Basics' }))
 
-    expect(window.scrollTo).toHaveBeenCalled()
+    expect(window.scrollTo).not.toHaveBeenCalled()
   })
 
   it('disables playback for packs without audio', async () => {
