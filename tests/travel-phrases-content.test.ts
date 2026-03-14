@@ -228,6 +228,96 @@ describe('travel phrase content', () => {
     ]))
   })
 
+  it('allows partial audio coverage for owned primary phrases and extra phrases under the same validation rules', () => {
+    const partialAudioPack = {
+      country: {
+        'en-US': 'Partial Testland',
+        'zh-CN': '部分音频测试国',
+      },
+      slug: 'partial-testland',
+      region: 'asia' as const,
+      languageName: {
+        'en-US': 'Testese',
+        'zh-CN': '测试语',
+      },
+      languageCode: 'ko-KR',
+      flag: '🏳️',
+      description: {
+        'en-US': 'Partial Testland travel phrases.',
+        'zh-CN': '部分音频测试国旅行短语。',
+      },
+      intro: {
+        'en-US': 'Built for partial audio validation.',
+        'zh-CN': '用于校验部分音频场景。',
+      },
+      teaser: {
+        'en-US': 'Useful for partial audio validation.',
+        'zh-CN': '适合测试部分音频校验。',
+      },
+      travelTips: {
+        'en-US': ['Keep a station phrase ready.'],
+        'zh-CN': ['先准备一句车站短语。'],
+      },
+      highlights: {
+        'en-US': ['Partial audio coverage'],
+        'zh-CN': ['部分音频覆盖'],
+      },
+      featured: false,
+      relatedSlugs: ['japan', 'south-korea'],
+      faq: [
+        {
+          question: {
+            'en-US': 'Can partial audio still validate?',
+            'zh-CN': '部分音频也能通过校验吗？',
+          },
+          answer: {
+            'en-US': 'Yes, as long as present audio keys are valid and missing audio stays null.',
+            'zh-CN': '可以，只要已有音频键格式正确，缺失音频保持 null 即可。',
+          },
+        },
+      ],
+      phrases: [
+        {
+          id: 'train_platform',
+          category: 'transport' as const,
+          nativeText: '승강장이 어디예요?',
+          translation: {
+            'en-US': 'Where is the platform?',
+            'zh-CN': '站台在哪里？',
+          },
+          romanization: 'Seunggangjangi eodiyeyo?',
+          audioKey: 'travel-phrases/partial-testland/train_platform.mp3',
+        },
+        {
+          id: 'reload_card_here',
+          category: 'transport' as const,
+          nativeText: '여기서 카드 충전해요?',
+          translation: {
+            'en-US': 'Can I reload the card here?',
+            'zh-CN': '这里可以给卡充值吗？',
+          },
+          romanization: 'Yeogiseo kadeu chungjeonhaeyo?',
+          audioKey: null,
+        },
+      ],
+      extraPhrases: [
+        {
+          id: 'late_night_taxi',
+          category: 'transport' as const,
+          nativeText: '심야 택시는 어디서 타요?',
+          translation: {
+            'en-US': 'Where do I catch a late-night taxi?',
+            'zh-CN': '深夜出租车在哪里坐？',
+          },
+          romanization: 'Simya taeksineun eodiseo tayo?',
+          audioKey: null,
+        },
+      ],
+    }
+
+    expect(validateRawPhraseCountryPack(partialAudioPack)).toEqual([])
+  })
+
   it('ships valid country packs with valid phrase definitions', async () => {
     const packs = await getAllRawPhraseCountryPacks()
     const summaries = listRawPhraseCountrySummaries()

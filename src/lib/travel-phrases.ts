@@ -160,6 +160,50 @@ function isOwnedPhraseEntry(entry: RawPhraseEntry | RawOwnedPhraseEntry): entry 
   return 'category' in entry && 'translation' in entry
 }
 
+function validateOwnedPhraseEntry(
+  errors: string[],
+  pack: RawPhraseCountryPack,
+  entry: RawOwnedPhraseEntry,
+  options?: {
+    label?: string
+    audioCoverage?: PhraseAudioCoverage
+  },
+) {
+  const label = options?.label ?? `"${entry.id}"`
+
+  if (!PHRASE_CATEGORIES.includes(entry.category)) {
+    errors.push(`${pack.slug}: invalid category for ${label}`)
+  }
+
+  if (!entry.translation?.['en-US'] || !entry.translation?.['zh-CN']) {
+    errors.push(`${pack.slug}: missing localized translation for ${label}`)
+  }
+
+  const expectedAudioKey = `travel-phrases/${pack.slug}/${entry.id}.mp3`
+  const audioCoverage = options?.audioCoverage ?? 'none'
+  if (audioCoverage === 'all') {
+    if (entry.audioKey === null) {
+      errors.push(`${pack.slug}: missing audioKey for ${label}`)
+    } else if (entry.audioKey !== expectedAudioKey) {
+      errors.push(`${pack.slug}: invalid audioKey for ${label}`)
+    }
+  } else if (audioCoverage === 'none') {
+    if (entry.audioKey !== null) {
+      errors.push(`${pack.slug}: audioKey must be null for ${label}`)
+    }
+  } else if (entry.audioKey !== null && entry.audioKey !== expectedAudioKey) {
+    errors.push(`${pack.slug}: invalid audioKey for ${label}`)
+  }
+
+  const usesLatinScript = /^[\p{Script=Latin}\p{P}\p{S}\p{N}\s]+$/u.test(entry.nativeText)
+  if (!usesLatinScript && !entry.romanization) {
+    errors.push(`${pack.slug}: missing romanization for ${label}`)
+  }
+  if (usesLatinScript && entry.romanization) {
+    errors.push(`${pack.slug}: romanization must be null for ${label}`)
+  }
+}
+
 function mapPhraseEntry(locale: Locale, entry: RawPhraseEntry | RawOwnedPhraseEntry): PhraseCard {
   if (isOwnedPhraseEntry(entry)) {
     return {
@@ -308,8 +352,7 @@ export async function getPhraseCountryPack(locale: Locale, country: string): Pro
 
 export function validateRawPhraseCountryPack(pack: RawPhraseCountryPack) {
   const errors: string[] = []
-  const hasAnyAudio = pack.phrases.some((entry) => Boolean(entry.audioKey))
-  const hasAllAudio = pack.phrases.every((entry) => Boolean(entry.audioKey))
+  const audioCoverage = resolveAudioCoverage([...pack.phrases, ...(pack.extraPhrases ?? [])])
   const usesOwnedPhraseInventory = pack.phrases.some((entry) => isOwnedPhraseEntry(entry))
 
   if (!pack.description?.['en-US'] || !pack.description?.['zh-CN']) {
@@ -348,10 +391,6 @@ export function validateRawPhraseCountryPack(pack: RawPhraseCountryPack) {
     errors.push(`${pack.slug}: expected ${phraseDefinitions.length} phrases, received ${pack.phrases.length}`)
   }
 
-  if (hasAnyAudio && !hasAllAudio) {
-    errors.push(`${pack.slug}: phrases must either all include audioKey or all disable audio`)
-  }
-
   const seen = new Set<string>()
 
   for (const entry of pack.phrases) {
@@ -362,35 +401,37 @@ export function validateRawPhraseCountryPack(pack: RawPhraseCountryPack) {
     seen.add(entry.id)
 
     if (isOwnedPhraseEntry(entry)) {
-      if (!PHRASE_CATEGORIES.includes(entry.category)) {
-        errors.push(`${pack.slug}: invalid category for "${entry.id}"`)
-      }
-      if (!entry.translation?.['en-US'] || !entry.translation?.['zh-CN']) {
-        errors.push(`${pack.slug}: missing localized translation for "${entry.id}"`)
-      }
+      validateOwnedPhraseEntry(errors, pack, entry, {
+        audioCoverage,
+      })
     } else {
       const definition = definitionMap.get(entry.id)
       if (!definition) {
         errors.push(`${pack.slug}: unknown phrase id "${entry.id}"`)
         continue
       }
-    }
-
-    const expectedAudioKey = `travel-phrases/${pack.slug}/${entry.id}.mp3`
-    if (hasAllAudio) {
-      if (!entry.audioKey || entry.audioKey !== expectedAudioKey) {
+      const expectedAudioKey = `travel-phrases/${pack.slug}/${entry.id}.mp3`
+      if (audioCoverage === 'all') {
+        if (!entry.audioKey || entry.audioKey !== expectedAudioKey) {
+          errors.push(`${pack.slug}: invalid audioKey for "${entry.id}"`)
+        }
+      } else if (audioCoverage === 'none') {
+        if (entry.audioKey !== null) {
+          errors.push(`${pack.slug}: audioKey must be null for "${entry.id}"`)
+        }
+      } else if (entry.audioKey !== null && entry.audioKey !== expectedAudioKey) {
         errors.push(`${pack.slug}: invalid audioKey for "${entry.id}"`)
       }
-    } else if (entry.audioKey !== null) {
-      errors.push(`${pack.slug}: audioKey must be null for "${entry.id}"`)
     }
 
-    const usesLatinScript = /^[\p{Script=Latin}\p{P}\p{S}\p{N}\s]+$/u.test(entry.nativeText)
-    if (!usesLatinScript && !entry.romanization) {
-      errors.push(`${pack.slug}: missing romanization for "${entry.id}"`)
-    }
-    if (usesLatinScript && entry.romanization) {
-      errors.push(`${pack.slug}: romanization must be null for "${entry.id}"`)
+    if (!isOwnedPhraseEntry(entry)) {
+      const usesLatinScript = /^[\p{Script=Latin}\p{P}\p{S}\p{N}\s]+$/u.test(entry.nativeText)
+      if (!usesLatinScript && !entry.romanization) {
+        errors.push(`${pack.slug}: missing romanization for "${entry.id}"`)
+      }
+      if (usesLatinScript && entry.romanization) {
+        errors.push(`${pack.slug}: romanization must be null for "${entry.id}"`)
+      }
     }
   }
 
@@ -403,30 +444,10 @@ export function validateRawPhraseCountryPack(pack: RawPhraseCountryPack) {
     }
     seenExtraIds.add(entry.id)
 
-    if (!PHRASE_CATEGORIES.includes(entry.category)) {
-      errors.push(`${pack.slug}: invalid category for extra phrase "${entry.id}"`)
-    }
-
-    if (!entry.translation?.['en-US'] || !entry.translation?.['zh-CN']) {
-      errors.push(`${pack.slug}: missing localized translation for extra phrase "${entry.id}"`)
-    }
-
-    const expectedAudioKey = `travel-phrases/${pack.slug}/${entry.id}.mp3`
-    if (hasAllAudio) {
-      if (entry.audioKey !== null && entry.audioKey !== expectedAudioKey) {
-        errors.push(`${pack.slug}: invalid audioKey for extra phrase "${entry.id}"`)
-      }
-    } else if (entry.audioKey !== null) {
-      errors.push(`${pack.slug}: audioKey must be null for extra phrase "${entry.id}"`)
-    }
-
-    const usesLatinScript = /^[\p{Script=Latin}\p{P}\p{S}\p{N}\s]+$/u.test(entry.nativeText)
-    if (!usesLatinScript && !entry.romanization) {
-      errors.push(`${pack.slug}: missing romanization for extra phrase "${entry.id}"`)
-    }
-    if (usesLatinScript && entry.romanization) {
-      errors.push(`${pack.slug}: romanization must be null for extra phrase "${entry.id}"`)
-    }
+    validateOwnedPhraseEntry(errors, pack, entry, {
+      label: `extra phrase "${entry.id}"`,
+      audioCoverage,
+    })
   }
 
   if (!usesOwnedPhraseInventory) {
