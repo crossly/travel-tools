@@ -19,6 +19,24 @@ type Status =
   | { tone: 'success' | 'warning' | 'danger'; title: string; description?: string }
   | null
 
+export function matchesRatesBase(expectedBase: string, rates: Pick<FxRatesResponse, 'base'> | null | undefined) {
+  return Boolean(rates && normalizeCurrency(rates.base) === normalizeCurrency(expectedBase))
+}
+
+export function shouldApplyRatesResponse(options: {
+  requestId: number
+  latestRequestId: number
+  requestedBase: string
+  currentSource: string
+  responseBase: string
+}) {
+  return (
+    options.requestId === options.latestRequestId
+    && normalizeCurrency(options.responseBase) === normalizeCurrency(options.requestedBase)
+    && normalizeCurrency(options.responseBase) === normalizeCurrency(options.currentSource)
+  )
+}
+
 export function CurrencyPage({ locale, initialData }: { locale: Locale; initialData?: CurrencyPageData }) {
   const { t, tError } = useI18n()
   const [amount, setAmount] = useState('1')
@@ -31,6 +49,10 @@ export function CurrencyPage({ locale, initialData }: { locale: Locale; initialD
   const [detecting, setDetecting] = useState(false)
   const [status, setStatus] = useState<Status>(null)
   const skipInitialFetchRef = useRef(Boolean(initialData?.rates))
+  const latestRequestIdRef = useRef(0)
+  const currentSourceRef = useRef(normalizeCurrency(initialData?.source ?? 'USD'))
+
+  currentSourceRef.current = normalizeCurrency(source)
 
   useEffect(() => {
     writeLastTool('currency')
@@ -48,8 +70,10 @@ export function CurrencyPage({ locale, initialData }: { locale: Locale; initialD
     if (!initialData?.rates && cached.raw) {
       try {
         const parsed = JSON.parse(cached.raw) as FxRatesResponse
-        setRates(parsed)
-        setUpdatedAt(cached.updatedAt)
+        if (matchesRatesBase(prefs.source, parsed)) {
+          setRates(parsed)
+          setUpdatedAt(cached.updatedAt)
+        }
       } catch {
         // ignore invalid local cache
       }
@@ -88,9 +112,19 @@ export function CurrencyPage({ locale, initialData }: { locale: Locale; initialD
   }, [initialData?.rates, initialData?.source, prefsReady, source])
 
   async function loadRates(base: string, manual: boolean) {
+    const normalizedBase = normalizeCurrency(base)
+    const requestId = latestRequestIdRef.current + 1
+    latestRequestIdRef.current = requestId
     setLoading(manual)
     try {
-      const data = await fetchCurrencyRates(base)
+      const data = await fetchCurrencyRates(normalizedBase)
+      if (!shouldApplyRatesResponse({
+        requestId,
+        latestRequestId: latestRequestIdRef.current,
+        requestedBase: normalizedBase,
+        currentSource: currentSourceRef.current,
+        responseBase: data.base,
+      })) return
       setRates(data)
       setUpdatedAt(data.updatedAt)
       writeCachedCurrencyRates(JSON.stringify(data), data.updatedAt)
@@ -102,9 +136,12 @@ export function CurrencyPage({ locale, initialData }: { locale: Locale; initialD
         setStatus(null)
       }
     } catch (error) {
+      if (requestId !== latestRequestIdRef.current) return
       setStatus({ tone: 'danger', title: t('currency.errorTitle'), description: tError((error as Error).message) })
     } finally {
-      setLoading(false)
+      if (requestId === latestRequestIdRef.current) {
+        setLoading(false)
+      }
     }
   }
 
