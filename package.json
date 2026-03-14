@@ -15,6 +15,7 @@
     "build": "pnpm run sitemap && vite build",
     "preview": "vite preview",
     "test": "vitest run --config vitest.config.ts",
+    "test:travel-phrases:prod": "ROUTECRATE_SMOKE_URL=https://www.routecrate.com vitest run --config vitest.config.ts tests/travel-phrases-production-smoke.test.ts",
     "typecheck": "tsc --noEmit",
     "deploy": "pnpm run build && wrangler deploy",
     "db:migrate:local": "wrangler d1 execute split-bill --local --file=./migrations/0001_init.sql",
