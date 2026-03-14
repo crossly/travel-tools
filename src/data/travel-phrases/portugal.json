@@ -263,6 +263,224 @@
       "nativeText": "Perdi o meu passaporte",
       "romanization": null,
       "audioKey": "travel-phrases/portugal/lost_passport.mp3"
+    },
+    {
+      "id": "navegante_topup_pt",
+      "category": "transport",
+      "nativeText": "Onde carrego o cartao Navegante?",
+      "translation": {
+        "en-US": "Where can I top up my Navegante card?",
+        "zh-CN": "Navegante 卡在哪里可以充值？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/portugal/navegante_topup_pt.mp3"
+    },
+    {
+      "id": "platform_number_pt",
+      "category": "transport",
+      "nativeText": "De que plataforma sai este comboio?",
+      "translation": {
+        "en-US": "Which platform does this train leave from?",
+        "zh-CN": "这班火车从哪个站台出发？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/portugal/platform_number_pt.mp3"
+    },
+    {
+      "id": "go_to_this_address_pt",
+      "category": "transport",
+      "nativeText": "Leve-me para esta morada, por favor",
+      "translation": {
+        "en-US": "Please take me to this address.",
+        "zh-CN": "请带我去这个地址。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/portugal/go_to_this_address_pt.mp3"
+    },
+    {
+      "id": "metro_to_airport_pt",
+      "category": "transport",
+      "nativeText": "Este metro vai para o aeroporto?",
+      "translation": {
+        "en-US": "Does this metro go to the airport?",
+        "zh-CN": "这班地铁去机场吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/portugal/metro_to_airport_pt.mp3"
+    },
+    {
+      "id": "leave_luggage_before_checkin_pt",
+      "category": "hotel",
+      "nativeText": "Posso deixar a bagagem antes do check-in?",
+      "translation": {
+        "en-US": "Can I leave my luggage before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/portugal/leave_luggage_before_checkin_pt.mp3"
+    },
+    {
+      "id": "arrive_late_tonight_pt",
+      "category": "hotel",
+      "nativeText": "Vou chegar tarde esta noite",
+      "translation": {
+        "en-US": "I will arrive late tonight.",
+        "zh-CN": "我今晚会晚一点到。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/portugal/arrive_late_tonight_pt.mp3"
+    },
+    {
+      "id": "cafe_and_pastel_pt",
+      "category": "dining",
+      "nativeText": "Um cafe e um pastel de nata, por favor",
+      "translation": {
+        "en-US": "A coffee and a pastel de nata, please.",
+        "zh-CN": "请给我一杯咖啡和一个蛋挞。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/portugal/cafe_and_pastel_pt.mp3"
+    },
+    {
+      "id": "without_onion_pt",
+      "category": "dining",
+      "nativeText": "Sem cebola, por favor",
+      "translation": {
+        "en-US": "Without onions, please.",
+        "zh-CN": "请不要洋葱。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/portugal/without_onion_pt.mp3"
+    },
+    {
+      "id": "takeaway_portugal",
+      "category": "dining",
+      "nativeText": "Pode ser para levar?",
+      "translation": {
+        "en-US": "Can I get it to go?",
+        "zh-CN": "可以打包带走吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/portugal/takeaway_portugal.mp3"
+    },
+    {
+      "id": "accept_multibanco",
+      "category": "shopping",
+      "nativeText": "Aceita Multibanco?",
+      "translation": {
+        "en-US": "Do you accept Multibanco?",
+        "zh-CN": "可以用 Multibanco 吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/portugal/accept_multibanco.mp3"
+    },
+    {
+      "id": "write_in_portuguese_pt",
+      "category": "basics",
+      "nativeText": "Pode escrever em portugues?",
+      "translation": {
+        "en-US": "Could you write it in Portuguese?",
+        "zh-CN": "可以帮我写成葡萄牙语吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/portugal/write_in_portuguese_pt.mp3"
+    },
+    {
+      "id": "missed_last_metro_pt",
+      "category": "emergency",
+      "nativeText": "Perdi o ultimo metro",
+      "translation": {
+        "en-US": "I missed the last metro.",
+        "zh-CN": "我错过末班地铁了。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/portugal/missed_last_metro_pt.mp3"
+    },
+    {
+      "id": "topup_here_pt_bonus",
+      "category": "transport",
+      "nativeText": "Posso carregar o cartao aqui?",
+      "translation": {
+        "en-US": "Can I top up the card here?",
+        "zh-CN": "这里可以给交通卡充值吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/portugal/topup_here_pt_bonus.mp3"
+    },
+    {
+      "id": "without_coriander_pt",
+      "category": "dining",
+      "nativeText": "Sem coentros, por favor",
+      "translation": {
+        "en-US": "Without coriander, please.",
+        "zh-CN": "请不要香菜。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/portugal/without_coriander_pt.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for Portugal with audio, built for tram rides, train travel, hotel check-ins, cafe counters, and everyday payment or direction questions.",
+    "zh-CN": "葡萄牙旅行短语卡，围绕电车、火车、酒店入住、咖啡馆柜台以及支付和问路等高频场景整理。"
+  },
+  "intro": {
+    "en-US": "Built for Portugal trips where trams, train stations, apartment check-ins, cafe counters, and coastal day trips all come up fast. These cards help when you need short Portuguese for tram stops, Multibanco payment questions, or bakery and cafe orders that go by quickly.",
+    "zh-CN": "这套葡萄牙短语适合那种电车、火车站、公寓入住、咖啡馆柜台和海边一日游会快速切换的旅行节奏。遇到要确认电车站、Multibanco 支付，或者在面包店和咖啡馆里快速点单时，短语卡会很实用。"
+  },
+  "teaser": {
+    "en-US": "Built for Portugal tram rides, Multibanco payments, cafe counters, train travel, and hotel or apartment arrivals.",
+    "zh-CN": "适合葡萄牙的电车、Multibanco、咖啡馆柜台、火车以及酒店或公寓入住沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep transport phrases ready for tram stops, train platforms, and station questions because route names can be easy to miss.",
+      "Payment phrases help with Multibanco, cards, and cash questions, especially in cafes and smaller local shops.",
+      "Cafe counters move quickly, so short Portuguese is useful for espresso orders, takeaway, and asking what pastries are still available."
+    ],
+    "zh-CN": [
+      "电车站、火车站站台和换乘询问很常用，交通短语最好提前准备好。",
+      "支付类短语在葡萄牙也很实用，尤其是确认 Multibanco、刷卡还是现金时。",
+      "咖啡馆柜台节奏很快，想点 espresso、外带，或者问今天还有什么点心时，简短葡语会很好用。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "Trams, Multibanco, and cafe counters",
+      "Train travel, pastries, and takeaway",
+      "Hotels, apartments, and coastal day trips"
+    ],
+    "zh-CN": [
+      "电车、Multibanco 与咖啡馆柜台",
+      "火车、点心与外带需求",
+      "酒店、公寓与海边一日游"
+    ]
+  },
+  "featured": false,
+  "relatedSlugs": [
+    "spain",
+    "france",
+    "italy"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrase groups matter most for a Portugal itinerary?",
+        "zh-CN": "去葡萄牙旅行时，最值得先准备哪几组短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport, dining, and hotel. That covers tram or train questions, cafe orders, apartment arrivals, and most first-day logistics in Portugal.",
+        "zh-CN": "建议先看交通、餐饮和酒店三组，基本就能覆盖电车或火车询问、咖啡馆点单、公寓入住，以及葡萄牙第一天的大多数安排。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Why are payment and cafe phrases especially useful in Portugal?",
+        "zh-CN": "为什么在葡萄牙旅行时，支付和咖啡馆短语特别实用？"
+      },
+      "answer": {
+        "en-US": "Because you use them many times a day: at cafe counters, bakeries, smaller shops, and ticket desks. A short phrase saves time every time you stop for something small.",
+        "zh-CN": "因为这些场景一天里会反复出现很多次，比如咖啡馆柜台、面包店、小店和售票处。每次停下来处理一点小事时，一句简短葡语都会帮你节省不少时间。"
+      }
     }
   ]
 }

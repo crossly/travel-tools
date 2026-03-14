@@ -263,6 +263,213 @@
       "nativeText": "He perdido mi pasaporte",
       "romanization": null,
       "audioKey": "travel-phrases/peru/lost_passport.mp3"
+    },
+    {
+      "id": "metropolitano_topup_where",
+      "category": "transport",
+      "nativeText": "¿Dónde recargo la tarjeta del Metropolitano?",
+      "translation": {
+        "en-US": "Where can I top up my Metropolitano card?",
+        "zh-CN": "Metropolitano 卡在哪里可以充值？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/peru/metropolitano_topup_where.mp3"
+    },
+    {
+      "id": "bus_to_airport_pe",
+      "category": "transport",
+      "nativeText": "¿Este bus va al aeropuerto?",
+      "translation": {
+        "en-US": "Does this bus go to the airport?",
+        "zh-CN": "这辆巴士去机场吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/peru/bus_to_airport_pe.mp3"
+    },
+    {
+      "id": "go_to_this_address_pe",
+      "category": "transport",
+      "nativeText": "Lléveme a esta dirección, por favor",
+      "translation": {
+        "en-US": "Please take me to this address.",
+        "zh-CN": "请带我去这个地址。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/peru/go_to_this_address_pe.mp3"
+    },
+    {
+      "id": "bus_to_centre_pe",
+      "category": "transport",
+      "nativeText": "¿Dónde tomo el bus al centro?",
+      "translation": {
+        "en-US": "Where do I catch the bus downtown?",
+        "zh-CN": "去市中心的巴士在哪里坐？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/peru/bus_to_centre_pe.mp3"
+    },
+    {
+      "id": "leave_luggage_before_checkin_pe",
+      "category": "hotel",
+      "nativeText": "¿Puedo dejar la maleta antes del check-in?",
+      "translation": {
+        "en-US": "Can I leave my suitcase before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/peru/leave_luggage_before_checkin_pe.mp3"
+    },
+    {
+      "id": "arrive_late_today_pe",
+      "category": "hotel",
+      "nativeText": "Voy a llegar tarde hoy",
+      "translation": {
+        "en-US": "I will arrive late today.",
+        "zh-CN": "我今天会晚一点到。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/peru/arrive_late_today_pe.mp3"
+    },
+    {
+      "id": "without_aji_pe",
+      "category": "dining",
+      "nativeText": "Sin ají, por favor",
+      "translation": {
+        "en-US": "Without ají, please.",
+        "zh-CN": "请不要辣椒酱。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/peru/without_aji_pe.mp3"
+    },
+    {
+      "id": "still_water_peru",
+      "category": "dining",
+      "nativeText": "¿Me da agua sin gas, por favor?",
+      "translation": {
+        "en-US": "Could I have still water, please?",
+        "zh-CN": "请给我无气泡水。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/peru/still_water_peru.mp3"
+    },
+    {
+      "id": "takeaway_peru",
+      "category": "dining",
+      "nativeText": "¿Me lo puede poner para llevar?",
+      "translation": {
+        "en-US": "Can you pack it to go?",
+        "zh-CN": "可以帮我打包带走吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/peru/takeaway_peru.mp3"
+    },
+    {
+      "id": "yape_or_card",
+      "category": "shopping",
+      "nativeText": "¿Aceptan Yape o tarjeta?",
+      "translation": {
+        "en-US": "Do you take Yape or card?",
+        "zh-CN": "可以用 Yape 或刷卡吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/peru/yape_or_card.mp3"
+    },
+    {
+      "id": "write_in_spanish_pe",
+      "category": "basics",
+      "nativeText": "¿Lo puede escribir en español?",
+      "translation": {
+        "en-US": "Could you write it in Spanish?",
+        "zh-CN": "可以帮我写成西班牙语吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/peru/write_in_spanish_pe.mp3"
+    },
+    {
+      "id": "missed_last_bus_pe",
+      "category": "emergency",
+      "nativeText": "Perdí el último bus",
+      "translation": {
+        "en-US": "I missed the last bus.",
+        "zh-CN": "我错过末班巴士了。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/peru/missed_last_bus_pe.mp3"
+    },
+    {
+      "id": "tip_on_card_pe_bonus",
+      "category": "shopping",
+      "nativeText": "¿Aceptan propina con tarjeta?",
+      "translation": {
+        "en-US": "Can I add the tip on the card?",
+        "zh-CN": "小费可以一起刷卡吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/peru/tip_on_card_pe_bonus.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for Peru with audio, built for airport rides, long-distance transport, hotel check-ins, market stops, and everyday dining or direction questions.",
+    "zh-CN": "秘鲁旅行短语卡，围绕机场交通、长途出行、酒店入住、市场停留，以及餐饮和问路等高频场景整理。"
+  },
+  "intro": {
+    "en-US": "Built for Peru trips where airport pickups, bus or rail connections, hotel counters, and market or restaurant conversations all come up quickly. These cards help when you need short Spanish for routes, food, or simple travel logistics.",
+    "zh-CN": "这套秘鲁短语适合那种机场接驳、巴士或铁路换乘、酒店前台，以及市场和餐厅沟通会快速出现的旅行节奏。遇到要问路线、点餐或处理简单行程安排时，短语卡会很有帮助。"
+  },
+  "teaser": {
+    "en-US": "Built for Peru airport rides, longer transport days, market stops, and hotel or dining conversations.",
+    "zh-CN": "适合秘鲁的机场交通、长途出行、市场停留，以及酒店和餐饮沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep transport phrases ready for airport pickups, bus terminals, rail tickets, and early departures before longer travel days.",
+      "Dining phrases are especially useful for menu questions, soup or set meals, and asking for bottled water or less spice.",
+      "Market and hotel cards help when you want to confirm the total price, ask for directions, or solve a simple room issue quickly."
+    ],
+    "zh-CN": [
+      "如果有机场接驳、巴士站、火车票和早班出发安排，最好先把相关交通短语备好。",
+      "在餐厅里，菜单、汤或套餐，以及瓶装水和少辣这类问题都很常用。",
+      "市场和酒店短语则适合快速确认总价、问方向或解决简短房间问题。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "Airport rides, buses, and rail connections",
+      "Market prices, set meals, and bottled water",
+      "Hotels, directions, and quick service requests"
+    ],
+    "zh-CN": [
+      "机场交通、巴士与铁路换乘",
+      "市场价格、套餐与瓶装水",
+      "酒店、问路与快速服务请求"
+    ]
+  },
+  "featured": false,
+  "relatedSlugs": [
+    "chile",
+    "argentina",
+    "colombia"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrase groups matter most for a first Peru trip?",
+        "zh-CN": "第一次去秘鲁旅行，最该先准备哪几组短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport, hotel, and dining. That covers airport arrivals, longer travel connections, check-in, and most first-day meals.",
+        "zh-CN": "建议先看交通、酒店和餐饮三组，基本就能覆盖机场落地、长途换乘、入住办理，以及第一天大部分用餐场景。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Why are short phrase cards useful in Peru?",
+        "zh-CN": "为什么在秘鲁旅行时，简短短语卡会很有用？"
+      },
+      "answer": {
+        "en-US": "Because transport, market, and food conversations are often fast and practical. Having a short phrase ready reduces confusion immediately.",
+        "zh-CN": "因为交通、市场和点餐类沟通常常都很快也很实际，提前备好一句话能立刻减少很多误会。"
+      }
     }
   ]
 }

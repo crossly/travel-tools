@@ -11,6 +11,7 @@
   "scripts": {
     "dev": "vite dev --port 3000",
     "sitemap": "node ./scripts/generate-sitemap.mjs",
+    "phrases:sync": "node ./scripts/sync-travel-phrases-country-metadata.mjs",
     "build": "pnpm run sitemap && vite build",
     "preview": "vite preview",
     "test": "vitest run --config vitest.config.ts",

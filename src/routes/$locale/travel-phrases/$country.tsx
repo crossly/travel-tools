@@ -29,7 +29,21 @@ export const Route = createFileRoute('/$locale/travel-phrases/$country')({
       title: loaderData.pack.title,
       description: loaderData.pack.description,
       pathname: `/travel-phrases/${loaderData.pack.slug}`,
-      structuredData: 'software',
+      structuredData: 'website',
+      extraStructuredData: loaderData.pack.faq.length ? [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: loaderData.pack.faq.map((item) => ({
+            '@type': 'Question',
+            name: item.question,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: item.answer,
+            },
+          })),
+        },
+      ] : undefined,
     })
   },
   component: TravelPhrasesCountryRoute,

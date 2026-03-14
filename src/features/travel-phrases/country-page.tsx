@@ -7,11 +7,11 @@ import { PageState } from '@/components/app/page-state'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { useI18n } from '@/lib/i18n'
 import { getLocalizedPath } from '@/lib/site'
 import { buildPhraseAudioPath, PHRASE_CATEGORIES } from '@/lib/travel-phrases'
 import { writeLastTool } from '@/lib/storage'
+import { cn } from '@/lib/utils'
 import type { Locale, PhraseCard, PhraseCategory, PhraseCountryPack } from '@/lib/types'
 
 const categoryLabelKey: Record<PhraseCategory, string> = {
@@ -21,6 +21,34 @@ const categoryLabelKey: Record<PhraseCategory, string> = {
   dining: 'phrases.category.dining',
   shopping: 'phrases.category.shopping',
   emergency: 'phrases.category.emergency',
+}
+
+const categoryDescriptionKey: Record<PhraseCategory, string> = {
+  basics: 'phrases.categorySectionDescription.basics',
+  transport: 'phrases.categorySectionDescription.transport',
+  hotel: 'phrases.categorySectionDescription.hotel',
+  dining: 'phrases.categorySectionDescription.dining',
+  shopping: 'phrases.categorySectionDescription.shopping',
+  emergency: 'phrases.categorySectionDescription.emergency',
+}
+
+function splitLeadSentence(copy: string) {
+  const normalizedCopy = copy.trim()
+
+  if (!normalizedCopy) {
+    return { lead: '', rest: '' }
+  }
+
+  const sentenceMatch = normalizedCopy.match(/^(.+?[.!?。！？])/u)
+
+  if (!sentenceMatch) {
+    return { lead: normalizedCopy, rest: '' }
+  }
+
+  return {
+    lead: sentenceMatch[1].trim(),
+    rest: normalizedCopy.slice(sentenceMatch[0].length).trim(),
+  }
 }
 
 export function TravelPhrasesCountryPage({
@@ -35,10 +63,11 @@ export function TravelPhrasesCountryPage({
   const activePhraseIdRef = useRef<string | null>(null)
   const audioUrlMapRef = useRef(new Map<string, string>())
   const audioLoadMapRef = useRef(new Map<string, Promise<string>>())
-  const [activeCategory, setActiveCategory] = useState<PhraseCategory>('basics')
   const [activePhraseId, setActivePhraseId] = useState<string | null>(null)
   const [loadingPhraseId, setLoadingPhraseId] = useState<string | null>(null)
   const [errorPhraseId, setErrorPhraseId] = useState<string | null>(null)
+  const categoryJumpRef = useRef<HTMLDivElement | null>(null)
+  const [isCategoryJumpCompact, setIsCategoryJumpCompact] = useState(false)
 
   useEffect(() => {
     writeLastTool('travel-phrases')
@@ -79,26 +108,56 @@ export function TravelPhrasesCountryPage({
     }
   }, [])
 
-  const visiblePhrases = useMemo(
-    () => pack?.phrases.filter((phrase) => phrase.category === activeCategory) ?? [],
-    [activeCategory, pack],
-  )
-
   useEffect(() => {
-    if (!pack?.hasAudio || typeof fetch !== 'function' || typeof URL.createObjectURL !== 'function') {
+    if (typeof window === 'undefined') {
       return
     }
 
-    for (const phrase of visiblePhrases) {
-      void primePhraseAudio(phrase)
-    }
-  }, [pack, visiblePhrases])
+    let frameId = 0
 
-  function changeCategory(nextCategory: PhraseCategory) {
-    stopPlayback()
-    setErrorPhraseId(null)
-    setActiveCategory(nextCategory)
-  }
+    const updateCompactState = () => {
+      frameId = 0
+      const categoryJump = categoryJumpRef.current
+      if (!categoryJump) {
+        return
+      }
+
+      const stickyOffset = window.innerWidth >= 768 ? 16 : 8
+      const shouldCompact = categoryJump.getBoundingClientRect().top <= stickyOffset + 1
+
+      setIsCategoryJumpCompact((current) => (current === shouldCompact ? current : shouldCompact))
+    }
+
+    const requestUpdate = () => {
+      if (frameId) {
+        return
+      }
+      frameId = window.requestAnimationFrame(updateCompactState)
+    }
+
+    updateCompactState()
+    window.addEventListener('scroll', requestUpdate, { passive: true })
+    window.addEventListener('resize', requestUpdate)
+
+    return () => {
+      if (frameId) {
+        window.cancelAnimationFrame(frameId)
+      }
+      window.removeEventListener('scroll', requestUpdate)
+      window.removeEventListener('resize', requestUpdate)
+    }
+  }, [])
+
+  const phraseSections = useMemo(
+    () => PHRASE_CATEGORIES.map((category) => ({
+      category,
+      phrases: pack?.phrases.filter((phrase) => phrase.category === category) ?? [],
+    })),
+    [pack],
+  )
+  const introCopy = useMemo(() => splitLeadSentence(pack?.intro ?? ''), [pack?.intro])
+  const visibleTravelTips = useMemo(() => pack?.travelTips.slice(0, 3) ?? [], [pack?.travelTips])
+  const overflowTravelTips = useMemo(() => pack?.travelTips.slice(3) ?? [], [pack?.travelTips])
 
   function stopPlayback() {
     const audio = audioRef.current
@@ -187,6 +246,12 @@ export function TravelPhrasesCountryPage({
     )
   }
 
+  const audioNotice = pack.audioCoverage === 'all'
+    ? t('phrases.aiAudioNotice')
+    : pack.audioCoverage === 'partial'
+      ? t('phrases.audioPartialNotice')
+      : t('phrases.audioComingSoon')
+
   return (
     <AppShell locale={locale} title={pack.title} description={pack.description} activeTool="travel-phrases">
       <audio ref={audioRef} preload="none" className="hidden" aria-hidden="true" />
@@ -210,110 +275,279 @@ export function TravelPhrasesCountryPage({
                 {pack.languageName}
               </p>
               <p className="mt-1 text-sm text-muted-foreground">
-                {pack.hasAudio ? t('phrases.aiAudioNotice') : t('phrases.audioComingSoon')}
+                {audioNotice}
               </p>
             </div>
           </div>
         </CardHeader>
       </Card>
 
-      <Tabs
-        value={activeCategory}
-        onValueChange={(nextValue) => {
-          changeCategory(nextValue as PhraseCategory)
-        }}
-      >
-        <TabsList>
-          {PHRASE_CATEGORIES.map((category) => (
-            <TabsTrigger
-              key={category}
-              value={category}
-              onClick={() => changeCategory(category)}
-            >
-              {t(categoryLabelKey[category])}
-            </TabsTrigger>
-          ))}
-        </TabsList>
-
-        <TabsContent value={activeCategory}>
-          {visiblePhrases.length ? (
-            <div className="grid gap-4 md:grid-cols-2">
-              {visiblePhrases.map((phrase) => {
-                const isPlaying = activePhraseId === phrase.id
-                const isLoading = loadingPhraseId === phrase.id
-                const audioDisabled = !phrase.audioKey
-                return (
-                  <Card key={phrase.id} className="h-full">
-                    <CardHeader className="gap-3">
-                      <div className="space-y-2">
-                        <CardTitle className="text-balance text-3xl md:text-4xl">{phrase.nativeText}</CardTitle>
-                        {phrase.romanization ? (
-                          <CardDescription className="text-base font-medium text-foreground/75">
-                            {phrase.romanization}
-                          </CardDescription>
-                        ) : null}
-                        <p className="text-pretty text-sm leading-6 text-muted-foreground">{phrase.translation}</p>
-                      </div>
-                    </CardHeader>
-                    <CardContent className="space-y-3">
-                      <Button
-                        type="button"
-                        variant={isPlaying ? 'default' : 'secondary'}
-                        size="lg"
-                        className="w-full justify-center"
-                        aria-label={audioDisabled
-                          ? t('phrases.audioComingSoonShort')
-                          : isLoading
-                            ? t('phrases.loadingAudio')
-                          : isPlaying
-                            ? t('phrases.stopAudio')
-                            : t('phrases.playAudio')}
-                        disabled={audioDisabled || isLoading}
-                        onPointerDown={() => {
-                          if (!audioDisabled) {
-                            void primePhraseAudio(phrase)
-                          }
-                        }}
-                        onClick={() => void togglePlayback(phrase)}
-                      >
-                        {audioDisabled ? (
-                          <Volume2 className="size-4" />
-                        ) : isLoading ? (
-                          <LoaderCircle className="size-4 animate-spin" />
-                        ) : isPlaying ? (
-                          <Square className="size-4" />
-                        ) : (
-                          <Play className="size-4" />
-                        )}
-                        {audioDisabled
-                          ? t('phrases.audioComingSoonShort')
-                          : isLoading
-                            ? t('phrases.loadingAudio')
-                            : isPlaying
-                              ? t('phrases.stopAudio')
-                              : t('phrases.playAudio')}
-                      </Button>
-                      {errorPhraseId === phrase.id ? (
-                        <InlineStatus tone="danger" title={t('phrases.audioUnavailable')} />
-                      ) : null}
-                    </CardContent>
-                  </Card>
-                )
-              })}
+      {pack.intro || pack.travelTips.length ? (
+        <Card>
+          <CardHeader className="gap-4">
+            <div className="space-y-2">
+              <CardTitle>{t('phrases.quickTipsTitle')}</CardTitle>
+              {introCopy.lead ? (
+                <CardDescription className="max-w-4xl text-sm leading-6 md:text-base">
+                  {introCopy.lead}
+                </CardDescription>
+              ) : null}
             </div>
-          ) : (
-            <PageState
-              title={t('phrases.emptyTitle')}
-              description={t('phrases.emptyDescription')}
-              action={(
-                <Button asChild variant="secondary">
-                  <Link to={getLocalizedPath(locale, '/travel-phrases')}>{t('phrases.backToHome')}</Link>
-                </Button>
-              )}
-            />
+
+            {visibleTravelTips.length ? (
+              <ul className="grid gap-2 md:grid-cols-3">
+                {visibleTravelTips.map((tip) => (
+                  <li
+                    key={tip}
+                    className="rounded-2xl border border-border bg-[color:var(--surface-floating)] px-4 py-3 text-sm leading-5 text-foreground/85"
+                  >
+                    {tip}
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+
+            {introCopy.rest || overflowTravelTips.length ? (
+              <details className="rounded-2xl border border-dashed border-border bg-[color:var(--surface-floating)] px-4 py-3">
+                <summary className="cursor-pointer list-none text-sm font-medium text-foreground">
+                  {t('phrases.quickTipsExpand')}
+                </summary>
+                <div className="mt-3 space-y-3 text-sm leading-6 text-muted-foreground md:text-base">
+                  {introCopy.rest ? (
+                    <p>{introCopy.rest}</p>
+                  ) : null}
+                  {overflowTravelTips.length ? (
+                    <ul className="space-y-2">
+                      {overflowTravelTips.map((tip) => (
+                        <li key={tip}>{tip}</li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </div>
+              </details>
+            ) : null}
+          </CardHeader>
+        </Card>
+      ) : null}
+
+      <div
+        ref={categoryJumpRef}
+        className={cn(
+          'sticky z-20 w-full min-w-0 max-w-full',
+          isCategoryJumpCompact ? 'top-2 md:top-4' : 'top-2 md:top-4',
+        )}
+      >
+        <Card
+          className={cn(
+            'w-full max-w-full overflow-hidden transition-all duration-200',
+            isCategoryJumpCompact && 'border-border/80 bg-card/95 shadow-md backdrop-blur supports-[backdrop-filter]:bg-card/80',
           )}
-        </TabsContent>
-      </Tabs>
+        >
+          <CardHeader className={cn('min-w-0 transition-all duration-200', isCategoryJumpCompact ? 'gap-2 px-3 py-3 md:px-4' : 'gap-3')}>
+            <div
+              className={cn(
+                'space-y-1 overflow-hidden transition-all duration-200',
+                isCategoryJumpCompact ? 'max-h-0 -translate-y-2 opacity-0 pointer-events-none' : 'max-h-24 opacity-100',
+              )}
+              aria-hidden={isCategoryJumpCompact}
+            >
+              <CardTitle>{t('phrases.categoryJumpTitle')}</CardTitle>
+              <CardDescription>{t('phrases.categoryJumpDescription')}</CardDescription>
+            </div>
+            <nav
+              aria-label={t('phrases.categoryJumpStickyLabel')}
+              className={cn(
+                'flex w-full min-w-0 max-w-full gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden',
+                isCategoryJumpCompact ? 'flex-nowrap' : 'flex-nowrap md:flex-wrap md:overflow-visible md:pb-0',
+              )}
+            >
+              {phraseSections
+                .filter((section) => section.phrases.length)
+                .map((section) => (
+                  <a
+                    key={section.category}
+                    href={`#${section.category}-phrases`}
+                    className={cn(
+                      'inline-flex h-10 shrink-0 whitespace-nowrap items-center justify-center rounded-xl border border-border bg-[color:var(--surface-floating)] px-4 text-sm font-medium text-foreground transition-colors hover:bg-muted',
+                      isCategoryJumpCompact && 'h-9 rounded-full px-3 text-xs md:text-sm',
+                    )}
+                  >
+                    {t(categoryLabelKey[section.category])}
+                  </a>
+                ))}
+            </nav>
+          </CardHeader>
+        </Card>
+      </div>
+
+      {phraseSections.some((section) => section.phrases.length) ? (
+        <div className="space-y-6">
+          {phraseSections.map((section) => (
+            section.phrases.length ? (
+              <section key={section.category} id={`${section.category}-phrases`} className="space-y-4 scroll-mt-40 md:scroll-mt-32">
+                <div className="space-y-2">
+                  <Badge variant="outline">{t(categoryLabelKey[section.category])}</Badge>
+                  <h2 className="display text-2xl font-semibold text-foreground md:text-3xl">
+                    {t('phrases.categorySectionTitle', {
+                      country: pack.country,
+                      category: t(categoryLabelKey[section.category]),
+                    })}
+                  </h2>
+                  <p className="max-w-3xl text-sm leading-6 text-muted-foreground md:text-base">
+                    {t(categoryDescriptionKey[section.category], {
+                      country: pack.country,
+                      category: t(categoryLabelKey[section.category]),
+                    })}
+                  </p>
+                </div>
+                <div className="grid gap-4 md:grid-cols-2">
+                  {section.phrases.map((phrase) => renderPhraseCard(phrase))}
+                </div>
+              </section>
+            ) : null
+          ))}
+        </div>
+      ) : (
+        <PageState
+          title={t('phrases.emptyTitle')}
+          description={t('phrases.emptyDescription')}
+          action={(
+            <Button asChild variant="secondary">
+              <Link to={getLocalizedPath(locale, '/travel-phrases')}>{t('phrases.backToHome')}</Link>
+            </Button>
+          )}
+        />
+      )}
+
+      {pack.extraPhrases.length ? (
+        <section className="space-y-4">
+          <div className="space-y-2">
+            <Badge variant="outline">{pack.country}</Badge>
+            <h2 className="display text-2xl font-semibold text-foreground md:text-3xl">
+              {t('phrases.extraPhrasesTitle')}
+            </h2>
+          </div>
+          <div className="grid gap-4 md:grid-cols-2">
+            {pack.extraPhrases.map((phrase) => renderPhraseCard(phrase))}
+          </div>
+        </section>
+      ) : null}
+
+      {pack.faq.length ? (
+        <section className="space-y-4">
+          <div className="space-y-2">
+            <h2 className="display text-2xl font-semibold text-foreground md:text-3xl">
+              {t('phrases.faqTitle')}
+            </h2>
+          </div>
+          <div className="grid gap-4">
+            {pack.faq.map((item) => (
+              <Card key={item.question}>
+                <CardHeader className="gap-2">
+                  <CardTitle className="text-xl">{item.question}</CardTitle>
+                  <CardDescription className="text-sm leading-6 md:text-base">
+                    {item.answer}
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      {pack.relatedCountries.length ? (
+        <section className="space-y-4">
+          <div className="space-y-2">
+            <h2 className="display text-2xl font-semibold text-foreground md:text-3xl">
+              {t('phrases.relatedCountriesTitle')}
+            </h2>
+          </div>
+          <div className="grid gap-4 md:grid-cols-3">
+            {pack.relatedCountries.map((country) => (
+              <Card key={country.slug}>
+                <CardHeader className="gap-3">
+                  <CardTitle className="flex items-center gap-3 text-xl">
+                    <span className="text-2xl" aria-hidden="true">{country.flag}</span>
+                    {country.country}
+                  </CardTitle>
+                  <CardDescription>{country.teaser || country.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Button asChild variant="secondary" className="w-full justify-between">
+                    <Link to={getLocalizedPath(locale, `/travel-phrases/${country.slug}`)}>
+                      {country.title}
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+      ) : null}
     </AppShell>
   )
+
+  function renderPhraseCard(phrase: PhraseCard) {
+    const isPlaying = activePhraseId === phrase.id
+    const isLoading = loadingPhraseId === phrase.id
+    const audioDisabled = !phrase.audioKey
+
+    return (
+      <Card key={phrase.id} className="h-full">
+        <CardHeader className="gap-3">
+          <div className="space-y-2">
+            <CardTitle className="text-balance text-3xl md:text-4xl">{phrase.nativeText}</CardTitle>
+            {phrase.romanization ? (
+              <CardDescription className="text-base font-medium text-foreground/75">
+                {phrase.romanization}
+              </CardDescription>
+            ) : null}
+            <p className="text-pretty text-sm leading-6 text-muted-foreground">{phrase.translation}</p>
+          </div>
+        </CardHeader>
+        <CardContent className="space-y-3">
+          <Button
+            type="button"
+            variant={isPlaying ? 'default' : 'secondary'}
+            size="lg"
+            className="w-full justify-center"
+            aria-label={audioDisabled
+              ? t('phrases.audioComingSoonShort')
+              : isLoading
+                ? t('phrases.loadingAudio')
+                : isPlaying
+                  ? t('phrases.stopAudio')
+                  : t('phrases.playAudio')}
+            disabled={audioDisabled || isLoading}
+            onPointerDown={() => {
+              if (!audioDisabled) {
+                void primePhraseAudio(phrase)
+              }
+            }}
+            onClick={() => void togglePlayback(phrase)}
+          >
+            {audioDisabled ? (
+              <Volume2 className="size-4" />
+            ) : isLoading ? (
+              <LoaderCircle className="size-4 animate-spin" />
+            ) : isPlaying ? (
+              <Square className="size-4" />
+            ) : (
+              <Play className="size-4" />
+            )}
+            {audioDisabled
+              ? t('phrases.audioComingSoonShort')
+              : isLoading
+                ? t('phrases.loadingAudio')
+                : isPlaying
+                  ? t('phrases.stopAudio')
+                  : t('phrases.playAudio')}
+          </Button>
+          {errorPhraseId === phrase.id ? (
+            <InlineStatus tone="danger" title={t('phrases.audioUnavailable')} />
+          ) : null}
+        </CardContent>
+      </Card>
+    )
+  }
 }

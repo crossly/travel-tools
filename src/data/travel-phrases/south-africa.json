@@ -263,6 +263,213 @@
       "nativeText": "I lost my passport",
       "romanization": null,
       "audioKey": "travel-phrases/south-africa/lost_passport.mp3"
+    },
+    {
+      "id": "gautrain_topup_where",
+      "category": "transport",
+      "nativeText": "Where do I top up my Gautrain card?",
+      "translation": {
+        "en-US": "Where do I top up my Gautrain card?",
+        "zh-CN": "Gautrain 卡在哪里可以充值？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/south-africa/gautrain_topup_where.mp3"
+    },
+    {
+      "id": "platform_to_airport_za",
+      "category": "transport",
+      "nativeText": "Which platform goes to the airport?",
+      "translation": {
+        "en-US": "Which platform goes to the airport?",
+        "zh-CN": "去机场的是哪个站台？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/south-africa/platform_to_airport_za.mp3"
+    },
+    {
+      "id": "go_to_this_address_za",
+      "category": "transport",
+      "nativeText": "Please take me to this address.",
+      "translation": {
+        "en-US": "Please take me to this address.",
+        "zh-CN": "请带我去这个地址。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/south-africa/go_to_this_address_za.mp3"
+    },
+    {
+      "id": "rideshare_pickup_zone_za",
+      "category": "transport",
+      "nativeText": "Where is the rideshare pick-up zone?",
+      "translation": {
+        "en-US": "Where is the rideshare pick-up zone?",
+        "zh-CN": "网约车上车点在哪里？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/south-africa/rideshare_pickup_zone_za.mp3"
+    },
+    {
+      "id": "leave_luggage_before_checkin_za",
+      "category": "hotel",
+      "nativeText": "Can I leave my luggage before check-in?",
+      "translation": {
+        "en-US": "Can I leave my luggage before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/south-africa/leave_luggage_before_checkin_za.mp3"
+    },
+    {
+      "id": "arrive_late_tonight_za",
+      "category": "hotel",
+      "nativeText": "I will be arriving late tonight.",
+      "translation": {
+        "en-US": "I will be arriving late tonight.",
+        "zh-CN": "我今晚会晚一点到。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/south-africa/arrive_late_tonight_za.mp3"
+    },
+    {
+      "id": "without_chilli_za",
+      "category": "dining",
+      "nativeText": "Could I get this without chilli?",
+      "translation": {
+        "en-US": "Could I get this without chilli?",
+        "zh-CN": "这个可以不要辣吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/south-africa/without_chilli_za.mp3"
+    },
+    {
+      "id": "takeaway_south_africa",
+      "category": "dining",
+      "nativeText": "Can I get this as a takeaway?",
+      "translation": {
+        "en-US": "Can I get this as a takeaway?",
+        "zh-CN": "这个可以打包带走吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/south-africa/takeaway_south_africa.mp3"
+    },
+    {
+      "id": "still_water_za",
+      "category": "dining",
+      "nativeText": "Is there bottled water without gas?",
+      "translation": {
+        "en-US": "Do you have bottled still water?",
+        "zh-CN": "有无气泡瓶装水吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/south-africa/still_water_za.mp3"
+    },
+    {
+      "id": "pay_by_card_za",
+      "category": "shopping",
+      "nativeText": "Can I pay by card here?",
+      "translation": {
+        "en-US": "Can I pay by card here?",
+        "zh-CN": "这里可以刷卡吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/south-africa/pay_by_card_za.mp3"
+    },
+    {
+      "id": "write_address_za",
+      "category": "basics",
+      "nativeText": "Could you write the address down?",
+      "translation": {
+        "en-US": "Could you write the address down?",
+        "zh-CN": "可以把地址写下来吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/south-africa/write_address_za.mp3"
+    },
+    {
+      "id": "missed_last_train_za",
+      "category": "emergency",
+      "nativeText": "I missed the last train.",
+      "translation": {
+        "en-US": "I missed the last train.",
+        "zh-CN": "我错过末班火车了。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/south-africa/missed_last_train_za.mp3"
+    },
+    {
+      "id": "safe_pickup_za_bonus",
+      "category": "transport",
+      "nativeText": "Is there a safe pick-up point here?",
+      "translation": {
+        "en-US": "Is there a safe pick-up point here?",
+        "zh-CN": "这里有更安全的上车点吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/south-africa/safe_pickup_za_bonus.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for South Africa with audio, built for airport pickups, rideshares, hotel or lodge check-ins, restaurant stops, and everyday payment or direction questions.",
+    "zh-CN": "南非旅行短语卡，围绕机场接驳、网约车、酒店或 lodge 入住、餐厅停留，以及支付和问路等高频场景整理。"
+  },
+  "intro": {
+    "en-US": "Built for South Africa trips where airport pickups, rideshares, lodge check-ins, and restaurant or tour-day conversations all happen quickly. These cards help when you need short local wording for addresses, timing, or simple service requests.",
+    "zh-CN": "这套南非短语适合那种机场接驳、网约车、lodge 入住，以及餐厅和一日游沟通会快速出现的旅行节奏。遇到要问地址、时间或简短服务需求时，短语卡会很有帮助。"
+  },
+  "teaser": {
+    "en-US": "Built for South Africa airport pickups, rideshares, lodge check-ins, and restaurant or tour-day conversations.",
+    "zh-CN": "适合南非的机场接驳、网约车、lodge 入住，以及餐厅和一日游沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep transport phrases ready for airport pickups, rideshares, and longer transfers to hotels or lodges.",
+      "Restaurant cards help with quick orders, payment questions, and asking what is included before a longer outing.",
+      "Even in English-speaking settings, phrase cards help when you want a clear on-screen address, pickup point, or service request."
+    ],
+    "zh-CN": [
+      "如果有机场接驳、网约车以及去酒店或 lodge 的长距离交通，最好先备好相关短语。",
+      "在餐厅里，快速点单、支付问题，以及出发前确认包含什么内容，这类餐饮卡都很好用。",
+      "即使是英语环境，遇到地址、上车点和服务请求这类场景时，清晰的屏幕短语依然很有帮助。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "Airport pickups, rideshares, and lodge transfers",
+      "Restaurants, payments, and tour-day basics",
+      "Hotels, addresses, and simple service requests"
+    ],
+    "zh-CN": [
+      "机场接驳、网约车与 lodge 交通",
+      "餐厅、支付与一日游基础沟通",
+      "酒店、地址与简单服务请求"
+    ]
+  },
+  "featured": false,
+  "relatedSlugs": [
+    "kenya",
+    "tanzania",
+    "mauritius"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrase groups matter most for a first South Africa trip?",
+        "zh-CN": "第一次去南非旅行，最该先准备哪几组短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport, hotel, and dining. That covers airport arrivals, lodge or hotel check-in, and most first-day food or transfer needs.",
+        "zh-CN": "建议先看交通、酒店和餐饮三组，基本就能覆盖机场落地、酒店或 lodge 入住，以及第一天大部分用餐和转移场景。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Why keep phrase cards for South Africa if English is common?",
+        "zh-CN": "既然南非英语很常见，为什么还值得准备短语卡？"
+      },
+      "answer": {
+        "en-US": "Because travel logistics still repeat constantly. A ready-made phrase keeps pickups, counters, and service requests moving faster.",
+        "zh-CN": "因为很多旅行安排依然会不断重复，提前备好的短语能让接驳、柜台和服务请求处理得更快。"
+      }
     }
   ]
 }

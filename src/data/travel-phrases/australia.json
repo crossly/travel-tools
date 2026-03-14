@@ -263,6 +263,224 @@
       "nativeText": "I lost my passport",
       "romanization": null,
       "audioKey": "travel-phrases/australia/lost_passport.mp3"
+    },
+    {
+      "id": "topup_transit_card_au",
+      "category": "transport",
+      "nativeText": "Where can I top up my transit card?",
+      "translation": {
+        "en-US": "Where can I top up my transit card?",
+        "zh-CN": "我的交通卡在哪里可以充值？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/australia/topup_transit_card_au.mp3"
+    },
+    {
+      "id": "platform_to_airport_au",
+      "category": "transport",
+      "nativeText": "Which platform goes to the airport?",
+      "translation": {
+        "en-US": "Which platform goes to the airport?",
+        "zh-CN": "去机场的是哪个站台？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/australia/platform_to_airport_au.mp3"
+    },
+    {
+      "id": "go_to_this_address_au",
+      "category": "transport",
+      "nativeText": "Please take me to this address.",
+      "translation": {
+        "en-US": "Please take me to this address.",
+        "zh-CN": "请带我去这个地址。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/australia/go_to_this_address_au.mp3"
+    },
+    {
+      "id": "tap_on_here_au",
+      "category": "transport",
+      "nativeText": "Do I tap on here?",
+      "translation": {
+        "en-US": "Do I tap on here?",
+        "zh-CN": "我是在这里刷卡进站吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/australia/tap_on_here_au.mp3"
+    },
+    {
+      "id": "leave_bag_before_checkin_au",
+      "category": "hotel",
+      "nativeText": "Can I leave my bag before check-in?",
+      "translation": {
+        "en-US": "Can I leave my bag before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/australia/leave_bag_before_checkin_au.mp3"
+    },
+    {
+      "id": "arrive_late_tonight_au",
+      "category": "hotel",
+      "nativeText": "I will be arriving late tonight.",
+      "translation": {
+        "en-US": "I will be arriving late tonight.",
+        "zh-CN": "我今晚会晚一点到。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/australia/arrive_late_tonight_au.mp3"
+    },
+    {
+      "id": "flat_white_please_au",
+      "category": "dining",
+      "nativeText": "Can I get a flat white, please?",
+      "translation": {
+        "en-US": "Can I get a flat white, please?",
+        "zh-CN": "请给我一杯 flat white。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/australia/flat_white_please_au.mp3"
+    },
+    {
+      "id": "takeaway_australia",
+      "category": "dining",
+      "nativeText": "Could I have this takeaway?",
+      "translation": {
+        "en-US": "Could I have this takeaway?",
+        "zh-CN": "这个可以打包带走吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/australia/takeaway_australia.mp3"
+    },
+    {
+      "id": "without_onion_au",
+      "category": "dining",
+      "nativeText": "Can I get this without onion?",
+      "translation": {
+        "en-US": "Can I get this without onion?",
+        "zh-CN": "这个可以不要洋葱吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/australia/without_onion_au.mp3"
+    },
+    {
+      "id": "card_surcharge_au",
+      "category": "shopping",
+      "nativeText": "Is there a card surcharge?",
+      "translation": {
+        "en-US": "Is there a card surcharge?",
+        "zh-CN": "刷卡会加收手续费吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/australia/card_surcharge_au.mp3"
+    },
+    {
+      "id": "write_suburb_au",
+      "category": "basics",
+      "nativeText": "Could you write the suburb down too?",
+      "translation": {
+        "en-US": "Could you write the suburb down too?",
+        "zh-CN": "可以把区名也写上吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/australia/write_suburb_au.mp3"
+    },
+    {
+      "id": "missed_last_train_au",
+      "category": "emergency",
+      "nativeText": "I missed the last train.",
+      "translation": {
+        "en-US": "I missed the last train.",
+        "zh-CN": "我错过末班火车了。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/australia/missed_last_train_au.mp3"
+    },
+    {
+      "id": "phone_tap_au_bonus",
+      "category": "shopping",
+      "nativeText": "Can I tap with my phone here?",
+      "translation": {
+        "en-US": "Can I tap with my phone here?",
+        "zh-CN": "这里可以直接刷手机吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/australia/phone_tap_au_bonus.mp3"
+    },
+    {
+      "id": "oat_milk_au_bonus",
+      "category": "dining",
+      "nativeText": "Is oat milk available?",
+      "translation": {
+        "en-US": "Do you have oat milk?",
+        "zh-CN": "有燕麦奶吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/australia/oat_milk_au_bonus.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for Australia with audio, built for airport trains, rideshares, hotel check-ins, cafe counters, and everyday local-service conversations.",
+    "zh-CN": "澳大利亚旅行短语卡，围绕机场交通、网约车、酒店入住、咖啡馆柜台和本地服务沟通等高频场景整理。"
+  },
+  "intro": {
+    "en-US": "Built for Australia trips where airport links, rideshares, cafe orders, and accommodation check-ins all move quickly. These cards help when you want short local wording for pickup points, takeaway coffee, or simple service questions without over-explaining.",
+    "zh-CN": "这套澳大利亚短语适合那种机场接驳、网约车、咖啡点单和住宿入住节奏很快的旅行场景。遇到要确认上车点、外带咖啡，或提出简单服务需求时，短语卡会更直接。"
+  },
+  "teaser": {
+    "en-US": "Built for Australia airport links, rideshares, cafe orders, and hotel or road-trip logistics.",
+    "zh-CN": "适合澳大利亚的机场交通、网约车、咖啡点单和酒店或自驾相关沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep transport phrases ready for airport trains, rideshare pickup zones, and city transit before you arrive downtown.",
+      "Cafe counters move fast, so short local wording helps for takeaway, milk choices, and table or receipt questions.",
+      "Even in English-speaking settings, phrase cards are useful when you want a clear on-screen request for addresses or room issues."
+    ],
+    "zh-CN": [
+      "从机场进城前，最好先备好机场铁路、网约车上车区和市内交通相关短语。",
+      "咖啡馆柜台节奏很快，外带、牛奶选择和要小票这类需求，用简短表达会更顺。",
+      "即使在英语环境里，遇到地址确认或房间问题时，直接展示一条清晰请求依然很有用。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "Airport links, rideshares, and cafe counters",
+      "Hotels, road trips, and simple service requests",
+      "Takeaway coffee, receipts, and local transit"
+    ],
+    "zh-CN": [
+      "机场交通、网约车与咖啡馆柜台",
+      "酒店、自驾与基础服务需求",
+      "外带咖啡、小票与本地交通"
+    ]
+  },
+  "featured": false,
+  "relatedSlugs": [
+    "new-zealand",
+    "singapore",
+    "united-states"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrase groups matter most for a first Australia trip?",
+        "zh-CN": "第一次去澳大利亚旅行，最该先准备哪几组短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport, hotel, and dining. That covers airport arrivals, rideshares, check-in, and most first-day cafe or restaurant needs.",
+        "zh-CN": "建议先看交通、酒店和餐饮三组，基本就能覆盖机场落地、网约车、入住办理，以及第一天大部分咖啡馆和餐厅场景。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Why keep phrase cards for Australia if the language is English?",
+        "zh-CN": "既然澳大利亚讲英语，为什么还值得准备短语卡？"
+      },
+      "answer": {
+        "en-US": "Because many travel interactions are fast and repetitive. A ready-made card is still quicker than typing or rephrasing the same request.",
+        "zh-CN": "因为很多旅行沟通都很快而且重复度高，提前准备好的短语卡，往往还是会比现场打字或换说法更快。"
+      }
     }
   ]
 }

@@ -11,6 +11,70 @@
   },
   "languageCode": "ar_001",
   "flag": "🇦🇪",
+  "description": {
+    "en-US": "Travel phrases for the UAE with audio and local tips for malls, taxis, and mixed Arabic-English service situations.",
+    "zh-CN": "阿联酋旅行短语卡，补充了商场、打车和阿拉伯语英语混用场景，更贴近本地使用。"
+  },
+  "intro": {
+    "en-US": "Built for UAE trips where malls, taxis, hotels, and mixed Arabic-English service counters are common. You can often start in English, but having a few direct Arabic phrases still helps with courtesy and quick requests.",
+    "zh-CN": "这套阿联酋短语优先覆盖商场、酒店、出租车和阿拉伯语英语混用的服务场景。很多地方英语可用，但会几句直接的阿语，通常更方便也更礼貌。"
+  },
+  "teaser": {
+    "en-US": "Useful for mall visits, taxi rides, and Arabic-English service counters in the UAE.",
+    "zh-CN": "适合阿联酋商场、打车和阿语英语混用的服务场景。"
+  },
+  "highlights": {
+    "en-US": [
+      "Mall taxis",
+      "Arabic-English counters",
+      "Friday schedule questions"
+    ],
+    "zh-CN": [
+      "商场打车",
+      "阿语英语混用柜台",
+      "Friday 营业时间"
+    ]
+  },
+  "featured": true,
+  "relatedSlugs": [
+    "turkey",
+    "egypt",
+    "morocco"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Is Arabic necessary for most travel situations in the UAE?",
+        "zh-CN": "在阿联酋旅行时，大多数场景一定要会阿拉伯语吗？"
+      },
+      "answer": {
+        "en-US": "English is common in hotels, malls, and transport, but short Arabic phrases still help with courtesy and quick requests.",
+        "zh-CN": "酒店、商场和交通场景里英语通常够用，但会几句简短阿语通常更礼貌，也更适合快速表达需求。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Which local situations are most useful to prepare phrases for in the UAE?",
+        "zh-CN": "在阿联酋最值得优先准备哪些本地场景短语？"
+      },
+      "answer": {
+        "en-US": "Taxi destinations, mall service counters, and schedule questions around Friday are the most practical additions.",
+        "zh-CN": "打车目的地、商场服务台，以及 Friday 附近的时间安排类问题，通常是最实用的补充。"
+      }
+    }
+  ],
+  "travelTips": {
+    "en-US": [
+      "English is common in service settings, but short Arabic phrases still help with tone and courtesy.",
+      "Malls and hotel taxis are high-frequency scenarios, so destination and payment phrases matter.",
+      "Friday schedules can shift, so transport and business-hour questions are especially useful."
+    ],
+    "zh-CN": [
+      "很多服务场景可以直接用英语，但会几句简短阿语通常更礼貌。",
+      "商场和酒店打车是高频场景，所以目的地和支付类表达很重要。",
+      "Friday 的营业和出行节奏可能不同，所以询问时间和路线会更常用。"
+    ]
+  },
   "phrases": [
     {
       "id": "hello",
@@ -263,6 +327,195 @@
       "nativeText": "لقد فقدت جواز سفري",
       "romanization": "Laqad faqadtu jawaz safari",
       "audioKey": "travel-phrases/united-arab-emirates/lost_passport.mp3"
+    },
+    {
+      "id": "metro_card_topup_where",
+      "category": "transport",
+      "nativeText": "أين أشحن بطاقة المترو؟",
+      "translation": {
+        "en-US": "Where can I top up the metro card?",
+        "zh-CN": "地铁卡在哪里可以充值？"
+      },
+      "romanization": "Ayna ashhan bitaqat al-mitro?",
+      "audioKey": "travel-phrases/united-arab-emirates/metro_card_topup_where.mp3"
+    },
+    {
+      "id": "which_exit_to_dubai_mall",
+      "category": "transport",
+      "nativeText": "أي مخرج يوصل إلى دبي مول؟",
+      "translation": {
+        "en-US": "Which exit goes to Dubai Mall?",
+        "zh-CN": "去 Dubai Mall 应该走哪个出口？"
+      },
+      "romanization": "Ayy makhraj yuwassil ila Dubai Mall?",
+      "audioKey": "travel-phrases/united-arab-emirates/which_exit_to_dubai_mall.mp3"
+    },
+    {
+      "id": "where_to_take_taxi",
+      "category": "transport",
+      "nativeText": "من أين آخذ تاكسي؟",
+      "translation": {
+        "en-US": "Where do I get a taxi?",
+        "zh-CN": "我从哪里打车？"
+      },
+      "romanization": "Min ayna aakhudh taksi?",
+      "audioKey": "travel-phrases/united-arab-emirates/where_to_take_taxi.mp3"
+    },
+    {
+      "id": "go_to_this_address_uae",
+      "category": "transport",
+      "nativeText": "اذهب إلى هذا العنوان من فضلك",
+      "translation": {
+        "en-US": "Please go to this address.",
+        "zh-CN": "请去这个地址。"
+      },
+      "romanization": "Idhhab ila hadha al-unwan min fadlik.",
+      "audioKey": "travel-phrases/united-arab-emirates/go_to_this_address_uae.mp3"
+    },
+    {
+      "id": "leave_luggage_before_checkin_uae",
+      "category": "hotel",
+      "nativeText": "هل أستطيع ترك الحقيبة قبل تسجيل الدخول؟",
+      "translation": {
+        "en-US": "Can I leave my luggage before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": "Hal astatiu tark al-haqiba qabla tasjil al-dukhul?",
+      "audioKey": "travel-phrases/united-arab-emirates/leave_luggage_before_checkin_uae.mp3"
+    },
+    {
+      "id": "arrive_after_midnight_uae",
+      "category": "hotel",
+      "nativeText": "سأصل بعد منتصف الليل",
+      "translation": {
+        "en-US": "I will arrive after midnight.",
+        "zh-CN": "我会在半夜之后到。"
+      },
+      "romanization": "Saasil bada muntasaf al-layl.",
+      "audioKey": "travel-phrases/united-arab-emirates/arrive_after_midnight_uae.mp3"
+    },
+    {
+      "id": "without_garlic_please_uae",
+      "category": "dining",
+      "nativeText": "بدون ثوم من فضلك",
+      "translation": {
+        "en-US": "Without garlic, please.",
+        "zh-CN": "请不要蒜。"
+      },
+      "romanization": "Bidun thawm min fadlik.",
+      "audioKey": "travel-phrases/united-arab-emirates/without_garlic_please_uae.mp3"
+    },
+    {
+      "id": "without_ice_uae",
+      "category": "dining",
+      "nativeText": "بدون ثلج من فضلك",
+      "translation": {
+        "en-US": "Without ice, please.",
+        "zh-CN": "请不要冰。"
+      },
+      "romanization": "Bidun thalj min fadlik.",
+      "audioKey": "travel-phrases/united-arab-emirates/without_ice_uae.mp3"
+    },
+    {
+      "id": "family_restaurant_question",
+      "category": "dining",
+      "nativeText": "هل هذا المطعم عائلي؟",
+      "translation": {
+        "en-US": "Is this a family restaurant section?",
+        "zh-CN": "这里是家庭区吗？"
+      },
+      "romanization": "Hal hadha al-matam aaili?",
+      "audioKey": "travel-phrases/united-arab-emirates/family_restaurant_question.mp3"
+    },
+    {
+      "id": "tax_refund_where_uae",
+      "category": "shopping",
+      "nativeText": "أين مكتب استرداد الضريبة؟",
+      "translation": {
+        "en-US": "Where is the tax refund desk?",
+        "zh-CN": "退税柜台在哪里？"
+      },
+      "romanization": "Ayna maktab istirdad al-dariba?",
+      "audioKey": "travel-phrases/united-arab-emirates/tax_refund_where_uae.mp3"
+    },
+    {
+      "id": "write_address_in_arabic",
+      "category": "basics",
+      "nativeText": "من فضلك اكتب العنوان بالعربية",
+      "translation": {
+        "en-US": "Please write the address in Arabic.",
+        "zh-CN": "请把地址写成阿拉伯语。"
+      },
+      "romanization": "Min fadlik uktub al-unwan bil-arabiya.",
+      "audioKey": "travel-phrases/united-arab-emirates/write_address_in_arabic.mp3"
+    },
+    {
+      "id": "missed_last_metro_uae",
+      "category": "emergency",
+      "nativeText": "فاتتني آخر رحلة مترو",
+      "translation": {
+        "en-US": "I missed the last metro.",
+        "zh-CN": "我错过最后一班地铁了。"
+      },
+      "romanization": "Fatatni akhir rihlat metro.",
+      "audioKey": "travel-phrases/united-arab-emirates/missed_last_metro_uae.mp3"
+    },
+    {
+      "id": "family_area_uae_bonus",
+      "category": "dining",
+      "nativeText": "هل هذا المكان مخصص للعائلات؟",
+      "translation": {
+        "en-US": "Is this area for families?",
+        "zh-CN": "这里是家庭区吗？"
+      },
+      "romanization": "Hal hatha al-makan mukhassas lil-aailat?",
+      "audioKey": "travel-phrases/united-arab-emirates/family_area_uae_bonus.mp3"
+    },
+    {
+      "id": "apple_pay_uae_bonus",
+      "category": "shopping",
+      "nativeText": "هل تقبلون آبل باي؟",
+      "translation": {
+        "en-US": "Do you accept Apple Pay?",
+        "zh-CN": "可以用 Apple Pay 吗？"
+      },
+      "romanization": "Hal taqbalun Apple Pay?",
+      "audioKey": "travel-phrases/united-arab-emirates/apple_pay_uae_bonus.mp3"
+    },
+    {
+      "id": "dubai_mall_exit_uae_bonus",
+      "category": "transport",
+      "nativeText": "أي مخرج يذهب إلى دبي مول؟",
+      "translation": {
+        "en-US": "Which exit goes to Dubai Mall?",
+        "zh-CN": "去 Dubai Mall 走哪个出口？"
+      },
+      "romanization": "Ayy makhraj yadhhab ila Dubai Mall?",
+      "audioKey": "travel-phrases/united-arab-emirates/dubai_mall_exit_uae_bonus.mp3"
+    }
+  ],
+  "extraPhrases": [
+    {
+      "id": "family_section",
+      "category": "dining",
+      "nativeText": "هل يوجد قسم للعائلات؟",
+      "romanization": "Hal yujad qism lil-'a'ilat?",
+      "translation": {
+        "en-US": "Is there a family section?",
+        "zh-CN": "这里有家庭区吗？"
+      },
+      "audioKey": null
+    },
+    {
+      "id": "mall_taxi",
+      "category": "transport",
+      "nativeText": "إلى دبي مول من فضلك",
+      "romanization": "Ila Dubai Mall min fadlik",
+      "translation": {
+        "en-US": "To Dubai Mall, please.",
+        "zh-CN": "请带我去 Dubai Mall。"
+      },
+      "audioKey": null
     }
   ]
 }

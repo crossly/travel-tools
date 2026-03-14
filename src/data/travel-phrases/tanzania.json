@@ -263,6 +263,213 @@
       "nativeText": "I lost my passport",
       "romanization": null,
       "audioKey": "travel-phrases/tanzania/lost_passport.mp3"
+    },
+    {
+      "id": "pay_with_mpesa_tz",
+      "category": "shopping",
+      "nativeText": "Can I pay with M-Pesa here?",
+      "translation": {
+        "en-US": "Can I pay with M-Pesa here?",
+        "zh-CN": "这里可以用 M-Pesa 支付吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/tanzania/pay_with_mpesa_tz.mp3"
+    },
+    {
+      "id": "airport_bus_where_tz",
+      "category": "transport",
+      "nativeText": "Where do I catch the airport bus?",
+      "translation": {
+        "en-US": "Where do I catch the airport bus?",
+        "zh-CN": "去机场的巴士在哪里坐？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/tanzania/airport_bus_where_tz.mp3"
+    },
+    {
+      "id": "go_to_this_address_tz",
+      "category": "transport",
+      "nativeText": "Please take me to this address.",
+      "translation": {
+        "en-US": "Please take me to this address.",
+        "zh-CN": "请带我去这个地址。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/tanzania/go_to_this_address_tz.mp3"
+    },
+    {
+      "id": "ferry_terminal_tz",
+      "category": "transport",
+      "nativeText": "Where is the ferry terminal?",
+      "translation": {
+        "en-US": "Where is the ferry terminal?",
+        "zh-CN": "渡轮码头在哪里？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/tanzania/ferry_terminal_tz.mp3"
+    },
+    {
+      "id": "leave_luggage_before_checkin_tz",
+      "category": "hotel",
+      "nativeText": "Can I leave my luggage before check-in?",
+      "translation": {
+        "en-US": "Can I leave my luggage before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/tanzania/leave_luggage_before_checkin_tz.mp3"
+    },
+    {
+      "id": "arrive_late_tonight_tz",
+      "category": "hotel",
+      "nativeText": "I will be arriving late tonight.",
+      "translation": {
+        "en-US": "I will be arriving late tonight.",
+        "zh-CN": "我今晚会晚一点到。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/tanzania/arrive_late_tonight_tz.mp3"
+    },
+    {
+      "id": "without_chilli_tz",
+      "category": "dining",
+      "nativeText": "Could I get this without chilli?",
+      "translation": {
+        "en-US": "Could I get this without chilli?",
+        "zh-CN": "这个可以不要辣吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/tanzania/without_chilli_tz.mp3"
+    },
+    {
+      "id": "takeaway_tanzania",
+      "category": "dining",
+      "nativeText": "Can you pack it to go, please?",
+      "translation": {
+        "en-US": "Can you pack it to go, please?",
+        "zh-CN": "可以帮我打包带走吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/tanzania/takeaway_tanzania.mp3"
+    },
+    {
+      "id": "bottled_water_tz",
+      "category": "dining",
+      "nativeText": "Could I have bottled water, please?",
+      "translation": {
+        "en-US": "Could I have bottled water, please?",
+        "zh-CN": "请给我瓶装水。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/tanzania/bottled_water_tz.mp3"
+    },
+    {
+      "id": "write_address_tz",
+      "category": "basics",
+      "nativeText": "Could you write the address down clearly?",
+      "translation": {
+        "en-US": "Could you write the address down clearly?",
+        "zh-CN": "可以把地址写清楚吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/tanzania/write_address_tz.mp3"
+    },
+    {
+      "id": "daladala_stage_tz",
+      "category": "transport",
+      "nativeText": "Where is the dala-dala stand for town?",
+      "translation": {
+        "en-US": "Where is the dala-dala stand for town?",
+        "zh-CN": "去市区的小巴站在哪里？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/tanzania/daladala_stage_tz.mp3"
+    },
+    {
+      "id": "missed_last_ferry_tz",
+      "category": "emergency",
+      "nativeText": "I missed the last ferry.",
+      "translation": {
+        "en-US": "I missed the last ferry.",
+        "zh-CN": "我错过最后一班渡轮了。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/tanzania/missed_last_ferry_tz.mp3"
+    },
+    {
+      "id": "zanzibar_ferry_tz_bonus",
+      "category": "transport",
+      "nativeText": "Is this the ferry for Zanzibar?",
+      "translation": {
+        "en-US": "Is this the ferry for Zanzibar?",
+        "zh-CN": "这是去桑给巴尔的渡轮吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/tanzania/zanzibar_ferry_tz_bonus.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for Tanzania with audio, built for airport pickups, ferries, lodge check-ins, safari days, and everyday payment or direction questions.",
+    "zh-CN": "坦桑尼亚旅行短语卡，围绕机场接驳、渡轮、营地入住、safari 日程，以及支付和问路等高频场景整理。"
+  },
+  "intro": {
+    "en-US": "Built for Tanzania trips where airport pickups, ferry terminals, lodge transfers, and safari or beach-day plans all come up quickly. These cards help when you need short Swahili for timing, directions, or simple food and service requests.",
+    "zh-CN": "这套坦桑尼亚短语适合那种机场接驳、渡轮码头、营地交通，以及 safari 或海边日程会快速出现的旅行节奏。遇到要问时间、方向，或提出简短餐饮和服务需求时，短语卡会很有帮助。"
+  },
+  "teaser": {
+    "en-US": "Built for Tanzania airport pickups, ferries, safari or beach days, and lodge or payment conversations.",
+    "zh-CN": "适合坦桑尼亚的机场接驳、渡轮、safari 或海边日程，以及营地和支付沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep transport phrases ready for airport pickups, ferries, and longer lodge or island transfers before you start moving around.",
+      "Meal and service phrases help most with lodge timing, water, simple food requests, and what is included in a plan.",
+      "Payment and direction cards are useful when you want to confirm the total, the pickup point, or how to reach the next stop quickly."
+    ],
+    "zh-CN": [
+      "如果有机场接驳、渡轮和去营地或岛上的长途交通，最好先把相关短语准备好。",
+      "在营地里，用餐时间、饮水、简短点餐和确认包含什么内容，这些短语都很高频。",
+      "支付和方向卡则适合快速确认总价、上车点，以及下一站怎么走。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "Airport pickups, ferries, and lodge transfers",
+      "Safari or beach days, water, and meal timing",
+      "Payments, directions, and pickup-point basics"
+    ],
+    "zh-CN": [
+      "机场接驳、渡轮与营地交通",
+      "safari 或海边日程、饮水与用餐时间",
+      "支付、问路与上车点基础沟通"
+    ]
+  },
+  "featured": false,
+  "relatedSlugs": [
+    "kenya",
+    "mauritius",
+    "south-africa"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrase groups matter most for a first Tanzania trip?",
+        "zh-CN": "第一次去坦桑尼亚旅行，最该先准备哪几组短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport, hotel, and dining. That covers airport arrivals, lodge check-in, ferry questions, and many first-day logistics.",
+        "zh-CN": "建议先看交通、酒店和餐饮三组，基本就能覆盖机场落地、营地入住、渡轮询问，以及第一天的大多数安排。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Why are phrase cards useful in Tanzania?",
+        "zh-CN": "为什么在坦桑尼亚旅行时，短语卡会很有用？"
+      },
+      "answer": {
+        "en-US": "Because many useful interactions depend on exact timing, transfers, and practical service details around lodges and travel days.",
+        "zh-CN": "因为很多高频沟通都和准确时间、转移安排，以及营地和出行日里的实际服务细节有关。"
+      }
     }
   ]
 }

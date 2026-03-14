@@ -263,6 +263,224 @@
       "nativeText": "Perdi o meu passaporte",
       "romanization": null,
       "audioKey": "travel-phrases/brazil/lost_passport.mp3"
+    },
+    {
+      "id": "topup_transit_card_br",
+      "category": "transport",
+      "nativeText": "Onde recarrego meu cartao de transporte?",
+      "translation": {
+        "en-US": "Where can I top up my transit card?",
+        "zh-CN": "我的交通卡在哪里可以充值？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/brazil/topup_transit_card_br.mp3"
+    },
+    {
+      "id": "bus_to_airport_br",
+      "category": "transport",
+      "nativeText": "Este onibus vai para o aeroporto?",
+      "translation": {
+        "en-US": "Does this bus go to the airport?",
+        "zh-CN": "这辆巴士去机场吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/brazil/bus_to_airport_br.mp3"
+    },
+    {
+      "id": "go_to_this_address_br",
+      "category": "transport",
+      "nativeText": "Pode me levar para este endereco?",
+      "translation": {
+        "en-US": "Can you take me to this address?",
+        "zh-CN": "可以带我去这个地址吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/brazil/go_to_this_address_br.mp3"
+    },
+    {
+      "id": "metro_to_centre_br",
+      "category": "transport",
+      "nativeText": "Onde pego o metro para o centro?",
+      "translation": {
+        "en-US": "Where do I catch the metro to downtown?",
+        "zh-CN": "去市中心的地铁在哪里坐？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/brazil/metro_to_centre_br.mp3"
+    },
+    {
+      "id": "leave_luggage_before_checkin_br",
+      "category": "hotel",
+      "nativeText": "Posso deixar a bagagem antes do check-in?",
+      "translation": {
+        "en-US": "Can I leave my luggage before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/brazil/leave_luggage_before_checkin_br.mp3"
+    },
+    {
+      "id": "arrive_late_tonight_br",
+      "category": "hotel",
+      "nativeText": "Vou chegar tarde hoje",
+      "translation": {
+        "en-US": "I will arrive late today.",
+        "zh-CN": "我今天会晚一点到。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/brazil/arrive_late_tonight_br.mp3"
+    },
+    {
+      "id": "without_onion_br",
+      "category": "dining",
+      "nativeText": "Sem cebola, por favor",
+      "translation": {
+        "en-US": "Without onions, please.",
+        "zh-CN": "请不要洋葱。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/brazil/without_onion_br.mp3"
+    },
+    {
+      "id": "without_ice_br",
+      "category": "dining",
+      "nativeText": "Pode deixar sem gelo?",
+      "translation": {
+        "en-US": "Could you make it without ice?",
+        "zh-CN": "可以不要冰吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/brazil/without_ice_br.mp3"
+    },
+    {
+      "id": "takeaway_brazil",
+      "category": "dining",
+      "nativeText": "Para viagem, por favor",
+      "translation": {
+        "en-US": "To go, please.",
+        "zh-CN": "请打包带走。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/brazil/takeaway_brazil.mp3"
+    },
+    {
+      "id": "accept_pix",
+      "category": "shopping",
+      "nativeText": "Aceita Pix?",
+      "translation": {
+        "en-US": "Do you accept Pix?",
+        "zh-CN": "可以用 Pix 支付吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/brazil/accept_pix.mp3"
+    },
+    {
+      "id": "write_in_portuguese_br",
+      "category": "basics",
+      "nativeText": "Pode escrever em portugues?",
+      "translation": {
+        "en-US": "Could you write it in Portuguese?",
+        "zh-CN": "可以帮我写成葡萄牙语吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/brazil/write_in_portuguese_br.mp3"
+    },
+    {
+      "id": "missed_last_metro_br",
+      "category": "emergency",
+      "nativeText": "Perdi o ultimo metro",
+      "translation": {
+        "en-US": "I missed the last metro.",
+        "zh-CN": "我错过末班地铁了。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/brazil/missed_last_metro_br.mp3"
+    },
+    {
+      "id": "sparkling_water_br_bonus",
+      "category": "dining",
+      "nativeText": "Tem agua com gas?",
+      "translation": {
+        "en-US": "Do you have sparkling water?",
+        "zh-CN": "有气泡水吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/brazil/sparkling_water_br_bonus.mp3"
+    },
+    {
+      "id": "tap_to_pay_br_bonus",
+      "category": "shopping",
+      "nativeText": "Posso pagar por aproximacao?",
+      "translation": {
+        "en-US": "Can I pay contactless?",
+        "zh-CN": "可以感应支付吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/brazil/tap_to_pay_br_bonus.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for Brazil with audio, built for airport rides, Pix or card questions, hotel check-ins, beach kiosks, and everyday Portuguese service conversations.",
+    "zh-CN": "巴西旅行短语卡，围绕机场交通、Pix 或刷卡、酒店入住、海滩小摊和葡语服务沟通等高频场景整理。"
+  },
+  "intro": {
+    "en-US": "Built for Brazil trips where airport arrivals, rideshares, beach kiosks, hotel counters, and intercity bus or flight questions come up quickly. These cards help when you need short Portuguese for payment, directions, or a simple food request.",
+    "zh-CN": "这套巴西短语适合那种机场落地、网约车、海滩小摊、酒店前台，以及巴士或航班询问会快速出现的旅行节奏。遇到要问支付、方向或简单点餐时，短语卡会很实用。"
+  },
+  "teaser": {
+    "en-US": "Built for Brazil airport rides, Pix or card questions, beach kiosks, and hotel or bus-day logistics.",
+    "zh-CN": "适合巴西的机场交通、Pix 或刷卡、海滩小摊以及酒店和巴士行程沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep transport phrases ready for airport arrivals, rideshares, and long-distance bus or domestic flight questions.",
+      "Payment phrases are especially useful because you may need to ask about Pix, cards, or cash before ordering something small.",
+      "Dining phrases help at beach kiosks, cafes, and casual restaurants when you want takeaway, less ice, or a quick recommendation."
+    ],
+    "zh-CN": [
+      "机场落地、网约车，以及长途巴士或国内航班相关问题，最好提前备好交通短语。",
+      "支付类短语尤其有用，因为很多时候你会先想确认能不能 Pix、刷卡还是现金。",
+      "在海滩小摊、咖啡馆和轻松餐厅里，想外带、少冰或让对方推荐时，餐饮短语会特别好用。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "Airport rides, Pix, and card questions",
+      "Beach kiosks, takeaway, and casual dining",
+      "Hotels, buses, and domestic travel basics"
+    ],
+    "zh-CN": [
+      "机场交通、Pix 与刷卡询问",
+      "海滩小摊、外带与轻餐饮",
+      "酒店、巴士与国内出行基础沟通"
+    ]
+  },
+  "featured": false,
+  "relatedSlugs": [
+    "argentina",
+    "peru",
+    "colombia"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrase groups matter most for a first Brazil trip?",
+        "zh-CN": "第一次去巴西旅行，最该先准备哪几组短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport, hotel, and dining. That covers airport rides, check-in, payment questions, and most first-day food stops.",
+        "zh-CN": "建议先看交通、酒店和餐饮三组，基本就能覆盖机场交通、入住办理、支付询问，以及第一天大部分用餐场景。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Why are payment phrases especially useful in Brazil?",
+        "zh-CN": "为什么在巴西旅行时，支付类短语特别有用？"
+      },
+      "answer": {
+        "en-US": "Because payment methods can vary by shop or stall. Asking first about Pix, card, or cash keeps small transactions simple.",
+        "zh-CN": "因为不同店铺和摊位的支付方式可能不一样，先问清楚是 Pix、刷卡还是现金，会让很多小额消费更顺利。"
+      }
     }
   ]
 }

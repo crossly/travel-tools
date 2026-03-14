@@ -263,6 +263,213 @@
       "nativeText": "मेरा पासपोर्ट खो गया है",
       "romanization": "Mera passport kho gaya hai",
       "audioKey": "travel-phrases/india/lost_passport.mp3"
+    },
+    {
+      "id": "metro_card_topup_in",
+      "category": "transport",
+      "nativeText": "मैं यहाँ मेट्रो कार्ड कहाँ रिचार्ज करूँ?",
+      "translation": {
+        "en-US": "Where can I top up my metro card here?",
+        "zh-CN": "这里在哪里可以给地铁卡充值？"
+      },
+      "romanization": "Main yahan metro card kahan recharge karun?",
+      "audioKey": "travel-phrases/india/metro_card_topup_in.mp3"
+    },
+    {
+      "id": "metro_to_airport_in",
+      "category": "transport",
+      "nativeText": "क्या यह मेट्रो हवाई अड्डे जाती है?",
+      "translation": {
+        "en-US": "Does this metro go to the airport?",
+        "zh-CN": "这班地铁去机场吗？"
+      },
+      "romanization": "Kya yeh metro hawai adde jaati hai?",
+      "audioKey": "travel-phrases/india/metro_to_airport_in.mp3"
+    },
+    {
+      "id": "go_to_this_address_in",
+      "category": "transport",
+      "nativeText": "कृपया मुझे इस पते पर ले चलिए",
+      "translation": {
+        "en-US": "Please take me to this address.",
+        "zh-CN": "请带我去这个地址。"
+      },
+      "romanization": "Kripya mujhe is pate par le chaliye",
+      "audioKey": "travel-phrases/india/go_to_this_address_in.mp3"
+    },
+    {
+      "id": "platform_number_in",
+      "category": "transport",
+      "nativeText": "प्लेटफॉर्म नंबर कौन सा है?",
+      "translation": {
+        "en-US": "Which platform number is it?",
+        "zh-CN": "是哪个站台？"
+      },
+      "romanization": "Platform number kaun sa hai?",
+      "audioKey": "travel-phrases/india/platform_number_in.mp3"
+    },
+    {
+      "id": "leave_luggage_before_checkin_in",
+      "category": "hotel",
+      "nativeText": "क्या मैं चेक-इन से पहले सामान रख सकता हूँ?",
+      "translation": {
+        "en-US": "Can I leave my luggage before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": "Kya main check-in se pehle samaan rakh sakta hoon?",
+      "audioKey": "travel-phrases/india/leave_luggage_before_checkin_in.mp3"
+    },
+    {
+      "id": "arrive_late_tonight_in",
+      "category": "hotel",
+      "nativeText": "मैं आज रात देर से पहुँचूँगा",
+      "translation": {
+        "en-US": "I will arrive late tonight.",
+        "zh-CN": "我今晚会晚一点到。"
+      },
+      "romanization": "Main aaj raat der se pahunchunga",
+      "audioKey": "travel-phrases/india/arrive_late_tonight_in.mp3"
+    },
+    {
+      "id": "less_spicy_in",
+      "category": "dining",
+      "nativeText": "कृपया कम मसालेदार बनाइए",
+      "translation": {
+        "en-US": "Please make it less spicy.",
+        "zh-CN": "请做得不要太辣。"
+      },
+      "romanization": "Kripya kam masaledar banaiye",
+      "audioKey": "travel-phrases/india/less_spicy_in.mp3"
+    },
+    {
+      "id": "without_onion_in",
+      "category": "dining",
+      "nativeText": "कृपया बिना प्याज के",
+      "translation": {
+        "en-US": "Please make it without onions.",
+        "zh-CN": "请不要洋葱。"
+      },
+      "romanization": "Kripya bina pyaz ke",
+      "audioKey": "travel-phrases/india/without_onion_in.mp3"
+    },
+    {
+      "id": "pack_it_to_go_in",
+      "category": "dining",
+      "nativeText": "कृपया इसे पैक कर दीजिए",
+      "translation": {
+        "en-US": "Please pack it to go.",
+        "zh-CN": "请帮我打包带走。"
+      },
+      "romanization": "Kripya ise pack kar dijiye",
+      "audioKey": "travel-phrases/india/pack_it_to_go_in.mp3"
+    },
+    {
+      "id": "pay_by_upi_in",
+      "category": "shopping",
+      "nativeText": "क्या मैं UPI से भुगतान कर सकता हूँ?",
+      "translation": {
+        "en-US": "Can I pay by UPI?",
+        "zh-CN": "可以用 UPI 支付吗？"
+      },
+      "romanization": "Kya main UPI se bhugtan kar sakta hoon?",
+      "audioKey": "travel-phrases/india/pay_by_upi_in.mp3"
+    },
+    {
+      "id": "write_in_hindi_in",
+      "category": "basics",
+      "nativeText": "कृपया इसे हिंदी में लिख दीजिए",
+      "translation": {
+        "en-US": "Please write it in Hindi.",
+        "zh-CN": "请帮我写成印地语。"
+      },
+      "romanization": "Kripya ise Hindi mein likh dijiye",
+      "audioKey": "travel-phrases/india/write_in_hindi_in.mp3"
+    },
+    {
+      "id": "missed_last_metro_in",
+      "category": "emergency",
+      "nativeText": "मैं आखिरी मेट्रो छूट गई",
+      "translation": {
+        "en-US": "I missed the last metro.",
+        "zh-CN": "我错过末班地铁了。"
+      },
+      "romanization": "Main aakhiri metro chhoot gayi",
+      "audioKey": "travel-phrases/india/missed_last_metro_in.mp3"
+    },
+    {
+      "id": "apple_google_pay_in_bonus",
+      "category": "shopping",
+      "nativeText": "क्या यहाँ एप्पल पे या गूगल पे चलेगा?",
+      "translation": {
+        "en-US": "Will Apple Pay or Google Pay work here?",
+        "zh-CN": "这里可以用 Apple Pay 或 Google Pay 吗？"
+      },
+      "romanization": "Kya yahan Apple Pay ya Google Pay chalega?",
+      "audioKey": "travel-phrases/india/apple_google_pay_in_bonus.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for India with audio, built for airport pickups, train platforms, hotel check-ins, food orders, and everyday payment or direction questions.",
+    "zh-CN": "印度旅行短语卡，围绕机场接驳、火车站台、酒店入住、点餐和支付或问路等高频场景整理。"
+  },
+  "intro": {
+    "en-US": "Built for India trips where airport transfers, station platforms, hotel counters, and restaurant or market conversations all move quickly. These cards help when you need short Hindi for routes, room requests, or simple food and payment questions.",
+    "zh-CN": "这套印度短语适合那种机场接驳、火车站台、酒店前台，以及餐厅和市场沟通节奏都很快的旅行场景。遇到要问路线、房间需求，或简短餐饮和支付问题时，短语卡会很有帮助。"
+  },
+  "teaser": {
+    "en-US": "Built for India airport transfers, train platforms, hotel counters, and dining or market conversations.",
+    "zh-CN": "适合印度的机场接驳、火车站台、酒店柜台，以及餐饮和市场沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep transport phrases ready for airport pickups, train platforms, and station changes before long travel days.",
+      "Dining phrases are especially useful when you want to ask about spice, filtered water, or whether a meal is vegetarian.",
+      "Hotel and payment phrases help with check-in timing, room issues, and small purchases where you want to confirm the total clearly."
+    ],
+    "zh-CN": [
+      "如果有机场接驳和火车出行，最好先备好站台、换站和上车相关短语。",
+      "餐饮短语尤其适合用来说明辣度、过滤水，以及菜品是否是素食。",
+      "酒店和支付类短语则更适合处理入住时间、房间问题和小额消费总价确认。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "Airport pickups, train platforms, and routes",
+      "Spice, vegetarian meals, and water questions",
+      "Hotels, payments, and practical service requests"
+    ],
+    "zh-CN": [
+      "机场接驳、火车站台与路线询问",
+      "辣度、素食与饮水问题",
+      "酒店、支付与实用服务请求"
+    ]
+  },
+  "featured": false,
+  "relatedSlugs": [
+    "turkey",
+    "united-arab-emirates",
+    "singapore"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrase groups matter most for a first India trip?",
+        "zh-CN": "第一次去印度旅行，最该先准备哪几组短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport, hotel, and dining. That covers airport arrivals, train platforms, check-in, and most first-day food questions.",
+        "zh-CN": "建议先看交通、酒店和餐饮三组，基本就能覆盖机场落地、火车站台、入住办理，以及第一天大部分饮食相关问题。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Why are phrase cards especially useful in India?",
+        "zh-CN": "为什么在印度旅行时，短语卡会特别有用？"
+      },
+      "answer": {
+        "en-US": "Because many practical travel moments depend on short, exact requests around transport, food preferences, and service details.",
+        "zh-CN": "因为很多高频场景都依赖简短而准确的表达，比如交通、饮食偏好和服务细节，提前备好会轻松很多。"
+      }
     }
   ]
 }

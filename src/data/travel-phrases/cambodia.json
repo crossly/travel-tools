@@ -263,6 +263,213 @@
       "nativeText": "ខ្ញុំបាត់លិខិតឆ្លងដែន",
       "romanization": "Khnhom bat likhet chlong daen",
       "audioKey": null
+    },
+    {
+      "id": "topup_transit_card_kh",
+      "category": "transport",
+      "nativeText": "អាចបញ្ចូលលុយកាតដឹកជញ្ជូននៅទីនេះបានទេ?",
+      "translation": {
+        "en-US": "Can I top up my transit card here?",
+        "zh-CN": "这里可以给交通卡充值吗？"
+      },
+      "romanization": "Ach banhchol luy kat doek chonhchean nov tinih ban te?",
+      "audioKey": null
+    },
+    {
+      "id": "exit_two_where_kh",
+      "category": "transport",
+      "nativeText": "ច្រកចេញលេខពីរនៅឯណា?",
+      "translation": {
+        "en-US": "Where is exit 2?",
+        "zh-CN": "2号出口在哪里？"
+      },
+      "romanization": "Chrok chenhleh lek pi nov aena?",
+      "audioKey": null
+    },
+    {
+      "id": "airport_train_where_kh",
+      "category": "transport",
+      "nativeText": "រថភ្លើងទៅព្រលានយន្តហោះនៅឯណា?",
+      "translation": {
+        "en-US": "Where is the train to the airport?",
+        "zh-CN": "去机场的火车在哪里？"
+      },
+      "romanization": "Rotphleung tov prolian yonhah nov aena?",
+      "audioKey": null
+    },
+    {
+      "id": "go_to_this_address_kh",
+      "category": "transport",
+      "nativeText": "សូមទៅអាសយដ្ឋាននេះ",
+      "translation": {
+        "en-US": "Please go to this address.",
+        "zh-CN": "请去这个地址。"
+      },
+      "romanization": "Som tov asaythan nih",
+      "audioKey": null
+    },
+    {
+      "id": "leave_luggage_before_checkin_kh",
+      "category": "hotel",
+      "nativeText": "ខ្ញុំអាចទុកកាបូបមុន check-in បានទេ?",
+      "translation": {
+        "en-US": "Can I leave my luggage before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": "Khnhom ach tuk kabob mun check-in ban te?",
+      "audioKey": null
+    },
+    {
+      "id": "arrive_late_tonight_kh",
+      "category": "hotel",
+      "nativeText": "ខ្ញុំនឹងមកដល់យឺតយប់នេះ",
+      "translation": {
+        "en-US": "I will arrive late tonight.",
+        "zh-CN": "我今晚会晚一点到。"
+      },
+      "romanization": "Khnhom neng mok dol yeut yub nih",
+      "audioKey": null
+    },
+    {
+      "id": "no_chilli_kh",
+      "category": "dining",
+      "nativeText": "សូមកុំដាក់ម្ទេស",
+      "translation": {
+        "en-US": "Please do not add chilli.",
+        "zh-CN": "请不要加辣。"
+      },
+      "romanization": "Som kom dak mtes",
+      "audioKey": null
+    },
+    {
+      "id": "no_ice_kh",
+      "category": "dining",
+      "nativeText": "សូមមិនដាក់ទឹកកក",
+      "translation": {
+        "en-US": "Please do not add ice.",
+        "zh-CN": "请不要加冰。"
+      },
+      "romanization": "Som min dak teuk kak",
+      "audioKey": null
+    },
+    {
+      "id": "takeaway_cambodia",
+      "category": "dining",
+      "nativeText": "សូមវេចខ្ចប់យកទៅ",
+      "translation": {
+        "en-US": "Please pack it to go.",
+        "zh-CN": "请打包带走。"
+      },
+      "romanization": "Som vech khchob yok tov",
+      "audioKey": null
+    },
+    {
+      "id": "aba_or_card_kh",
+      "category": "shopping",
+      "nativeText": "អាចបង់តាម ABA ឬកាតបានទេ?",
+      "translation": {
+        "en-US": "Can I pay by ABA or card?",
+        "zh-CN": "可以用 ABA 或刷卡吗？"
+      },
+      "romanization": "Ach bang tam ABA rue kat ban te?",
+      "audioKey": null
+    },
+    {
+      "id": "write_in_khmer_kh",
+      "category": "basics",
+      "nativeText": "សូមសរសេរជាភាសាខ្មែរ",
+      "translation": {
+        "en-US": "Please write it in Khmer.",
+        "zh-CN": "请帮我写成高棉语。"
+      },
+      "romanization": "Som sase chea pheasa Khmer",
+      "audioKey": null
+    },
+    {
+      "id": "missed_last_train_kh",
+      "category": "emergency",
+      "nativeText": "ខ្ញុំខកខានរថភ្លើងចុងក្រោយ",
+      "translation": {
+        "en-US": "I missed the last train.",
+        "zh-CN": "我错过末班火车了。"
+      },
+      "romanization": "Khnhom khak khan rotphleung chongkraoy",
+      "audioKey": null
+    },
+    {
+      "id": "tuktuk_to_hotel_kh_bonus",
+      "category": "transport",
+      "nativeText": "តុកតុក សូមទៅសណ្ឋាគារនេះ",
+      "translation": {
+        "en-US": "Tuk-tuk, please go to this hotel.",
+        "zh-CN": "突突车，请去这家酒店。"
+      },
+      "romanization": "Tuk-tuk, som tov santhakia nih",
+      "audioKey": null
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for Cambodia with audio, built for tuk-tuks, temple visits, guesthouses, market bargaining, and everyday payment or direction questions.",
+    "zh-CN": "柬埔寨旅行短语卡，围绕 tuk-tuk、寺庙参观、旅馆入住、市场砍价和支付或问路等高频场景整理。"
+  },
+  "intro": {
+    "en-US": "Built for Cambodia trips where tuk-tuk rides, temple tickets, guesthouse check-ins, and market conversations all come up quickly. These cards help when you need short Khmer for directions, small payments, or simple service requests.",
+    "zh-CN": "这套柬埔寨短语适合那种 tuk-tuk、寺庙门票、旅馆入住和市场沟通会快速出现的旅行节奏。遇到要问方向、小额支付或提出简单需求时，短语卡会很有帮助。"
+  },
+  "teaser": {
+    "en-US": "Built for Cambodia tuk-tuks, temple stops, guesthouses, and market or cash conversations.",
+    "zh-CN": "适合柬埔寨的 tuk-tuk、寺庙、旅馆以及市场和现金沟通场景。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep transport phrases ready for tuk-tuks, bus stations, and airport pickups before you move between neighborhoods or cities.",
+      "Temple and market visits go smoother when you can ask about entry, prices, or where to go next in short Khmer.",
+      "Small payments still come up often, so a simple phrase card helps when you want to confirm cash, change, or the total price."
+    ],
+    "zh-CN": [
+      "如果要坐 tuk-tuk、去巴士站或机场接驳，最好先准备好相关交通短语。",
+      "参观寺庙和逛市场时，能用几句简短高棉语问门票、价格或下一步怎么走，会顺很多。",
+      "小额现金支付依然很常见，所以想确认零钱、总价或怎么付时，短语卡会特别实用。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "Tuk-tuks, temple tickets, and market basics",
+      "Guesthouses, cash questions, and simple directions",
+      "Airport pickups, buses, and local service requests"
+    ],
+    "zh-CN": [
+      "tuk-tuk、寺庙门票与市场沟通",
+      "旅馆、现金支付与基础问路",
+      "机场接驳、巴士与本地服务请求"
+    ]
+  },
+  "featured": false,
+  "relatedSlugs": [
+    "thailand",
+    "vietnam",
+    "malaysia"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrase groups matter most for a first Cambodia trip?",
+        "zh-CN": "第一次去柬埔寨旅行，最该先准备哪几组短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport, hotel, and shopping. That covers tuk-tuks, guesthouse check-in, market questions, and most first-day logistics.",
+        "zh-CN": "建议先看交通、酒店和购物三组，基本就能覆盖 tuk-tuk、旅馆入住、市场询问，以及第一天的大多数安排。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Why are phrase cards especially useful in Cambodia?",
+        "zh-CN": "为什么在柬埔寨旅行时，短语卡会特别有用？"
+      },
+      "answer": {
+        "en-US": "Because many interactions are short, local, and cash-based. Having the phrase ready helps you move faster without awkward back-and-forth.",
+        "zh-CN": "因为很多沟通都很短、很本地，也常常和现金有关。提前备好一句话，能让你少很多来回解释。"
+      }
     }
   ]
 }

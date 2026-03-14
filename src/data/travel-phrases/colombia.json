@@ -263,6 +263,213 @@
       "nativeText": "He perdido mi pasaporte",
       "romanization": null,
       "audioKey": "travel-phrases/colombia/lost_passport.mp3"
+    },
+    {
+      "id": "transmilenio_topup_where",
+      "category": "transport",
+      "nativeText": "¿Dónde recargo la tarjeta de TransMilenio?",
+      "translation": {
+        "en-US": "Where can I top up my TransMilenio card?",
+        "zh-CN": "TransMilenio 卡在哪里可以充值？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/transmilenio_topup_where.mp3"
+    },
+    {
+      "id": "bus_to_airport_co",
+      "category": "transport",
+      "nativeText": "¿Este bus va al aeropuerto?",
+      "translation": {
+        "en-US": "Does this bus go to the airport?",
+        "zh-CN": "这辆巴士去机场吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/bus_to_airport_co.mp3"
+    },
+    {
+      "id": "go_to_this_address_co",
+      "category": "transport",
+      "nativeText": "Lléveme a esta dirección, por favor",
+      "translation": {
+        "en-US": "Please take me to this address.",
+        "zh-CN": "请带我去这个地址。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/go_to_this_address_co.mp3"
+    },
+    {
+      "id": "transmilenio_to_centre_co",
+      "category": "transport",
+      "nativeText": "¿Dónde tomo el TransMilenio al centro?",
+      "translation": {
+        "en-US": "Where do I catch the TransMilenio to downtown?",
+        "zh-CN": "去市中心的 TransMilenio 在哪里坐？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/transmilenio_to_centre_co.mp3"
+    },
+    {
+      "id": "leave_luggage_before_checkin_co",
+      "category": "hotel",
+      "nativeText": "¿Puedo dejar la maleta antes del check-in?",
+      "translation": {
+        "en-US": "Can I leave my suitcase before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/leave_luggage_before_checkin_co.mp3"
+    },
+    {
+      "id": "arrive_late_tonight_co",
+      "category": "hotel",
+      "nativeText": "Voy a llegar tarde esta noche",
+      "translation": {
+        "en-US": "I will arrive late tonight.",
+        "zh-CN": "我今晚会晚一点到。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/arrive_late_tonight_co.mp3"
+    },
+    {
+      "id": "without_cilantro_co",
+      "category": "dining",
+      "nativeText": "Sin cilantro, por favor",
+      "translation": {
+        "en-US": "Without cilantro, please.",
+        "zh-CN": "请不要香菜。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/without_cilantro_co.mp3"
+    },
+    {
+      "id": "still_water_colombia",
+      "category": "dining",
+      "nativeText": "¿Me regala una botella de agua sin gas?",
+      "translation": {
+        "en-US": "Could I have a bottle of still water?",
+        "zh-CN": "请给我一瓶无气泡水。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/still_water_colombia.mp3"
+    },
+    {
+      "id": "pack_to_go_co",
+      "category": "dining",
+      "nativeText": "¿Me lo puede empacar para llevar?",
+      "translation": {
+        "en-US": "Can you pack this to go?",
+        "zh-CN": "可以帮我打包带走吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/pack_to_go_co.mp3"
+    },
+    {
+      "id": "nequi_or_card",
+      "category": "shopping",
+      "nativeText": "¿Aceptan Nequi o tarjeta?",
+      "translation": {
+        "en-US": "Do you take Nequi or card?",
+        "zh-CN": "可以用 Nequi 或刷卡吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/nequi_or_card.mp3"
+    },
+    {
+      "id": "write_in_spanish_co",
+      "category": "basics",
+      "nativeText": "¿Lo puede escribir en español?",
+      "translation": {
+        "en-US": "Could you write it in Spanish?",
+        "zh-CN": "可以帮我写成西班牙语吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/write_in_spanish_co.mp3"
+    },
+    {
+      "id": "missed_last_bus_co",
+      "category": "emergency",
+      "nativeText": "Perdí el último bus",
+      "translation": {
+        "en-US": "I missed the last bus.",
+        "zh-CN": "我错过末班巴士了。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/missed_last_bus_co.mp3"
+    },
+    {
+      "id": "pickup_point_colombia_bonus",
+      "category": "transport",
+      "nativeText": "¿Me deja en este punto de recogida?",
+      "translation": {
+        "en-US": "Can you drop me at this pick-up point?",
+        "zh-CN": "可以把我送到这个上车点吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/colombia/pickup_point_colombia_bonus.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for Colombia with audio, built for airport rides, city transit, hotel check-ins, cafe stops, and everyday payment or direction questions.",
+    "zh-CN": "哥伦比亚旅行短语卡，围绕机场交通、城市通勤、酒店入住、咖啡馆和支付或问路等高频场景整理。"
+  },
+  "intro": {
+    "en-US": "Built for Colombia trips where airport pickups, city transit, coffee stops, and hotel counters come up quickly. These cards help when you need short Spanish for addresses, simple food orders, or everyday service conversations.",
+    "zh-CN": "这套哥伦比亚短语适合那种机场接驳、城市交通、咖啡馆和酒店前台会快速出现的旅行节奏。遇到要确认地址、简短点单，或者处理日常服务沟通时，短语卡会很有用。"
+  },
+  "teaser": {
+    "en-US": "Built for Colombia airport rides, city transit, coffee stops, and hotel or local-direction conversations.",
+    "zh-CN": "适合哥伦比亚的机场交通、城市通勤、咖啡馆，以及酒店和本地问路沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep transport phrases ready for airport pickups, city buses or metro, and address checks before you move around.",
+      "Cafe and dining phrases are useful for coffee orders, set lunches, and quick payment questions in smaller spots.",
+      "A short phrase card helps when you want to confirm the exact destination or ask for help without a long explanation."
+    ],
+    "zh-CN": [
+      "机场接驳、城市公交或地铁，以及地址确认相关短语最好提前准备好。",
+      "在咖啡馆和小餐馆里，咖啡点单、套餐和支付问题都很常用。",
+      "如果你只想确认准确目的地或快速求助，不想解释太多，短语卡会特别方便。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "Airport rides, city transit, and address checks",
+      "Coffee orders, local lunches, and payment basics",
+      "Hotels, directions, and quick service requests"
+    ],
+    "zh-CN": [
+      "机场交通、城市通勤与地址确认",
+      "咖啡点单、本地套餐与支付基础沟通",
+      "酒店、问路与快速服务请求"
+    ]
+  },
+  "featured": false,
+  "relatedSlugs": [
+    "peru",
+    "mexico",
+    "costa-rica"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrase groups matter most for a first Colombia trip?",
+        "zh-CN": "第一次去哥伦比亚旅行，最该先准备哪几组短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport, hotel, and dining. That covers airport arrivals, local transit, check-in, and most first-day food or cafe stops.",
+        "zh-CN": "建议先看交通、酒店和餐饮三组，基本就能覆盖机场落地、本地交通、入住办理，以及第一天大部分用餐和咖啡场景。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Why are short phrase cards useful in Colombia?",
+        "zh-CN": "为什么在哥伦比亚旅行时，简短短语卡会很有用？"
+      },
+      "answer": {
+        "en-US": "Because many useful interactions are quick and practical: rides, addresses, small meals, and simple service questions.",
+        "zh-CN": "因为很多高频沟通都很实际也很快，比如交通、地址、小餐和简短服务需求，提前备好一句话会轻松很多。"
+      }
     }
   ]
 }

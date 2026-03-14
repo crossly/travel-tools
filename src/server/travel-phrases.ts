@@ -17,6 +17,7 @@ export async function servePhraseAudio(
   }
 
   const phrase = pack.phrases.find((entry) => entry.id === phraseId)
+    ?? pack.extraPhrases?.find((entry) => entry.id === phraseId)
   if (!phrase) {
     return jsonError('PHRASE_NOT_FOUND', 404)
   }

@@ -263,6 +263,213 @@
       "nativeText": "Ich habe meinen Pass verloren",
       "romanization": null,
       "audioKey": "travel-phrases/austria/lost_passport.mp3"
+    },
+    {
+      "id": "railjet_platform_at",
+      "category": "transport",
+      "nativeText": "Wo ist der Bahnsteig fur den Railjet?",
+      "translation": {
+        "en-US": "Which platform is for the Railjet?",
+        "zh-CN": "Railjet 在哪个站台？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/railjet_platform_at.mp3"
+    },
+    {
+      "id": "validate_ticket_at",
+      "category": "transport",
+      "nativeText": "Wo kann ich mein Ticket entwerten?",
+      "translation": {
+        "en-US": "Where can I validate my ticket?",
+        "zh-CN": "我在哪里给车票打卡？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/validate_ticket_at.mp3"
+    },
+    {
+      "id": "train_to_airport_at",
+      "category": "transport",
+      "nativeText": "Fahrt dieser Zug zum Flughafen?",
+      "translation": {
+        "en-US": "Does this train go to the airport?",
+        "zh-CN": "这班火车去机场吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/train_to_airport_at.mp3"
+    },
+    {
+      "id": "go_to_this_address_at",
+      "category": "transport",
+      "nativeText": "Bitte fahren Sie zu dieser Adresse",
+      "translation": {
+        "en-US": "Please go to this address.",
+        "zh-CN": "请去这个地址。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/go_to_this_address_at.mp3"
+    },
+    {
+      "id": "leave_luggage_before_checkin_at",
+      "category": "hotel",
+      "nativeText": "Kann ich mein Gepack vor dem Check-in abgeben?",
+      "translation": {
+        "en-US": "Can I leave my luggage before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/leave_luggage_before_checkin_at.mp3"
+    },
+    {
+      "id": "arrive_late_tonight_at",
+      "category": "hotel",
+      "nativeText": "Ich komme heute spat an",
+      "translation": {
+        "en-US": "I will arrive late tonight.",
+        "zh-CN": "我今晚会晚一点到。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/arrive_late_tonight_at.mp3"
+    },
+    {
+      "id": "melange_please_at",
+      "category": "dining",
+      "nativeText": "Eine Melange, bitte",
+      "translation": {
+        "en-US": "A Melange coffee, please.",
+        "zh-CN": "请给我一杯 Melange。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/melange_please_at.mp3"
+    },
+    {
+      "id": "without_onions_at",
+      "category": "dining",
+      "nativeText": "Bitte ohne Zwiebeln",
+      "translation": {
+        "en-US": "Without onions, please.",
+        "zh-CN": "请不要洋葱。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/without_onions_at.mp3"
+    },
+    {
+      "id": "takeaway_austria",
+      "category": "dining",
+      "nativeText": "Zum Mitnehmen, bitte",
+      "translation": {
+        "en-US": "To go, please.",
+        "zh-CN": "请打包带走。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/takeaway_austria.mp3"
+    },
+    {
+      "id": "pay_by_card_at",
+      "category": "shopping",
+      "nativeText": "Kann ich mit Karte zahlen?",
+      "translation": {
+        "en-US": "Can I pay by card?",
+        "zh-CN": "可以刷卡吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/pay_by_card_at.mp3"
+    },
+    {
+      "id": "write_in_german_at",
+      "category": "basics",
+      "nativeText": "Konnen Sie das auf Deutsch aufschreiben?",
+      "translation": {
+        "en-US": "Could you write that in German?",
+        "zh-CN": "可以帮我写成德语吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/write_in_german_at.mp3"
+    },
+    {
+      "id": "missed_last_train_at",
+      "category": "emergency",
+      "nativeText": "Ich habe den letzten Zug verpasst",
+      "translation": {
+        "en-US": "I missed the last train.",
+        "zh-CN": "我错过末班火车了。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/missed_last_train_at.mp3"
+    },
+    {
+      "id": "cat_airport_at_bonus",
+      "category": "transport",
+      "nativeText": "Ist das der CAT zum Flughafen?",
+      "translation": {
+        "en-US": "Is this the CAT to the airport?",
+        "zh-CN": "这是去机场的 CAT 列车吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/austria/cat_airport_at_bonus.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for Austria with audio, built for OeBB trains, trams, hotel check-ins, coffeehouses, and everyday city-service questions.",
+    "zh-CN": "奥地利旅行短语卡，围绕 OeBB 火车、电车、酒店入住、咖啡馆和城市服务沟通等高频场景整理。"
+  },
+  "intro": {
+    "en-US": "Built for Austria trips where rail platforms, tram stops, hotel counters, and coffeehouse orders can all come up in the same afternoon. These cards help when you need short German for train changes, room requests, or concise cafe conversations.",
+    "zh-CN": "这套奥地利短语适合那种火车站站台、电车站、酒店前台和咖啡馆点单会连续出现的旅行节奏。遇到要问火车变更、房间需求，或者在咖啡馆里做简短沟通时，短语卡会很方便。"
+  },
+  "teaser": {
+    "en-US": "Built for Austria OeBB trains, tram stops, coffeehouses, and hotel or museum-day logistics.",
+    "zh-CN": "适合奥地利的 OeBB、电车、咖啡馆以及酒店和博物馆行程沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep transport phrases ready for OeBB platforms, tram stops, and ticket questions before moving between cities.",
+      "Coffeehouse and bakery counters go smoother when you can ask for takeaway, table service, or the bill in short German.",
+      "Hotel phrases help most for check-in timing, room preferences, and asking how to reach museums or old-town areas."
+    ],
+    "zh-CN": [
+      "如果有跨城移动，最好先备好 OeBB 站台、电车站和车票相关短语。",
+      "在咖啡馆和面包店里，想问外带、堂食或要账单时，用简短德语会更顺。",
+      "酒店短语最适合处理入住时间、房间偏好，以及去博物馆或老城区怎么走这类问题。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "OeBB, trams, and ticket questions",
+      "Coffeehouses, bakeries, and the bill",
+      "Hotels, museums, and old-town directions"
+    ],
+    "zh-CN": [
+      "OeBB、电车与车票询问",
+      "咖啡馆、面包店与要账单",
+      "酒店、博物馆与老城问路"
+    ]
+  },
+  "featured": false,
+  "relatedSlugs": [
+    "germany",
+    "switzerland",
+    "italy"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrase groups matter most for a first Austria trip?",
+        "zh-CN": "第一次去奥地利旅行，最该先准备哪几组短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport, hotel, and dining. That covers OeBB, trams, check-in, and most first-day cafe or restaurant conversations.",
+        "zh-CN": "建议先看交通、酒店和餐饮三组，基本就能覆盖 OeBB、电车、入住办理，以及第一天大部分咖啡馆和餐厅沟通。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Why are phrase cards useful in Austria even in tourist cities?",
+        "zh-CN": "即使在奥地利游客很多的城市里，短语卡为什么也有用？"
+      },
+      "answer": {
+        "en-US": "Because ticket counters, cafe orders, and hotel conversations are often short and direct. Having the phrase ready keeps things moving.",
+        "zh-CN": "因为售票柜台、咖啡点单和酒店沟通通常都很简短直接，提前备好一句话会让整个过程更顺。"
+      }
     }
   ]
 }

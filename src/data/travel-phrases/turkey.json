@@ -263,6 +263,213 @@
       "nativeText": "Pasaportumu kaybettim",
       "romanization": null,
       "audioKey": "travel-phrases/turkey/lost_passport.mp3"
+    },
+    {
+      "id": "istanbulkart_topup_tr",
+      "category": "transport",
+      "nativeText": "Istanbulkartimi nerede doldurabilirim?",
+      "translation": {
+        "en-US": "Where can I top up my Istanbulkart?",
+        "zh-CN": "Istanbulkart 在哪里可以充值？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/istanbulkart_topup_tr.mp3"
+    },
+    {
+      "id": "metro_to_airport_tr",
+      "category": "transport",
+      "nativeText": "Bu metro havaalanina gidiyor mu?",
+      "translation": {
+        "en-US": "Does this metro go to the airport?",
+        "zh-CN": "这班地铁去机场吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/metro_to_airport_tr.mp3"
+    },
+    {
+      "id": "go_to_this_address_tr",
+      "category": "transport",
+      "nativeText": "Lutfen bu adrese gidin",
+      "translation": {
+        "en-US": "Please go to this address.",
+        "zh-CN": "请去这个地址。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/go_to_this_address_tr.mp3"
+    },
+    {
+      "id": "which_platform_tr",
+      "category": "transport",
+      "nativeText": "Dogru peron hangisi?",
+      "translation": {
+        "en-US": "Which platform is the correct one?",
+        "zh-CN": "正确的是哪个站台？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/which_platform_tr.mp3"
+    },
+    {
+      "id": "leave_luggage_before_checkin_tr",
+      "category": "hotel",
+      "nativeText": "Check-in oncesi bagajimi birakabilir miyim?",
+      "translation": {
+        "en-US": "Can I leave my luggage before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/leave_luggage_before_checkin_tr.mp3"
+    },
+    {
+      "id": "arrive_late_tonight_tr",
+      "category": "hotel",
+      "nativeText": "Bu gece gec gelecegim",
+      "translation": {
+        "en-US": "I will arrive late tonight.",
+        "zh-CN": "我今晚会晚一点到。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/arrive_late_tonight_tr.mp3"
+    },
+    {
+      "id": "without_onion_tr",
+      "category": "dining",
+      "nativeText": "Lutfen sogansiz olsun",
+      "translation": {
+        "en-US": "Without onions, please.",
+        "zh-CN": "请不要洋葱。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/without_onion_tr.mp3"
+    },
+    {
+      "id": "tea_less_sugar_tr",
+      "category": "dining",
+      "nativeText": "Bir cay, az sekerli olsun",
+      "translation": {
+        "en-US": "A tea with less sugar, please.",
+        "zh-CN": "请给我一杯少糖茶。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/tea_less_sugar_tr.mp3"
+    },
+    {
+      "id": "takeaway_turkey",
+      "category": "dining",
+      "nativeText": "Paket olabilir mi?",
+      "translation": {
+        "en-US": "Can I get it to go?",
+        "zh-CN": "可以打包带走吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/takeaway_turkey.mp3"
+    },
+    {
+      "id": "pay_by_card_tr",
+      "category": "shopping",
+      "nativeText": "Kart gecerli mi?",
+      "translation": {
+        "en-US": "Can I pay by card?",
+        "zh-CN": "可以刷卡吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/pay_by_card_tr.mp3"
+    },
+    {
+      "id": "write_in_turkish_tr",
+      "category": "basics",
+      "nativeText": "Bunu Turkce yazar misiniz?",
+      "translation": {
+        "en-US": "Could you write this in Turkish?",
+        "zh-CN": "可以帮我写成土耳其语吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/write_in_turkish_tr.mp3"
+    },
+    {
+      "id": "missed_last_metro_tr",
+      "category": "emergency",
+      "nativeText": "Son metroyu kacirdim",
+      "translation": {
+        "en-US": "I missed the last metro.",
+        "zh-CN": "我错过末班地铁了。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/missed_last_metro_tr.mp3"
+    },
+    {
+      "id": "apple_pay_tr_bonus",
+      "category": "shopping",
+      "nativeText": "Apple Pay gecerli mi?",
+      "translation": {
+        "en-US": "Do you accept Apple Pay?",
+        "zh-CN": "可以用 Apple Pay 吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/turkey/apple_pay_tr_bonus.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for Turkey with audio, built for airport transfers, Istanbulkart travel, hotel check-ins, bazaars, and everyday dining or payment questions.",
+    "zh-CN": "土耳其旅行短语卡，围绕机场接驳、Istanbulkart、酒店入住、市场，以及餐饮和支付沟通等高频场景整理。"
+  },
+  "intro": {
+    "en-US": "Built for Turkey trips where airport rides, ferries or trams, hotel counters, bazaars, and tea or kebab stops all come up quickly. These cards help when you need short Turkish for directions, prices, or a simple service request.",
+    "zh-CN": "这套土耳其短语适合那种机场交通、渡轮或电车、酒店前台、市场，以及茶馆和烤肉场景会快速出现的旅行节奏。遇到要问方向、价格或提出简单服务需求时，短语卡会很有帮助。"
+  },
+  "teaser": {
+    "en-US": "Built for Turkey airport rides, Istanbulkart travel, bazaars, and hotel or dining conversations.",
+    "zh-CN": "适合土耳其的机场交通、Istanbulkart、市场，以及酒店和餐饮沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep transport phrases ready for airport transfers, Istanbulkart, ferries, and tram stops before you move through the city.",
+      "Shopping phrases are most useful in bazaars when you want to ask the price, confirm what is included, or say you are just looking.",
+      "Dining cards help with tea, kebabs, takeaway, and payment questions in smaller local spots where speed matters."
+    ],
+    "zh-CN": [
+      "如果要用机场接驳、Istanbulkart、渡轮和电车，最好先把相关交通短语准备好。",
+      "在市场里，购物短语尤其适合问价格、确认包含什么，或者表达自己只是先看看。",
+      "在本地小店里，喝茶、烤肉、外带和支付问题都很常用，而且节奏通常很快。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "Airport rides, Istanbulkart, ferries, and trams",
+      "Bazaars, prices, and browsing basics",
+      "Tea, kebabs, takeaway, and payment questions"
+    ],
+    "zh-CN": [
+      "机场交通、Istanbulkart、渡轮与电车",
+      "市场、价格与逛店基础沟通",
+      "喝茶、烤肉、外带与支付问题"
+    ]
+  },
+  "featured": false,
+  "relatedSlugs": [
+    "greece",
+    "egypt",
+    "united-arab-emirates"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrase groups matter most for a first Turkey trip?",
+        "zh-CN": "第一次去土耳其旅行，最该先准备哪几组短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport, shopping, and dining. That covers airport arrivals, Istanbulkart, bazaars, and many first-day food or price questions.",
+        "zh-CN": "建议先看交通、购物和餐饮三组，基本就能覆盖机场落地、Istanbulkart、市场，以及第一天很多吃饭和价格相关问题。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Why are phrase cards especially useful in Turkey?",
+        "zh-CN": "为什么在土耳其旅行时，短语卡会特别有用？"
+      },
+      "answer": {
+        "en-US": "Because many high-frequency interactions revolve around transport, prices, and short local conversations where direct wording matters.",
+        "zh-CN": "因为很多高频沟通都围绕交通、价格和简短本地对话展开，这些场景里越直接越清楚越好。"
+      }
     }
   ]
 }

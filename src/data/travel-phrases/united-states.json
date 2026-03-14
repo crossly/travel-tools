@@ -263,6 +263,224 @@
       "nativeText": "I lost my passport",
       "romanization": null,
       "audioKey": "travel-phrases/united-states/lost_passport.mp3"
+    },
+    {
+      "id": "reload_transit_card_us",
+      "category": "transport",
+      "nativeText": "Where do I reload this transit card?",
+      "translation": {
+        "en-US": "Where do I reload this transit card?",
+        "zh-CN": "这张交通卡在哪里充值？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/united-states/reload_transit_card_us.mp3"
+    },
+    {
+      "id": "train_to_downtown_us",
+      "category": "transport",
+      "nativeText": "Which train goes downtown?",
+      "translation": {
+        "en-US": "Which train goes downtown?",
+        "zh-CN": "哪班车去市中心？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/united-states/train_to_downtown_us.mp3"
+    },
+    {
+      "id": "go_to_this_address_us",
+      "category": "transport",
+      "nativeText": "Please take me to this address.",
+      "translation": {
+        "en-US": "Please take me to this address.",
+        "zh-CN": "请带我去这个地址。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/united-states/go_to_this_address_us.mp3"
+    },
+    {
+      "id": "airport_platform_us",
+      "category": "transport",
+      "nativeText": "Is this the right platform for the airport?",
+      "translation": {
+        "en-US": "Is this the right platform for the airport?",
+        "zh-CN": "这是去机场的正确站台吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/united-states/airport_platform_us.mp3"
+    },
+    {
+      "id": "leave_luggage_before_checkin_us",
+      "category": "hotel",
+      "nativeText": "Can I leave my luggage before check-in?",
+      "translation": {
+        "en-US": "Can I leave my luggage before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/united-states/leave_luggage_before_checkin_us.mp3"
+    },
+    {
+      "id": "arrive_after_midnight_us",
+      "category": "hotel",
+      "nativeText": "I will be arriving after midnight.",
+      "translation": {
+        "en-US": "I will be arriving after midnight.",
+        "zh-CN": "我会在半夜后到。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/united-states/arrive_after_midnight_us.mp3"
+    },
+    {
+      "id": "without_cheese_us",
+      "category": "dining",
+      "nativeText": "Could I get this without cheese?",
+      "translation": {
+        "en-US": "Could I get this without cheese?",
+        "zh-CN": "这个可以不要奶酪吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/united-states/without_cheese_us.mp3"
+    },
+    {
+      "id": "to_go_united_states",
+      "category": "dining",
+      "nativeText": "Can I get this to go?",
+      "translation": {
+        "en-US": "Can I get this to go?",
+        "zh-CN": "这个可以打包带走吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/united-states/to_go_united_states.mp3"
+    },
+    {
+      "id": "tip_included_us",
+      "category": "dining",
+      "nativeText": "Is the tip included?",
+      "translation": {
+        "en-US": "Is the tip included?",
+        "zh-CN": "小费包含在里面吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/united-states/tip_included_us.mp3"
+    },
+    {
+      "id": "pay_by_card_us",
+      "category": "shopping",
+      "nativeText": "Can I pay by card here?",
+      "translation": {
+        "en-US": "Can I pay by card here?",
+        "zh-CN": "这里可以刷卡吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/united-states/pay_by_card_us.mp3"
+    },
+    {
+      "id": "write_street_address_us",
+      "category": "basics",
+      "nativeText": "Could you write the street address down?",
+      "translation": {
+        "en-US": "Could you write the street address down?",
+        "zh-CN": "可以把街道地址写下来吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/united-states/write_street_address_us.mp3"
+    },
+    {
+      "id": "missed_last_subway_us",
+      "category": "emergency",
+      "nativeText": "I missed the last subway.",
+      "translation": {
+        "en-US": "I missed the last subway.",
+        "zh-CN": "我错过末班地铁了。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/united-states/missed_last_subway_us.mp3"
+    },
+    {
+      "id": "uptown_or_downtown_us_bonus",
+      "category": "transport",
+      "nativeText": "Is this uptown or downtown?",
+      "translation": {
+        "en-US": "Is this train going uptown or downtown?",
+        "zh-CN": "这趟车是上城方向还是下城方向？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/united-states/uptown_or_downtown_us_bonus.mp3"
+    },
+    {
+      "id": "free_refills_us_bonus",
+      "category": "dining",
+      "nativeText": "Can I get free refills here?",
+      "translation": {
+        "en-US": "Do you offer free refills here?",
+        "zh-CN": "这里可以免费续杯吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/united-states/free_refills_us_bonus.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for United States with audio, built for airport rideshares, hotel check-ins, cafe or diner stops, and everyday local-service conversations.",
+    "zh-CN": "美国旅行短语卡，围绕机场网约车、酒店入住、咖啡馆或 diner 停留，以及本地服务沟通等高频场景整理。"
+  },
+  "intro": {
+    "en-US": "Built for United States trips where airport rideshares, hotel counters, coffee stops, and restaurant or pharmacy questions all come up quickly. These cards help when you want a short, clear request for directions, service, or everyday logistics.",
+    "zh-CN": "这套美国短语适合那种机场网约车、酒店前台、咖啡馆，以及餐厅或药房问题会快速出现的旅行节奏。遇到要问方向、服务或处理日常行程安排时，简短清晰的短语卡会很有帮助。"
+  },
+  "teaser": {
+    "en-US": "Built for United States rideshares, hotel check-ins, cafes or diners, and pharmacy or payment conversations.",
+    "zh-CN": "适合美国的网约车、酒店入住、咖啡馆或 diner，以及药房和支付沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep transport phrases ready for airport rideshares, pickup zones, and local transit before you head into the city.",
+      "Dining phrases help at cafes and diners when you want takeaway, substitutions, separate checks, or a quick recommendation.",
+      "Even in English-speaking settings, a phrase card is handy for exact addresses, room issues, or short pharmacy and service requests."
+    ],
+    "zh-CN": [
+      "从机场进城前，最好先把网约车、上车区和本地交通相关短语准备好。",
+      "在咖啡馆和 diner 里，外带、替换食材、分开结账和让对方推荐这类需求都很常用。",
+      "即使在英语环境里，遇到准确地址、房间问题或药房与服务请求时，短语卡也依然很方便。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "Rideshares, pickup zones, and local transit",
+      "Cafes, diners, and separate-check questions",
+      "Hotels, pharmacies, and exact addresses"
+    ],
+    "zh-CN": [
+      "网约车、上车区与本地交通",
+      "咖啡馆、diner 与分开结账",
+      "酒店、药房与准确地址"
+    ]
+  },
+  "featured": false,
+  "relatedSlugs": [
+    "canada",
+    "australia",
+    "new-zealand"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrase groups matter most for a first United States trip?",
+        "zh-CN": "第一次去美国旅行，最该先准备哪几组短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport, hotel, and dining. That covers airport arrivals, hotel check-in, and most first-day cafe or restaurant needs.",
+        "zh-CN": "建议先看交通、酒店和餐饮三组，基本就能覆盖机场落地、酒店入住，以及第一天大部分咖啡馆和餐厅场景。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Why keep phrase cards for United States if the language is English?",
+        "zh-CN": "既然美国讲英语，为什么还值得准备短语卡？"
+      },
+      "answer": {
+        "en-US": "Because many travel moments are still repetitive and time-sensitive. A ready-made phrase speeds up addresses, pickups, counters, and service requests.",
+        "zh-CN": "因为很多旅行场景依然重复又赶时间，提前备好的短语能让地址、接驳、柜台和服务请求处理得更快。"
+      }
     }
   ]
 }

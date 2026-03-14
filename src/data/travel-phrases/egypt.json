@@ -263,6 +263,213 @@
       "nativeText": "لقد فقدت جواز سفري",
       "romanization": "Laqad faqadtu jawaz safari",
       "audioKey": "travel-phrases/egypt/lost_passport.mp3"
+    },
+    {
+      "id": "metro_card_topup_eg",
+      "category": "transport",
+      "nativeText": "أين أشحن بطاقة المترو؟",
+      "translation": {
+        "en-US": "Where can I top up the metro card?",
+        "zh-CN": "地铁卡在哪里可以充值？"
+      },
+      "romanization": "Ayna ashhanu bitaqat al-mitru?",
+      "audioKey": "travel-phrases/egypt/metro_card_topup_eg.mp3"
+    },
+    {
+      "id": "metro_to_airport_eg",
+      "category": "transport",
+      "nativeText": "هل هذا المترو يذهب إلى المطار؟",
+      "translation": {
+        "en-US": "Does this metro go to the airport?",
+        "zh-CN": "这班地铁去机场吗？"
+      },
+      "romanization": "Hal hatha al-mitru yadhhab ila al-matar?",
+      "audioKey": "travel-phrases/egypt/metro_to_airport_eg.mp3"
+    },
+    {
+      "id": "go_to_this_address_eg",
+      "category": "transport",
+      "nativeText": "من فضلك اذهب إلى هذا العنوان",
+      "translation": {
+        "en-US": "Please go to this address.",
+        "zh-CN": "请去这个地址。"
+      },
+      "romanization": "Min fadlik idhhab ila hatha al-unwan",
+      "audioKey": "travel-phrases/egypt/go_to_this_address_eg.mp3"
+    },
+    {
+      "id": "platform_number_eg",
+      "category": "transport",
+      "nativeText": "من أي رصيف يخرج القطار؟",
+      "translation": {
+        "en-US": "Which platform does the train leave from?",
+        "zh-CN": "火车从哪个站台出发？"
+      },
+      "romanization": "Min ay rasif yakhruj al-qitar?",
+      "audioKey": "travel-phrases/egypt/platform_number_eg.mp3"
+    },
+    {
+      "id": "leave_luggage_before_checkin_eg",
+      "category": "hotel",
+      "nativeText": "هل يمكنني ترك الحقائب قبل تسجيل الدخول؟",
+      "translation": {
+        "en-US": "Can I leave my luggage before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": "Hal yumkinuni tark al-haqaib qabla tasjil al-dukhul?",
+      "audioKey": "travel-phrases/egypt/leave_luggage_before_checkin_eg.mp3"
+    },
+    {
+      "id": "arrive_late_tonight_eg",
+      "category": "hotel",
+      "nativeText": "سأصل متأخرا الليلة",
+      "translation": {
+        "en-US": "I will arrive late tonight.",
+        "zh-CN": "我今晚会晚一点到。"
+      },
+      "romanization": "Sa-asil mutaakhiran al-layla",
+      "audioKey": "travel-phrases/egypt/arrive_late_tonight_eg.mp3"
+    },
+    {
+      "id": "without_onion_eg",
+      "category": "dining",
+      "nativeText": "من فضلك بدون بصل",
+      "translation": {
+        "en-US": "Without onions, please.",
+        "zh-CN": "请不要洋葱。"
+      },
+      "romanization": "Min fadlik bidun basal",
+      "audioKey": "travel-phrases/egypt/without_onion_eg.mp3"
+    },
+    {
+      "id": "mint_tea_no_sugar_eg",
+      "category": "dining",
+      "nativeText": "شاي بالنعناع بدون سكر، من فضلك",
+      "translation": {
+        "en-US": "Mint tea without sugar, please.",
+        "zh-CN": "请给我一杯无糖薄荷茶。"
+      },
+      "romanization": "Shay bil-naana bidun sukkar, min fadlik",
+      "audioKey": "travel-phrases/egypt/mint_tea_no_sugar_eg.mp3"
+    },
+    {
+      "id": "takeaway_egypt",
+      "category": "dining",
+      "nativeText": "للسفري، من فضلك",
+      "translation": {
+        "en-US": "To go, please.",
+        "zh-CN": "请打包带走。"
+      },
+      "romanization": "Lil-safari, min fadlik",
+      "audioKey": "travel-phrases/egypt/takeaway_egypt.mp3"
+    },
+    {
+      "id": "card_or_cash_eg",
+      "category": "shopping",
+      "nativeText": "هل تقبلون البطاقة أم الدفع النقدي فقط؟",
+      "translation": {
+        "en-US": "Do you take cards or cash only?",
+        "zh-CN": "可以刷卡还是只收现金？"
+      },
+      "romanization": "Hal taqbalun al-bitaqa am al-daf al-naqdi faqat?",
+      "audioKey": "travel-phrases/egypt/card_or_cash_eg.mp3"
+    },
+    {
+      "id": "write_in_arabic_eg",
+      "category": "basics",
+      "nativeText": "اكتبها لي بالعربية من فضلك",
+      "translation": {
+        "en-US": "Please write it down in Arabic.",
+        "zh-CN": "请帮我写成阿拉伯语。"
+      },
+      "romanization": "Uktubha li bil-arabiyya min fadlik",
+      "audioKey": "travel-phrases/egypt/write_in_arabic_eg.mp3"
+    },
+    {
+      "id": "missed_last_metro_eg",
+      "category": "emergency",
+      "nativeText": "فاتني آخر مترو",
+      "translation": {
+        "en-US": "I missed the last metro.",
+        "zh-CN": "我错过末班地铁了。"
+      },
+      "romanization": "Fatani akhir mitru",
+      "audioKey": "travel-phrases/egypt/missed_last_metro_eg.mp3"
+    },
+    {
+      "id": "women_car_eg_bonus",
+      "category": "transport",
+      "nativeText": "هل هذه عربة السيدات فقط؟",
+      "translation": {
+        "en-US": "Is this carriage for women only?",
+        "zh-CN": "这是女士专用车厢吗？"
+      },
+      "romanization": "Hal hadhihi araba al-sayyidat faqat?",
+      "audioKey": "travel-phrases/egypt/women_car_eg_bonus.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for Egypt with audio, built for airport pickups, hotel check-ins, museum visits, cash questions, and everyday transport or dining conversations.",
+    "zh-CN": "埃及旅行短语卡，围绕机场接驳、酒店入住、博物馆参观、现金支付和交通或餐饮沟通等高频场景整理。"
+  },
+  "intro": {
+    "en-US": "Built for Egypt trips where airport pickups, museum days, hotel counters, and transport or cash questions all come up quickly. These cards help when you need short Arabic for directions, entry, or a simple service request.",
+    "zh-CN": "这套埃及短语适合那种机场接驳、博物馆日程、酒店前台，以及交通和现金支付会快速出现的旅行节奏。遇到要问方向、门票，或提出简单需求时，短语卡会很有帮助。"
+  },
+  "teaser": {
+    "en-US": "Built for Egypt airport pickups, museum stops, hotel counters, and transport or cash conversations.",
+    "zh-CN": "适合埃及的机场接驳、博物馆、酒店柜台，以及交通和现金沟通场景。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep transport phrases ready for airport pickups, taxis, and day-trip departures before you start moving around Cairo or beyond.",
+      "Cash questions still matter in many travel moments, so short Arabic helps when you want to confirm the total price or change.",
+      "Museum and dining phrases are useful for tickets, water, simple meal orders, and asking where to go next."
+    ],
+    "zh-CN": [
+      "如果有机场接驳、出租车或一日游出发安排，最好先备好交通短语。",
+      "很多场景仍然会涉及现金问题，所以想确认总价或找零时，简短阿语会很有用。",
+      "博物馆和餐饮类短语适合处理门票、买水、简短点餐，以及问下一步往哪走。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "Airport pickups, taxis, and cash questions",
+      "Museums, tickets, and simple directions",
+      "Hotels, water, and short meal orders"
+    ],
+    "zh-CN": [
+      "机场接驳、出租车与现金询问",
+      "博物馆、门票与基础问路",
+      "酒店、买水与简短点餐"
+    ]
+  },
+  "featured": false,
+  "relatedSlugs": [
+    "morocco",
+    "turkey",
+    "united-arab-emirates"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrase groups matter most for a first Egypt trip?",
+        "zh-CN": "第一次去埃及旅行，最该先准备哪几组短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport, hotel, and shopping. That covers airport pickups, hotel counters, cash questions, and many first-day needs in Egypt.",
+        "zh-CN": "建议先看交通、酒店和购物三组，基本就能覆盖机场接驳、酒店前台、现金问题，以及在埃及第一天的大多数需求。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Why are short phrase cards useful in Egypt?",
+        "zh-CN": "为什么在埃及旅行时，简短短语卡会很有用？"
+      },
+      "answer": {
+        "en-US": "Because many useful interactions happen in fast, practical settings like transport, tickets, cash payments, and quick directions.",
+        "zh-CN": "因为很多高频沟通都发生在非常实际又很快的场景里，比如交通、门票、现金支付和问方向。"
+      }
     }
   ]
 }

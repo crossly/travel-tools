@@ -263,6 +263,235 @@
       "nativeText": "J'ai perdu mon passeport",
       "romanization": null,
       "audioKey": "travel-phrases/france/lost_passport.mp3"
+    },
+    {
+      "id": "which_platform_this_train",
+      "category": "transport",
+      "nativeText": "Quel quai pour ce train ?",
+      "translation": {
+        "en-US": "Which platform is this train on?",
+        "zh-CN": "这班火车在几号站台？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/france/which_platform_this_train.mp3"
+    },
+    {
+      "id": "validate_ticket_where",
+      "category": "transport",
+      "nativeText": "Je valide ce billet où ?",
+      "translation": {
+        "en-US": "Where do I validate this ticket?",
+        "zh-CN": "这张票要在哪里验证？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/france/validate_ticket_where.mp3"
+    },
+    {
+      "id": "rer_to_airport",
+      "category": "transport",
+      "nativeText": "C'est bien le RER pour l'aéroport ?",
+      "translation": {
+        "en-US": "Is this the RER to the airport?",
+        "zh-CN": "这班 RER 是去机场的吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/france/rer_to_airport.mp3"
+    },
+    {
+      "id": "write_the_address_down",
+      "category": "transport",
+      "nativeText": "Pouvez-vous écrire l'adresse, s'il vous plaît ?",
+      "translation": {
+        "en-US": "Could you write down the address, please?",
+        "zh-CN": "可以帮我把地址写下来吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/france/write_the_address_down.mp3"
+    },
+    {
+      "id": "leave_luggage_before_checkin",
+      "category": "hotel",
+      "nativeText": "Je peux laisser mes bagages avant le check-in ?",
+      "translation": {
+        "en-US": "Can I leave my luggage before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/france/leave_luggage_before_checkin.mp3"
+    },
+    {
+      "id": "breakfast_start_time",
+      "category": "hotel",
+      "nativeText": "Le petit-déjeuner commence à quelle heure ?",
+      "translation": {
+        "en-US": "What time does breakfast start?",
+        "zh-CN": "早餐几点开始？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/france/breakfast_start_time.mp3"
+    },
+    {
+      "id": "without_sauce_please",
+      "category": "dining",
+      "nativeText": "Sans sauce, s'il vous plaît.",
+      "translation": {
+        "en-US": "Without sauce, please.",
+        "zh-CN": "请不要酱汁。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/france/without_sauce_please.mp3"
+    },
+    {
+      "id": "carafe_of_water",
+      "category": "dining",
+      "nativeText": "Une carafe d'eau, s'il vous plaît.",
+      "translation": {
+        "en-US": "A carafe of water, please.",
+        "zh-CN": "请给我一壶自来水。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/france/carafe_of_water.mp3"
+    },
+    {
+      "id": "daily_menu_local",
+      "category": "dining",
+      "nativeText": "Je prends la formule du jour.",
+      "translation": {
+        "en-US": "I'll take the set menu of the day.",
+        "zh-CN": "我要今天的套餐。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/france/daily_menu_local.mp3"
+    },
+    {
+      "id": "tax_refund_counter",
+      "category": "shopping",
+      "nativeText": "Où est le comptoir de détaxe ?",
+      "translation": {
+        "en-US": "Where is the tax refund counter?",
+        "zh-CN": "退税柜台在哪里？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/france/tax_refund_counter.mp3"
+    },
+    {
+      "id": "paper_bag_please",
+      "category": "shopping",
+      "nativeText": "Je voudrais un sac en papier, s'il vous plaît.",
+      "translation": {
+        "en-US": "I would like a paper bag, please.",
+        "zh-CN": "请给我一个纸袋。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/france/paper_bag_please.mp3"
+    },
+    {
+      "id": "missed_last_metro_local",
+      "category": "emergency",
+      "nativeText": "J'ai raté le dernier métro.",
+      "translation": {
+        "en-US": "I missed the last metro.",
+        "zh-CN": "我错过最后一班地铁了。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/france/missed_last_metro_local.mp3"
+    },
+    {
+      "id": "navigo_topup_fr",
+      "category": "transport",
+      "nativeText": "Le pass Navigo se recharge ou ?",
+      "translation": {
+        "en-US": "Where can I top up the Navigo pass?",
+        "zh-CN": "Navigo 在哪里充值？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/france/navigo_topup_fr.mp3"
+    },
+    {
+      "id": "without_butter_fr",
+      "category": "dining",
+      "nativeText": "Sans beurre, s'il vous plait",
+      "translation": {
+        "en-US": "Without butter, please.",
+        "zh-CN": "请不要黄油。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/france/without_butter_fr.mp3"
+    },
+    {
+      "id": "tgv_platform_fr",
+      "category": "transport",
+      "nativeText": "C'est quel quai pour le TGV ?",
+      "translation": {
+        "en-US": "Which platform is for the TGV?",
+        "zh-CN": "TGV 在哪个站台？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/france/tgv_platform_fr.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for France with audio, designed for SNCF trains, hotel check-ins, cafe etiquette, boulangeries, museums, and everyday service questions.",
+    "zh-CN": "法国旅行短语卡，围绕 SNCF 火车、酒店入住、咖啡馆礼貌表达、面包店、博物馆和日常服务沟通整理。"
+  },
+  "intro": {
+    "en-US": "Built for France trips where SNCF station changes, hotel arrivals, cafe counters, and museum queues can all happen in one afternoon. These cards help when you want to open with bonjour, ask a short follow-up question, or show a phrase on screen instead of slowing the line down.",
+    "zh-CN": "这套法国短语适合那种一天里会连续遇到 SNCF 火车换站、酒店入住、咖啡馆点单和博物馆排队的旅行节奏。想先说一声 bonjour，再补一句简短需求，或者不想让队伍停下来时，直接展示短语卡会更自然。"
+  },
+  "teaser": {
+    "en-US": "Built for France rail travel, SNCF questions, cafe etiquette, hotel arrivals, and short museum or bakery requests.",
+    "zh-CN": "适合法国铁路出行、SNCF 询问、咖啡馆礼貌表达、酒店入住和博物馆或面包店简短沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Start with bonjour before your question. In France, that small greeting often makes station, hotel, and cafe interactions smoother.",
+      "Keep transport phrases ready for SNCF counters, platform changes, and train delays because rail terminology comes up quickly.",
+      "Dining phrases help with set menus, allergies, and asking for the bill, especially in cafes and smaller restaurants where service feels more paced."
+    ],
+    "zh-CN": [
+      "在法国先说一句 bonjour 再提问很重要，火车站、酒店和咖啡馆里都能明显提升沟通顺畅度。",
+      "SNCF 柜台、站台变更和火车延误很常见，交通类短语最好提前准备好。",
+      "餐饮短语尤其适合点套餐、说明过敏，以及在咖啡馆或小餐厅里礼貌地要账单。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "SNCF and cafe etiquette",
+      "Bakeries, menus, and museums",
+      "Hotels, payments, and short service questions"
+    ],
+    "zh-CN": [
+      "SNCF 与咖啡馆礼貌表达",
+      "面包店、菜单与博物馆沟通",
+      "酒店、支付与简短服务询问"
+    ]
+  },
+  "featured": true,
+  "relatedSlugs": [
+    "italy",
+    "spain",
+    "switzerland"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Do I really need French phrases in tourist areas of France?",
+        "zh-CN": "在法国热门旅游区，真的还需要准备法语短语吗？"
+      },
+      "answer": {
+        "en-US": "Even in tourist-heavy places, a short French opener helps a lot. It is especially useful for SNCF counters, smaller cafes, bakeries, and hotel questions.",
+        "zh-CN": "即使在游客很多的地区，先用一句简短法语开场也很有帮助，尤其是在 SNCF 柜台、小咖啡馆、面包店和酒店前台。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Which phrase groups matter most for a first France itinerary?",
+        "zh-CN": "第一次去法国，最该先准备哪几组短语？"
+      },
+      "answer": {
+        "en-US": "Transport, hotel, and dining usually come first because they cover SNCF, check-in, cafes, and restaurant basics. Add shopping and emergency phrases after that.",
+        "zh-CN": "通常优先准备交通、酒店和餐饮，因为这三组已经能覆盖 SNCF、入住、咖啡馆和餐厅基础沟通，之后再补购物和紧急求助即可。"
+      }
     }
   ]
 }

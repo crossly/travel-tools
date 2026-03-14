@@ -263,6 +263,235 @@
       "nativeText": "여권을 잃어버렸어요",
       "romanization": "Yeogwoneul ireobeoryeosseoyo",
       "audioKey": "travel-phrases/south-korea/lost_passport.mp3"
+    },
+    {
+      "id": "tmoney_reload_here",
+      "category": "transport",
+      "nativeText": "티머니 충전은 어디서 해요?",
+      "translation": {
+        "en-US": "Where can I reload my T-money card?",
+        "zh-CN": "T-money 在哪里可以充值？"
+      },
+      "romanization": "T-meoni chungjeoneun eodiseo haeyo?",
+      "audioKey": "travel-phrases/south-korea/tmoney_reload_here.mp3"
+    },
+    {
+      "id": "exit_two_where",
+      "category": "transport",
+      "nativeText": "2번 출구가 어디예요?",
+      "translation": {
+        "en-US": "Where is exit 2?",
+        "zh-CN": "2号出口在哪里？"
+      },
+      "romanization": "I-beon chulguga eodiyeyo?",
+      "audioKey": "travel-phrases/south-korea/exit_two_where.mp3"
+    },
+    {
+      "id": "airport_rail_transfer_where",
+      "category": "transport",
+      "nativeText": "공항철도 갈아타는 곳이 어디예요?",
+      "translation": {
+        "en-US": "Where do I transfer to the airport railroad?",
+        "zh-CN": "机场铁路要去哪里换乘？"
+      },
+      "romanization": "Gonghangcheoldo garataneun gosi eodiyeyo?",
+      "audioKey": "travel-phrases/south-korea/airport_rail_transfer_where.mp3"
+    },
+    {
+      "id": "driver_use_this_address",
+      "category": "transport",
+      "nativeText": "이 주소로 가 주세요",
+      "translation": {
+        "en-US": "Please go to this address.",
+        "zh-CN": "请去这个地址。"
+      },
+      "romanization": "I jusoro ga juseyo",
+      "audioKey": "travel-phrases/south-korea/driver_use_this_address.mp3"
+    },
+    {
+      "id": "luggage_before_checkin_local",
+      "category": "hotel",
+      "nativeText": "체크인 전에 짐 맡길 수 있어요?",
+      "translation": {
+        "en-US": "Can I leave my luggage before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": "Chekeuin jeone jim matgil su isseoyo?",
+      "audioKey": "travel-phrases/south-korea/luggage_before_checkin_local.mp3"
+    },
+    {
+      "id": "late_arrival_notice_local",
+      "category": "hotel",
+      "nativeText": "늦게 도착할 예정이에요",
+      "translation": {
+        "en-US": "I will arrive late.",
+        "zh-CN": "我会晚一点到。"
+      },
+      "romanization": "Neutge dochakal yejeong-ieyo",
+      "audioKey": "travel-phrases/south-korea/late_arrival_notice_local.mp3"
+    },
+    {
+      "id": "switch_kiosk_to_english",
+      "category": "dining",
+      "nativeText": "영어 메뉴로 바꿀 수 있어요?",
+      "translation": {
+        "en-US": "Can I switch this kiosk to English?",
+        "zh-CN": "这个自助机可以切换成英文吗？"
+      },
+      "romanization": "Yeongeo menyuro bakkul su isseoyo?",
+      "audioKey": "travel-phrases/south-korea/switch_kiosk_to_english.mp3"
+    },
+    {
+      "id": "please_cut_the_meat",
+      "category": "dining",
+      "nativeText": "고기 잘라 주세요",
+      "translation": {
+        "en-US": "Please cut the meat for us.",
+        "zh-CN": "请帮我们把肉剪一下。"
+      },
+      "romanization": "Gogi jalla juseyo",
+      "audioKey": "travel-phrases/south-korea/please_cut_the_meat.mp3"
+    },
+    {
+      "id": "less_ice_americano",
+      "category": "dining",
+      "nativeText": "아이스 아메리카노는 얼음 적게 해 주세요",
+      "translation": {
+        "en-US": "Please make the iced Americano with less ice.",
+        "zh-CN": "冰美式请少冰。"
+      },
+      "romanization": "Aiseu amerikano-neun eoreum jeokge hae juseyo",
+      "audioKey": "travel-phrases/south-korea/less_ice_americano.mp3"
+    },
+    {
+      "id": "receipt_please_local",
+      "category": "shopping",
+      "nativeText": "영수증 주세요",
+      "translation": {
+        "en-US": "Please give me the receipt.",
+        "zh-CN": "请给我小票。"
+      },
+      "romanization": "Yeongsujeung juseyo",
+      "audioKey": "travel-phrases/south-korea/receipt_please_local.mp3"
+    },
+    {
+      "id": "write_it_in_korean",
+      "category": "basics",
+      "nativeText": "한글로 적어 주세요",
+      "translation": {
+        "en-US": "Please write it in Korean.",
+        "zh-CN": "请帮我写成韩文。"
+      },
+      "romanization": "Hangeullo jeogeo juseyo",
+      "audioKey": "travel-phrases/south-korea/write_it_in_korean.mp3"
+    },
+    {
+      "id": "missed_last_subway",
+      "category": "emergency",
+      "nativeText": "막차를 놓쳤어요",
+      "translation": {
+        "en-US": "I missed the last subway train.",
+        "zh-CN": "我错过末班地铁了。"
+      },
+      "romanization": "Makchareul nohchyeosseoyo",
+      "audioKey": "travel-phrases/south-korea/missed_last_subway.mp3"
+    },
+    {
+      "id": "locker_where_kr_bonus",
+      "category": "transport",
+      "nativeText": "보관함은 어디예요?",
+      "translation": {
+        "en-US": "Where are the lockers?",
+        "zh-CN": "寄存柜在哪里？"
+      },
+      "romanization": "Bogwanham-eun eodiyeyo?",
+      "audioKey": "travel-phrases/south-korea/locker_where_kr_bonus.mp3"
+    },
+    {
+      "id": "takeaway_kr_bonus",
+      "category": "dining",
+      "nativeText": "포장해 주세요",
+      "translation": {
+        "en-US": "Please pack it to go.",
+        "zh-CN": "请帮我打包带走。"
+      },
+      "romanization": "Pojanghae juseyo",
+      "audioKey": "travel-phrases/south-korea/takeaway_kr_bonus.mp3"
+    },
+    {
+      "id": "kakao_taxi_kr_bonus",
+      "category": "transport",
+      "nativeText": "카카오택시로 불러 주세요",
+      "translation": {
+        "en-US": "Please call a Kakao Taxi for me.",
+        "zh-CN": "请帮我叫一辆 Kakao Taxi。"
+      },
+      "romanization": "Kakao taeksiro bulleo juseyo",
+      "audioKey": "travel-phrases/south-korea/kakao_taxi_kr_bonus.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for South Korea with audio, built for subway transfers, T-money reloads, Kakao T rides, hotel check-ins, cafes, and restaurant ordering.",
+    "zh-CN": "韩国旅行短语卡，围绕地铁换乘、T-money 充值、Kakao T 打车、酒店入住、咖啡店和餐厅点单等高频场景整理。"
+  },
+  "intro": {
+    "en-US": "Built for South Korea trips where you move between airport rail, subway exits, convenience stores, cafes, and barbecue places. These cards help when you need quick Korean for T-money, station exits, self-order kiosks, or handing a driver an address from Naver Map.",
+    "zh-CN": "这套韩国短语优先覆盖机场铁路、地铁出入口、便利店、咖啡店和烤肉店这些常见场景。遇到要问 T-money、确认几号出口、处理自助点餐机，或给司机看 Naver Map 地址时，短语卡会特别省事。"
+  },
+  "teaser": {
+    "en-US": "Built for Seoul-style travel with T-money, Kakao T, station exits, convenience stores, and cafe orders.",
+    "zh-CN": "适合首尔式旅行里的 T-money、Kakao T、地铁出口、便利店和咖啡点单沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep transport phrases ready for subway line changes, station exit numbers, and T-money top-ups before you leave the airport.",
+      "For taxis and late-night rides, it helps to show a Korean address from Naver Map or Kakao T together with the phrase card.",
+      "Cafes, barbecue places, and self-order kiosks are easier when you can point to a short Korean request instead of typing a translation."
+    ],
+    "zh-CN": [
+      "从机场进城前，最好先备好地铁换线、几号出口和 T-money 充值相关短语。",
+      "打车尤其是深夜打车时，把 Naver Map 或 Kakao T 上的韩文地址和短语卡一起给司机看会更顺。",
+      "在咖啡店、烤肉店或自助点餐机前，直接指着简短韩语短语，比现场打翻译快很多。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "T-money and Kakao T",
+      "Subway exits, cafes, and BBQ",
+      "Hotels, kiosks, and convenience stores"
+    ],
+    "zh-CN": [
+      "T-money 与 Kakao T",
+      "地铁出口、咖啡店与烤肉店",
+      "酒店、自助机与便利店"
+    ]
+  },
+  "featured": true,
+  "relatedSlugs": [
+    "japan",
+    "taiwan",
+    "hong-kong"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrases help most for a first trip to South Korea?",
+        "zh-CN": "第一次去韩国旅行，最值得先准备哪类短语？"
+      },
+      "answer": {
+        "en-US": "Transport phrases are the fastest win because they cover airport rail, subway exits, T-money, and taxis. Add dining and hotel phrases next for check-in, cafes, and restaurant orders.",
+        "zh-CN": "最优先的是交通短语，因为机场铁路、地铁出口、T-money 和打车都会马上用到。接着补上酒店和餐饮短语，就能覆盖入住、咖啡店和餐厅点单。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Is English enough in South Korea, or should I keep Korean phrases ready?",
+        "zh-CN": "在韩国旅行只靠英语够吗，还是要准备韩语短语？"
+      },
+      "answer": {
+        "en-US": "English works in many hotels and tourist areas, but short Korean phrases still help a lot for subway questions, taxi rides, kiosks, and neighborhood restaurants.",
+        "zh-CN": "在酒店和热门景点附近英语通常够用，但地铁问路、打车、自助点餐机和社区餐厅里，备几句韩语短语会明显更顺利。"
+      }
     }
   ]
 }

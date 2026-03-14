@@ -263,6 +263,224 @@
       "nativeText": "Ich habe meinen Pass verloren",
       "romanization": null,
       "audioKey": "travel-phrases/germany/lost_passport.mp3"
+    },
+    {
+      "id": "db_platform_where",
+      "category": "transport",
+      "nativeText": "Welches Gleis fur den DB Zug?",
+      "translation": {
+        "en-US": "Which platform is for the DB train?",
+        "zh-CN": "DB 列车在哪个站台？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/germany/db_platform_where.mp3"
+    },
+    {
+      "id": "validate_ticket_de",
+      "category": "transport",
+      "nativeText": "Wo entwerte ich dieses Ticket?",
+      "translation": {
+        "en-US": "Where do I validate this ticket?",
+        "zh-CN": "这张票在哪里打卡？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/germany/validate_ticket_de.mp3"
+    },
+    {
+      "id": "sbahn_to_airport_de",
+      "category": "transport",
+      "nativeText": "Fahrt diese S-Bahn zum Flughafen?",
+      "translation": {
+        "en-US": "Does this S-Bahn go to the airport?",
+        "zh-CN": "这班城铁去机场吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/germany/sbahn_to_airport_de.mp3"
+    },
+    {
+      "id": "go_to_this_address_de",
+      "category": "transport",
+      "nativeText": "Bitte fahren Sie zu dieser Adresse",
+      "translation": {
+        "en-US": "Please go to this address.",
+        "zh-CN": "请去这个地址。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/germany/go_to_this_address_de.mp3"
+    },
+    {
+      "id": "leave_luggage_before_checkin_de",
+      "category": "hotel",
+      "nativeText": "Kann ich mein Gepack vor dem Check-in abgeben?",
+      "translation": {
+        "en-US": "Can I leave my luggage before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/germany/leave_luggage_before_checkin_de.mp3"
+    },
+    {
+      "id": "arrive_late_tonight_de",
+      "category": "hotel",
+      "nativeText": "Ich komme heute spat an",
+      "translation": {
+        "en-US": "I will arrive late tonight.",
+        "zh-CN": "我今晚会晚一点到。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/germany/arrive_late_tonight_de.mp3"
+    },
+    {
+      "id": "still_water_de",
+      "category": "dining",
+      "nativeText": "Ein stilles Wasser, bitte",
+      "translation": {
+        "en-US": "A still water, please.",
+        "zh-CN": "请给我一瓶无气泡水。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/germany/still_water_de.mp3"
+    },
+    {
+      "id": "without_mustard_de",
+      "category": "dining",
+      "nativeText": "Bitte ohne Senf",
+      "translation": {
+        "en-US": "Without mustard, please.",
+        "zh-CN": "请不要芥末。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/germany/without_mustard_de.mp3"
+    },
+    {
+      "id": "takeaway_germany",
+      "category": "dining",
+      "nativeText": "Zum Mitnehmen, bitte",
+      "translation": {
+        "en-US": "To go, please.",
+        "zh-CN": "请打包带走。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/germany/takeaway_germany.mp3"
+    },
+    {
+      "id": "cash_payment_de",
+      "category": "shopping",
+      "nativeText": "Kann ich bar zahlen?",
+      "translation": {
+        "en-US": "Can I pay in cash?",
+        "zh-CN": "可以付现金吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/germany/cash_payment_de.mp3"
+    },
+    {
+      "id": "write_in_german_de",
+      "category": "basics",
+      "nativeText": "Konnen Sie das auf Deutsch aufschreiben?",
+      "translation": {
+        "en-US": "Could you write that in German?",
+        "zh-CN": "可以帮我写成德语吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/germany/write_in_german_de.mp3"
+    },
+    {
+      "id": "missed_last_train_de",
+      "category": "emergency",
+      "nativeText": "Ich habe den letzten Zug verpasst",
+      "translation": {
+        "en-US": "I missed the last train.",
+        "zh-CN": "我错过末班火车了。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/germany/missed_last_train_de.mp3"
+    },
+    {
+      "id": "airport_bus_exit_de",
+      "category": "transport",
+      "nativeText": "Ist das der Ausgang zum Flughafenbus?",
+      "translation": {
+        "en-US": "Is this the exit for the airport bus?",
+        "zh-CN": "这是去机场巴士的出口吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/germany/airport_bus_exit_de.mp3"
+    },
+    {
+      "id": "daily_menu_de",
+      "category": "dining",
+      "nativeText": "Gibt es heute Tagesmenü?",
+      "translation": {
+        "en-US": "Do you have a daily menu today?",
+        "zh-CN": "今天有每日套餐吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/germany/daily_menu_de.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for Germany with audio, built for DB train travel, S-Bahn and U-Bahn transfers, hotel check-ins, bakeries, and everyday service questions.",
+    "zh-CN": "德国旅行短语卡，围绕 DB 火车、S-Bahn 与 U-Bahn、酒店入住、面包店和日常服务沟通等高频场景整理。"
+  },
+  "intro": {
+    "en-US": "Built for Germany trips where DB platforms, local transit, hotel check-ins, bakery counters, and museum days come one after another. These cards help when you need short German for ticket questions, platform changes, cash or card checks, or direct but polite service requests.",
+    "zh-CN": "这套德国短语适合那种 DB 站台、本地交通、酒店前台、面包店和博物馆会连续出现的旅行节奏。遇到要问车票、站台变更、现金还是刷卡，或者提出简短但礼貌的服务请求时，短语卡会很有帮助。"
+  },
+  "teaser": {
+    "en-US": "Built for Germany DB travel, S-Bahn and U-Bahn transfers, bakeries, and hotel or museum-day logistics.",
+    "zh-CN": "适合德国 DB、S-Bahn 与 U-Bahn、面包店，以及酒店和博物馆行程沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep transport phrases ready for DB delays, platform changes, and S-Bahn or U-Bahn directions because those details change quickly.",
+      "Germany is still mixed on card acceptance, so cash and payment phrases are worth keeping handy even in big cities.",
+      "Bakery and cafe counters move fast, and a short German request is useful for takeaway, table water, or asking what is included."
+    ],
+    "zh-CN": [
+      "DB 延误、站台变更，以及 S-Bahn 或 U-Bahn 方向确认都很常见，交通短语最好提前备好。",
+      "德国很多地方在支付方式上仍然比较混合，所以现金和刷卡相关短语值得一直放在手边。",
+      "面包店和咖啡馆柜台节奏很快，想要外带、要一杯水，或者确认包含什么内容时，简短德语会很有用。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "DB trains, cash questions, and bakery stops",
+      "S-Bahn, U-Bahn, and platform changes",
+      "Hotels, museums, and direct service requests"
+    ],
+    "zh-CN": [
+      "DB、现金支付与面包店沟通",
+      "S-Bahn、U-Bahn 与站台变更",
+      "酒店、博物馆与简短服务请求"
+    ]
+  },
+  "featured": false,
+  "relatedSlugs": [
+    "austria",
+    "switzerland",
+    "france"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrase groups matter most for a first Germany itinerary?",
+        "zh-CN": "第一次去德国旅行，最该先准备哪几组短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport, hotel, and dining. That covers DB, local transit, check-in, bakeries, and most first-day logistics in Germany.",
+        "zh-CN": "建议先看交通、酒店和餐饮三组，基本就能覆盖 DB、本地交通、入住办理、面包店，以及德国第一天的大多数安排。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Why are payment phrases still useful in Germany?",
+        "zh-CN": "为什么在德国旅行时，支付类短语仍然很有用？"
+      },
+      "answer": {
+        "en-US": "Because some places still prefer cash or have minimum card rules. A short phrase can save time when you want to know how to pay before ordering.",
+        "zh-CN": "因为一些地方仍然偏好现金，或者会有刷卡门槛。提前问清楚怎么支付，往往能帮你省掉很多来回确认。"
+      }
     }
   ]
 }

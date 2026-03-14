@@ -263,6 +263,235 @@
       "nativeText": "I lost my passport",
       "romanization": null,
       "audioKey": "travel-phrases/singapore/lost_passport.mp3"
+    },
+    {
+      "id": "top_up_ezlink_where",
+      "category": "transport",
+      "nativeText": "Where can I top up my EZ-Link card?",
+      "translation": {
+        "en-US": "Where can I top up my EZ-Link card?",
+        "zh-CN": "EZ-Link 在哪里可以充值？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/singapore/top_up_ezlink_where.mp3"
+    },
+    {
+      "id": "correct_mrt_exit_block",
+      "category": "transport",
+      "nativeText": "Is this the correct MRT exit for this block?",
+      "translation": {
+        "en-US": "Is this the correct MRT exit for this block?",
+        "zh-CN": "这个 MRT 出口是去这个楼号的吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/singapore/correct_mrt_exit_block.mp3"
+    },
+    {
+      "id": "grab_pickup_queue_here",
+      "category": "transport",
+      "nativeText": "Is this the queue for Grab pickup?",
+      "translation": {
+        "en-US": "Is this the queue for Grab pickup?",
+        "zh-CN": "这里是 Grab 上车排队的地方吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/singapore/grab_pickup_queue_here.mp3"
+    },
+    {
+      "id": "bus_to_airport_local",
+      "category": "transport",
+      "nativeText": "Does this bus go to the airport?",
+      "translation": {
+        "en-US": "Does this bus go to the airport?",
+        "zh-CN": "这辆巴士去机场吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/singapore/bus_to_airport_local.mp3"
+    },
+    {
+      "id": "leave_bags_until_checkin",
+      "category": "hotel",
+      "nativeText": "Can I leave my bags here until check-in?",
+      "translation": {
+        "en-US": "Can I leave my bags here until check-in?",
+        "zh-CN": "入住前可以先把行李放这里吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/singapore/leave_bags_until_checkin.mp3"
+    },
+    {
+      "id": "airport_shuttle_last_time",
+      "category": "hotel",
+      "nativeText": "What time is the last airport shuttle?",
+      "translation": {
+        "en-US": "What time is the last airport shuttle?",
+        "zh-CN": "最后一班机场接驳车是几点？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/singapore/airport_shuttle_last_time.mp3"
+    },
+    {
+      "id": "no_chilli_local",
+      "category": "dining",
+      "nativeText": "No chilli, please.",
+      "translation": {
+        "en-US": "No chilli, please.",
+        "zh-CN": "请不要辣椒。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/singapore/no_chilli_local.mp3"
+    },
+    {
+      "id": "pack_for_takeaway_local",
+      "category": "dining",
+      "nativeText": "Please pack this for takeaway.",
+      "translation": {
+        "en-US": "Please pack this for takeaway.",
+        "zh-CN": "请帮我打包外带。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/singapore/pack_for_takeaway_local.mp3"
+    },
+    {
+      "id": "tray_return_where",
+      "category": "dining",
+      "nativeText": "Where do I return the tray?",
+      "translation": {
+        "en-US": "Where do I return the tray?",
+        "zh-CN": "托盘要放回哪里？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/singapore/tray_return_where.mp3"
+    },
+    {
+      "id": "paynow_or_card",
+      "category": "shopping",
+      "nativeText": "Can I pay by PayNow or card?",
+      "translation": {
+        "en-US": "Can I pay by PayNow or card?",
+        "zh-CN": "可以用 PayNow 或刷卡吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/singapore/paynow_or_card.mp3"
+    },
+    {
+      "id": "show_block_number",
+      "category": "basics",
+      "nativeText": "Please show me the block number on the map.",
+      "translation": {
+        "en-US": "Please show me the block number on the map.",
+        "zh-CN": "请在地图上指给我看楼号。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/singapore/show_block_number.mp3"
+    },
+    {
+      "id": "missed_last_mrt",
+      "category": "emergency",
+      "nativeText": "I missed the last MRT train.",
+      "translation": {
+        "en-US": "I missed the last MRT train.",
+        "zh-CN": "我错过最后一班 MRT 了。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/singapore/missed_last_mrt.mp3"
+    },
+    {
+      "id": "kopi_o_kosong_sg",
+      "category": "dining",
+      "nativeText": "Can I order kopi-o kosong?",
+      "translation": {
+        "en-US": "Can I order a kopi-o kosong?",
+        "zh-CN": "我可以点一杯无糖黑咖啡吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/singapore/kopi_o_kosong_sg.mp3"
+    },
+    {
+      "id": "mrt_exit_for_block_sg",
+      "category": "transport",
+      "nativeText": "Which MRT exit is best for this block?",
+      "translation": {
+        "en-US": "Which MRT exit is best for this block?",
+        "zh-CN": "去这栋楼走哪个 MRT 出口最方便？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/singapore/mrt_exit_for_block_sg.mp3"
+    },
+    {
+      "id": "bank_card_tap_sg",
+      "category": "shopping",
+      "nativeText": "Can I tap with my bank card here?",
+      "translation": {
+        "en-US": "Can I tap with my bank card here?",
+        "zh-CN": "这里可以直接刷银行卡感应支付吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/singapore/bank_card_tap_sg.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for Singapore with audio, tuned for MRT directions, Grab rides, hawker-centre orders, hotel check-ins, and everyday cashless service conversations.",
+    "zh-CN": "新加坡旅行短语卡，围绕 MRT、Grab、熟食中心点餐、酒店入住和无现金支付等高频服务场景整理。"
+  },
+  "intro": {
+    "en-US": "Built for Singapore trips where English works often, but you still need fast, visible phrasing for hawker stalls, MRT routes, condo or mall drop-off points, and hotel or attraction counters. These cards are especially useful when the line is moving fast and you want to show the request instead of repeating it.",
+    "zh-CN": "这套新加坡短语适合那种“英语大多能用，但现场节奏很快”的旅行场景，比如熟食中心点餐、MRT 换乘、商场或公寓下车点、酒店和景点柜台。排队很快时，直接给对方看短语卡往往比反复解释更高效。"
+  },
+  "teaser": {
+    "en-US": "Built for Singapore MRT navigation, hawker-centre ordering, Grab pickups, and fast hotel or attraction counters.",
+    "zh-CN": "适合新加坡 MRT、熟食中心点餐、Grab 上下车和酒店或景点柜台沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "English is common in Singapore, but short phrase cards still help in hawker centres, taxis, and busy counters where speed matters.",
+      "Keep MRT station names, mall or tower addresses, and Grab pickup points easy to show because many destinations have multiple entrances.",
+      "Dining phrases are most useful for hawker orders, takeaway requests, and simple food restrictions when the queue is moving quickly."
+    ],
+    "zh-CN": [
+      "在新加坡英语确实很常用，但在熟食中心、出租车和高峰柜台前，短语卡依然很适合用来加快沟通。",
+      "MRT 站名、商场或办公楼地址、Grab 上车点最好提前准备好，因为很多目的地入口很多。",
+      "餐饮短语最适合用在熟食中心点单、打包带走，以及快速说明饮食禁忌这些场景。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "Hawker centres and MRT",
+      "Grab rides and mall addresses",
+      "Cashless payments and takeaway"
+    ],
+    "zh-CN": [
+      "熟食中心与 MRT",
+      "Grab 打车与商场地址",
+      "无现金支付与打包带走"
+    ]
+  },
+  "featured": true,
+  "relatedSlugs": [
+    "malaysia",
+    "thailand",
+    "hong-kong"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Do I need phrase cards if I already speak English in Singapore?",
+        "zh-CN": "如果我会英语，在新加坡还需要短语卡吗？"
+      },
+      "answer": {
+        "en-US": "Yes, especially for hawker-centre orders, fast service counters, and showing precise destinations to drivers. The card is often faster than explaining the same request twice.",
+        "zh-CN": "需要，尤其是在熟食中心点餐、快节奏柜台沟通，以及给司机确认具体下车点时。很多时候短语卡会比口头重复解释更快。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Which phrase groups are most useful for Singapore?",
+        "zh-CN": "在新加坡最常用的是哪几组短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport and dining. MRT, Grab, hawker centres, and hotel counters cover most first-day situations, then keep shopping and emergency phrases ready as backup.",
+        "zh-CN": "优先准备交通和餐饮就很够用。MRT、Grab、熟食中心和酒店柜台能覆盖大多数第一天场景，再把购物和紧急求助类短语留作备用。"
+      }
     }
   ]
 }

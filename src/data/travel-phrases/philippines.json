@@ -263,6 +263,213 @@
       "nativeText": "I lost my passport",
       "romanization": null,
       "audioKey": "travel-phrases/philippines/lost_passport.mp3"
+    },
+    {
+      "id": "beep_topup_where_ph",
+      "category": "transport",
+      "nativeText": "Where can I reload my beep card?",
+      "translation": {
+        "en-US": "Where can I reload my beep card?",
+        "zh-CN": "beep 卡在哪里可以充值？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/philippines/beep_topup_where_ph.mp3"
+    },
+    {
+      "id": "train_to_airport_ph",
+      "category": "transport",
+      "nativeText": "Is this the train to the airport?",
+      "translation": {
+        "en-US": "Is this the train to the airport?",
+        "zh-CN": "这班火车去机场吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/philippines/train_to_airport_ph.mp3"
+    },
+    {
+      "id": "go_to_this_address_ph",
+      "category": "transport",
+      "nativeText": "Please take me to this address.",
+      "translation": {
+        "en-US": "Please take me to this address.",
+        "zh-CN": "请带我去这个地址。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/philippines/go_to_this_address_ph.mp3"
+    },
+    {
+      "id": "grab_pickup_where_ph",
+      "category": "transport",
+      "nativeText": "Where is the Grab pick-up point?",
+      "translation": {
+        "en-US": "Where is the Grab pick-up point?",
+        "zh-CN": "Grab 上车点在哪里？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/philippines/grab_pickup_where_ph.mp3"
+    },
+    {
+      "id": "leave_luggage_before_checkin_ph",
+      "category": "hotel",
+      "nativeText": "Can I leave my luggage before check-in?",
+      "translation": {
+        "en-US": "Can I leave my luggage before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/philippines/leave_luggage_before_checkin_ph.mp3"
+    },
+    {
+      "id": "arrive_late_tonight_ph",
+      "category": "hotel",
+      "nativeText": "I will be arriving late tonight.",
+      "translation": {
+        "en-US": "I will be arriving late tonight.",
+        "zh-CN": "我今晚会晚一点到。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/philippines/arrive_late_tonight_ph.mp3"
+    },
+    {
+      "id": "without_ice_ph",
+      "category": "dining",
+      "nativeText": "Could I have this without ice?",
+      "translation": {
+        "en-US": "Could I have this without ice?",
+        "zh-CN": "这个可以不要冰吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/philippines/without_ice_ph.mp3"
+    },
+    {
+      "id": "extra_rice_ph",
+      "category": "dining",
+      "nativeText": "Can I get extra rice, please?",
+      "translation": {
+        "en-US": "Can I get extra rice, please?",
+        "zh-CN": "可以多给我一点米饭吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/philippines/extra_rice_ph.mp3"
+    },
+    {
+      "id": "takeaway_philippines",
+      "category": "dining",
+      "nativeText": "Can you make this to go?",
+      "translation": {
+        "en-US": "Can you make this to go?",
+        "zh-CN": "可以帮我打包带走吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/philippines/takeaway_philippines.mp3"
+    },
+    {
+      "id": "pay_by_gcash_ph",
+      "category": "shopping",
+      "nativeText": "Can I pay with GCash?",
+      "translation": {
+        "en-US": "Can I pay with GCash?",
+        "zh-CN": "可以用 GCash 支付吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/philippines/pay_by_gcash_ph.mp3"
+    },
+    {
+      "id": "write_address_ph",
+      "category": "basics",
+      "nativeText": "Could you write the address down clearly?",
+      "translation": {
+        "en-US": "Could you write the address down clearly?",
+        "zh-CN": "可以把地址写清楚吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/philippines/write_address_ph.mp3"
+    },
+    {
+      "id": "missed_last_train_ph",
+      "category": "emergency",
+      "nativeText": "I missed the last train.",
+      "translation": {
+        "en-US": "I missed the last train.",
+        "zh-CN": "我错过末班火车了。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/philippines/missed_last_train_ph.mp3"
+    },
+    {
+      "id": "terminal_fee_ph_bonus",
+      "category": "shopping",
+      "nativeText": "Is the terminal fee already included?",
+      "translation": {
+        "en-US": "Is the terminal fee already included?",
+        "zh-CN": "码头或机场的离境费已经包含了吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/philippines/terminal_fee_ph_bonus.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for Philippines with audio, built for airport pickups, island ferries, hotel check-ins, mall or food-court stops, and everyday local-service questions.",
+    "zh-CN": "菲律宾旅行短语卡，围绕机场接驳、岛屿渡轮、酒店入住、商场或食阁停留，以及本地服务沟通等高频场景整理。"
+  },
+  "intro": {
+    "en-US": "Built for Philippines trips where airport rides, ferry terminals, hotel counters, and food-court or market conversations all happen quickly. These cards help when you need short local wording for transport, simple food orders, or service requests.",
+    "zh-CN": "这套菲律宾短语适合那种机场接驳、渡轮码头、酒店前台，以及食阁和市场沟通会快速出现的旅行节奏。遇到要问交通、简短点餐或服务请求时，短语卡会很实用。"
+  },
+  "teaser": {
+    "en-US": "Built for Philippines airport rides, island ferries, food courts, and hotel or mall conversations.",
+    "zh-CN": "适合菲律宾的机场交通、岛屿渡轮、食阁，以及酒店和商场沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep transport phrases ready for airport pickups, ferries, and longer island transfers before you start moving around.",
+      "Dining phrases help in food courts and casual spots when you want takeaway, less ice, or a simple menu explanation.",
+      "Even where English is common, a phrase card still helps for addresses, pickup points, and quick service requests."
+    ],
+    "zh-CN": [
+      "如果有机场接驳、渡轮和岛屿交通，最好先把相关短语备好。",
+      "在食阁和轻松餐饮场景里，外带、少冰和简单菜单说明都很常用。",
+      "即使很多地方英语通行，遇到地址确认、上车点和快速服务请求时，短语卡依然很好用。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "Airport rides, ferries, and island transfers",
+      "Food courts, takeaway, and menu basics",
+      "Hotels, addresses, and quick service requests"
+    ],
+    "zh-CN": [
+      "机场交通、渡轮与岛屿交通",
+      "食阁、外带与菜单基础沟通",
+      "酒店、地址与快速服务请求"
+    ]
+  },
+  "featured": false,
+  "relatedSlugs": [
+    "singapore",
+    "malaysia",
+    "thailand"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrase groups matter most for a first Philippines trip?",
+        "zh-CN": "第一次去菲律宾旅行，最该先准备哪几组短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport, hotel, and dining. That covers airport arrivals, ferries, check-in, and most first-day food or transfer needs.",
+        "zh-CN": "建议先看交通、酒店和餐饮三组，基本就能覆盖机场落地、渡轮、入住办理，以及第一天大部分用餐和转移场景。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Why keep phrase cards for Philippines if English is common?",
+        "zh-CN": "既然菲律宾英语很常见，为什么还值得准备短语卡？"
+      },
+      "answer": {
+        "en-US": "Because travel logistics still move quickly. A ready-made phrase is often faster for transport, counters, and exact destination questions.",
+        "zh-CN": "因为很多旅行安排节奏依然很快，在交通、柜台和准确目的地确认这类场景里，提前备好的短语往往还是更快。"
+      }
     }
   ]
 }

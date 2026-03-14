@@ -263,6 +263,224 @@
       "nativeText": "He perdido mi pasaporte",
       "romanization": null,
       "audioKey": "travel-phrases/spain/lost_passport.mp3"
+    },
+    {
+      "id": "which_platform_is_it",
+      "category": "transport",
+      "nativeText": "¿Qué andén es?",
+      "translation": {
+        "en-US": "Which platform is it?",
+        "zh-CN": "是几号站台？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/spain/which_platform_is_it.mp3"
+    },
+    {
+      "id": "validate_ticket_here_spain",
+      "category": "transport",
+      "nativeText": "¿Hay que validar este billete aquí?",
+      "translation": {
+        "en-US": "Do I need to validate this ticket here?",
+        "zh-CN": "这张票需要在这里验证吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/spain/validate_ticket_here_spain.mp3"
+    },
+    {
+      "id": "train_to_airport_local",
+      "category": "transport",
+      "nativeText": "¿Este tren va al aeropuerto?",
+      "translation": {
+        "en-US": "Does this train go to the airport?",
+        "zh-CN": "这班火车去机场吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/spain/train_to_airport_local.mp3"
+    },
+    {
+      "id": "write_address_spanish",
+      "category": "transport",
+      "nativeText": "¿Me puede escribir la dirección?",
+      "translation": {
+        "en-US": "Could you write down the address for me?",
+        "zh-CN": "可以帮我把地址写下来吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/spain/write_address_spanish.mp3"
+    },
+    {
+      "id": "leave_luggage_before_checkin_spain",
+      "category": "hotel",
+      "nativeText": "¿Puedo dejar la maleta antes del check-in?",
+      "translation": {
+        "en-US": "Can I leave my luggage before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/spain/leave_luggage_before_checkin_spain.mp3"
+    },
+    {
+      "id": "breakfast_starts_when_spain",
+      "category": "hotel",
+      "nativeText": "¿A qué hora empieza el desayuno?",
+      "translation": {
+        "en-US": "What time does breakfast start?",
+        "zh-CN": "早餐几点开始？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/spain/breakfast_starts_when_spain.mp3"
+    },
+    {
+      "id": "without_ham_please",
+      "category": "dining",
+      "nativeText": "Sin jamón, por favor.",
+      "translation": {
+        "en-US": "Without ham, please.",
+        "zh-CN": "请不要火腿。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/spain/without_ham_please.mp3"
+    },
+    {
+      "id": "daily_menu_available",
+      "category": "dining",
+      "nativeText": "¿Todavía hay menú del día?",
+      "translation": {
+        "en-US": "Is the menu del día still available?",
+        "zh-CN": "今天的套餐现在还有吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/spain/daily_menu_available.mp3"
+    },
+    {
+      "id": "bill_together_please",
+      "category": "dining",
+      "nativeText": "La cuenta junta, por favor.",
+      "translation": {
+        "en-US": "One bill together, please.",
+        "zh-CN": "请一起结账。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/spain/bill_together_please.mp3"
+    },
+    {
+      "id": "tax_free_where_spain",
+      "category": "shopping",
+      "nativeText": "¿Dónde está el mostrador de tax free?",
+      "translation": {
+        "en-US": "Where is the tax-free counter?",
+        "zh-CN": "退税柜台在哪里？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/spain/tax_free_where_spain.mp3"
+    },
+    {
+      "id": "need_a_bag_spain",
+      "category": "shopping",
+      "nativeText": "¿Me da una bolsa, por favor?",
+      "translation": {
+        "en-US": "Could you give me a bag, please?",
+        "zh-CN": "请给我一个袋子。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/spain/need_a_bag_spain.mp3"
+    },
+    {
+      "id": "missed_last_train_spain",
+      "category": "emergency",
+      "nativeText": "Perdí el último tren.",
+      "translation": {
+        "en-US": "I missed the last train.",
+        "zh-CN": "我错过最后一班火车了。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/spain/missed_last_train_spain.mp3"
+    },
+    {
+      "id": "commuter_train_spain",
+      "category": "transport",
+      "nativeText": "¿Este tren es de cercanías?",
+      "translation": {
+        "en-US": "Is this a commuter train?",
+        "zh-CN": "这趟是市郊火车吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/spain/commuter_train_spain.mp3"
+    },
+    {
+      "id": "menu_del_dia_today_spain",
+      "category": "dining",
+      "nativeText": "¿Hay menú del día hoy?",
+      "translation": {
+        "en-US": "Do you have a menu del día today?",
+        "zh-CN": "今天有当日套餐吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/spain/menu_del_dia_today_spain.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for Spain with audio, built for Renfe trains, hotel arrivals, tapas bars, late dining, pharmacies, and everyday travel requests.",
+    "zh-CN": "西班牙旅行短语卡，围绕 Renfe 火车、酒店入住、tapas 酒吧、晚餐时间、药房和日常出行沟通整理。"
+  },
+  "intro": {
+    "en-US": "Built for Spain trips where Renfe schedules, apartment check-ins, tapas stops, beach-town logistics, and late dinners all shape the day. These cards help when you need quick Spanish for train questions, menu del dia orders, or simple requests in smaller bars and neighborhood shops.",
+    "zh-CN": "这套西班牙短语适合那种会遇到 Renfe 车次、民宿入住、tapas 小馆、海边城市出行和晚餐偏晚节奏的旅行路线。遇到要问火车、点 menu del dia，或者在小酒馆与社区店里提出简短需求时，短语卡会很有帮助。"
+  },
+  "teaser": {
+    "en-US": "Built for Spain rail travel, Renfe questions, tapas timing, menu del dia orders, and hotel or apartment arrivals.",
+    "zh-CN": "适合西班牙铁路出行、Renfe 询问、tapas 时间、menu del dia 点单和酒店或公寓入住沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep transport phrases ready for Renfe stations, platform changes, and ticket questions before longer intercity travel days.",
+      "Dining phrases matter because tapas timing, menu del dia, and late dinner hours can be different from what many travelers expect.",
+      "For beach towns and smaller cities, simple pharmacy, hotel, and address phrases are worth keeping offline in case you lose signal."
+    ],
+    "zh-CN": [
+      "如果有跨城行程，最好先备好 Renfe 车站、站台变更和车票询问相关短语。",
+      "西班牙的 tapas 时间、menu del dia 和晚餐时段常常和很多游客的习惯不同，所以餐饮短语特别实用。",
+      "到了海边城市或较小城镇，药房、酒店和地址类短语最好离线备好，信号不稳定时会很有帮助。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "Renfe, tapas timing, and menu del dia",
+      "Hotels, apartments, and late dining",
+      "Beach towns, pharmacies, and simple directions"
+    ],
+    "zh-CN": [
+      "Renfe、tapas 时间与 menu del dia",
+      "酒店、公寓与晚餐节奏",
+      "海边城市、药房与基础问路"
+    ]
+  },
+  "featured": false,
+  "relatedSlugs": [
+    "france",
+    "portugal",
+    "italy"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrases are most useful for a Spain itinerary with trains and tapas stops?",
+        "zh-CN": "如果西班牙行程里有火车和 tapas 小馆，最该先准备哪类短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport, dining, and hotel. That covers Renfe questions, check-in, tapas or menu del dia orders, and most first-day logistics in Spain.",
+        "zh-CN": "建议先看交通、餐饮和酒店三组，基本就能覆盖 Renfe 询问、入住办理、tapas 或 menu del dia 点单，以及西班牙第一天的大多数安排。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Why are dining phrases especially helpful in Spain?",
+        "zh-CN": "为什么在西班牙旅行时，餐饮短语会特别有用？"
+      },
+      "answer": {
+        "en-US": "They help with tapas ordering, asking what is included in menu del dia, and handling later lunch or dinner schedules without confusion.",
+        "zh-CN": "因为它们能帮你点 tapas、确认 menu del dia 包含什么内容，以及适应偏晚的午餐和晚餐时间，不容易弄混。"
+      }
     }
   ]
 }

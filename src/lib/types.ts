@@ -2,6 +2,7 @@ export type Locale = 'zh-CN' | 'en-US'
 export type SiteTheme = 'light' | 'dark' | 'system'
 export type PhraseCategory = 'basics' | 'transport' | 'hotel' | 'dining' | 'shopping' | 'emergency'
 export type PhraseRegion = 'asia' | 'europe' | 'americas' | 'africa' | 'middle-east' | 'oceania'
+export type PhraseAudioCoverage = 'all' | 'partial' | 'none'
 
 export type ToolDefinition = {
   id: string
@@ -20,6 +21,11 @@ export interface PhraseCard {
   audioKey: string | null
 }
 
+export interface PhraseFaqItem {
+  question: string
+  answer: string
+}
+
 export interface PhraseCountryPack {
   country: string
   slug: string
@@ -29,8 +35,14 @@ export interface PhraseCountryPack {
   flag: string
   title: string
   description: string
-  hasAudio: boolean
+  seoDescription: string
+  intro: string
+  travelTips: string[]
+  audioCoverage: PhraseAudioCoverage
   phrases: PhraseCard[]
+  extraPhrases: PhraseCard[]
+  faq: PhraseFaqItem[]
+  relatedCountries: PhraseCountrySummary[]
 }
 
 export interface PhraseCountrySummary {
@@ -42,8 +54,11 @@ export interface PhraseCountrySummary {
   flag: string
   title: string
   description: string
+  teaser: string
+  highlights: string[]
+  featured: boolean
   phraseCount: number
-  hasAudio: boolean
+  audioCoverage: PhraseAudioCoverage
 }
 
 export interface DeviceIdentity {

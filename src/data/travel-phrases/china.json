@@ -263,6 +263,235 @@
       "nativeText": "我护照丢了",
       "romanization": "Wo hu zhao diu le",
       "audioKey": "travel-phrases/china/lost_passport.mp3"
+    },
+    {
+      "id": "topup_transit_card_cn",
+      "category": "transport",
+      "nativeText": "这里可以给交通卡充值吗？",
+      "translation": {
+        "en-US": "Can I top up my transit card here?",
+        "zh-CN": "这里可以给交通卡充值吗？"
+      },
+      "romanization": "Zhe li ke yi gei jiao tong ka chong zhi ma?",
+      "audioKey": "travel-phrases/china/topup_transit_card_cn.mp3"
+    },
+    {
+      "id": "metro_line_to_airport_cn",
+      "category": "transport",
+      "nativeText": "去机场的地铁是哪一条线？",
+      "translation": {
+        "en-US": "Which metro line goes to the airport?",
+        "zh-CN": "去机场的是哪一条地铁线？"
+      },
+      "romanization": "Qu ji chang de di tie shi na yi tiao xian?",
+      "audioKey": "travel-phrases/china/metro_line_to_airport_cn.mp3"
+    },
+    {
+      "id": "go_to_this_address_cn",
+      "category": "transport",
+      "nativeText": "请带我去这个地址",
+      "translation": {
+        "en-US": "Please take me to this address.",
+        "zh-CN": "请带我去这个地址。"
+      },
+      "romanization": "Qing dai wo qu zhe ge di zhi",
+      "audioKey": "travel-phrases/china/go_to_this_address_cn.mp3"
+    },
+    {
+      "id": "highspeed_gate_number_cn",
+      "category": "transport",
+      "nativeText": "这个高铁是从几号检票口进？",
+      "translation": {
+        "en-US": "Which gate do I enter for this high-speed train?",
+        "zh-CN": "这趟高铁从几号检票口进？"
+      },
+      "romanization": "Zhe ge gao tie shi cong ji hao jian piao kou jin?",
+      "audioKey": "travel-phrases/china/highspeed_gate_number_cn.mp3"
+    },
+    {
+      "id": "leave_luggage_before_checkin_cn",
+      "category": "hotel",
+      "nativeText": "入住前可以先寄存行李吗？",
+      "translation": {
+        "en-US": "Can I leave my luggage before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": "Ru zhu qian ke yi xian ji cun xing li ma?",
+      "audioKey": "travel-phrases/china/leave_luggage_before_checkin_cn.mp3"
+    },
+    {
+      "id": "arrive_late_tonight_cn",
+      "category": "hotel",
+      "nativeText": "我今晚会晚一点到",
+      "translation": {
+        "en-US": "I will arrive late tonight.",
+        "zh-CN": "我今晚会晚一点到。"
+      },
+      "romanization": "Wo jin wan hui wan yi dian dao",
+      "audioKey": "travel-phrases/china/arrive_late_tonight_cn.mp3"
+    },
+    {
+      "id": "scan_to_pay_cn",
+      "category": "dining",
+      "nativeText": "这个可以扫码付款吗？",
+      "translation": {
+        "en-US": "Can I scan to pay for this?",
+        "zh-CN": "这个可以扫码付款吗？"
+      },
+      "romanization": "Zhe ge ke yi sao ma fu kuan ma?",
+      "audioKey": "travel-phrases/china/scan_to_pay_cn.mp3"
+    },
+    {
+      "id": "no_coriander_cn",
+      "category": "dining",
+      "nativeText": "请不要香菜",
+      "translation": {
+        "en-US": "Please do not add coriander.",
+        "zh-CN": "请不要香菜。"
+      },
+      "romanization": "Qing bu yao xiang cai",
+      "audioKey": "travel-phrases/china/no_coriander_cn.mp3"
+    },
+    {
+      "id": "takeaway_china",
+      "category": "dining",
+      "nativeText": "请帮我打包带走",
+      "translation": {
+        "en-US": "Please pack it to go.",
+        "zh-CN": "请帮我打包带走。"
+      },
+      "romanization": "Qing bang wo da bao dai zou",
+      "audioKey": "travel-phrases/china/takeaway_china.mp3"
+    },
+    {
+      "id": "wechat_pay_ok_cn",
+      "category": "shopping",
+      "nativeText": "可以用微信支付吗？",
+      "translation": {
+        "en-US": "Can I pay with WeChat Pay?",
+        "zh-CN": "可以用微信支付吗？"
+      },
+      "romanization": "Ke yi yong WeiXin zhi fu ma?",
+      "audioKey": "travel-phrases/china/wechat_pay_ok_cn.mp3"
+    },
+    {
+      "id": "write_in_chinese_cn",
+      "category": "basics",
+      "nativeText": "请帮我写成中文",
+      "translation": {
+        "en-US": "Please write it in Chinese.",
+        "zh-CN": "请帮我写成中文。"
+      },
+      "romanization": "Qing bang wo xie cheng zhong wen",
+      "audioKey": "travel-phrases/china/write_in_chinese_cn.mp3"
+    },
+    {
+      "id": "missed_last_metro_cn",
+      "category": "emergency",
+      "nativeText": "我错过末班地铁了",
+      "translation": {
+        "en-US": "I missed the last metro.",
+        "zh-CN": "我错过末班地铁了。"
+      },
+      "romanization": "Wo cuo guo mo ban di tie le",
+      "audioKey": "travel-phrases/china/missed_last_metro_cn.mp3"
+    },
+    {
+      "id": "alipay_ok_cn_bonus",
+      "category": "shopping",
+      "nativeText": "可以用支付宝吗？",
+      "translation": {
+        "en-US": "Can I pay with Alipay?",
+        "zh-CN": "可以用支付宝吗？"
+      },
+      "romanization": "Ke yi yong Zhi Fu Bao ma?",
+      "audioKey": "travel-phrases/china/alipay_ok_cn_bonus.mp3"
+    },
+    {
+      "id": "hot_water_cn_bonus",
+      "category": "dining",
+      "nativeText": "请给我一杯热水",
+      "translation": {
+        "en-US": "Please give me a cup of hot water.",
+        "zh-CN": "请给我一杯热水。"
+      },
+      "romanization": "Qing gei wo yi bei re shui",
+      "audioKey": "travel-phrases/china/hot_water_cn_bonus.mp3"
+    },
+    {
+      "id": "show_id_entry_cn_bonus",
+      "category": "transport",
+      "nativeText": "进站需要出示身份证吗？",
+      "translation": {
+        "en-US": "Do I need to show my ID to enter the station?",
+        "zh-CN": "进站需要出示身份证吗？"
+      },
+      "romanization": "Jin zhan xu yao chu shi shen fen zheng ma?",
+      "audioKey": "travel-phrases/china/show_id_entry_cn_bonus.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for China with audio, built for metro travel, high-speed rail, hotel check-ins, Alipay or WeChat Pay questions, and everyday local-service conversations.",
+    "zh-CN": "中国旅行短语卡，围绕地铁、高铁、酒店入住、支付宝或微信支付，以及本地服务沟通等高频场景整理。"
+  },
+  "intro": {
+    "en-US": "Built for China trips where metro security, high-speed rail, hotel registration, and cashless payment questions all come up quickly. These cards help when you need short Mandarin for station exits, table orders, or showing exactly what you mean on screen.",
+    "zh-CN": "这套中国短语适合那种地铁安检、高铁、酒店登记和无现金支付会快速出现的旅行节奏。遇到要问出入口、餐桌点单，或者想直接在屏幕上准确表达意思时，短语卡会很有帮助。"
+  },
+  "teaser": {
+    "en-US": "Built for China metro rides, high-speed rail, hotel registration, and Alipay or WeChat Pay questions.",
+    "zh-CN": "适合中国的地铁、高铁、酒店登记，以及支付宝或微信支付相关沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep transport phrases ready for metro exits, station security, and high-speed rail platforms before you start moving between cities.",
+      "Payment phrases are essential because many small purchases still revolve around Alipay or WeChat Pay, even when cash is accepted.",
+      "Showing the phrase card on screen is often the fastest way to handle address details, food orders, or room requests without extra typing."
+    ],
+    "zh-CN": [
+      "如果有地铁和高铁行程，最好先备好出入口、安检和站台相关短语。",
+      "支付类短语非常重要，因为很多小额消费都会围绕支付宝或微信支付展开，即使现金也可能可以用。",
+      "在地址确认、点餐和房间需求这类场景里，直接展示短语卡，通常会比现场多打一轮字更快。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "Metro exits, high-speed rail, and station basics",
+      "Alipay, WeChat Pay, and small-payment questions",
+      "Hotels, food orders, and exact on-screen requests"
+    ],
+    "zh-CN": [
+      "地铁出入口、高铁与车站沟通",
+      "支付宝、微信支付与小额支付询问",
+      "酒店、点餐与屏幕直出需求"
+    ]
+  },
+  "featured": true,
+  "relatedSlugs": [
+    "japan",
+    "south-korea",
+    "taiwan"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrase groups matter most for a first China trip?",
+        "zh-CN": "第一次去中国旅行，最该先准备哪几组短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport, hotel, and dining. That covers metro, high-speed rail, hotel registration, and most first-day food or payment needs.",
+        "zh-CN": "建议先看交通、酒店和餐饮三组，基本就能覆盖地铁、高铁、酒店登记，以及第一天大部分用餐和支付场景。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Why are phrase cards especially useful in China?",
+        "zh-CN": "为什么在中国旅行时，短语卡会特别有用？"
+      },
+      "answer": {
+        "en-US": "Because many interactions depend on exact wording, exact addresses, and fast mobile-payment communication. The card makes that easier immediately.",
+        "zh-CN": "因为很多沟通都依赖非常准确的说法、地址和支付信息，提前备好的短语卡能马上把这些细节说清楚。"
+      }
     }
   ]
 }

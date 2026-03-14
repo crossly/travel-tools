@@ -263,6 +263,213 @@
       "nativeText": "I lost my passport",
       "romanization": null,
       "audioKey": "travel-phrases/kenya/lost_passport.mp3"
+    },
+    {
+      "id": "topup_transit_card_ke",
+      "category": "transport",
+      "nativeText": "Where can I top up my transit card?",
+      "translation": {
+        "en-US": "Where can I top up my transit card?",
+        "zh-CN": "我的交通卡在哪里可以充值？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/kenya/topup_transit_card_ke.mp3"
+    },
+    {
+      "id": "airport_bus_where_ke",
+      "category": "transport",
+      "nativeText": "Where do I catch the airport bus?",
+      "translation": {
+        "en-US": "Where do I catch the airport bus?",
+        "zh-CN": "去机场的巴士在哪里坐？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/kenya/airport_bus_where_ke.mp3"
+    },
+    {
+      "id": "go_to_this_address_ke",
+      "category": "transport",
+      "nativeText": "Please take me to this address.",
+      "translation": {
+        "en-US": "Please take me to this address.",
+        "zh-CN": "请带我去这个地址。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/kenya/go_to_this_address_ke.mp3"
+    },
+    {
+      "id": "matatu_stage_where_ke",
+      "category": "transport",
+      "nativeText": "Where is the matatu stage for town?",
+      "translation": {
+        "en-US": "Where is the matatu stage for town?",
+        "zh-CN": "去市区的小巴站在哪里？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/kenya/matatu_stage_where_ke.mp3"
+    },
+    {
+      "id": "leave_luggage_before_checkin_ke",
+      "category": "hotel",
+      "nativeText": "Can I leave my luggage before check-in?",
+      "translation": {
+        "en-US": "Can I leave my luggage before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/kenya/leave_luggage_before_checkin_ke.mp3"
+    },
+    {
+      "id": "arrive_late_tonight_ke",
+      "category": "hotel",
+      "nativeText": "I will be arriving late tonight.",
+      "translation": {
+        "en-US": "I will be arriving late tonight.",
+        "zh-CN": "我今晚会晚一点到。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/kenya/arrive_late_tonight_ke.mp3"
+    },
+    {
+      "id": "without_onions_ke",
+      "category": "dining",
+      "nativeText": "Could I get this without onions?",
+      "translation": {
+        "en-US": "Could I get this without onions?",
+        "zh-CN": "这个可以不要洋葱吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/kenya/without_onions_ke.mp3"
+    },
+    {
+      "id": "bottled_water_ke",
+      "category": "dining",
+      "nativeText": "Could I have bottled water, please?",
+      "translation": {
+        "en-US": "Could I have bottled water, please?",
+        "zh-CN": "请给我瓶装水。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/kenya/bottled_water_ke.mp3"
+    },
+    {
+      "id": "takeaway_kenya",
+      "category": "dining",
+      "nativeText": "Can you pack it to go, please?",
+      "translation": {
+        "en-US": "Can you pack it to go, please?",
+        "zh-CN": "可以帮我打包带走吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/kenya/takeaway_kenya.mp3"
+    },
+    {
+      "id": "pay_with_mpesa_ke",
+      "category": "shopping",
+      "nativeText": "Can I pay with M-Pesa?",
+      "translation": {
+        "en-US": "Can I pay with M-Pesa?",
+        "zh-CN": "可以用 M-Pesa 支付吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/kenya/pay_with_mpesa_ke.mp3"
+    },
+    {
+      "id": "write_address_ke",
+      "category": "basics",
+      "nativeText": "Could you write the address down clearly?",
+      "translation": {
+        "en-US": "Could you write the address down clearly?",
+        "zh-CN": "可以把地址写清楚吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/kenya/write_address_ke.mp3"
+    },
+    {
+      "id": "missed_last_bus_ke",
+      "category": "emergency",
+      "nativeText": "I missed the last bus.",
+      "translation": {
+        "en-US": "I missed the last bus.",
+        "zh-CN": "我错过末班巴士了。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/kenya/missed_last_bus_ke.mp3"
+    },
+    {
+      "id": "airport_surcharge_ke_bonus",
+      "category": "shopping",
+      "nativeText": "Is there an airport surcharge?",
+      "translation": {
+        "en-US": "Is there an airport surcharge?",
+        "zh-CN": "会收机场附加费吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/kenya/airport_surcharge_ke_bonus.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for Kenya with audio, built for airport pickups, ride apps, lodge check-ins, park days, and everyday payment or direction questions.",
+    "zh-CN": "肯尼亚旅行短语卡，围绕机场接驳、网约车、营地入住、公园行程和支付或问路等高频场景整理。"
+  },
+  "intro": {
+    "en-US": "Built for Kenya trips where airport pickups, lodge transfers, city rides, and safari or park questions all come up quickly. These cards help when you need short local wording for timing, directions, or simple meal and service requests.",
+    "zh-CN": "这套肯尼亚短语适合那种机场接驳、营地交通、市内出行，以及 safari 或公园行程会快速出现的旅行节奏。遇到要问时间、方向，或提出简短餐饮和服务需求时，短语卡会很实用。"
+  },
+  "teaser": {
+    "en-US": "Built for Kenya airport pickups, lodge transfers, park days, and simple city or payment conversations.",
+    "zh-CN": "适合肯尼亚的机场接驳、营地交通、公园日程，以及简单城市和支付沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep transport phrases ready for airport pickups, ride apps, and longer transfers to lodges or park gates.",
+      "Hotel and lodge phrases help most with check-in timing, meal schedules, and asking what is included.",
+      "Payment and direction cards are useful when you want to confirm the price, the route, or the exact pickup point quickly."
+    ],
+    "zh-CN": [
+      "如果有机场接驳、网约车和去营地或公园门口的长途交通，最好先备好相关短语。",
+      "酒店和营地短语尤其适合处理入住时间、用餐安排和包含内容这类问题。",
+      "支付和方向卡则适合用来快速确认价格、路线或准确上车点。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "Airport pickups, ride apps, and lodge transfers",
+      "Park days, meal schedules, and what is included",
+      "Payments, routes, and quick service requests"
+    ],
+    "zh-CN": [
+      "机场接驳、网约车与营地交通",
+      "公园日程、用餐安排与包含内容",
+      "支付、路线与快速服务请求"
+    ]
+  },
+  "featured": false,
+  "relatedSlugs": [
+    "tanzania",
+    "mauritius",
+    "south-africa"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrase groups matter most for a first Kenya trip?",
+        "zh-CN": "第一次去肯尼亚旅行，最该先准备哪几组短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport, hotel, and dining. That covers airport arrivals, lodge check-in, meal planning, and many first-day logistics.",
+        "zh-CN": "建议先看交通、酒店和餐饮三组，基本就能覆盖机场落地、营地入住、用餐安排，以及第一天的大多数行程细节。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Why are phrase cards useful in Kenya?",
+        "zh-CN": "为什么在肯尼亚旅行时，短语卡会很有用？"
+      },
+      "answer": {
+        "en-US": "Because many useful travel interactions depend on exact timing, pickup points, and practical service details.",
+        "zh-CN": "因为很多高频沟通都和准确时间、上车点和实际服务细节有关，提前备好的短语能减少很多确认成本。"
+      }
     }
   ]
 }

@@ -11,6 +11,70 @@
   },
   "languageCode": "ja-JP",
   "flag": "🇯🇵",
+  "description": {
+    "en-US": "Travel phrases for Japan with audio and local tips for rail, restaurants, and convenience stores.",
+    "zh-CN": "日本旅行短语卡，补充了电车、餐厅和便利店等高频本地场景，更适合现场沟通。"
+  },
+  "intro": {
+    "en-US": "Built for Japan trips where rail stations, convenience stores, and polite service language come up all day. The core pack covers universal travel needs, and the local notes below help with the phrases people actually expect to hear in Japan.",
+    "zh-CN": "这套日本短语优先覆盖电车站、便利店、餐厅和偏礼貌的服务场景。通用短语之外，又补了一些更符合日本日常旅行沟通的表达，现场使用会更顺。"
+  },
+  "teaser": {
+    "en-US": "Useful for rail travel, convenience stores, and polite service language across Japan.",
+    "zh-CN": "适合日本电车出行、便利店购物和偏礼貌的服务沟通场景。"
+  },
+  "highlights": {
+    "en-US": [
+      "IC cards",
+      "Convenience stores",
+      "Polite service phrases"
+    ],
+    "zh-CN": [
+      "IC 卡",
+      "便利店",
+      "礼貌表达"
+    ]
+  },
+  "featured": true,
+  "relatedSlugs": [
+    "south-korea",
+    "taiwan",
+    "hong-kong"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Do I need Japanese for most tourist places in Japan?",
+        "zh-CN": "在日本大多数游客场景里，一定要会日语吗？"
+      },
+      "answer": {
+        "en-US": "Major stations, hotels, and tourist spots often support some English, but short Japanese phrases still help with smoother service and small requests.",
+        "zh-CN": "大车站、酒店和热门景点通常能应付一些英语，但会几句简短日语，通常更容易得到顺畅回应，也更适合处理小需求。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Which phrases matter most in Japan besides hello and thank you?",
+        "zh-CN": "除了打招呼和道谢，在日本最值得优先准备哪些短语？"
+      },
+      "answer": {
+        "en-US": "Transport, payment, and convenience-store phrases are especially useful, along with polite requests for restaurant or hotel service.",
+        "zh-CN": "交通、支付、便利店相关表达最常用，再加上餐厅和酒店里的礼貌请求类短语，基本就很够用了。"
+      }
+    }
+  ],
+  "travelTips": {
+    "en-US": [
+      "A short polite ending usually sounds better in shops, hotels, and stations.",
+      "IC card is a common transport/payment term, so saying it directly is useful.",
+      "Convenience stores are common touchpoints, so payment and bag-related phrases matter."
+    ],
+    "zh-CN": [
+      "在车站、餐厅和酒店里，稍微礼貌一点的说法通常更自然。",
+      "IC card 是很常见的交通和支付说法，直接说出来通常对方能马上理解。",
+      "便利店使用频率很高，支付、袋子和加热相关表达都很实用。"
+    ]
+  },
   "phrases": [
     {
       "id": "hello",
@@ -263,6 +327,195 @@
       "nativeText": "パスポートをなくしました",
       "romanization": "Pasupooto o nakushimashita",
       "audioKey": "travel-phrases/japan/lost_passport.mp3"
+    },
+    {
+      "id": "suica_charge_here",
+      "category": "transport",
+      "nativeText": "Suicaはここでチャージできますか？",
+      "translation": {
+        "en-US": "Can I recharge my Suica here?",
+        "zh-CN": "这里可以给 Suica 充值吗？"
+      },
+      "romanization": "Suica wa koko de chaaji dekimasu ka?",
+      "audioKey": "travel-phrases/japan/suica_charge_here.mp3"
+    },
+    {
+      "id": "station_exit_number",
+      "category": "transport",
+      "nativeText": "2番出口はどちらですか？",
+      "translation": {
+        "en-US": "Which way is exit 2?",
+        "zh-CN": "2号出口往哪边走？"
+      },
+      "romanization": "Niban deguchi wa dochira desu ka?",
+      "audioKey": "travel-phrases/japan/station_exit_number.mp3"
+    },
+    {
+      "id": "shinkansen_platform_number",
+      "category": "transport",
+      "nativeText": "新幹線は何番ホームですか？",
+      "translation": {
+        "en-US": "Which platform is the Shinkansen on?",
+        "zh-CN": "新干线在几号站台？"
+      },
+      "romanization": "Shinkansen wa nanban hoomu desu ka?",
+      "audioKey": "travel-phrases/japan/shinkansen_platform_number.mp3"
+    },
+    {
+      "id": "last_train_time_local",
+      "category": "transport",
+      "nativeText": "終電は何時ですか？",
+      "translation": {
+        "en-US": "What time is the last train?",
+        "zh-CN": "末班车是几点？"
+      },
+      "romanization": "Shuuden wa nanji desu ka?",
+      "audioKey": "travel-phrases/japan/last_train_time_local.mp3"
+    },
+    {
+      "id": "luggage_before_checkin",
+      "category": "hotel",
+      "nativeText": "チェックイン前に荷物を預けられますか？",
+      "translation": {
+        "en-US": "Can I leave my luggage before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": "Chekkuin mae ni nimotsu o azukeraremasu ka?",
+      "audioKey": "travel-phrases/japan/luggage_before_checkin.mp3"
+    },
+    {
+      "id": "public_bath_hours",
+      "category": "hotel",
+      "nativeText": "大浴場は何時までですか？",
+      "translation": {
+        "en-US": "Until what time is the public bath open?",
+        "zh-CN": "大浴场开到几点？"
+      },
+      "romanization": "Daiyokujou wa nanji made desu ka?",
+      "audioKey": "travel-phrases/japan/public_bath_hours.mp3"
+    },
+    {
+      "id": "heat_this_food",
+      "category": "dining",
+      "nativeText": "これを温めてもらえますか？",
+      "translation": {
+        "en-US": "Could you heat this up for me?",
+        "zh-CN": "可以帮我加热这个吗？"
+      },
+      "romanization": "Kore o atatamete moraemasu ka?",
+      "audioKey": "travel-phrases/japan/heat_this_food.mp3"
+    },
+    {
+      "id": "no_raw_food",
+      "category": "dining",
+      "nativeText": "生ものは避けたいです",
+      "translation": {
+        "en-US": "I would like to avoid raw food.",
+        "zh-CN": "我想避开生食。"
+      },
+      "romanization": "Namamono wa saketai desu",
+      "audioKey": "travel-phrases/japan/no_raw_food.mp3"
+    },
+    {
+      "id": "group_bill_together",
+      "category": "dining",
+      "nativeText": "まとめて会計してください",
+      "translation": {
+        "en-US": "Please put the bill together.",
+        "zh-CN": "请一起结账。"
+      },
+      "romanization": "Matomete kaikei shite kudasai",
+      "audioKey": "travel-phrases/japan/group_bill_together.mp3"
+    },
+    {
+      "id": "tax_free_counter_where",
+      "category": "shopping",
+      "nativeText": "免税カウンターはどこですか？",
+      "translation": {
+        "en-US": "Where is the tax-free counter?",
+        "zh-CN": "免税柜台在哪里？"
+      },
+      "romanization": "Menzei kauntaa wa doko desu ka?",
+      "audioKey": "travel-phrases/japan/tax_free_counter_where.mp3"
+    },
+    {
+      "id": "charging_cable_available",
+      "category": "shopping",
+      "nativeText": "充電ケーブルはありますか？",
+      "translation": {
+        "en-US": "Do you have a charging cable?",
+        "zh-CN": "有充电线吗？"
+      },
+      "romanization": "Juuden keeburu wa arimasu ka?",
+      "audioKey": "travel-phrases/japan/charging_cable_available.mp3"
+    },
+    {
+      "id": "missed_last_train",
+      "category": "emergency",
+      "nativeText": "終電を逃しました",
+      "translation": {
+        "en-US": "I missed the last train.",
+        "zh-CN": "我错过末班车了。"
+      },
+      "romanization": "Shuuden o nogashimashita",
+      "audioKey": "travel-phrases/japan/missed_last_train.mp3"
+    },
+    {
+      "id": "coin_locker_where_jp",
+      "category": "transport",
+      "nativeText": "コインロッカーはどこですか？",
+      "translation": {
+        "en-US": "Where are the coin lockers?",
+        "zh-CN": "投币寄存柜在哪里？"
+      },
+      "romanization": "Koin rokka wa doko desu ka?",
+      "audioKey": "travel-phrases/japan/coin_locker_where_jp.mp3"
+    },
+    {
+      "id": "reserve_luggage_seat_jp",
+      "category": "transport",
+      "nativeText": "荷物置き場のある席を予約したいです",
+      "translation": {
+        "en-US": "I want to reserve a seat with luggage space.",
+        "zh-CN": "我想预订有放行李空间的座位。"
+      },
+      "romanization": "Nimotsu okiba no aru seki o yoyaku shitai desu",
+      "audioKey": "travel-phrases/japan/reserve_luggage_seat_jp.mp3"
+    },
+    {
+      "id": "apple_wallet_suica_jp",
+      "category": "shopping",
+      "nativeText": "Apple WalletのSuicaは使えますか？",
+      "translation": {
+        "en-US": "Can I use Suica in Apple Wallet?",
+        "zh-CN": "Apple Wallet 里的 Suica 可以用吗？"
+      },
+      "romanization": "Apple Wallet no Suica wa tsukaemasu ka?",
+      "audioKey": "travel-phrases/japan/apple_wallet_suica_jp.mp3"
+    }
+  ],
+  "extraPhrases": [
+    {
+      "id": "suica_ok",
+      "category": "transport",
+      "nativeText": "SuicaやPASMOで大丈夫です",
+      "romanization": "Suica ya PASMO de daijoubu desu",
+      "translation": {
+        "en-US": "Suica or PASMO is fine.",
+        "zh-CN": "Suica 或 PASMO 都可以。"
+      },
+      "audioKey": null
+    },
+    {
+      "id": "bag_please",
+      "category": "shopping",
+      "nativeText": "袋をお願いします",
+      "romanization": "Fukuro o onegaishimasu",
+      "translation": {
+        "en-US": "A bag, please.",
+        "zh-CN": "请给我一个袋子。"
+      },
+      "audioKey": null
     }
   ]
 }

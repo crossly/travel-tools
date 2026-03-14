@@ -263,6 +263,224 @@
       "nativeText": "我的護照丟了",
       "romanization": "Wo de hu zhao diu le",
       "audioKey": "travel-phrases/taiwan/lost_passport.mp3"
+    },
+    {
+      "id": "easycard_topup_where",
+      "category": "transport",
+      "nativeText": "悠遊卡在哪裡加值？",
+      "translation": {
+        "en-US": "Where can I top up my EasyCard?",
+        "zh-CN": "悠游卡在哪里加值？"
+      },
+      "romanization": "Youyouka zai nali jiazhi?",
+      "audioKey": "travel-phrases/taiwan/easycard_topup_where.mp3"
+    },
+    {
+      "id": "exit_two_where_tw",
+      "category": "transport",
+      "nativeText": "二號出口怎麼走？",
+      "translation": {
+        "en-US": "How do I get to exit 2?",
+        "zh-CN": "2号出口怎么走？"
+      },
+      "romanization": "Er hao chukou zenme zou?",
+      "audioKey": "travel-phrases/taiwan/exit_two_where_tw.mp3"
+    },
+    {
+      "id": "taxi_here_tw",
+      "category": "transport",
+      "nativeText": "這裡可以搭計程車嗎？",
+      "translation": {
+        "en-US": "Can I take a taxi here?",
+        "zh-CN": "这里可以搭出租车吗？"
+      },
+      "romanization": "Zheli keyi da jichengche ma?",
+      "audioKey": "travel-phrases/taiwan/taxi_here_tw.mp3"
+    },
+    {
+      "id": "follow_this_address_tw",
+      "category": "transport",
+      "nativeText": "請照這個地址開。",
+      "translation": {
+        "en-US": "Please go by this address.",
+        "zh-CN": "请按这个地址开。"
+      },
+      "romanization": "Qing zhao zhege dizhi kai.",
+      "audioKey": "travel-phrases/taiwan/follow_this_address_tw.mp3"
+    },
+    {
+      "id": "leave_luggage_before_checkin_tw",
+      "category": "hotel",
+      "nativeText": "我可以先寄放行李嗎？",
+      "translation": {
+        "en-US": "Can I leave my luggage first?",
+        "zh-CN": "我可以先寄存行李吗？"
+      },
+      "romanization": "Wo keyi xian jifang xingli ma?",
+      "audioKey": "travel-phrases/taiwan/leave_luggage_before_checkin_tw.mp3"
+    },
+    {
+      "id": "early_checkout_taiwan",
+      "category": "hotel",
+      "nativeText": "明天可以提早退房嗎？",
+      "translation": {
+        "en-US": "Can I check out early tomorrow?",
+        "zh-CN": "明天可以提前退房吗？"
+      },
+      "romanization": "Mingtian keyi tizao tuifang ma?",
+      "audioKey": "travel-phrases/taiwan/early_checkout_taiwan.mp3"
+    },
+    {
+      "id": "less_sugar_less_ice_tw",
+      "category": "dining",
+      "nativeText": "這個可以做微糖少冰嗎？",
+      "translation": {
+        "en-US": "Can you make this with less sugar and less ice?",
+        "zh-CN": "这个可以做微糖少冰吗？"
+      },
+      "romanization": "Zhege keyi zuo weitang shao bing ma?",
+      "audioKey": "travel-phrases/taiwan/less_sugar_less_ice_tw.mp3"
+    },
+    {
+      "id": "no_coriander_tw",
+      "category": "dining",
+      "nativeText": "不要香菜，謝謝。",
+      "translation": {
+        "en-US": "No coriander, thank you.",
+        "zh-CN": "不要香菜，谢谢。"
+      },
+      "romanization": "Bu yao xiangcai, xiexie.",
+      "audioKey": "travel-phrases/taiwan/no_coriander_tw.mp3"
+    },
+    {
+      "id": "takeaway_taiwan",
+      "category": "dining",
+      "nativeText": "我要外帶。",
+      "translation": {
+        "en-US": "I want this to go.",
+        "zh-CN": "我要外带。"
+      },
+      "romanization": "Wo yao waidai.",
+      "audioKey": "travel-phrases/taiwan/takeaway_taiwan.mp3"
+    },
+    {
+      "id": "pay_by_easycard_tw",
+      "category": "shopping",
+      "nativeText": "可以用悠遊卡付嗎？",
+      "translation": {
+        "en-US": "Can I pay with EasyCard?",
+        "zh-CN": "可以用悠游卡支付吗？"
+      },
+      "romanization": "Keyi yong Youyouka fu ma?",
+      "audioKey": "travel-phrases/taiwan/pay_by_easycard_tw.mp3"
+    },
+    {
+      "id": "write_in_chinese_tw",
+      "category": "basics",
+      "nativeText": "請幫我寫成中文。",
+      "translation": {
+        "en-US": "Please write it in Chinese for me.",
+        "zh-CN": "请帮我写成中文。"
+      },
+      "romanization": "Qing bang wo xie cheng Zhongwen.",
+      "audioKey": "travel-phrases/taiwan/write_in_chinese_tw.mp3"
+    },
+    {
+      "id": "missed_last_train_tw",
+      "category": "emergency",
+      "nativeText": "我錯過末班車了。",
+      "translation": {
+        "en-US": "I missed the last train.",
+        "zh-CN": "我错过末班车了。"
+      },
+      "romanization": "Wo cuoguo mobanche le.",
+      "audioKey": "travel-phrases/taiwan/missed_last_train_tw.mp3"
+    },
+    {
+      "id": "easycard_topup_tw_bonus",
+      "category": "transport",
+      "nativeText": "這裡可以加值悠遊卡嗎？",
+      "translation": {
+        "en-US": "Can I top up my EasyCard here?",
+        "zh-CN": "这里可以给悠游卡充值吗？"
+      },
+      "romanization": "Zhe li keyi jiazhi YouYouKa ma?",
+      "audioKey": "travel-phrases/taiwan/easycard_topup_tw_bonus.mp3"
+    },
+    {
+      "id": "hot_water_tw_bonus",
+      "category": "dining",
+      "nativeText": "請給我熱開水",
+      "translation": {
+        "en-US": "Please give me hot water.",
+        "zh-CN": "请给我热开水。"
+      },
+      "romanization": "Qing gei wo re kai shui",
+      "audioKey": "travel-phrases/taiwan/hot_water_tw_bonus.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for Taiwan with audio, built for EasyCard trips, TRA and HSR travel, hotel check-ins, night markets, and everyday service conversations.",
+    "zh-CN": "中国台湾旅行短语卡，围绕 EasyCard、台铁与高铁、酒店入住、夜市和日常服务沟通等高频场景整理。"
+  },
+  "intro": {
+    "en-US": "Built for Taiwan trips where airport MRT, TRA or HSR transfers, hotel counters, and night-market food stops all stack together. These cards help when you need quick Traditional Mandarin for station names, EasyCard questions, takeaway orders, or asking for a quieter room.",
+    "zh-CN": "这套中国台湾短语适合那种机场捷运、台铁或高铁、酒店前台和夜市小吃会连着出现的旅行节奏。遇到要确认站名、EasyCard、外带需求，或者想要求一个安静一点的房间时，短语卡会很实用。"
+  },
+  "teaser": {
+    "en-US": "Built for Taiwan EasyCard travel, TRA or HSR connections, hotel counters, and night-market ordering.",
+    "zh-CN": "适合中国台湾的 EasyCard、台铁或高铁换乘、酒店柜台和夜市点餐沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep transport phrases ready for EasyCard questions, TRA or HSR transfers, and station exits before you leave the airport.",
+      "Dining phrases matter most at breakfast shops and night markets when you want to ask for takeaway, no cilantro, or less ice.",
+      "Traditional Mandarin signs are clear in Taiwan, but a phrase card still helps when you want to move quickly at counters or busy stations."
+    ],
+    "zh-CN": [
+      "从机场进城前，最好先备好 EasyCard、台铁或高铁换乘，以及出入口相关短语。",
+      "在早餐店和夜市里，餐饮短语最实用，尤其是打包带走、不要香菜和少冰这些需求。",
+      "中国台湾的繁体中文标识通常很清楚，但在忙碌柜台或车站里，直接出示短语卡还是能明显加快沟通。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "EasyCard, TRA, and night markets",
+      "Breakfast shops, takeaway, and less ice",
+      "Hotels, station exits, and HSR transfers"
+    ],
+    "zh-CN": [
+      "EasyCard、台铁与夜市沟通",
+      "早餐店、外带与少冰需求",
+      "酒店、出入口与高铁换乘"
+    ]
+  },
+  "featured": false,
+  "relatedSlugs": [
+    "hong-kong",
+    "japan",
+    "south-korea"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrase groups matter most for a Taiwan trip?",
+        "zh-CN": "去中国台湾旅行时，最值得先准备哪几组短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport, dining, and hotel. That covers airport MRT, EasyCard, TRA or HSR, check-in, and most first-day food orders in Taiwan.",
+        "zh-CN": "建议先看交通、餐饮和酒店三组，基本就能覆盖机场捷运、EasyCard、台铁或高铁、入住办理，以及第一天大部分点餐场景。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Why keep phrase cards handy if Taiwan already uses Chinese characters?",
+        "zh-CN": "既然中国台湾本来就用中文，为什么还值得准备短语卡？"
+      },
+      "answer": {
+        "en-US": "Because you often need a fast, exact phrase at counters, stations, and night markets. Having the card ready is quicker than typing or rewording the same request.",
+        "zh-CN": "因为很多场景需要的是一个很快、很准确的表达，比如柜台、车站和夜市。提前备好短语卡，通常会比现场打字或临时换说法更快。"
+      }
     }
   ]
 }

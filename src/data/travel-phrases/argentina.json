@@ -263,6 +263,224 @@
       "nativeText": "He perdido mi pasaporte",
       "romanization": null,
       "audioKey": "travel-phrases/argentina/lost_passport.mp3"
+    },
+    {
+      "id": "sube_topup_where",
+      "category": "transport",
+      "nativeText": "¿Dónde cargo la SUBE?",
+      "translation": {
+        "en-US": "Where can I top up my SUBE card?",
+        "zh-CN": "SUBE 在哪里可以充值？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/argentina/sube_topup_where.mp3"
+    },
+    {
+      "id": "airport_bus_argentina",
+      "category": "transport",
+      "nativeText": "¿Este bus va al aeropuerto?",
+      "translation": {
+        "en-US": "Does this bus go to the airport?",
+        "zh-CN": "这辆巴士去机场吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/argentina/airport_bus_argentina.mp3"
+    },
+    {
+      "id": "go_to_this_address_ar",
+      "category": "transport",
+      "nativeText": "Lléveme a esta dirección, por favor",
+      "translation": {
+        "en-US": "Please take me to this address.",
+        "zh-CN": "请带我去这个地址。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/argentina/go_to_this_address_ar.mp3"
+    },
+    {
+      "id": "which_platform_train_ar",
+      "category": "transport",
+      "nativeText": "¿De qué andén sale este tren?",
+      "translation": {
+        "en-US": "Which platform does this train leave from?",
+        "zh-CN": "这班火车从哪个站台出发？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/argentina/which_platform_train_ar.mp3"
+    },
+    {
+      "id": "leave_luggage_before_checkin_ar",
+      "category": "hotel",
+      "nativeText": "¿Puedo dejar el equipaje antes del check-in?",
+      "translation": {
+        "en-US": "Can I leave my luggage before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/argentina/leave_luggage_before_checkin_ar.mp3"
+    },
+    {
+      "id": "arrive_late_tonight_ar",
+      "category": "hotel",
+      "nativeText": "Voy a llegar tarde esta noche",
+      "translation": {
+        "en-US": "I will arrive late tonight.",
+        "zh-CN": "我今晚会晚一点到。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/argentina/arrive_late_tonight_ar.mp3"
+    },
+    {
+      "id": "without_chimichurri_ar",
+      "category": "dining",
+      "nativeText": "Sin chimichurri, por favor",
+      "translation": {
+        "en-US": "Without chimichurri, please.",
+        "zh-CN": "请不要加青酱。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/argentina/without_chimichurri_ar.mp3"
+    },
+    {
+      "id": "still_water_argentina",
+      "category": "dining",
+      "nativeText": "¿Me trae una botella de agua sin gas?",
+      "translation": {
+        "en-US": "Could you bring me a bottle of still water?",
+        "zh-CN": "请给我一瓶无气泡水。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/argentina/still_water_argentina.mp3"
+    },
+    {
+      "id": "bill_please_argentina",
+      "category": "dining",
+      "nativeText": "La cuenta, por favor",
+      "translation": {
+        "en-US": "The bill, please.",
+        "zh-CN": "请结账。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/argentina/bill_please_argentina.mp3"
+    },
+    {
+      "id": "mercado_pago_ok",
+      "category": "shopping",
+      "nativeText": "¿Aceptan Mercado Pago?",
+      "translation": {
+        "en-US": "Do you accept Mercado Pago?",
+        "zh-CN": "可以用 Mercado Pago 吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/argentina/mercado_pago_ok.mp3"
+    },
+    {
+      "id": "write_in_spanish_ar",
+      "category": "basics",
+      "nativeText": "¿Lo puede escribir en español?",
+      "translation": {
+        "en-US": "Could you write it in Spanish?",
+        "zh-CN": "可以帮我写成西班牙语吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/argentina/write_in_spanish_ar.mp3"
+    },
+    {
+      "id": "missed_last_subte_ar",
+      "category": "emergency",
+      "nativeText": "Perdí el último subte",
+      "translation": {
+        "en-US": "I missed the last subway train.",
+        "zh-CN": "我错过末班地铁了。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/argentina/missed_last_subte_ar.mp3"
+    },
+    {
+      "id": "debit_card_ar_bonus",
+      "category": "shopping",
+      "nativeText": "¿Puedo pagar con tarjeta de débito?",
+      "translation": {
+        "en-US": "Can I pay by debit card?",
+        "zh-CN": "可以刷借记卡吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/argentina/debit_card_ar_bonus.mp3"
+    },
+    {
+      "id": "airport_remis_ar_bonus",
+      "category": "transport",
+      "nativeText": "¿Dónde sale el remise del aeropuerto?",
+      "translation": {
+        "en-US": "Where does the airport remis leave from?",
+        "zh-CN": "机场 Remis 从哪里出发？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/argentina/airport_remis_ar_bonus.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for Argentina with audio, built for SUBE transit cards, airport transfers, hotel check-ins, parrilla meals, and everyday payment questions.",
+    "zh-CN": "阿根廷旅行短语卡，围绕 SUBE 交通卡、机场接驳、酒店入住、烤肉餐厅和支付沟通等高频场景整理。"
+  },
+  "intro": {
+    "en-US": "Built for Argentina trips where city transit, domestic flights, steakhouse meals, and cash questions can all come up quickly. These cards help when you need short Spanish for SUBE top-ups, hotel check-in, or ordering in a busy parrilla.",
+    "zh-CN": "这套阿根廷短语适合那种城市交通、国内航班、烤肉餐厅和现金支付会连续出现的旅行节奏。遇到要问 SUBE 充值、酒店入住，或在热闹餐厅里快速点单时，短语卡会很有帮助。"
+  },
+  "teaser": {
+    "en-US": "Built for Argentina SUBE cards, airport rides, parrilla orders, and hotel or cafe counter conversations.",
+    "zh-CN": "适合阿根廷的 SUBE、机场交通、烤肉点单和酒店或咖啡馆柜台沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep transport phrases ready for SUBE cards, airport transfers, and bus or metro questions before moving around Buenos Aires.",
+      "Dining phrases are most useful in parrillas and cafes when you want to ask about cuts, set meals, or how to pay.",
+      "Cash and card rules can vary, so a short Spanish question often saves time before you order or book something small."
+    ],
+    "zh-CN": [
+      "在布宜诺斯艾利斯行动前，最好先备好 SUBE、机场接驳，以及公交或地铁相关短语。",
+      "在烤肉店和咖啡馆里，餐饮短语尤其适合用来问部位、套餐和怎么付款。",
+      "现金和刷卡规则可能会有差异，所以先用一句简短西语问清楚，通常能省掉很多来回确认。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "SUBE, airport rides, and cafe stops",
+      "Parrilla orders and payment questions",
+      "Hotels, domestic flights, and simple directions"
+    ],
+    "zh-CN": [
+      "SUBE、机场交通与咖啡馆沟通",
+      "烤肉点单与支付询问",
+      "酒店、国内航班与基础问路"
+    ]
+  },
+  "featured": false,
+  "relatedSlugs": [
+    "brazil",
+    "chile",
+    "peru"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrase groups matter most for a first Argentina trip?",
+        "zh-CN": "第一次去阿根廷旅行，最该先准备哪几组短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport, dining, and hotel. That covers SUBE, airport transfers, check-in, and most first-day cafe or parrilla conversations.",
+        "zh-CN": "建议先看交通、餐饮和酒店三组，基本就能覆盖 SUBE、机场接驳、入住办理，以及第一天大部分咖啡馆和烤肉店沟通。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Why are short phrase cards especially useful in Argentina?",
+        "zh-CN": "为什么在阿根廷旅行时，简短短语卡会特别有用？"
+      },
+      "answer": {
+        "en-US": "Because many useful interactions are quick: transport cards, cafe counters, small payments, and straightforward food orders.",
+        "zh-CN": "因为很多高频沟通都很快，比如交通卡、咖啡馆柜台、小额支付和直接点餐，提前备好一句短语会省事很多。"
+      }
     }
   ]
 }

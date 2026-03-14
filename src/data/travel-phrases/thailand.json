@@ -263,6 +263,235 @@
       "nativeText": "ฉันทำพาสปอร์ตหาย",
       "romanization": "Chan tham passport hai",
       "audioKey": "travel-phrases/thailand/lost_passport.mp3"
+    },
+    {
+      "id": "bts_card_topup_where",
+      "category": "transport",
+      "nativeText": "เติมบัตร BTS ได้ที่ไหนคะ",
+      "translation": {
+        "en-US": "Where can I top up my BTS card?",
+        "zh-CN": "BTS 交通卡在哪里可以充值？"
+      },
+      "romanization": "Toem bat BTS dai thi nai kha?",
+      "audioKey": "travel-phrases/thailand/bts_card_topup_where.mp3"
+    },
+    {
+      "id": "grab_pickup_point",
+      "category": "transport",
+      "nativeText": "จุดรับ Grab อยู่ตรงไหนคะ",
+      "translation": {
+        "en-US": "Where is the Grab pickup point?",
+        "zh-CN": "Grab 上车点在哪里？"
+      },
+      "romanization": "Chut rap Grab yu trong nai kha?",
+      "audioKey": "travel-phrases/thailand/grab_pickup_point.mp3"
+    },
+    {
+      "id": "meter_please_local",
+      "category": "transport",
+      "nativeText": "เปิดมิเตอร์ด้วยค่ะ",
+      "translation": {
+        "en-US": "Please use the meter.",
+        "zh-CN": "请打表。"
+      },
+      "romanization": "Poet meter duai kha",
+      "audioKey": "travel-phrases/thailand/meter_please_local.mp3"
+    },
+    {
+      "id": "boat_pier_where",
+      "category": "transport",
+      "nativeText": "ไปท่าเรือต้องทางไหนคะ",
+      "translation": {
+        "en-US": "Which way to the boat pier?",
+        "zh-CN": "去码头要往哪边走？"
+      },
+      "romanization": "Pai tha ruea tong thang nai kha?",
+      "audioKey": "travel-phrases/thailand/boat_pier_where.mp3"
+    },
+    {
+      "id": "leave_bag_before_checkin",
+      "category": "hotel",
+      "nativeText": "ฝากกระเป๋าก่อนได้ไหมคะ",
+      "translation": {
+        "en-US": "Can I leave my bag here before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": "Fak krapao kon dai mai kha?",
+      "audioKey": "travel-phrases/thailand/leave_bag_before_checkin.mp3"
+    },
+    {
+      "id": "early_checkout_tomorrow",
+      "category": "hotel",
+      "nativeText": "พรุ่งนี้เช็กเอาต์เช้าได้ไหมคะ",
+      "translation": {
+        "en-US": "Can I check out early tomorrow?",
+        "zh-CN": "明天可以提早退房吗？"
+      },
+      "romanization": "Phrung ni chek-out chao dai mai kha?",
+      "audioKey": "travel-phrases/thailand/early_checkout_tomorrow.mp3"
+    },
+    {
+      "id": "no_fish_sauce",
+      "category": "dining",
+      "nativeText": "ไม่ใส่น้ำปลาได้ไหมคะ",
+      "translation": {
+        "en-US": "Can you make it without fish sauce?",
+        "zh-CN": "可以不要放鱼露吗？"
+      },
+      "romanization": "Mai sai nam pla dai mai kha?",
+      "audioKey": "travel-phrases/thailand/no_fish_sauce.mp3"
+    },
+    {
+      "id": "less_sugar_drink",
+      "category": "dining",
+      "nativeText": "หวานน้อยค่ะ",
+      "translation": {
+        "en-US": "Less sugar, please.",
+        "zh-CN": "请少糖。"
+      },
+      "romanization": "Wan noi kha",
+      "audioKey": "travel-phrases/thailand/less_sugar_drink.mp3"
+    },
+    {
+      "id": "pack_to_go_local",
+      "category": "dining",
+      "nativeText": "ใส่กล่องกลับบ้านค่ะ",
+      "translation": {
+        "en-US": "Please pack this to go.",
+        "zh-CN": "请帮我打包。"
+      },
+      "romanization": "Sai klong klap ban kha",
+      "audioKey": "travel-phrases/thailand/pack_to_go_local.mp3"
+    },
+    {
+      "id": "market_discount_local",
+      "category": "shopping",
+      "nativeText": "ลดราคาได้นิดหน่อยไหมคะ",
+      "translation": {
+        "en-US": "Can you lower the price a little?",
+        "zh-CN": "可以稍微便宜一点吗？"
+      },
+      "romanization": "Lot rakha dai nit noi mai kha?",
+      "audioKey": "travel-phrases/thailand/market_discount_local.mp3"
+    },
+    {
+      "id": "write_in_thai",
+      "category": "basics",
+      "nativeText": "ช่วยเขียนเป็นภาษาไทยได้ไหมคะ",
+      "translation": {
+        "en-US": "Could you write it in Thai for me?",
+        "zh-CN": "可以帮我写成泰文吗？"
+      },
+      "romanization": "Chuai khian pen phasa Thai dai mai kha?",
+      "audioKey": "travel-phrases/thailand/write_in_thai.mp3"
+    },
+    {
+      "id": "tourist_police_where",
+      "category": "emergency",
+      "nativeText": "ตำรวจท่องเที่ยวอยู่ที่ไหนคะ",
+      "translation": {
+        "en-US": "Where is the tourist police?",
+        "zh-CN": "旅游警察在哪里？"
+      },
+      "romanization": "Tamruat thongthiao yu thi nai kha?",
+      "audioKey": "travel-phrases/thailand/tourist_police_where.mp3"
+    },
+    {
+      "id": "no_coriander_th_bonus",
+      "category": "dining",
+      "nativeText": "ไม่เอาผักชี",
+      "translation": {
+        "en-US": "No coriander, please.",
+        "zh-CN": "请不要香菜。"
+      },
+      "romanization": "Mai ao phak chi",
+      "audioKey": "travel-phrases/thailand/no_coriander_th_bonus.mp3"
+    },
+    {
+      "id": "promptpay_ok_th_bonus",
+      "category": "shopping",
+      "nativeText": "พร้อมเพย์ได้ไหม",
+      "translation": {
+        "en-US": "Can I pay by PromptPay?",
+        "zh-CN": "可以用 PromptPay 支付吗？"
+      },
+      "romanization": "Phromphay dai mai",
+      "audioKey": "travel-phrases/thailand/promptpay_ok_th_bonus.mp3"
+    },
+    {
+      "id": "ferry_pier_where_th_bonus",
+      "category": "transport",
+      "nativeText": "เรือขึ้นที่ไหน",
+      "translation": {
+        "en-US": "Where do I board the ferry?",
+        "zh-CN": "渡轮在哪里上船？"
+      },
+      "romanization": "Ruea khuen thi nai",
+      "audioKey": "travel-phrases/thailand/ferry_pier_where_th_bonus.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for Thailand with audio, built around BTS and MRT rides, Grab pickups, hotel check-ins, street-food ordering, and emergency help.",
+    "zh-CN": "泰国旅行短语卡，围绕 BTS 与 MRT、Grab 打车、酒店入住、街头小吃点单和紧急求助等落地高频场景整理。"
+  },
+  "intro": {
+    "en-US": "Built for Thailand trips where you move between airports, BTS or MRT lines, ferries, hotels, and food courts in the same day. These cards are most useful when you need a fast request for Grab pickup points, less-spicy food, or simple service help without opening a translator.",
+    "zh-CN": "这套泰国短语优先覆盖机场接驳、BTS 或 MRT、码头渡轮、酒店入住和美食广场点餐这些连续切换的场景。遇到要确认 Grab 上车点、说明不要太辣，或者需要快速求助时，直接出示短语卡会比临时翻译更稳。"
+  },
+  "teaser": {
+    "en-US": "Built for Thailand arrivals, BTS transfers, Grab rides, hotel check-ins, and quick street-food conversations.",
+    "zh-CN": "适合泰国落地后的 BTS 换乘、Grab 打车、酒店入住和街头点餐沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep a few basics ready for BTS, MRT, ferry piers, and Grab pickup points because station names and exits move quickly in Bangkok.",
+      "Street-food and food-court orders go smoother when you can point to the card first, especially for no spicy, no seafood, or takeaway requests.",
+      "Add polite particles like khrap or kha when you can, but showing the phrase on screen is still the fastest option if pronunciation feels uncertain."
+    ],
+    "zh-CN": [
+      "在曼谷这类节奏很快的城市里，BTS、MRT、码头和 Grab 上车点最好提前备好几句常用短语。",
+      "街边摊和美食广场点单时，先给对方看短语卡特别有效，尤其是不要太辣、不要海鲜、打包带走这类需求。",
+      "如果发音没把握，加不加 khrap 或 kha 都不是关键，先把短语卡展示出来通常就能顺利沟通。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "BTS, Grab, and night markets",
+      "Street food and spice requests",
+      "Hotels, ferries, and airport transfers"
+    ],
+    "zh-CN": [
+      "BTS、Grab 与夜市沟通",
+      "街头点餐与辣度需求",
+      "酒店、码头与机场接驳"
+    ]
+  },
+  "featured": true,
+  "relatedSlugs": [
+    "singapore",
+    "malaysia",
+    "vietnam"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrase section matters most on the first day in Thailand?",
+        "zh-CN": "刚到泰国的第一天，最该先准备哪一组短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport, hotel, and dining. That covers airport transfers, BTS or Grab questions, check-in, and the first round of street-food or food-court orders.",
+        "zh-CN": "建议先看交通、酒店和餐饮三组，基本就能覆盖机场接驳、BTS 或 Grab、入住办理，以及第一顿街边或美食广场点餐。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Do I need fluent Thai to use these cards in Thailand?",
+        "zh-CN": "在泰国使用这些短语卡，需要会说很流利的泰语吗？"
+      },
+      "answer": {
+        "en-US": "No. A short phrase, the on-screen card, and audio for key moments are usually enough for transport staff, hotel teams, and food stalls.",
+        "zh-CN": "不用。会几句简短表达，加上直接展示屏幕上的短语卡，必要时再放音频，通常就足够应对交通人员、酒店前台和餐饮摊位。"
+      }
     }
   ]
 }

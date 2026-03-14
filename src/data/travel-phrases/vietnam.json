@@ -263,6 +263,224 @@
       "nativeText": "Tôi bị mất hộ chiếu",
       "romanization": null,
       "audioKey": "travel-phrases/vietnam/lost_passport.mp3"
+    },
+    {
+      "id": "topup_transit_card_vn",
+      "category": "transport",
+      "nativeText": "Nạp thẻ giao thông ở đâu?",
+      "translation": {
+        "en-US": "Where can I top up the transit card?",
+        "zh-CN": "交通卡在哪里可以充值？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/vietnam/topup_transit_card_vn.mp3"
+    },
+    {
+      "id": "exit_two_where_vn",
+      "category": "transport",
+      "nativeText": "Lối ra số 2 ở đâu?",
+      "translation": {
+        "en-US": "Where is exit number 2?",
+        "zh-CN": "2号出口在哪里？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/vietnam/exit_two_where_vn.mp3"
+    },
+    {
+      "id": "grab_pickup_where_vn",
+      "category": "transport",
+      "nativeText": "Điểm đón Grab ở đâu?",
+      "translation": {
+        "en-US": "Where is the Grab pickup point?",
+        "zh-CN": "Grab 上车点在哪里？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/vietnam/grab_pickup_where_vn.mp3"
+    },
+    {
+      "id": "go_to_this_address_vn",
+      "category": "transport",
+      "nativeText": "Anh/chị chở tôi đến địa chỉ này nhé.",
+      "translation": {
+        "en-US": "Please take me to this address.",
+        "zh-CN": "请送我去这个地址。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/vietnam/go_to_this_address_vn.mp3"
+    },
+    {
+      "id": "leave_luggage_before_checkin_vn",
+      "category": "hotel",
+      "nativeText": "Tôi gửi hành lý trước khi nhận phòng được không?",
+      "translation": {
+        "en-US": "Can I leave my luggage before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/vietnam/leave_luggage_before_checkin_vn.mp3"
+    },
+    {
+      "id": "arrive_late_vn",
+      "category": "hotel",
+      "nativeText": "Tôi sẽ đến muộn một chút.",
+      "translation": {
+        "en-US": "I will arrive a bit late.",
+        "zh-CN": "我会晚一点到。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/vietnam/arrive_late_vn.mp3"
+    },
+    {
+      "id": "no_fish_sauce_vn",
+      "category": "dining",
+      "nativeText": "Không cho nước mắm được không?",
+      "translation": {
+        "en-US": "Can you make it without fish sauce?",
+        "zh-CN": "可以不要放鱼露吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/vietnam/no_fish_sauce_vn.mp3"
+    },
+    {
+      "id": "less_ice_vn",
+      "category": "dining",
+      "nativeText": "Ít đá thôi.",
+      "translation": {
+        "en-US": "Less ice, please.",
+        "zh-CN": "请少冰。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/vietnam/less_ice_vn.mp3"
+    },
+    {
+      "id": "takeaway_please_vn",
+      "category": "dining",
+      "nativeText": "Cho tôi mang đi.",
+      "translation": {
+        "en-US": "Please make it to go.",
+        "zh-CN": "请帮我打包外带。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/vietnam/takeaway_please_vn.mp3"
+    },
+    {
+      "id": "bigger_size_vn",
+      "category": "shopping",
+      "nativeText": "Có size lớn hơn không?",
+      "translation": {
+        "en-US": "Do you have a bigger size?",
+        "zh-CN": "有更大的尺码吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/vietnam/bigger_size_vn.mp3"
+    },
+    {
+      "id": "write_in_vietnamese",
+      "category": "basics",
+      "nativeText": "Anh/chị viết bằng tiếng Việt giúp tôi được không?",
+      "translation": {
+        "en-US": "Could you write it in Vietnamese for me?",
+        "zh-CN": "可以帮我写成越南语吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/vietnam/write_in_vietnamese.mp3"
+    },
+    {
+      "id": "missed_last_train_vn",
+      "category": "emergency",
+      "nativeText": "Tôi lỡ chuyến tàu cuối rồi.",
+      "translation": {
+        "en-US": "I missed the last train.",
+        "zh-CN": "我错过最后一班车了。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/vietnam/missed_last_train_vn.mp3"
+    },
+    {
+      "id": "hot_water_vietnam",
+      "category": "dining",
+      "nativeText": "Cho toi xin nuoc nong",
+      "translation": {
+        "en-US": "Please give me hot water.",
+        "zh-CN": "请给我热水。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/vietnam/hot_water_vietnam.mp3"
+    },
+    {
+      "id": "momo_ok_vietnam",
+      "category": "shopping",
+      "nativeText": "Co the tra bang MoMo khong?",
+      "translation": {
+        "en-US": "Can I pay with MoMo?",
+        "zh-CN": "可以用 MoMo 支付吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/vietnam/momo_ok_vietnam.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for Vietnam with audio, built for Grab pickups, domestic flights, sleeper buses, hotel check-ins, street-food ordering, and everyday travel requests.",
+    "zh-CN": "越南旅行短语卡，围绕 Grab 打车、国内航班、卧铺巴士、酒店入住和街头点餐等高频落地场景整理。"
+  },
+  "intro": {
+    "en-US": "Built for Vietnam trips where airport pickups, Grab rides, overnight transport, hotel counters, and street-food stops all happen at a fast pace. These cards help when you need short Vietnamese for sleeper bus questions, coffee orders, or simple requests in smaller shops and guesthouses.",
+    "zh-CN": "这套越南短语适合那种机场接驳、Grab、过夜交通、酒店前台和街边小吃会连续出现的旅行节奏。遇到要问卧铺巴士、点咖啡，或在小店和民宿里提出简单需求时，短语卡会很省事。"
+  },
+  "teaser": {
+    "en-US": "Built for Vietnam arrivals, Grab rides, sleeper buses, hotel check-ins, and quick street-food conversations.",
+    "zh-CN": "适合越南落地后的 Grab、卧铺巴士、酒店入住和街边点餐沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep transport phrases ready for Grab pickups, airport transfers, and sleeper bus questions because schedules and pickup points can change quickly.",
+      "Dining phrases are especially useful for street-food stalls when you want less ice, no cilantro, or takeaway without slowing down the queue.",
+      "Vietnamese tones can be hard for travelers, so showing the phrase card first is often the cleanest way to avoid confusion."
+    ],
+    "zh-CN": [
+      "Grab 上车点、机场接驳和卧铺巴士这几类交通场景变化快，最好提前备好对应短语。",
+      "在街边摊点单时，餐饮短语尤其适合用来说明少冰、不要香菜或打包带走，不容易耽误排队节奏。",
+      "越南语声调对游客来说不太容易说准，所以先展示短语卡通常是最稳妥的做法。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "Grab, sleeper buses, and street-food basics",
+      "Hotel check-ins and coffee orders",
+      "Airport transfers, small shops, and simple directions"
+    ],
+    "zh-CN": [
+      "Grab、卧铺巴士与街边点餐",
+      "酒店入住与咖啡点单",
+      "机场接驳、小店沟通与基础问路"
+    ]
+  },
+  "featured": false,
+  "relatedSlugs": [
+    "thailand",
+    "malaysia",
+    "cambodia"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrases are most useful for a Vietnam itinerary with flights and buses?",
+        "zh-CN": "如果越南行程里有飞机和卧铺巴士，最值得先准备哪类短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport, dining, and hotel. That covers airport arrivals, Grab, sleeper bus questions, check-in, and most first-day food orders in Vietnam.",
+        "zh-CN": "建议先看交通、餐饮和酒店三组，基本就能覆盖机场落地、Grab、卧铺巴士询问、入住办理，以及第一天大部分点餐场景。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Why do phrase cards help so much in Vietnam?",
+        "zh-CN": "为什么在越南旅行时，短语卡会特别有帮助？"
+      },
+      "answer": {
+        "en-US": "Because tone and pronunciation matter, and many travel interactions happen quickly. Showing a short phrase card often works better than trying to repeat the same sentence several times.",
+        "zh-CN": "因为越南语对声调和发音很敏感，而且很多旅行场景节奏都很快。直接展示一张简短短语卡，往往比反复重复同一句话更有效。"
+      }
     }
   ]
 }

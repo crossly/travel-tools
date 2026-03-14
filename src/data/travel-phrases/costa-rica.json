@@ -263,6 +263,213 @@
       "nativeText": "He perdido mi pasaporte",
       "romanization": null,
       "audioKey": "travel-phrases/costa-rica/lost_passport.mp3"
+    },
+    {
+      "id": "bus_card_topup_cr",
+      "category": "transport",
+      "nativeText": "¿Dónde recargo la tarjeta de bus?",
+      "translation": {
+        "en-US": "Where can I top up the bus card?",
+        "zh-CN": "公交卡在哪里可以充值？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/costa-rica/bus_card_topup_cr.mp3"
+    },
+    {
+      "id": "bus_to_airport_cr",
+      "category": "transport",
+      "nativeText": "¿Este bus va al aeropuerto?",
+      "translation": {
+        "en-US": "Does this bus go to the airport?",
+        "zh-CN": "这辆巴士去机场吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/costa-rica/bus_to_airport_cr.mp3"
+    },
+    {
+      "id": "go_to_this_address_cr",
+      "category": "transport",
+      "nativeText": "Lléveme a esta dirección, por favor",
+      "translation": {
+        "en-US": "Please take me to this address.",
+        "zh-CN": "请带我去这个地址。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/costa-rica/go_to_this_address_cr.mp3"
+    },
+    {
+      "id": "bus_to_san_jose_cr",
+      "category": "transport",
+      "nativeText": "¿Dónde tomo el bus a San José?",
+      "translation": {
+        "en-US": "Where do I catch the bus to San José?",
+        "zh-CN": "去圣何塞的巴士在哪里坐？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/costa-rica/bus_to_san_jose_cr.mp3"
+    },
+    {
+      "id": "leave_luggage_before_checkin_cr",
+      "category": "hotel",
+      "nativeText": "¿Puedo dejar el equipaje antes del check-in?",
+      "translation": {
+        "en-US": "Can I leave my luggage before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/costa-rica/leave_luggage_before_checkin_cr.mp3"
+    },
+    {
+      "id": "arrive_late_today_cr",
+      "category": "hotel",
+      "nativeText": "Voy a llegar tarde hoy",
+      "translation": {
+        "en-US": "I will arrive late today.",
+        "zh-CN": "我今天会晚一点到。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/costa-rica/arrive_late_today_cr.mp3"
+    },
+    {
+      "id": "without_culantro_cr",
+      "category": "dining",
+      "nativeText": "Sin culantro, por favor",
+      "translation": {
+        "en-US": "Without cilantro, please.",
+        "zh-CN": "请不要香菜。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/costa-rica/without_culantro_cr.mp3"
+    },
+    {
+      "id": "still_water_costa_rica",
+      "category": "dining",
+      "nativeText": "¿Me da una botella de agua sin gas?",
+      "translation": {
+        "en-US": "Can I get a bottle of still water?",
+        "zh-CN": "请给我一瓶无气泡水。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/costa-rica/still_water_costa_rica.mp3"
+    },
+    {
+      "id": "pack_to_go_cr",
+      "category": "dining",
+      "nativeText": "¿Me lo puede empacar para llevar?",
+      "translation": {
+        "en-US": "Can you pack this to go?",
+        "zh-CN": "可以帮我打包带走吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/costa-rica/pack_to_go_cr.mp3"
+    },
+    {
+      "id": "sinpe_or_card",
+      "category": "shopping",
+      "nativeText": "¿Aceptan SINPE o tarjeta?",
+      "translation": {
+        "en-US": "Do you take SINPE or card?",
+        "zh-CN": "可以用 SINPE 或刷卡吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/costa-rica/sinpe_or_card.mp3"
+    },
+    {
+      "id": "write_in_spanish_cr",
+      "category": "basics",
+      "nativeText": "¿Lo puede escribir en español?",
+      "translation": {
+        "en-US": "Could you write it in Spanish?",
+        "zh-CN": "可以帮我写成西班牙语吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/costa-rica/write_in_spanish_cr.mp3"
+    },
+    {
+      "id": "missed_last_bus_cr",
+      "category": "emergency",
+      "nativeText": "Perdí el último bus",
+      "translation": {
+        "en-US": "I missed the last bus.",
+        "zh-CN": "我错过末班巴士了。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/costa-rica/missed_last_bus_cr.mp3"
+    },
+    {
+      "id": "uber_or_taxi_cr_bonus",
+      "category": "transport",
+      "nativeText": "¿Hay Uber aquí o solo taxi?",
+      "translation": {
+        "en-US": "Is there Uber here or only taxis?",
+        "zh-CN": "这里有 Uber 还是只能坐出租车？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/costa-rica/uber_or_taxi_cr_bonus.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for Costa Rica with audio, built for shuttle pickups, hotel check-ins, soda restaurants, park tickets, and everyday travel logistics.",
+    "zh-CN": "哥斯达黎加旅行短语卡，围绕接驳车、酒店入住、soda 餐馆、景区门票和日常旅行沟通等高频场景整理。"
+  },
+  "intro": {
+    "en-US": "Built for Costa Rica trips where airport shuttles, hotel transfers, casual restaurants, and park or activity counters all come up quickly. These cards help when you need short Spanish for pickups, food orders, or simple booking questions.",
+    "zh-CN": "这套哥斯达黎加短语适合那种机场接驳、酒店交通、家常餐馆，以及公园或活动柜台会快速出现的旅行节奏。遇到要问接送、点餐或预订相关问题时，短语卡会很实用。"
+  },
+  "teaser": {
+    "en-US": "Built for Costa Rica shuttle pickups, soda restaurants, park counters, and hotel or transfer questions.",
+    "zh-CN": "适合哥斯达黎加的接驳车、soda 餐馆、公园柜台，以及酒店和交通沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep transport phrases ready for shuttle pickups, airport transfers, and longer road trips between beach or nature areas.",
+      "Dining phrases help at sodas and casual restaurants when you want to ask about fresh juice, set meals, or takeaway.",
+      "Booking and ticket phrases are useful for parks, tours, and hotel desks where you need a quick confirmation or timing question."
+    ],
+    "zh-CN": [
+      "如果有接驳车、机场接送或去海边与自然景区的长途移动，最好先备好交通短语。",
+      "在 soda 和家常餐馆里，鲜榨果汁、套餐和外带问题都很常用。",
+      "景区、活动和酒店柜台上，预订和门票类短语尤其适合用来快速确认时间和安排。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "Shuttle pickups, road trips, and transfers",
+      "Sodas, fresh juice, and takeaway basics",
+      "Park tickets, tours, and hotel questions"
+    ],
+    "zh-CN": [
+      "接驳车、长途交通与接送",
+      "soda、鲜榨果汁与外带基础沟通",
+      "公园门票、活动和酒店询问"
+    ]
+  },
+  "featured": false,
+  "relatedSlugs": [
+    "mexico",
+    "peru",
+    "colombia"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrase groups matter most for a first Costa Rica trip?",
+        "zh-CN": "第一次去哥斯达黎加旅行，最该先准备哪几组短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport, hotel, and dining. That covers shuttles, check-in, casual restaurants, and most first-day planning questions.",
+        "zh-CN": "建议先看交通、酒店和餐饮三组，基本就能覆盖接驳车、入住办理、家常餐馆，以及第一天大部分安排相关问题。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Why are phrase cards especially useful in Costa Rica?",
+        "zh-CN": "为什么在哥斯达黎加旅行时，短语卡会特别有用？"
+      },
+      "answer": {
+        "en-US": "Because many useful interactions happen around pickups, timings, and activity counters where short, clear wording matters.",
+        "zh-CN": "因为很多高频沟通都和接送、时间确认以及活动柜台有关，这些场景里越短越清楚越好。"
+      }
     }
   ]
 }

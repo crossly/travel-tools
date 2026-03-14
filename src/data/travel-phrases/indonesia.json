@@ -263,6 +263,213 @@
       "nativeText": "Saya kehilangan paspor",
       "romanization": null,
       "audioKey": "travel-phrases/indonesia/lost_passport.mp3"
+    },
+    {
+      "id": "topup_emoney_id",
+      "category": "transport",
+      "nativeText": "Di mana saya bisa isi ulang e-money?",
+      "translation": {
+        "en-US": "Where can I top up my e-money card?",
+        "zh-CN": "我的电子交通卡在哪里可以充值？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/indonesia/topup_emoney_id.mp3"
+    },
+    {
+      "id": "train_to_airport_id",
+      "category": "transport",
+      "nativeText": "Apakah kereta ini ke bandara?",
+      "translation": {
+        "en-US": "Does this train go to the airport?",
+        "zh-CN": "这班火车去机场吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/indonesia/train_to_airport_id.mp3"
+    },
+    {
+      "id": "go_to_this_address_id",
+      "category": "transport",
+      "nativeText": "Tolong antar saya ke alamat ini",
+      "translation": {
+        "en-US": "Please take me to this address.",
+        "zh-CN": "请带我去这个地址。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/indonesia/go_to_this_address_id.mp3"
+    },
+    {
+      "id": "grab_gojek_pickup_id",
+      "category": "transport",
+      "nativeText": "Di mana titik jemput Grab atau Gojek?",
+      "translation": {
+        "en-US": "Where is the Grab or Gojek pick-up point?",
+        "zh-CN": "Grab 或 Gojek 上车点在哪里？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/indonesia/grab_gojek_pickup_id.mp3"
+    },
+    {
+      "id": "leave_luggage_before_checkin_id",
+      "category": "hotel",
+      "nativeText": "Boleh titip bagasi sebelum check-in?",
+      "translation": {
+        "en-US": "Can I leave my luggage before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/indonesia/leave_luggage_before_checkin_id.mp3"
+    },
+    {
+      "id": "arrive_late_tonight_id",
+      "category": "hotel",
+      "nativeText": "Saya akan datang terlambat malam ini",
+      "translation": {
+        "en-US": "I will arrive late tonight.",
+        "zh-CN": "我今晚会晚一点到。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/indonesia/arrive_late_tonight_id.mp3"
+    },
+    {
+      "id": "no_sambal_id",
+      "category": "dining",
+      "nativeText": "Tolong tanpa sambal",
+      "translation": {
+        "en-US": "Please do not add sambal.",
+        "zh-CN": "请不要加参巴辣酱。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/indonesia/no_sambal_id.mp3"
+    },
+    {
+      "id": "less_ice_id",
+      "category": "dining",
+      "nativeText": "Esnya sedikit, ya",
+      "translation": {
+        "en-US": "Please make it with less ice.",
+        "zh-CN": "请少冰。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/indonesia/less_ice_id.mp3"
+    },
+    {
+      "id": "takeaway_indonesia",
+      "category": "dining",
+      "nativeText": "Bungkus, ya",
+      "translation": {
+        "en-US": "Pack it to go, please.",
+        "zh-CN": "请打包带走。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/indonesia/takeaway_indonesia.mp3"
+    },
+    {
+      "id": "pay_by_qris_id",
+      "category": "shopping",
+      "nativeText": "Bisa bayar pakai QRIS?",
+      "translation": {
+        "en-US": "Can I pay with QRIS?",
+        "zh-CN": "可以用 QRIS 支付吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/indonesia/pay_by_qris_id.mp3"
+    },
+    {
+      "id": "write_in_indonesian_id",
+      "category": "basics",
+      "nativeText": "Tolong tulis dalam bahasa Indonesia",
+      "translation": {
+        "en-US": "Please write it in Indonesian.",
+        "zh-CN": "请帮我写成印尼语。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/indonesia/write_in_indonesian_id.mp3"
+    },
+    {
+      "id": "missed_last_train_id",
+      "category": "emergency",
+      "nativeText": "Saya ketinggalan kereta terakhir",
+      "translation": {
+        "en-US": "I missed the last train.",
+        "zh-CN": "我错过末班火车了。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/indonesia/missed_last_train_id.mp3"
+    },
+    {
+      "id": "water_bottle_fill_id_bonus",
+      "category": "basics",
+      "nativeText": "Bisa isi botol air di sini?",
+      "translation": {
+        "en-US": "Can I refill my water bottle here?",
+        "zh-CN": "这里可以接水装满水瓶吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/indonesia/water_bottle_fill_id_bonus.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for Indonesia with audio, built for Grab or Gojek rides, ferries, hotel check-ins, warung orders, and everyday payment or direction questions.",
+    "zh-CN": "印度尼西亚旅行短语卡，围绕 Grab 或 Gojek、渡轮、酒店入住、warung 点单和支付或问路等高频场景整理。"
+  },
+  "intro": {
+    "en-US": "Built for Indonesia trips where airport pickups, scooters or ride apps, ferries, hotel counters, and casual food stops all come up quickly. These cards help when you need short Indonesian for directions, meals, or simple travel logistics.",
+    "zh-CN": "这套印度尼西亚短语适合那种机场接驳、网约车或摩托、渡轮、酒店柜台和随手吃饭场景会快速切换的旅行节奏。遇到要问方向、点餐或处理简单出行安排时，短语卡会很有帮助。"
+  },
+  "teaser": {
+    "en-US": "Built for Indonesia ride apps, ferries, warungs, and hotel or island-transfer conversations.",
+    "zh-CN": "适合印度尼西亚的网约车、渡轮、warung，以及酒店和岛屿交通沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep transport phrases ready for Grab or Gojek pickups, ferry terminals, and airport transfers before moving between islands or neighborhoods.",
+      "Dining phrases are most useful in warungs and casual restaurants when you want less spicy food, takeaway, or simple ingredient checks.",
+      "Payment and direction questions still come up often, so a phrase card helps when the setting is noisy or the route is unclear."
+    ],
+    "zh-CN": [
+      "如果要坐 Grab 或 Gojek、去码头或机场接驳，最好先把相关交通短语准备好。",
+      "在 warung 和轻松餐馆里，少辣、外带和简单食材确认这类需求最常用。",
+      "支付和问路问题也很高频，所以环境嘈杂或路线不清楚时，短语卡会特别方便。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "Grab, Gojek, ferries, and transfers",
+      "Warungs, spice requests, and takeaway",
+      "Hotels, payment questions, and directions"
+    ],
+    "zh-CN": [
+      "Grab、Gojek、渡轮与接驳",
+      "warung、辣度需求与外带",
+      "酒店、支付与问路沟通"
+    ]
+  },
+  "featured": false,
+  "relatedSlugs": [
+    "malaysia",
+    "singapore",
+    "thailand"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrase groups matter most for a first Indonesia trip?",
+        "zh-CN": "第一次去印度尼西亚旅行，最该先准备哪几组短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport, dining, and hotel. That covers ride apps, ferries, check-in, and most first-day food or transfer needs.",
+        "zh-CN": "建议先看交通、餐饮和酒店三组，基本就能覆盖网约车、渡轮、入住办理，以及第一天大部分用餐和转移场景。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Why are phrase cards useful in Indonesia?",
+        "zh-CN": "为什么在印度尼西亚旅行时，短语卡会很有用？"
+      },
+      "answer": {
+        "en-US": "Because many interactions are quick, practical, and noisy. Short written phrases make transport and food conversations much easier.",
+        "zh-CN": "因为很多沟通都很快、很实用，而且环境可能比较嘈杂。提前准备好的短语，会让交通和点餐沟通顺很多。"
+      }
     }
   ]
 }

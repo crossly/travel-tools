@@ -12,8 +12,29 @@
     },
     "languageCode": "km-KH",
     "flag": "🇰🇭",
-    "phraseCount": 42,
-    "hasAudio": false
+    "description": {
+      "en-US": "Travel phrases for Cambodia with audio, built for tuk-tuks, temple visits, guesthouses, market bargaining, and everyday payment or direction questions.",
+      "zh-CN": "柬埔寨旅行短语卡，围绕 tuk-tuk、寺庙参观、旅馆入住、市场砍价和支付或问路等高频场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for Cambodia tuk-tuks, temple stops, guesthouses, and market or cash conversations.",
+      "zh-CN": "适合柬埔寨的 tuk-tuk、寺庙、旅馆以及市场和现金沟通场景。"
+    },
+    "highlights": {
+      "en-US": [
+        "Tuk-tuks, temple tickets, and market basics",
+        "Guesthouses, cash questions, and simple directions",
+        "Airport pickups, buses, and local service requests"
+      ],
+      "zh-CN": [
+        "tuk-tuk、寺庙门票与市场沟通",
+        "旅馆、现金支付与基础问路",
+        "机场接驳、巴士与本地服务请求"
+      ]
+    },
+    "featured": false,
+    "phraseCount": 55,
+    "audioCoverage": "none"
   },
   {
     "country": {
@@ -28,8 +49,29 @@
     },
     "languageCode": "zh-CN",
     "flag": "🇨🇳",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for China with audio, built for metro travel, high-speed rail, hotel check-ins, Alipay or WeChat Pay questions, and everyday local-service conversations.",
+      "zh-CN": "中国旅行短语卡，围绕地铁、高铁、酒店入住、支付宝或微信支付，以及本地服务沟通等高频场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for China metro rides, high-speed rail, hotel registration, and Alipay or WeChat Pay questions.",
+      "zh-CN": "适合中国的地铁、高铁、酒店登记，以及支付宝或微信支付相关沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "Metro exits, high-speed rail, and station basics",
+        "Alipay, WeChat Pay, and small-payment questions",
+        "Hotels, food orders, and exact on-screen requests"
+      ],
+      "zh-CN": [
+        "地铁出入口、高铁与车站沟通",
+        "支付宝、微信支付与小额支付询问",
+        "酒店、点餐与屏幕直出需求"
+      ]
+    },
+    "featured": true,
+    "phraseCount": 57,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -44,8 +86,29 @@
     },
     "languageCode": "zh-HK",
     "flag": "🇭🇰",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for Hong Kong with audio, built for Octopus payments, MTR transfers, airport links, hotel check-ins, and cha chaan teng ordering.",
+      "zh-CN": "中国香港旅行短语卡，围绕 Octopus 支付、MTR 换乘、机场快线、酒店入住和茶餐厅点单等高频场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for Hong Kong Octopus payments, MTR transfers, airport links, and cha chaan teng orders.",
+      "zh-CN": "适合中国香港的 Octopus、MTR、机场快线和茶餐厅点单沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "Octopus, MTR, and cha chaan teng orders",
+        "Airport Express, ferries, and taxi drop-offs",
+        "Hotels, local shops, and concise service requests"
+      ],
+      "zh-CN": [
+        "Octopus、MTR 与茶餐厅点单",
+        "机场快线、渡轮与出租车下车点",
+        "酒店、本地小店与简短服务沟通"
+      ]
+    },
+    "featured": false,
+    "phraseCount": 56,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -60,8 +123,29 @@
     },
     "languageCode": "hi-IN",
     "flag": "🇮🇳",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for India with audio, built for airport pickups, train platforms, hotel check-ins, food orders, and everyday payment or direction questions.",
+      "zh-CN": "印度旅行短语卡，围绕机场接驳、火车站台、酒店入住、点餐和支付或问路等高频场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for India airport transfers, train platforms, hotel counters, and dining or market conversations.",
+      "zh-CN": "适合印度的机场接驳、火车站台、酒店柜台，以及餐饮和市场沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "Airport pickups, train platforms, and routes",
+        "Spice, vegetarian meals, and water questions",
+        "Hotels, payments, and practical service requests"
+      ],
+      "zh-CN": [
+        "机场接驳、火车站台与路线询问",
+        "辣度、素食与饮水问题",
+        "酒店、支付与实用服务请求"
+      ]
+    },
+    "featured": false,
+    "phraseCount": 55,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -76,8 +160,29 @@
     },
     "languageCode": "id-ID",
     "flag": "🇮🇩",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for Indonesia with audio, built for Grab or Gojek rides, ferries, hotel check-ins, warung orders, and everyday payment or direction questions.",
+      "zh-CN": "印度尼西亚旅行短语卡，围绕 Grab 或 Gojek、渡轮、酒店入住、warung 点单和支付或问路等高频场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for Indonesia ride apps, ferries, warungs, and hotel or island-transfer conversations.",
+      "zh-CN": "适合印度尼西亚的网约车、渡轮、warung，以及酒店和岛屿交通沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "Grab, Gojek, ferries, and transfers",
+        "Warungs, spice requests, and takeaway",
+        "Hotels, payment questions, and directions"
+      ],
+      "zh-CN": [
+        "Grab、Gojek、渡轮与接驳",
+        "warung、辣度需求与外带",
+        "酒店、支付与问路沟通"
+      ]
+    },
+    "featured": false,
+    "phraseCount": 55,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -92,8 +197,29 @@
     },
     "languageCode": "ja-JP",
     "flag": "🇯🇵",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for Japan with audio and local tips for rail, restaurants, and convenience stores.",
+      "zh-CN": "日本旅行短语卡，补充了电车、餐厅和便利店等高频本地场景，更适合现场沟通。"
+    },
+    "teaser": {
+      "en-US": "Useful for rail travel, convenience stores, and polite service language across Japan.",
+      "zh-CN": "适合日本电车出行、便利店购物和偏礼貌的服务沟通场景。"
+    },
+    "highlights": {
+      "en-US": [
+        "IC cards",
+        "Convenience stores",
+        "Polite service phrases"
+      ],
+      "zh-CN": [
+        "IC 卡",
+        "便利店",
+        "礼貌表达"
+      ]
+    },
+    "featured": true,
+    "phraseCount": 57,
+    "audioCoverage": "partial"
   },
   {
     "country": {
@@ -108,8 +234,29 @@
     },
     "languageCode": "ms-MY",
     "flag": "🇲🇾",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for Malaysia with audio, built for Grab rides, Touch 'n Go payments, hotel check-ins, food courts, mamak stops, and everyday travel requests.",
+      "zh-CN": "马来西亚旅行短语卡，围绕 Grab 打车、Touch 'n Go 支付、酒店入住、食阁和 mamak 餐馆等高频落地场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for Malaysia arrivals, Touch 'n Go questions, Grab rides, food courts, and late-night mamak stops.",
+      "zh-CN": "适合马来西亚落地后的 Touch 'n Go、Grab、食阁和深夜 mamak 餐馆沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "Touch 'n Go and mamak stops",
+        "Grab pickups and food courts",
+        "Hotels, halal requests, and mall directions"
+      ],
+      "zh-CN": [
+        "Touch 'n Go 与 mamak 餐馆",
+        "Grab 上车点与食阁沟通",
+        "酒店、清真需求与商场问路"
+      ]
+    },
+    "featured": false,
+    "phraseCount": 56,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -124,8 +271,29 @@
     },
     "languageCode": "en-PH",
     "flag": "🇵🇭",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for Philippines with audio, built for airport pickups, island ferries, hotel check-ins, mall or food-court stops, and everyday local-service questions.",
+      "zh-CN": "菲律宾旅行短语卡，围绕机场接驳、岛屿渡轮、酒店入住、商场或食阁停留，以及本地服务沟通等高频场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for Philippines airport rides, island ferries, food courts, and hotel or mall conversations.",
+      "zh-CN": "适合菲律宾的机场交通、岛屿渡轮、食阁，以及酒店和商场沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "Airport rides, ferries, and island transfers",
+        "Food courts, takeaway, and menu basics",
+        "Hotels, addresses, and quick service requests"
+      ],
+      "zh-CN": [
+        "机场交通、渡轮与岛屿交通",
+        "食阁、外带与菜单基础沟通",
+        "酒店、地址与快速服务请求"
+      ]
+    },
+    "featured": false,
+    "phraseCount": 55,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -140,8 +308,29 @@
     },
     "languageCode": "en-SG",
     "flag": "🇸🇬",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for Singapore with audio, tuned for MRT directions, Grab rides, hawker-centre orders, hotel check-ins, and everyday cashless service conversations.",
+      "zh-CN": "新加坡旅行短语卡，围绕 MRT、Grab、熟食中心点餐、酒店入住和无现金支付等高频服务场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for Singapore MRT navigation, hawker-centre ordering, Grab pickups, and fast hotel or attraction counters.",
+      "zh-CN": "适合新加坡 MRT、熟食中心点餐、Grab 上下车和酒店或景点柜台沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "Hawker centres and MRT",
+        "Grab rides and mall addresses",
+        "Cashless payments and takeaway"
+      ],
+      "zh-CN": [
+        "熟食中心与 MRT",
+        "Grab 打车与商场地址",
+        "无现金支付与打包带走"
+      ]
+    },
+    "featured": true,
+    "phraseCount": 57,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -156,8 +345,29 @@
     },
     "languageCode": "ko-KR",
     "flag": "🇰🇷",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for South Korea with audio, built for subway transfers, T-money reloads, Kakao T rides, hotel check-ins, cafes, and restaurant ordering.",
+      "zh-CN": "韩国旅行短语卡，围绕地铁换乘、T-money 充值、Kakao T 打车、酒店入住、咖啡店和餐厅点单等高频场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for Seoul-style travel with T-money, Kakao T, station exits, convenience stores, and cafe orders.",
+      "zh-CN": "适合首尔式旅行里的 T-money、Kakao T、地铁出口、便利店和咖啡点单沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "T-money and Kakao T",
+        "Subway exits, cafes, and BBQ",
+        "Hotels, kiosks, and convenience stores"
+      ],
+      "zh-CN": [
+        "T-money 与 Kakao T",
+        "地铁出口、咖啡店与烤肉店",
+        "酒店、自助机与便利店"
+      ]
+    },
+    "featured": true,
+    "phraseCount": 57,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -172,8 +382,29 @@
     },
     "languageCode": "zh-TW",
     "flag": "🇹🇼",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for Taiwan with audio, built for EasyCard trips, TRA and HSR travel, hotel check-ins, night markets, and everyday service conversations.",
+      "zh-CN": "中国台湾旅行短语卡，围绕 EasyCard、台铁与高铁、酒店入住、夜市和日常服务沟通等高频场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for Taiwan EasyCard travel, TRA or HSR connections, hotel counters, and night-market ordering.",
+      "zh-CN": "适合中国台湾的 EasyCard、台铁或高铁换乘、酒店柜台和夜市点餐沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "EasyCard, TRA, and night markets",
+        "Breakfast shops, takeaway, and less ice",
+        "Hotels, station exits, and HSR transfers"
+      ],
+      "zh-CN": [
+        "EasyCard、台铁与夜市沟通",
+        "早餐店、外带与少冰需求",
+        "酒店、出入口与高铁换乘"
+      ]
+    },
+    "featured": false,
+    "phraseCount": 56,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -188,8 +419,29 @@
     },
     "languageCode": "th-TH",
     "flag": "🇹🇭",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for Thailand with audio, built around BTS and MRT rides, Grab pickups, hotel check-ins, street-food ordering, and emergency help.",
+      "zh-CN": "泰国旅行短语卡，围绕 BTS 与 MRT、Grab 打车、酒店入住、街头小吃点单和紧急求助等落地高频场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for Thailand arrivals, BTS transfers, Grab rides, hotel check-ins, and quick street-food conversations.",
+      "zh-CN": "适合泰国落地后的 BTS 换乘、Grab 打车、酒店入住和街头点餐沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "BTS, Grab, and night markets",
+        "Street food and spice requests",
+        "Hotels, ferries, and airport transfers"
+      ],
+      "zh-CN": [
+        "BTS、Grab 与夜市沟通",
+        "街头点餐与辣度需求",
+        "酒店、码头与机场接驳"
+      ]
+    },
+    "featured": true,
+    "phraseCount": 57,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -204,8 +456,29 @@
     },
     "languageCode": "vi-VN",
     "flag": "🇻🇳",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for Vietnam with audio, built for Grab pickups, domestic flights, sleeper buses, hotel check-ins, street-food ordering, and everyday travel requests.",
+      "zh-CN": "越南旅行短语卡，围绕 Grab 打车、国内航班、卧铺巴士、酒店入住和街头点餐等高频落地场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for Vietnam arrivals, Grab rides, sleeper buses, hotel check-ins, and quick street-food conversations.",
+      "zh-CN": "适合越南落地后的 Grab、卧铺巴士、酒店入住和街边点餐沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "Grab, sleeper buses, and street-food basics",
+        "Hotel check-ins and coffee orders",
+        "Airport transfers, small shops, and simple directions"
+      ],
+      "zh-CN": [
+        "Grab、卧铺巴士与街边点餐",
+        "酒店入住与咖啡点单",
+        "机场接驳、小店沟通与基础问路"
+      ]
+    },
+    "featured": false,
+    "phraseCount": 56,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -220,8 +493,29 @@
     },
     "languageCode": "tr-TR",
     "flag": "🇹🇷",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for Turkey with audio, built for airport transfers, Istanbulkart travel, hotel check-ins, bazaars, and everyday dining or payment questions.",
+      "zh-CN": "土耳其旅行短语卡，围绕机场接驳、Istanbulkart、酒店入住、市场，以及餐饮和支付沟通等高频场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for Turkey airport rides, Istanbulkart travel, bazaars, and hotel or dining conversations.",
+      "zh-CN": "适合土耳其的机场交通、Istanbulkart、市场，以及酒店和餐饮沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "Airport rides, Istanbulkart, ferries, and trams",
+        "Bazaars, prices, and browsing basics",
+        "Tea, kebabs, takeaway, and payment questions"
+      ],
+      "zh-CN": [
+        "机场交通、Istanbulkart、渡轮与电车",
+        "市场、价格与逛店基础沟通",
+        "喝茶、烤肉、外带与支付问题"
+      ]
+    },
+    "featured": false,
+    "phraseCount": 55,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -236,8 +530,29 @@
     },
     "languageCode": "ar_001",
     "flag": "🇦🇪",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for the UAE with audio and local tips for malls, taxis, and mixed Arabic-English service situations.",
+      "zh-CN": "阿联酋旅行短语卡，补充了商场、打车和阿拉伯语英语混用场景，更贴近本地使用。"
+    },
+    "teaser": {
+      "en-US": "Useful for mall visits, taxi rides, and Arabic-English service counters in the UAE.",
+      "zh-CN": "适合阿联酋商场、打车和阿语英语混用的服务场景。"
+    },
+    "highlights": {
+      "en-US": [
+        "Mall taxis",
+        "Arabic-English counters",
+        "Friday schedule questions"
+      ],
+      "zh-CN": [
+        "商场打车",
+        "阿语英语混用柜台",
+        "Friday 营业时间"
+      ]
+    },
+    "featured": true,
+    "phraseCount": 57,
+    "audioCoverage": "partial"
   },
   {
     "country": {
@@ -252,8 +567,29 @@
     },
     "languageCode": "de-AT",
     "flag": "🇦🇹",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for Austria with audio, built for OeBB trains, trams, hotel check-ins, coffeehouses, and everyday city-service questions.",
+      "zh-CN": "奥地利旅行短语卡，围绕 OeBB 火车、电车、酒店入住、咖啡馆和城市服务沟通等高频场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for Austria OeBB trains, tram stops, coffeehouses, and hotel or museum-day logistics.",
+      "zh-CN": "适合奥地利的 OeBB、电车、咖啡馆以及酒店和博物馆行程沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "OeBB, trams, and ticket questions",
+        "Coffeehouses, bakeries, and the bill",
+        "Hotels, museums, and old-town directions"
+      ],
+      "zh-CN": [
+        "OeBB、电车与车票询问",
+        "咖啡馆、面包店与要账单",
+        "酒店、博物馆与老城问路"
+      ]
+    },
+    "featured": false,
+    "phraseCount": 55,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -268,8 +604,29 @@
     },
     "languageCode": "fr-FR",
     "flag": "🇫🇷",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for France with audio, designed for SNCF trains, hotel check-ins, cafe etiquette, boulangeries, museums, and everyday service questions.",
+      "zh-CN": "法国旅行短语卡，围绕 SNCF 火车、酒店入住、咖啡馆礼貌表达、面包店、博物馆和日常服务沟通整理。"
+    },
+    "teaser": {
+      "en-US": "Built for France rail travel, SNCF questions, cafe etiquette, hotel arrivals, and short museum or bakery requests.",
+      "zh-CN": "适合法国铁路出行、SNCF 询问、咖啡馆礼貌表达、酒店入住和博物馆或面包店简短沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "SNCF and cafe etiquette",
+        "Bakeries, menus, and museums",
+        "Hotels, payments, and short service questions"
+      ],
+      "zh-CN": [
+        "SNCF 与咖啡馆礼貌表达",
+        "面包店、菜单与博物馆沟通",
+        "酒店、支付与简短服务询问"
+      ]
+    },
+    "featured": true,
+    "phraseCount": 57,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -284,8 +641,29 @@
     },
     "languageCode": "de-DE",
     "flag": "🇩🇪",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for Germany with audio, built for DB train travel, S-Bahn and U-Bahn transfers, hotel check-ins, bakeries, and everyday service questions.",
+      "zh-CN": "德国旅行短语卡，围绕 DB 火车、S-Bahn 与 U-Bahn、酒店入住、面包店和日常服务沟通等高频场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for Germany DB travel, S-Bahn and U-Bahn transfers, bakeries, and hotel or museum-day logistics.",
+      "zh-CN": "适合德国 DB、S-Bahn 与 U-Bahn、面包店，以及酒店和博物馆行程沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "DB trains, cash questions, and bakery stops",
+        "S-Bahn, U-Bahn, and platform changes",
+        "Hotels, museums, and direct service requests"
+      ],
+      "zh-CN": [
+        "DB、现金支付与面包店沟通",
+        "S-Bahn、U-Bahn 与站台变更",
+        "酒店、博物馆与简短服务请求"
+      ]
+    },
+    "featured": false,
+    "phraseCount": 56,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -300,8 +678,29 @@
     },
     "languageCode": "el-GR",
     "flag": "🇬🇷",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for Greece with audio, built for ferries, hotel check-ins, tavernas, island transfers, and everyday payment or direction questions.",
+      "zh-CN": "希腊旅行短语卡，围绕渡轮、酒店入住、taverna 餐馆、岛屿交通和支付或问路等高频场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for Greece ferries, island transfers, tavernas, and hotel or ticket-counter conversations.",
+      "zh-CN": "适合希腊的渡轮、岛屿交通、taverna，以及酒店和售票柜台沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "Ferries, island transfers, and ticket counters",
+        "Tavernas, seafood, and payment basics",
+        "Hotels, beaches, and old-town directions"
+      ],
+      "zh-CN": [
+        "渡轮、岛屿交通与售票柜台",
+        "taverna、海鲜与支付基础沟通",
+        "酒店、海滩与老城问路"
+      ]
+    },
+    "featured": false,
+    "phraseCount": 55,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -316,8 +715,29 @@
     },
     "languageCode": "it-IT",
     "flag": "🇮🇹",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for Italy with audio, built for Trenitalia and Italo trains, hotel arrivals, coffee bars, restaurant ordering, and everyday travel logistics.",
+      "zh-CN": "意大利旅行短语卡，围绕 Trenitalia 和 Italo 火车、酒店入住、咖啡吧、餐厅点单和日常出行沟通整理。"
+    },
+    "teaser": {
+      "en-US": "Built for Italy train travel, coffee bars, restaurant etiquette, hotel arrivals, and quick museum-day logistics.",
+      "zh-CN": "适合意大利火车出行、咖啡吧、餐厅礼节、酒店入住和博物馆日程沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "Trains, coperto, and coffee bar etiquette",
+        "Hotels, museums, and reservations",
+        "Food allergies, takeaway, and receipts"
+      ],
+      "zh-CN": [
+        "火车、coperto 与咖啡吧礼节",
+        "酒店、博物馆与预约沟通",
+        "过敏说明、外带与小票"
+      ]
+    },
+    "featured": false,
+    "phraseCount": 56,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -332,8 +752,29 @@
     },
     "languageCode": "nl-NL",
     "flag": "🇳🇱",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for Netherlands with audio, built for OV-chipkaart travel, trains, bike directions, hotel check-ins, and everyday cafe or payment conversations.",
+      "zh-CN": "荷兰旅行短语卡，围绕 OV-chipkaart、火车、自行车路线、酒店入住，以及咖啡馆和支付沟通等高频场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for Netherlands OV-chipkaart travel, trains, bike directions, and hotel or cafe conversations.",
+      "zh-CN": "适合荷兰的 OV-chipkaart、火车、自行车路线，以及酒店和咖啡馆沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "OV-chipkaart, trains, and tram stops",
+        "Bike directions, canals, and museum routes",
+        "Hotels, breakfast, and takeaway basics"
+      ],
+      "zh-CN": [
+        "OV-chipkaart、火车与电车站",
+        "自行车路线、运河与博物馆路线",
+        "酒店、早餐与外带基础沟通"
+      ]
+    },
+    "featured": false,
+    "phraseCount": 55,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -348,8 +789,29 @@
     },
     "languageCode": "pt-PT",
     "flag": "🇵🇹",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for Portugal with audio, built for tram rides, train travel, hotel check-ins, cafe counters, and everyday payment or direction questions.",
+      "zh-CN": "葡萄牙旅行短语卡，围绕电车、火车、酒店入住、咖啡馆柜台以及支付和问路等高频场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for Portugal tram rides, Multibanco payments, cafe counters, train travel, and hotel or apartment arrivals.",
+      "zh-CN": "适合葡萄牙的电车、Multibanco、咖啡馆柜台、火车以及酒店或公寓入住沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "Trams, Multibanco, and cafe counters",
+        "Train travel, pastries, and takeaway",
+        "Hotels, apartments, and coastal day trips"
+      ],
+      "zh-CN": [
+        "电车、Multibanco 与咖啡馆柜台",
+        "火车、点心与外带需求",
+        "酒店、公寓与海边一日游"
+      ]
+    },
+    "featured": false,
+    "phraseCount": 56,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -364,8 +826,29 @@
     },
     "languageCode": "es-ES",
     "flag": "🇪🇸",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for Spain with audio, built for Renfe trains, hotel arrivals, tapas bars, late dining, pharmacies, and everyday travel requests.",
+      "zh-CN": "西班牙旅行短语卡，围绕 Renfe 火车、酒店入住、tapas 酒吧、晚餐时间、药房和日常出行沟通整理。"
+    },
+    "teaser": {
+      "en-US": "Built for Spain rail travel, Renfe questions, tapas timing, menu del dia orders, and hotel or apartment arrivals.",
+      "zh-CN": "适合西班牙铁路出行、Renfe 询问、tapas 时间、menu del dia 点单和酒店或公寓入住沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "Renfe, tapas timing, and menu del dia",
+        "Hotels, apartments, and late dining",
+        "Beach towns, pharmacies, and simple directions"
+      ],
+      "zh-CN": [
+        "Renfe、tapas 时间与 menu del dia",
+        "酒店、公寓与晚餐节奏",
+        "海边城市、药房与基础问路"
+      ]
+    },
+    "featured": false,
+    "phraseCount": 56,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -380,8 +863,29 @@
     },
     "languageCode": "de-CH",
     "flag": "🇨🇭",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for Switzerland with audio, built for SBB trains, mountain transport, hotel check-ins, bakeries, and everyday ticket or direction questions.",
+      "zh-CN": "瑞士旅行短语卡，围绕 SBB 火车、山地交通、酒店入住、面包店，以及票务和问路等高频场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for Switzerland SBB trains, mountain transport, bakeries, and hotel or ticket-counter conversations.",
+      "zh-CN": "适合瑞士的 SBB、山地交通、面包店，以及酒店和售票柜台沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "SBB trains, mountain transport, and route changes",
+        "Bakeries, breakfast, and quick takeaway orders",
+        "Hotels, passes, and timing questions"
+      ],
+      "zh-CN": [
+        "SBB、山地交通与路线变更",
+        "面包店、早餐与快速外带",
+        "酒店、通票与时间询问"
+      ]
+    },
+    "featured": false,
+    "phraseCount": 55,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -396,8 +900,29 @@
     },
     "languageCode": "es-AR",
     "flag": "🇦🇷",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for Argentina with audio, built for SUBE transit cards, airport transfers, hotel check-ins, parrilla meals, and everyday payment questions.",
+      "zh-CN": "阿根廷旅行短语卡，围绕 SUBE 交通卡、机场接驳、酒店入住、烤肉餐厅和支付沟通等高频场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for Argentina SUBE cards, airport rides, parrilla orders, and hotel or cafe counter conversations.",
+      "zh-CN": "适合阿根廷的 SUBE、机场交通、烤肉点单和酒店或咖啡馆柜台沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "SUBE, airport rides, and cafe stops",
+        "Parrilla orders and payment questions",
+        "Hotels, domestic flights, and simple directions"
+      ],
+      "zh-CN": [
+        "SUBE、机场交通与咖啡馆沟通",
+        "烤肉点单与支付询问",
+        "酒店、国内航班与基础问路"
+      ]
+    },
+    "featured": false,
+    "phraseCount": 56,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -412,8 +937,29 @@
     },
     "languageCode": "pt-BR",
     "flag": "🇧🇷",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for Brazil with audio, built for airport rides, Pix or card questions, hotel check-ins, beach kiosks, and everyday Portuguese service conversations.",
+      "zh-CN": "巴西旅行短语卡，围绕机场交通、Pix 或刷卡、酒店入住、海滩小摊和葡语服务沟通等高频场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for Brazil airport rides, Pix or card questions, beach kiosks, and hotel or bus-day logistics.",
+      "zh-CN": "适合巴西的机场交通、Pix 或刷卡、海滩小摊以及酒店和巴士行程沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "Airport rides, Pix, and card questions",
+        "Beach kiosks, takeaway, and casual dining",
+        "Hotels, buses, and domestic travel basics"
+      ],
+      "zh-CN": [
+        "机场交通、Pix 与刷卡询问",
+        "海滩小摊、外带与轻餐饮",
+        "酒店、巴士与国内出行基础沟通"
+      ]
+    },
+    "featured": false,
+    "phraseCount": 56,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -428,8 +974,29 @@
     },
     "languageCode": "en-CA",
     "flag": "🇨🇦",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for Canada with audio, built for airport trains, transit passes, hotel check-ins, cafe orders, and everyday city-service conversations.",
+      "zh-CN": "加拿大旅行短语卡，围绕机场铁路、交通卡、酒店入住、咖啡点单和城市服务沟通等高频场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for Canada airport links, transit passes, cafe counters, and hotel or city-day logistics.",
+      "zh-CN": "适合加拿大的机场交通、交通卡、咖啡馆柜台，以及酒店和城市行程沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "Airport links, transit passes, and cafe counters",
+        "Hotels, directions, and quick payment questions",
+        "Takeaway orders, tipping, and city-day basics"
+      ],
+      "zh-CN": [
+        "机场交通、交通卡与咖啡馆柜台",
+        "酒店、问路与支付询问",
+        "外带、小费与城市行程基础沟通"
+      ]
+    },
+    "featured": false,
+    "phraseCount": 56,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -444,8 +1011,29 @@
     },
     "languageCode": "es-CL",
     "flag": "🇨🇱",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for Chile with audio, built for airport buses, metro travel, hotel check-ins, cafe stops, and everyday payment or direction questions.",
+      "zh-CN": "智利旅行短语卡，围绕机场巴士、地铁、酒店入住、咖啡馆和支付或问路等高频场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for Chile airport buses, metro rides, cafe counters, and hotel or intercity travel logistics.",
+      "zh-CN": "适合智利的机场巴士、地铁、咖啡馆柜台，以及酒店和跨城行程沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "Airport buses, metro rides, and route questions",
+        "Cafe counters, seafood, and payment basics",
+        "Hotels, addresses, and intercity travel"
+      ],
+      "zh-CN": [
+        "机场巴士、地铁与路线询问",
+        "咖啡馆、海鲜与支付基础沟通",
+        "酒店、地址与跨城出行"
+      ]
+    },
+    "featured": false,
+    "phraseCount": 55,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -460,8 +1048,29 @@
     },
     "languageCode": "es-CO",
     "flag": "🇨🇴",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for Colombia with audio, built for airport rides, city transit, hotel check-ins, cafe stops, and everyday payment or direction questions.",
+      "zh-CN": "哥伦比亚旅行短语卡，围绕机场交通、城市通勤、酒店入住、咖啡馆和支付或问路等高频场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for Colombia airport rides, city transit, coffee stops, and hotel or local-direction conversations.",
+      "zh-CN": "适合哥伦比亚的机场交通、城市通勤、咖啡馆，以及酒店和本地问路沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "Airport rides, city transit, and address checks",
+        "Coffee orders, local lunches, and payment basics",
+        "Hotels, directions, and quick service requests"
+      ],
+      "zh-CN": [
+        "机场交通、城市通勤与地址确认",
+        "咖啡点单、本地套餐与支付基础沟通",
+        "酒店、问路与快速服务请求"
+      ]
+    },
+    "featured": false,
+    "phraseCount": 55,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -476,8 +1085,29 @@
     },
     "languageCode": "es-CR",
     "flag": "🇨🇷",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for Costa Rica with audio, built for shuttle pickups, hotel check-ins, soda restaurants, park tickets, and everyday travel logistics.",
+      "zh-CN": "哥斯达黎加旅行短语卡，围绕接驳车、酒店入住、soda 餐馆、景区门票和日常旅行沟通等高频场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for Costa Rica shuttle pickups, soda restaurants, park counters, and hotel or transfer questions.",
+      "zh-CN": "适合哥斯达黎加的接驳车、soda 餐馆、公园柜台，以及酒店和交通沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "Shuttle pickups, road trips, and transfers",
+        "Sodas, fresh juice, and takeaway basics",
+        "Park tickets, tours, and hotel questions"
+      ],
+      "zh-CN": [
+        "接驳车、长途交通与接送",
+        "soda、鲜榨果汁与外带基础沟通",
+        "公园门票、活动和酒店询问"
+      ]
+    },
+    "featured": false,
+    "phraseCount": 55,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -492,8 +1122,29 @@
     },
     "languageCode": "es-MX",
     "flag": "🇲🇽",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for Mexico with audio, built for airport transfers, metro or ADO buses, hotel check-ins, taco or cafe orders, and everyday payment questions.",
+      "zh-CN": "墨西哥旅行短语卡，围绕机场接驳、地铁或 ADO 巴士、酒店入住、taco 或咖啡点单，以及支付沟通等高频场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for Mexico airport transfers, metro or ADO routes, tacos, cafes, and hotel or payment conversations.",
+      "zh-CN": "适合墨西哥的机场接驳、地铁或 ADO 路线、taco、咖啡馆，以及酒店和支付沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "Airport transfers, metro, and ADO routes",
+        "Tacos, sauces, and takeaway basics",
+        "Hotels, card questions, and pickup addresses"
+      ],
+      "zh-CN": [
+        "机场接驳、地铁与 ADO 路线",
+        "taco、酱料与外带基础沟通",
+        "酒店、刷卡询问与上车地址"
+      ]
+    },
+    "featured": false,
+    "phraseCount": 56,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -508,8 +1159,29 @@
     },
     "languageCode": "es-PE",
     "flag": "🇵🇪",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for Peru with audio, built for airport rides, long-distance transport, hotel check-ins, market stops, and everyday dining or direction questions.",
+      "zh-CN": "秘鲁旅行短语卡，围绕机场交通、长途出行、酒店入住、市场停留，以及餐饮和问路等高频场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for Peru airport rides, longer transport days, market stops, and hotel or dining conversations.",
+      "zh-CN": "适合秘鲁的机场交通、长途出行、市场停留，以及酒店和餐饮沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "Airport rides, buses, and rail connections",
+        "Market prices, set meals, and bottled water",
+        "Hotels, directions, and quick service requests"
+      ],
+      "zh-CN": [
+        "机场交通、巴士与铁路换乘",
+        "市场价格、套餐与瓶装水",
+        "酒店、问路与快速服务请求"
+      ]
+    },
+    "featured": false,
+    "phraseCount": 55,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -524,8 +1196,29 @@
     },
     "languageCode": "en-US",
     "flag": "🇺🇸",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for United States with audio, built for airport rideshares, hotel check-ins, cafe or diner stops, and everyday local-service conversations.",
+      "zh-CN": "美国旅行短语卡，围绕机场网约车、酒店入住、咖啡馆或 diner 停留，以及本地服务沟通等高频场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for United States rideshares, hotel check-ins, cafes or diners, and pharmacy or payment conversations.",
+      "zh-CN": "适合美国的网约车、酒店入住、咖啡馆或 diner，以及药房和支付沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "Rideshares, pickup zones, and local transit",
+        "Cafes, diners, and separate-check questions",
+        "Hotels, pharmacies, and exact addresses"
+      ],
+      "zh-CN": [
+        "网约车、上车区与本地交通",
+        "咖啡馆、diner 与分开结账",
+        "酒店、药房与准确地址"
+      ]
+    },
+    "featured": false,
+    "phraseCount": 56,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -540,8 +1233,29 @@
     },
     "languageCode": "ar_001",
     "flag": "🇪🇬",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for Egypt with audio, built for airport pickups, hotel check-ins, museum visits, cash questions, and everyday transport or dining conversations.",
+      "zh-CN": "埃及旅行短语卡，围绕机场接驳、酒店入住、博物馆参观、现金支付和交通或餐饮沟通等高频场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for Egypt airport pickups, museum stops, hotel counters, and transport or cash conversations.",
+      "zh-CN": "适合埃及的机场接驳、博物馆、酒店柜台，以及交通和现金沟通场景。"
+    },
+    "highlights": {
+      "en-US": [
+        "Airport pickups, taxis, and cash questions",
+        "Museums, tickets, and simple directions",
+        "Hotels, water, and short meal orders"
+      ],
+      "zh-CN": [
+        "机场接驳、出租车与现金询问",
+        "博物馆、门票与基础问路",
+        "酒店、买水与简短点餐"
+      ]
+    },
+    "featured": false,
+    "phraseCount": 55,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -556,8 +1270,29 @@
     },
     "languageCode": "en-US",
     "flag": "🇰🇪",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for Kenya with audio, built for airport pickups, ride apps, lodge check-ins, park days, and everyday payment or direction questions.",
+      "zh-CN": "肯尼亚旅行短语卡，围绕机场接驳、网约车、营地入住、公园行程和支付或问路等高频场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for Kenya airport pickups, lodge transfers, park days, and simple city or payment conversations.",
+      "zh-CN": "适合肯尼亚的机场接驳、营地交通、公园日程，以及简单城市和支付沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "Airport pickups, ride apps, and lodge transfers",
+        "Park days, meal schedules, and what is included",
+        "Payments, routes, and quick service requests"
+      ],
+      "zh-CN": [
+        "机场接驳、网约车与营地交通",
+        "公园日程、用餐安排与包含内容",
+        "支付、路线与快速服务请求"
+      ]
+    },
+    "featured": false,
+    "phraseCount": 55,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -572,8 +1307,29 @@
     },
     "languageCode": "fr-FR",
     "flag": "🇲🇺",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for Mauritius with audio, built for airport transfers, beach hotels, market stops, cafe counters, and everyday payment or direction questions.",
+      "zh-CN": "毛里求斯旅行短语卡，围绕机场接驳、海边酒店、市场、咖啡馆和支付或问路等高频场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for Mauritius airport transfers, beach hotels, market stops, and cafe or payment conversations.",
+      "zh-CN": "适合毛里求斯的机场接驳、海边酒店、市场，以及咖啡馆和支付沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "Airport transfers, beach hotels, and day trips",
+        "Market stops, small shops, and payment basics",
+        "Cafe counters, takeaway, and simple directions"
+      ],
+      "zh-CN": [
+        "机场接驳、海边酒店与一日游",
+        "市场、小店与支付基础沟通",
+        "咖啡馆柜台、外带与基础问路"
+      ]
+    },
+    "featured": false,
+    "phraseCount": 55,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -588,8 +1344,29 @@
     },
     "languageCode": "fr-FR",
     "flag": "🇲🇦",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for Morocco with audio, built for medina directions, riad check-ins, taxis, souk shopping, and everyday dining or payment questions.",
+      "zh-CN": "摩洛哥旅行短语卡，围绕 medina 问路、riad 入住、出租车、souk 市场购物，以及餐饮和支付沟通等高频场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for Morocco medinas, riads, taxis, souks, and short dining or payment conversations.",
+      "zh-CN": "适合摩洛哥的 medina、riad、出租车、souq，以及简短餐饮和支付沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "Medina directions, riads, and taxi drop-offs",
+        "Souk prices, browsing, and payment basics",
+        "Tea stops, tagines, and local service requests"
+      ],
+      "zh-CN": [
+        "medina 问路、riad 与出租车下车点",
+        "souq 价格、逛店与支付基础沟通",
+        "喝茶、tagine 与本地服务请求"
+      ]
+    },
+    "featured": false,
+    "phraseCount": 55,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -604,8 +1381,29 @@
     },
     "languageCode": "en-US",
     "flag": "🇿🇦",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for South Africa with audio, built for airport pickups, rideshares, hotel or lodge check-ins, restaurant stops, and everyday payment or direction questions.",
+      "zh-CN": "南非旅行短语卡，围绕机场接驳、网约车、酒店或 lodge 入住、餐厅停留，以及支付和问路等高频场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for South Africa airport pickups, rideshares, lodge check-ins, and restaurant or tour-day conversations.",
+      "zh-CN": "适合南非的机场接驳、网约车、lodge 入住，以及餐厅和一日游沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "Airport pickups, rideshares, and lodge transfers",
+        "Restaurants, payments, and tour-day basics",
+        "Hotels, addresses, and simple service requests"
+      ],
+      "zh-CN": [
+        "机场接驳、网约车与 lodge 交通",
+        "餐厅、支付与一日游基础沟通",
+        "酒店、地址与简单服务请求"
+      ]
+    },
+    "featured": false,
+    "phraseCount": 55,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -620,8 +1418,29 @@
     },
     "languageCode": "en-US",
     "flag": "🇹🇿",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for Tanzania with audio, built for airport pickups, ferries, lodge check-ins, safari days, and everyday payment or direction questions.",
+      "zh-CN": "坦桑尼亚旅行短语卡，围绕机场接驳、渡轮、营地入住、safari 日程，以及支付和问路等高频场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for Tanzania airport pickups, ferries, safari or beach days, and lodge or payment conversations.",
+      "zh-CN": "适合坦桑尼亚的机场接驳、渡轮、safari 或海边日程，以及营地和支付沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "Airport pickups, ferries, and lodge transfers",
+        "Safari or beach days, water, and meal timing",
+        "Payments, directions, and pickup-point basics"
+      ],
+      "zh-CN": [
+        "机场接驳、渡轮与营地交通",
+        "safari 或海边日程、饮水与用餐时间",
+        "支付、问路与上车点基础沟通"
+      ]
+    },
+    "featured": false,
+    "phraseCount": 55,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -636,8 +1455,29 @@
     },
     "languageCode": "en-AU",
     "flag": "🇦🇺",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for Australia with audio, built for airport trains, rideshares, hotel check-ins, cafe counters, and everyday local-service conversations.",
+      "zh-CN": "澳大利亚旅行短语卡，围绕机场交通、网约车、酒店入住、咖啡馆柜台和本地服务沟通等高频场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for Australia airport links, rideshares, cafe orders, and hotel or road-trip logistics.",
+      "zh-CN": "适合澳大利亚的机场交通、网约车、咖啡点单和酒店或自驾相关沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "Airport links, rideshares, and cafe counters",
+        "Hotels, road trips, and simple service requests",
+        "Takeaway coffee, receipts, and local transit"
+      ],
+      "zh-CN": [
+        "机场交通、网约车与咖啡馆柜台",
+        "酒店、自驾与基础服务需求",
+        "外带咖啡、小票与本地交通"
+      ]
+    },
+    "featured": false,
+    "phraseCount": 56,
+    "audioCoverage": "all"
   },
   {
     "country": {
@@ -652,7 +1492,28 @@
     },
     "languageCode": "en-NZ",
     "flag": "🇳🇿",
-    "phraseCount": 42,
-    "hasAudio": true
+    "description": {
+      "en-US": "Travel phrases for New Zealand with audio, built for airport shuttles, intercity buses, ferries, hotel or holiday-park check-ins, and cafe conversations.",
+      "zh-CN": "新西兰旅行短语卡，围绕机场接驳、城际巴士、渡轮、酒店或 holiday park 入住，以及咖啡馆沟通等高频场景整理。"
+    },
+    "teaser": {
+      "en-US": "Built for New Zealand airport shuttles, intercity buses, ferries, and hotel or holiday-park conversations.",
+      "zh-CN": "适合新西兰的机场接驳、城际巴士、渡轮，以及酒店和 holiday park 沟通。"
+    },
+    "highlights": {
+      "en-US": [
+        "Airport shuttles, intercity buses, and ferries",
+        "Hotels, holiday parks, and parking questions",
+        "Cafe stops, breakfast, and small-town directions"
+      ],
+      "zh-CN": [
+        "机场接驳、城际巴士与渡轮",
+        "酒店、holiday park 与停车问题",
+        "咖啡馆停靠、早餐与小镇问路"
+      ]
+    },
+    "featured": false,
+    "phraseCount": 55,
+    "audioCoverage": "all"
   }
 ]

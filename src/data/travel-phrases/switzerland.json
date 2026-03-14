@@ -263,6 +263,213 @@
       "nativeText": "Ich habe meinen Pass verloren",
       "romanization": null,
       "audioKey": "travel-phrases/switzerland/lost_passport.mp3"
+    },
+    {
+      "id": "sbb_platform_where",
+      "category": "transport",
+      "nativeText": "Von welchem Gleis faehrt der SBB-Zug ab?",
+      "translation": {
+        "en-US": "Which platform is the SBB train leaving from?",
+        "zh-CN": "SBB 列车从哪个站台出发？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/switzerland/sbb_platform_where.mp3"
+    },
+    {
+      "id": "train_to_airport_ch",
+      "category": "transport",
+      "nativeText": "Faehrt dieser Zug zum Flughafen?",
+      "translation": {
+        "en-US": "Does this train go to the airport?",
+        "zh-CN": "这班火车去机场吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/switzerland/train_to_airport_ch.mp3"
+    },
+    {
+      "id": "go_to_this_address_ch",
+      "category": "transport",
+      "nativeText": "Bitte fahren Sie zu dieser Adresse",
+      "translation": {
+        "en-US": "Please go to this address.",
+        "zh-CN": "请去这个地址。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/switzerland/go_to_this_address_ch.mp3"
+    },
+    {
+      "id": "day_pass_where_ch",
+      "category": "transport",
+      "nativeText": "Wo kaufe ich einen Tagespass?",
+      "translation": {
+        "en-US": "Where can I buy a day pass?",
+        "zh-CN": "一日票在哪里买？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/switzerland/day_pass_where_ch.mp3"
+    },
+    {
+      "id": "leave_luggage_before_checkin_ch",
+      "category": "hotel",
+      "nativeText": "Kann ich mein Gepaeck vor dem Check-in abgeben?",
+      "translation": {
+        "en-US": "Can I leave my luggage before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/switzerland/leave_luggage_before_checkin_ch.mp3"
+    },
+    {
+      "id": "arrive_late_tonight_ch",
+      "category": "hotel",
+      "nativeText": "Ich komme heute spaet an",
+      "translation": {
+        "en-US": "I will arrive late tonight.",
+        "zh-CN": "我今晚会晚一点到。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/switzerland/arrive_late_tonight_ch.mp3"
+    },
+    {
+      "id": "still_water_ch",
+      "category": "dining",
+      "nativeText": "Ein stilles Wasser, bitte",
+      "translation": {
+        "en-US": "A still water, please.",
+        "zh-CN": "请给我一瓶无气泡水。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/switzerland/still_water_ch.mp3"
+    },
+    {
+      "id": "without_onion_ch",
+      "category": "dining",
+      "nativeText": "Bitte ohne Zwiebeln",
+      "translation": {
+        "en-US": "Without onions, please.",
+        "zh-CN": "请不要洋葱。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/switzerland/without_onion_ch.mp3"
+    },
+    {
+      "id": "takeaway_switzerland",
+      "category": "dining",
+      "nativeText": "Zum Mitnehmen, bitte",
+      "translation": {
+        "en-US": "To go, please.",
+        "zh-CN": "请打包带走。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/switzerland/takeaway_switzerland.mp3"
+    },
+    {
+      "id": "pay_by_card_ch",
+      "category": "shopping",
+      "nativeText": "Kann ich mit Karte zahlen?",
+      "translation": {
+        "en-US": "Can I pay by card?",
+        "zh-CN": "可以刷卡吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/switzerland/pay_by_card_ch.mp3"
+    },
+    {
+      "id": "write_in_german_ch",
+      "category": "basics",
+      "nativeText": "Koennen Sie das auf Deutsch aufschreiben?",
+      "translation": {
+        "en-US": "Could you write that in German?",
+        "zh-CN": "可以帮我写成德语吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/switzerland/write_in_german_ch.mp3"
+    },
+    {
+      "id": "missed_last_train_ch",
+      "category": "emergency",
+      "nativeText": "Ich habe den letzten Zug verpasst",
+      "translation": {
+        "en-US": "I missed the last train.",
+        "zh-CN": "我错过末班火车了。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/switzerland/missed_last_train_ch.mp3"
+    },
+    {
+      "id": "reservation_required_ch_bonus",
+      "category": "transport",
+      "nativeText": "Ist das ein reservierungspflichtiger Zug?",
+      "translation": {
+        "en-US": "Is this a train that requires reservations?",
+        "zh-CN": "这班火车需要预订座位吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/switzerland/reservation_required_ch_bonus.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for Switzerland with audio, built for SBB trains, mountain transport, hotel check-ins, bakeries, and everyday ticket or direction questions.",
+    "zh-CN": "瑞士旅行短语卡，围绕 SBB 火车、山地交通、酒店入住、面包店，以及票务和问路等高频场景整理。"
+  },
+  "intro": {
+    "en-US": "Built for Switzerland trips where SBB platforms, mountain lifts, hotel counters, and bakery or cafe stops can all happen in one day. These cards help when you need short German for routes, passes, or a simple meal and service request.",
+    "zh-CN": "这套瑞士短语适合那种 SBB 站台、山地缆车、酒店前台和面包店或咖啡馆会在一天里连续出现的旅行节奏。遇到要问路线、通票，或提出简短餐饮和服务需求时，短语卡会很有帮助。"
+  },
+  "teaser": {
+    "en-US": "Built for Switzerland SBB trains, mountain transport, bakeries, and hotel or ticket-counter conversations.",
+    "zh-CN": "适合瑞士的 SBB、山地交通、面包店，以及酒店和售票柜台沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep transport phrases ready for SBB platforms, mountain rail or lift tickets, and route changes before longer travel days.",
+      "Bakery and cafe cards are useful for takeaway, breakfast, and quick snack orders between trains or sightseeing stops.",
+      "Hotel and pass questions matter because many days involve exact timing, storage, or knowing what a ticket already covers."
+    ],
+    "zh-CN": [
+      "如果有 SBB、山地火车或缆车行程，最好先把站台、票务和路线变更相关短语准备好。",
+      "在火车和景点之间，面包店和咖啡馆里的外带、早餐和简短点心需求都很常见。",
+      "酒店和通票问题也很重要，因为很多行程都依赖准确时间、行李寄存，以及确认票已经包含什么。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "SBB trains, mountain transport, and route changes",
+      "Bakeries, breakfast, and quick takeaway orders",
+      "Hotels, passes, and timing questions"
+    ],
+    "zh-CN": [
+      "SBB、山地交通与路线变更",
+      "面包店、早餐与快速外带",
+      "酒店、通票与时间询问"
+    ]
+  },
+  "featured": false,
+  "relatedSlugs": [
+    "germany",
+    "austria",
+    "france"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrase groups matter most for a first Switzerland trip?",
+        "zh-CN": "第一次去瑞士旅行，最该先准备哪几组短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport, hotel, and dining. That covers SBB, mountain routes, check-in, and most first-day bakery or restaurant needs.",
+        "zh-CN": "建议先看交通、酒店和餐饮三组，基本就能覆盖 SBB、山地路线、入住办理，以及第一天大部分面包店和餐厅场景。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Why are phrase cards useful in Switzerland?",
+        "zh-CN": "为什么在瑞士旅行时，短语卡会很有用？"
+      },
+      "answer": {
+        "en-US": "Because many travel days depend on exact transport details, ticket coverage, and fast counter conversations.",
+        "zh-CN": "因为很多瑞士行程都依赖非常准确的交通细节、票务覆盖范围，以及节奏很快的柜台沟通。"
+      }
     }
   ]
 }

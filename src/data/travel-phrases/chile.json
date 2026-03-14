@@ -263,6 +263,213 @@
       "nativeText": "He perdido mi pasaporte",
       "romanization": null,
       "audioKey": "travel-phrases/chile/lost_passport.mp3"
+    },
+    {
+      "id": "bip_topup_where",
+      "category": "transport",
+      "nativeText": "¿Dónde cargo la Bip!?",
+      "translation": {
+        "en-US": "Where can I top up my Bip! card?",
+        "zh-CN": "Bip! 卡在哪里可以充值？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/chile/bip_topup_where.mp3"
+    },
+    {
+      "id": "bus_to_airport_cl",
+      "category": "transport",
+      "nativeText": "¿Este bus va al aeropuerto?",
+      "translation": {
+        "en-US": "Does this bus go to the airport?",
+        "zh-CN": "这辆巴士去机场吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/chile/bus_to_airport_cl.mp3"
+    },
+    {
+      "id": "go_to_this_address_cl",
+      "category": "transport",
+      "nativeText": "Lléveme a esta dirección, por favor",
+      "translation": {
+        "en-US": "Please take me to this address.",
+        "zh-CN": "请带我去这个地址。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/chile/go_to_this_address_cl.mp3"
+    },
+    {
+      "id": "line_one_transfer_cl",
+      "category": "transport",
+      "nativeText": "¿Dónde hago combinación con la Línea 1?",
+      "translation": {
+        "en-US": "Where do I transfer to Line 1?",
+        "zh-CN": "去 1 号线要在哪里换乘？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/chile/line_one_transfer_cl.mp3"
+    },
+    {
+      "id": "leave_luggage_before_checkin_cl",
+      "category": "hotel",
+      "nativeText": "¿Puedo dejar la maleta antes del check-in?",
+      "translation": {
+        "en-US": "Can I leave my suitcase before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/chile/leave_luggage_before_checkin_cl.mp3"
+    },
+    {
+      "id": "arrive_late_today_cl",
+      "category": "hotel",
+      "nativeText": "Voy a llegar tarde hoy",
+      "translation": {
+        "en-US": "I will arrive late today.",
+        "zh-CN": "我今天会晚一点到。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/chile/arrive_late_today_cl.mp3"
+    },
+    {
+      "id": "without_mayonnaise_cl",
+      "category": "dining",
+      "nativeText": "Sin mayonesa, por favor",
+      "translation": {
+        "en-US": "Without mayonnaise, please.",
+        "zh-CN": "请不要蛋黄酱。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/chile/without_mayonnaise_cl.mp3"
+    },
+    {
+      "id": "still_water_chile",
+      "category": "dining",
+      "nativeText": "¿Me da una botella de agua sin gas?",
+      "translation": {
+        "en-US": "Can I get a bottle of still water?",
+        "zh-CN": "请给我一瓶无气泡水。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/chile/still_water_chile.mp3"
+    },
+    {
+      "id": "takeaway_chile",
+      "category": "dining",
+      "nativeText": "¿Lo puede dar para llevar?",
+      "translation": {
+        "en-US": "Can you pack it to go?",
+        "zh-CN": "可以帮我打包带走吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/chile/takeaway_chile.mp3"
+    },
+    {
+      "id": "transfer_or_card_cl",
+      "category": "shopping",
+      "nativeText": "¿Aceptan transferencia o tarjeta?",
+      "translation": {
+        "en-US": "Do you take bank transfer or card?",
+        "zh-CN": "可以转账或刷卡吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/chile/transfer_or_card_cl.mp3"
+    },
+    {
+      "id": "receipt_boleta_cl",
+      "category": "shopping",
+      "nativeText": "¿Me puede dar la boleta?",
+      "translation": {
+        "en-US": "Could you give me the receipt?",
+        "zh-CN": "可以给我小票吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/chile/receipt_boleta_cl.mp3"
+    },
+    {
+      "id": "missed_last_metro_cl",
+      "category": "emergency",
+      "nativeText": "Perdí el último metro",
+      "translation": {
+        "en-US": "I missed the last metro.",
+        "zh-CN": "我错过末班地铁了。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/chile/missed_last_metro_cl.mp3"
+    },
+    {
+      "id": "contactless_chile_bonus",
+      "category": "shopping",
+      "nativeText": "¿Aceptan pago sin contacto?",
+      "translation": {
+        "en-US": "Do you accept contactless payment?",
+        "zh-CN": "可以感应支付吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/chile/contactless_chile_bonus.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for Chile with audio, built for airport buses, metro travel, hotel check-ins, cafe stops, and everyday payment or direction questions.",
+    "zh-CN": "智利旅行短语卡，围绕机场巴士、地铁、酒店入住、咖啡馆和支付或问路等高频场景整理。"
+  },
+  "intro": {
+    "en-US": "Built for Chile trips where airport transfers, metro rides, long-distance buses, and restaurant or cafe stops all come up quickly. These cards help when you need short Spanish for routes, payment, or a simple order.",
+    "zh-CN": "这套智利短语适合那种机场接驳、地铁、长途巴士，以及餐厅或咖啡馆会快速切换的旅行节奏。遇到要问路线、支付或简短点单时，短语卡会很实用。"
+  },
+  "teaser": {
+    "en-US": "Built for Chile airport buses, metro rides, cafe counters, and hotel or intercity travel logistics.",
+    "zh-CN": "适合智利的机场巴士、地铁、咖啡馆柜台，以及酒店和跨城行程沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep transport phrases ready for airport buses, metro lines, and long-distance routes before you move across the city or region.",
+      "Dining phrases help with set menus, seafood questions, and asking how to pay in smaller cafes or restaurants.",
+      "A phrase card is especially handy when you want to confirm an address, bus stop, or the total price without a long explanation."
+    ],
+    "zh-CN": [
+      "如果要坐机场巴士、地铁或长途交通，最好先把相关短语准备好。",
+      "在餐厅和咖啡馆里，套餐、海鲜和怎么付款这些问题都很常用。",
+      "当你只想确认地址、车站或总价，不想说很多时，短语卡会特别方便。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "Airport buses, metro rides, and route questions",
+      "Cafe counters, seafood, and payment basics",
+      "Hotels, addresses, and intercity travel"
+    ],
+    "zh-CN": [
+      "机场巴士、地铁与路线询问",
+      "咖啡馆、海鲜与支付基础沟通",
+      "酒店、地址与跨城出行"
+    ]
+  },
+  "featured": false,
+  "relatedSlugs": [
+    "argentina",
+    "peru",
+    "colombia"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrase groups matter most for a first Chile trip?",
+        "zh-CN": "第一次去智利旅行，最该先准备哪几组短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport, hotel, and dining. That covers airport transfers, metro questions, check-in, and most first-day meals.",
+        "zh-CN": "建议先看交通、酒店和餐饮三组，基本就能覆盖机场接驳、地铁询问、入住办理，以及第一天大部分用餐场景。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Why are short phrase cards useful in Chile?",
+        "zh-CN": "为什么在智利旅行时，简短短语卡会很有用？"
+      },
+      "answer": {
+        "en-US": "Because many travel moments are quick: transport choices, cafe counters, small payments, and simple direction checks.",
+        "zh-CN": "因为很多场景节奏都很快，比如交通选择、咖啡馆柜台、小额支付和问方向，提前备好一句话会轻松很多。"
+      }
     }
   ]
 }

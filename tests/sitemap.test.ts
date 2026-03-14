@@ -8,6 +8,7 @@ describe('sitemap', () => {
 
     expect(sitemap).toContain('https://www.routecrate.com/en-us/travel-phrases')
     expect(sitemap).toContain('https://www.routecrate.com/zh-cn/travel-phrases')
+    expect(sitemap).toContain('<lastmod>')
 
     for (const pack of listRawPhraseCountrySummaries()) {
       expect(sitemap).toContain(`https://www.routecrate.com/en-us/travel-phrases/${pack.slug}`)

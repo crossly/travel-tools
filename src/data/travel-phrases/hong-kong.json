@@ -263,6 +263,224 @@
       "nativeText": "我本護照唔見咗",
       "romanization": "Ngo5 bun2 wu6 ziu3 m4 gin3 zo2",
       "audioKey": "travel-phrases/hong-kong/lost_passport.mp3"
+    },
+    {
+      "id": "octopus_topup_where",
+      "category": "transport",
+      "nativeText": "八達通喺邊度增值？",
+      "translation": {
+        "en-US": "Where can I top up my Octopus card?",
+        "zh-CN": "八达通在哪里增值？"
+      },
+      "romanization": "Baat3 daat6 tung1 hai2 bin1 dou6 zang1 zik6?",
+      "audioKey": "travel-phrases/hong-kong/octopus_topup_where.mp3"
+    },
+    {
+      "id": "exit_two_where_hk",
+      "category": "transport",
+      "nativeText": "去二號出口點行？",
+      "translation": {
+        "en-US": "How do I get to exit 2?",
+        "zh-CN": "2号出口怎么走？"
+      },
+      "romanization": "Heoi3 ji6 hou6 ceot1 hau2 dim2 haang4?",
+      "audioKey": "travel-phrases/hong-kong/exit_two_where_hk.mp3"
+    },
+    {
+      "id": "taxi_pickup_where_hk",
+      "category": "transport",
+      "nativeText": "喺邊度上的士？",
+      "translation": {
+        "en-US": "Where do I get a taxi?",
+        "zh-CN": "在哪里可以打车？"
+      },
+      "romanization": "Hai2 bin1 dou6 soeng5 dik1 si2?",
+      "audioKey": "travel-phrases/hong-kong/taxi_pickup_where_hk.mp3"
+    },
+    {
+      "id": "follow_this_address_hk",
+      "category": "transport",
+      "nativeText": "麻煩跟呢個地址去。",
+      "translation": {
+        "en-US": "Please go to this address.",
+        "zh-CN": "麻烦按这个地址走。"
+      },
+      "romanization": "Maa4 faan4 gan1 ni1 go3 dei6 zi2 heoi3.",
+      "audioKey": "travel-phrases/hong-kong/follow_this_address_hk.mp3"
+    },
+    {
+      "id": "leave_luggage_before_checkin_hk",
+      "category": "hotel",
+      "nativeText": "可唔可以先寄存行李？",
+      "translation": {
+        "en-US": "Can I leave my luggage first?",
+        "zh-CN": "可以先寄存行李吗？"
+      },
+      "romanization": "Ho2 m4 ho2 ji5 sin1 gei3 cyun4 hang4 lei5?",
+      "audioKey": "travel-phrases/hong-kong/leave_luggage_before_checkin_hk.mp3"
+    },
+    {
+      "id": "arrive_late_hk",
+      "category": "hotel",
+      "nativeText": "我會夜啲先到。",
+      "translation": {
+        "en-US": "I will arrive later tonight.",
+        "zh-CN": "我今晚会晚一点到。"
+      },
+      "romanization": "Ngo5 wui5 je6 di1 sin1 dou3.",
+      "audioKey": "travel-phrases/hong-kong/arrive_late_hk.mp3"
+    },
+    {
+      "id": "no_scallion_hk",
+      "category": "dining",
+      "nativeText": "唔好落蔥呀，唔該。",
+      "translation": {
+        "en-US": "No scallion, please.",
+        "zh-CN": "请不要放葱。"
+      },
+      "romanization": "M4 hou2 lok6 cung1 aa3, m4 goi1.",
+      "audioKey": "travel-phrases/hong-kong/no_scallion_hk.mp3"
+    },
+    {
+      "id": "less_ice_hk",
+      "category": "dining",
+      "nativeText": "少冰，唔該。",
+      "translation": {
+        "en-US": "Less ice, please.",
+        "zh-CN": "请少冰。"
+      },
+      "romanization": "Siu2 bing1, m4 goi1.",
+      "audioKey": "travel-phrases/hong-kong/less_ice_hk.mp3"
+    },
+    {
+      "id": "takeaway_hk",
+      "category": "dining",
+      "nativeText": "我要外賣。",
+      "translation": {
+        "en-US": "I want this to go.",
+        "zh-CN": "我要外卖。"
+      },
+      "romanization": "Ngo5 jiu3 ngoi6 maai6.",
+      "audioKey": "travel-phrases/hong-kong/takeaway_hk.mp3"
+    },
+    {
+      "id": "pay_by_octopus_hk",
+      "category": "shopping",
+      "nativeText": "可以碌八達通嗎？",
+      "translation": {
+        "en-US": "Can I pay with Octopus?",
+        "zh-CN": "可以刷八达通吗？"
+      },
+      "romanization": "Ho2 ji5 luk1 baat3 daat6 tung1 maa3?",
+      "audioKey": "travel-phrases/hong-kong/pay_by_octopus_hk.mp3"
+    },
+    {
+      "id": "write_in_chinese_hk",
+      "category": "basics",
+      "nativeText": "可唔可以寫中文俾我？",
+      "translation": {
+        "en-US": "Can you write it in Chinese for me?",
+        "zh-CN": "可以帮我写成中文吗？"
+      },
+      "romanization": "Ho2 m4 ho2 ji5 se2 zung1 man4 bei2 ngo5?",
+      "audioKey": "travel-phrases/hong-kong/write_in_chinese_hk.mp3"
+    },
+    {
+      "id": "missed_last_train_hk",
+      "category": "emergency",
+      "nativeText": "我趕唔切尾班車。",
+      "translation": {
+        "en-US": "I missed the last train.",
+        "zh-CN": "我赶不上最后一班车了。"
+      },
+      "romanization": "Ngo5 gon2 m4 cit3 mei5 baan1 ce1.",
+      "audioKey": "travel-phrases/hong-kong/missed_last_train_hk.mp3"
+    },
+    {
+      "id": "octopus_topup_hk_bonus",
+      "category": "transport",
+      "nativeText": "呢度可以增值八達通嗎？",
+      "translation": {
+        "en-US": "Can I top up my Octopus card here?",
+        "zh-CN": "这里可以给八达通充值吗？"
+      },
+      "romanization": "Ni1 dou6 ho2 ji5 zang1 zik6 Baat3 daat6 tung1 maa3?",
+      "audioKey": "travel-phrases/hong-kong/octopus_topup_hk_bonus.mp3"
+    },
+    {
+      "id": "less_sweet_less_ice_hk_bonus",
+      "category": "dining",
+      "nativeText": "唔該，少甜少冰",
+      "translation": {
+        "en-US": "Less sweet and less ice, please.",
+        "zh-CN": "请少甜少冰。"
+      },
+      "romanization": "M4 goi1, siu2 tim4 siu2 bing1",
+      "audioKey": "travel-phrases/hong-kong/less_sweet_less_ice_hk_bonus.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for Hong Kong with audio, built for Octopus payments, MTR transfers, airport links, hotel check-ins, and cha chaan teng ordering.",
+    "zh-CN": "中国香港旅行短语卡，围绕 Octopus 支付、MTR 换乘、机场快线、酒店入住和茶餐厅点单等高频场景整理。"
+  },
+  "intro": {
+    "en-US": "Built for Hong Kong trips where Airport Express, MTR exits, ferries, hotel counters, and cha chaan tengs all move quickly. These cards help when you need fast Cantonese for Octopus questions, directions inside busy stations, or concise food orders in smaller local spots.",
+    "zh-CN": "这套中国香港短语适合那种机场快线、MTR 出入口、渡轮、酒店柜台和茶餐厅会连续出现的旅行节奏。遇到要问 Octopus、在繁忙车站里确认方向，或者在本地小店里快速点单时，短语卡会特别有用。"
+  },
+  "teaser": {
+    "en-US": "Built for Hong Kong Octopus payments, MTR transfers, airport links, and cha chaan teng orders.",
+    "zh-CN": "适合中国香港的 Octopus、MTR、机场快线和茶餐厅点单沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep transport phrases ready for Octopus, MTR exit numbers, and airport transfers because station decisions happen fast in Hong Kong.",
+      "Dining phrases are most useful in cha chaan tengs and smaller local spots when you want to order quickly or ask for takeaway.",
+      "English works in many tourist-facing places, but a short Cantonese phrase still helps with taxis, neighborhood shops, and busy counters."
+    ],
+    "zh-CN": [
+      "在中国香港，Octopus、MTR 出口编号和机场接驳相关短语最好提前备好，因为很多决定都要在很短时间内完成。",
+      "茶餐厅和本地小店里，餐饮短语最实用，尤其适合快速点单或提出外带需求。",
+      "很多面向游客的地方可以讲英语，但在出租车、社区小店和繁忙柜台里，几句简短粤语还是会很有帮助。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "Octopus, MTR, and cha chaan teng orders",
+      "Airport Express, ferries, and taxi drop-offs",
+      "Hotels, local shops, and concise service requests"
+    ],
+    "zh-CN": [
+      "Octopus、MTR 与茶餐厅点单",
+      "机场快线、渡轮与出租车下车点",
+      "酒店、本地小店与简短服务沟通"
+    ]
+  },
+  "featured": false,
+  "relatedSlugs": [
+    "taiwan",
+    "singapore",
+    "japan"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrase groups matter most for a first Hong Kong trip?",
+        "zh-CN": "第一次去中国香港旅行，最该先准备哪几组短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport, dining, and hotel. That covers Octopus, MTR, airport links, check-in, and most first-day meal stops in Hong Kong.",
+        "zh-CN": "建议先看交通、餐饮和酒店三组，基本就能覆盖 Octopus、MTR、机场接驳、入住办理，以及在中国香港第一天的大多数用餐场景。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Do I still need Cantonese phrases if I can use English in Hong Kong?",
+        "zh-CN": "在中国香港能用英语的话，还需要准备粤语短语吗？"
+      },
+      "answer": {
+        "en-US": "A little Cantonese still helps for taxis, neighborhood shops, and faster food ordering. Short phrase cards are useful when you want to sound more direct and local without saying much.",
+        "zh-CN": "还是有帮助，尤其是在出租车、社区小店和更快节奏的点餐场景里。备几张简短粤语短语卡，能让沟通更直接，也更接地气。"
+      }
     }
   ]
 }

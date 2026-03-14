@@ -263,6 +263,224 @@
       "nativeText": "Saya kehilangan pasport",
       "romanization": null,
       "audioKey": "travel-phrases/malaysia/lost_passport.mp3"
+    },
+    {
+      "id": "topup_touchngo_where",
+      "category": "transport",
+      "nativeText": "Boleh top up Touch & Go di mana?",
+      "translation": {
+        "en-US": "Where can I top up my Touch & Go card?",
+        "zh-CN": "Touch & Go 在哪里可以充值？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/malaysia/topup_touchngo_where.mp3"
+    },
+    {
+      "id": "which_mrt_platform_city",
+      "category": "transport",
+      "nativeText": "Platform MRT ke bandar yang mana?",
+      "translation": {
+        "en-US": "Which MRT platform goes to the city?",
+        "zh-CN": "去市区的是哪一个 MRT 站台？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/malaysia/which_mrt_platform_city.mp3"
+    },
+    {
+      "id": "grab_pickup_where_malay",
+      "category": "transport",
+      "nativeText": "Tempat ambil Grab di mana?",
+      "translation": {
+        "en-US": "Where is the Grab pickup point?",
+        "zh-CN": "Grab 上车点在哪里？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/malaysia/grab_pickup_where_malay.mp3"
+    },
+    {
+      "id": "follow_this_address_malay",
+      "category": "transport",
+      "nativeText": "Tolong ikut alamat ini ya.",
+      "translation": {
+        "en-US": "Please follow this address.",
+        "zh-CN": "请按这个地址走。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/malaysia/follow_this_address_malay.mp3"
+    },
+    {
+      "id": "leave_bag_before_checkin_malay",
+      "category": "hotel",
+      "nativeText": "Boleh simpan beg sebelum daftar masuk?",
+      "translation": {
+        "en-US": "Can I leave my bag before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/malaysia/leave_bag_before_checkin_malay.mp3"
+    },
+    {
+      "id": "arrive_late_tonight_malay",
+      "category": "hotel",
+      "nativeText": "Saya akan sampai lewat malam.",
+      "translation": {
+        "en-US": "I will arrive late tonight.",
+        "zh-CN": "我今晚会晚一点到。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/malaysia/arrive_late_tonight_malay.mp3"
+    },
+    {
+      "id": "no_sambal_please",
+      "category": "dining",
+      "nativeText": "Tak mahu sambal, boleh?",
+      "translation": {
+        "en-US": "No sambal, please, okay?",
+        "zh-CN": "可以不要参巴酱吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/malaysia/no_sambal_please.mp3"
+    },
+    {
+      "id": "less_ice_malay",
+      "category": "dining",
+      "nativeText": "Kurang ais, ya.",
+      "translation": {
+        "en-US": "Less ice, please.",
+        "zh-CN": "请少冰。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/malaysia/less_ice_malay.mp3"
+    },
+    {
+      "id": "bungkus_please",
+      "category": "dining",
+      "nativeText": "Bungkus, tolong.",
+      "translation": {
+        "en-US": "Please pack this to go.",
+        "zh-CN": "请帮我打包。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/malaysia/bungkus_please.mp3"
+    },
+    {
+      "id": "bigger_size_malay",
+      "category": "shopping",
+      "nativeText": "Ada saiz lebih besar?",
+      "translation": {
+        "en-US": "Do you have a bigger size?",
+        "zh-CN": "有更大的尺码吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/malaysia/bigger_size_malay.mp3"
+    },
+    {
+      "id": "write_in_malay",
+      "category": "basics",
+      "nativeText": "Boleh tulis dalam Bahasa Melayu?",
+      "translation": {
+        "en-US": "Can you write it in Malay?",
+        "zh-CN": "可以帮我写成马来语吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/malaysia/write_in_malay.mp3"
+    },
+    {
+      "id": "missed_last_train_malay",
+      "category": "emergency",
+      "nativeText": "Saya tertinggal kereta api terakhir.",
+      "translation": {
+        "en-US": "I missed the last train.",
+        "zh-CN": "我错过最后一班火车了。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/malaysia/missed_last_train_malay.mp3"
+    },
+    {
+      "id": "tng_ewallet_malaysia",
+      "category": "shopping",
+      "nativeText": "Boleh bayar guna Touch \"n Go eWallet?",
+      "translation": {
+        "en-US": "Can I pay with Touch \"n Go eWallet?",
+        "zh-CN": "可以用 Touch \"n Go eWallet 支付吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/malaysia/tng_ewallet_malaysia.mp3"
+    },
+    {
+      "id": "no_coriander_malaysia",
+      "category": "dining",
+      "nativeText": "Tak mahu ketumbar",
+      "translation": {
+        "en-US": "No coriander, please.",
+        "zh-CN": "请不要香菜。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/malaysia/no_coriander_malaysia.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for Malaysia with audio, built for Grab rides, Touch 'n Go payments, hotel check-ins, food courts, mamak stops, and everyday travel requests.",
+    "zh-CN": "马来西亚旅行短语卡，围绕 Grab 打车、Touch 'n Go 支付、酒店入住、食阁和 mamak 餐馆等高频落地场景整理。"
+  },
+  "intro": {
+    "en-US": "Built for Malaysia trips where airport transfers, mall pickups, food-court orders, and hotel counters can all happen in a single afternoon. These cards help when you need quick Malay for Grab pickup points, Touch 'n Go questions, halal requests, or simple service interactions without typing into a translator.",
+    "zh-CN": "这套马来西亚短语适合那种机场接驳、商场上车点、食阁点单和酒店柜台会连续出现的旅行节奏。遇到要确认 Grab 上车点、Touch 'n Go、清真需求，或者只想快速说明一个简单请求时，短语卡会比临时打翻译更顺手。"
+  },
+  "teaser": {
+    "en-US": "Built for Malaysia arrivals, Touch 'n Go questions, Grab rides, food courts, and late-night mamak stops.",
+    "zh-CN": "适合马来西亚落地后的 Touch 'n Go、Grab、食阁和深夜 mamak 餐馆沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep short phrases ready for Grab pickups, station questions, and Touch 'n Go top-ups because transport and payment happen quickly in Kuala Lumpur.",
+      "Dining phrases are especially helpful in food courts and mamak spots where you may need to ask about spice, takeaway, or whether a dish is halal.",
+      "English works in many places, but a visible phrase card still helps when the counter is noisy or the queue is moving fast."
+    ],
+    "zh-CN": [
+      "在吉隆坡这类城市里，Grab 上车点、车站问路和 Touch 'n Go 充值最好提前备好几句常用短语。",
+      "食阁和 mamak 餐馆点单时，餐饮短语特别实用，尤其是确认辣度、打包带走或是否清真这类问题。",
+      "虽然很多地方能用英语，但柜台嘈杂或排队很快时，直接展示短语卡还是会更高效。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "Touch 'n Go and mamak stops",
+      "Grab pickups and food courts",
+      "Hotels, halal requests, and mall directions"
+    ],
+    "zh-CN": [
+      "Touch 'n Go 与 mamak 餐馆",
+      "Grab 上车点与食阁沟通",
+      "酒店、清真需求与商场问路"
+    ]
+  },
+  "featured": false,
+  "relatedSlugs": [
+    "singapore",
+    "thailand",
+    "indonesia"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrase groups matter most for a first trip to Malaysia?",
+        "zh-CN": "第一次去马来西亚旅行，最值得先准备哪几组短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport, dining, and hotel. That covers airport transfers, Grab rides, Touch 'n Go, check-in, and most food-court conversations on day one.",
+        "zh-CN": "建议先看交通、餐饮和酒店三组，基本就能覆盖机场接驳、Grab、Touch 'n Go、入住办理，以及第一天大部分食阁点单场景。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Do I need Malay if many people speak English in Malaysia?",
+        "zh-CN": "马来西亚很多地方能讲英语，还需要准备马来语短语吗？"
+      },
+      "answer": {
+        "en-US": "A little Malay still helps for transport, food courts, and smaller counters. Short phrase cards are especially useful when you want to move fast without re-explaining the same request.",
+        "zh-CN": "还是有帮助，尤其是在交通、食阁和一些小柜台场景里。备几张简短短语卡，很多时候能让你不用重复解释同一个需求。"
+      }
     }
   ]
 }

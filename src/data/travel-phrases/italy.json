@@ -263,6 +263,224 @@
       "nativeText": "Ho perso il passaporto",
       "romanization": null,
       "audioKey": "travel-phrases/italy/lost_passport.mp3"
+    },
+    {
+      "id": "which_track_this_train",
+      "category": "transport",
+      "nativeText": "Per questo treno, quale binario?",
+      "translation": {
+        "en-US": "Which track is this train on?",
+        "zh-CN": "这班火车在几号站台？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/italy/which_track_this_train.mp3"
+    },
+    {
+      "id": "validate_ticket_here",
+      "category": "transport",
+      "nativeText": "Devo convalidare il biglietto qui?",
+      "translation": {
+        "en-US": "Do I validate the ticket here?",
+        "zh-CN": "这张票要在这里验证吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/italy/validate_ticket_here.mp3"
+    },
+    {
+      "id": "train_to_city_centre",
+      "category": "transport",
+      "nativeText": "Questo treno va in centro?",
+      "translation": {
+        "en-US": "Does this train go to the city centre?",
+        "zh-CN": "这班火车去市中心吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/italy/train_to_city_centre.mp3"
+    },
+    {
+      "id": "write_address_italian",
+      "category": "transport",
+      "nativeText": "Può scrivermi l'indirizzo, per favore?",
+      "translation": {
+        "en-US": "Could you write the address down for me?",
+        "zh-CN": "可以帮我把地址写下来吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/italy/write_address_italian.mp3"
+    },
+    {
+      "id": "leave_suitcase_before_checkin",
+      "category": "hotel",
+      "nativeText": "Posso lasciare la valigia prima del check-in?",
+      "translation": {
+        "en-US": "Can I leave my suitcase before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/italy/leave_suitcase_before_checkin.mp3"
+    },
+    {
+      "id": "breakfast_until_when",
+      "category": "hotel",
+      "nativeText": "La colazione fino a che ora è?",
+      "translation": {
+        "en-US": "Until what time is breakfast served?",
+        "zh-CN": "早餐供应到几点？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/italy/breakfast_until_when.mp3"
+    },
+    {
+      "id": "without_cheese_please",
+      "category": "dining",
+      "nativeText": "Senza formaggio, per favore.",
+      "translation": {
+        "en-US": "Without cheese, please.",
+        "zh-CN": "请不要奶酪。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/italy/without_cheese_please.mp3"
+    },
+    {
+      "id": "is_coperto_included",
+      "category": "dining",
+      "nativeText": "Il coperto è incluso?",
+      "translation": {
+        "en-US": "Is the coperto included?",
+        "zh-CN": "座位费已经包含了吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/italy/is_coperto_included.mp3"
+    },
+    {
+      "id": "coffee_at_counter",
+      "category": "dining",
+      "nativeText": "Un caffè al banco, per favore.",
+      "translation": {
+        "en-US": "A coffee at the counter, please.",
+        "zh-CN": "我想在吧台喝一杯咖啡。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/italy/coffee_at_counter.mp3"
+    },
+    {
+      "id": "tax_free_desk_where",
+      "category": "shopping",
+      "nativeText": "Dov'è il banco tax free?",
+      "translation": {
+        "en-US": "Where is the tax-free desk?",
+        "zh-CN": "退税柜台在哪里？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/italy/tax_free_desk_where.mp3"
+    },
+    {
+      "id": "want_paper_receipt",
+      "category": "shopping",
+      "nativeText": "Vorrei lo scontrino, per favore.",
+      "translation": {
+        "en-US": "I would like the receipt, please.",
+        "zh-CN": "请给我小票。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/italy/want_paper_receipt.mp3"
+    },
+    {
+      "id": "lost_last_train_local",
+      "category": "emergency",
+      "nativeText": "Ho perso l'ultimo treno.",
+      "translation": {
+        "en-US": "I missed the last train.",
+        "zh-CN": "我错过最后一班火车了。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/italy/lost_last_train_local.mp3"
+    },
+    {
+      "id": "track_changed_it",
+      "category": "transport",
+      "nativeText": "Il binario e cambiato?",
+      "translation": {
+        "en-US": "Has the platform changed?",
+        "zh-CN": "站台换了吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/italy/track_changed_it.mp3"
+    },
+    {
+      "id": "coffee_at_bar_it_bonus",
+      "category": "dining",
+      "nativeText": "Posso avere un caffe al banco?",
+      "translation": {
+        "en-US": "Can I have a coffee at the bar?",
+        "zh-CN": "我可以在吧台喝咖啡吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/italy/coffee_at_bar_it_bonus.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for Italy with audio, built for Trenitalia and Italo trains, hotel arrivals, coffee bars, restaurant ordering, and everyday travel logistics.",
+    "zh-CN": "意大利旅行短语卡，围绕 Trenitalia 和 Italo 火车、酒店入住、咖啡吧、餐厅点单和日常出行沟通整理。"
+  },
+  "intro": {
+    "en-US": "Built for Italy trips where train platforms, hotel check-ins, espresso bars, museum slots, and dinner reservations all stack up quickly. These cards are most useful when you need short Italian for binario changes, coffee-bar etiquette, or the small restaurant details that are easy to miss in translation.",
+    "zh-CN": "这套意大利短语适合那种火车站站台、酒店入住、咖啡吧、博物馆预约和晚餐预订会连续出现的旅行节奏。遇到要确认 binario、应对咖啡吧礼节，或说明餐厅里那些容易被忽略的小细节时，短语卡会非常实用。"
+  },
+  "teaser": {
+    "en-US": "Built for Italy train travel, coffee bars, restaurant etiquette, hotel arrivals, and quick museum-day logistics.",
+    "zh-CN": "适合意大利火车出行、咖啡吧、餐厅礼节、酒店入住和博物馆日程沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep transport phrases ready for Trenitalia or Italo counters, binario changes, and coach numbers before a long train day.",
+      "Dining phrases matter because coperto, table service timing, and bill requests can work differently from what travelers expect.",
+      "Coffee bars move fast, so a short request for espresso, takeaway, or the receipt is easier when you can show or say it quickly."
+    ],
+    "zh-CN": [
+      "如果当天要坐 Trenitalia 或 Italo，最好先备好站台变更、车厢号和柜台询问相关短语。",
+      "意大利餐厅里 coperto、上菜节奏和要账单的方式都和很多游客习惯不同，所以餐饮短语特别值得先看。",
+      "咖啡吧节奏很快，想点 espresso、外带，或索要小票时，能快速说出或展示短语会轻松很多。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "Trains, coperto, and coffee bar etiquette",
+      "Hotels, museums, and reservations",
+      "Food allergies, takeaway, and receipts"
+    ],
+    "zh-CN": [
+      "火车、coperto 与咖啡吧礼节",
+      "酒店、博物馆与预约沟通",
+      "过敏说明、外带与小票"
+    ]
+  },
+  "featured": false,
+  "relatedSlugs": [
+    "france",
+    "spain",
+    "switzerland"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrases are most useful on a first Italy trip?",
+        "zh-CN": "第一次去意大利旅行，最值得先准备哪几组短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport, dining, and hotel. That covers trains, check-in, coffee bars, and restaurant basics, which usually make up the first full day in Italy.",
+        "zh-CN": "建议先看交通、餐饮和酒店，这三组基本能覆盖火车、入住、咖啡吧和餐厅基础沟通，通常就是在意大利第一整天最常用到的内容。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Why are dining phrases especially important in Italy?",
+        "zh-CN": "为什么在意大利旅行时，餐饮短语特别重要？"
+      },
+      "answer": {
+        "en-US": "They help with reservation timing, allergies, coperto questions, takeaway requests, and asking for the bill. Those are common details in Italy and easy to mis-handle without a phrase ready.",
+        "zh-CN": "因为它们能帮你处理预订时间、过敏说明、coperto、打包外带和要账单这些高频细节；这些场景在意大利很常见，没有现成短语时很容易沟通不清。"
+      }
     }
   ]
 }

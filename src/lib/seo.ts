@@ -28,6 +28,7 @@ type PublicPageHeadOptions = {
   xDefaultPath?: string
   ogType?: 'website' | 'article'
   structuredData?: 'website' | 'software'
+  extraStructuredData?: Record<string, unknown>[]
 }
 
 type PrivatePageHeadOptions = {
@@ -139,6 +140,7 @@ export function buildPublicPageHead({
   xDefaultPath,
   ogType = 'website',
   structuredData,
+  extraStructuredData,
 }: PublicPageHeadOptions): HeadDefinition {
   const canonicalUrl = absoluteUrl(getLocalizedPath(locale, pathname))
   const meta: HeadMeta[] = [
@@ -160,6 +162,12 @@ export function buildPublicPageHead({
 
   if (structuredData) {
     for (const item of buildStructuredData(locale, title, description, canonicalUrl, structuredData)) {
+      meta.push({ 'script:ld+json': item })
+    }
+  }
+
+  if (extraStructuredData?.length) {
+    for (const item of extraStructuredData) {
       meta.push({ 'script:ld+json': item })
     }
   }

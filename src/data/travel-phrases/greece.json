@@ -263,6 +263,213 @@
       "nativeText": "Έχασα το διαβατήριό μου",
       "romanization": "Ehasa to diavatirio mou",
       "audioKey": "travel-phrases/greece/lost_passport.mp3"
+    },
+    {
+      "id": "metro_card_topup_gr",
+      "category": "transport",
+      "nativeText": "Πού φορτίζω την κάρτα του μετρό;",
+      "translation": {
+        "en-US": "Where can I top up the metro card?",
+        "zh-CN": "地铁卡在哪里可以充值？"
+      },
+      "romanization": "Pou fortizo tin karta tou metro?",
+      "audioKey": "travel-phrases/greece/metro_card_topup_gr.mp3"
+    },
+    {
+      "id": "ferry_platform_gr",
+      "category": "transport",
+      "nativeText": "Από ποια αποβάθρα φεύγει το πλοίο;",
+      "translation": {
+        "en-US": "Which gate does the ferry leave from?",
+        "zh-CN": "渡轮从哪个码头出发？"
+      },
+      "romanization": "Apo poia apovathra fevgei to ploio?",
+      "audioKey": "travel-phrases/greece/ferry_platform_gr.mp3"
+    },
+    {
+      "id": "go_to_this_address_gr",
+      "category": "transport",
+      "nativeText": "Πηγαίνετε με σε αυτή τη διεύθυνση",
+      "translation": {
+        "en-US": "Please take me to this address.",
+        "zh-CN": "请带我去这个地址。"
+      },
+      "romanization": "Pigaínete me se aftí ti diefthynsi",
+      "audioKey": "travel-phrases/greece/go_to_this_address_gr.mp3"
+    },
+    {
+      "id": "metro_to_airport_gr",
+      "category": "transport",
+      "nativeText": "Αυτό το μετρό πάει στο αεροδρόμιο;",
+      "translation": {
+        "en-US": "Does this metro go to the airport?",
+        "zh-CN": "这班地铁去机场吗？"
+      },
+      "romanization": "Afto to metro paei sto aerodromio?",
+      "audioKey": "travel-phrases/greece/metro_to_airport_gr.mp3"
+    },
+    {
+      "id": "leave_luggage_before_checkin_gr",
+      "category": "hotel",
+      "nativeText": "Μπορώ να αφήσω τις αποσκευές πριν από το check-in;",
+      "translation": {
+        "en-US": "Can I leave my luggage before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": "Mporo na afiso tis aposkeves prin apo to check-in?",
+      "audioKey": "travel-phrases/greece/leave_luggage_before_checkin_gr.mp3"
+    },
+    {
+      "id": "arrive_late_tonight_gr",
+      "category": "hotel",
+      "nativeText": "Θα φτάσω αργά απόψε",
+      "translation": {
+        "en-US": "I will arrive late tonight.",
+        "zh-CN": "我今晚会晚一点到。"
+      },
+      "romanization": "Tha ftaso arga apopse",
+      "audioKey": "travel-phrases/greece/arrive_late_tonight_gr.mp3"
+    },
+    {
+      "id": "without_onion_gr",
+      "category": "dining",
+      "nativeText": "Χωρίς κρεμμύδι, παρακαλώ",
+      "translation": {
+        "en-US": "Without onions, please.",
+        "zh-CN": "请不要洋葱。"
+      },
+      "romanization": "Choris kremmydi, parakalo",
+      "audioKey": "travel-phrases/greece/without_onion_gr.mp3"
+    },
+    {
+      "id": "frappe_without_sugar_gr",
+      "category": "dining",
+      "nativeText": "Έναν φραπέ χωρίς ζάχαρη, παρακαλώ",
+      "translation": {
+        "en-US": "A frappe without sugar, please.",
+        "zh-CN": "请给我一杯无糖冰咖啡。"
+      },
+      "romanization": "Enan frappe choris zachari, parakalo",
+      "audioKey": "travel-phrases/greece/frappe_without_sugar_gr.mp3"
+    },
+    {
+      "id": "takeaway_greece",
+      "category": "dining",
+      "nativeText": "Για πακέτο, παρακαλώ",
+      "translation": {
+        "en-US": "To go, please.",
+        "zh-CN": "请打包带走。"
+      },
+      "romanization": "Gia paketo, parakalo",
+      "audioKey": "travel-phrases/greece/takeaway_greece.mp3"
+    },
+    {
+      "id": "pay_by_card_gr",
+      "category": "shopping",
+      "nativeText": "Δέχεστε κάρτα;",
+      "translation": {
+        "en-US": "Do you take cards?",
+        "zh-CN": "可以刷卡吗？"
+      },
+      "romanization": "Decheste karta?",
+      "audioKey": "travel-phrases/greece/pay_by_card_gr.mp3"
+    },
+    {
+      "id": "write_in_greek_gr",
+      "category": "basics",
+      "nativeText": "Μπορείτε να το γράψετε στα ελληνικά;",
+      "translation": {
+        "en-US": "Could you write it in Greek?",
+        "zh-CN": "可以帮我写成希腊语吗？"
+      },
+      "romanization": "Borite na to grapsete sta ellinika?",
+      "audioKey": "travel-phrases/greece/write_in_greek_gr.mp3"
+    },
+    {
+      "id": "missed_last_metro_gr",
+      "category": "emergency",
+      "nativeText": "Έχασα το τελευταίο μετρό",
+      "translation": {
+        "en-US": "I missed the last metro.",
+        "zh-CN": "我错过末班地铁了。"
+      },
+      "romanization": "Echasa to teleutaio metro",
+      "audioKey": "travel-phrases/greece/missed_last_metro_gr.mp3"
+    },
+    {
+      "id": "bus_to_port_gr_bonus",
+      "category": "transport",
+      "nativeText": "Πού παίρνω το λεωφορείο για το λιμάνι;",
+      "translation": {
+        "en-US": "Where do I catch the bus to the port?",
+        "zh-CN": "去港口的巴士在哪里坐？"
+      },
+      "romanization": "Pou pairno to leoforeio gia to limani?",
+      "audioKey": "travel-phrases/greece/bus_to_port_gr_bonus.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for Greece with audio, built for ferries, hotel check-ins, tavernas, island transfers, and everyday payment or direction questions.",
+    "zh-CN": "希腊旅行短语卡，围绕渡轮、酒店入住、taverna 餐馆、岛屿交通和支付或问路等高频场景整理。"
+  },
+  "intro": {
+    "en-US": "Built for Greece trips where ferry schedules, island transfers, hotel counters, and taverna meals all come up quickly. These cards help when you need short Greek for tickets, directions, or simple dining requests.",
+    "zh-CN": "这套希腊短语适合那种渡轮时刻、岛屿交通、酒店柜台和 taverna 餐馆会快速出现的旅行节奏。遇到要问票务、方向或简短点餐需求时，短语卡会很有帮助。"
+  },
+  "teaser": {
+    "en-US": "Built for Greece ferries, island transfers, tavernas, and hotel or ticket-counter conversations.",
+    "zh-CN": "适合希腊的渡轮、岛屿交通、taverna，以及酒店和售票柜台沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep transport phrases ready for ferry terminals, island transfers, and ticket counters before you move between stops.",
+      "Dining phrases are most useful in tavernas when you want to ask about seafood, house specialties, or how to split and pay.",
+      "A short phrase card helps with hotel timing, luggage questions, and asking how to reach beaches or old-town areas."
+    ],
+    "zh-CN": [
+      "如果要坐渡轮和换岛，最好先把码头、转乘和售票柜台相关短语准备好。",
+      "在 taverna 里，想问海鲜、招牌菜，或者怎么分开结账时，餐饮短语特别实用。",
+      "酒店时间、行李问题，以及怎么去海滩或老城区这类需求，用简短短语卡会更顺。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "Ferries, island transfers, and ticket counters",
+      "Tavernas, seafood, and payment basics",
+      "Hotels, beaches, and old-town directions"
+    ],
+    "zh-CN": [
+      "渡轮、岛屿交通与售票柜台",
+      "taverna、海鲜与支付基础沟通",
+      "酒店、海滩与老城问路"
+    ]
+  },
+  "featured": false,
+  "relatedSlugs": [
+    "italy",
+    "turkey",
+    "france"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrase groups matter most for a first Greece trip?",
+        "zh-CN": "第一次去希腊旅行，最该先准备哪几组短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport, hotel, and dining. That covers ferries, check-in, tavernas, and most first-day island or city logistics.",
+        "zh-CN": "建议先看交通、酒店和餐饮三组，基本就能覆盖渡轮、入住办理、taverna，以及第一天大部分岛上或城市行程安排。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Why are phrase cards useful in Greece?",
+        "zh-CN": "为什么在希腊旅行时，短语卡会很有用？"
+      },
+      "answer": {
+        "en-US": "Because many useful interactions happen at ports, counters, and casual restaurants where short, clear wording matters.",
+        "zh-CN": "因为很多高频沟通都发生在港口、柜台和轻松餐馆里，这些场景里越短越清楚越好。"
+      }
     }
   ]
 }

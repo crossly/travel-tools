@@ -263,6 +263,224 @@
       "nativeText": "He perdido mi pasaporte",
       "romanization": null,
       "audioKey": "travel-phrases/mexico/lost_passport.mp3"
+    },
+    {
+      "id": "metro_card_topup_mx",
+      "category": "transport",
+      "nativeText": "¿Dónde recargo la tarjeta del metro?",
+      "translation": {
+        "en-US": "Where can I top up my metro card?",
+        "zh-CN": "地铁卡在哪里可以充值？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/mexico/metro_card_topup_mx.mp3"
+    },
+    {
+      "id": "metro_to_centre_mx",
+      "category": "transport",
+      "nativeText": "¿Este metro va al centro?",
+      "translation": {
+        "en-US": "Does this metro go downtown?",
+        "zh-CN": "这班地铁去市中心吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/mexico/metro_to_centre_mx.mp3"
+    },
+    {
+      "id": "go_to_this_address_mx",
+      "category": "transport",
+      "nativeText": "Lléveme a esta dirección, por favor",
+      "translation": {
+        "en-US": "Please take me to this address.",
+        "zh-CN": "请带我去这个地址。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/mexico/go_to_this_address_mx.mp3"
+    },
+    {
+      "id": "airport_bus_mexico",
+      "category": "transport",
+      "nativeText": "¿Dónde tomo el autobús al aeropuerto?",
+      "translation": {
+        "en-US": "Where do I catch the bus to the airport?",
+        "zh-CN": "去机场的巴士在哪里坐？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/mexico/airport_bus_mexico.mp3"
+    },
+    {
+      "id": "leave_luggage_before_checkin_mx",
+      "category": "hotel",
+      "nativeText": "¿Puedo dejar la maleta antes del check-in?",
+      "translation": {
+        "en-US": "Can I leave my suitcase before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/mexico/leave_luggage_before_checkin_mx.mp3"
+    },
+    {
+      "id": "arrive_late_tonight_mx",
+      "category": "hotel",
+      "nativeText": "Voy a llegar tarde esta noche",
+      "translation": {
+        "en-US": "I will arrive late tonight.",
+        "zh-CN": "我今晚会晚一点到。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/mexico/arrive_late_tonight_mx.mp3"
+    },
+    {
+      "id": "without_spice_mx",
+      "category": "dining",
+      "nativeText": "Sin picante, por favor",
+      "translation": {
+        "en-US": "Without spicy sauce, please.",
+        "zh-CN": "请不要辣。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/mexico/without_spice_mx.mp3"
+    },
+    {
+      "id": "without_ice_mexico",
+      "category": "dining",
+      "nativeText": "¿Me da un agua sin hielo?",
+      "translation": {
+        "en-US": "Could I have a water without ice?",
+        "zh-CN": "请给我一杯不要冰的水。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/mexico/without_ice_mexico.mp3"
+    },
+    {
+      "id": "takeaway_mexico",
+      "category": "dining",
+      "nativeText": "¿Me lo puede poner para llevar?",
+      "translation": {
+        "en-US": "Can you pack it to go?",
+        "zh-CN": "可以帮我打包带走吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/mexico/takeaway_mexico.mp3"
+    },
+    {
+      "id": "card_or_cash_mx",
+      "category": "shopping",
+      "nativeText": "¿Aceptan tarjeta o efectivo solamente?",
+      "translation": {
+        "en-US": "Do you take cards or cash only?",
+        "zh-CN": "可以刷卡还是只收现金？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/mexico/card_or_cash_mx.mp3"
+    },
+    {
+      "id": "ticket_please_mx",
+      "category": "shopping",
+      "nativeText": "¿Me puede dar ticket, por favor?",
+      "translation": {
+        "en-US": "Could you give me the receipt, please?",
+        "zh-CN": "可以给我小票吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/mexico/ticket_please_mx.mp3"
+    },
+    {
+      "id": "missed_last_metro_mx",
+      "category": "emergency",
+      "nativeText": "Perdí el último metro",
+      "translation": {
+        "en-US": "I missed the last metro.",
+        "zh-CN": "我错过末班地铁了。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/mexico/missed_last_metro_mx.mp3"
+    },
+    {
+      "id": "codi_ok_mx_bonus",
+      "category": "shopping",
+      "nativeText": "¿Aceptan pago con CoDi?",
+      "translation": {
+        "en-US": "Do you accept CoDi payments?",
+        "zh-CN": "可以用 CoDi 支付吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/mexico/codi_ok_mx_bonus.mp3"
+    },
+    {
+      "id": "centre_exit_mx_bonus",
+      "category": "transport",
+      "nativeText": "¿Qué salida va al centro?",
+      "translation": {
+        "en-US": "Which exit goes downtown?",
+        "zh-CN": "去市中心走哪个出口？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/mexico/centre_exit_mx_bonus.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for Mexico with audio, built for airport transfers, metro or ADO buses, hotel check-ins, taco or cafe orders, and everyday payment questions.",
+    "zh-CN": "墨西哥旅行短语卡，围绕机场接驳、地铁或 ADO 巴士、酒店入住、taco 或咖啡点单，以及支付沟通等高频场景整理。"
+  },
+  "intro": {
+    "en-US": "Built for Mexico trips where airport rides, metro or bus terminals, hotel counters, and casual food stops all come up quickly. These cards help when you need short Spanish for routes, food preferences, or a simple service request.",
+    "zh-CN": "这套墨西哥短语适合那种机场接驳、地铁或巴士站、酒店柜台和轻松餐饮会快速切换的旅行节奏。遇到要问路线、饮食偏好或提出简单服务需求时，短语卡会很有帮助。"
+  },
+  "teaser": {
+    "en-US": "Built for Mexico airport transfers, metro or ADO routes, tacos, cafes, and hotel or payment conversations.",
+    "zh-CN": "适合墨西哥的机场接驳、地铁或 ADO 路线、taco、咖啡馆，以及酒店和支付沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep transport phrases ready for airport pickups, metro lines, and ADO bus terminals before longer travel days.",
+      "Dining phrases are especially useful for tacos, sauces, takeaway, and simple ingredient or spice questions.",
+      "Payment and hotel phrases help when you want to confirm card acceptance, the room setup, or the exact pickup address."
+    ],
+    "zh-CN": [
+      "如果有机场接驳、地铁和 ADO 巴士行程，最好先把相关交通短语备好。",
+      "在 taco 店和轻餐场景里，酱料、外带和食材或辣度问题都很常用。",
+      "支付和酒店类短语则适合用来确认能否刷卡、房间安排，以及准确上车地址。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "Airport transfers, metro, and ADO routes",
+      "Tacos, sauces, and takeaway basics",
+      "Hotels, card questions, and pickup addresses"
+    ],
+    "zh-CN": [
+      "机场接驳、地铁与 ADO 路线",
+      "taco、酱料与外带基础沟通",
+      "酒店、刷卡询问与上车地址"
+    ]
+  },
+  "featured": false,
+  "relatedSlugs": [
+    "costa-rica",
+    "peru",
+    "colombia"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrase groups matter most for a first Mexico trip?",
+        "zh-CN": "第一次去墨西哥旅行，最该先准备哪几组短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport, hotel, and dining. That covers airport arrivals, metro or bus routes, check-in, and most first-day food stops.",
+        "zh-CN": "建议先看交通、酒店和餐饮三组，基本就能覆盖机场落地、地铁或巴士路线、入住办理，以及第一天大部分用餐场景。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Why are phrase cards especially useful in Mexico?",
+        "zh-CN": "为什么在墨西哥旅行时，短语卡会特别有用？"
+      },
+      "answer": {
+        "en-US": "Because transport, food, and payment conversations are often quick and practical. A short phrase lets you move through them faster.",
+        "zh-CN": "因为交通、点餐和支付类沟通通常都很快也很实际，提前备好一句短语会让这些场景顺很多。"
+      }
     }
   ]
 }

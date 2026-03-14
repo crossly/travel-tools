@@ -121,10 +121,15 @@ describe('route heads', () => {
         head: (args: {
           params: { locale: string; country: string }
           loaderData?: {
-            pack: { title: string; description: string; slug: string } | null
+            pack: {
+              title: string
+              description: string
+              slug: string
+              faq?: Array<{ question: string; answer: string }>
+            } | null
           }
         }) => {
-          meta: Array<Record<string, string>>
+          meta: Array<Record<string, unknown>>
           links: Array<Record<string, string>>
         }
       }
@@ -133,16 +138,29 @@ describe('route heads', () => {
       loaderData: {
         pack: {
           title: 'Japan Travel Phrases',
-          description: 'Useful local phrases for transport, hotels, dining, shopping, and emergencies in Japan.',
+          description: 'Travel phrases for Japan with audio and local tips for rail, restaurants, and convenience stores.',
           slug: 'japan',
+          faq: [
+            {
+              question: 'Do I need Japanese for most tourist places in Japan?',
+              answer: 'Major stations and hotels often support English, but short Japanese phrases still help a lot.',
+            },
+          ],
         },
       },
     })
 
     expect(head.meta).toEqual(expect.arrayContaining([
       expect.objectContaining({ title: 'Japan Travel Phrases · Route Crate' }),
-      expect.objectContaining({ name: 'description', content: 'Useful local phrases for transport, hotels, dining, shopping, and emergencies in Japan.' }),
+      expect.objectContaining({ name: 'description', content: 'Travel phrases for Japan with audio and local tips for rail, restaurants, and convenience stores.' }),
       expect.objectContaining({ property: 'og:url', content: 'https://www.routecrate.com/en-us/travel-phrases/japan' }),
+    ]))
+    expect(head.meta).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        'script:ld+json': expect.objectContaining({
+          '@type': 'FAQPage',
+        }),
+      }),
     ]))
     expect(head.links).toEqual(expect.arrayContaining([
       expect.objectContaining({ rel: 'canonical', href: 'https://www.routecrate.com/en-us/travel-phrases/japan' }),

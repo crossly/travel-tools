@@ -263,6 +263,213 @@
       "nativeText": "Ik ben mijn paspoort kwijt",
       "romanization": null,
       "audioKey": "travel-phrases/netherlands/lost_passport.mp3"
+    },
+    {
+      "id": "ovchipkaart_topup_nl",
+      "category": "transport",
+      "nativeText": "Waar laad ik mijn OV-chipkaart op?",
+      "translation": {
+        "en-US": "Where do I top up my OV-chipkaart?",
+        "zh-CN": "OV-chipkaart 在哪里可以充值？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/ovchipkaart_topup_nl.mp3"
+    },
+    {
+      "id": "platform_number_nl",
+      "category": "transport",
+      "nativeText": "Van welk spoor vertrekt deze trein?",
+      "translation": {
+        "en-US": "Which platform does this train leave from?",
+        "zh-CN": "这班火车从哪个站台出发？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/platform_number_nl.mp3"
+    },
+    {
+      "id": "go_to_this_address_nl",
+      "category": "transport",
+      "nativeText": "Wilt u naar dit adres rijden?",
+      "translation": {
+        "en-US": "Please drive to this address.",
+        "zh-CN": "请开去这个地址。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/go_to_this_address_nl.mp3"
+    },
+    {
+      "id": "train_to_schiphol_nl",
+      "category": "transport",
+      "nativeText": "Gaat deze trein naar Schiphol?",
+      "translation": {
+        "en-US": "Does this train go to Schiphol?",
+        "zh-CN": "这班火车去史基浦机场吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/train_to_schiphol_nl.mp3"
+    },
+    {
+      "id": "leave_luggage_before_checkin_nl",
+      "category": "hotel",
+      "nativeText": "Kan ik mijn bagage voor het inchecken achterlaten?",
+      "translation": {
+        "en-US": "Can I leave my luggage before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/leave_luggage_before_checkin_nl.mp3"
+    },
+    {
+      "id": "arrive_late_tonight_nl",
+      "category": "hotel",
+      "nativeText": "Ik kom vanavond laat aan",
+      "translation": {
+        "en-US": "I will arrive late tonight.",
+        "zh-CN": "我今晚会晚一点到。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/arrive_late_tonight_nl.mp3"
+    },
+    {
+      "id": "coffee_verkeerd_nl",
+      "category": "dining",
+      "nativeText": "Een koffie verkeerd, alstublieft",
+      "translation": {
+        "en-US": "A koffie verkeerd, please.",
+        "zh-CN": "请给我一杯牛奶咖啡。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/coffee_verkeerd_nl.mp3"
+    },
+    {
+      "id": "without_onion_nl",
+      "category": "dining",
+      "nativeText": "Zonder ui, alstublieft",
+      "translation": {
+        "en-US": "Without onions, please.",
+        "zh-CN": "请不要洋葱。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/without_onion_nl.mp3"
+    },
+    {
+      "id": "takeaway_netherlands",
+      "category": "dining",
+      "nativeText": "Om mee te nemen, alstublieft",
+      "translation": {
+        "en-US": "To go, please.",
+        "zh-CN": "请打包带走。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/takeaway_netherlands.mp3"
+    },
+    {
+      "id": "pay_by_pin_nl",
+      "category": "shopping",
+      "nativeText": "Kan ik pinnen?",
+      "translation": {
+        "en-US": "Can I pay by card?",
+        "zh-CN": "可以刷卡吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/pay_by_pin_nl.mp3"
+    },
+    {
+      "id": "write_in_dutch_nl",
+      "category": "basics",
+      "nativeText": "Kunt u dit in het Nederlands opschrijven?",
+      "translation": {
+        "en-US": "Could you write this in Dutch?",
+        "zh-CN": "可以帮我写成荷兰语吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/write_in_dutch_nl.mp3"
+    },
+    {
+      "id": "missed_last_train_nl",
+      "category": "emergency",
+      "nativeText": "Ik heb de laatste trein gemist",
+      "translation": {
+        "en-US": "I missed the last train.",
+        "zh-CN": "我错过末班火车了。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/missed_last_train_nl.mp3"
+    },
+    {
+      "id": "water_bottle_fill_nl_bonus",
+      "category": "basics",
+      "nativeText": "Mag ik hier mijn waterfles vullen?",
+      "translation": {
+        "en-US": "Can I refill my water bottle here?",
+        "zh-CN": "这里可以给水瓶接水吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/netherlands/water_bottle_fill_nl_bonus.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for Netherlands with audio, built for OV-chipkaart travel, trains, bike directions, hotel check-ins, and everyday cafe or payment conversations.",
+    "zh-CN": "荷兰旅行短语卡，围绕 OV-chipkaart、火车、自行车路线、酒店入住，以及咖啡馆和支付沟通等高频场景整理。"
+  },
+  "intro": {
+    "en-US": "Built for Netherlands trips where train platforms, trams, bike lanes, hotel counters, and cafe stops all come up quickly. These cards help when you need short Dutch for routes, tickets, or a simple food and service request.",
+    "zh-CN": "这套荷兰短语适合那种火车站台、电车、自行车路线、酒店前台和咖啡馆会快速出现的旅行节奏。遇到要问路线、车票，或提出简短点餐和服务需求时，短语卡会很有用。"
+  },
+  "teaser": {
+    "en-US": "Built for Netherlands OV-chipkaart travel, trains, bike directions, and hotel or cafe conversations.",
+    "zh-CN": "适合荷兰的 OV-chipkaart、火车、自行车路线，以及酒店和咖啡馆沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep transport phrases ready for OV-chipkaart, train platforms, and tram stops before you move between stations or cities.",
+      "Direction phrases are useful for bike lanes, canals, museums, and addresses because routes can look similar at first glance.",
+      "Cafe and hotel phrases help with takeaway, breakfast questions, and simple room or timing requests."
+    ],
+    "zh-CN": [
+      "如果要用 OV-chipkaart、火车和电车，最好先把相关交通短语准备好。",
+      "自行车道、运河、博物馆和地址这类场景里，方向短语特别有用，因为路线一开始很容易看混。",
+      "在咖啡馆和酒店里，外带、早餐和简短房间需求都很常用。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "OV-chipkaart, trains, and tram stops",
+      "Bike directions, canals, and museum routes",
+      "Hotels, breakfast, and takeaway basics"
+    ],
+    "zh-CN": [
+      "OV-chipkaart、火车与电车站",
+      "自行车路线、运河与博物馆路线",
+      "酒店、早餐与外带基础沟通"
+    ]
+  },
+  "featured": false,
+  "relatedSlugs": [
+    "germany",
+    "france",
+    "switzerland"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrase groups matter most for a first Netherlands trip?",
+        "zh-CN": "第一次去荷兰旅行，最该先准备哪几组短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport, hotel, and dining. That covers OV-chipkaart, trains, check-in, and most first-day cafe or city needs.",
+        "zh-CN": "建议先看交通、酒店和餐饮三组，基本就能覆盖 OV-chipkaart、火车、入住办理，以及第一天大部分咖啡馆和城市沟通需求。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Why are phrase cards useful in Netherlands tourist cities?",
+        "zh-CN": "为什么在荷兰热门城市里，短语卡依然有用？"
+      },
+      "answer": {
+        "en-US": "Because transport and direction conversations move quickly, and a short phrase is often faster than explaining the whole route.",
+        "zh-CN": "因为交通和路线沟通通常节奏很快，很多时候一句短语会比把整条路线解释一遍更有效。"
+      }
     }
   ]
 }

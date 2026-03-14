@@ -263,6 +263,213 @@
       "nativeText": "J'ai perdu mon passeport",
       "romanization": null,
       "audioKey": "travel-phrases/morocco/lost_passport.mp3"
+    },
+    {
+      "id": "tram_card_topup_ma",
+      "category": "transport",
+      "nativeText": "Ou recharge-t-on la carte de tram ?",
+      "translation": {
+        "en-US": "Where can I top up the tram card?",
+        "zh-CN": "电车卡在哪里可以充值？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/tram_card_topup_ma.mp3"
+    },
+    {
+      "id": "train_to_airport_ma",
+      "category": "transport",
+      "nativeText": "Ce train va-t-il a l'aeroport ?",
+      "translation": {
+        "en-US": "Does this train go to the airport?",
+        "zh-CN": "这班火车去机场吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/train_to_airport_ma.mp3"
+    },
+    {
+      "id": "go_to_this_address_ma",
+      "category": "transport",
+      "nativeText": "Conduisez-moi a cette adresse, s'il vous plait",
+      "translation": {
+        "en-US": "Please take me to this address.",
+        "zh-CN": "请带我去这个地址。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/go_to_this_address_ma.mp3"
+    },
+    {
+      "id": "taxi_where_morocco",
+      "category": "transport",
+      "nativeText": "Ou prend-on un taxi ici ?",
+      "translation": {
+        "en-US": "Where do I get a taxi here?",
+        "zh-CN": "这里在哪里打车？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/taxi_where_morocco.mp3"
+    },
+    {
+      "id": "leave_luggage_before_checkin_ma",
+      "category": "hotel",
+      "nativeText": "Puis-je laisser mes bagages avant le check-in ?",
+      "translation": {
+        "en-US": "Can I leave my luggage before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/leave_luggage_before_checkin_ma.mp3"
+    },
+    {
+      "id": "arrive_late_tonight_ma",
+      "category": "hotel",
+      "nativeText": "J'arriverai tard ce soir",
+      "translation": {
+        "en-US": "I will arrive late tonight.",
+        "zh-CN": "我今晚会晚一点到。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/arrive_late_tonight_ma.mp3"
+    },
+    {
+      "id": "without_coriander_ma",
+      "category": "dining",
+      "nativeText": "Sans coriandre, s'il vous plait",
+      "translation": {
+        "en-US": "Without coriander, please.",
+        "zh-CN": "请不要香菜。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/without_coriander_ma.mp3"
+    },
+    {
+      "id": "mint_tea_no_sugar_ma",
+      "category": "dining",
+      "nativeText": "Un the a la menthe sans sucre, s'il vous plait",
+      "translation": {
+        "en-US": "A mint tea without sugar, please.",
+        "zh-CN": "请给我一杯无糖薄荷茶。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/mint_tea_no_sugar_ma.mp3"
+    },
+    {
+      "id": "takeaway_morocco",
+      "category": "dining",
+      "nativeText": "A emporter, s'il vous plait",
+      "translation": {
+        "en-US": "To go, please.",
+        "zh-CN": "请打包带走。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/takeaway_morocco.mp3"
+    },
+    {
+      "id": "cash_payment_ma",
+      "category": "shopping",
+      "nativeText": "Je peux payer en especes ?",
+      "translation": {
+        "en-US": "Can I pay in cash?",
+        "zh-CN": "可以付现金吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/cash_payment_ma.mp3"
+    },
+    {
+      "id": "write_in_arabic_ma",
+      "category": "basics",
+      "nativeText": "Pouvez-vous l'ecrire en arabe ?",
+      "translation": {
+        "en-US": "Could you write it in Arabic?",
+        "zh-CN": "可以帮我写成阿拉伯语吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/write_in_arabic_ma.mp3"
+    },
+    {
+      "id": "missed_last_tram_ma",
+      "category": "emergency",
+      "nativeText": "J'ai rate le dernier tram",
+      "translation": {
+        "en-US": "I missed the last tram.",
+        "zh-CN": "我错过末班电车了。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/missed_last_tram_ma.mp3"
+    },
+    {
+      "id": "taximeter_morocco_bonus",
+      "category": "transport",
+      "nativeText": "Est-ce que le taxi met le compteur ?",
+      "translation": {
+        "en-US": "Will the taxi use the meter?",
+        "zh-CN": "出租车会打表吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/morocco/taximeter_morocco_bonus.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for Morocco with audio, built for medina directions, riad check-ins, taxis, souk shopping, and everyday dining or payment questions.",
+    "zh-CN": "摩洛哥旅行短语卡，围绕 medina 问路、riad 入住、出租车、souk 市场购物，以及餐饮和支付沟通等高频场景整理。"
+  },
+  "intro": {
+    "en-US": "Built for Morocco trips where taxis, riad arrivals, souk shopping, and restaurant or tea-stop conversations can all happen fast. These cards help when you need short Arabic for directions, prices, or a simple service request.",
+    "zh-CN": "这套摩洛哥短语适合那种出租车、riad 入住、souq 购物，以及餐厅或喝茶场景会快速出现的旅行节奏。遇到要问方向、价格或提出简单服务需求时，短语卡会很有帮助。"
+  },
+  "teaser": {
+    "en-US": "Built for Morocco medinas, riads, taxis, souks, and short dining or payment conversations.",
+    "zh-CN": "适合摩洛哥的 medina、riad、出租车、souq，以及简短餐饮和支付沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep direction phrases ready for medinas, riads, and taxi drop-off points because many routes are easier to show than explain.",
+      "Shopping phrases help most in souks when you want to ask the price, confirm what is included, or say you are only looking.",
+      "Dining and payment cards are useful for tea, tagines, cash questions, and simple requests in smaller local spots."
+    ],
+    "zh-CN": [
+      "在 medina、riad 和出租车下车点这类场景里，方向类短语最好提前准备好，因为很多路比解释更适合直接展示。",
+      "在 souq 里，购物短语尤其适合问价格、确认包含什么，或者表达自己只是先看看。",
+      "喝茶、tagine、现金支付和小店简短需求这些场景里，餐饮和支付卡会非常好用。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "Medina directions, riads, and taxi drop-offs",
+      "Souk prices, browsing, and payment basics",
+      "Tea stops, tagines, and local service requests"
+    ],
+    "zh-CN": [
+      "medina 问路、riad 与出租车下车点",
+      "souq 价格、逛店与支付基础沟通",
+      "喝茶、tagine 与本地服务请求"
+    ]
+  },
+  "featured": false,
+  "relatedSlugs": [
+    "egypt",
+    "spain",
+    "france"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrase groups matter most for a first Morocco trip?",
+        "zh-CN": "第一次去摩洛哥旅行，最该先准备哪几组短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport, shopping, and hotel. That covers taxis, medina directions, riad check-in, and many first-day souk conversations.",
+        "zh-CN": "建议先看交通、购物和酒店三组，基本就能覆盖出租车、medina 问路、riad 入住，以及第一天很多 souq 场景。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Why are phrase cards especially useful in Morocco?",
+        "zh-CN": "为什么在摩洛哥旅行时，短语卡会特别有用？"
+      },
+      "answer": {
+        "en-US": "Because many useful interactions revolve around directions, prices, and short local conversations where direct wording matters.",
+        "zh-CN": "因为很多高频沟通都围绕方向、价格和本地简短对话展开，这些场景里越直接越清楚越好。"
+      }
     }
   ]
 }

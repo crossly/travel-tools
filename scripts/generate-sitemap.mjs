@@ -1,10 +1,25 @@
-import { readFile, readdir, writeFile } from 'node:fs/promises'
-import { basename, join } from 'node:path'
+import { readFile, readdir, stat, writeFile } from 'node:fs/promises'
+import { join } from 'node:path'
 
 const SITE_URL = 'https://www.routecrate.com'
 const locales = ['en-us', 'zh-cn']
 const staticPaths = ['', '/currency', '/bill-splitter', '/travel-phrases']
 const regionOrder = { asia: 0, 'middle-east': 1, europe: 2, americas: 3, africa: 4, oceania: 5 }
+
+function resolveAudioCoverage(entries = []) {
+  if (!entries.length) {
+    return 'none'
+  }
+
+  const audioCount = entries.filter((entry) => Boolean(entry.audioKey)).length
+  if (audioCount === 0) {
+    return 'none'
+  }
+  if (audioCount === entries.length) {
+    return 'all'
+  }
+  return 'partial'
+}
 
 async function main() {
   const countriesDir = join(process.cwd(), 'src/data/travel-phrases')
@@ -12,7 +27,18 @@ async function main() {
     .filter((file) => file.endsWith('.json') && file !== 'phrase-definitions.json' && file !== 'index.json')
 
   const countryPacks = await Promise.all(
-    countryFiles.map(async (file) => JSON.parse(await readFile(join(countriesDir, file), 'utf8'))),
+    countryFiles.map(async (file) => {
+      const filePath = join(countriesDir, file)
+      const [pack, fileStat] = await Promise.all([
+        readFile(filePath, 'utf8').then((content) => JSON.parse(content)),
+        stat(filePath),
+      ])
+
+      return {
+        ...pack,
+        lastModified: fileStat.mtime.toISOString().slice(0, 10),
+      }
+    }),
   )
 
   countryPacks.sort(
@@ -30,19 +56,26 @@ async function main() {
     languageName: pack.languageName,
     languageCode: pack.languageCode,
     flag: pack.flag,
+    description: pack.description,
+    teaser: pack.teaser,
+    highlights: pack.highlights,
+    featured: Boolean(pack.featured),
     phraseCount: pack.phrases.length,
-    hasAudio: pack.phrases.every((phrase) => Boolean(phrase.audioKey)),
+    audioCoverage: resolveAudioCoverage([...(pack.phrases ?? []), ...(pack.extraPhrases ?? [])]),
   }))
 
+  const buildDate = new Date().toISOString().slice(0, 10)
   const urls = [
-    ...buildLocalizedUrls(staticPaths),
-    ...buildLocalizedUrls(countrySlugs.map((slug) => `/travel-phrases/${slug}`)),
+    ...buildLocalizedUrls(staticPaths, buildDate),
+    ...buildLocalizedUrls(
+      countryPacks.map((pack) => ({ path: `/travel-phrases/${pack.slug}`, lastModified: pack.lastModified })),
+    ),
   ]
 
   const xml = [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-    ...urls.map((url) => `  <url><loc>${url}</loc></url>`),
+    ...urls.map((url) => `  <url><loc>${url.loc}</loc><lastmod>${url.lastmod}</lastmod></url>`),
     '</urlset>',
     '',
   ].join('\n')
@@ -51,9 +84,16 @@ async function main() {
   await writeFile(join(countriesDir, 'index.json'), `${JSON.stringify(indexPayload, null, 2)}\n`)
 }
 
-function buildLocalizedUrls(paths) {
+function buildLocalizedUrls(paths, defaultLastmod) {
   return locales.flatMap((locale) =>
-    paths.map((path) => `${SITE_URL}/${locale}${path}`),
+    paths.map((entry) => {
+      const path = typeof entry === 'string' ? entry : entry.path
+      const lastmod = typeof entry === 'string' ? defaultLastmod : entry.lastModified
+      return {
+        loc: `${SITE_URL}/${locale}${path}`,
+        lastmod,
+      }
+    }),
   )
 }
 

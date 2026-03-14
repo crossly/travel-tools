@@ -20,7 +20,7 @@ export const Route = createFileRoute('/$locale/travel-phrases/')({
       title: translate(locale, 'phrases.title'),
       description: translate(locale, 'phrases.description'),
       pathname: '/travel-phrases',
-      structuredData: 'software',
+      structuredData: 'website',
     })
   },
   component: TravelPhrasesHomeRoute,

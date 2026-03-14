@@ -263,6 +263,213 @@
       "nativeText": "J'ai perdu mon passeport",
       "romanization": null,
       "audioKey": "travel-phrases/mauritius/lost_passport.mp3"
+    },
+    {
+      "id": "bus_card_topup_mu",
+      "category": "transport",
+      "nativeText": "Ou puis-je recharger ma carte de bus ?",
+      "translation": {
+        "en-US": "Where can I top up the bus card?",
+        "zh-CN": "公交卡在哪里可以充值？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/mauritius/bus_card_topup_mu.mp3"
+    },
+    {
+      "id": "bus_to_airport_mu",
+      "category": "transport",
+      "nativeText": "Ce bus va-t-il a l'aeroport ?",
+      "translation": {
+        "en-US": "Does this bus go to the airport?",
+        "zh-CN": "这辆巴士去机场吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/mauritius/bus_to_airport_mu.mp3"
+    },
+    {
+      "id": "go_to_this_address_mu",
+      "category": "transport",
+      "nativeText": "Conduisez-moi a cette adresse, s'il vous plait",
+      "translation": {
+        "en-US": "Please take me to this address.",
+        "zh-CN": "请带我去这个地址。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/mauritius/go_to_this_address_mu.mp3"
+    },
+    {
+      "id": "bus_to_port_louis_mu",
+      "category": "transport",
+      "nativeText": "Ou prend-on le bus pour Port-Louis ?",
+      "translation": {
+        "en-US": "Where do I catch the bus to Port Louis?",
+        "zh-CN": "去路易港的巴士在哪里坐？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/mauritius/bus_to_port_louis_mu.mp3"
+    },
+    {
+      "id": "leave_luggage_before_checkin_mu",
+      "category": "hotel",
+      "nativeText": "Puis-je laisser mes bagages avant le check-in ?",
+      "translation": {
+        "en-US": "Can I leave my luggage before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/mauritius/leave_luggage_before_checkin_mu.mp3"
+    },
+    {
+      "id": "arrive_late_tonight_mu",
+      "category": "hotel",
+      "nativeText": "J'arriverai tard ce soir",
+      "translation": {
+        "en-US": "I will arrive late tonight.",
+        "zh-CN": "我今晚会晚一点到。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/mauritius/arrive_late_tonight_mu.mp3"
+    },
+    {
+      "id": "without_chilli_mu",
+      "category": "dining",
+      "nativeText": "Sans piment, s'il vous plait",
+      "translation": {
+        "en-US": "Without chilli, please.",
+        "zh-CN": "请不要辣。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/mauritius/without_chilli_mu.mp3"
+    },
+    {
+      "id": "still_water_mauritius",
+      "category": "dining",
+      "nativeText": "Une bouteille d'eau plate, s'il vous plait",
+      "translation": {
+        "en-US": "A bottle of still water, please.",
+        "zh-CN": "请给我一瓶无气泡水。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/mauritius/still_water_mauritius.mp3"
+    },
+    {
+      "id": "takeaway_mauritius",
+      "category": "dining",
+      "nativeText": "A emporter, s'il vous plait",
+      "translation": {
+        "en-US": "To go, please.",
+        "zh-CN": "请打包带走。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/mauritius/takeaway_mauritius.mp3"
+    },
+    {
+      "id": "pay_by_card_mu",
+      "category": "shopping",
+      "nativeText": "Je peux payer par carte ?",
+      "translation": {
+        "en-US": "Can I pay by card?",
+        "zh-CN": "可以刷卡吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/mauritius/pay_by_card_mu.mp3"
+    },
+    {
+      "id": "write_in_french_mu",
+      "category": "basics",
+      "nativeText": "Pouvez-vous l'ecrire en francais ?",
+      "translation": {
+        "en-US": "Could you write it in French?",
+        "zh-CN": "可以帮我写成法语吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/mauritius/write_in_french_mu.mp3"
+    },
+    {
+      "id": "missed_last_bus_mu",
+      "category": "emergency",
+      "nativeText": "J'ai rate le dernier bus",
+      "translation": {
+        "en-US": "I missed the last bus.",
+        "zh-CN": "我错过末班巴士了。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/mauritius/missed_last_bus_mu.mp3"
+    },
+    {
+      "id": "grand_baie_bus_mu_bonus",
+      "category": "transport",
+      "nativeText": "Ce bus va-t-il a Grand Baie ?",
+      "translation": {
+        "en-US": "Does this bus go to Grand Baie?",
+        "zh-CN": "这辆巴士去 Grand Baie 吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/mauritius/grand_baie_bus_mu_bonus.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for Mauritius with audio, built for airport transfers, beach hotels, market stops, cafe counters, and everyday payment or direction questions.",
+    "zh-CN": "毛里求斯旅行短语卡，围绕机场接驳、海边酒店、市场、咖啡馆和支付或问路等高频场景整理。"
+  },
+  "intro": {
+    "en-US": "Built for Mauritius trips where airport pickups, beach-hotel check-ins, market stops, and day-trip planning all come up quickly. These cards help when you need short local wording for transport, food, or a simple service request.",
+    "zh-CN": "这套毛里求斯短语适合那种机场接驳、海边酒店入住、市场停留和一日游安排会快速出现的旅行节奏。遇到要问交通、点餐，或提出一个简单需求时，短语卡会很方便。"
+  },
+  "teaser": {
+    "en-US": "Built for Mauritius airport transfers, beach hotels, market stops, and cafe or payment conversations.",
+    "zh-CN": "适合毛里求斯的机场接驳、海边酒店、市场，以及咖啡馆和支付沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep transport phrases ready for airport pickups, hotel transfers, and day-trip departures before you head around the island.",
+      "Dining and cafe phrases are useful for simple orders, takeaway, and asking what is available near beach areas.",
+      "Payment and direction questions come up often in smaller shops and markets, so a phrase card helps keep things quick and clear."
+    ],
+    "zh-CN": [
+      "如果有机场接驳、酒店接送和一日游出发安排，最好先把相关交通短语准备好。",
+      "在海边一带，点餐、外带以及问附近有什么可选项时，餐饮和咖啡馆短语很有用。",
+      "在小店和市场里，支付和问路类问题很常见，所以短语卡会让沟通更快更清楚。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "Airport transfers, beach hotels, and day trips",
+      "Market stops, small shops, and payment basics",
+      "Cafe counters, takeaway, and simple directions"
+    ],
+    "zh-CN": [
+      "机场接驳、海边酒店与一日游",
+      "市场、小店与支付基础沟通",
+      "咖啡馆柜台、外带与基础问路"
+    ]
+  },
+  "featured": false,
+  "relatedSlugs": [
+    "south-africa",
+    "kenya",
+    "tanzania"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrase groups matter most for a first Mauritius trip?",
+        "zh-CN": "第一次去毛里求斯旅行，最该先准备哪几组短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport, hotel, and dining. That covers airport arrivals, beach-hotel check-in, and most first-day food or transfer questions.",
+        "zh-CN": "建议先看交通、酒店和餐饮三组，基本就能覆盖机场落地、海边酒店入住，以及第一天大部分用餐和转移安排。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Why are short phrase cards useful in Mauritius?",
+        "zh-CN": "为什么在毛里求斯旅行时，简短短语卡会很有用？"
+      },
+      "answer": {
+        "en-US": "Because many practical interactions are small and fast: pickups, directions, cafe counters, and simple shop payments.",
+        "zh-CN": "因为很多高频沟通都很小也很快，比如接送、问路、咖啡馆柜台和小店付款，提前备好一句话会轻松很多。"
+      }
     }
   ]
 }

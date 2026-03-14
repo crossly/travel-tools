@@ -263,6 +263,213 @@
       "nativeText": "I lost my passport",
       "romanization": null,
       "audioKey": "travel-phrases/new-zealand/lost_passport.mp3"
+    },
+    {
+      "id": "topup_bus_card_nz",
+      "category": "transport",
+      "nativeText": "Can I top up my bus card here?",
+      "translation": {
+        "en-US": "Can I top up my bus card here?",
+        "zh-CN": "这里可以给公交卡充值吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/topup_bus_card_nz.mp3"
+    },
+    {
+      "id": "platform_to_city_nz",
+      "category": "transport",
+      "nativeText": "Which platform goes to the city centre?",
+      "translation": {
+        "en-US": "Which platform goes to the city centre?",
+        "zh-CN": "去市中心的是哪个站台？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/platform_to_city_nz.mp3"
+    },
+    {
+      "id": "go_to_this_address_nz",
+      "category": "transport",
+      "nativeText": "Please take me to this address.",
+      "translation": {
+        "en-US": "Please take me to this address.",
+        "zh-CN": "请带我去这个地址。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/go_to_this_address_nz.mp3"
+    },
+    {
+      "id": "last_ferry_running_nz",
+      "category": "transport",
+      "nativeText": "Is the last ferry still running tonight?",
+      "translation": {
+        "en-US": "Is the last ferry still running tonight?",
+        "zh-CN": "今晚最后一班渡轮还开吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/last_ferry_running_nz.mp3"
+    },
+    {
+      "id": "leave_luggage_before_checkin_nz",
+      "category": "hotel",
+      "nativeText": "Can I leave my luggage before check-in?",
+      "translation": {
+        "en-US": "Can I leave my luggage before check-in?",
+        "zh-CN": "入住前可以先寄存行李吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/leave_luggage_before_checkin_nz.mp3"
+    },
+    {
+      "id": "arrive_late_tonight_nz",
+      "category": "hotel",
+      "nativeText": "I will be arriving late tonight.",
+      "translation": {
+        "en-US": "I will be arriving late tonight.",
+        "zh-CN": "我今晚会晚一点到。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/arrive_late_tonight_nz.mp3"
+    },
+    {
+      "id": "flat_white_to_go_nz",
+      "category": "dining",
+      "nativeText": "Can I get a flat white to go, please?",
+      "translation": {
+        "en-US": "Can I get a flat white to go, please?",
+        "zh-CN": "请给我一杯外带的 flat white。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/flat_white_to_go_nz.mp3"
+    },
+    {
+      "id": "without_coriander_nz",
+      "category": "dining",
+      "nativeText": "Could I have this without coriander?",
+      "translation": {
+        "en-US": "Could I have this without coriander?",
+        "zh-CN": "这个可以不要香菜吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/without_coriander_nz.mp3"
+    },
+    {
+      "id": "still_water_nz",
+      "category": "dining",
+      "nativeText": "Could I get a bottle of still water?",
+      "translation": {
+        "en-US": "Could I get a bottle of still water?",
+        "zh-CN": "请给我一瓶无气泡水。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/still_water_nz.mp3"
+    },
+    {
+      "id": "pay_by_card_nz",
+      "category": "shopping",
+      "nativeText": "Can I pay by card here?",
+      "translation": {
+        "en-US": "Can I pay by card here?",
+        "zh-CN": "这里可以刷卡吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/pay_by_card_nz.mp3"
+    },
+    {
+      "id": "write_hostel_name_nz",
+      "category": "basics",
+      "nativeText": "Could you write the hostel name down?",
+      "translation": {
+        "en-US": "Could you write the hostel name down?",
+        "zh-CN": "可以把青旅名字写下来吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/write_hostel_name_nz.mp3"
+    },
+    {
+      "id": "missed_last_bus_nz",
+      "category": "emergency",
+      "nativeText": "I missed the last bus.",
+      "translation": {
+        "en-US": "I missed the last bus.",
+        "zh-CN": "我错过末班巴士了。"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/missed_last_bus_nz.mp3"
+    },
+    {
+      "id": "ferry_luggage_fee_nz_bonus",
+      "category": "transport",
+      "nativeText": "Is there a luggage fee for this ferry?",
+      "translation": {
+        "en-US": "Is there a luggage fee for this ferry?",
+        "zh-CN": "这班渡轮的行李要额外收费吗？"
+      },
+      "romanization": null,
+      "audioKey": "travel-phrases/new-zealand/ferry_luggage_fee_nz_bonus.mp3"
+    }
+  ],
+  "description": {
+    "en-US": "Travel phrases for New Zealand with audio, built for airport shuttles, intercity buses, ferries, hotel or holiday-park check-ins, and cafe conversations.",
+    "zh-CN": "新西兰旅行短语卡，围绕机场接驳、城际巴士、渡轮、酒店或 holiday park 入住，以及咖啡馆沟通等高频场景整理。"
+  },
+  "intro": {
+    "en-US": "Built for New Zealand trips where airport shuttles, intercity transport, holiday-park check-ins, and cafe stops all come up quickly. These cards help when you need short local wording for routes, bookings, or simple food and service requests.",
+    "zh-CN": "这套新西兰短语适合那种机场接驳、城际交通、holiday park 入住和咖啡馆停留会快速出现的旅行节奏。遇到要问路线、预订，或提出简短餐饮和服务需求时，短语卡会很实用。"
+  },
+  "teaser": {
+    "en-US": "Built for New Zealand airport shuttles, intercity buses, ferries, and hotel or holiday-park conversations.",
+    "zh-CN": "适合新西兰的机场接驳、城际巴士、渡轮，以及酒店和 holiday park 沟通。"
+  },
+  "travelTips": {
+    "en-US": [
+      "Keep transport phrases ready for airport shuttles, intercity buses, ferries, and longer road-trip stops.",
+      "Accommodation phrases help most with check-in timing, parking, kitchen access, and simple room or cabin requests.",
+      "Cafe cards are useful for takeaway coffee, breakfast questions, and quick directions in smaller towns or stops."
+    ],
+    "zh-CN": [
+      "如果有机场接驳、城际巴士、渡轮或长途自驾停靠，最好先把相关交通短语备好。",
+      "住宿类短语尤其适合处理入住时间、停车、厨房使用和房间或 cabin 需求。",
+      "在小镇和休息点里，外带咖啡、早餐和简短问路这类咖啡馆短语也很实用。"
+    ]
+  },
+  "highlights": {
+    "en-US": [
+      "Airport shuttles, intercity buses, and ferries",
+      "Hotels, holiday parks, and parking questions",
+      "Cafe stops, breakfast, and small-town directions"
+    ],
+    "zh-CN": [
+      "机场接驳、城际巴士与渡轮",
+      "酒店、holiday park 与停车问题",
+      "咖啡馆停靠、早餐与小镇问路"
+    ]
+  },
+  "featured": false,
+  "relatedSlugs": [
+    "australia",
+    "canada",
+    "united-states"
+  ],
+  "faq": [
+    {
+      "question": {
+        "en-US": "Which phrase groups matter most for a first New Zealand trip?",
+        "zh-CN": "第一次去新西兰旅行，最该先准备哪几组短语？"
+      },
+      "answer": {
+        "en-US": "Start with transport, hotel, and dining. That covers airport arrivals, intercity travel, accommodation check-in, and most first-day food or cafe stops.",
+        "zh-CN": "建议先看交通、酒店和餐饮三组，基本就能覆盖机场落地、城际交通、住宿入住，以及第一天大部分用餐和咖啡馆场景。"
+      }
+    },
+    {
+      "question": {
+        "en-US": "Why keep phrase cards for New Zealand if the language is English?",
+        "zh-CN": "既然新西兰讲英语，为什么还值得准备短语卡？"
+      },
+      "answer": {
+        "en-US": "Because travel logistics still repeat constantly. A ready-made phrase is faster for shuttles, check-in, parking, and food counters.",
+        "zh-CN": "因为很多旅行安排依然会重复出现，接驳、入住、停车和柜台点餐这些场景里，提前备好的短语依然会更快。"
+      }
     }
   ]
 }
