@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
+import type { MouseEvent as ReactMouseEvent } from 'react'
 import { Link } from '@tanstack/react-router'
 import { Languages, LoaderCircle, Play, Square, Volume2 } from 'lucide-react'
 import { AppShell } from '@/components/app/app-shell'
@@ -43,6 +44,7 @@ function splitLeadSentence(copy: string) {
 }
 
 const COMPACT_STATE_HYSTERESIS = 24
+const CATEGORY_SCROLL_OFFSET = 12
 
 export function resolveCategoryJumpCompactState({
   current,
@@ -63,6 +65,18 @@ export function resolveCategoryJumpCompactState({
   return top <= enterThreshold
 }
 
+function resolveCategorySectionScrollTop({
+  scrollY,
+  sectionTop,
+  stickyHeight,
+}: {
+  scrollY: number
+  sectionTop: number
+  stickyHeight: number
+}) {
+  return Math.max(scrollY + sectionTop - stickyHeight - CATEGORY_SCROLL_OFFSET, 0)
+}
+
 export function TravelPhrasesCountryPage({
   locale,
   pack,
@@ -80,6 +94,7 @@ export function TravelPhrasesCountryPage({
   const [errorPhraseId, setErrorPhraseId] = useState<string | null>(null)
   const categoryJumpSentinelRef = useRef<HTMLDivElement | null>(null)
   const categoryJumpRef = useRef<HTMLDivElement | null>(null)
+  const categoryJumpScrollFrameRef = useRef<number | null>(null)
   const [isCategoryJumpCompact, setIsCategoryJumpCompact] = useState(false)
 
   useEffect(() => {
@@ -92,6 +107,9 @@ export function TravelPhrasesCountryPage({
 
   useEffect(() => {
     return () => {
+      if (categoryJumpScrollFrameRef.current !== null && typeof window !== 'undefined') {
+        window.cancelAnimationFrame(categoryJumpScrollFrameRef.current)
+      }
       for (const objectUrl of audioUrlMapRef.current.values()) {
         URL.revokeObjectURL(objectUrl)
       }
@@ -175,6 +193,51 @@ export function TravelPhrasesCountryPage({
   const introCopy = useMemo(() => splitLeadSentence(pack?.intro ?? ''), [pack?.intro])
   const visibleTravelTips = useMemo(() => pack?.travelTips.slice(0, 3) ?? [], [pack?.travelTips])
   const overflowTravelTips = useMemo(() => pack?.travelTips.slice(3) ?? [], [pack?.travelTips])
+
+  function handleCategoryJump(event: ReactMouseEvent<HTMLAnchorElement>, category: PhraseCategory) {
+    if (
+      typeof window === 'undefined'
+      || event.button !== 0
+      || event.metaKey
+      || event.ctrlKey
+      || event.shiftKey
+      || event.altKey
+    ) {
+      return
+    }
+
+    const targetId = `${category}-phrases`
+    const section = document.getElementById(targetId)
+    if (!section) {
+      return
+    }
+
+    event.preventDefault()
+    setIsCategoryJumpCompact(true)
+
+    const runScroll = () => {
+      categoryJumpScrollFrameRef.current = window.requestAnimationFrame(() => {
+        categoryJumpScrollFrameRef.current = window.requestAnimationFrame(() => {
+          const stickyHeight = categoryJumpRef.current?.getBoundingClientRect().height ?? 0
+          const nextTop = resolveCategorySectionScrollTop({
+            scrollY: window.scrollY,
+            sectionTop: section.getBoundingClientRect().top,
+            stickyHeight,
+          })
+          window.scrollTo({ top: nextTop, behavior: 'auto' })
+          window.history.replaceState(window.history.state, '', `#${targetId}`)
+          categoryJumpScrollFrameRef.current = null
+        })
+      })
+    }
+
+    if (categoryJumpScrollFrameRef.current !== null) {
+      window.cancelAnimationFrame(categoryJumpScrollFrameRef.current)
+      categoryJumpScrollFrameRef.current = null
+    }
+
+    runScroll()
+  }
 
   function stopPlayback() {
     const audio = audioRef.current
@@ -380,6 +443,7 @@ export function TravelPhrasesCountryPage({
                   <a
                     key={section.category}
                     href={`#${section.category}-phrases`}
+                    onClick={(event) => handleCategoryJump(event, section.category)}
                     className={cn(
                       'inline-flex h-10 shrink-0 whitespace-nowrap items-center justify-center rounded-xl border border-border bg-[color:var(--surface-floating)] px-4 text-sm font-medium text-foreground transition-colors hover:bg-muted',
                       isCategoryJumpCompact && 'h-9 rounded-full px-3 text-xs md:text-sm',

@@ -16,6 +16,10 @@ beforeAll(() => {
 
 beforeEach(() => {
   vi.restoreAllMocks()
+  Object.defineProperty(window, 'scrollTo', {
+    configurable: true,
+    value: vi.fn(),
+  })
 })
 
 vi.mock('@tanstack/react-router', () => ({
@@ -174,6 +178,53 @@ describe('TravelPhrasesCountryPage', () => {
     render(createElement(TravelPhrasesCountryPage, { locale: 'en-US', pack }))
 
     expect(fetchMock).not.toHaveBeenCalled()
+  })
+
+  it('uses controlled scrolling for category jumps instead of relying on native anchor jumps', async () => {
+    const { getPhraseCountryPack } = await import('@/lib/travel-phrases')
+    const { TravelPhrasesCountryPage } = await import('@/features/travel-phrases/country-page')
+    const pack = await getPhraseCountryPack('en-US', 'japan')
+
+    render(createElement(TravelPhrasesCountryPage, { locale: 'en-US', pack }))
+
+    const basicsSection = document.getElementById('basics-phrases')
+    expect(basicsSection).toBeTruthy()
+
+    vi.spyOn(window, 'requestAnimationFrame').mockImplementation((callback: FrameRequestCallback) => {
+      callback(0)
+      return 1
+    })
+
+    vi.spyOn(basicsSection!, 'getBoundingClientRect').mockReturnValue({
+      x: 0,
+      y: 220,
+      width: 0,
+      height: 0,
+      top: 220,
+      right: 0,
+      bottom: 220,
+      left: 0,
+      toJSON: () => ({}),
+    })
+
+    const nav = screen.getByRole('navigation', { name: 'Sticky phrase sections' })
+    const stickyContainer = nav.parentElement?.parentElement?.parentElement
+    expect(stickyContainer).toBeTruthy()
+    vi.spyOn(stickyContainer!, 'getBoundingClientRect').mockReturnValue({
+      x: 0,
+      y: 0,
+      width: 0,
+      height: 72,
+      top: 0,
+      right: 0,
+      bottom: 72,
+      left: 0,
+      toJSON: () => ({}),
+    })
+
+    fireEvent.click(screen.getByRole('link', { name: 'Basics' }))
+
+    expect(window.scrollTo).toHaveBeenCalled()
   })
 
   it('disables playback for packs without audio', async () => {
