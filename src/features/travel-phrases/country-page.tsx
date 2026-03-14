@@ -23,15 +23,6 @@ const categoryLabelKey: Record<PhraseCategory, string> = {
   emergency: 'phrases.category.emergency',
 }
 
-const categoryDescriptionKey: Record<PhraseCategory, string> = {
-  basics: 'phrases.categorySectionDescription.basics',
-  transport: 'phrases.categorySectionDescription.transport',
-  hotel: 'phrases.categorySectionDescription.hotel',
-  dining: 'phrases.categorySectionDescription.dining',
-  shopping: 'phrases.categorySectionDescription.shopping',
-  emergency: 'phrases.categorySectionDescription.emergency',
-}
-
 function splitLeadSentence(copy: string) {
   const normalizedCopy = copy.trim()
 
@@ -267,7 +258,7 @@ export function TravelPhrasesCountryPage({
                 <span className="text-3xl" aria-hidden="true">{pack.flag}</span>
                 {pack.country}
               </CardTitle>
-              <CardDescription className="max-w-3xl text-pretty text-sm leading-6 md:text-base">{pack.description}</CardDescription>
+              <CardDescription className="max-w-3xl text-pretty text-sm leading-6 md:text-base">{pack.teaser || pack.description}</CardDescription>
             </div>
             <div className="rounded-2xl border border-border bg-[color:var(--surface-floating)] px-4 py-3">
               <p className="flex items-center gap-2 text-sm font-medium text-foreground">
@@ -287,11 +278,6 @@ export function TravelPhrasesCountryPage({
           <CardHeader className="gap-4">
             <div className="space-y-2">
               <CardTitle>{t('phrases.quickTipsTitle')}</CardTitle>
-              {introCopy.lead ? (
-                <CardDescription className="max-w-4xl text-sm leading-6 md:text-base">
-                  {introCopy.lead}
-                </CardDescription>
-              ) : null}
             </div>
 
             {visibleTravelTips.length ? (
@@ -313,8 +299,8 @@ export function TravelPhrasesCountryPage({
                   {t('phrases.quickTipsExpand')}
                 </summary>
                 <div className="mt-3 space-y-3 text-sm leading-6 text-muted-foreground md:text-base">
-                  {introCopy.rest ? (
-                    <p>{introCopy.rest}</p>
+                  {introCopy.lead || introCopy.rest ? (
+                    <p>{[introCopy.lead, introCopy.rest].filter(Boolean).join(' ')}</p>
                   ) : null}
                   {overflowTravelTips.length ? (
                     <ul className="space-y-2">
@@ -393,12 +379,6 @@ export function TravelPhrasesCountryPage({
                       category: t(categoryLabelKey[section.category]),
                     })}
                   </h2>
-                  <p className="max-w-3xl text-sm leading-6 text-muted-foreground md:text-base">
-                    {t(categoryDescriptionKey[section.category], {
-                      country: pack.country,
-                      category: t(categoryLabelKey[section.category]),
-                    })}
-                  </p>
                 </div>
                 <div className="grid gap-4 md:grid-cols-2">
                   {section.phrases.map((phrase) => renderPhraseCard(phrase))}

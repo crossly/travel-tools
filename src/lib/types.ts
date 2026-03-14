@@ -36,6 +36,7 @@ export interface PhraseCountryPack {
   title: string
   description: string
   seoDescription: string
+  teaser: string
   intro: string
   travelTips: string[]
   audioCoverage: PhraseAudioCoverage

@@ -340,6 +340,7 @@ export async function getPhraseCountryPack(locale: Locale, country: string): Pro
     title: buildCountryTitle(locale, countryName),
     description,
     seoDescription: description,
+    teaser: buildCountryTeaser(locale, description, pack.teaser),
     intro: buildCountryIntro(locale, description, pack.intro),
     travelTips: pack.travelTips?.[locale] ?? [],
     audioCoverage: resolveAudioCoverage([...pack.phrases, ...(pack.extraPhrases ?? [])]),

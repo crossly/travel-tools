@@ -112,7 +112,8 @@ describe('TravelPhrasesCountryPage', () => {
     const { container } = render(createElement(TravelPhrasesCountryPage, { locale: 'en-US', pack }))
 
     expect(screen.getByText('こんにちは')).toBeTruthy()
-    expect(screen.getByText(/rail stations/i)).toBeTruthy()
+    expect(screen.getByText(/rail travel, convenience stores, and polite service language/i)).toBeTruthy()
+    expect(screen.queryByText(/Travel phrases for Japan with audio and local tips for rail, restaurants, and convenience stores./i)).toBeNull()
     expect(screen.getByRole('heading', { name: 'Before you go' })).toBeTruthy()
     expect(screen.queryByRole('heading', { name: 'Local tips' })).toBeNull()
     expect(screen.getByText('More local notes')).toBeTruthy()
@@ -123,6 +124,7 @@ describe('TravelPhrasesCountryPage', () => {
     expect(screen.getByRole('link', { name: 'Transport' }).getAttribute('href')).toBe('#transport-phrases')
     expect(screen.getByRole('navigation', { name: 'Sticky phrase sections' })).toBeTruthy()
     expect(screen.getByRole('heading', { name: 'Japan Transport phrases' })).toBeTruthy()
+    expect(screen.queryByText('Transport phrases for Japan, including stations, tickets, and directions.')).toBeNull()
     expect(screen.getByText('Travel FAQ')).toBeTruthy()
     expect(screen.getByText(/Do I need Japanese for most tourist places/i)).toBeTruthy()
     expect(screen.getByText('Related country packs')).toBeTruthy()
