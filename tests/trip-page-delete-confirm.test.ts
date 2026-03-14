@@ -9,6 +9,7 @@ const deleteExpenseMock = vi.fn()
 const deleteTripMock = vi.fn()
 const updateTripSettingsMock = vi.fn()
 const navigateMock = vi.fn()
+const clearActiveTripIdMock = vi.fn()
 
 vi.mock('@tanstack/react-router', () => ({
   Link: ({ children, ...props }: { children?: ReactNode } & Record<string, unknown>) => createElement('a', props, children),
@@ -66,6 +67,7 @@ vi.mock('@/lib/i18n', () => ({
 
 vi.mock('@/lib/storage', () => ({
   writeActiveTripId: vi.fn(),
+  clearActiveTripId: clearActiveTripIdMock,
 }))
 
 describe('TripPage delete confirmations', () => {
@@ -109,5 +111,21 @@ describe('TripPage delete confirmations', () => {
       expect(deleteExpenseMock).toHaveBeenCalledWith('trip-1', 'expense-1')
     })
     expect(window.confirm).not.toHaveBeenCalled()
+  })
+
+  it('clears the active trip id after deleting the trip', async () => {
+    const { TripPage } = await import('@/features/split-bill/trip-page')
+
+    render(createElement(TripPage, { locale: 'en-US', tripId: 'trip-1' }))
+
+    fireEvent.click(await screen.findByRole('button', { name: 'Delete trip' }))
+    expect(screen.getByRole('alertdialog')).toBeTruthy()
+    fireEvent.click(screen.getByRole('button', { name: 'Confirm delete' }))
+
+    await waitFor(() => {
+      expect(deleteTripMock).toHaveBeenCalledWith('trip-1')
+      expect(clearActiveTripIdMock).toHaveBeenCalled()
+      expect(navigateMock).toHaveBeenCalled()
+    })
   })
 })

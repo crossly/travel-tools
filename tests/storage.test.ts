@@ -4,13 +4,16 @@ import { beforeEach, describe, expect, it } from 'vitest'
 import { DEVICE_COOKIE_KEYS } from '@/lib/device-cookie'
 import { SITE_COOKIE_KEYS } from '@/lib/site'
 import {
+  clearActiveTripId,
   readCurrencyPrefs,
   readDevice,
+  readActiveTripId,
   readStoredLocale,
   readTheme,
   resetStorageMigrationForTests,
   STORAGE_KEYS,
   writeDevice,
+  writeActiveTripId,
   writeStoredLocale,
   writeTheme,
 } from '@/lib/storage'
@@ -21,6 +24,9 @@ const createStorage = () => {
     getItem: (key: string) => store.get(key) ?? null,
     setItem: (key: string, value: string) => {
       store.set(key, value)
+    },
+    removeItem: (key: string) => {
+      store.delete(key)
     },
     clear: () => {
       store.clear()
@@ -78,6 +84,15 @@ describe('device storage', () => {
     expect(readDevice()).toEqual({ deviceId: 'dev_cookie', displayName: '🐻 Bear' })
     expect(localStorage.getItem(STORAGE_KEYS.device)).toBe(JSON.stringify({ deviceId: 'dev_cookie', displayName: '🐻 Bear' }))
   })
+
+  it('clears corrupted device storage and falls back to the device cookie', () => {
+    localStorage.setItem(STORAGE_KEYS.device, '{broken-json')
+    document.cookie = `${DEVICE_COOKIE_KEYS.id}=dev_cookie; Path=/`
+    document.cookie = `${DEVICE_COOKIE_KEYS.displayName}=%F0%9F%90%BB%20Bear; Path=/`
+
+    expect(readDevice()).toEqual({ deviceId: 'dev_cookie', displayName: '🐻 Bear' })
+    expect(localStorage.getItem(STORAGE_KEYS.device)).toBe(JSON.stringify({ deviceId: 'dev_cookie', displayName: '🐻 Bear' }))
+  })
 })
 
 describe('locale storage', () => {
@@ -117,5 +132,21 @@ describe('locale storage', () => {
     expect(readCurrencyPrefs()).toEqual({ source: 'GBP', target: 'JPY' })
     expect(localStorage.getItem(STORAGE_KEYS.currencySource)).toBe('GBP')
     expect(localStorage.getItem(STORAGE_KEYS.currencyTarget)).toBe('JPY')
+  })
+})
+
+describe('active trip storage', () => {
+  beforeEach(() => {
+    localStorage.clear()
+    resetStorageMigrationForTests()
+  })
+
+  it('clears the active trip id when requested', () => {
+    writeActiveTripId('trip_123')
+    expect(readActiveTripId()).toBe('trip_123')
+
+    clearActiveTripId()
+
+    expect(readActiveTripId()).toBeNull()
   })
 })

@@ -112,8 +112,15 @@ export function SettlementPage({ locale, tripId, initialData }: { locale: Locale
                 size="lg"
                 className="w-full"
                 onClick={async () => {
-                  await navigator.clipboard.writeText(summaryText)
-                  setStatus({ tone: 'success', title: t('settlement.copySuccess') })
+                  try {
+                    if (!navigator.clipboard?.writeText) {
+                      throw new Error('CLIPBOARD_UNAVAILABLE')
+                    }
+                    await navigator.clipboard.writeText(summaryText)
+                    setStatus({ tone: 'success', title: t('settlement.copySuccess') })
+                  } catch (error) {
+                    setStatus({ tone: 'danger', title: tError((error as Error).message) })
+                  }
                 }}
               >
                 {t('settlement.copyText')}

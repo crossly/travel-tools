@@ -122,7 +122,13 @@ export function writeLastTool(slug: string) {
 export function readDevice() {
   migrateLegacyStorage()
   const raw = getStorage()?.getItem(STORAGE_KEYS.device)
-  if (raw) return JSON.parse(raw) as DeviceIdentity
+  if (raw) {
+    try {
+      return JSON.parse(raw) as DeviceIdentity
+    } catch {
+      getStorage()?.removeItem?.(STORAGE_KEYS.device)
+    }
+  }
 
   const device = getDeviceIdentityFromCookie(typeof document === 'undefined' ? null : document.cookie)
   if (device) {
@@ -146,6 +152,10 @@ export function readActiveTripId() {
 
 export function writeActiveTripId(tripId: string) {
   getStorage()?.setItem(STORAGE_KEYS.activeTripId, tripId)
+}
+
+export function clearActiveTripId() {
+  getStorage()?.removeItem?.(STORAGE_KEYS.activeTripId)
 }
 
 export function readCurrencyPrefs() {

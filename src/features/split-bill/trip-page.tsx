@@ -11,7 +11,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { deleteExpense, deleteTrip, fetchSnapshot, updateTripSettings } from '@/lib/api/client'
 import { getLocalizedPath } from '@/lib/site'
 import { useI18n } from '@/lib/i18n'
-import { writeActiveTripId } from '@/lib/storage'
+import { clearActiveTripId, writeActiveTripId } from '@/lib/storage'
 import type { Locale, TripSnapshot } from '@/lib/types'
 
 export function TripPage({ locale, tripId, initialSnapshot = null }: { locale: Locale; tripId: string; initialSnapshot?: TripSnapshot | null }) {
@@ -65,6 +65,7 @@ export function TripPage({ locale, tripId, initialSnapshot = null }: { locale: L
   async function onDeleteTrip() {
     try {
       await deleteTrip(tripId)
+      clearActiveTripId()
       setStatus({ tone: 'success', title: t('trip.deleteTripSuccess') })
       navigate({ to: getLocalizedPath(locale, '/bill-splitter') })
     } catch (error) {

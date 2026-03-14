@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
 import { createElement } from 'react'
 import type { ReactNode } from 'react'
-import { render, screen } from '@testing-library/react'
-import { describe, expect, it, vi } from 'vitest'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 
 const fetchSnapshotMock = vi.fn()
 const fetchSettlementMock = vi.fn()
@@ -26,6 +26,7 @@ vi.mock('@/lib/api/client', () => ({
 
 vi.mock('@/lib/storage', () => ({
   readDevice: () => ({ deviceId: 'dev_123', displayName: '🐼 Panda' }),
+  writeDevice: vi.fn(),
 }))
 
 vi.mock('@/lib/i18n', () => ({
@@ -52,6 +53,15 @@ vi.mock('@/lib/i18n', () => ({
 }))
 
 describe('SettlementPage', () => {
+  beforeEach(() => {
+    Object.defineProperty(globalThis.navigator, 'clipboard', {
+      configurable: true,
+      value: {
+        writeText: vi.fn().mockResolvedValue(undefined),
+      },
+    })
+  })
+
   it('replaces placeholder participant ids with readable labels', async () => {
     fetchSnapshotMock.mockResolvedValue({
       trip: {
@@ -75,5 +85,42 @@ describe('SettlementPage', () => {
 
     expect(await screen.findByText('Teammate 1 → 🐼 Panda (You)')).toBeTruthy()
     expect(screen.getByText('5.00 CNY')).toBeTruthy()
+  })
+
+  it('shows an error status when copying settlement text fails', async () => {
+    const clipboardWriteText = vi.fn().mockRejectedValue(new Error('CLIPBOARD_UNAVAILABLE'))
+    Object.defineProperty(globalThis.navigator, 'clipboard', {
+      configurable: true,
+      value: {
+        writeText: clipboardWriteText,
+      },
+    })
+
+    fetchSnapshotMock.mockResolvedValue({
+      trip: {
+        id: 'trip-1',
+        name: 'Tokyo',
+        expenseCurrency: 'JPY',
+        settlementCurrency: 'CNY',
+      },
+    })
+    fetchSettlementMock.mockResolvedValue({
+      transfers: [{ fromMemberId: 'p2', toMemberId: 'p1', amountBase: 5 }],
+      currencySummary: { expenseCurrency: 'JPY', settlementCurrency: 'CNY' },
+      expenseConversions: [],
+      balances: [],
+      summaryText: 'p2 -> p1: 5.00',
+    })
+
+    const { SettlementPage } = await import('@/features/split-bill/settlement-page')
+
+    render(createElement(SettlementPage, { locale: 'en-US', tripId: 'trip-1' }))
+
+    fireEvent.click(await screen.findByRole('button', { name: 'Copy settlement text' }))
+
+    await waitFor(() => {
+      expect(clipboardWriteText).toHaveBeenCalled()
+      expect(screen.getByText('CLIPBOARD_UNAVAILABLE')).toBeTruthy()
+    })
   })
 })

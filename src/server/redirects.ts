@@ -7,9 +7,13 @@ export function buildCanonicalRequest(request: Request) {
   const url = new URL(request.url)
   let changed = false
 
+  if (url.protocol !== 'https:') {
+    url.protocol = 'https:'
+    changed = true
+  }
+
   if (url.hostname === APEX_HOST) {
     url.hostname = WWW_HOST
-    url.protocol = 'https:'
     changed = true
   }
 
