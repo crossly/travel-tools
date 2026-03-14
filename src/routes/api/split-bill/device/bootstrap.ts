@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { toApiErrorResponse } from '@/server/api-errors'
 import { bootstrapDevice } from '@/server/split-bill'
 
 export const Route = createFileRoute('/api/split-bill/device/bootstrap')({
@@ -8,7 +9,7 @@ export const Route = createFileRoute('/api/split-bill/device/bootstrap')({
         try {
           return Response.json(await bootstrapDevice())
         } catch (error) {
-          return Response.json({ error: (error as Error).message }, { status: 400 })
+          return toApiErrorResponse(error)
         }
       },
     },

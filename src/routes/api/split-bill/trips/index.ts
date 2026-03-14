@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { getEnv } from '@/server/context'
+import { toApiErrorResponse } from '@/server/api-errors'
 import { createTrip, getDeviceId, listTrips } from '@/server/split-bill'
 
 export const Route = createFileRoute('/api/split-bill/trips/')({
@@ -16,7 +17,7 @@ export const Route = createFileRoute('/api/split-bill/trips/')({
         try {
           return Response.json(await createTrip(getEnv(context), deviceId, request))
         } catch (error) {
-          return Response.json({ error: (error as Error).message }, { status: 400 })
+          return toApiErrorResponse(error)
         }
       },
     },
