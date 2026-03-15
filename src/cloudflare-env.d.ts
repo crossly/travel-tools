@@ -10,6 +10,8 @@ interface CloudflareEnv {
   APP_NAME?: string
   GA_MEASUREMENT_ID?: string
   GOOGLE_ANALYTICS_ID?: string
+  GOOGLE_SITE_VERIFICATION?: string
+  BING_SITE_VERIFICATION?: string
   UMAMI_WEBSITE_ID?: string
   UMAMI_SCRIPT_URL?: string
 }

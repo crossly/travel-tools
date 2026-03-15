@@ -6,6 +6,8 @@ import type { AppRequestContext } from '@/router'
 type RootPageData = {
   locale: Locale
   googleAnalyticsId: string | null
+  googleSiteVerification: string | null
+  bingSiteVerification: string | null
   umamiWebsiteId: string | null
   umamiScriptUrl: string | null
 }
@@ -28,6 +30,8 @@ export const loadRootPageData = createServerFn({ method: 'GET' })
     const pageData: RootPageData = {
       locale: context.locale,
       googleAnalyticsId: context.cloudflare?.env.GA_MEASUREMENT_ID?.trim() || context.cloudflare?.env.GOOGLE_ANALYTICS_ID?.trim() || null,
+      googleSiteVerification: context.cloudflare?.env.GOOGLE_SITE_VERIFICATION?.trim() || null,
+      bingSiteVerification: context.cloudflare?.env.BING_SITE_VERIFICATION?.trim() || null,
       umamiWebsiteId: context.cloudflare?.env.UMAMI_WEBSITE_ID?.trim() || null,
       umamiScriptUrl: context.cloudflare?.env.UMAMI_SCRIPT_URL?.trim() || 'https://cloud.umami.is/script.js',
     }

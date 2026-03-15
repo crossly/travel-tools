@@ -9,7 +9,13 @@ describe('route heads', () => {
     const { Route } = await import('@/routes/__root')
     const head = (Route as unknown as {
       options: {
-        head: (args: { loaderData?: { locale: 'zh-CN' | 'en-US' } }) => {
+        head: (args: {
+          loaderData?: {
+            locale: 'zh-CN' | 'en-US'
+            googleSiteVerification?: string | null
+            bingSiteVerification?: string | null
+          }
+        }) => {
           meta: Array<Record<string, string>>
           links: Array<Record<string, string>>
         }
@@ -27,6 +33,40 @@ describe('route heads', () => {
     ]))
     expect(head.links).toEqual(expect.arrayContaining([
       expect.objectContaining({ rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' }),
+    ]))
+  })
+
+  it('emits site verification meta tags when search console ids are present', async () => {
+    const { Route } = await import('@/routes/__root')
+    const head = (Route as unknown as {
+      options: {
+        head: (args: {
+          loaderData?: {
+            locale: 'zh-CN' | 'en-US'
+            googleSiteVerification?: string | null
+            bingSiteVerification?: string | null
+          }
+        }) => {
+          meta: Array<Record<string, string>>
+        }
+      }
+    }).options.head({
+      loaderData: {
+        locale: 'en-US',
+        googleSiteVerification: 'google-verification-token',
+        bingSiteVerification: 'bing-verification-token',
+      },
+    })
+
+    expect(head.meta).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        name: 'google-site-verification',
+        content: 'google-verification-token',
+      }),
+      expect.objectContaining({
+        name: 'msvalidate.01',
+        content: 'bing-verification-token',
+      }),
     ]))
   })
 

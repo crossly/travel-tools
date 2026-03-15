@@ -16,12 +16,17 @@ export const Route = createRootRoute({
   loader: () => loadRootPageData(),
   head: ({ loaderData }) => {
     const locale = loaderData?.locale ?? 'en-US'
+    const googleSiteVerification = loaderData?.googleSiteVerification?.trim() || null
+    const bingSiteVerification = loaderData?.bingSiteVerification?.trim() || null
+
     return {
       meta: [
         { charSet: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { title: buildDocumentTitle(locale) },
         { name: 'description', content: translate(locale, 'site.homeDescription') },
+        ...(googleSiteVerification ? [{ name: 'google-site-verification', content: googleSiteVerification }] : []),
+        ...(bingSiteVerification ? [{ name: 'msvalidate.01', content: bingSiteVerification }] : []),
       ],
       links: [
         { rel: 'stylesheet', href: appCss },
