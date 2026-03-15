@@ -50,7 +50,7 @@ function wrapText(value: string, options: { maxChars: number; maxLines: number }
 
 export { buildOgImageUrl }
 
-export function serveOgImage(request: Request) {
+export function serveOgImage(request: Request, options?: { headOnly?: boolean }) {
   const url = new URL(request.url)
   const variant = url.searchParams.get('variant')?.trim() || 'default'
   const brand = url.searchParams.get('brand')?.trim() || 'Route Crate'
@@ -105,7 +105,7 @@ export function serveOgImage(request: Request) {
     '</svg>',
   ].join('\n')
 
-  return new Response(body, {
+  return new Response(options?.headOnly ? null : body, {
     headers: {
       'content-type': 'image/svg+xml; charset=utf-8',
       'cache-control': 'public, max-age=86400, s-maxage=86400',

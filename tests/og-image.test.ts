@@ -45,4 +45,17 @@ describe('og image rendering', () => {
     expect(body).toContain('Country pack')
     expect(body).not.toContain('Tool spotlight')
   })
+
+  it('returns svg headers without a body for head-style responses', async () => {
+    const request = new Request(
+      'https://www.routecrate.com/api/og-image?locale=en-US&variant=tool&brand=Route%20Crate&title=Currency%20Converter&description=Travel%20currency%20converter',
+    )
+
+    const response = await serveOgImage(request, { headOnly: true })
+
+    expect(response.status).toBe(200)
+    expect(response.headers.get('content-type')).toBe('image/svg+xml; charset=utf-8')
+    expect(response.headers.get('cache-control')).toBe('public, max-age=86400, s-maxage=86400')
+    expect(await response.text()).toBe('')
+  })
 })
