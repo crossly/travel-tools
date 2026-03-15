@@ -50,4 +50,9 @@ describe('site helpers', () => {
   it('falls back to accept-language when no locale cookie exists', () => {
     expect(resolveRequestLocale(null, 'en-US,en;q=0.9')).toBe('en-US')
   })
+
+  it('respects accept-language priority instead of matching by substring order', () => {
+    expect(resolveRequestLocale(null, 'en-US,en;q=0.9,zh-CN;q=0.1')).toBe('en-US')
+    expect(resolveRequestLocale(null, 'fr-FR,zh-CN;q=0.8,en-US;q=0.7')).toBe('zh-CN')
+  })
 })

@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import { type output as Output } from 'zod/v4-mini'
 import { AppShell } from '@/components/app/app-shell'
 import { InlineStatus } from '@/components/app/inline-status'
+import { LocaleSwitcher } from '@/components/app/locale-switcher'
 import { ThemeToggle } from '@/components/app/theme-toggle'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -90,15 +91,26 @@ export function SettingsPage({ locale }: { locale: Locale }) {
 
   return (
     <AppShell locale={locale} title={t('settings.title')} activeTool={undefined}>
-      <Card>
-        <CardHeader>
-          <CardTitle>{t('settings.appearance')}</CardTitle>
-          <CardDescription>{t('settings.theme')}</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <ThemeToggle className="min-w-[10rem]" />
-        </CardContent>
-      </Card>
+      <div className="grid gap-4 xl:grid-cols-2">
+        <Card>
+          <CardHeader>
+            <CardTitle>{t('settings.language')}</CardTitle>
+            <CardDescription>{t('settings.language')}</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <LocaleSwitcher className="min-w-[10rem]" />
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle>{t('settings.appearance')}</CardTitle>
+            <CardDescription>{t('settings.theme')}</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ThemeToggle className="min-w-[10rem]" />
+          </CardContent>
+        </Card>
+      </div>
 
       <div className="grid gap-4 xl:grid-cols-2">
         <Card>

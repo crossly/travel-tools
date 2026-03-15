@@ -11,6 +11,10 @@ vi.mock('@/components/app/theme-toggle', () => ({
   ThemeToggle: () => createElement('div', null, 'theme-toggle'),
 }))
 
+vi.mock('@/components/app/locale-switcher', () => ({
+  LocaleSwitcher: () => createElement('div', null, 'locale-switcher'),
+}))
+
 const exportTrip = vi.fn()
 const importTrip = vi.fn()
 const createObjectURL = vi.fn(() => 'blob:mock')
@@ -32,6 +36,7 @@ vi.mock('@/lib/i18n', () => ({
   useI18n: () => ({
     t: (key: string) => ({
       'settings.title': '设置',
+      'settings.language': '语言',
       'settings.appearance': '外观',
       'settings.theme': '主题',
       'settings.exportCurrentTrip': '导出当前行程',
@@ -64,6 +69,8 @@ describe('SettingsPage', () => {
     const { SettingsPage } = await import('@/features/site/settings-page')
 
     render(createElement(SettingsPage, { locale: 'zh-CN' }))
+    expect(screen.getByRole('heading', { name: '语言' })).toBeTruthy()
+    expect(screen.getByText('locale-switcher')).toBeTruthy()
     fireEvent.click(screen.getByRole('button', { name: '导入' }))
 
     expect(await screen.findByText('错误:MISSING_IMPORT_CONTENT')).toBeTruthy()

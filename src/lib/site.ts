@@ -108,11 +108,37 @@ export function resolveLocaleFromCookie(cookieHeader: string | null | undefined)
   return isLocale(locale) ? locale : null
 }
 
+function resolvePreferredLocaleTag(tag: string): Locale | null {
+  const normalized = tag.trim().toLowerCase()
+  if (!normalized) return null
+  if (normalized.startsWith('zh')) return 'zh-CN'
+  if (normalized.startsWith('en')) return 'en-US'
+  return null
+}
+
 export function resolveLocaleFromAcceptLanguage(acceptLanguage: string | null | undefined): Locale | null {
   if (!acceptLanguage) return null
-  const normalized = acceptLanguage.toLowerCase()
-  if (normalized.includes('zh')) return 'zh-CN'
-  if (normalized.includes('en')) return 'en-US'
+
+  const preferences = acceptLanguage
+    .split(',')
+    .map((entry, index) => {
+      const [rawTag, ...params] = entry.trim().split(';')
+      const qParam = params.find((param) => param.trim().startsWith('q='))
+      const qValue = qParam ? Number.parseFloat(qParam.split('=')[1] ?? '') : 1
+
+      return {
+        index,
+        locale: resolvePreferredLocaleTag(rawTag ?? ''),
+        quality: Number.isFinite(qValue) ? qValue : 0,
+      }
+    })
+    .filter((entry) => entry.locale && entry.quality > 0)
+    .sort((left, right) => right.quality - left.quality || left.index - right.index)
+
+  if (preferences.length) {
+    return preferences[0].locale ?? null
+  }
+
   return null
 }
 

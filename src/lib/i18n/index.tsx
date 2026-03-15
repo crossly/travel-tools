@@ -494,6 +494,29 @@ const messages: Messages = {
   },
 }
 
+export function validateMessageCatalog() {
+  const defaultKeys = new Set(Object.keys(messages[DEFAULT_LOCALE]))
+  const issues: string[] = []
+
+  for (const locale of Object.keys(messages) as Locale[]) {
+    const localeKeys = new Set(Object.keys(messages[locale]))
+
+    for (const key of defaultKeys) {
+      if (!localeKeys.has(key)) {
+        issues.push(`${locale}: missing "${key}"`)
+      }
+    }
+
+    for (const key of localeKeys) {
+      if (!defaultKeys.has(key)) {
+        issues.push(`${locale}: unexpected "${key}"`)
+      }
+    }
+  }
+
+  return issues.sort()
+}
+
 export function interpolate(template: string, values?: TranslationValues) {
   if (!values) return template
   return template.replace(/\{(\w+)\}/g, (_, key) => String(values[key] ?? ''))
