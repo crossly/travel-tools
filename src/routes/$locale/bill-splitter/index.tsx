@@ -13,6 +13,8 @@ export const Route = createFileRoute('/$locale/bill-splitter/')({
       locale,
       title: translate(locale, 'split.title'),
       description: translate(locale, 'split.description'),
+      keywords: translate(locale, 'split.keywords').split(','),
+      ogImageVariant: 'tool',
       pathname: '/bill-splitter',
       structuredData: 'software',
     })

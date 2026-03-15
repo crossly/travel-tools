@@ -2,6 +2,7 @@ import { parseCookieHeader } from './cookie'
 import type { Locale, ToolDefinition } from './types'
 
 export const APP_NAME = 'Route Crate'
+export const SITE_ORIGIN = 'https://www.routecrate.com'
 export const DEFAULT_LOCALE: Locale = 'en-US'
 export const SUPPORTED_LOCALES: Locale[] = ['en-US', 'zh-CN']
 const LOCALE_SLUGS: Record<Locale, string> = {

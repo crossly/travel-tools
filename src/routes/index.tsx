@@ -10,7 +10,7 @@ export const Route = createFileRoute('/')({
     const locale = loaderData?.locale ?? 'en-US'
     return buildRootAliasHead({
       locale,
-      title: translate(locale, 'site.homeTitle'),
+      title: translate(locale, 'app.name'),
       description: translate(locale, 'site.homeDescription'),
     })
   },

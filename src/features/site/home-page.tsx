@@ -25,7 +25,9 @@ export function HomePage({ locale }: { locale: Locale }) {
             <p className="hero-eyebrow text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">
               {t('site.heroEyebrow')}
             </p>
-            <CardTitle className="max-w-3xl text-4xl leading-tight sm:text-5xl">{t('site.heroTitle')}</CardTitle>
+            <h1 className="display max-w-3xl text-4xl leading-tight font-semibold tracking-tight sm:text-5xl">
+              {t('site.heroTitle')}
+            </h1>
             <CardDescription className="max-w-2xl text-base leading-7 sm:text-lg">
               {t('site.heroDescription')}
             </CardDescription>

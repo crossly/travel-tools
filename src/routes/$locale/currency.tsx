@@ -13,6 +13,8 @@ export const Route = createFileRoute('/$locale/currency')({
       locale,
       title: translate(locale, 'currency.title'),
       description: translate(locale, 'currency.description'),
+      keywords: translate(locale, 'currency.keywords').split(','),
+      ogImageVariant: 'tool',
       pathname: '/currency',
       structuredData: 'software',
     })

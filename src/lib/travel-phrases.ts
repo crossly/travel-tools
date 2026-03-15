@@ -145,6 +145,30 @@ function buildCountryTeaser(locale: Locale, description: string, teaser?: Locali
   return teaser?.[locale] ?? description
 }
 
+function buildCountrySeoKeywords(locale: Locale, country: string, languageName: string) {
+  const keywords = locale === 'zh-CN'
+    ? [
+        `${country}旅行短语`,
+        `${country}旅游短语`,
+        `${languageName}旅行短语`,
+        `${country}点餐短语`,
+        `${country}酒店短语`,
+        `${country}交通短语`,
+        `${country}应急短语`,
+      ]
+    : [
+        `${country} travel phrases`,
+        `${languageName} travel phrases`,
+        `${country} phrase cards`,
+        `${country} restaurant phrases`,
+        `${country} hotel phrases`,
+        `${country} transport phrases`,
+        `${country} emergency phrases`,
+      ]
+
+  return [...new Set(keywords)]
+}
+
 function mapExtraPhrase(locale: Locale, entry: RawLocalizedPhraseEntry): PhraseCard {
   return {
     id: entry.id,
@@ -329,17 +353,19 @@ export async function getPhraseCountryPack(locale: Locale, country: string): Pro
 
   const countryName = pack.country[locale]
   const description = buildCountryDescription(locale, countryName, pack.description)
+  const languageName = pack.languageName[locale]
 
   return {
     country: countryName,
     slug: pack.slug,
     region: pack.region,
-    languageName: pack.languageName[locale],
+    languageName,
     languageCode: pack.languageCode,
     flag: pack.flag,
     title: buildCountryTitle(locale, countryName),
     description,
     seoDescription: description,
+    seoKeywords: buildCountrySeoKeywords(locale, countryName, languageName),
     teaser: buildCountryTeaser(locale, description, pack.teaser),
     intro: buildCountryIntro(locale, description, pack.intro),
     travelTips: pack.travelTips?.[locale] ?? [],

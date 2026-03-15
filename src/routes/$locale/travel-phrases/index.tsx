@@ -19,6 +19,12 @@ export const Route = createFileRoute('/$locale/travel-phrases/')({
       locale,
       title: translate(locale, 'phrases.title'),
       description: translate(locale, 'phrases.description'),
+      keywords: translate(locale, 'phrases.keywords').split(','),
+      ogImageVariant: 'tool',
+      breadcrumbs: [
+        { name: translate(locale, 'nav.home'), path: '/' },
+        { name: translate(locale, 'phrases.title'), path: '/travel-phrases' },
+      ],
       pathname: '/travel-phrases',
       structuredData: 'website',
     })

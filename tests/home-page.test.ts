@@ -18,13 +18,16 @@ vi.mock('@/lib/storage', () => ({
 vi.mock('@/lib/i18n', () => ({
   useI18n: () => ({
     t: (key: string) => ({
-      'site.homeTitle': '旅行中真正常用的小工具',
-      'site.homeDescription': '统一壳、统一交互、统一主题。首发汇率换算、旅行短语卡和旅行 AA。',
+      'site.homeTitle': '旅行箱',
+      'site.homeDescription': '旅行中真正常用的小工具：汇率换算、旅行短语卡、AA 记账。适合弱网、移动端和多币种出行场景。',
       'site.tagline': '旅行箱',
-      'site.heroTitle': '把旅行里的高频判断，装进一个随手可用的小站',
-      'site.heroDescription': '在信号不稳、时间很赶、币种很杂的时候，也能快速看清数字、继续记账、完成结算。',
+      'site.heroTitle': '旅行常用的汇率、短语和 AA 记账工具',
+      'site.heroDescription': '一个站解决旅行中的汇率换算、现场沟通和多人分账，弱网和移动端也能顺手使用。',
       'site.heroEyebrow': '为移动中和弱网场景而做',
       'site.heroHighlights': '弱网优先 · 多币种 · 移动端顺手',
+      'site.heroLabelRate': '汇率',
+      'site.heroLabelSplit': 'AA 记账',
+      'site.heroLabelSettle': '结算',
       'site.exploreTools': '查看工具',
       'site.currencyPreview': '实时汇率，适合付款前快速确认',
       'site.phrasesPreview': '常用短语卡片，带发音，适合现场出示和播放',
@@ -57,8 +60,8 @@ describe('HomePage', () => {
 
     render(createElement(HomePage, { locale: 'zh-CN' }))
 
-    expect(screen.getByText('把旅行里的高频判断，装进一个随手可用的小站')).toBeTruthy()
-    expect(screen.getByText('在信号不稳、时间很赶、币种很杂的时候，也能快速看清数字、继续记账、完成结算。')).toBeTruthy()
+    expect(screen.getByRole('heading', { level: 1, name: '旅行常用的汇率、短语和 AA 记账工具' })).toBeTruthy()
+    expect(screen.getByText('一个站解决旅行中的汇率换算、现场沟通和多人分账，弱网和移动端也能顺手使用。')).toBeTruthy()
     expect(screen.getByText('弱网优先 · 多币种 · 移动端顺手')).toBeTruthy()
     expect(screen.getByText('6 人 · 2 个币种')).toBeTruthy()
   })

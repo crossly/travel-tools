@@ -28,6 +28,13 @@ export const Route = createFileRoute('/$locale/travel-phrases/$country')({
       locale,
       title: loaderData.pack.title,
       description: loaderData.pack.description,
+      keywords: loaderData.pack.seoKeywords,
+      ogImageVariant: 'country',
+      breadcrumbs: [
+        { name: translate(locale, 'nav.home'), path: '/' },
+        { name: translate(locale, 'phrases.title'), path: '/travel-phrases' },
+        { name: loaderData.pack.country, path: `/travel-phrases/${loaderData.pack.slug}` },
+      ],
       pathname: `/travel-phrases/${loaderData.pack.slug}`,
       structuredData: 'website',
       extraStructuredData: loaderData.pack.faq.length ? [

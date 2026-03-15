@@ -9,8 +9,10 @@ export const Route = createFileRoute('/$locale/')({
     const locale = resolveLocaleSegment(params.locale) ?? DEFAULT_LOCALE
     return buildPublicPageHead({
       locale,
-      title: translate(locale, 'site.homeTitle'),
+      title: translate(locale, 'app.name'),
       description: translate(locale, 'site.homeDescription'),
+      keywords: translate(locale, 'site.homeKeywords').split(','),
+      ogImageVariant: 'home',
       pathname: '/',
       xDefaultPath: '/',
       structuredData: 'website',

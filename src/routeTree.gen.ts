@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as LocaleRouteRouteImport } from './routes/$locale/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LocaleIndexRouteImport } from './routes/$locale/index'
+import { Route as ApiOgImageRouteImport } from './routes/api/og-image'
 import { Route as LocaleSettingsRouteImport } from './routes/$locale/settings'
 import { Route as LocaleCurrencyRouteImport } from './routes/$locale/currency'
 import { Route as LocaleTravelPhrasesIndexRouteImport } from './routes/$locale/travel-phrases/index'
@@ -51,6 +52,11 @@ const LocaleIndexRoute = LocaleIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => LocaleRouteRoute,
+} as any)
+const ApiOgImageRoute = ApiOgImageRouteImport.update({
+  id: '/api/og-image',
+  path: '/api/og-image',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const LocaleSettingsRoute = LocaleSettingsRouteImport.update({
   id: '/settings',
@@ -194,6 +200,7 @@ export interface FileRoutesByFullPath {
   '/$locale': typeof LocaleRouteRouteWithChildren
   '/$locale/currency': typeof LocaleCurrencyRoute
   '/$locale/settings': typeof LocaleSettingsRoute
+  '/api/og-image': typeof ApiOgImageRoute
   '/$locale/': typeof LocaleIndexRoute
   '/$locale/bill-splitter/$tripId': typeof LocaleBillSplitterTripIdRouteRouteWithChildren
   '/$locale/travel-phrases/$country': typeof LocaleTravelPhrasesCountryRoute
@@ -222,6 +229,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$locale/currency': typeof LocaleCurrencyRoute
   '/$locale/settings': typeof LocaleSettingsRoute
+  '/api/og-image': typeof ApiOgImageRoute
   '/$locale': typeof LocaleIndexRoute
   '/$locale/travel-phrases/$country': typeof LocaleTravelPhrasesCountryRoute
   '/api/fx/detect': typeof ApiFxDetectRoute
@@ -251,6 +259,7 @@ export interface FileRoutesById {
   '/$locale': typeof LocaleRouteRouteWithChildren
   '/$locale/currency': typeof LocaleCurrencyRoute
   '/$locale/settings': typeof LocaleSettingsRoute
+  '/api/og-image': typeof ApiOgImageRoute
   '/$locale/': typeof LocaleIndexRoute
   '/$locale/bill-splitter/$tripId': typeof LocaleBillSplitterTripIdRouteRouteWithChildren
   '/$locale/travel-phrases/$country': typeof LocaleTravelPhrasesCountryRoute
@@ -282,6 +291,7 @@ export interface FileRouteTypes {
     | '/$locale'
     | '/$locale/currency'
     | '/$locale/settings'
+    | '/api/og-image'
     | '/$locale/'
     | '/$locale/bill-splitter/$tripId'
     | '/$locale/travel-phrases/$country'
@@ -310,6 +320,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$locale/currency'
     | '/$locale/settings'
+    | '/api/og-image'
     | '/$locale'
     | '/$locale/travel-phrases/$country'
     | '/api/fx/detect'
@@ -338,6 +349,7 @@ export interface FileRouteTypes {
     | '/$locale'
     | '/$locale/currency'
     | '/$locale/settings'
+    | '/api/og-image'
     | '/$locale/'
     | '/$locale/bill-splitter/$tripId'
     | '/$locale/travel-phrases/$country'
@@ -366,6 +378,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   LocaleRouteRoute: typeof LocaleRouteRouteWithChildren
+  ApiOgImageRoute: typeof ApiOgImageRoute
   ApiFxDetectRoute: typeof ApiFxDetectRoute
   ApiFxRatesRoute: typeof ApiFxRatesRoute
   ApiSiteHealthRoute: typeof ApiSiteHealthRoute
@@ -397,6 +410,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/$locale/'
       preLoaderRoute: typeof LocaleIndexRouteImport
       parentRoute: typeof LocaleRouteRoute
+    }
+    '/api/og-image': {
+      id: '/api/og-image'
+      path: '/api/og-image'
+      fullPath: '/api/og-image'
+      preLoaderRoute: typeof ApiOgImageRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/$locale/settings': {
       id: '/$locale/settings'
@@ -659,6 +679,7 @@ const ApiSplitBillTripsTripIdRouteWithChildren =
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   LocaleRouteRoute: LocaleRouteRouteWithChildren,
+  ApiOgImageRoute: ApiOgImageRoute,
   ApiFxDetectRoute: ApiFxDetectRoute,
   ApiFxRatesRoute: ApiFxRatesRoute,
   ApiSiteHealthRoute: ApiSiteHealthRoute,

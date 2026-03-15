@@ -1,10 +1,7 @@
 import { buildDocumentTitle, translate } from '@/lib/i18n'
-import { DEFAULT_LOCALE, SUPPORTED_LOCALES, getLocalizedPath } from '@/lib/site'
+import { buildOgImageUrl } from '@/lib/og-image'
+import { DEFAULT_LOCALE, SITE_ORIGIN, SUPPORTED_LOCALES, getLocalizedPath } from '@/lib/site'
 import type { Locale } from '@/lib/types'
-
-export const SITE_ORIGIN = 'https://www.routecrate.com'
-
-const OG_IMAGE_PATH = '/og-image.svg'
 
 type HeadLink = {
   rel: string
@@ -24,6 +21,9 @@ type PublicPageHeadOptions = {
   locale: Locale
   title: string
   description: string
+  keywords?: string[]
+  ogImageVariant?: 'default' | 'home' | 'tool' | 'country'
+  breadcrumbs?: Array<{ name: string; path: string }>
   pathname: string
   xDefaultPath?: string
   ogType?: 'website' | 'article'
@@ -79,14 +79,35 @@ function buildPublisher(locale: Locale) {
   }
 }
 
+function buildBreadcrumbStructuredData(locale: Locale, items: Array<{ name: string; path: string }>) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: absoluteUrl(getLocalizedPath(locale, item.path)),
+    })),
+  }
+}
+
 function buildStructuredData(
   locale: Locale,
   title: string,
   description: string,
   canonicalUrl: string,
   kind: NonNullable<PublicPageHeadOptions['structuredData']>,
+  ogImageVariant: NonNullable<PublicPageHeadOptions['ogImageVariant']>,
 ) {
   const publisher = buildPublisher(locale)
+  const image = buildOgImageUrl({
+    locale,
+    variant: ogImageVariant,
+    brand: translate(locale, 'app.name'),
+    title,
+    description,
+  })
 
   if (kind === 'software') {
     return [
@@ -96,7 +117,7 @@ function buildStructuredData(
         name: title,
         description,
         url: canonicalUrl,
-        image: absoluteUrl(OG_IMAGE_PATH),
+        image,
         inLanguage: locale,
         applicationCategory: 'TravelApplication',
         operatingSystem: 'Web',
@@ -126,7 +147,7 @@ function buildStructuredData(
       description,
       url: canonicalUrl,
       inLanguage: locale,
-      image: absoluteUrl(OG_IMAGE_PATH),
+      image,
       publisher,
     },
   ]
@@ -136,6 +157,9 @@ export function buildPublicPageHead({
   locale,
   title,
   description,
+  keywords,
+  ogImageVariant = 'default',
+  breadcrumbs,
   pathname,
   xDefaultPath,
   ogType = 'website',
@@ -143,9 +167,18 @@ export function buildPublicPageHead({
   extraStructuredData,
 }: PublicPageHeadOptions): HeadDefinition {
   const canonicalUrl = absoluteUrl(getLocalizedPath(locale, pathname))
+  const imageAlt = buildDocumentTitle(locale, title)
+  const imageUrl = buildOgImageUrl({
+    locale,
+    variant: ogImageVariant,
+    brand: translate(locale, 'app.name'),
+    title,
+    description,
+  })
   const meta: HeadMeta[] = [
     { title: buildDocumentTitle(locale, title) },
     { name: 'description', content: description },
+    ...(keywords?.length ? [{ name: 'keywords', content: keywords.join(',') }] : []),
     { name: 'robots', content: 'index, follow' },
     { property: 'og:type', content: ogType },
     { property: 'og:site_name', content: translate(locale, 'app.name') },
@@ -153,17 +186,23 @@ export function buildPublicPageHead({
     { property: 'og:title', content: buildDocumentTitle(locale, title) },
     { property: 'og:description', content: description },
     { property: 'og:url', content: canonicalUrl },
-    { property: 'og:image', content: absoluteUrl(OG_IMAGE_PATH) },
+    { property: 'og:image', content: imageUrl },
+    { property: 'og:image:alt', content: imageAlt },
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: buildDocumentTitle(locale, title) },
     { name: 'twitter:description', content: description },
-    { name: 'twitter:image', content: absoluteUrl(OG_IMAGE_PATH) },
+    { name: 'twitter:image', content: imageUrl },
+    { name: 'twitter:image:alt', content: imageAlt },
   ]
 
   if (structuredData) {
-    for (const item of buildStructuredData(locale, title, description, canonicalUrl, structuredData)) {
+    for (const item of buildStructuredData(locale, title, description, canonicalUrl, structuredData, ogImageVariant)) {
       meta.push({ 'script:ld+json': item })
     }
+  }
+
+  if (breadcrumbs?.length) {
+    meta.push({ 'script:ld+json': buildBreadcrumbStructuredData(locale, breadcrumbs) })
   }
 
   if (extraStructuredData?.length) {
