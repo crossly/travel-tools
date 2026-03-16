@@ -1,6 +1,5 @@
 import { createFileRoute, lazyRouteComponent } from '@tanstack/react-router'
-import { translate } from '@/lib/i18n'
-import { buildPublicPageHead } from '@/lib/seo'
+import { buildToolRouteHead } from '@/lib/seo'
 import { DEFAULT_LOCALE, resolveLocaleSegment } from '@/lib/site'
 
 const LocalAppsHomeRouteComponent = lazyRouteComponent(
@@ -22,10 +21,11 @@ export const Route = createFileRoute('/$locale/local-apps/')({
   },
   head: ({ params }) => {
     const locale = resolveLocaleSegment(params.locale) ?? DEFAULT_LOCALE
-    return buildPublicPageHead({
+    return buildToolRouteHead({
       locale,
-      title: translate(locale, 'localApps.title'),
-      description: translate(locale, 'localApps.description'),
+      titleKey: 'localApps.title',
+      descriptionKey: 'localApps.description',
+      keywordsKey: 'localApps.keywords',
       pathname: '/local-apps',
       structuredData: 'website',
     })

@@ -3,7 +3,8 @@ import type { Messages } from '@/lib/i18n/types'
 export const localAppsMessages: Messages = {
   "zh-CN": {
     "localApps.title": "本地 App",
-    "localApps.description": "按国家整理衣食住行更值得先装的本地 App、官方入口和下载地址。先把打车、地图、购物、探店、外卖和住宿这些高频动作准备好。",
+    "localApps.description": "按国家整理更值得先装的本地 App、官方入口和下载地址，优先覆盖交通、吃饭、购物、地图和住宿这些最常用场景。",
+    "localApps.keywords": "本地旅行App,国家App指南,旅行下载入口,打车地图外卖App,官方App链接",
     "localApps.summaryBadge": "先装对入口",
     "localApps.summaryTitle": "先把国家里真正常用的 app 装对",
     "localApps.summaryDescription": "这个工具不会做模糊的榜单，只保留更确定的本地入口、官方地址和一句可执行建议。国家列表同步自短语模块，详情页只开放已经校验过链接的国家。",
@@ -46,7 +47,8 @@ export const localAppsMessages: Messages = {
   },
   "en-US": {
     "localApps.title": "Local Apps",
-    "localApps.description": "Country-based local app picks with official links and download addresses. Start with the layers that usually matter first on the ground: rides, maps, shopping, food discovery, delivery, and stays.",
+    "localApps.description": "Country-based picks for the local apps worth installing first for transport, food, shopping, maps, and stays, with official download links.",
+    "localApps.keywords": "local travel apps,country app guide,travel app downloads,rides maps food apps,official local app links",
     "localApps.summaryBadge": "Install the right defaults",
     "localApps.summaryTitle": "Set up the apps that actually matter in each country",
     "localApps.summaryDescription": "This tool is not a vague app ranking. It keeps only the more certain local defaults, official links, and one actionable recommendation. The country roster syncs from travel phrases, while detail pages open only after the links are checked.",

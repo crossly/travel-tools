@@ -8,6 +8,8 @@ import { FieldGroup } from '@/components/app/field-group'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import {
   countPackingProgress,
   createCustomPackingItem,
@@ -18,19 +20,12 @@ import {
   replacePackingSection,
 } from '@/lib/packing-list'
 import { useI18n } from '@/lib/i18n'
-import {
-  clearActivePackingListId,
-  readActivePackingListId,
-  readPackingLists,
-  writeActivePackingListId,
-  writeLastTool,
-  writePackingLists,
-} from '@/lib/storage'
+import { writeLastTool } from '@/lib/storage'
 import { cn } from '@/lib/utils'
 import type { Locale, PackingList, PackingSectionId } from '@/lib/types'
+import { usePackingLists } from './use-packing-lists'
 
 const sectionIds: PackingSectionId[] = ['documents', 'clothing', 'toiletries', 'electronics', 'medicine', 'misc']
-const PACKING_PERSIST_DELAY_MS = 250
 
 function createEmptyDrafts() {
   return {
@@ -46,42 +41,16 @@ function createEmptyDrafts() {
 export function PackingListPage({ locale }: { locale: Locale }) {
   const { t } = useI18n()
   const templates = listPackingTemplates()
-  const [lists, setLists] = useState<PackingList[]>([])
-  const [activeListId, setActiveListId] = useState<string | null>(null)
+  const { activeList, activeListId, lists, setActiveListId, setLists } = usePackingLists()
   const [selectedTemplateId, setSelectedTemplateId] = useState(templates[0]?.id ?? 'weekend')
   const [newListName, setNewListName] = useState('')
   const [itemDrafts, setItemDrafts] = useState<Record<PackingSectionId, string>>(createEmptyDrafts)
-  const [hydrated, setHydrated] = useState(false)
   const [status, setStatus] = useState<{ tone: 'warning'; title: string; description?: string } | null>(null)
 
   useEffect(() => {
     writeLastTool('packing-list')
-    const storedLists = readPackingLists()
-    const storedActiveId = readActivePackingListId()
-    const nextActiveId = storedLists.find((list) => list.id === storedActiveId)?.id ?? storedLists[0]?.id ?? null
-
-    setLists(storedLists)
-    setActiveListId(nextActiveId)
-    setHydrated(true)
   }, [])
 
-  useEffect(() => {
-    if (!hydrated) return
-    const timeoutId = window.setTimeout(() => {
-      writePackingLists(lists)
-      if (activeListId) {
-        writeActivePackingListId(activeListId)
-      } else {
-        clearActivePackingListId()
-      }
-    }, PACKING_PERSIST_DELAY_MS)
-
-    return () => {
-      window.clearTimeout(timeoutId)
-    }
-  }, [activeListId, hydrated, lists])
-
-  const activeList = lists.find((list) => list.id === activeListId) ?? null
   const stats = countPackingProgress(activeList)
   const essentials = getEssentialPackingItems(activeList)
 
@@ -193,19 +162,25 @@ export function PackingListPage({ locale }: { locale: Locale }) {
           </CardHeader>
           <CardContent className="grid gap-4">
             {lists.length ? (
-              <FieldGroup label={t('packing.currentList')}>
-                <select
-                  value={activeListId ?? ''}
-                  onChange={(event) => setActiveListId(event.target.value || null)}
-                  className="h-11 w-full rounded-xl border border-border bg-[var(--input)] px-3 text-sm text-foreground shadow-sm outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                >
-                  {lists.map((list) => (
-                    <option key={list.id} value={list.id}>
-                      {list.name}
-                    </option>
-                  ))}
-                </select>
-              </FieldGroup>
+              <div className="space-y-2">
+                <Label htmlFor="packing-current-list">{t('packing.currentList')}</Label>
+                <Select value={activeListId ?? undefined} onValueChange={setActiveListId}>
+                  <SelectTrigger
+                    id="packing-current-list"
+                    aria-label={t('packing.currentList')}
+                    className="w-full justify-between rounded-xl px-3 font-medium"
+                  >
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {lists.map((list) => (
+                      <SelectItem key={list.id} value={list.id}>
+                        {list.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
             ) : null}
 
             <div className="grid gap-3 sm:grid-cols-2">

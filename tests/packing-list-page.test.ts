@@ -108,13 +108,15 @@ describe('PackingListPage', () => {
   it('creates a list from a template, updates progress, and removes a custom item', async () => {
     const { PackingListPage } = await import('@/features/packing-list/home-page')
 
-    render(createElement(PackingListPage, { locale: 'en-US' }))
+    const view = render(createElement(PackingListPage, { locale: 'en-US' }))
 
     fireEvent.change(screen.getByLabelText('List name'), { target: { value: 'Tokyo Spring' } })
     fireEvent.click(screen.getByRole('button', { name: 'Create list' }))
 
     expect((await screen.findAllByText('Passport')).length).toBeGreaterThan(0)
-    expect(screen.getByRole('option', { name: 'Tokyo Spring' })).toBeTruthy()
+    expect(screen.getByRole('combobox', { name: 'Current list' }).textContent).toContain('Tokyo Spring')
+    expect(screen.getByRole('combobox', { name: 'Current list' }).tagName).toBe('BUTTON')
+    expect(view.container.querySelector('select')).toBeNull()
 
     fireEvent.click(screen.getAllByRole('button', { name: 'Mark packed' })[0] as HTMLButtonElement)
 

@@ -184,6 +184,7 @@ describe('route heads', () => {
     expect(head.meta).toEqual(expect.arrayContaining([
       expect.objectContaining({ title: 'Jet Lag Reset · Route Crate' }),
       expect.objectContaining({ name: 'description', content: 'A practical recovery plan based on departure, arrival, and local landing time.' }),
+      expect.objectContaining({ name: 'keywords', content: 'jet lag plan,travel jet lag reset,time zone recovery plan,arrival sleep schedule,flight recovery tool' }),
       expect.objectContaining({ property: 'og:url', content: 'https://www.routecrate.com/en-us/jet-lag' }),
     ]))
     expect(head.links).toEqual(expect.arrayContaining([
@@ -207,10 +208,35 @@ describe('route heads', () => {
     expect(head.meta).toEqual(expect.arrayContaining([
       expect.objectContaining({ title: 'Local Apps · Route Crate' }),
       expect.objectContaining({ name: 'description', content: 'Country-based picks for the local apps worth installing first for transport, food, shopping, maps, and stays, with official download links.' }),
+      expect.objectContaining({ name: 'keywords', content: 'local travel apps,country app guide,travel app downloads,rides maps food apps,official local app links' }),
       expect.objectContaining({ property: 'og:url', content: 'https://www.routecrate.com/en-us/local-apps' }),
     ]))
     expect(head.links).toEqual(expect.arrayContaining([
       expect.objectContaining({ rel: 'canonical', href: 'https://www.routecrate.com/en-us/local-apps' }),
+    ]))
+  })
+
+  it('emits public metadata for the packing list page', async () => {
+    const { Route } = await import('@/routes/$locale/packing-list')
+    const head = (Route as unknown as {
+      options: {
+        head: (args: { params: { locale: string } }) => {
+          meta: Array<Record<string, string>>
+          links: Array<Record<string, string>>
+        }
+      }
+    }).options.head({
+      params: { locale: 'en-us' },
+    })
+
+    expect(head.meta).toEqual(expect.arrayContaining([
+      expect.objectContaining({ title: 'Packing List · Route Crate' }),
+      expect.objectContaining({ name: 'description', content: 'Build reusable trip packing lists from templates, track progress, and keep departure essentials visible.' }),
+      expect.objectContaining({ name: 'keywords', content: 'travel packing list,trip packing checklist,packing templates,departure essentials checklist,carry-on packing planner' }),
+      expect.objectContaining({ property: 'og:url', content: 'https://www.routecrate.com/en-us/packing-list' }),
+    ]))
+    expect(head.links).toEqual(expect.arrayContaining([
+      expect.objectContaining({ rel: 'canonical', href: 'https://www.routecrate.com/en-us/packing-list' }),
     ]))
   })
 

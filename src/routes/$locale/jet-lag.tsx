@@ -1,6 +1,5 @@
 import { createFileRoute, lazyRouteComponent } from '@tanstack/react-router'
-import { translate } from '@/lib/i18n'
-import { buildPublicPageHead } from '@/lib/seo'
+import { buildToolRouteHead } from '@/lib/seo'
 import { DEFAULT_LOCALE, resolveLocaleSegment } from '@/lib/site'
 
 const JetLagRouteComponent = lazyRouteComponent(
@@ -11,10 +10,11 @@ const JetLagRouteComponent = lazyRouteComponent(
 export const Route = createFileRoute('/$locale/jet-lag')({
   head: ({ params }) => {
     const locale = resolveLocaleSegment(params.locale) ?? DEFAULT_LOCALE
-    return buildPublicPageHead({
+    return buildToolRouteHead({
       locale,
-      title: translate(locale, 'jetLag.title'),
-      description: translate(locale, 'jetLag.description'),
+      titleKey: 'jetLag.title',
+      descriptionKey: 'jetLag.description',
+      keywordsKey: 'jetLag.keywords',
       pathname: '/jet-lag',
       structuredData: 'software',
     })

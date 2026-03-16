@@ -3,7 +3,8 @@ import type { Messages } from '@/lib/i18n/types'
 export const packingMessages: Messages = {
   "zh-CN": {
     "packing.title": "行李清单",
-    "packing.description": "按模板创建打包清单，勾选进度，并把真正重要的出发物品留在眼前。",
+    "packing.description": "用模板快速搭出可复用的行李清单，跟踪打包进度，并把出发前最关键的物品单独拎出来。",
+    "packing.keywords": "旅行行李清单,出行打包清单,打包模板,出发前必带清单,随身行李规划",
     "packing.createTitle": "新建清单",
     "packing.createDescription": "先选模板，再给这次出行起一个名字。",
     "packing.currentList": "当前清单",
@@ -108,7 +109,8 @@ export const packingMessages: Messages = {
   },
   "en-US": {
     "packing.title": "Packing List",
-    "packing.description": "Create reusable packing lists from templates, track progress, and keep the last-minute essentials visible.",
+    "packing.description": "Build reusable trip packing lists from templates, track progress, and keep departure essentials visible.",
+    "packing.keywords": "travel packing list,trip packing checklist,packing templates,departure essentials checklist,carry-on packing planner",
     "packing.createTitle": "Create a list",
     "packing.createDescription": "Pick a template first, then name this trip.",
     "packing.currentList": "Current list",

@@ -43,6 +43,13 @@ type RootAliasHeadOptions = {
   description: string
 }
 
+type ToolRouteHeadOptions = Omit<PublicPageHeadOptions, 'title' | 'description' | 'keywords'> & {
+  locale: Locale
+  titleKey: string
+  descriptionKey: string
+  keywordsKey?: string
+}
+
 export function absoluteUrl(pathname: string) {
   return new URL(pathname.startsWith('/') ? pathname : `/${pathname}`, SITE_ORIGIN).toString()
 }
@@ -218,6 +225,24 @@ export function buildPublicPageHead({
       ...buildAlternateLinks(pathname, xDefaultPath),
     ],
   }
+}
+
+export function buildToolRouteHead({
+  locale,
+  titleKey,
+  descriptionKey,
+  keywordsKey,
+  ogImageVariant = 'tool',
+  ...options
+}: ToolRouteHeadOptions): HeadDefinition {
+  return buildPublicPageHead({
+    locale,
+    title: translate(locale, titleKey),
+    description: translate(locale, descriptionKey),
+    keywords: keywordsKey ? translate(locale, keywordsKey).split(',') : undefined,
+    ogImageVariant,
+    ...options,
+  })
 }
 
 export function buildPrivatePageHead({ locale, title, description }: PrivatePageHeadOptions): HeadDefinition {
