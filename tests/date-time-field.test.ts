@@ -54,6 +54,7 @@ describe('DateTimeField', () => {
     render(createElement(Wrapper))
 
     expect(screen.queryByLabelText('Departure time')).toBeNull()
+    expect(screen.getByRole('button', { name: /march 11.*09:15/i }).className).toContain('min-h-11')
 
     fireEvent.click(screen.getByRole('button', { name: /march 11.*09:15/i }))
     expect(screen.queryByLabelText('Departure time')).toBeNull()
@@ -70,6 +71,8 @@ describe('DateTimeField', () => {
 
     screen.getByRole('combobox', { name: 'Departure time minute' }).focus()
     fireEvent.keyDown(screen.getByRole('combobox', { name: 'Departure time minute' }), { key: 'ArrowDown' })
+    const minuteListbox = await screen.findByRole('listbox')
+    expect(minuteListbox.closest('[class*="max-h-64"]')).toBeTruthy()
     fireEvent.click(await screen.findByRole('option', { name: '45' }))
 
     expect(onChange).toHaveBeenCalledWith('2026-03-21T14:45')

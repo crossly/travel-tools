@@ -1,5 +1,5 @@
 import { Suspense, lazy, useState } from 'react'
-import { CalendarIcon, Clock3 } from 'lucide-react'
+import { CalendarIcon, ChevronDown, Clock3 } from 'lucide-react'
 import { parse, isValid } from 'date-fns'
 import { Button } from '@/components/ui/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
@@ -89,26 +89,27 @@ export function DateTimeField({
           id={id}
           type="button"
           variant="outline"
-          className={cn('h-11 w-full justify-between rounded-xl px-3 text-left font-normal', className)}
+          className={cn('min-h-11 h-auto w-full justify-between rounded-xl px-3 py-2 text-left font-normal whitespace-normal', className)}
           disabled={disabled}
           aria-describedby={ariaDescribedBy}
           aria-invalid={ariaInvalid}
         >
-          <span className="flex min-w-0 items-center gap-3">
-            <CalendarIcon className="h-4 w-4 shrink-0 text-muted-foreground" />
-            <span className="min-w-0">
-              <span className="block truncate text-foreground">
+          <span className="flex min-w-0 items-start gap-3">
+            <CalendarIcon className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" />
+            <span className="min-w-0 space-y-1">
+              <span className="block truncate font-medium text-foreground">
                 {selectedDate ? formatDisplayDate(selectedDate, locale) : copy.emptyDate}
+              </span>
+              <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                <Clock3 className="h-3.5 w-3.5 shrink-0" />
+                <span className="mono">{time}</span>
               </span>
             </span>
           </span>
-          <span className="flex shrink-0 items-center gap-2 rounded-full border border-border/70 bg-muted/60 px-3 py-1.5 text-sm text-muted-foreground">
-            <Clock3 className="h-3.5 w-3.5 shrink-0 text-muted-foreground" />
-            <span className="mono font-medium text-muted-foreground">{time}</span>
-          </span>
+          <ChevronDown className="ml-3 mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[min(24rem,var(--radix-popover-trigger-width))] border-0 bg-transparent p-0 shadow-none">
+      <PopoverContent className="w-[min(26rem,calc(100vw-2rem))] border-0 bg-transparent p-0 shadow-none">
         <div className="rounded-2xl border border-border bg-[var(--surface-floating)] p-2 shadow-2xl">
           <Suspense fallback={<div className="px-3 py-6 text-sm text-muted-foreground">{copy.loading}</div>}>
             <DatePickerPanel
@@ -124,44 +125,54 @@ export function DateTimeField({
               <span>{timeLabel}</span>
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
-              <Select
-                disabled={disabled}
-                value={hour}
-                onValueChange={(nextHour) => onChange(joinDateTimeValue(date, `${nextHour}:${minute}`))}
-              >
-                <SelectTrigger
-                  aria-label={`${timeLabel} ${copy.hour}`}
-                  className="h-11 w-full rounded-xl border-border bg-background px-3 text-left font-medium shadow-none"
+              <label className="space-y-1.5">
+                <span className="block text-xs font-medium uppercase tracking-[0.08em] text-muted-foreground">
+                  {copy.hour}
+                </span>
+                <Select
+                  disabled={disabled}
+                  value={hour}
+                  onValueChange={(nextHour) => onChange(joinDateTimeValue(date, `${nextHour}:${minute}`))}
                 >
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {hourOptions.map((option) => (
-                    <SelectItem key={option} value={option}>
-                      {option}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              <Select
-                disabled={disabled}
-                value={minute}
-                onValueChange={(nextMinute) => onChange(joinDateTimeValue(date, `${hour}:${nextMinute}`))}
-              >
-                <SelectTrigger
-                  aria-label={`${timeLabel} ${copy.minute}`}
-                  className="h-11 w-full rounded-xl border-border bg-background px-3 text-left font-medium shadow-none"
+                  <SelectTrigger
+                    aria-label={`${timeLabel} ${copy.hour}`}
+                    className="h-11 w-full rounded-xl border-border bg-background px-3 text-left font-medium shadow-none"
+                  >
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {hourOptions.map((option) => (
+                      <SelectItem key={option} value={option}>
+                        {option}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </label>
+              <label className="space-y-1.5">
+                <span className="block text-xs font-medium uppercase tracking-[0.08em] text-muted-foreground">
+                  {copy.minute}
+                </span>
+                <Select
+                  disabled={disabled}
+                  value={minute}
+                  onValueChange={(nextMinute) => onChange(joinDateTimeValue(date, `${hour}:${nextMinute}`))}
                 >
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {minuteOptions.map((option) => (
-                    <SelectItem key={option} value={option}>
-                      {option}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+                  <SelectTrigger
+                    aria-label={`${timeLabel} ${copy.minute}`}
+                    className="h-11 w-full rounded-xl border-border bg-background px-3 text-left font-medium shadow-none"
+                  >
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {minuteOptions.map((option) => (
+                      <SelectItem key={option} value={option}>
+                        {option}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </label>
             </div>
           </div>
         </div>
