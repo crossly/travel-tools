@@ -1,9 +1,9 @@
 import { Suspense, lazy, useState } from 'react'
 import { CalendarIcon, Clock3 } from 'lucide-react'
 import { parse, isValid } from 'date-fns'
-import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { cn } from '@/lib/utils'
 import type { Locale } from '@/lib/types'
 
@@ -23,10 +23,14 @@ const pickerCopy = {
   'zh-CN': {
     emptyDate: '选择日期和时间',
     loading: '正在加载日历...',
+    hour: '小时',
+    minute: '分钟',
   },
   'en-US': {
     emptyDate: 'Pick date and time',
     loading: 'Loading calendar...',
+    hour: 'hour',
+    minute: 'minute',
   },
 } as const
 
@@ -58,6 +62,9 @@ function formatDisplayDate(value: Date, locale: Locale) {
   return new Intl.DateTimeFormat(locale, { dateStyle: 'long' }).format(value)
 }
 
+const hourOptions = Array.from({ length: 24 }, (_, index) => String(index).padStart(2, '0'))
+const minuteOptions = Array.from({ length: 60 }, (_, index) => String(index).padStart(2, '0'))
+
 export function DateTimeField({
   id,
   value,
@@ -71,6 +78,7 @@ export function DateTimeField({
 }: DateTimeFieldProps) {
   const [open, setOpen] = useState(false)
   const { date, time } = splitDateTimeValue(value)
+  const [hour, minute] = time.split(':')
   const selectedDate = toDate(date)
   const copy = pickerCopy[locale]
 
@@ -94,14 +102,14 @@ export function DateTimeField({
               </span>
             </span>
           </span>
-          <span className="flex shrink-0 items-center gap-2 rounded-lg border border-border bg-[var(--surface-floating)] px-2.5 py-1 text-sm text-muted-foreground">
-            <Clock3 className="h-3.5 w-3.5" />
-            <span className="mono text-foreground">{time}</span>
+          <span className="flex shrink-0 items-center gap-2 rounded-full border border-border/70 bg-muted/60 px-3 py-1.5 text-sm text-muted-foreground">
+            <Clock3 className="h-3.5 w-3.5 shrink-0 text-muted-foreground" />
+            <span className="mono font-medium text-muted-foreground">{time}</span>
           </span>
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-auto p-2">
-        <div className="space-y-3">
+      <PopoverContent className="w-[min(24rem,var(--radix-popover-trigger-width))] border-0 bg-transparent p-0 shadow-none">
+        <div className="rounded-2xl border border-border bg-[var(--surface-floating)] p-2 shadow-2xl">
           <Suspense fallback={<div className="px-3 py-6 text-sm text-muted-foreground">{copy.loading}</div>}>
             <DatePickerPanel
               locale={locale}
@@ -110,22 +118,51 @@ export function DateTimeField({
               onChange={(nextDate) => onChange(joinDateTimeValue(nextDate, time))}
             />
           </Suspense>
-          <div className="border-t border-border px-2 pt-3">
-            <label className="flex items-center gap-2 text-sm font-medium text-foreground">
+          <div className="space-y-3 border-t border-border px-2 pt-3">
+            <div className="flex items-center gap-2 text-sm font-medium text-foreground">
               <Clock3 className="h-4 w-4 text-muted-foreground" />
               <span>{timeLabel}</span>
-              <Input
-                type="time"
-                step={60}
-                value={time}
-                aria-label={timeLabel}
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              <Select
                 disabled={disabled}
-                aria-describedby={ariaDescribedBy}
-                aria-invalid={ariaInvalid}
-                className="ml-auto w-32"
-                onChange={(event) => onChange(joinDateTimeValue(date, event.target.value))}
-              />
-            </label>
+                value={hour}
+                onValueChange={(nextHour) => onChange(joinDateTimeValue(date, `${nextHour}:${minute}`))}
+              >
+                <SelectTrigger
+                  aria-label={`${timeLabel} ${copy.hour}`}
+                  className="h-11 w-full rounded-xl border-border bg-background px-3 text-left font-medium shadow-none"
+                >
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {hourOptions.map((option) => (
+                    <SelectItem key={option} value={option}>
+                      {option}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <Select
+                disabled={disabled}
+                value={minute}
+                onValueChange={(nextMinute) => onChange(joinDateTimeValue(date, `${hour}:${nextMinute}`))}
+              >
+                <SelectTrigger
+                  aria-label={`${timeLabel} ${copy.minute}`}
+                  className="h-11 w-full rounded-xl border-border bg-background px-3 text-left font-medium shadow-none"
+                >
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {minuteOptions.map((option) => (
+                    <SelectItem key={option} value={option}>
+                      {option}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
           </div>
         </div>
       </PopoverContent>
