@@ -60,6 +60,7 @@ describe('DateTimeField', () => {
     expect(screen.queryByLabelText('Departure time')).toBeNull()
     expect(await screen.findByRole('combobox', { name: 'Departure time hour' })).toBeTruthy()
     expect(screen.getByRole('combobox', { name: 'Departure time minute' })).toBeTruthy()
+    expect(screen.getByRole('combobox', { name: 'Departure time hour' }).closest('label')?.parentElement?.className).not.toContain('sm:grid-cols-2')
 
     fireEvent.click(await screen.findByRole('button', { name: /march 21.*2026/i }))
 

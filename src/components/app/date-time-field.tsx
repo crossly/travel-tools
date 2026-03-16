@@ -109,8 +109,8 @@ export function DateTimeField({
           <ChevronDown className="ml-3 mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[min(26rem,calc(100vw-2rem))] border-0 bg-transparent p-0 shadow-none">
-        <div className="rounded-2xl border border-border bg-[var(--surface-floating)] p-2 shadow-2xl">
+      <PopoverContent className="w-auto max-w-[calc(100vw-2rem)] border-0 bg-transparent p-0 shadow-none">
+        <div className="w-fit max-w-full rounded-2xl border border-border bg-[var(--surface-floating)] p-2 shadow-2xl">
           <Suspense fallback={<div className="px-3 py-6 text-sm text-muted-foreground">{copy.loading}</div>}>
             <DatePickerPanel
               locale={locale}
@@ -124,7 +124,7 @@ export function DateTimeField({
               <Clock3 className="h-4 w-4 text-muted-foreground" />
               <span>{timeLabel}</span>
             </div>
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="space-y-3">
               <label className="space-y-1.5">
                 <span className="block text-xs font-medium uppercase tracking-[0.08em] text-muted-foreground">
                   {copy.hour}
