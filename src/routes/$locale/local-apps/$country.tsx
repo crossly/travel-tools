@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, notFound } from '@tanstack/react-router'
 import { LocalAppsCountryPage } from '@/features/local-apps/country-page'
 import { getLocalAppCountrySummary, getLocalAppGuide } from '@/lib/local-apps'
 import { translate } from '@/lib/i18n'
@@ -8,9 +8,15 @@ import { DEFAULT_LOCALE, resolveLocaleSegment } from '@/lib/site'
 export const Route = createFileRoute('/$locale/local-apps/$country')({
   loader: ({ params }) => {
     const locale = resolveLocaleSegment(params.locale) ?? DEFAULT_LOCALE
+    const summary = getLocalAppCountrySummary(locale, params.country)
+
+    if (!summary) {
+      throw notFound()
+    }
+
     return {
       locale,
-      summary: getLocalAppCountrySummary(locale, params.country),
+      summary,
       guide: getLocalAppGuide(locale, params.country),
     }
   },
@@ -35,10 +41,16 @@ export const Route = createFileRoute('/$locale/local-apps/$country')({
       structuredData: 'website',
     })
   },
+  notFoundComponent: LocalAppsCountryNotFound,
   component: LocalAppsCountryRoute,
 })
 
 function LocalAppsCountryRoute() {
   const { locale, guide, summary } = Route.useLoaderData()
   return <LocalAppsCountryPage locale={locale} guide={guide} summary={summary} />
+}
+
+function LocalAppsCountryNotFound() {
+  const { locale } = Route.useParams()
+  return <LocalAppsCountryPage locale={resolveLocaleSegment(locale) ?? DEFAULT_LOCALE} guide={null} summary={null} />
 }

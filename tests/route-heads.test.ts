@@ -1,3 +1,4 @@
+import { isNotFound } from '@tanstack/react-router'
 import { describe, expect, it, vi } from 'vitest'
 
 vi.mock('@/styles.css?url', () => ({
@@ -250,6 +251,44 @@ describe('route heads', () => {
     expect(head.links).toEqual(expect.arrayContaining([
       expect.objectContaining({ rel: 'canonical', href: 'https://www.routecrate.com/en-us/local-apps/china' }),
     ]))
+  })
+
+  it('throws a real not-found error for unknown local app country routes', async () => {
+    const { Route } = await import('@/routes/$locale/local-apps/$country')
+    let caught: unknown = null
+
+    try {
+      ;(Route as unknown as {
+        options: {
+          loader: (args: { params: { locale: string; country: string } }) => unknown
+        }
+      }).options.loader({
+        params: { locale: 'en-us', country: 'unknown-country' },
+      })
+    } catch (error) {
+      caught = error
+    }
+
+    expect(isNotFound(caught)).toBe(true)
+  })
+
+  it('throws a real not-found error for unknown travel phrase country routes', async () => {
+    const { Route } = await import('@/routes/$locale/travel-phrases/$country')
+    let caught: unknown = null
+
+    try {
+      await (Route as unknown as {
+        options: {
+          loader: (args: { params: { locale: string; country: string } }) => Promise<unknown>
+        }
+      }).options.loader({
+        params: { locale: 'en-us', country: 'unknown-country' },
+      })
+    } catch (error) {
+      caught = error
+    }
+
+    expect(isNotFound(caught)).toBe(true)
   })
 
   it('marks private pages as noindex', async () => {

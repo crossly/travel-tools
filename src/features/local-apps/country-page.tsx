@@ -79,6 +79,14 @@ export function LocalAppsCountryPage({
     }
   }, [])
 
+  const categorySections = useMemo(
+    () => (guide?.categories ?? []).map((category) => ({
+      ...category,
+      label: t(categoryLabelKey[category.id]),
+    })),
+    [guide?.categories, t],
+  )
+
   if (!summary) {
     return (
       <AppShell locale={locale} title={t('localApps.notFoundTitle')} description={t('localApps.notFoundDescription')} activeTool="local-apps">
@@ -122,14 +130,6 @@ export function LocalAppsCountryPage({
       </AppShell>
     )
   }
-
-  const categorySections = useMemo(
-    () => guide.categories.map((category) => ({
-      ...category,
-      label: t(categoryLabelKey[category.id]),
-    })),
-    [guide.categories, t],
-  )
 
   return (
     <AppShell locale={locale} title={guide.title} description={guide.description} activeTool="local-apps" showPageIntro={false}>

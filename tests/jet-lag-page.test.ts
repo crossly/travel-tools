@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
 import { createElement } from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
+import { renderToString } from 'react-dom/server'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import type { JetLagPrefs } from '@/lib/types'
 
@@ -8,13 +9,15 @@ vi.mock('@/components/app/app-shell', () => ({
   AppShell: ({ children }: { children?: React.ReactNode }) => createElement('div', null, children),
 }))
 
-const storedPrefs: JetLagPrefs = {
+const defaultStoredPrefs: JetLagPrefs = {
   originTimeZone: 'Asia/Shanghai',
   destinationTimeZone: 'Europe/Paris',
   departureAt: '2026-01-15T09:00',
   arrivalAt: '2026-01-15T18:00',
   intensity: 'moderate',
 }
+
+let storedPrefs: JetLagPrefs | null = defaultStoredPrefs
 
 const writeJetLagPrefs = vi.fn()
 
@@ -77,7 +80,20 @@ vi.mock('@/lib/i18n', () => ({
 
 describe('JetLagPage', () => {
   beforeEach(() => {
+    storedPrefs = defaultStoredPrefs
     writeJetLagPrefs.mockClear()
+  })
+
+  it('uses deterministic sample defaults during the server render when no prefs are stored', async () => {
+    storedPrefs = null
+    const { JetLagPage } = await import('@/features/jet-lag/page')
+
+    const html = renderToString(createElement(JetLagPage, { locale: 'en-US' }))
+
+    expect(html).toContain('value="Asia/Shanghai"')
+    expect(html).toContain('value="Europe/Paris"')
+    expect(html).toContain('value="2026-01-15T09:00"')
+    expect(html).toContain('value="2026-01-15T18:00"')
   })
 
   it('renders a computed plan and reacts to invalid trip timing', async () => {

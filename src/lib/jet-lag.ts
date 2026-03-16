@@ -38,6 +38,18 @@ export const JET_LAG_TIMEZONES: JetLagTimezoneOption[] = [
   { value: 'Pacific/Auckland', label: 'Auckland (Pacific/Auckland)' },
 ]
 
+const INITIAL_JET_LAG_PREFS: JetLagPrefs = {
+  originTimeZone: 'Asia/Shanghai',
+  destinationTimeZone: 'Europe/Paris',
+  departureAt: '2026-01-15T09:00',
+  arrivalAt: '2026-01-15T18:00',
+  intensity: 'moderate',
+}
+
+export function getInitialJetLagPrefs(): JetLagPrefs {
+  return { ...INITIAL_JET_LAG_PREFS }
+}
+
 export function getDefaultJetLagPrefs(): JetLagPrefs {
   const originTimeZone = resolveDefaultOriginTimeZone()
   const now = new Date()

@@ -13,6 +13,7 @@ import {
   formatHourValue,
   formatJetLagTime,
   getDefaultJetLagPrefs,
+  getInitialJetLagPrefs,
 } from '@/lib/jet-lag'
 import { useI18n } from '@/lib/i18n'
 import { readJetLagPrefs, writeJetLagPrefs, writeLastTool } from '@/lib/storage'
@@ -22,7 +23,7 @@ const intensities: JetLagIntensity[] = ['light', 'moderate', 'heavy']
 
 export function JetLagPage({ locale }: { locale: Locale }) {
   const { t } = useI18n()
-  const [prefs, setPrefs] = useState<JetLagPrefs>(() => getDefaultJetLagPrefs())
+  const [prefs, setPrefs] = useState<JetLagPrefs>(() => getInitialJetLagPrefs())
   const [ready, setReady] = useState(false)
 
   useEffect(() => {
@@ -30,6 +31,8 @@ export function JetLagPage({ locale }: { locale: Locale }) {
     const storedPrefs = readJetLagPrefs()
     if (storedPrefs) {
       setPrefs(storedPrefs)
+    } else {
+      setPrefs(getDefaultJetLagPrefs())
     }
     setReady(true)
   }, [])
