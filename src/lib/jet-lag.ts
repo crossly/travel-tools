@@ -50,8 +50,7 @@ export function getInitialJetLagPrefs(): JetLagPrefs {
   return { ...INITIAL_JET_LAG_PREFS }
 }
 
-export function getDefaultJetLagPrefs(): JetLagPrefs {
-  const originTimeZone = resolveDefaultOriginTimeZone()
+export function getDefaultJetLagPrefs(originTimeZone = resolveDefaultOriginTimeZone()): JetLagPrefs {
   const now = new Date()
   const departureAt = toDateTimeInputValue(new Date(now.getTime() + 24 * 60 * 60 * 1000))
   const arrivalAt = toDateTimeInputValue(new Date(now.getTime() + 24 * 60 * 60 * 1000 + 9 * 60 * 60 * 1000))
@@ -65,16 +64,26 @@ export function getDefaultJetLagPrefs(): JetLagPrefs {
   }
 }
 
-export function resolveDefaultOriginTimeZone() {
-  const browserTimeZone = typeof Intl !== 'undefined'
-    ? Intl.DateTimeFormat().resolvedOptions().timeZone
-    : null
-
+export function resolveDefaultOriginTimeZone(browserTimeZone = getResolvedBrowserTimeZone()) {
   if (browserTimeZone && JET_LAG_TIMEZONES.some((option) => option.value === browserTimeZone)) {
     return browserTimeZone
   }
 
   return 'Asia/Shanghai'
+}
+
+export function getJetLagTimezoneOption(value: string) {
+  return JET_LAG_TIMEZONES.find((option) => option.value === value) ?? null
+}
+
+export function searchJetLagTimezones(query: string) {
+  const normalizedQuery = query.trim().toLowerCase()
+  if (!normalizedQuery) return JET_LAG_TIMEZONES
+
+  return JET_LAG_TIMEZONES.filter((option) => {
+    const haystack = `${option.label} ${option.value}`.toLowerCase()
+    return haystack.includes(normalizedQuery)
+  })
 }
 
 export function getRecommendedJetLagIntensity(hourDifference: number): JetLagIntensity {
@@ -244,4 +253,10 @@ function toDateTimeInputValue(date: Date) {
   const hour = String(date.getHours()).padStart(2, '0')
   const minute = String(date.getMinutes()).padStart(2, '0')
   return `${year}-${month}-${day}T${hour}:${minute}`
+}
+
+function getResolvedBrowserTimeZone() {
+  return typeof Intl !== 'undefined'
+    ? Intl.DateTimeFormat().resolvedOptions().timeZone
+    : null
 }

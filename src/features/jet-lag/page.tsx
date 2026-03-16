@@ -1,19 +1,20 @@
 import { useEffect, useState } from 'react'
 import { Clock3, Coffee, MoonStar, PlaneLanding, SunMedium } from 'lucide-react'
 import { AppShell } from '@/components/app/app-shell'
+import { DateTimeField } from '@/components/app/date-time-field'
 import { FieldGroup } from '@/components/app/field-group'
 import { InlineStatus } from '@/components/app/inline-status'
+import { TimezoneCombobox } from '@/components/app/timezone-combobox'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import {
-  JET_LAG_TIMEZONES,
   calculateJetLagPlan,
   formatHourValue,
   formatJetLagTime,
   getDefaultJetLagPrefs,
   getInitialJetLagPrefs,
+  resolveDefaultOriginTimeZone,
 } from '@/lib/jet-lag'
 import { useI18n } from '@/lib/i18n'
 import { readJetLagPrefs, writeJetLagPrefs, writeLastTool } from '@/lib/storage'
@@ -32,7 +33,7 @@ export function JetLagPage({ locale }: { locale: Locale }) {
     if (storedPrefs) {
       setPrefs(storedPrefs)
     } else {
-      setPrefs(getDefaultJetLagPrefs())
+      setPrefs(getDefaultJetLagPrefs(resolveDefaultOriginTimeZone()))
     }
     setReady(true)
   }, [])
@@ -55,47 +56,37 @@ export function JetLagPage({ locale }: { locale: Locale }) {
           </CardHeader>
           <CardContent className="grid gap-4">
             <FieldGroup label={t('jetLag.originTimeZone')}>
-              <select
+              <TimezoneCombobox
                 value={prefs.originTimeZone}
-                onChange={(event) => setPrefs((current) => ({ ...current, originTimeZone: event.target.value }))}
-                className="h-11 w-full rounded-xl border border-border bg-[var(--input)] px-3 text-sm text-foreground shadow-sm outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              >
-                {JET_LAG_TIMEZONES.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
-                  </option>
-                ))}
-              </select>
+                onValueChange={(nextValue) => setPrefs((current) => ({ ...current, originTimeZone: nextValue }))}
+                locale={locale}
+              />
             </FieldGroup>
 
             <FieldGroup label={t('jetLag.destinationTimeZone')}>
-              <select
+              <TimezoneCombobox
                 value={prefs.destinationTimeZone}
-                onChange={(event) => setPrefs((current) => ({ ...current, destinationTimeZone: event.target.value }))}
-                className="h-11 w-full rounded-xl border border-border bg-[var(--input)] px-3 text-sm text-foreground shadow-sm outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              >
-                {JET_LAG_TIMEZONES.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
-                  </option>
-                ))}
-              </select>
+                onValueChange={(nextValue) => setPrefs((current) => ({ ...current, destinationTimeZone: nextValue }))}
+                locale={locale}
+              />
             </FieldGroup>
 
             <div className="grid gap-4 md:grid-cols-2">
               <FieldGroup label={t('jetLag.departureAt')}>
-                <Input
-                  type="datetime-local"
+                <DateTimeField
                   value={prefs.departureAt}
-                  onChange={(event) => setPrefs((current) => ({ ...current, departureAt: event.target.value }))}
+                  onChange={(nextValue) => setPrefs((current) => ({ ...current, departureAt: nextValue }))}
+                  locale={locale}
+                  timeLabel={t('jetLag.departureTimeLabel')}
                 />
               </FieldGroup>
 
               <FieldGroup label={t('jetLag.arrivalAt')}>
-                <Input
-                  type="datetime-local"
+                <DateTimeField
                   value={prefs.arrivalAt}
-                  onChange={(event) => setPrefs((current) => ({ ...current, arrivalAt: event.target.value }))}
+                  onChange={(nextValue) => setPrefs((current) => ({ ...current, arrivalAt: nextValue }))}
+                  locale={locale}
+                  timeLabel={t('jetLag.arrivalTimeLabel')}
                 />
               </FieldGroup>
             </div>

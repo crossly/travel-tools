@@ -9,6 +9,48 @@ vi.mock('@/components/app/app-shell', () => ({
   AppShell: ({ children }: { children?: React.ReactNode }) => createElement('div', null, children),
 }))
 
+vi.mock('@/components/app/timezone-combobox', () => ({
+  TimezoneCombobox: ({
+    id,
+    value,
+    onValueChange,
+  }: {
+    id?: string
+    value: string
+    onValueChange: (nextValue: string) => void
+  }) => createElement(
+    'button',
+    {
+      id,
+      type: 'button',
+      onClick: () => onValueChange('America/New_York'),
+    },
+    value,
+  ),
+}))
+
+vi.mock('@/components/app/date-time-field', () => ({
+  DateTimeField: ({
+    id,
+    value,
+    onChange,
+    timeLabel,
+  }: {
+    id?: string
+    value: string
+    onChange: (nextValue: string) => void
+    timeLabel: string
+  }) => createElement(
+    'input',
+    {
+      id,
+      'aria-label': timeLabel.replace(/ time$/i, ''),
+      value,
+      onChange: (event: { target: { value: string } }) => onChange(event.target.value),
+    },
+  ),
+}))
+
 const defaultStoredPrefs: JetLagPrefs = {
   originTimeZone: 'Asia/Shanghai',
   destinationTimeZone: 'Europe/Paris',
@@ -38,6 +80,8 @@ vi.mock('@/lib/i18n', () => ({
       'jetLag.destinationTimeZone': 'Destination time zone',
       'jetLag.departureAt': 'Departure time',
       'jetLag.arrivalAt': 'Arrival time',
+      'jetLag.departureTimeLabel': 'Departure time time',
+      'jetLag.arrivalTimeLabel': 'Arrival time time',
       'jetLag.modeLabel': 'Recovery mode',
       'jetLag.intensity.light': 'Light',
       'jetLag.intensity.moderate': 'Moderate',
@@ -90,10 +134,31 @@ describe('JetLagPage', () => {
 
     const html = renderToString(createElement(JetLagPage, { locale: 'en-US' }))
 
-    expect(html).toContain('value="Asia/Shanghai"')
-    expect(html).toContain('value="Europe/Paris"')
+    expect(html).toContain('>Asia/Shanghai<')
+    expect(html).toContain('>Europe/Paris<')
     expect(html).toContain('value="2026-01-15T09:00"')
     expect(html).toContain('value="2026-01-15T18:00"')
+  })
+
+  it('detects the browser timezone and applies it to the origin field when no prefs are stored', async () => {
+    storedPrefs = null
+    const { JetLagPage } = await import('@/features/jet-lag/page')
+
+    const originalResolvedOptions = Intl.DateTimeFormat.prototype.resolvedOptions
+    const resolvedOptionsSpy = vi
+      .spyOn(Intl.DateTimeFormat.prototype, 'resolvedOptions')
+      .mockImplementation(function resolvedOptionsWithDetectedTimezone(this: Intl.DateTimeFormat) {
+        return {
+          ...originalResolvedOptions.call(this),
+          timeZone: 'America/New_York',
+        }
+      })
+
+    render(createElement(JetLagPage, { locale: 'en-US' }))
+
+    expect(await screen.findByText('America/New_York')).toBeTruthy()
+    expect(writeJetLagPrefs).toHaveBeenCalledWith(expect.objectContaining({ originTimeZone: 'America/New_York' }))
+    resolvedOptionsSpy.mockRestore()
   })
 
   it('renders a computed plan and reacts to invalid trip timing', async () => {
