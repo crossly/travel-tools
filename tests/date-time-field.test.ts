@@ -19,7 +19,7 @@ vi.mock('@/components/app/date-picker-panel', () => ({
 }))
 
 describe('DateTimeField', () => {
-  it('reuses the date picker button and keeps the local time editable', async () => {
+  it('uses a single trigger and lets date and time be edited in the same popover', async () => {
     const onChange = vi.fn()
     const { DateTimeField } = await import('@/components/app/date-time-field')
 
@@ -38,7 +38,10 @@ describe('DateTimeField', () => {
 
     render(createElement(Wrapper))
 
-    fireEvent.click(screen.getByRole('button', { name: /march 11/i }))
+    expect(screen.queryByLabelText('Departure time time')).toBeNull()
+
+    fireEvent.click(screen.getByRole('button', { name: /march 11.*09:15/i }))
+    expect(await screen.findByLabelText('Departure time time')).toBeTruthy()
     fireEvent.click(await screen.findByRole('button', { name: /march 21.*2026/i }))
 
     expect(onChange).toHaveBeenCalledWith('2026-03-21T09:15')
