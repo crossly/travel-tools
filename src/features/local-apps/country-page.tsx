@@ -10,6 +10,7 @@ import { useI18n } from '@/lib/i18n'
 import { getLocalizedPath } from '@/lib/site'
 import { cn } from '@/lib/utils'
 import type { LocalAppCountrySummary, LocalAppGuide, Locale } from '@/lib/types'
+import { LocalAppIcon } from './app-icon'
 
 const categoryLabelKey = {
   'ride-hailing': 'localApps.category.rideHailing',
@@ -218,9 +219,12 @@ export function LocalAppsCountryPage({
                 {category.apps.map((app) => (
                   <div key={app.id} className="rounded-2xl border border-border bg-[color:var(--surface-floating)] p-4">
                     <div className="flex items-start justify-between gap-3">
-                      <div className="space-y-1">
-                        <p className="text-base font-semibold text-foreground">{app.name}</p>
-                        <p className="text-sm text-muted-foreground">{app.summary}</p>
+                      <div className="flex min-w-0 items-start gap-3">
+                        <LocalAppIcon appId={app.id} appName={app.name} links={app.links} />
+                        <div className="min-w-0 space-y-1">
+                          <p className="text-base font-semibold text-foreground">{app.name}</p>
+                          <p className="text-sm text-muted-foreground">{app.summary}</p>
+                        </div>
                       </div>
                       <Badge variant={app.recommended ? 'default' : 'outline'}>
                         {app.recommended ? t('localApps.primaryApp') : t('localApps.backupApp')}

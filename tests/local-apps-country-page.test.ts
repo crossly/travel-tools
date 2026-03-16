@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { createElement } from 'react'
-import { render } from '@testing-library/react'
+import { fireEvent, render } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 import type { LocalAppCountrySummary, LocalAppGuide } from '@/lib/types'
 
@@ -74,18 +74,26 @@ const guide: LocalAppGuide = {
     {
       id: 'maps',
       summary: 'Map apps',
-      apps: [
-        {
-          id: 'navitime',
-          name: 'NAVITIME',
-          summary: 'Trip planning',
-          reason: 'Good train coverage',
-          recommended: true,
-          links: [{ platform: 'official', url: 'https://example.com' }],
+          apps: [
+            {
+              id: 'navitime',
+              name: 'NAVITIME',
+              summary: 'Trip planning',
+              reason: 'Good train coverage',
+              recommended: true,
+              links: [{ platform: 'official', url: 'https://example.com' }],
+            },
+            {
+              id: 'maps-inline',
+              name: 'Maps Inline',
+              summary: 'Map backup',
+              reason: 'Useful if you already have it.',
+              recommended: false,
+              links: [{ platform: 'ios', url: 'https://apps.apple.com/example' }],
+            },
+          ],
         },
       ],
-    },
-  ],
   cautions: ['Check account region support.'],
   relatedCountries: [],
 }
@@ -109,5 +117,19 @@ describe('LocalAppsCountryPage', () => {
     const view = render(createElement(LocalAppsCountryPage, { locale: 'en-US', summary, guide }))
 
     expect(view.getByText('Use local apps before you land.')).toBeTruthy()
+  })
+
+  it('uses the official site favicon when available and falls back when it is not', async () => {
+    const { LocalAppsCountryPage } = await import('@/features/local-apps/country-page')
+
+    const view = render(createElement(LocalAppsCountryPage, { locale: 'en-US', summary, guide }))
+
+    const favicon = view.container.querySelector('img[src="https://example.com/favicon.ico"]')
+    expect(favicon).toBeTruthy()
+
+    fireEvent.error(favicon as HTMLImageElement)
+
+    expect(view.container.querySelector('[data-app-icon-id="navitime"][data-icon-state="fallback"]')).toBeTruthy()
+    expect(view.container.querySelector('[data-app-icon-id="maps-inline"][data-icon-state="fallback"]')).toBeTruthy()
   })
 })
