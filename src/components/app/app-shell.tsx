@@ -1,7 +1,8 @@
-import { Suspense, lazy } from 'react'
+import { Suspense, lazy, useEffect } from 'react'
 import type { ReactNode } from 'react'
 import { Link } from '@tanstack/react-router'
 import { Card, CardHeader } from '@/components/ui/card'
+import { scheduleGlobalRouteChunkPreload } from './route-chunk-preloads'
 import { getLocalizedPath, getToolBySlug } from '@/lib/site'
 import { useI18n } from '@/lib/i18n'
 import type { Locale, ToolDefinition } from '@/lib/types'
@@ -38,6 +39,8 @@ export function AppShell({
 }) {
   const { t } = useI18n()
   const currentTool = activeTool ? getToolBySlug(activeTool) : undefined
+
+  useEffect(() => scheduleGlobalRouteChunkPreload(activeTool), [activeTool])
 
   return (
     <div className="app-shell">

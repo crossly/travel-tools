@@ -1,4 +1,5 @@
 import { createRouter as createTanStackRouter } from '@tanstack/react-router'
+import { RoutePendingShell } from '@/components/app/route-pending-shell'
 import { routeTree } from './routeTree.gen'
 
 export type AppRequestContext = {
@@ -14,6 +15,8 @@ export function getRouter() {
     scrollRestoration: true,
     defaultPreload: 'intent',
     defaultPreloadStaleTime: 0,
+    defaultPendingComponent: RoutePendingShell,
+    defaultViewTransition: true,
   })
 }
 
