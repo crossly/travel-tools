@@ -5,6 +5,15 @@ import { createElement } from 'react'
 import { render } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 
+const HOME_PAGE_STATS = {
+  phrasePackCount: 12,
+  totalPhraseCount: 240,
+  packingTemplateCount: 4,
+  localAppsReadyCount: 41,
+  localAppsTrackedCount: 41,
+  timeZoneCount: 21,
+}
+
 vi.mock('@tanstack/react-router', () => ({
   Link: ({ children, ...props }: { children?: React.ReactNode } & Record<string, unknown>) => createElement('a', props, children),
 }))
@@ -58,7 +67,7 @@ describe('hero theme styling', () => {
   it('uses theme variables for the SVG gradient surfaces', async () => {
     const { HomePage } = await import('@/features/site/home-page')
 
-    const { container } = render(createElement(HomePage, { locale: 'en-US' }))
+    const { container } = render(createElement(HomePage, { locale: 'en-US', stats: HOME_PAGE_STATS }))
     const stops = Array.from(container.querySelectorAll('stop'))
     const stopColors = stops.map((node) => node.getAttribute('stop-color'))
 

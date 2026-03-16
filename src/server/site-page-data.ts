@@ -3,7 +3,7 @@ import type { Locale } from '@/lib/types'
 import { resolveExplicitLocaleFromPath, resolveRequestLocale } from '@/lib/site'
 import type { AppRequestContext } from '@/router'
 
-type RootPageData = {
+export type RootPageData = {
   locale: Locale
   googleAnalyticsId: string | null
   googleSiteVerification: string | null
@@ -12,7 +12,7 @@ type RootPageData = {
   umamiScriptUrl: string | null
 }
 
-const siteLocaleMiddleware = createMiddleware({ type: 'request' }).server(async ({ request, context, next }) => {
+export const siteLocaleMiddleware = createMiddleware({ type: 'request' }).server(async ({ request, context, next }) => {
   const requestContext = context as unknown as AppRequestContext
   const pathnameLocale = resolveExplicitLocaleFromPath(new URL(request.url).pathname)
 
@@ -24,21 +24,25 @@ const siteLocaleMiddleware = createMiddleware({ type: 'request' }).server(async 
   })
 })
 
+export function buildRootPageData(context: { locale: Locale; cloudflare?: AppRequestContext['cloudflare'] }): RootPageData {
+  const pageData: RootPageData = {
+    locale: context.locale,
+    googleAnalyticsId: context.cloudflare?.env.GA_MEASUREMENT_ID?.trim() || context.cloudflare?.env.GOOGLE_ANALYTICS_ID?.trim() || null,
+    googleSiteVerification: context.cloudflare?.env.GOOGLE_SITE_VERIFICATION?.trim() || null,
+    bingSiteVerification: context.cloudflare?.env.BING_SITE_VERIFICATION?.trim() || null,
+    umamiWebsiteId: context.cloudflare?.env.UMAMI_WEBSITE_ID?.trim() || null,
+    umamiScriptUrl: context.cloudflare?.env.UMAMI_SCRIPT_URL?.trim() || 'https://cloud.umami.is/script.js',
+  }
+
+  if (!pageData.umamiWebsiteId) {
+    pageData.umamiScriptUrl = null
+  }
+
+  return pageData
+}
+
 export const loadRootPageData = createServerFn({ method: 'GET' })
   .middleware([siteLocaleMiddleware])
   .handler(async ({ context }) => {
-    const pageData: RootPageData = {
-      locale: context.locale,
-      googleAnalyticsId: context.cloudflare?.env.GA_MEASUREMENT_ID?.trim() || context.cloudflare?.env.GOOGLE_ANALYTICS_ID?.trim() || null,
-      googleSiteVerification: context.cloudflare?.env.GOOGLE_SITE_VERIFICATION?.trim() || null,
-      bingSiteVerification: context.cloudflare?.env.BING_SITE_VERIFICATION?.trim() || null,
-      umamiWebsiteId: context.cloudflare?.env.UMAMI_WEBSITE_ID?.trim() || null,
-      umamiScriptUrl: context.cloudflare?.env.UMAMI_SCRIPT_URL?.trim() || 'https://cloud.umami.is/script.js',
-    }
-
-    if (!pageData.umamiWebsiteId) {
-      pageData.umamiScriptUrl = null
-    }
-
-    return pageData
+    return buildRootPageData(context)
   })

@@ -5,22 +5,13 @@ import { AppShell } from '@/components/app/app-shell'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { PACKING_TEMPLATE_DEFINITIONS } from '@/data/packing-list/templates'
-import { countReadyLocalAppCountries, countTrackedLocalAppCountries } from '@/lib/local-apps'
-import { listRawPhraseCountrySummaries } from '@/lib/travel-phrases'
-import { JET_LAG_TIMEZONES } from '@/lib/jet-lag'
+import type { HomePageStats } from '@/features/site/home-page-stats'
 import { getLocalizedPath } from '@/lib/site'
 import { useI18n } from '@/lib/i18n'
 import type { Locale } from '@/lib/types'
 
-export function HomePage({ locale }: { locale: Locale }) {
+export function HomePage({ locale, stats }: { locale: Locale; stats: HomePageStats }) {
   const { t } = useI18n()
-  const phraseStats = listRawPhraseCountrySummaries()
-  const totalPhrases = phraseStats.reduce((sum, pack) => sum + pack.phraseCount, 0)
-  const packingTemplateCount = PACKING_TEMPLATE_DEFINITIONS.length
-  const timeZoneCount = JET_LAG_TIMEZONES.length
-  const localAppsReadyCount = countReadyLocalAppCountries()
-  const localAppsTrackedCount = countTrackedLocalAppCountries()
   const toolSections: HomeToolSection[] = [
     {
       id: 'primary',
@@ -49,7 +40,7 @@ export function HomePage({ locale }: { locale: Locale }) {
           badge: 'Pack',
           title: t('tool.packingList.name'),
           description: t('site.packingPreview'),
-          metric: t('site.packingMetric', { count: packingTemplateCount }),
+          metric: t('site.packingMetric', { count: stats.packingTemplateCount }),
           path: '/packing-list',
         },
       ],
@@ -65,7 +56,7 @@ export function HomePage({ locale }: { locale: Locale }) {
           badge: t('phrases.audioBadge'),
           title: t('tool.travelPhrases.name'),
           description: t('site.phrasesPreview'),
-          metric: t('site.phrasesMetric', { packs: phraseStats.length, phrases: totalPhrases }),
+          metric: t('site.phrasesMetric', { packs: stats.phrasePackCount, phrases: stats.totalPhraseCount }),
           path: '/travel-phrases',
         },
         {
@@ -73,7 +64,7 @@ export function HomePage({ locale }: { locale: Locale }) {
           badge: 'Apps',
           title: t('tool.localApps.name'),
           description: t('site.localAppsPreview'),
-          metric: t('site.localAppsMetric', { ready: localAppsReadyCount, tracked: localAppsTrackedCount }),
+          metric: t('site.localAppsMetric', { ready: stats.localAppsReadyCount, tracked: stats.localAppsTrackedCount }),
           path: '/local-apps',
         },
         {
@@ -81,7 +72,7 @@ export function HomePage({ locale }: { locale: Locale }) {
           badge: 'TZ',
           title: t('tool.jetLag.name'),
           description: t('site.jetLagPreview'),
-          metric: t('site.jetLagMetric', { count: timeZoneCount }),
+          metric: t('site.jetLagMetric', { count: stats.timeZoneCount }),
           path: '/jet-lag',
         },
       ],

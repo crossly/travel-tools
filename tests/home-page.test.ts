@@ -3,6 +3,15 @@ import { createElement } from 'react'
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 
+const HOME_PAGE_STATS = {
+  phrasePackCount: 12,
+  totalPhraseCount: 240,
+  packingTemplateCount: 4,
+  localAppsReadyCount: 41,
+  localAppsTrackedCount: 41,
+  timeZoneCount: 21,
+}
+
 vi.mock('@tanstack/react-router', () => ({
   Link: ({ children, ...props }: { children?: React.ReactNode } & Record<string, unknown>) => createElement('a', props, children),
 }))
@@ -14,6 +23,22 @@ vi.mock('@/components/app/app-shell', () => ({
 vi.mock('@/lib/storage', () => ({
   readLastTool: () => null,
 }))
+
+vi.mock('@/data/packing-list/templates', () => {
+  throw new Error('HomePage should receive packing metrics instead of importing template definitions')
+})
+
+vi.mock('@/lib/local-apps', () => {
+  throw new Error('HomePage should receive local app metrics instead of importing local app data')
+})
+
+vi.mock('@/lib/travel-phrases', () => {
+  throw new Error('HomePage should receive phrase metrics instead of importing phrase data')
+})
+
+vi.mock('@/lib/jet-lag', () => {
+  throw new Error('HomePage should receive jet lag metrics instead of importing timezone data')
+})
 
 vi.mock('@/lib/i18n', () => ({
   useI18n: () => ({
@@ -64,7 +89,7 @@ describe('HomePage', () => {
   it('does not render hero CTA buttons', async () => {
     const { HomePage } = await import('@/features/site/home-page')
 
-    render(createElement(HomePage, { locale: 'zh-CN' }))
+    render(createElement(HomePage, { locale: 'zh-CN', stats: HOME_PAGE_STATS }))
 
     expect(screen.queryByText('继续使用')).toBeNull()
     expect(screen.queryByText('查看工具')).toBeNull()
@@ -73,7 +98,7 @@ describe('HomePage', () => {
   it('renders the updated hero copy', async () => {
     const { HomePage } = await import('@/features/site/home-page')
 
-    render(createElement(HomePage, { locale: 'zh-CN' }))
+    render(createElement(HomePage, { locale: 'zh-CN', stats: HOME_PAGE_STATS }))
 
     expect(screen.getByRole('heading', { level: 1, name: '旅行常用的汇率、短语和 AA 记账工具' })).toBeTruthy()
     expect(screen.getByText('一个站解决旅行中的汇率换算、现场沟通和多人分账，弱网和移动端也能顺手使用。')).toBeTruthy()
@@ -86,7 +111,7 @@ describe('HomePage', () => {
   it('does not render the future expansion card', async () => {
     const { HomePage } = await import('@/features/site/home-page')
 
-    render(createElement(HomePage, { locale: 'zh-CN' }))
+    render(createElement(HomePage, { locale: 'zh-CN', stats: HOME_PAGE_STATS }))
 
     expect(screen.queryByText('后续还会继续扩展')).toBeNull()
     expect(screen.queryByText('未来可以继续接入退税、小费、打包等旅行工具。')).toBeNull()
@@ -95,7 +120,7 @@ describe('HomePage', () => {
   it('renders the travel phrase tool card', async () => {
     const { HomePage } = await import('@/features/site/home-page')
 
-    render(createElement(HomePage, { locale: 'zh-CN' }))
+    render(createElement(HomePage, { locale: 'zh-CN', stats: HOME_PAGE_STATS }))
 
     expect(screen.getAllByText('旅行短语卡')).toHaveLength(2)
     expect(screen.getByText(/个国家包 · .*条短语/)).toBeTruthy()
@@ -104,7 +129,7 @@ describe('HomePage', () => {
   it('renders the packing list tool card', async () => {
     const { HomePage } = await import('@/features/site/home-page')
 
-    render(createElement(HomePage, { locale: 'zh-CN' }))
+    render(createElement(HomePage, { locale: 'zh-CN', stats: HOME_PAGE_STATS }))
 
     expect(screen.getAllByText('行李清单')).toHaveLength(2)
     expect(screen.getByText('4 个模板 · 本地保存')).toBeTruthy()
@@ -113,7 +138,7 @@ describe('HomePage', () => {
   it('renders the local apps tool card', async () => {
     const { HomePage } = await import('@/features/site/home-page')
 
-    render(createElement(HomePage, { locale: 'zh-CN' }))
+    render(createElement(HomePage, { locale: 'zh-CN', stats: HOME_PAGE_STATS }))
 
     expect(screen.getAllByText('本地 App')).toHaveLength(2)
     expect(screen.getByText('41 个国家已整理 · 41 国同步')).toBeTruthy()
@@ -122,10 +147,9 @@ describe('HomePage', () => {
   it('renders the jet lag tool card', async () => {
     const { HomePage } = await import('@/features/site/home-page')
 
-    render(createElement(HomePage, { locale: 'zh-CN' }))
+    render(createElement(HomePage, { locale: 'zh-CN', stats: HOME_PAGE_STATS }))
 
     expect(screen.getAllByText('倒时差')).toHaveLength(2)
     expect(screen.getByText('21 个时区 · 本地计算')).toBeTruthy()
   })
-
 })

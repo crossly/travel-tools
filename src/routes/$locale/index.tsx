@@ -3,8 +3,10 @@ import { HomePage } from '@/features/site/home-page'
 import { translate } from '@/lib/i18n'
 import { buildPublicPageHead } from '@/lib/seo'
 import { DEFAULT_LOCALE, resolveLocaleSegment } from '@/lib/site'
+import { loadHomePageData } from '@/server/home-page-data'
 
 export const Route = createFileRoute('/$locale/')({
+  loader: ({ params }) => loadHomePageData({ data: { locale: resolveLocaleSegment(params.locale) ?? DEFAULT_LOCALE } }),
   head: ({ params }) => {
     const locale = resolveLocaleSegment(params.locale) ?? DEFAULT_LOCALE
     return buildPublicPageHead({
@@ -22,6 +24,6 @@ export const Route = createFileRoute('/$locale/')({
 })
 
 function HomeRoute() {
-  const { locale } = Route.useParams()
-  return <HomePage locale={resolveLocaleSegment(locale) ?? DEFAULT_LOCALE} />
+  const { locale, homePageStats } = Route.useLoaderData()
+  return <HomePage locale={locale} stats={homePageStats} />
 }

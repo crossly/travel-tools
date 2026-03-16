@@ -119,7 +119,7 @@ export function SettingsPage({ locale }: { locale: Locale }) {
           </CardHeader>
           <CardContent className="space-y-4">
             <Button type="button" onClick={() => void onExport()} disabled={isExporting}>
-              {isExporting ? t('settings.exportPending') : t('settings.exportCurrentTrip')}
+              {isExporting ? t('settings.exportPending') : t('settings.exportAction')}
             </Button>
             {exportStatus ? <InlineStatus tone={exportStatus.tone} title={exportStatus.title} /> : null}
           </CardContent>

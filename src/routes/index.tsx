@@ -2,10 +2,10 @@ import { createFileRoute } from '@tanstack/react-router'
 import { HomePage } from '@/features/site/home-page'
 import { I18nProvider, translate } from '@/lib/i18n'
 import { buildRootAliasHead } from '@/lib/seo'
-import { loadRootPageData } from '@/server/site-page-data'
+import { loadHomePageData } from '@/server/home-page-data'
 
 export const Route = createFileRoute('/')({
-  loader: () => loadRootPageData(),
+  loader: () => loadHomePageData(),
   head: ({ loaderData }) => {
     const locale = loaderData?.locale ?? 'en-US'
     return buildRootAliasHead({
@@ -18,11 +18,11 @@ export const Route = createFileRoute('/')({
 })
 
 function RootIndexRoute() {
-  const { locale } = Route.useLoaderData()
+  const { locale, homePageStats } = Route.useLoaderData()
 
   return (
     <I18nProvider locale={locale} onLocaleChange={() => {}}>
-      <HomePage locale={locale} />
+      <HomePage locale={locale} stats={homePageStats} />
     </I18nProvider>
   )
 }

@@ -40,6 +40,7 @@ vi.mock('@/lib/i18n', () => ({
       'settings.appearance': '外观',
       'settings.theme': '主题',
       'settings.exportCurrentTrip': '导出当前行程',
+      'settings.exportAction': '导出',
       'settings.exportPending': '正在导出',
       'settings.importTitle': '导入 JSON',
       'settings.importPlaceholder': '粘贴导出的 JSON',
@@ -92,7 +93,7 @@ describe('SettingsPage', () => {
     const { SettingsPage } = await import('@/features/site/settings-page')
 
     render(createElement(SettingsPage, { locale: 'zh-CN' }))
-    fireEvent.click(screen.getByRole('button', { name: '导出当前行程' }))
+    fireEvent.click(screen.getByRole('button', { name: '导出' }))
 
     expect(await screen.findByText('错误:REQUEST_FAILED')).toBeTruthy()
   })
@@ -117,7 +118,8 @@ describe('SettingsPage', () => {
     const { SettingsPage } = await import('@/features/site/settings-page')
 
     render(createElement(SettingsPage, { locale: 'zh-CN' }))
-    fireEvent.click(screen.getByRole('button', { name: '导出当前行程' }))
+    expect(screen.getByRole('heading', { name: '导出当前行程' })).toBeTruthy()
+    fireEvent.click(screen.getByRole('button', { name: '导出' }))
 
     expect(await screen.findByText('导出成功')).toBeTruthy()
     expect(createObjectURL).toHaveBeenCalled()
