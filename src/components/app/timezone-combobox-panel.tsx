@@ -1,19 +1,9 @@
 import { useDeferredValue, useMemo, useState } from 'react'
 import { Check, Search } from 'lucide-react'
 import { Input } from '@/components/ui/input'
+import { translate } from '@/lib/i18n'
 import { searchJetLagTimezones } from '@/lib/jet-lag'
 import type { Locale } from '@/lib/types'
-
-const localeText = {
-  'zh-CN': {
-    searchPlaceholder: '搜索城市或时区',
-    empty: '没有匹配的时区',
-  },
-  'en-US': {
-    searchPlaceholder: 'Search city or timezone',
-    empty: 'No time zone found',
-  },
-} as const
 
 function splitTimezoneLabel(label: string, fallbackValue: string) {
   const match = /^(.*) \((.*)\)$/.exec(label)
@@ -37,7 +27,8 @@ export function TimezoneComboboxPanel({
   const [query, setQuery] = useState('')
   const deferredQuery = useDeferredValue(query)
   const filtered = useMemo(() => searchJetLagTimezones(deferredQuery, extraValues), [deferredQuery, extraValues])
-  const copy = localeText[locale]
+  const searchPlaceholder = translate(locale, 'common.searchCityOrTimezone')
+  const emptyLabel = translate(locale, 'common.noTimeZoneFound')
 
   return (
     <div role="listbox" className="overflow-hidden rounded-2xl border border-border bg-[var(--surface-floating)] shadow-2xl">
@@ -48,14 +39,14 @@ export function TimezoneComboboxPanel({
             autoFocus
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder={copy.searchPlaceholder}
+            placeholder={searchPlaceholder}
             className="pl-9"
           />
         </div>
       </div>
       <div className="max-h-80 overflow-y-auto p-2">
         {filtered.length === 0 ? (
-          <div className="px-3 py-8 text-center text-sm text-muted-foreground">{copy.empty}</div>
+          <div className="px-3 py-8 text-center text-sm text-muted-foreground">{emptyLabel}</div>
         ) : (
           filtered.map((option) => {
             const display = splitTimezoneLabel(option.label, option.value)

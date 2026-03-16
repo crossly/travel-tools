@@ -3,6 +3,7 @@ import { CalendarIcon } from 'lucide-react'
 import { parse, isValid } from 'date-fns'
 import { Button } from '@/components/ui/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+import { translate } from '@/lib/i18n'
 import { cn } from '@/lib/utils'
 import type { Locale } from '@/lib/types'
 
@@ -16,17 +17,6 @@ type DatePickerFieldProps = {
   'aria-describedby'?: string
   'aria-invalid'?: boolean | 'true' | 'false'
 }
-
-const pickerCopy = {
-  'zh-CN': {
-    empty: '选择日期',
-    loading: '正在加载日历...',
-  },
-  'en-US': {
-    empty: 'Pick a date',
-    loading: 'Loading calendar...',
-  },
-} as const
 
 const DatePickerPanel = lazy(async () => {
   const module = await import('./date-picker-panel')
@@ -54,7 +44,8 @@ export function DatePickerField({
 }: DatePickerFieldProps) {
   const [open, setOpen] = useState(false)
   const selectedDate = toDate(value)
-  const copy = pickerCopy[locale]
+  const emptyLabel = translate(locale, 'common.pickDate')
+  const loadingLabel = translate(locale, 'common.loadingCalendar')
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -69,11 +60,11 @@ export function DatePickerField({
           aria-invalid={ariaInvalid}
         >
           <CalendarIcon className="mr-2 h-4 w-4 shrink-0 text-muted-foreground" />
-          {selectedDate ? formatDisplayDate(selectedDate, locale) : copy.empty}
+          {selectedDate ? formatDisplayDate(selectedDate, locale) : emptyLabel}
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-2">
-        <Suspense fallback={<div className="px-3 py-6 text-sm text-muted-foreground">{copy.loading}</div>}>
+        <Suspense fallback={<div className="px-3 py-6 text-sm text-muted-foreground">{loadingLabel}</div>}>
           <DatePickerPanel
             locale={locale}
             selectedDate={selectedDate}

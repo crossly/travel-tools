@@ -20,6 +20,7 @@ vi.mock('@/lib/i18n', () => ({
         'nav.packingList': 'Packing',
         'nav.jetLag': 'Jet Lag',
         'nav.settings': 'Settings',
+        'nav.desktopToolNavigation': 'Tool navigation',
       })[key] ?? key,
   }),
 }))
@@ -35,7 +36,7 @@ describe('DesktopToolNav', () => {
       }),
     )
 
-    expect(screen.getByRole('navigation', { name: 'Desktop tool navigation' })).toBeTruthy()
+    expect(screen.getByRole('navigation', { name: 'Tool navigation' })).toBeTruthy()
     expect(screen.getByRole('link', { name: 'Local Apps' })).toBeTruthy()
     expect(screen.queryByRole('link', { name: 'Home' })).toBeNull()
   })

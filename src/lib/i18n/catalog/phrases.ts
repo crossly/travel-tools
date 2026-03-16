@@ -60,6 +60,13 @@ export const phrasesMessages: Messages = {
     "phrases.backToHome": "返回短语首页",
     "phrases.countryPageTitle": "{country}旅行短语卡",
     "phrases.countryPageDescription": "适合在{country}旅行时使用的高频短语，覆盖交通、酒店、点餐、购物和紧急求助，并提供可播放音频。",
+    "phrases.seoKeywordCountryTravel": "{country}旅行短语",
+    "phrases.seoKeywordLanguageTravel": "{languageName}旅行短语",
+    "phrases.seoKeywordCountryPhraseCards": "{country}短语卡",
+    "phrases.seoKeywordCountryRestaurant": "{country}点餐短语",
+    "phrases.seoKeywordCountryHotel": "{country}酒店短语",
+    "phrases.seoKeywordCountryTransport": "{country}交通短语",
+    "phrases.seoKeywordCountryEmergency": "{country}应急短语",
     "phrases.countryMetric": "{country} · {language} · {count} 句",
     "phrases.totalPacks": "{count} 个国家包"
   },
@@ -122,6 +129,13 @@ export const phrasesMessages: Messages = {
     "phrases.backToHome": "Back to Travel Phrases",
     "phrases.countryPageTitle": "{country} Travel Phrases",
     "phrases.countryPageDescription": "Useful travel phrases for {country} with playable audio for transport, hotels, dining, shopping, and emergencies.",
+    "phrases.seoKeywordCountryTravel": "{country} travel phrases",
+    "phrases.seoKeywordLanguageTravel": "{languageName} travel phrases",
+    "phrases.seoKeywordCountryPhraseCards": "{country} phrase cards",
+    "phrases.seoKeywordCountryRestaurant": "{country} restaurant phrases",
+    "phrases.seoKeywordCountryHotel": "{country} hotel phrases",
+    "phrases.seoKeywordCountryTransport": "{country} transport phrases",
+    "phrases.seoKeywordCountryEmergency": "{country} emergency phrases",
     "phrases.countryMetric": "{country} · {language} · {count} phrases",
     "phrases.totalPacks": "{count} packs"
   }

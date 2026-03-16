@@ -75,6 +75,11 @@ vi.mock('@/lib/i18n', () => ({
       'site.heroMetricRate': '100 美元 → 728 人民币',
       'site.heroMetricSplit': '4 人 · 2 笔支出',
       'site.heroMetricSettle': '2 笔转账',
+      'site.toolBadgeCurrency': '汇率卡',
+      'site.toolBadgeSplitBill': '同行卡',
+      'site.toolBadgePacking': '打包卡',
+      'site.toolBadgeLocalApps': '应用卡',
+      'site.toolBadgeJetLag': '时区卡',
       'tool.currency.name': '汇率换算',
       'tool.travelPhrases.name': '旅行短语卡',
       'tool.splitBill.name': '旅行 AA',
@@ -133,6 +138,11 @@ describe('HomePage', () => {
 
     expect(screen.getAllByText('行李清单')).toHaveLength(2)
     expect(screen.getByText('4 个模板 · 本地保存')).toBeTruthy()
+    expect(screen.getByText('汇率卡')).toBeTruthy()
+    expect(screen.getByText('同行卡')).toBeTruthy()
+    expect(screen.getByText('打包卡')).toBeTruthy()
+    expect(screen.getByText('应用卡')).toBeTruthy()
+    expect(screen.getByText('时区卡')).toBeTruthy()
   })
 
   it('renders the local apps tool card', async () => {

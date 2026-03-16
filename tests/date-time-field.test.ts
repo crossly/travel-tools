@@ -34,6 +34,38 @@ vi.mock('@/components/app/date-picker-panel', () => ({
 }))
 
 describe('DateTimeField', () => {
+  it('reads placeholder and time labels from the shared i18n registry', async () => {
+    const { registerMessages } = await import('@/lib/i18n')
+    registerMessages('test-date-time-copy', {
+      'en-US': {
+        'common.pickDateTime': 'Choose date and time from registry',
+        'common.hour': 'Hour from registry',
+        'common.minute': 'Minute from registry',
+      },
+      'zh-CN': {
+        'common.pickDateTime': '从文案中心选择日期和时间',
+        'common.hour': '文案小时',
+        'common.minute': '文案分钟',
+      },
+    })
+
+    const { DateTimeField } = await import('@/components/app/date-time-field')
+
+    render(
+      createElement(DateTimeField, {
+        value: '',
+        onChange: vi.fn(),
+        locale: 'en-US',
+        timeLabel: 'Departure time',
+      }),
+    )
+
+    fireEvent.click(screen.getByRole('button', { name: /choose date and time from registry/i }))
+
+    expect(await screen.findByText('Hour from registry')).toBeTruthy()
+    expect(screen.getByText('Minute from registry')).toBeTruthy()
+  })
+
   it('uses a single trigger and lets date and time be edited in the same popover without native time inputs', async () => {
     const onChange = vi.fn()
     const { DateTimeField } = await import('@/components/app/date-time-field')
@@ -58,20 +90,20 @@ describe('DateTimeField', () => {
 
     fireEvent.click(screen.getByRole('button', { name: /march 11.*09:15/i }))
     expect(screen.queryByLabelText('Departure time')).toBeNull()
-    expect(await screen.findByRole('combobox', { name: 'Departure time hour' })).toBeTruthy()
-    expect(screen.getByRole('combobox', { name: 'Departure time minute' })).toBeTruthy()
-    expect(screen.getByRole('combobox', { name: 'Departure time hour' }).closest('label')?.parentElement?.className).not.toContain('sm:grid-cols-2')
+    expect(await screen.findByRole('combobox', { name: /departure time .*hour/i })).toBeTruthy()
+    expect(screen.getByRole('combobox', { name: /departure time .*minute/i })).toBeTruthy()
+    expect(screen.getByRole('combobox', { name: /departure time .*hour/i }).closest('label')?.parentElement?.className).not.toContain('sm:grid-cols-2')
 
     fireEvent.click(await screen.findByRole('button', { name: /march 21.*2026/i }))
 
     expect(onChange).toHaveBeenCalledWith('2026-03-21T09:15')
 
-    screen.getByRole('combobox', { name: 'Departure time hour' }).focus()
-    fireEvent.keyDown(screen.getByRole('combobox', { name: 'Departure time hour' }), { key: 'ArrowDown' })
+    screen.getByRole('combobox', { name: /departure time .*hour/i }).focus()
+    fireEvent.keyDown(screen.getByRole('combobox', { name: /departure time .*hour/i }), { key: 'ArrowDown' })
     fireEvent.click(await screen.findByRole('option', { name: '14' }))
 
-    screen.getByRole('combobox', { name: 'Departure time minute' }).focus()
-    fireEvent.keyDown(screen.getByRole('combobox', { name: 'Departure time minute' }), { key: 'ArrowDown' })
+    screen.getByRole('combobox', { name: /departure time .*minute/i }).focus()
+    fireEvent.keyDown(screen.getByRole('combobox', { name: /departure time .*minute/i }), { key: 'ArrowDown' })
     const minuteListbox = await screen.findByRole('listbox')
     expect(minuteListbox.closest('[class*="max-h-64"]')).toBeTruthy()
     fireEvent.click(await screen.findByRole('option', { name: '45' }))

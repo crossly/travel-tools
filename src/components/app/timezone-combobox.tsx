@@ -3,6 +3,7 @@ import { ChevronsUpDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { getJetLagTimezoneOption } from '@/lib/jet-lag'
+import { translate } from '@/lib/i18n'
 import { cn } from '@/lib/utils'
 import type { Locale } from '@/lib/types'
 
@@ -16,15 +17,6 @@ type TimezoneComboboxProps = {
   'aria-describedby'?: string
   'aria-invalid'?: boolean | 'true' | 'false'
 }
-
-const localeText = {
-  'zh-CN': {
-    loading: '正在加载时区...',
-  },
-  'en-US': {
-    loading: 'Loading time zones...',
-  },
-} as const
 
 const TimezoneComboboxPanel = lazy(async () => {
   const module = await import('./timezone-combobox-panel')
@@ -51,7 +43,7 @@ export function TimezoneCombobox({
 }: TimezoneComboboxProps) {
   const [open, setOpen] = useState(false)
   const selected = useMemo(() => getJetLagTimezoneOption(value, [value]), [value])
-  const copy = localeText[locale]
+  const loadingLabel = translate(locale, 'common.loadingTimezones')
   const display = splitTimezoneLabel(selected?.label ?? value, value)
 
   return (
@@ -74,7 +66,7 @@ export function TimezoneCombobox({
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[min(26rem,var(--radix-popover-trigger-width))] border-0 bg-transparent p-0 shadow-none">
-        <Suspense fallback={<div className="rounded-2xl border border-border bg-[var(--surface-floating)] px-3 py-6 text-sm text-muted-foreground shadow-2xl">{copy.loading}</div>}>
+        <Suspense fallback={<div className="rounded-2xl border border-border bg-[var(--surface-floating)] px-3 py-6 text-sm text-muted-foreground shadow-2xl">{loadingLabel}</div>}>
           <TimezoneComboboxPanel
             locale={locale}
             value={value}

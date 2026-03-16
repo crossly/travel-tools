@@ -1,3 +1,4 @@
+import '@/lib/i18n/messages/phrases'
 import phraseDefinitionsRaw from '@/data/travel-phrases/phrase-definitions.json'
 import phraseCountryIndexRaw from '@/data/travel-phrases/index.json'
 import { translate } from '@/lib/i18n'
@@ -139,25 +140,19 @@ function buildCountryTeaser(locale: Locale, description: string, teaser?: Locali
 }
 
 function buildCountrySeoKeywords(locale: Locale, country: string, languageName: string) {
-  const keywords = locale === 'zh-CN'
-    ? [
-        `${country}旅行短语`,
-        `${country}旅游短语`,
-        `${languageName}旅行短语`,
-        `${country}点餐短语`,
-        `${country}酒店短语`,
-        `${country}交通短语`,
-        `${country}应急短语`,
-      ]
-    : [
-        `${country} travel phrases`,
-        `${languageName} travel phrases`,
-        `${country} phrase cards`,
-        `${country} restaurant phrases`,
-        `${country} hotel phrases`,
-        `${country} transport phrases`,
-        `${country} emergency phrases`,
-      ]
+  const keywordKeys = [
+    'phrases.seoKeywordCountryTravel',
+    'phrases.seoKeywordLanguageTravel',
+    'phrases.seoKeywordCountryPhraseCards',
+    'phrases.seoKeywordCountryRestaurant',
+    'phrases.seoKeywordCountryHotel',
+    'phrases.seoKeywordCountryTransport',
+    'phrases.seoKeywordCountryEmergency',
+  ] as const
+
+  const keywords = keywordKeys.map((key) =>
+    translate(locale, key, { country, languageName }),
+  )
 
   return [...new Set(keywords)]
 }

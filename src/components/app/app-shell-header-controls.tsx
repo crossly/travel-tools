@@ -48,7 +48,7 @@ export function DesktopToolNav({
 
   return (
     <nav
-      aria-label="Desktop tool navigation"
+      aria-label={t('nav.desktopToolNavigation')}
       className="flex w-full items-center gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
     >
       {TOOL_NAV_ITEMS.map((item) => {

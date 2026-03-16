@@ -4,6 +4,7 @@ import { parse, isValid } from 'date-fns'
 import { Button } from '@/components/ui/button'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { translate } from '@/lib/i18n'
 import { cn } from '@/lib/utils'
 import type { Locale } from '@/lib/types'
 
@@ -18,21 +19,6 @@ type DateTimeFieldProps = {
   'aria-describedby'?: string
   'aria-invalid'?: boolean | 'true' | 'false'
 }
-
-const pickerCopy = {
-  'zh-CN': {
-    emptyDate: '选择日期和时间',
-    loading: '正在加载日历...',
-    hour: '小时',
-    minute: '分钟',
-  },
-  'en-US': {
-    emptyDate: 'Pick date and time',
-    loading: 'Loading calendar...',
-    hour: 'hour',
-    minute: 'minute',
-  },
-} as const
 
 const DatePickerPanel = lazy(async () => {
   const module = await import('./date-picker-panel')
@@ -80,7 +66,10 @@ export function DateTimeField({
   const { date, time } = splitDateTimeValue(value)
   const [hour, minute] = time.split(':')
   const selectedDate = toDate(date)
-  const copy = pickerCopy[locale]
+  const emptyDateLabel = translate(locale, 'common.pickDateTime')
+  const loadingLabel = translate(locale, 'common.loadingCalendar')
+  const hourLabel = translate(locale, 'common.hour')
+  const minuteLabel = translate(locale, 'common.minute')
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -98,7 +87,7 @@ export function DateTimeField({
             <CalendarIcon className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" />
             <span className="min-w-0 space-y-1">
               <span className="block truncate font-medium text-foreground">
-                {selectedDate ? formatDisplayDate(selectedDate, locale) : copy.emptyDate}
+                {selectedDate ? formatDisplayDate(selectedDate, locale) : emptyDateLabel}
               </span>
               <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
                 <Clock3 className="h-3.5 w-3.5 shrink-0" />
@@ -111,7 +100,7 @@ export function DateTimeField({
       </PopoverTrigger>
       <PopoverContent className="w-auto max-w-[calc(100vw-2rem)] border-0 bg-transparent p-0 shadow-none">
         <div className="w-fit max-w-full rounded-2xl border border-border bg-[var(--surface-floating)] p-2 shadow-2xl">
-          <Suspense fallback={<div className="px-3 py-6 text-sm text-muted-foreground">{copy.loading}</div>}>
+          <Suspense fallback={<div className="px-3 py-6 text-sm text-muted-foreground">{loadingLabel}</div>}>
             <DatePickerPanel
               locale={locale}
               selectedDate={selectedDate}
@@ -127,7 +116,7 @@ export function DateTimeField({
             <div className="space-y-3">
               <label className="space-y-1.5">
                 <span className="block text-xs font-medium uppercase tracking-[0.08em] text-muted-foreground">
-                  {copy.hour}
+                  {hourLabel}
                 </span>
                 <Select
                   disabled={disabled}
@@ -135,7 +124,7 @@ export function DateTimeField({
                   onValueChange={(nextHour) => onChange(joinDateTimeValue(date, `${nextHour}:${minute}`))}
                 >
                   <SelectTrigger
-                    aria-label={`${timeLabel} ${copy.hour}`}
+                    aria-label={`${timeLabel} ${hourLabel}`}
                     className="h-11 w-full rounded-xl border-border bg-background px-3 text-left font-medium shadow-none"
                   >
                     <SelectValue />
@@ -151,7 +140,7 @@ export function DateTimeField({
               </label>
               <label className="space-y-1.5">
                 <span className="block text-xs font-medium uppercase tracking-[0.08em] text-muted-foreground">
-                  {copy.minute}
+                  {minuteLabel}
                 </span>
                 <Select
                   disabled={disabled}
@@ -159,7 +148,7 @@ export function DateTimeField({
                   onValueChange={(nextMinute) => onChange(joinDateTimeValue(date, `${hour}:${nextMinute}`))}
                 >
                   <SelectTrigger
-                    aria-label={`${timeLabel} ${copy.minute}`}
+                    aria-label={`${timeLabel} ${minuteLabel}`}
                     className="h-11 w-full rounded-xl border-border bg-background px-3 text-left font-medium shadow-none"
                   >
                     <SelectValue />

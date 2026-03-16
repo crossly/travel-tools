@@ -19,6 +19,30 @@ vi.mock('@/components/app/date-picker-panel', () => ({
 }))
 
 describe('DatePickerField', () => {
+  it('reads the empty-state label from the shared i18n registry', async () => {
+    const { registerMessages } = await import('@/lib/i18n')
+    registerMessages('test-date-picker-copy', {
+      'en-US': {
+        'common.pickDate': 'Choose date from registry',
+      },
+      'zh-CN': {
+        'common.pickDate': '从文案中心选择日期',
+      },
+    })
+
+    const { DatePickerField } = await import('@/components/app/date-picker-field')
+
+    render(
+      createElement(DatePickerField, {
+        value: '',
+        onChange: vi.fn(),
+        locale: 'en-US',
+      }),
+    )
+
+    expect(screen.getByRole('button', { name: 'Choose date from registry' })).toBeTruthy()
+  })
+
   it('opens a calendar panel, reports the selected date, and closes after selection', async () => {
     const onChange = vi.fn()
     const { DatePickerField } = await import('@/components/app/date-picker-field')

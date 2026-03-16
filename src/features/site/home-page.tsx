@@ -21,7 +21,7 @@ export function HomePage({ locale, stats }: { locale: Locale; stats: HomePageSta
       cards: [
         {
           icon: WalletCards,
-          badge: 'FX',
+          badge: t('site.toolBadgeCurrency'),
           title: t('tool.currency.name'),
           description: t('site.currencyPreview'),
           metric: t('site.currencyMetric'),
@@ -29,7 +29,7 @@ export function HomePage({ locale, stats }: { locale: Locale; stats: HomePageSta
         },
         {
           icon: ReceiptText,
-          badge: 'Trip',
+          badge: t('site.toolBadgeSplitBill'),
           title: t('tool.splitBill.name'),
           description: t('site.splitPreview'),
           metric: t('site.splitMetric'),
@@ -37,7 +37,7 @@ export function HomePage({ locale, stats }: { locale: Locale; stats: HomePageSta
         },
         {
           icon: Briefcase,
-          badge: 'Pack',
+          badge: t('site.toolBadgePacking'),
           title: t('tool.packingList.name'),
           description: t('site.packingPreview'),
           metric: t('site.packingMetric', { count: stats.packingTemplateCount }),
@@ -61,7 +61,7 @@ export function HomePage({ locale, stats }: { locale: Locale; stats: HomePageSta
         },
         {
           icon: Smartphone,
-          badge: 'Apps',
+          badge: t('site.toolBadgeLocalApps'),
           title: t('tool.localApps.name'),
           description: t('site.localAppsPreview'),
           metric: t('site.localAppsMetric', { ready: stats.localAppsReadyCount, tracked: stats.localAppsTrackedCount }),
@@ -69,7 +69,7 @@ export function HomePage({ locale, stats }: { locale: Locale; stats: HomePageSta
         },
         {
           icon: Clock3,
-          badge: 'TZ',
+          badge: t('site.toolBadgeJetLag'),
           title: t('tool.jetLag.name'),
           description: t('site.jetLagPreview'),
           metric: t('site.jetLagMetric', { count: stats.timeZoneCount }),
