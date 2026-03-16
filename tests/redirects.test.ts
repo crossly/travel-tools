@@ -25,6 +25,13 @@ describe('canonical host redirects', () => {
     expect(response?.headers.get('location')).toBe('https://www.routecrate.com/en-us')
   })
 
+  it('does not force https for localhost preview requests', () => {
+    const request = new Request('http://localhost:4173/en-us')
+
+    expect(buildCanonicalRequest(request)).toBeNull()
+    expect(redirectToCanonicalHost(request)).toBeNull()
+  })
+
   it('redirects legacy mixed-case locale URLs on the canonical host to lowercase locale slugs', () => {
     const request = new Request('https://www.routecrate.com/zh-CN/bill-splitter')
     const response = redirectToCanonicalHost(request)

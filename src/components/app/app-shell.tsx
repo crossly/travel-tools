@@ -16,6 +16,11 @@ const AppShellHeaderControls = lazy(async () => {
   return { default: module.AppShellHeaderControls }
 })
 
+const DesktopToolNav = lazy(async () => {
+  const module = await import('./app-shell-header-controls')
+  return { default: module.DesktopToolNav }
+})
+
 export function AppShell({
   locale,
   title,
@@ -49,9 +54,12 @@ export function AppShell({
                   <p className="display truncate text-2xl font-semibold text-foreground">{t('app.name')}</p>
                 </Link>
                 <Suspense fallback={<DesktopControlsFallback />}>
-                  <AppShellHeaderControls locale={locale} activeTool={activeTool} />
+                  <AppShellHeaderControls locale={locale} />
                 </Suspense>
               </div>
+              <Suspense fallback={<DesktopNavFallback />}>
+                <DesktopToolNav locale={locale} activeTool={activeTool} />
+              </Suspense>
             </CardHeader>
           </Card>
         </header>
@@ -101,11 +109,24 @@ function BrandMark({ className = 'size-10 rounded-2xl' }: { className?: string }
 
 function DesktopControlsFallback() {
   return (
-    <div className="hidden flex-wrap items-center justify-end gap-2 xl:flex" aria-hidden="true">
-      <div className="h-10 w-72 rounded-full border border-border bg-[var(--input)]" />
-      <div className="h-10 w-28 rounded-full border border-border bg-[var(--input)]" />
+    <div className="flex items-center justify-end gap-2" aria-hidden="true">
       <div className="size-10 rounded-full border border-border bg-[var(--input)]" />
       <div className="size-10 rounded-full border border-border bg-[var(--input)]" />
+      <div className="size-10 rounded-full border border-border bg-[var(--input)]" />
+      <div className="size-10 rounded-full border border-border bg-[var(--input)]" />
+    </div>
+  )
+}
+
+function DesktopNavFallback() {
+  return (
+    <div className="flex gap-2 overflow-hidden pb-1" aria-hidden="true">
+      <div className="h-10 w-28 shrink-0 rounded-full border border-border bg-[var(--input)]" />
+      <div className="h-10 w-28 shrink-0 rounded-full border border-border bg-[var(--input)]" />
+      <div className="h-10 w-32 shrink-0 rounded-full border border-border bg-[var(--input)]" />
+      <div className="h-10 w-24 shrink-0 rounded-full border border-border bg-[var(--input)]" />
+      <div className="h-10 w-24 shrink-0 rounded-full border border-border bg-[var(--input)]" />
+      <div className="h-10 w-24 shrink-0 rounded-full border border-border bg-[var(--input)]" />
     </div>
   )
 }

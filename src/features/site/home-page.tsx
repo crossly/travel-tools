@@ -1,10 +1,14 @@
 import { Link } from '@tanstack/react-router'
-import { ArrowRight, Languages, ReceiptText, WalletCards } from 'lucide-react'
+import { ArrowRight, Briefcase, Clock3, Languages, ReceiptText, Smartphone, WalletCards } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 import { AppShell } from '@/components/app/app-shell'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { PACKING_TEMPLATE_DEFINITIONS } from '@/data/packing-list/templates'
+import { countReadyLocalAppCountries, countTrackedLocalAppCountries } from '@/lib/local-apps'
 import { listRawPhraseCountrySummaries } from '@/lib/travel-phrases'
+import { JET_LAG_TIMEZONES } from '@/lib/jet-lag'
 import { getLocalizedPath } from '@/lib/site'
 import { useI18n } from '@/lib/i18n'
 import type { Locale } from '@/lib/types'
@@ -13,6 +17,76 @@ export function HomePage({ locale }: { locale: Locale }) {
   const { t } = useI18n()
   const phraseStats = listRawPhraseCountrySummaries()
   const totalPhrases = phraseStats.reduce((sum, pack) => sum + pack.phraseCount, 0)
+  const packingTemplateCount = PACKING_TEMPLATE_DEFINITIONS.length
+  const timeZoneCount = JET_LAG_TIMEZONES.length
+  const localAppsReadyCount = countReadyLocalAppCountries()
+  const localAppsTrackedCount = countTrackedLocalAppCountries()
+  const toolSections: HomeToolSection[] = [
+    {
+      id: 'primary',
+      badge: t('site.primaryToolsBadge'),
+      title: t('site.primaryToolsTitle'),
+      description: t('site.primaryToolsDescription'),
+      cards: [
+        {
+          icon: WalletCards,
+          badge: 'FX',
+          title: t('tool.currency.name'),
+          description: t('site.currencyPreview'),
+          metric: t('site.currencyMetric'),
+          path: '/currency',
+        },
+        {
+          icon: ReceiptText,
+          badge: 'Trip',
+          title: t('tool.splitBill.name'),
+          description: t('site.splitPreview'),
+          metric: t('site.splitMetric'),
+          path: '/bill-splitter',
+        },
+        {
+          icon: Briefcase,
+          badge: 'Pack',
+          title: t('tool.packingList.name'),
+          description: t('site.packingPreview'),
+          metric: t('site.packingMetric', { count: packingTemplateCount }),
+          path: '/packing-list',
+        },
+      ],
+    },
+    {
+      id: 'guides',
+      badge: t('site.companionToolsBadge'),
+      title: t('site.companionToolsTitle'),
+      description: t('site.companionToolsDescription'),
+      cards: [
+        {
+          icon: Languages,
+          badge: t('phrases.audioBadge'),
+          title: t('tool.travelPhrases.name'),
+          description: t('site.phrasesPreview'),
+          metric: t('site.phrasesMetric', { packs: phraseStats.length, phrases: totalPhrases }),
+          path: '/travel-phrases',
+        },
+        {
+          icon: Smartphone,
+          badge: 'Apps',
+          title: t('tool.localApps.name'),
+          description: t('site.localAppsPreview'),
+          metric: t('site.localAppsMetric', { ready: localAppsReadyCount, tracked: localAppsTrackedCount }),
+          path: '/local-apps',
+        },
+        {
+          icon: Clock3,
+          badge: 'TZ',
+          title: t('tool.jetLag.name'),
+          description: t('site.jetLagPreview'),
+          metric: t('site.jetLagMetric', { count: timeZoneCount }),
+          path: '/jet-lag',
+        },
+      ],
+    },
+  ]
 
   return (
     <AppShell locale={locale} title={t('site.homeTitle')} description={t('site.homeDescription')} showPageIntro={false}>
@@ -22,11 +96,11 @@ export function HomePage({ locale }: { locale: Locale }) {
             <Badge variant="outline" className="w-fit">
               {t('site.tagline')}
             </Badge>
-            <p className="hero-eyebrow text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">
+            <p className="hero-eyebrow text-xs font-semibold uppercase text-muted-foreground">
               {t('site.heroEyebrow')}
             </p>
-            <CardTitle className="max-w-3xl text-4xl leading-tight sm:text-5xl">{t('site.heroTitle')}</CardTitle>
-            <CardDescription className="max-w-2xl text-base leading-7 sm:text-lg">
+            <CardTitle className="max-w-3xl text-balance text-4xl leading-tight sm:text-5xl">{t('site.heroTitle')}</CardTitle>
+            <CardDescription className="max-w-2xl text-pretty text-base leading-7 sm:text-lg">
               {t('site.heroDescription')}
             </CardDescription>
             <p className="hero-highlight-line text-sm font-medium text-foreground/80">
@@ -44,76 +118,71 @@ export function HomePage({ locale }: { locale: Locale }) {
         </CardHeader>
       </Card>
 
-      <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-3">
-        <Card>
-          <CardHeader>
-            <div className="flex items-center justify-between">
-              <WalletCards className="h-6 w-6 text-primary" />
-              <Badge variant="outline">FX</Badge>
-            </div>
-            <CardTitle>{t('tool.currency.name')}</CardTitle>
-            <CardDescription>{t('site.currencyPreview')}</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="rounded-2xl border border-border bg-muted p-4">
-              <p className="mono text-2xl font-medium">{t('site.currencyMetric')}</p>
-            </div>
-            <Button asChild variant="secondary" size="lg" className="w-full justify-between">
-              <Link to={getLocalizedPath(locale, '/currency')}>
-                {t('tool.currency.name')}
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </Button>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <div className="flex items-center justify-between">
-              <Languages className="h-6 w-6 text-primary" />
-              <Badge variant="outline">{t('phrases.audioBadge')}</Badge>
-            </div>
-            <CardTitle>{t('tool.travelPhrases.name')}</CardTitle>
-            <CardDescription>{t('site.phrasesPreview')}</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="rounded-2xl border border-border bg-muted p-4">
-              <p className="mono text-2xl font-medium">
-                {t('site.phrasesMetric', { packs: phraseStats.length, phrases: totalPhrases })}
+      <div className="space-y-8">
+        {toolSections.map((section) => (
+          <section key={section.id} className="space-y-4" aria-labelledby={`home-section-${section.id}`}>
+            <div className="space-y-2">
+              <Badge variant="outline">{section.badge}</Badge>
+              <h2 id={`home-section-${section.id}`} className="display text-balance text-2xl font-semibold text-foreground">
+                {section.title}
+              </h2>
+              <p className="max-w-3xl text-pretty text-sm leading-6 text-muted-foreground md:text-base">
+                {section.description}
               </p>
             </div>
-            <Button asChild variant="secondary" size="lg" className="w-full justify-between">
-              <Link to={getLocalizedPath(locale, '/travel-phrases')}>
-                {t('tool.travelPhrases.name')}
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </Button>
-          </CardContent>
-        </Card>
 
-        <Card>
-          <CardHeader>
-            <div className="flex items-center justify-between">
-              <ReceiptText className="h-6 w-6 text-primary" />
-              <Badge variant="outline">Trip</Badge>
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {section.cards.map((card) => (
+                <HomeToolCard key={card.path} locale={locale} {...card} />
+              ))}
             </div>
-            <CardTitle>{t('tool.splitBill.name')}</CardTitle>
-            <CardDescription>{t('site.splitPreview')}</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="rounded-2xl border border-border bg-muted p-4">
-              <p className="mono text-2xl font-medium">{t('site.splitMetric')}</p>
-            </div>
-            <Button asChild variant="secondary" size="lg" className="w-full justify-between">
-              <Link to={getLocalizedPath(locale, '/bill-splitter')}>
-                {t('tool.splitBill.name')}
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </Button>
-          </CardContent>
-        </Card>
+          </section>
+        ))}
       </div>
     </AppShell>
+  )
+}
+
+type HomeToolCardDefinition = {
+  icon: LucideIcon
+  badge: string
+  title: string
+  description: string
+  metric: string
+  path: string
+}
+
+type HomeToolSection = {
+  id: string
+  badge: string
+  title: string
+  description: string
+  cards: HomeToolCardDefinition[]
+}
+
+function HomeToolCard({ locale, icon: Icon, badge, title, description, metric, path }: HomeToolCardDefinition & { locale: Locale }) {
+  return (
+    <Card>
+      <CardHeader>
+        <div className="flex items-center justify-between">
+          <Icon className="size-6 text-primary" />
+          <Badge variant="outline">{badge}</Badge>
+        </div>
+        <CardTitle className="text-balance">{title}</CardTitle>
+        <CardDescription className="text-pretty">{description}</CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        <div className="rounded-2xl border border-border bg-muted p-4">
+          <p className="mono text-2xl font-medium tabular-nums">{metric}</p>
+        </div>
+        <Button asChild variant="secondary" size="lg" className="w-full justify-between">
+          <Link to={getLocalizedPath(locale, path)}>
+            {title}
+            <ArrowRight className="size-4" />
+          </Link>
+        </Button>
+      </CardContent>
+    </Card>
   )
 }
 

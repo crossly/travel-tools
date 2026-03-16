@@ -20,7 +20,7 @@ describe('route heads', () => {
 
     expect(head.meta).toEqual(expect.arrayContaining([
       expect.objectContaining({ title: '旅行箱' }),
-      expect.objectContaining({ name: 'description', content: '统一壳、统一交互、统一主题。首发汇率换算、旅行短语卡和旅行 AA。' }),
+      expect.objectContaining({ name: 'description', content: '统一壳、统一交互、统一主题。现在覆盖汇率、短语卡、本地 App、旅行 AA、行李清单和倒时差。' }),
     ]))
     expect(head.links).toEqual(expect.arrayContaining([
       expect.objectContaining({ rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' }),
@@ -73,6 +73,91 @@ describe('route heads', () => {
       expect.objectContaining({ rel: 'canonical', href: 'https://www.routecrate.com/en-us/currency' }),
       expect.objectContaining({ rel: 'alternate', hreflang: 'zh-CN', href: 'https://www.routecrate.com/zh-cn/currency' }),
       expect.objectContaining({ rel: 'alternate', hreflang: 'x-default', href: 'https://www.routecrate.com/en-us/currency' }),
+    ]))
+  })
+
+  it('emits public metadata for the jet lag page', async () => {
+    const { Route } = await import('@/routes/$locale/jet-lag')
+    const head = (Route as unknown as {
+      options: {
+        head: (args: { params: { locale: string } }) => {
+          meta: Array<Record<string, string>>
+          links: Array<Record<string, string>>
+        }
+      }
+    }).options.head({
+      params: { locale: 'en-us' },
+    })
+
+    expect(head.meta).toEqual(expect.arrayContaining([
+      expect.objectContaining({ title: 'Jet Lag Reset · Route Crate' }),
+      expect.objectContaining({ name: 'description', content: 'Use departure, arrival, and local landing time to generate a reset plan you can follow immediately.' }),
+      expect.objectContaining({ property: 'og:url', content: 'https://www.routecrate.com/en-us/jet-lag' }),
+    ]))
+    expect(head.links).toEqual(expect.arrayContaining([
+      expect.objectContaining({ rel: 'canonical', href: 'https://www.routecrate.com/en-us/jet-lag' }),
+    ]))
+  })
+
+  it('emits public metadata for the local apps page', async () => {
+    const { Route } = await import('@/routes/$locale/local-apps/index')
+    const head = (Route as unknown as {
+      options: {
+        head: (args: { params: { locale: string } }) => {
+          meta: Array<Record<string, string>>
+          links: Array<Record<string, string>>
+        }
+      }
+    }).options.head({
+      params: { locale: 'en-us' },
+    })
+
+    expect(head.meta).toEqual(expect.arrayContaining([
+      expect.objectContaining({ title: 'Local Apps · Route Crate' }),
+      expect.objectContaining({ name: 'description', content: 'Country-based local app picks with official links and download addresses. Start with the layers that usually matter first on the ground: rides, maps, shopping, food discovery, delivery, and stays.' }),
+      expect.objectContaining({ property: 'og:url', content: 'https://www.routecrate.com/en-us/local-apps' }),
+    ]))
+    expect(head.links).toEqual(expect.arrayContaining([
+      expect.objectContaining({ rel: 'canonical', href: 'https://www.routecrate.com/en-us/local-apps' }),
+    ]))
+  })
+
+  it('emits public metadata for local app country pages', async () => {
+    const { Route } = await import('@/routes/$locale/local-apps/$country')
+    const head = (Route as unknown as {
+      options: {
+        head: (args: {
+          params: { locale: string; country: string }
+          loaderData?: {
+            guide: {
+              title: string
+              description: string
+              slug: string
+            } | null
+          }
+        }) => {
+          meta: Array<Record<string, string>>
+          links: Array<Record<string, string>>
+        }
+      }
+    }).options.head({
+      params: { locale: 'en-us', country: 'china' },
+      loaderData: {
+        guide: {
+          title: 'China Local Apps',
+          description: 'Sort ride-hailing, maps, and payments first. Many on-the-ground actions in mainland China assume local apps.',
+          slug: 'china',
+        },
+      },
+    })
+
+    expect(head.meta).toEqual(expect.arrayContaining([
+      expect.objectContaining({ title: 'China Local Apps · Route Crate' }),
+      expect.objectContaining({ name: 'description', content: 'Sort ride-hailing, maps, and payments first. Many on-the-ground actions in mainland China assume local apps.' }),
+      expect.objectContaining({ property: 'og:url', content: 'https://www.routecrate.com/en-us/local-apps/china' }),
+    ]))
+    expect(head.links).toEqual(expect.arrayContaining([
+      expect.objectContaining({ rel: 'canonical', href: 'https://www.routecrate.com/en-us/local-apps/china' }),
     ]))
   })
 

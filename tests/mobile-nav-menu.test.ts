@@ -44,7 +44,10 @@ vi.mock('@/lib/i18n', () => ({
         'nav.home': '首页',
         'nav.currency': '汇率',
         'nav.travelPhrases': '短语卡',
+        'nav.localApps': '本地 App',
         'nav.splitBill': 'AA',
+        'nav.packingList': '行李',
+        'nav.jetLag': '时差',
         'nav.settings': '设置',
         'settings.language': '语言',
         'settings.languageChinese': '中文',
@@ -118,8 +121,10 @@ describe('MobileNavMenu', () => {
     expect(screen.getByRole('button', { name: '首页' })).toBeTruthy()
     expect(screen.getByRole('button', { name: '汇率' })).toBeTruthy()
     expect(screen.getByRole('button', { name: '短语卡' })).toBeTruthy()
+    expect(screen.getByRole('button', { name: '本地 App' })).toBeTruthy()
     expect(screen.getByRole('button', { name: 'AA' })).toBeTruthy()
-
+    expect(screen.getByRole('button', { name: '行李' })).toBeTruthy()
+    expect(screen.getByRole('button', { name: '时差' })).toBeTruthy()
     fireEvent.click(screen.getByRole('button', { name: '外观' }))
     fireEvent.click(screen.getByRole('button', { name: '语言' }))
 

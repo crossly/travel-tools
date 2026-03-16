@@ -1,7 +1,7 @@
 import { buildPersistentCookieString, parseCookieHeader } from './cookie'
 import { DEVICE_COOKIE_KEYS, buildDeviceCookieString, getDeviceIdentityFromCookie } from './device-cookie'
 import { SITE_COOKIE_KEYS } from './site'
-import type { DeviceIdentity, SiteTheme } from './types'
+import type { DeviceIdentity, JetLagPrefs, PackingList, SiteTheme } from './types'
 
 export const STORAGE_KEYS = {
   locale: 'route-crate:site:locale',
@@ -9,6 +9,9 @@ export const STORAGE_KEYS = {
   lastTool: 'route-crate:site:last-tool',
   device: 'route-crate:split-bill:device',
   activeTripId: 'route-crate:split-bill:active-trip',
+  packingLists: 'route-crate:packing-list:lists',
+  activePackingListId: 'route-crate:packing-list:active-list',
+  jetLagPrefs: 'route-crate:jet-lag:prefs',
   currencySource: 'route-crate:currency:source',
   currencyTarget: 'route-crate:currency:target',
   currencyRates: 'route-crate:currency:rates',
@@ -21,6 +24,9 @@ const PREVIOUS_STORAGE_KEYS = {
   lastTool: 'travel-tools:site:last-tool',
   device: 'travel-tools:split-bill:device',
   activeTripId: 'travel-tools:split-bill:active-trip',
+  packingLists: 'travel-tools:packing-list:lists',
+  activePackingListId: 'travel-tools:packing-list:active-list',
+  jetLagPrefs: 'travel-tools:jet-lag:prefs',
   currencySource: 'travel-tools:currency:source',
   currencyTarget: 'travel-tools:currency:target',
   currencyRates: 'travel-tools:currency:rates',
@@ -59,6 +65,9 @@ export function migrateLegacyStorage() {
   copyIfMissing(STORAGE_KEYS.lastTool, PREVIOUS_STORAGE_KEYS.lastTool)
   copyIfMissing(STORAGE_KEYS.device, PREVIOUS_STORAGE_KEYS.device)
   copyIfMissing(STORAGE_KEYS.activeTripId, PREVIOUS_STORAGE_KEYS.activeTripId)
+  copyIfMissing(STORAGE_KEYS.packingLists, PREVIOUS_STORAGE_KEYS.packingLists)
+  copyIfMissing(STORAGE_KEYS.activePackingListId, PREVIOUS_STORAGE_KEYS.activePackingListId)
+  copyIfMissing(STORAGE_KEYS.jetLagPrefs, PREVIOUS_STORAGE_KEYS.jetLagPrefs)
   copyIfMissing(STORAGE_KEYS.currencySource, PREVIOUS_STORAGE_KEYS.currencySource)
   copyIfMissing(STORAGE_KEYS.currencyTarget, PREVIOUS_STORAGE_KEYS.currencyTarget)
   copyIfMissing(STORAGE_KEYS.currencyRates, PREVIOUS_STORAGE_KEYS.currencyRates)
@@ -156,6 +165,65 @@ export function writeActiveTripId(tripId: string) {
 
 export function clearActiveTripId() {
   getStorage()?.removeItem?.(STORAGE_KEYS.activeTripId)
+}
+
+export function readPackingLists() {
+  migrateLegacyStorage()
+  const raw = getStorage()?.getItem(STORAGE_KEYS.packingLists)
+  if (!raw) return []
+
+  try {
+    const parsed = JSON.parse(raw)
+    return Array.isArray(parsed) ? parsed as PackingList[] : []
+  } catch {
+    getStorage()?.removeItem?.(STORAGE_KEYS.packingLists)
+    return []
+  }
+}
+
+export function writePackingLists(lists: PackingList[]) {
+  getStorage()?.setItem(STORAGE_KEYS.packingLists, JSON.stringify(lists))
+}
+
+export function readActivePackingListId() {
+  migrateLegacyStorage()
+  return getStorage()?.getItem(STORAGE_KEYS.activePackingListId) ?? null
+}
+
+export function writeActivePackingListId(listId: string) {
+  getStorage()?.setItem(STORAGE_KEYS.activePackingListId, listId)
+}
+
+export function clearActivePackingListId() {
+  getStorage()?.removeItem?.(STORAGE_KEYS.activePackingListId)
+}
+
+export function readJetLagPrefs() {
+  migrateLegacyStorage()
+  const raw = getStorage()?.getItem(STORAGE_KEYS.jetLagPrefs)
+  if (!raw) return null
+
+  try {
+    const parsed = JSON.parse(raw) as Partial<JetLagPrefs>
+    if (
+      typeof parsed.originTimeZone !== 'string'
+      || typeof parsed.destinationTimeZone !== 'string'
+      || typeof parsed.departureAt !== 'string'
+      || typeof parsed.arrivalAt !== 'string'
+      || (parsed.intensity !== 'light' && parsed.intensity !== 'moderate' && parsed.intensity !== 'heavy')
+    ) {
+      return null
+    }
+
+    return parsed as JetLagPrefs
+  } catch {
+    getStorage()?.removeItem?.(STORAGE_KEYS.jetLagPrefs)
+    return null
+  }
+}
+
+export function writeJetLagPrefs(prefs: JetLagPrefs) {
+  getStorage()?.setItem(STORAGE_KEYS.jetLagPrefs, JSON.stringify(prefs))
 }
 
 export function readCurrencyPrefs() {

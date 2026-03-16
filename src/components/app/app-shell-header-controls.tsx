@@ -1,7 +1,8 @@
 import { Link, useLocation } from '@tanstack/react-router'
-import { Home, Languages, ReceiptText, Settings, WalletCards } from 'lucide-react'
+import { Settings } from 'lucide-react'
 import { LocaleSwitcher } from './locale-switcher'
 import { ThemeToggle } from './theme-toggle'
+import { TOOL_NAV_ITEMS } from './navigation-items'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { getLocalizedPath } from '@/lib/site'
@@ -9,53 +10,17 @@ import { useI18n } from '@/lib/i18n'
 import { writeLastTool } from '@/lib/storage'
 import type { Locale, ToolDefinition } from '@/lib/types'
 
-const HEADER_NAV_ITEMS: Array<{
-  key: string
-  icon: typeof Home
-  path: string
-  tool?: ToolDefinition['slug']
-}> = [
-  { key: 'nav.home', icon: Home, path: '/' },
-  { key: 'nav.currency', icon: WalletCards, path: '/currency', tool: 'currency' },
-  { key: 'nav.travelPhrases', icon: Languages, path: '/travel-phrases', tool: 'travel-phrases' },
-  { key: 'nav.splitBill', icon: ReceiptText, path: '/bill-splitter', tool: 'split-bill' },
-]
-
 export function AppShellHeaderControls({
   locale,
-  activeTool,
 }: {
   locale: Locale
-  activeTool?: ToolDefinition['slug']
 }) {
   const location = useLocation()
   const { t } = useI18n()
   const settingsPath = getLocalizedPath(locale, '/settings')
 
   return (
-    <div className="flex flex-wrap items-center justify-end gap-2 xl:max-w-[42rem]">
-      <nav className="flex flex-wrap items-center gap-2">
-        {HEADER_NAV_ITEMS.map((item) => {
-          const Icon = item.icon
-          const path = getLocalizedPath(locale, item.path)
-          const isActive = item.tool ? activeTool === item.tool : location.pathname === path
-          return (
-            <Button
-              key={item.key}
-              asChild
-              variant="secondary"
-              className={cn('h-10 rounded-full px-4', isActive && 'border-primary/40 bg-primary/10 text-foreground')}
-            >
-              <Link to={path} onClick={() => {
-                if (item.tool) writeLastTool(item.tool)
-              }}>
-                <Icon className="h-4 w-4" />
-                {t(item.key)}
-              </Link>
-            </Button>
-          )
-        })}
-      </nav>
+    <div className="flex items-center justify-end gap-2">
       <LocaleSwitcher iconOnly />
       <ThemeToggle iconOnly />
       <Button
@@ -69,5 +34,49 @@ export function AppShellHeaderControls({
         </Link>
       </Button>
     </div>
+  )
+}
+
+export function DesktopToolNav({
+  locale,
+  activeTool,
+}: {
+  locale: Locale
+  activeTool?: ToolDefinition['slug']
+}) {
+  const { t } = useI18n()
+
+  return (
+    <nav
+      aria-label="Desktop tool navigation"
+      className="flex w-full items-center gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+    >
+      {TOOL_NAV_ITEMS.map((item) => {
+        const Icon = item.icon
+        const path = getLocalizedPath(locale, item.path)
+        const isActive = item.tool ? activeTool === item.tool : false
+        return (
+          <Button
+            key={item.key}
+            asChild
+            variant="secondary"
+            className={cn(
+              'h-10 shrink-0 rounded-full px-4',
+              isActive && 'border-primary/40 bg-primary/10 text-foreground',
+            )}
+          >
+            <Link
+              to={path}
+              onClick={() => {
+                if (item.tool) writeLastTool(item.tool)
+              }}
+            >
+              <Icon className="h-4 w-4" />
+              {t(item.key)}
+            </Link>
+          </Button>
+        )
+      })}
+    </nav>
   )
 }

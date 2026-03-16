@@ -13,13 +13,17 @@ import { Route as LocaleRouteRouteImport } from './routes/$locale/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LocaleIndexRouteImport } from './routes/$locale/index'
 import { Route as LocaleSettingsRouteImport } from './routes/$locale/settings'
+import { Route as LocalePackingListRouteImport } from './routes/$locale/packing-list'
+import { Route as LocaleJetLagRouteImport } from './routes/$locale/jet-lag'
 import { Route as LocaleCurrencyRouteImport } from './routes/$locale/currency'
 import { Route as LocaleTravelPhrasesIndexRouteImport } from './routes/$locale/travel-phrases/index'
+import { Route as LocaleLocalAppsIndexRouteImport } from './routes/$locale/local-apps/index'
 import { Route as LocaleBillSplitterIndexRouteImport } from './routes/$locale/bill-splitter/index'
 import { Route as ApiSiteHealthRouteImport } from './routes/api/site/health'
 import { Route as ApiFxRatesRouteImport } from './routes/api/fx/rates'
 import { Route as ApiFxDetectRouteImport } from './routes/api/fx/detect'
 import { Route as LocaleTravelPhrasesCountryRouteImport } from './routes/$locale/travel-phrases/$country'
+import { Route as LocaleLocalAppsCountryRouteImport } from './routes/$locale/local-apps/$country'
 import { Route as LocaleBillSplitterTripIdRouteRouteImport } from './routes/$locale/bill-splitter/$tripId/route'
 import { Route as ApiSplitBillTripsIndexRouteImport } from './routes/api/split-bill/trips/index'
 import { Route as LocaleBillSplitterTripIdIndexRouteImport } from './routes/$locale/bill-splitter/$tripId/index'
@@ -57,6 +61,16 @@ const LocaleSettingsRoute = LocaleSettingsRouteImport.update({
   path: '/settings',
   getParentRoute: () => LocaleRouteRoute,
 } as any)
+const LocalePackingListRoute = LocalePackingListRouteImport.update({
+  id: '/packing-list',
+  path: '/packing-list',
+  getParentRoute: () => LocaleRouteRoute,
+} as any)
+const LocaleJetLagRoute = LocaleJetLagRouteImport.update({
+  id: '/jet-lag',
+  path: '/jet-lag',
+  getParentRoute: () => LocaleRouteRoute,
+} as any)
 const LocaleCurrencyRoute = LocaleCurrencyRouteImport.update({
   id: '/currency',
   path: '/currency',
@@ -68,6 +82,11 @@ const LocaleTravelPhrasesIndexRoute =
     path: '/travel-phrases/',
     getParentRoute: () => LocaleRouteRoute,
   } as any)
+const LocaleLocalAppsIndexRoute = LocaleLocalAppsIndexRouteImport.update({
+  id: '/local-apps/',
+  path: '/local-apps/',
+  getParentRoute: () => LocaleRouteRoute,
+} as any)
 const LocaleBillSplitterIndexRoute = LocaleBillSplitterIndexRouteImport.update({
   id: '/bill-splitter/',
   path: '/bill-splitter/',
@@ -94,6 +113,11 @@ const LocaleTravelPhrasesCountryRoute =
     path: '/travel-phrases/$country',
     getParentRoute: () => LocaleRouteRoute,
   } as any)
+const LocaleLocalAppsCountryRoute = LocaleLocalAppsCountryRouteImport.update({
+  id: '/local-apps/$country',
+  path: '/local-apps/$country',
+  getParentRoute: () => LocaleRouteRoute,
+} as any)
 const LocaleBillSplitterTripIdRouteRoute =
   LocaleBillSplitterTripIdRouteRouteImport.update({
     id: '/bill-splitter/$tripId',
@@ -193,14 +217,18 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$locale': typeof LocaleRouteRouteWithChildren
   '/$locale/currency': typeof LocaleCurrencyRoute
+  '/$locale/jet-lag': typeof LocaleJetLagRoute
+  '/$locale/packing-list': typeof LocalePackingListRoute
   '/$locale/settings': typeof LocaleSettingsRoute
   '/$locale/': typeof LocaleIndexRoute
   '/$locale/bill-splitter/$tripId': typeof LocaleBillSplitterTripIdRouteRouteWithChildren
+  '/$locale/local-apps/$country': typeof LocaleLocalAppsCountryRoute
   '/$locale/travel-phrases/$country': typeof LocaleTravelPhrasesCountryRoute
   '/api/fx/detect': typeof ApiFxDetectRoute
   '/api/fx/rates': typeof ApiFxRatesRoute
   '/api/site/health': typeof ApiSiteHealthRoute
   '/$locale/bill-splitter/': typeof LocaleBillSplitterIndexRoute
+  '/$locale/local-apps/': typeof LocaleLocalAppsIndexRoute
   '/$locale/travel-phrases/': typeof LocaleTravelPhrasesIndexRoute
   '/$locale/bill-splitter/$tripId/add': typeof LocaleBillSplitterTripIdAddRoute
   '/$locale/bill-splitter/$tripId/settlement': typeof LocaleBillSplitterTripIdSettlementRoute
@@ -221,13 +249,17 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$locale/currency': typeof LocaleCurrencyRoute
+  '/$locale/jet-lag': typeof LocaleJetLagRoute
+  '/$locale/packing-list': typeof LocalePackingListRoute
   '/$locale/settings': typeof LocaleSettingsRoute
   '/$locale': typeof LocaleIndexRoute
+  '/$locale/local-apps/$country': typeof LocaleLocalAppsCountryRoute
   '/$locale/travel-phrases/$country': typeof LocaleTravelPhrasesCountryRoute
   '/api/fx/detect': typeof ApiFxDetectRoute
   '/api/fx/rates': typeof ApiFxRatesRoute
   '/api/site/health': typeof ApiSiteHealthRoute
   '/$locale/bill-splitter': typeof LocaleBillSplitterIndexRoute
+  '/$locale/local-apps': typeof LocaleLocalAppsIndexRoute
   '/$locale/travel-phrases': typeof LocaleTravelPhrasesIndexRoute
   '/$locale/bill-splitter/$tripId/add': typeof LocaleBillSplitterTripIdAddRoute
   '/$locale/bill-splitter/$tripId/settlement': typeof LocaleBillSplitterTripIdSettlementRoute
@@ -250,14 +282,18 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/$locale': typeof LocaleRouteRouteWithChildren
   '/$locale/currency': typeof LocaleCurrencyRoute
+  '/$locale/jet-lag': typeof LocaleJetLagRoute
+  '/$locale/packing-list': typeof LocalePackingListRoute
   '/$locale/settings': typeof LocaleSettingsRoute
   '/$locale/': typeof LocaleIndexRoute
   '/$locale/bill-splitter/$tripId': typeof LocaleBillSplitterTripIdRouteRouteWithChildren
+  '/$locale/local-apps/$country': typeof LocaleLocalAppsCountryRoute
   '/$locale/travel-phrases/$country': typeof LocaleTravelPhrasesCountryRoute
   '/api/fx/detect': typeof ApiFxDetectRoute
   '/api/fx/rates': typeof ApiFxRatesRoute
   '/api/site/health': typeof ApiSiteHealthRoute
   '/$locale/bill-splitter/': typeof LocaleBillSplitterIndexRoute
+  '/$locale/local-apps/': typeof LocaleLocalAppsIndexRoute
   '/$locale/travel-phrases/': typeof LocaleTravelPhrasesIndexRoute
   '/$locale/bill-splitter/$tripId/add': typeof LocaleBillSplitterTripIdAddRoute
   '/$locale/bill-splitter/$tripId/settlement': typeof LocaleBillSplitterTripIdSettlementRoute
@@ -281,14 +317,18 @@ export interface FileRouteTypes {
     | '/'
     | '/$locale'
     | '/$locale/currency'
+    | '/$locale/jet-lag'
+    | '/$locale/packing-list'
     | '/$locale/settings'
     | '/$locale/'
     | '/$locale/bill-splitter/$tripId'
+    | '/$locale/local-apps/$country'
     | '/$locale/travel-phrases/$country'
     | '/api/fx/detect'
     | '/api/fx/rates'
     | '/api/site/health'
     | '/$locale/bill-splitter/'
+    | '/$locale/local-apps/'
     | '/$locale/travel-phrases/'
     | '/$locale/bill-splitter/$tripId/add'
     | '/$locale/bill-splitter/$tripId/settlement'
@@ -309,13 +349,17 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/$locale/currency'
+    | '/$locale/jet-lag'
+    | '/$locale/packing-list'
     | '/$locale/settings'
     | '/$locale'
+    | '/$locale/local-apps/$country'
     | '/$locale/travel-phrases/$country'
     | '/api/fx/detect'
     | '/api/fx/rates'
     | '/api/site/health'
     | '/$locale/bill-splitter'
+    | '/$locale/local-apps'
     | '/$locale/travel-phrases'
     | '/$locale/bill-splitter/$tripId/add'
     | '/$locale/bill-splitter/$tripId/settlement'
@@ -337,14 +381,18 @@ export interface FileRouteTypes {
     | '/'
     | '/$locale'
     | '/$locale/currency'
+    | '/$locale/jet-lag'
+    | '/$locale/packing-list'
     | '/$locale/settings'
     | '/$locale/'
     | '/$locale/bill-splitter/$tripId'
+    | '/$locale/local-apps/$country'
     | '/$locale/travel-phrases/$country'
     | '/api/fx/detect'
     | '/api/fx/rates'
     | '/api/site/health'
     | '/$locale/bill-splitter/'
+    | '/$locale/local-apps/'
     | '/$locale/travel-phrases/'
     | '/$locale/bill-splitter/$tripId/add'
     | '/$locale/bill-splitter/$tripId/settlement'
@@ -405,6 +453,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleSettingsRouteImport
       parentRoute: typeof LocaleRouteRoute
     }
+    '/$locale/packing-list': {
+      id: '/$locale/packing-list'
+      path: '/packing-list'
+      fullPath: '/$locale/packing-list'
+      preLoaderRoute: typeof LocalePackingListRouteImport
+      parentRoute: typeof LocaleRouteRoute
+    }
+    '/$locale/jet-lag': {
+      id: '/$locale/jet-lag'
+      path: '/jet-lag'
+      fullPath: '/$locale/jet-lag'
+      preLoaderRoute: typeof LocaleJetLagRouteImport
+      parentRoute: typeof LocaleRouteRoute
+    }
     '/$locale/currency': {
       id: '/$locale/currency'
       path: '/currency'
@@ -417,6 +479,13 @@ declare module '@tanstack/react-router' {
       path: '/travel-phrases'
       fullPath: '/$locale/travel-phrases/'
       preLoaderRoute: typeof LocaleTravelPhrasesIndexRouteImport
+      parentRoute: typeof LocaleRouteRoute
+    }
+    '/$locale/local-apps/': {
+      id: '/$locale/local-apps/'
+      path: '/local-apps'
+      fullPath: '/$locale/local-apps/'
+      preLoaderRoute: typeof LocaleLocalAppsIndexRouteImport
       parentRoute: typeof LocaleRouteRoute
     }
     '/$locale/bill-splitter/': {
@@ -452,6 +521,13 @@ declare module '@tanstack/react-router' {
       path: '/travel-phrases/$country'
       fullPath: '/$locale/travel-phrases/$country'
       preLoaderRoute: typeof LocaleTravelPhrasesCountryRouteImport
+      parentRoute: typeof LocaleRouteRoute
+    }
+    '/$locale/local-apps/$country': {
+      id: '/$locale/local-apps/$country'
+      path: '/local-apps/$country'
+      fullPath: '/$locale/local-apps/$country'
+      preLoaderRoute: typeof LocaleLocalAppsCountryRouteImport
       parentRoute: typeof LocaleRouteRoute
     }
     '/$locale/bill-splitter/$tripId': {
@@ -590,22 +666,30 @@ const LocaleBillSplitterTripIdRouteRouteWithChildren =
 
 interface LocaleRouteRouteChildren {
   LocaleCurrencyRoute: typeof LocaleCurrencyRoute
+  LocaleJetLagRoute: typeof LocaleJetLagRoute
+  LocalePackingListRoute: typeof LocalePackingListRoute
   LocaleSettingsRoute: typeof LocaleSettingsRoute
   LocaleIndexRoute: typeof LocaleIndexRoute
   LocaleBillSplitterTripIdRouteRoute: typeof LocaleBillSplitterTripIdRouteRouteWithChildren
+  LocaleLocalAppsCountryRoute: typeof LocaleLocalAppsCountryRoute
   LocaleTravelPhrasesCountryRoute: typeof LocaleTravelPhrasesCountryRoute
   LocaleBillSplitterIndexRoute: typeof LocaleBillSplitterIndexRoute
+  LocaleLocalAppsIndexRoute: typeof LocaleLocalAppsIndexRoute
   LocaleTravelPhrasesIndexRoute: typeof LocaleTravelPhrasesIndexRoute
 }
 
 const LocaleRouteRouteChildren: LocaleRouteRouteChildren = {
   LocaleCurrencyRoute: LocaleCurrencyRoute,
+  LocaleJetLagRoute: LocaleJetLagRoute,
+  LocalePackingListRoute: LocalePackingListRoute,
   LocaleSettingsRoute: LocaleSettingsRoute,
   LocaleIndexRoute: LocaleIndexRoute,
   LocaleBillSplitterTripIdRouteRoute:
     LocaleBillSplitterTripIdRouteRouteWithChildren,
+  LocaleLocalAppsCountryRoute: LocaleLocalAppsCountryRoute,
   LocaleTravelPhrasesCountryRoute: LocaleTravelPhrasesCountryRoute,
   LocaleBillSplitterIndexRoute: LocaleBillSplitterIndexRoute,
+  LocaleLocalAppsIndexRoute: LocaleLocalAppsIndexRoute,
   LocaleTravelPhrasesIndexRoute: LocaleTravelPhrasesIndexRoute,
 }
 

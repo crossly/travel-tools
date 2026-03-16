@@ -1,21 +1,15 @@
 import { useState } from 'react'
 import { Link, useLocation, useNavigate } from '@tanstack/react-router'
-import { Home, Languages, Menu, ReceiptText, Settings, WalletCards, X } from 'lucide-react'
+import { Menu, Settings, X } from 'lucide-react'
 import { LocaleSwitcher } from './locale-switcher'
 import { ThemeToggle } from './theme-toggle'
+import { MOBILE_NAV_ITEMS } from './navigation-items'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { getLocalizedPath } from '@/lib/site'
 import { useI18n } from '@/lib/i18n'
 import { writeLastTool } from '@/lib/storage'
 import type { Locale, ToolDefinition } from '@/lib/types'
-
-const MOBILE_NAV_ITEMS: Array<{ key: string; path: string; icon: typeof Home; tool?: ToolDefinition['slug'] }> = [
-  { key: 'nav.home', path: '/', icon: Home },
-  { key: 'nav.currency', path: '/currency', icon: WalletCards, tool: 'currency' },
-  { key: 'nav.travelPhrases', path: '/travel-phrases', icon: Languages, tool: 'travel-phrases' },
-  { key: 'nav.splitBill', path: '/bill-splitter', icon: ReceiptText, tool: 'split-bill' },
-]
 
 export function MobileNavMenu({
   locale,
