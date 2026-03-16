@@ -27,34 +27,42 @@ export function LocalAppIcon({
 }) {
   const faviconUrl = buildLocalAppFaviconUrl(links)
   const [imageFailed, setImageFailed] = useState(false)
+  const [imageLoaded, setImageLoaded] = useState(false)
 
   useEffect(() => {
     setImageFailed(false)
+    setImageLoaded(false)
   }, [faviconUrl])
 
-  const showFavicon = Boolean(faviconUrl) && !imageFailed
+  const canAttemptFavicon = Boolean(faviconUrl) && !imageFailed
+  const iconState = imageLoaded && canAttemptFavicon ? 'image' : canAttemptFavicon ? 'loading' : 'fallback'
 
   return (
     <div
       data-app-icon-id={appId}
-      data-icon-state={showFavicon ? 'image' : 'fallback'}
+      data-icon-state={iconState}
       className={cn(
-        'flex size-12 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-border bg-muted',
+        'relative flex size-12 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-border bg-muted',
         className,
       )}
     >
-      {showFavicon ? (
+      {canAttemptFavicon ? (
         <img
           src={faviconUrl ?? undefined}
           alt=""
-          className="size-full object-cover"
+          className={cn(
+            'absolute inset-0 size-full p-1.5 object-contain transition-opacity duration-200',
+            imageLoaded ? 'opacity-100' : 'opacity-0',
+          )}
           loading="lazy"
           referrerPolicy="no-referrer"
+          onLoad={() => setImageLoaded(true)}
           onError={() => setImageFailed(true)}
         />
-      ) : (
+      ) : null}
+      {!imageLoaded ? (
         <Smartphone className="size-5 text-muted-foreground" aria-hidden="true" />
-      )}
+      ) : null}
       <span className="sr-only">{appName}</span>
     </div>
   )
