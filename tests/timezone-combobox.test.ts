@@ -61,4 +61,18 @@ describe('TimezoneCombobox', () => {
     const panel = await screen.findByRole('listbox')
     expect(panel.className).toContain('bg-[var(--surface-floating)]')
   })
+
+  it('shows the raw timezone value when the detected timezone is not in the curated list', async () => {
+    const { TimezoneCombobox } = await import('@/components/app/timezone-combobox')
+
+    render(
+      createElement(TimezoneCombobox, {
+        value: 'Asia/Kolkata',
+        onValueChange: vi.fn(),
+        locale: 'en-US',
+      }),
+    )
+
+    expect(screen.getByRole('button', { name: /asia\/kolkata/i })).toBeTruthy()
+  })
 })

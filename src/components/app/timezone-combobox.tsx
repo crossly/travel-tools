@@ -50,7 +50,7 @@ export function TimezoneCombobox({
   'aria-invalid': ariaInvalid,
 }: TimezoneComboboxProps) {
   const [open, setOpen] = useState(false)
-  const selected = useMemo(() => getJetLagTimezoneOption(value), [value])
+  const selected = useMemo(() => getJetLagTimezoneOption(value, [value]), [value])
   const copy = localeText[locale]
   const display = splitTimezoneLabel(selected?.label ?? value, value)
 
@@ -78,6 +78,7 @@ export function TimezoneCombobox({
           <TimezoneComboboxPanel
             locale={locale}
             value={value}
+            extraValues={[value]}
             onValueChange={(nextValue) => {
               onValueChange(nextValue)
               setOpen(false)

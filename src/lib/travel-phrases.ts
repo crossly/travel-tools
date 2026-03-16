@@ -1,6 +1,7 @@
 import phraseDefinitionsRaw from '@/data/travel-phrases/phrase-definitions.json'
 import phraseCountryIndexRaw from '@/data/travel-phrases/index.json'
 import { translate } from '@/lib/i18n'
+import { PHRASE_REGIONS } from '@/lib/phrase-regions'
 import type {
   Locale,
   PhraseAudioCoverage,
@@ -89,15 +90,7 @@ export const FEATURED_COUNTRY_SLUGS = [
 export const MAX_FEATURED_COUNTRY_PACKS = FEATURED_COUNTRY_SLUGS.length
 
 export const PHRASE_CATEGORIES: PhraseCategory[] = ['basics', 'transport', 'hotel', 'dining', 'shopping', 'emergency']
-export const PHRASE_REGIONS: Array<PhraseRegion | 'all'> = [
-  'all',
-  'asia',
-  'middle-east',
-  'europe',
-  'americas',
-  'africa',
-  'oceania',
-]
+export { PHRASE_REGIONS }
 
 const phraseDefinitions = phraseDefinitionsRaw as RawPhraseDefinition[]
 const phraseCountryIndex = phraseCountryIndexRaw as RawPhraseCountrySummary[]

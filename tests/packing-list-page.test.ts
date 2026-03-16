@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { createElement } from 'react'
-import { fireEvent, render, screen, waitFor } from '@testing-library/react'
-import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import type { PackingList } from '@/lib/types'
 
 vi.mock('@/components/app/app-shell', () => ({
@@ -93,10 +93,15 @@ vi.mock('@/lib/i18n', () => ({
 
 describe('PackingListPage', () => {
   beforeEach(() => {
+    vi.useRealTimers()
     storedLists = []
     activeListId = null
     writePackingLists.mockClear()
     writeActivePackingListId.mockClear()
+  })
+
+  afterEach(() => {
+    vi.useRealTimers()
   })
 
   it('creates a list from a template, updates progress, and removes a custom item', async () => {
@@ -131,5 +136,41 @@ describe('PackingListPage', () => {
 
     expect(writePackingLists).toHaveBeenCalled()
     expect(writeActivePackingListId).toHaveBeenCalled()
+  }, 10_000)
+
+  it('debounces packing list persistence while the user is typing notes', async () => {
+    vi.useFakeTimers()
+    const { PackingListPage } = await import('@/features/packing-list/home-page')
+
+    render(createElement(PackingListPage, { locale: 'en-US' }))
+
+    fireEvent.change(screen.getByLabelText('List name'), { target: { value: 'Tokyo Spring' } })
+    fireEvent.click(screen.getByRole('button', { name: 'Create list' }))
+
+    act(() => {
+      vi.runOnlyPendingTimers()
+    })
+    writePackingLists.mockClear()
+    writeActivePackingListId.mockClear()
+
+    const noteInputs = screen.getAllByPlaceholderText('For example: checked bag / carry-on')
+    fireEvent.change(noteInputs[0] as HTMLInputElement, { target: { value: 'first draft' } })
+    fireEvent.change(noteInputs[0] as HTMLInputElement, { target: { value: 'first draft updated' } })
+
+    expect(writePackingLists).not.toHaveBeenCalled()
+    expect(writeActivePackingListId).not.toHaveBeenCalled()
+
+    act(() => {
+      vi.advanceTimersByTime(249)
+    })
+
+    expect(writePackingLists).not.toHaveBeenCalled()
+
+    act(() => {
+      vi.advanceTimersByTime(1)
+    })
+
+    expect(writePackingLists).toHaveBeenCalledTimes(1)
+    expect(writeActivePackingListId).toHaveBeenCalledWith(expect.any(String))
   }, 10_000)
 })

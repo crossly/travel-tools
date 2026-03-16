@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { calculateJetLagPlan, getRecommendedJetLagIntensity } from '@/lib/jet-lag'
+import { calculateJetLagPlan, getRecommendedJetLagIntensity, resolveDefaultOriginTimeZone } from '@/lib/jet-lag'
 
 describe('jet lag helpers', () => {
   it('classifies recommended intensity from the timezone gap', () => {
@@ -36,5 +36,9 @@ describe('jet lag helpers', () => {
       arrivalAt: '2026-01-15T09:00',
       intensity: 'light',
     })).toBeNull()
+  })
+
+  it('keeps the detected browser timezone even when it is outside the curated list', () => {
+    expect(resolveDefaultOriginTimeZone('Asia/Kolkata')).toBe('Asia/Kolkata')
   })
 })

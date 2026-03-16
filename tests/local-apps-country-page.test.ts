@@ -101,4 +101,12 @@ describe('LocalAppsCountryPage', () => {
 
     errorSpy.mockRestore()
   })
+
+  it('renders the guide intro copy on ready country pages', async () => {
+    const { LocalAppsCountryPage } = await import('@/features/local-apps/country-page')
+
+    const view = render(createElement(LocalAppsCountryPage, { locale: 'en-US', summary, guide }))
+
+    expect(view.getByText('Use local apps before you land.')).toBeTruthy()
+  })
 })

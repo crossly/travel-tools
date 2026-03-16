@@ -139,6 +139,9 @@ export function LocalAppsCountryPage({
             <div className="space-y-2">
               <Badge variant="outline">{guide.flag} {guide.country}</Badge>
               <h1 className="display text-balance text-2xl font-semibold text-foreground md:text-3xl">{guide.country}</h1>
+              <CardDescription className="max-w-3xl text-pretty text-sm leading-6 md:text-base">
+                {guide.intro}
+              </CardDescription>
             </div>
             <div className="rounded-2xl border border-border bg-muted px-4 py-3">
               <p className="mono text-base font-medium tabular-nums text-foreground">

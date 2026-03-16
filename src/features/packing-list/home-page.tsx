@@ -29,6 +29,7 @@ import { cn } from '@/lib/utils'
 import type { Locale, PackingList, PackingSectionId } from '@/lib/types'
 
 const sectionIds: PackingSectionId[] = ['documents', 'clothing', 'toiletries', 'electronics', 'medicine', 'misc']
+const PACKING_PERSIST_DELAY_MS = 250
 
 function createEmptyDrafts() {
   return {
@@ -65,11 +66,17 @@ export function PackingListPage({ locale }: { locale: Locale }) {
 
   useEffect(() => {
     if (!hydrated) return
-    writePackingLists(lists)
-    if (activeListId) {
-      writeActivePackingListId(activeListId)
-    } else {
-      clearActivePackingListId()
+    const timeoutId = window.setTimeout(() => {
+      writePackingLists(lists)
+      if (activeListId) {
+        writeActivePackingListId(activeListId)
+      } else {
+        clearActivePackingListId()
+      }
+    }, PACKING_PERSIST_DELAY_MS)
+
+    return () => {
+      window.clearTimeout(timeoutId)
     }
   }, [activeListId, hydrated, lists])
 

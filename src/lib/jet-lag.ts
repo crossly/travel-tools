@@ -38,6 +38,8 @@ export const JET_LAG_TIMEZONES: JetLagTimezoneOption[] = [
   { value: 'Pacific/Auckland', label: 'Auckland (Pacific/Auckland)' },
 ]
 
+const curatedJetLagTimezones = new Map(JET_LAG_TIMEZONES.map((option) => [option.value, option]))
+
 const INITIAL_JET_LAG_PREFS: JetLagPrefs = {
   originTimeZone: 'Asia/Shanghai',
   destinationTimeZone: 'Europe/Paris',
@@ -65,22 +67,48 @@ export function getDefaultJetLagPrefs(originTimeZone = resolveDefaultOriginTimeZ
 }
 
 export function resolveDefaultOriginTimeZone(browserTimeZone = getResolvedBrowserTimeZone()) {
-  if (browserTimeZone && JET_LAG_TIMEZONES.some((option) => option.value === browserTimeZone)) {
+  if (browserTimeZone?.trim()) {
     return browserTimeZone
   }
 
   return 'Asia/Shanghai'
 }
 
-export function getJetLagTimezoneOption(value: string) {
-  return JET_LAG_TIMEZONES.find((option) => option.value === value) ?? null
+function buildFallbackTimezoneOption(value: string): JetLagTimezoneOption {
+  const normalizedValue = value.trim()
+  const cityName = normalizedValue.includes('/')
+    ? normalizedValue.split('/').at(-1)?.replace(/_/g, ' ')
+    : null
+
+  return {
+    value: normalizedValue,
+    label: cityName ? `${cityName} (${normalizedValue})` : normalizedValue,
+  }
 }
 
-export function searchJetLagTimezones(query: string) {
-  const normalizedQuery = query.trim().toLowerCase()
-  if (!normalizedQuery) return JET_LAG_TIMEZONES
+function listJetLagTimezoneOptions(extraValues: string[] = []) {
+  if (!extraValues.length) {
+    return JET_LAG_TIMEZONES
+  }
 
-  return JET_LAG_TIMEZONES.filter((option) => {
+  const fallbackOptions = extraValues
+    .map((value) => value.trim())
+    .filter((value) => value && !curatedJetLagTimezones.has(value))
+    .map((value) => buildFallbackTimezoneOption(value))
+
+  return [...fallbackOptions, ...JET_LAG_TIMEZONES]
+}
+
+export function getJetLagTimezoneOption(value: string, extraValues: string[] = []) {
+  return listJetLagTimezoneOptions(extraValues).find((option) => option.value === value) ?? null
+}
+
+export function searchJetLagTimezones(query: string, extraValues: string[] = []) {
+  const normalizedQuery = query.trim().toLowerCase()
+  const options = listJetLagTimezoneOptions(extraValues)
+  if (!normalizedQuery) return options
+
+  return options.filter((option) => {
     const haystack = `${option.label} ${option.value}`.toLowerCase()
     return haystack.includes(normalizedQuery)
   })

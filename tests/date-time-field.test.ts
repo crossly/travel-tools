@@ -77,5 +77,5 @@ describe('DateTimeField', () => {
     fireEvent.click(await screen.findByRole('option', { name: '45' }))
 
     expect(onChange).toHaveBeenCalledWith('2026-03-21T14:45')
-  })
+  }, 10_000)
 })

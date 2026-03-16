@@ -26,15 +26,17 @@ function splitTimezoneLabel(label: string, fallbackValue: string) {
 export function TimezoneComboboxPanel({
   locale,
   value,
+  extraValues = [],
   onValueChange,
 }: {
   locale: Locale
   value: string
+  extraValues?: string[]
   onValueChange: (nextValue: string) => void
 }) {
   const [query, setQuery] = useState('')
   const deferredQuery = useDeferredValue(query)
-  const filtered = useMemo(() => searchJetLagTimezones(deferredQuery), [deferredQuery])
+  const filtered = useMemo(() => searchJetLagTimezones(deferredQuery, extraValues), [deferredQuery, extraValues])
   const copy = localeText[locale]
 
   return (
