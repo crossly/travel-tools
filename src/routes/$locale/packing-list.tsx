@@ -1,8 +1,12 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { PackingListPage } from '@/features/packing-list/home-page'
+import { createFileRoute, lazyRouteComponent } from '@tanstack/react-router'
 import { translate } from '@/lib/i18n'
 import { buildPublicPageHead } from '@/lib/seo'
 import { DEFAULT_LOCALE, resolveLocaleSegment } from '@/lib/site'
+
+const PackingListRouteComponent = lazyRouteComponent(
+  () => import('./-packing-list.route-component'),
+  'PackingListRouteComponent',
+)
 
 export const Route = createFileRoute('/$locale/packing-list')({
   head: ({ params }) => {
@@ -15,10 +19,5 @@ export const Route = createFileRoute('/$locale/packing-list')({
       structuredData: 'software',
     })
   },
-  component: PackingListRoute,
+  component: PackingListRouteComponent,
 })
-
-function PackingListRoute() {
-  const { locale } = Route.useParams()
-  return <PackingListPage locale={resolveLocaleSegment(locale) ?? DEFAULT_LOCALE} />
-}

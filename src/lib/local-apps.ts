@@ -1,4 +1,5 @@
-import { LOCAL_APP_GUIDE_DEFINITIONS } from '@/data/local-apps/guides'
+import { LOCAL_APP_GUIDE_SUMMARIES } from '@/data/local-apps/guide-summaries'
+import type { RawLocalAppGuideDefinition, RawLocalAppRecommendation } from '@/data/local-apps/types'
 import { translate } from '@/lib/i18n'
 import { listRawPhraseCountrySummaries } from '@/lib/travel-phrases'
 import type {
@@ -11,15 +12,42 @@ import type {
 
 const phraseSummaries = listRawPhraseCountrySummaries()
 const phraseSummaryBySlug = new Map(phraseSummaries.map((summary) => [summary.slug, summary]))
-const guideBySlug = new Map(LOCAL_APP_GUIDE_DEFINITIONS.map((guide) => [guide.slug, guide]))
-const featuredCountrySlugs = LOCAL_APP_GUIDE_DEFINITIONS.map((guide) => guide.slug)
+const guideSummaryBySlug = new Map(LOCAL_APP_GUIDE_SUMMARIES.map((guide) => [guide.slug, guide]))
+const featuredCountrySlugs = LOCAL_APP_GUIDE_SUMMARIES.map((guide) => guide.slug)
 const featuredCountryRank = new Map(featuredCountrySlugs.map((slug, index) => [slug, index]))
+const guideModuleLoaders = import.meta.glob('../data/local-apps/country-guides/*.ts') as Record<
+  string,
+  () => Promise<{ LOCAL_APP_GUIDE: RawLocalAppGuideDefinition }>
+>
+const guideLoaderBySlug = new Map(
+  Object.entries(guideModuleLoaders).map(([path, loader]) => [
+    path.split('/').at(-1)?.replace(/\.ts$/, '') ?? path,
+    loader,
+  ]),
+)
+const guideCache = new Map<string, RawLocalAppGuideDefinition | null>()
+
+async function loadGuideDefinition(slug: string) {
+  if (guideCache.has(slug)) {
+    return guideCache.get(slug) ?? null
+  }
+
+  const loader = guideLoaderBySlug.get(slug)
+  if (!loader) {
+    guideCache.set(slug, null)
+    return null
+  }
+
+  const module = await loader()
+  guideCache.set(slug, module.LOCAL_APP_GUIDE)
+  return module.LOCAL_APP_GUIDE
+}
 
 function buildSummary(locale: Locale, slug: string): LocalAppCountrySummary | null {
   const phraseSummary = phraseSummaryBySlug.get(slug)
   if (!phraseSummary) return null
 
-  const guide = guideBySlug.get(slug)
+  const guide = guideSummaryBySlug.get(slug)
   return {
     country: phraseSummary.country[locale],
     slug,
@@ -33,13 +61,13 @@ function buildSummary(locale: Locale, slug: string): LocalAppCountrySummary | nu
       ? guide.teaser[locale]
       : translate(locale, 'localApps.pendingCardDescription', { country: phraseSummary.country[locale] }),
     highlights: guide?.highlights[locale] ?? [],
-    categoryIds: guide?.categories.map((category) => category.id) ?? [],
-    categoryCount: guide?.categories.length ?? 0,
-    appCount: guide?.categories.reduce((sum, category) => sum + category.apps.length, 0) ?? 0,
+    categoryIds: guide?.categoryIds ?? [],
+    categoryCount: guide?.categoryCount ?? 0,
+    appCount: guide?.appCount ?? 0,
   }
 }
 
-function buildRecommendation(locale: Locale, recommendation: typeof LOCAL_APP_GUIDE_DEFINITIONS[number]['categories'][number]['apps'][number]): LocalAppRecommendation {
+function buildRecommendation(locale: Locale, recommendation: RawLocalAppRecommendation): LocalAppRecommendation {
   return {
     id: recommendation.id,
     name: recommendation.name,
@@ -83,9 +111,9 @@ export function countTrackedLocalAppCountries() {
   return phraseSummaries.length
 }
 
-export function getLocalAppGuide(locale: Locale, slug: string): LocalAppGuide | null {
+export async function getLocalAppGuide(locale: Locale, slug: string): Promise<LocalAppGuide | null> {
   const summary = buildSummary(locale, slug)
-  const guide = guideBySlug.get(slug)
+  const guide = await loadGuideDefinition(slug)
   if (!summary || !guide) return null
 
   const relatedCountries = listReadyLocalAppCountrySummaries(locale, summary.region)

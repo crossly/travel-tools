@@ -1,13 +1,18 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { TravelPhrasesHomePage } from '@/features/travel-phrases/home-page'
+import { createFileRoute, lazyRouteComponent } from '@tanstack/react-router'
 import { translate } from '@/lib/i18n'
 import { buildPublicPageHead } from '@/lib/seo'
 import { DEFAULT_LOCALE, resolveLocaleSegment } from '@/lib/site'
-import { listPhraseCountrySummaries } from '@/lib/travel-phrases'
+
+const TravelPhrasesHomeRouteComponent = lazyRouteComponent(
+  () => import('./-index.route-component'),
+  'TravelPhrasesHomeRouteComponent',
+)
 
 export const Route = createFileRoute('/$locale/travel-phrases/')({
-  loader: ({ params }) => {
+  loader: async ({ params }) => {
     const locale = resolveLocaleSegment(params.locale) ?? DEFAULT_LOCALE
+    const { listPhraseCountrySummaries } = await import('@/lib/travel-phrases')
+
     return {
       locale,
       packs: listPhraseCountrySummaries(locale),
@@ -29,10 +34,5 @@ export const Route = createFileRoute('/$locale/travel-phrases/')({
       structuredData: 'website',
     })
   },
-  component: TravelPhrasesHomeRoute,
+  component: TravelPhrasesHomeRouteComponent,
 })
-
-function TravelPhrasesHomeRoute() {
-  const { locale, packs } = Route.useLoaderData()
-  return <TravelPhrasesHomePage locale={locale} packs={packs} />
-}

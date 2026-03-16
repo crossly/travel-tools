@@ -1,3 +1,4 @@
+import '@/lib/i18n/messages/phrases'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from '@tanstack/react-router'
 import { Languages, LoaderCircle, Play, Square, Volume2 } from 'lucide-react'

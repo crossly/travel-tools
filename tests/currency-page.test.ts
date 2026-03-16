@@ -39,6 +39,7 @@ vi.mock('@/lib/storage', () => ({
 }))
 
 vi.mock('@/lib/i18n', () => ({
+  registerMessages: vi.fn(),
   useI18n: () => ({
     t: (key: string) => ({
       'currency.title': '汇率换算',

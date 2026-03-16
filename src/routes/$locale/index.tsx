@@ -1,9 +1,13 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { HomePage } from '@/features/site/home-page'
+import { createFileRoute, lazyRouteComponent } from '@tanstack/react-router'
 import { translate } from '@/lib/i18n'
 import { buildPublicPageHead } from '@/lib/seo'
 import { DEFAULT_LOCALE, resolveLocaleSegment } from '@/lib/site'
 import { loadHomePageData } from '@/server/home-page-data'
+
+const LocalizedHomeRouteComponent = lazyRouteComponent(
+  () => import('./-index.route-component'),
+  'LocalizedHomeRouteComponent',
+)
 
 export const Route = createFileRoute('/$locale/')({
   loader: ({ params }) => loadHomePageData({ data: { locale: resolveLocaleSegment(params.locale) ?? DEFAULT_LOCALE } }),
@@ -20,10 +24,5 @@ export const Route = createFileRoute('/$locale/')({
       structuredData: 'website',
     })
   },
-  component: HomeRoute,
+  component: LocalizedHomeRouteComponent,
 })
-
-function HomeRoute() {
-  const { locale, homePageStats } = Route.useLoaderData()
-  return <HomePage locale={locale} stats={homePageStats} />
-}

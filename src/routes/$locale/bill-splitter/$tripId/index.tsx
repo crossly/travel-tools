@@ -1,9 +1,13 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { TripPage } from '@/features/split-bill/trip-page'
+import { createFileRoute, lazyRouteComponent } from '@tanstack/react-router'
 import { translate } from '@/lib/i18n'
 import { buildPrivatePageHead } from '@/lib/seo'
 import { DEFAULT_LOCALE, resolveLocaleSegment } from '@/lib/site'
 import { loadTripSnapshotData } from '@/server/split-bill-page-data'
+
+const TripRouteComponent = lazyRouteComponent(
+  () => import('./-index.route-component'),
+  'TripRouteComponent',
+)
 
 export const Route = createFileRoute('/$locale/bill-splitter/$tripId/')({
   loader: ({ params }) => loadTripSnapshotData({ data: { tripId: params.tripId } }),
@@ -14,11 +18,5 @@ export const Route = createFileRoute('/$locale/bill-splitter/$tripId/')({
       title: loaderData?.trip.name ?? translate(locale, 'trip.titleFallback'),
     })
   },
-  component: TripRoute,
+  component: TripRouteComponent,
 })
-
-function TripRoute() {
-  const { locale, tripId } = Route.useParams()
-  const initialSnapshot = Route.useLoaderData()
-  return <TripPage locale={resolveLocaleSegment(locale) ?? DEFAULT_LOCALE} tripId={tripId} initialSnapshot={initialSnapshot} />
-}

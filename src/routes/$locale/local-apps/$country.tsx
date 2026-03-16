@@ -1,13 +1,22 @@
-import { createFileRoute, notFound } from '@tanstack/react-router'
-import { LocalAppsCountryPage } from '@/features/local-apps/country-page'
-import { getLocalAppCountrySummary, getLocalAppGuide } from '@/lib/local-apps'
+import { createFileRoute, lazyRouteComponent, notFound } from '@tanstack/react-router'
 import { translate } from '@/lib/i18n'
 import { buildPrivatePageHead, buildPublicPageHead } from '@/lib/seo'
 import { DEFAULT_LOCALE, resolveLocaleSegment } from '@/lib/site'
 
+const LocalAppsCountryRouteComponent = lazyRouteComponent(
+  () => import('./-$country.route-component'),
+  'LocalAppsCountryRouteComponent',
+)
+
+const LocalAppsCountryNotFoundComponent = lazyRouteComponent(
+  () => import('./-$country.route-component'),
+  'LocalAppsCountryNotFoundComponent',
+)
+
 export const Route = createFileRoute('/$locale/local-apps/$country')({
-  loader: ({ params }) => {
+  loader: async ({ params }) => {
     const locale = resolveLocaleSegment(params.locale) ?? DEFAULT_LOCALE
+    const { getLocalAppCountrySummary, getLocalAppGuide } = await import('@/lib/local-apps')
     const summary = getLocalAppCountrySummary(locale, params.country)
 
     if (!summary) {
@@ -17,7 +26,7 @@ export const Route = createFileRoute('/$locale/local-apps/$country')({
     return {
       locale,
       summary,
-      guide: getLocalAppGuide(locale, params.country),
+      guide: await getLocalAppGuide(locale, params.country),
     }
   },
   head: ({ params, loaderData }) => {
@@ -41,16 +50,6 @@ export const Route = createFileRoute('/$locale/local-apps/$country')({
       structuredData: 'website',
     })
   },
-  notFoundComponent: LocalAppsCountryNotFound,
-  component: LocalAppsCountryRoute,
+  notFoundComponent: LocalAppsCountryNotFoundComponent,
+  component: LocalAppsCountryRouteComponent,
 })
-
-function LocalAppsCountryRoute() {
-  const { locale, guide, summary } = Route.useLoaderData()
-  return <LocalAppsCountryPage locale={locale} guide={guide} summary={summary} />
-}
-
-function LocalAppsCountryNotFound() {
-  const { locale } = Route.useParams()
-  return <LocalAppsCountryPage locale={resolveLocaleSegment(locale) ?? DEFAULT_LOCALE} guide={null} summary={null} />
-}

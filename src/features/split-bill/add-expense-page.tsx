@@ -1,3 +1,4 @@
+import '@/lib/i18n/messages/split-bill'
 import { useEffect, useState } from 'react'
 import { useNavigate } from '@tanstack/react-router'
 import { AppShell } from '@/components/app/app-shell'

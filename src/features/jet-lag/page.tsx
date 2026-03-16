@@ -1,3 +1,4 @@
+import '@/lib/i18n/messages/jet-lag'
 import { useEffect, useState } from 'react'
 import { Clock3, Coffee, MoonStar, PlaneLanding, SunMedium } from 'lucide-react'
 import { AppShell } from '@/components/app/app-shell'

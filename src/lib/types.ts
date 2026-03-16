@@ -21,7 +21,6 @@ export type ToolDefinition = {
   id: string
   slug: 'currency' | 'split-bill' | 'travel-phrases' | 'packing-list' | 'jet-lag' | 'local-apps'
   nameKey: string
-  descriptionKey: string
   entryPath: string
 }
 

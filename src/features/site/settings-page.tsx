@@ -1,3 +1,4 @@
+import '@/lib/i18n/messages/settings'
 import { useMemo, useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'

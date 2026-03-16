@@ -1,13 +1,18 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { LocalAppsHomePage } from '@/features/local-apps/home-page'
-import { countReadyLocalAppCountries, countTrackedLocalAppCountries, listLocalAppCountrySummaries } from '@/lib/local-apps'
+import { createFileRoute, lazyRouteComponent } from '@tanstack/react-router'
 import { translate } from '@/lib/i18n'
 import { buildPublicPageHead } from '@/lib/seo'
 import { DEFAULT_LOCALE, resolveLocaleSegment } from '@/lib/site'
 
+const LocalAppsHomeRouteComponent = lazyRouteComponent(
+  () => import('./-index.route-component'),
+  'LocalAppsHomeRouteComponent',
+)
+
 export const Route = createFileRoute('/$locale/local-apps/')({
-  loader: ({ params }) => {
+  loader: async ({ params }) => {
     const locale = resolveLocaleSegment(params.locale) ?? DEFAULT_LOCALE
+    const { countReadyLocalAppCountries, countTrackedLocalAppCountries, listLocalAppCountrySummaries } = await import('@/lib/local-apps')
+
     return {
       locale,
       countries: listLocalAppCountrySummaries(locale),
@@ -25,10 +30,5 @@ export const Route = createFileRoute('/$locale/local-apps/')({
       structuredData: 'website',
     })
   },
-  component: LocalAppsHomeRoute,
+  component: LocalAppsHomeRouteComponent,
 })
-
-function LocalAppsHomeRoute() {
-  const { locale, countries, readyCount, trackedCount } = Route.useLoaderData()
-  return <LocalAppsHomePage locale={locale} countries={countries} readyCount={readyCount} trackedCount={trackedCount} />
-}

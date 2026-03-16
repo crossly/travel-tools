@@ -1,8 +1,12 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { SettingsPage } from '@/features/site/settings-page'
+import { createFileRoute, lazyRouteComponent } from '@tanstack/react-router'
 import { translate } from '@/lib/i18n'
 import { buildPrivatePageHead } from '@/lib/seo'
 import { DEFAULT_LOCALE, resolveLocaleSegment } from '@/lib/site'
+
+const SettingsRouteComponent = lazyRouteComponent(
+  () => import('./-settings.route-component'),
+  'SettingsRouteComponent',
+)
 
 export const Route = createFileRoute('/$locale/settings')({
   head: ({ params }) => {
@@ -13,10 +17,5 @@ export const Route = createFileRoute('/$locale/settings')({
       description: translate(locale, 'settings.title'),
     })
   },
-  component: SettingsRoute,
+  component: SettingsRouteComponent,
 })
-
-function SettingsRoute() {
-  const { locale } = Route.useParams()
-  return <SettingsPage locale={resolveLocaleSegment(locale) ?? DEFAULT_LOCALE} />
-}

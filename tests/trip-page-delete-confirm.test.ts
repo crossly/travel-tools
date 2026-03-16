@@ -36,6 +36,7 @@ vi.mock('@/lib/api/client', () => ({
 }))
 
 vi.mock('@/lib/i18n', () => ({
+  registerMessages: vi.fn(),
   useI18n: () => ({
     t: (key: string) =>
       ({

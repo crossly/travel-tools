@@ -1,3 +1,4 @@
+import '@/lib/i18n/messages/currency'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { RefreshCw, ScanSearch } from 'lucide-react'
 import { AppShell } from '@/components/app/app-shell'

@@ -183,7 +183,7 @@ describe('route heads', () => {
 
     expect(head.meta).toEqual(expect.arrayContaining([
       expect.objectContaining({ title: 'Jet Lag Reset · Route Crate' }),
-      expect.objectContaining({ name: 'description', content: 'Use departure, arrival, and local landing time to generate a reset plan you can follow immediately.' }),
+      expect.objectContaining({ name: 'description', content: 'A practical recovery plan based on departure, arrival, and local landing time.' }),
       expect.objectContaining({ property: 'og:url', content: 'https://www.routecrate.com/en-us/jet-lag' }),
     ]))
     expect(head.links).toEqual(expect.arrayContaining([
@@ -206,7 +206,7 @@ describe('route heads', () => {
 
     expect(head.meta).toEqual(expect.arrayContaining([
       expect.objectContaining({ title: 'Local Apps · Route Crate' }),
-      expect.objectContaining({ name: 'description', content: 'Country-based local app picks with official links and download addresses. Start with the layers that usually matter first on the ground: rides, maps, shopping, food discovery, delivery, and stays.' }),
+      expect.objectContaining({ name: 'description', content: 'Country-based picks for the local apps worth installing first for transport, food, shopping, maps, and stays, with official download links.' }),
       expect.objectContaining({ property: 'og:url', content: 'https://www.routecrate.com/en-us/local-apps' }),
     ]))
     expect(head.links).toEqual(expect.arrayContaining([
@@ -258,9 +258,9 @@ describe('route heads', () => {
     let caught: unknown = null
 
     try {
-      ;(Route as unknown as {
+      await (Route as unknown as {
         options: {
-          loader: (args: { params: { locale: string; country: string } }) => unknown
+          loader: (args: { params: { locale: string; country: string } }) => Promise<unknown>
         }
       }).options.loader({
         params: { locale: 'en-us', country: 'unknown-country' },

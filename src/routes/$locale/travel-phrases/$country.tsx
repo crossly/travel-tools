@@ -1,13 +1,22 @@
-import { createFileRoute, notFound } from '@tanstack/react-router'
-import { TravelPhrasesCountryPage } from '@/features/travel-phrases/country-page'
+import { createFileRoute, lazyRouteComponent, notFound } from '@tanstack/react-router'
 import { translate } from '@/lib/i18n'
 import { buildPrivatePageHead, buildPublicPageHead } from '@/lib/seo'
 import { DEFAULT_LOCALE, resolveLocaleSegment } from '@/lib/site'
-import { getPhraseCountryPack } from '@/lib/travel-phrases'
+
+const TravelPhrasesCountryRouteComponent = lazyRouteComponent(
+  () => import('./-$country.route-component'),
+  'TravelPhrasesCountryRouteComponent',
+)
+
+const TravelPhrasesCountryNotFoundComponent = lazyRouteComponent(
+  () => import('./-$country.route-component'),
+  'TravelPhrasesCountryNotFoundComponent',
+)
 
 export const Route = createFileRoute('/$locale/travel-phrases/$country')({
   loader: async ({ params }) => {
     const locale = resolveLocaleSegment(params.locale) ?? DEFAULT_LOCALE
+    const { getPhraseCountryPack } = await import('@/lib/travel-phrases')
     const pack = await getPhraseCountryPack(locale, params.country)
 
     if (!pack) {
@@ -59,16 +68,6 @@ export const Route = createFileRoute('/$locale/travel-phrases/$country')({
       ] : undefined,
     })
   },
-  notFoundComponent: TravelPhrasesCountryNotFound,
-  component: TravelPhrasesCountryRoute,
+  notFoundComponent: TravelPhrasesCountryNotFoundComponent,
+  component: TravelPhrasesCountryRouteComponent,
 })
-
-function TravelPhrasesCountryRoute() {
-  const { locale, pack } = Route.useLoaderData()
-  return <TravelPhrasesCountryPage locale={locale} pack={pack} />
-}
-
-function TravelPhrasesCountryNotFound() {
-  const { locale } = Route.useParams()
-  return <TravelPhrasesCountryPage locale={resolveLocaleSegment(locale) ?? DEFAULT_LOCALE} pack={null} />
-}

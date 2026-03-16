@@ -1,3 +1,4 @@
+import '@/lib/i18n/messages/packing'
 import { useEffect, useState } from 'react'
 import { Briefcase, Check, Circle, ListChecks, Plus } from 'lucide-react'
 import { AppShell } from '@/components/app/app-shell'

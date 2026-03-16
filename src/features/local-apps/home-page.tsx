@@ -1,3 +1,4 @@
+import '@/lib/i18n/messages/local-apps'
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from '@tanstack/react-router'
 import { ArrowRight, Download, Smartphone } from 'lucide-react'

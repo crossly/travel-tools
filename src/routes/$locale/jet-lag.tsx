@@ -1,8 +1,12 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { JetLagPage } from '@/features/jet-lag/page'
+import { createFileRoute, lazyRouteComponent } from '@tanstack/react-router'
 import { translate } from '@/lib/i18n'
 import { buildPublicPageHead } from '@/lib/seo'
 import { DEFAULT_LOCALE, resolveLocaleSegment } from '@/lib/site'
+
+const JetLagRouteComponent = lazyRouteComponent(
+  () => import('./-jet-lag.route-component'),
+  'JetLagRouteComponent',
+)
 
 export const Route = createFileRoute('/$locale/jet-lag')({
   head: ({ params }) => {
@@ -15,10 +19,5 @@ export const Route = createFileRoute('/$locale/jet-lag')({
       structuredData: 'software',
     })
   },
-  component: JetLagRoute,
+  component: JetLagRouteComponent,
 })
-
-function JetLagRoute() {
-  const { locale } = Route.useParams()
-  return <JetLagPage locale={resolveLocaleSegment(locale) ?? DEFAULT_LOCALE} />
-}

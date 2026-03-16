@@ -1,9 +1,13 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { SplitBillHomePage } from '@/features/split-bill/home-page'
+import { createFileRoute, lazyRouteComponent } from '@tanstack/react-router'
 import { translate } from '@/lib/i18n'
 import { buildPublicPageHead } from '@/lib/seo'
 import { DEFAULT_LOCALE, resolveLocaleSegment } from '@/lib/site'
 import { loadSplitBillHomeData } from '@/server/split-bill-page-data'
+
+const SplitBillHomeRouteComponent = lazyRouteComponent(
+  () => import('./-index.route-component'),
+  'SplitBillHomeRouteComponent',
+)
 
 export const Route = createFileRoute('/$locale/bill-splitter/')({
   loader: () => loadSplitBillHomeData(),
@@ -19,11 +23,5 @@ export const Route = createFileRoute('/$locale/bill-splitter/')({
       structuredData: 'software',
     })
   },
-  component: SplitBillHomeRoute,
+  component: SplitBillHomeRouteComponent,
 })
-
-function SplitBillHomeRoute() {
-  const { locale } = Route.useParams()
-  const initialData = Route.useLoaderData()
-  return <SplitBillHomePage locale={resolveLocaleSegment(locale) ?? DEFAULT_LOCALE} initialData={initialData} />
-}

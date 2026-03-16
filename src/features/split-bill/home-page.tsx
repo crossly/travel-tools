@@ -1,3 +1,4 @@
+import '@/lib/i18n/messages/split-bill'
 import { useEffect, useMemo, useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'

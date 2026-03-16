@@ -1,8 +1,12 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { HomePage } from '@/features/site/home-page'
+import { createFileRoute, lazyRouteComponent } from '@tanstack/react-router'
 import { I18nProvider, translate } from '@/lib/i18n'
 import { buildRootAliasHead } from '@/lib/seo'
 import { loadHomePageData } from '@/server/home-page-data'
+
+const RootIndexRouteComponent = lazyRouteComponent(
+  () => import('./-index.route-component'),
+  'RootIndexRouteComponent',
+)
 
 export const Route = createFileRoute('/')({
   loader: () => loadHomePageData(),
@@ -14,15 +18,5 @@ export const Route = createFileRoute('/')({
       description: translate(locale, 'site.homeDescription'),
     })
   },
-  component: RootIndexRoute,
+  component: RootIndexRouteComponent,
 })
-
-function RootIndexRoute() {
-  const { locale, homePageStats } = Route.useLoaderData()
-
-  return (
-    <I18nProvider locale={locale} onLocaleChange={() => {}}>
-      <HomePage locale={locale} stats={homePageStats} />
-    </I18nProvider>
-  )
-}

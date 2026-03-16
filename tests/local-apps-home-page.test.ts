@@ -21,6 +21,7 @@ vi.mock('@/lib/travel-phrases', () => {
 })
 
 vi.mock('@/lib/i18n', () => ({
+  registerMessages: vi.fn(),
   useI18n: () => ({
     t: (key: string, values?: Record<string, string | number>) => {
       if (key === 'localApps.totalMetric') {

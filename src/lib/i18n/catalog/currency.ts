@@ -1,0 +1,52 @@
+import type { Messages } from '@/lib/i18n/types'
+
+export const currencyMessages: Messages = {
+  "zh-CN": {
+    "currency.title": "汇率换算",
+    "currency.description": "旅行汇率换算工具，快速查看金额与汇率，适合付款、换钱和预算确认。",
+    "currency.keywords": "旅行汇率换算,汇率换算器,货币转换,实时汇率,出国汇率,旅游汇率工具",
+    "currency.amountLabel": "金额",
+    "currency.fromLabel": "从",
+    "currency.toLabel": "到",
+    "currency.swap": "交换币种",
+    "currency.detectAction": "识别本地币种",
+    "currency.refreshAction": "刷新汇率",
+    "currency.resultLabel": "换算结果",
+    "currency.rateLabel": "当前汇率",
+    "currency.updatedLabel": "更新时间",
+    "currency.quickAmounts": "快捷金额",
+    "currency.freshnessLive": "实时",
+    "currency.freshnessCached": "缓存",
+    "currency.freshnessOffline": "离线",
+    "currency.offlineNotice": "网络不可用，正在使用最近保存的汇率。",
+    "currency.cacheNotice": "当前展示缓存汇率，可稍后刷新。",
+    "currency.detectedTitle": "本地币种已识别",
+    "currency.detectedStatus": "已识别为 {currency}（来源：{via}）",
+    "currency.errorTitle": "汇率获取失败",
+    "currency.placeholder": "0.00"
+  },
+  "en-US": {
+    "currency.title": "Currency Converter",
+    "currency.description": "Travel currency converter for quick exchange rates, price checks, and amount conversion abroad.",
+    "currency.keywords": "travel currency converter,exchange rate calculator,travel exchange rates,currency conversion abroad,multi-currency travel",
+    "currency.amountLabel": "Amount",
+    "currency.fromLabel": "From",
+    "currency.toLabel": "To",
+    "currency.swap": "Swap currencies",
+    "currency.detectAction": "Detect local currency",
+    "currency.refreshAction": "Refresh rates",
+    "currency.resultLabel": "Converted amount",
+    "currency.rateLabel": "Rate",
+    "currency.updatedLabel": "Updated",
+    "currency.quickAmounts": "Quick amounts",
+    "currency.freshnessLive": "Live",
+    "currency.freshnessCached": "Cached",
+    "currency.freshnessOffline": "Offline",
+    "currency.offlineNotice": "The network looks unavailable. Using the most recent saved rates.",
+    "currency.cacheNotice": "Showing cached rates for now. Refresh when you are online.",
+    "currency.detectedTitle": "Local currency detected",
+    "currency.detectedStatus": "Detected {currency} via {via}",
+    "currency.errorTitle": "Unable to load rates",
+    "currency.placeholder": "0.00"
+  }
+}

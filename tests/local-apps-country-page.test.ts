@@ -13,6 +13,7 @@ vi.mock('@/components/app/app-shell', () => ({
 }))
 
 vi.mock('@/lib/i18n', () => ({
+  registerMessages: vi.fn(),
   useI18n: () => ({
     t: (key: string, values?: Record<string, string | number>) => {
       if (key === 'localApps.cardMetric') {
