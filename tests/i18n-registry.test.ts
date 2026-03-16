@@ -7,6 +7,8 @@ describe('i18n message registry', () => {
     const { translate } = await import('@/lib/i18n')
 
     expect(translate('en-US', 'app.name')).toBe('Route Crate')
+    expect(translate('en-US', 'phrases.regionAsia')).toBe('Asia')
+    expect(translate('zh-CN', 'phrases.regionAsia')).toBe('亚洲')
     expect(translate('en-US', 'currency.amountLabel')).toBe('currency.amountLabel')
     expect(translate('en-US', 'settings.exportCurrentTrip')).toBe('settings.exportCurrentTrip')
     expect(translate('en-US', 'error.REQUEST_FAILED')).toBe('error.REQUEST_FAILED')
