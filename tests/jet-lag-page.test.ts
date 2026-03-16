@@ -81,8 +81,8 @@ vi.mock('@/lib/i18n', () => ({
       'jetLag.destinationTimeZone': 'Destination time zone',
       'jetLag.departureAt': 'Departure time',
       'jetLag.arrivalAt': 'Arrival time',
-      'jetLag.departureTimeLabel': 'Departure time time',
-      'jetLag.arrivalTimeLabel': 'Arrival time time',
+      'jetLag.departureTimeLabel': 'Departure time',
+      'jetLag.arrivalTimeLabel': 'Arrival time',
       'jetLag.modeLabel': 'Recovery mode',
       'jetLag.intensity.light': 'Light',
       'jetLag.intensity.moderate': 'Moderate',
@@ -96,6 +96,18 @@ vi.mock('@/lib/i18n', () => ({
       'jetLag.flightDuration': 'Flight duration',
       'jetLag.recoveryDays': 'Estimated reset days',
       'jetLag.arrivalLocal': 'Local arrival time',
+      'jetLag.clockTitle': 'Time zone snapshot',
+      'jetLag.clockDescription': 'Check what time it is in both places right now, then compare your departure and arrival in each zone.',
+      'jetLag.originNow': 'Origin now',
+      'jetLag.destinationNow': 'Destination now',
+      'jetLag.clockDifference': 'Time difference',
+      'jetLag.departureDualTitle': 'Departure in both zones',
+      'jetLag.arrivalDualTitle': 'Arrival in both zones',
+      'jetLag.clockOriginColumn': 'Origin',
+      'jetLag.clockDestinationColumn': 'Destination',
+      'jetLag.relative.ahead': `Destination is ${values?.hours} ahead`,
+      'jetLag.relative.behind': `Destination is ${values?.hours} behind`,
+      'jetLag.relative.same': 'The two time zones are nearly aligned',
       'jetLag.recommendedMode': `Recommended mode: ${values?.intensity}`,
       'jetLag.direction.east': 'east',
       'jetLag.direction.west': 'west',
@@ -127,6 +139,7 @@ describe('JetLagPage', () => {
   beforeEach(() => {
     storedPrefs = defaultStoredPrefs
     writeJetLagPrefs.mockClear()
+    vi.useRealTimers()
   })
 
   it('uses deterministic sample defaults during the server render when no prefs are stored', async () => {
@@ -167,10 +180,16 @@ describe('JetLagPage', () => {
 
     render(createElement(JetLagPage, { locale: 'en-US' }))
 
-    expect(screen.getByText('7h')).toBeTruthy()
+    expect(screen.getAllByText('7h').length).toBeGreaterThan(0)
     expect(screen.getByText('16h')).toBeTruthy()
     expect(screen.getByText('Recommended mode: Moderate')).toBeTruthy()
     expect(screen.getByText('Wait about 1.5 hours')).toBeTruthy()
+    expect(screen.getByText('Time zone snapshot')).toBeTruthy()
+    expect(screen.getByText('Origin now')).toBeTruthy()
+    expect(screen.getByText('Destination now')).toBeTruthy()
+    expect(screen.getByText('Departure in both zones')).toBeTruthy()
+    expect(screen.getByText('Arrival in both zones')).toBeTruthy()
+    expect(screen.getByText('Destination is 7h behind')).toBeTruthy()
 
     fireEvent.change(screen.getByLabelText('Arrival time'), {
       target: { value: '2026-01-15T00:30' },
@@ -178,5 +197,18 @@ describe('JetLagPage', () => {
 
     expect(await screen.findByText('Arrival time must be later than departure time')).toBeTruthy()
     expect(writeJetLagPrefs).toHaveBeenCalled()
+  })
+
+  it('renders live origin and destination clocks from the current time', async () => {
+    vi.useFakeTimers()
+    vi.setSystemTime(new Date('2026-01-15T01:00:00.000Z'))
+
+    const { formatJetLagInstant } = await import('@/lib/jet-lag')
+    const { JetLagPage } = await import('@/features/jet-lag/page')
+
+    render(createElement(JetLagPage, { locale: 'en-US' }))
+
+    expect(screen.getAllByText(formatJetLagInstant(new Date('2026-01-15T01:00:00.000Z'), 'Asia/Shanghai', 'en-US')).length).toBeGreaterThan(0)
+    expect(screen.getAllByText(formatJetLagInstant(new Date('2026-01-15T01:00:00.000Z'), 'Europe/Paris', 'en-US')).length).toBeGreaterThan(0)
   })
 })

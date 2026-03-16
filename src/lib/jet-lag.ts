@@ -170,11 +170,21 @@ export function calculateJetLagPlan(prefs: JetLagPrefs): JetLagPlan | null {
 export function formatJetLagTime(dateTime: string, timeZone: string, locale: Locale) {
   const utcDate = zonedDateTimeToUtc(dateTime, timeZone)
   if (!utcDate) return '---'
+  return formatJetLagInstant(utcDate, timeZone, locale)
+}
+
+export function formatJetLagInstant(date: Date, timeZone: string, locale: Locale) {
   return new Intl.DateTimeFormat(locale, {
     timeZone,
     dateStyle: 'medium',
     timeStyle: 'short',
-  }).format(utcDate)
+  }).format(date)
+}
+
+export function formatJetLagDualZoneTime(dateTime: string, sourceTimeZone: string, displayTimeZone: string, locale: Locale) {
+  const utcDate = zonedDateTimeToUtc(dateTime, sourceTimeZone)
+  if (!utcDate) return '---'
+  return formatJetLagInstant(utcDate, displayTimeZone, locale)
 }
 
 export function formatHourValue(value: number) {

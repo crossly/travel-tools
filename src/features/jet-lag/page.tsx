@@ -11,9 +11,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import {
   calculateJetLagPlan,
+  formatJetLagDualZoneTime,
+  formatJetLagInstant,
   formatHourValue,
   formatJetLagTime,
   getDefaultJetLagPrefs,
+  getJetLagTimezoneOption,
   getInitialJetLagPrefs,
   resolveDefaultOriginTimeZone,
 } from '@/lib/jet-lag'
@@ -27,6 +30,7 @@ export function JetLagPage({ locale }: { locale: Locale }) {
   const { t } = useI18n()
   const [prefs, setPrefs] = useState<JetLagPrefs>(() => getInitialJetLagPrefs())
   const [ready, setReady] = useState(false)
+  const [currentTime, setCurrentTime] = useState<Date | null>(null)
 
   useEffect(() => {
     writeLastTool('jet-lag')
@@ -40,12 +44,26 @@ export function JetLagPage({ locale }: { locale: Locale }) {
   }, [])
 
   useEffect(() => {
+    const tick = () => setCurrentTime(new Date())
+    tick()
+    const intervalId = window.setInterval(tick, 60 * 1000)
+    return () => window.clearInterval(intervalId)
+  }, [])
+
+  useEffect(() => {
     if (!ready) return
     writeJetLagPrefs(prefs)
   }, [prefs, ready])
 
   const plan = calculateJetLagPlan(prefs)
   const arrivalDisplay = formatJetLagTime(prefs.arrivalAt, prefs.destinationTimeZone, locale)
+  const hourDifferenceLabel = plan
+    ? plan.direction === 'east'
+      ? t('jetLag.relative.ahead', { hours: `${formatHourValue(Math.abs(plan.hourDifference))}${t('jetLag.hoursSuffix')}` })
+      : plan.direction === 'west'
+        ? t('jetLag.relative.behind', { hours: `${formatHourValue(Math.abs(plan.hourDifference))}${t('jetLag.hoursSuffix')}` })
+        : t('jetLag.relative.same')
+    : null
 
   return (
     <AppShell locale={locale} title={t('jetLag.title')} description={t('jetLag.description')} activeTool="jet-lag">
@@ -157,6 +175,52 @@ export function JetLagPage({ locale }: { locale: Locale }) {
                 </CardContent>
               </Card>
 
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-balance">{t('jetLag.clockTitle')}</CardTitle>
+                  <CardDescription className="text-pretty">{t('jetLag.clockDescription')}</CardDescription>
+                </CardHeader>
+                <CardContent className="grid gap-4">
+                  <div className="grid gap-3 md:grid-cols-3">
+                    <StatCard
+                      icon={Clock3}
+                      label={t('jetLag.originNow')}
+                      value={currentTime ? formatJetLagInstant(currentTime, prefs.originTimeZone, locale) : '---'}
+                      helper={getClockHelperLabel(prefs.originTimeZone)}
+                    />
+                    <StatCard
+                      icon={Clock3}
+                      label={t('jetLag.destinationNow')}
+                      value={currentTime ? formatJetLagInstant(currentTime, prefs.destinationTimeZone, locale) : '---'}
+                      helper={getClockHelperLabel(prefs.destinationTimeZone)}
+                    />
+                    <StatCard
+                      icon={PlaneLanding}
+                      label={t('jetLag.clockDifference')}
+                      value={plan ? `${formatHourValue(Math.abs(plan.hourDifference))}${t('jetLag.hoursSuffix')}` : '---'}
+                      helper={hourDifferenceLabel ?? t('jetLag.invalidTimingDescription')}
+                    />
+                  </div>
+
+                  <div className="grid gap-3 md:grid-cols-2">
+                    <DualZoneTimeCard
+                      title={t('jetLag.departureDualTitle')}
+                      originLabel={t('jetLag.clockOriginColumn')}
+                      destinationLabel={t('jetLag.clockDestinationColumn')}
+                      originValue={formatJetLagDualZoneTime(prefs.departureAt, prefs.originTimeZone, prefs.originTimeZone, locale)}
+                      destinationValue={formatJetLagDualZoneTime(prefs.departureAt, prefs.originTimeZone, prefs.destinationTimeZone, locale)}
+                    />
+                    <DualZoneTimeCard
+                      title={t('jetLag.arrivalDualTitle')}
+                      originLabel={t('jetLag.clockOriginColumn')}
+                      destinationLabel={t('jetLag.clockDestinationColumn')}
+                      originValue={formatJetLagDualZoneTime(prefs.arrivalAt, prefs.destinationTimeZone, prefs.originTimeZone, locale)}
+                      destinationValue={formatJetLagDualZoneTime(prefs.arrivalAt, prefs.destinationTimeZone, prefs.destinationTimeZone, locale)}
+                    />
+                  </div>
+                </CardContent>
+              </Card>
+
               <div className="grid gap-4 md:grid-cols-3">
                 <AdviceCard
                   icon={MoonStar}
@@ -198,6 +262,10 @@ export function JetLagPage({ locale }: { locale: Locale }) {
       </div>
     </AppShell>
   )
+}
+
+function getClockHelperLabel(timeZone: string) {
+  return getJetLagTimezoneOption(timeZone)?.label ?? timeZone
 }
 
 function StatCard({
@@ -244,5 +312,35 @@ function AdviceCard({
         <p className="text-sm text-pretty text-muted-foreground">{description}</p>
       </CardContent>
     </Card>
+  )
+}
+
+function DualZoneTimeCard({
+  title,
+  originLabel,
+  originValue,
+  destinationLabel,
+  destinationValue,
+}: {
+  title: string
+  originLabel: string
+  originValue: string
+  destinationLabel: string
+  destinationValue: string
+}) {
+  return (
+    <div className="rounded-2xl border border-border bg-[color:var(--surface-floating)] p-4">
+      <p className="text-sm font-medium text-foreground">{title}</p>
+      <dl className="mt-4 grid gap-3">
+        <div className="flex items-center justify-between gap-3 rounded-xl border border-border/70 bg-card/55 px-3 py-2">
+          <dt className="text-sm text-muted-foreground">{originLabel}</dt>
+          <dd className="text-right text-sm font-medium tabular-nums text-foreground">{originValue}</dd>
+        </div>
+        <div className="flex items-center justify-between gap-3 rounded-xl border border-border/70 bg-card/55 px-3 py-2">
+          <dt className="text-sm text-muted-foreground">{destinationLabel}</dt>
+          <dd className="text-right text-sm font-medium tabular-nums text-foreground">{destinationValue}</dd>
+        </div>
+      </dl>
+    </div>
   )
 }
