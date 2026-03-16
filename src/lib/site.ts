@@ -37,6 +37,27 @@ export const TOOLS: ToolDefinition[] = [
     descriptionKey: 'tool.travelPhrases.description',
     entryPath: '/travel-phrases',
   },
+  {
+    id: 'tool_packing_list',
+    slug: 'packing-list',
+    nameKey: 'tool.packingList.name',
+    descriptionKey: 'tool.packingList.description',
+    entryPath: '/packing-list',
+  },
+  {
+    id: 'tool_jet_lag',
+    slug: 'jet-lag',
+    nameKey: 'tool.jetLag.name',
+    descriptionKey: 'tool.jetLag.description',
+    entryPath: '/jet-lag',
+  },
+  {
+    id: 'tool_local_apps',
+    slug: 'local-apps',
+    nameKey: 'tool.localApps.name',
+    descriptionKey: 'tool.localApps.description',
+    entryPath: '/local-apps',
+  },
 ]
 
 export function isLocale(value: string | undefined | null): value is Locale {

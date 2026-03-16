@@ -3,7 +3,7 @@ import { join } from 'node:path'
 
 const SITE_URL = 'https://www.routecrate.com'
 const locales = ['en-us', 'zh-cn']
-const staticPaths = ['', '/currency', '/bill-splitter', '/travel-phrases']
+const staticPaths = ['', '/currency', '/bill-splitter', '/travel-phrases', '/packing-list', '/jet-lag', '/local-apps']
 const regionOrder = { asia: 0, 'middle-east': 1, europe: 2, americas: 3, africa: 4, oceania: 5 }
 
 function resolveAudioCoverage(entries = []) {
@@ -23,6 +23,10 @@ function resolveAudioCoverage(entries = []) {
 
 async function main() {
   const countriesDir = join(process.cwd(), 'src/data/travel-phrases')
+  const localAppsGuidesPath = join(process.cwd(), 'src/data/local-apps/guides.ts')
+  const localAppsExpansionsPath = join(process.cwd(), 'src/data/local-apps/guide-expansions.ts')
+  const localAppsExpansionsExtraPath = join(process.cwd(), 'src/data/local-apps/guide-expansions-extra.ts')
+  const localAppsExpansionsRemainingPath = join(process.cwd(), 'src/data/local-apps/guide-expansions-remaining.ts')
   const countryFiles = (await readdir(countriesDir))
     .filter((file) => file.endsWith('.json') && file !== 'phrase-definitions.json' && file !== 'index.json')
 
@@ -39,6 +43,21 @@ async function main() {
         lastModified: fileStat.mtime.toISOString().slice(0, 10),
       }
     }),
+  )
+
+  const [localAppsSource, localAppsExpansionsSource, localAppsExpansionsExtraSource, localAppsExpansionsRemainingSource] = await Promise.all([
+    readFile(localAppsGuidesPath, 'utf8'),
+    readFile(localAppsExpansionsPath, 'utf8'),
+    readFile(localAppsExpansionsExtraPath, 'utf8'),
+    readFile(localAppsExpansionsRemainingPath, 'utf8'),
+  ])
+  const localAppSlugs = Array.from(
+    new Set([
+      ...Array.from(localAppsSource.matchAll(/slug:\s*'([^']+)'/g), (match) => match[1]),
+      ...Array.from(localAppsExpansionsSource.matchAll(/slug:\s*'([^']+)'/g), (match) => match[1]),
+      ...Array.from(localAppsExpansionsExtraSource.matchAll(/slug:\s*'([^']+)'/g), (match) => match[1]),
+      ...Array.from(localAppsExpansionsRemainingSource.matchAll(/slug:\s*'([^']+)'/g), (match) => match[1]),
+    ]),
   )
 
   countryPacks.sort(
@@ -69,6 +88,9 @@ async function main() {
     ...buildLocalizedUrls(staticPaths, buildDate),
     ...buildLocalizedUrls(
       countryPacks.map((pack) => ({ path: `/travel-phrases/${pack.slug}`, lastModified: pack.lastModified })),
+    ),
+    ...buildLocalizedUrls(
+      localAppSlugs.map((slug) => ({ path: `/local-apps/${slug}`, lastModified: buildDate })),
     ),
   ]
 

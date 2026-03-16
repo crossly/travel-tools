@@ -2,17 +2,19 @@ import { canonicalizeLocalePath } from '@/lib/site'
 
 const APEX_HOST = 'routecrate.com'
 const WWW_HOST = 'www.routecrate.com'
+const LOCAL_HOSTS = new Set(['localhost', '127.0.0.1'])
 
 export function buildCanonicalRequest(request: Request) {
   const url = new URL(request.url)
   let changed = false
+  const isLocalHost = LOCAL_HOSTS.has(url.hostname)
 
-  if (url.protocol !== 'https:') {
+  if (!isLocalHost && url.protocol !== 'https:') {
     url.protocol = 'https:'
     changed = true
   }
 
-  if (url.hostname === APEX_HOST) {
+  if (!isLocalHost && url.hostname === APEX_HOST) {
     url.hostname = WWW_HOST
     changed = true
   }

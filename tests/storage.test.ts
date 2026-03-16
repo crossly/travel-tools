@@ -4,16 +4,23 @@ import { beforeEach, describe, expect, it } from 'vitest'
 import { DEVICE_COOKIE_KEYS } from '@/lib/device-cookie'
 import { SITE_COOKIE_KEYS } from '@/lib/site'
 import {
+  clearActivePackingListId,
   clearActiveTripId,
+  readActivePackingListId,
   readCurrencyPrefs,
   readDevice,
+  readJetLagPrefs,
   readActiveTripId,
+  readPackingLists,
   readStoredLocale,
   readTheme,
   resetStorageMigrationForTests,
   STORAGE_KEYS,
+  writeActivePackingListId,
   writeDevice,
   writeActiveTripId,
+  writeJetLagPrefs,
+  writePackingLists,
   writeStoredLocale,
   writeTheme,
 } from '@/lib/storage'
@@ -148,5 +155,74 @@ describe('active trip storage', () => {
     clearActiveTripId()
 
     expect(readActiveTripId()).toBeNull()
+  })
+})
+
+describe('packing list storage', () => {
+  beforeEach(() => {
+    localStorage.clear()
+    resetStorageMigrationForTests()
+  })
+
+  it('persists packing lists and the active list id', () => {
+    const lists = [
+      {
+        id: 'list_1',
+        name: 'Weekend',
+        templateId: 'weekend',
+        createdAt: '2026-03-16T00:00:00.000Z',
+        updatedAt: '2026-03-16T00:00:00.000Z',
+        sections: [],
+      },
+    ]
+
+    writePackingLists(lists)
+    writeActivePackingListId('list_1')
+
+    expect(readPackingLists()).toEqual(lists)
+    expect(readActivePackingListId()).toBe('list_1')
+  })
+
+  it('clears invalid packing list storage and active id', () => {
+    localStorage.setItem(STORAGE_KEYS.packingLists, '{broken-json')
+    writeActivePackingListId('list_1')
+
+    expect(readPackingLists()).toEqual([])
+    expect(readActivePackingListId()).toBe('list_1')
+
+    clearActivePackingListId()
+
+    expect(readActivePackingListId()).toBeNull()
+  })
+})
+
+describe('jet lag storage', () => {
+  beforeEach(() => {
+    localStorage.clear()
+    resetStorageMigrationForTests()
+  })
+
+  it('persists jet lag preferences', () => {
+    writeJetLagPrefs({
+      originTimeZone: 'Asia/Shanghai',
+      destinationTimeZone: 'Europe/Paris',
+      departureAt: '2026-01-15T09:00',
+      arrivalAt: '2026-01-15T18:00',
+      intensity: 'moderate',
+    })
+
+    expect(readJetLagPrefs()).toEqual({
+      originTimeZone: 'Asia/Shanghai',
+      destinationTimeZone: 'Europe/Paris',
+      departureAt: '2026-01-15T09:00',
+      arrivalAt: '2026-01-15T18:00',
+      intensity: 'moderate',
+    })
+  })
+
+  it('returns null for invalid jet lag prefs', () => {
+    localStorage.setItem(STORAGE_KEYS.jetLagPrefs, '{"bad":true}')
+
+    expect(readJetLagPrefs()).toBeNull()
   })
 })
