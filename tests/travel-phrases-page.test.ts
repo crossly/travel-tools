@@ -64,6 +64,10 @@ vi.mock('@/lib/i18n', async (importOriginal) => {
       'phrases.regionOceania': 'Oceania',
       'phrases.featuredTitle': 'Featured country packs',
       'phrases.featuredDescription': 'Start with the countries that already include localized travel notes.',
+      'phrases.audioReadyTitle': 'Audio-ready right now',
+      'phrases.audioReadyDescription': 'Start with packs that already have playback and enough local notes to use on the ground.',
+      'phrases.directoryTitle': 'Browse by region',
+      'phrases.directoryDescription': 'Once you know the destination, jump straight into the country pack.',
       'phrases.regionSectionTitle': `${values?.region} travel phrase packs`,
       'phrases.regionSectionDescription': `${values?.count} packs in ${values?.region}`,
       'phrases.stopAudio': 'Stop audio',
@@ -219,6 +223,8 @@ describe('TravelPhrasesHomePage', () => {
     render(createElement(TravelPhrasesHomePage, { locale: 'en-US', packs }))
 
     expect(screen.getByRole('heading', { name: 'Featured country packs' })).toBeTruthy()
+    expect(screen.getByRole('heading', { name: 'Audio-ready right now' })).toBeTruthy()
+    expect(screen.getByRole('heading', { name: 'Browse by region' })).toBeTruthy()
     expect(screen.getByText(/rail travel, convenience stores, and polite service language/i)).toBeTruthy()
     expect(screen.getAllByText('IC cards').length).toBeGreaterThan(0)
     expect(screen.getAllByText(/BTS|Grab/i).length).toBeGreaterThan(0)

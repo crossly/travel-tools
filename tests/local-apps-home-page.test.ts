@@ -44,9 +44,13 @@ vi.mock('@/lib/i18n', () => ({
         'localApps.summaryBadge': 'Overview',
         'localApps.summaryTitle': 'Country app guides',
         'localApps.summaryDescription': 'Install the right apps before you land.',
+        'localApps.installTitle': 'Install before you board',
+        'localApps.installDescription': 'Start with transport and one backup category, then add the rest only if the trip needs them.',
         'localApps.readyBadge': 'Ready',
         'localApps.readyTitle': 'Ready countries',
         'localApps.readyDescription': 'Start with countries that already have verified guides.',
+        'localApps.rosterTitle': 'Roster still syncing',
+        'localApps.rosterDescription': 'Some country pages are already tracked but still waiting on one more verification pass.',
         'localApps.pendingBadge': 'Pending',
         'localApps.pendingSectionTitle': `${values?.region} pending`,
         'localApps.pendingSectionDescription': `${values?.count} countries pending`,
@@ -91,6 +95,8 @@ describe('LocalAppsHomePage', () => {
     }))
 
     expect(screen.getByRole('button', { name: 'Asia' })).toBeTruthy()
+    expect(screen.getByRole('heading', { name: 'Install before you board' })).toBeTruthy()
+    expect(screen.getByRole('heading', { name: 'Roster still syncing' })).toBeTruthy()
     expect(screen.getByText('Japan')).toBeTruthy()
   })
 })

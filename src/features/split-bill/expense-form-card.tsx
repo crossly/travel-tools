@@ -42,6 +42,7 @@ export function ExpenseFormCard({
   const navigate = useNavigate()
   const [isSaving, setIsSaving] = useState(false)
   const [status, setStatus] = useState<{ tone: 'success' | 'warning' | 'danger'; title: string; description?: string } | null>(null)
+  const [fxQuoteState, setFxQuoteState] = useState<{ status: 'idle' | 'loading' | 'ready' | 'error'; rate?: number }>({ status: 'idle' })
   const expenseSchema = useMemo(() => createExpenseFormSchema({
     titleRequired: t('addExpense.titleRequired'),
     amountRequired: t('addExpense.amountRequired'),
@@ -62,12 +63,83 @@ export function ExpenseFormCard({
       note: '',
     },
   })
+  const amountValue = form.watch('amount')
+  const currencyValue = form.watch('currency')
+  const spentAtValue = form.watch('spentAt')
+  const manualFxValue = form.watch('manualFx')
+  const settlementCurrency = snapshot?.trip.settlementCurrency ?? ''
+  const normalizedCurrency = normalizeCurrency(currencyValue || (snapshot?.trip.expenseCurrency ?? 'CNY'))
+  const numericAmount = Number(amountValue)
+  const hasConvertibleAmount = Number.isFinite(numericAmount) && numericAmount > 0
+  const manualFxRate = Number(manualFxValue)
+  const hasManualFx = manualFxValue.trim().length > 0 && Number.isFinite(manualFxRate) && manualFxRate > 0
 
   useEffect(() => {
     if (!snapshot) return
     form.setValue('currency', snapshot.trip.expenseCurrency)
     form.setValue('splitCount', String(snapshot.trip.splitCount))
   }, [form, snapshot])
+
+  useEffect(() => {
+    if (!snapshot || !hasConvertibleAmount || !spentAtValue) {
+      setFxQuoteState({ status: 'idle' })
+      return
+    }
+
+    if (normalizedCurrency === settlementCurrency || manualFxValue.trim()) {
+      setFxQuoteState({ status: 'idle' })
+      return
+    }
+
+    let cancelled = false
+    const timeoutId = window.setTimeout(() => {
+      setFxQuoteState((current) => ({ status: 'loading', rate: current.rate }))
+      void fetchFxQuote(tripId, normalizedCurrency, settlementCurrency, spentAtValue)
+        .then((quote) => {
+          if (cancelled) return
+          setFxQuoteState({ status: 'ready', rate: quote.rate })
+        })
+        .catch(() => {
+          if (cancelled) return
+          setFxQuoteState({ status: 'error' })
+        })
+    }, 250)
+
+    return () => {
+      cancelled = true
+      window.clearTimeout(timeoutId)
+    }
+  }, [snapshot, hasConvertibleAmount, manualFxValue, normalizedCurrency, settlementCurrency, spentAtValue, tripId])
+
+  const convertedAmount = hasManualFx
+    ? (numericAmount * manualFxRate).toFixed(2)
+    : fxQuoteState.status === 'ready' && fxQuoteState.rate
+      ? (numericAmount * fxQuoteState.rate).toFixed(2)
+      : null
+  const formattedOriginalAmount = hasConvertibleAmount ? numericAmount.toFixed(2) : null
+  const fxPreviewMessage = !hasConvertibleAmount
+    ? t('addExpense.fxPreviewEmpty')
+    : normalizedCurrency === settlementCurrency
+      ? t('addExpense.fxPreviewNoConversion')
+      : hasManualFx && formattedOriginalAmount && convertedAmount
+        ? t('addExpense.fxPreviewManual', {
+            amount: formattedOriginalAmount,
+            fromCurrency: normalizedCurrency,
+            converted: convertedAmount,
+            toCurrency: settlementCurrency,
+          })
+        : fxQuoteState.status === 'loading'
+          ? t('addExpense.fxPreviewPending')
+          : fxQuoteState.status === 'ready' && formattedOriginalAmount && convertedAmount
+            ? t('addExpense.fxPreviewAuto', {
+                amount: formattedOriginalAmount,
+                fromCurrency: normalizedCurrency,
+                converted: convertedAmount,
+                toCurrency: settlementCurrency,
+              })
+            : fxQuoteState.status === 'error'
+              ? t('addExpense.fxPreviewUnavailable')
+              : t('addExpense.fxPreviewPending')
 
   async function onCreate(values: ExpenseFormValues) {
     if (isSaving) return
@@ -246,6 +318,7 @@ export function ExpenseFormCard({
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>{t('addExpense.manualFx')}</FormLabel>
+                  <p className="text-sm text-muted-foreground">{t('addExpense.manualFxDescription')}</p>
                   <FormControl>
                     <Input
                       {...field}
@@ -262,6 +335,10 @@ export function ExpenseFormCard({
                 </FormItem>
               )}
             />
+            <div className="rounded-2xl border border-border/70 bg-[color:var(--surface-floating)] p-4">
+              <p className="text-sm font-medium text-foreground">{t('addExpense.fxPreviewTitle')}</p>
+              <p className="mt-2 text-sm text-muted-foreground">{fxPreviewMessage}</p>
+            </div>
             <FormField
               control={form.control}
               name="note"
