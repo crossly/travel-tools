@@ -190,10 +190,27 @@ export function ExpenseFormCard({
 
   return (
     <Card>
-      <CardHeader>
+      <CardHeader className="gap-2">
         <CardTitle>{t('addExpense.title')}</CardTitle>
+        <p className="text-sm leading-6 text-muted-foreground">{t('addExpense.formDescription')}</p>
       </CardHeader>
-      <CardContent>
+      <CardContent className="grid gap-4">
+        {snapshot ? (
+          <div className="grid gap-3 sm:grid-cols-3">
+            <div className="rounded-2xl border border-border/70 bg-[color:var(--surface-floating)] p-4">
+              <p className="text-sm font-medium text-muted-foreground">{t('addExpense.summaryExpenseCurrency')}</p>
+              <p className="mt-2 text-xl font-semibold tracking-tight text-foreground">{snapshot.trip.expenseCurrency}</p>
+            </div>
+            <div className="rounded-2xl border border-border/70 bg-[color:var(--surface-floating)] p-4">
+              <p className="text-sm font-medium text-muted-foreground">{t('addExpense.summarySettlementCurrency')}</p>
+              <p className="mt-2 text-xl font-semibold tracking-tight text-foreground">{snapshot.trip.settlementCurrency}</p>
+            </div>
+            <div className="rounded-2xl border border-border/70 bg-[color:var(--surface-floating)] p-4">
+              <p className="text-sm font-medium text-muted-foreground">{t('addExpense.summarySplitCount')}</p>
+              <p className="mt-2 text-xl font-semibold tabular-nums text-foreground">{snapshot.trip.splitCount}</p>
+            </div>
+          </div>
+        ) : null}
         <Form {...form}>
           <form
             className="grid gap-4"
@@ -202,37 +219,131 @@ export function ExpenseFormCard({
               void form.handleSubmit((values) => onCreate(values))(event)
             }}
           >
-            <FormField
-              control={form.control}
-              name="title"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{t('addExpense.labelTitle')}</FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      placeholder={t('addExpense.titlePlaceholder')}
-                      disabled={!snapshot || isSaving}
-                      onChange={(event) => {
-                        field.onChange(event)
-                        setStatus(null)
-                      }}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="grid gap-4 rounded-2xl border border-border/70 bg-[color:var(--surface-floating)] p-4">
               <FormField
                 control={form.control}
-                name="amount"
+                name="title"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>{t('addExpense.labelAmount')}</FormLabel>
+                    <FormLabel>{t('addExpense.labelTitle')}</FormLabel>
                     <FormControl>
                       <Input
                         {...field}
+                        placeholder={t('addExpense.titlePlaceholder')}
+                        disabled={!snapshot || isSaving}
+                        onChange={(event) => {
+                          field.onChange(event)
+                          setStatus(null)
+                        }}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <div className="grid gap-4 md:grid-cols-2">
+                <FormField
+                  control={form.control}
+                  name="amount"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{t('addExpense.labelAmount')}</FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          inputMode="decimal"
+                          disabled={!snapshot || isSaving}
+                          onChange={(event) => {
+                            field.onChange(event)
+                            setStatus(null)
+                          }}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="currency"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{t('addExpense.labelCurrency')}</FormLabel>
+                      <FormControl>
+                        <CurrencyCombobox
+                          value={field.value}
+                          onValueChange={(value) => {
+                            field.onChange(value)
+                            setStatus(null)
+                          }}
+                          locale={locale}
+                          disabled={!snapshot || isSaving}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <div className="grid gap-4 md:grid-cols-2">
+                <FormField
+                  control={form.control}
+                  name="spentAt"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{t('addExpense.labelDate')}</FormLabel>
+                      <FormControl>
+                        <DatePickerField
+                          value={field.value}
+                          onChange={(value) => {
+                            field.onChange(value)
+                            setStatus(null)
+                          }}
+                          locale={locale}
+                          disabled={!snapshot || isSaving}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="splitCount"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{t('addExpense.splitCount')}</FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          inputMode="numeric"
+                          className="mono"
+                          disabled={!snapshot || isSaving}
+                          onChange={(event) => {
+                            field.onChange(event)
+                            setStatus(null)
+                          }}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+            </div>
+
+            <div className="grid gap-4 rounded-2xl border border-border/70 bg-[color:var(--surface-floating)] p-4">
+              <FormField
+                control={form.control}
+                name="manualFx"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{t('addExpense.manualFx')}</FormLabel>
+                    <p className="text-sm text-muted-foreground">{t('addExpense.manualFxDescription')}</p>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        placeholder={t('addExpense.manualFxPlaceholder')}
                         inputMode="decimal"
                         disabled={!snapshot || isSaving}
                         onChange={(event) => {
@@ -245,61 +356,22 @@ export function ExpenseFormCard({
                   </FormItem>
                 )}
               />
-              <FormField
-                control={form.control}
-                name="currency"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>{t('addExpense.labelCurrency')}</FormLabel>
-                    <FormControl>
-                      <CurrencyCombobox
-                        value={field.value}
-                        onValueChange={(value) => {
-                          field.onChange(value)
-                          setStatus(null)
-                        }}
-                        locale={locale}
-                        disabled={!snapshot || isSaving}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+              <div className="rounded-2xl border border-border/70 bg-background/80 p-4">
+                <p className="text-sm font-medium text-foreground">{t('addExpense.fxPreviewTitle')}</p>
+                <p className="mt-2 text-sm text-muted-foreground">{fxPreviewMessage}</p>
+              </div>
             </div>
-            <div className="grid gap-4 md:grid-cols-2">
+
+            <div className="grid gap-4 rounded-2xl border border-border/70 bg-[color:var(--surface-floating)] p-4">
               <FormField
                 control={form.control}
-                name="spentAt"
+                name="note"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>{t('addExpense.labelDate')}</FormLabel>
-                    <FormControl>
-                      <DatePickerField
-                        value={field.value}
-                        onChange={(value) => {
-                          field.onChange(value)
-                          setStatus(null)
-                        }}
-                        locale={locale}
-                        disabled={!snapshot || isSaving}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="splitCount"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>{t('addExpense.splitCount')}</FormLabel>
+                    <FormLabel>{t('addExpense.labelNote')}</FormLabel>
                     <FormControl>
                       <Input
                         {...field}
-                        inputMode="numeric"
-                        className="mono"
                         disabled={!snapshot || isSaving}
                         onChange={(event) => {
                           field.onChange(event)
@@ -311,57 +383,11 @@ export function ExpenseFormCard({
                   </FormItem>
                 )}
               />
+
+              <Button type="submit" size="lg" className="w-full" disabled={!snapshot || isSaving} aria-busy={isSaving}>
+                {isSaving ? t('common.saving') : submitLabel}
+              </Button>
             </div>
-            <FormField
-              control={form.control}
-              name="manualFx"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{t('addExpense.manualFx')}</FormLabel>
-                  <p className="text-sm text-muted-foreground">{t('addExpense.manualFxDescription')}</p>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      placeholder={t('addExpense.manualFxPlaceholder')}
-                      inputMode="decimal"
-                      disabled={!snapshot || isSaving}
-                      onChange={(event) => {
-                        field.onChange(event)
-                        setStatus(null)
-                      }}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <div className="rounded-2xl border border-border/70 bg-[color:var(--surface-floating)] p-4">
-              <p className="text-sm font-medium text-foreground">{t('addExpense.fxPreviewTitle')}</p>
-              <p className="mt-2 text-sm text-muted-foreground">{fxPreviewMessage}</p>
-            </div>
-            <FormField
-              control={form.control}
-              name="note"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{t('addExpense.labelNote')}</FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      disabled={!snapshot || isSaving}
-                      onChange={(event) => {
-                        field.onChange(event)
-                        setStatus(null)
-                      }}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <Button type="submit" size="lg" className="w-full" disabled={!snapshot || isSaving} aria-busy={isSaving}>
-              {isSaving ? t('common.saving') : submitLabel}
-            </Button>
           </form>
         </Form>
         {status ? <InlineStatus tone={status.tone} title={status.title} description={status.description} /> : null}

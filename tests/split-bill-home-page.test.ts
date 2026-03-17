@@ -66,6 +66,7 @@ vi.mock('@/lib/i18n', () => ({
       'home.createTripLocked': 'Setup is locked',
       'home.identityGenerating': 'Generating identity',
       'home.identityInlineLabel': 'This device',
+      'home.recentTripsLabel': 'Recent trips',
       'home.createTrip': 'Create trip',
       'home.tripNamePlaceholder': 'e.g. Hangzhou Weekend',
       'home.enterTripName': 'Trip name required',
@@ -159,5 +160,6 @@ describe('SplitBillHomePage', () => {
     const continuePanel = await screen.findByTestId('split-continue-panel')
     expect(within(continuePanel).getByText('Continue a recent trip')).toBeTruthy()
     expect(within(continuePanel).getByText('Loading...')).toBeTruthy()
+    expect(within(continuePanel).getByText('Recent trips')).toBeTruthy()
   })
 })

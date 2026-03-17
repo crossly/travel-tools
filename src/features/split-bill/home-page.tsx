@@ -233,6 +233,18 @@ export function SplitBillHomePage({ locale, initialData }: { locale: Locale; ini
             <CardDescription>{t('home.recentStepDescription')}</CardDescription>
           </CardHeader>
           <CardContent className="split-continue-body space-y-3 border-t border-border/70 pt-5">
+            <div className="grid gap-3 sm:grid-cols-2">
+              <div className="rounded-2xl border border-border/70 bg-background/80 p-4">
+                <p className="text-sm font-medium text-muted-foreground">{t('home.recentTripsLabel')}</p>
+                <p className="mt-2 text-2xl font-semibold tabular-nums text-foreground">{loadingTrips ? '--' : trips.length}</p>
+              </div>
+              {device ? (
+                <div className="rounded-2xl border border-border/70 bg-background/80 p-4">
+                  <p className="text-sm font-medium text-muted-foreground">{t('home.identityInlineLabel')}</p>
+                  <p className="mt-2 font-semibold text-foreground">{device.displayName}</p>
+                </div>
+              ) : null}
+            </div>
             {loadingTrips ? <p className="text-sm text-muted-foreground">{t('common.loading')}</p> : null}
             {!loadingTrips && trips.length === 0 ? (
               <div className="split-empty-state rounded-2xl border border-dashed border-border p-5 text-sm text-muted-foreground">

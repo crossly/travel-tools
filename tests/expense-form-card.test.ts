@@ -63,6 +63,7 @@ vi.mock('@/lib/i18n', () => ({
     t: (key: string, values?: Record<string, string | number>) =>
       ({
         'addExpense.title': 'Add expense',
+        'addExpense.formDescription': 'Start from the trip defaults below, and only override the fields that are different for this line.',
         'addExpense.labelTitle': 'Title',
         'addExpense.titlePlaceholder': 'e.g. Lunch',
         'addExpense.labelAmount': 'Amount',
@@ -78,6 +79,9 @@ vi.mock('@/lib/i18n', () => ({
         'addExpense.amountRequired': 'Please enter a valid amount',
         'addExpense.currencyInvalid': 'Please enter a valid 3-letter currency code',
         'addExpense.saved': 'Expense added',
+        'addExpense.summaryExpenseCurrency': 'Expense currency',
+        'addExpense.summarySettlementCurrency': 'Settlement currency',
+        'addExpense.summarySplitCount': 'Default split count',
         'addExpense.fxPreviewTitle': 'Settlement preview',
         'addExpense.fxPreviewEmpty': 'Enter an amount to preview the settlement-side total.',
         'addExpense.fxPreviewPending': 'Fetching the latest conversion for this date.',
@@ -127,6 +131,8 @@ describe('ExpenseFormCard', () => {
     }))
 
     expect(screen.getByText('Settlement preview')).toBeTruthy()
+    expect(screen.getByText('Start from the trip defaults below, and only override the fields that are different for this line.')).toBeTruthy()
+    expect(screen.getByText('Default split count')).toBeTruthy()
     expect(screen.getByText('Enter an amount to preview the settlement-side total.')).toBeTruthy()
 
     fireEvent.change(screen.getByRole('textbox', { name: 'Amount' }), { target: { value: '100' } })
