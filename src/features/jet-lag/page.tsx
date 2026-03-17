@@ -143,7 +143,10 @@ export function JetLagPage({ locale }: { locale: Locale }) {
             <InlineStatus tone="warning" title={t('jetLag.invalidTiming')} description={t('jetLag.invalidTimingDescription')} />
           ) : (
             <>
-              <Card className="border-primary/25 bg-[linear-gradient(135deg,var(--surface-floating),color-mix(in_oklab,var(--surface-floating)_78%,var(--accent)_22%))]">
+              <Card
+                data-testid="jetlag-primary-plan"
+                className="border-primary/25 bg-[linear-gradient(135deg,var(--surface-floating),color-mix(in_oklab,var(--surface-floating)_78%,var(--accent)_22%))]"
+              >
                 <CardContent className="grid gap-3 p-6">
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/80">{t('jetLag.nextStepBadge')}</p>
                   <div className="grid gap-3 md:grid-cols-[minmax(0,1.4fr)_minmax(0,0.8fr)] md:items-end">
@@ -162,120 +165,121 @@ export function JetLagPage({ locale }: { locale: Locale }) {
                 </CardContent>
               </Card>
 
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-balance">{t('jetLag.summaryTitle')}</CardTitle>
-                  <CardDescription className="text-pretty">{t('jetLag.summaryDescription')}</CardDescription>
-                </CardHeader>
-                <CardContent className="grid gap-3 md:grid-cols-2">
-                  <StatCard
-                    icon={Clock3}
-                    label={t('jetLag.hourDifference')}
-                    value={`${formatHourValue(Math.abs(plan.hourDifference))}${t('jetLag.hoursSuffix')}`}
-                    helper={t(`jetLag.direction.${plan.direction}`)}
-                  />
-                  <StatCard
-                    icon={PlaneLanding}
-                    label={t('jetLag.flightDuration')}
-                    value={`${formatHourValue(plan.flightDurationHours)}${t('jetLag.hoursSuffix')}`}
-                    helper={t('jetLag.recommendedMode', { intensity: t(`jetLag.intensity.${plan.recommendedIntensity}`) })}
-                  />
-                  <StatCard
-                    icon={MoonStar}
-                    label={t('jetLag.recoveryDays')}
-                    value={`${plan.recoveryDays}${t('jetLag.daysSuffix')}`}
-                    helper={t('jetLag.sleepAnchor', { hour: plan.sleepAnchorHour })}
-                  />
-                  <StatCard
-                    icon={SunMedium}
-                    label={t('jetLag.arrivalLocal')}
-                    value={arrivalDisplay}
-                    helper={t(`jetLag.lightTiming.${plan.lightTiming}`)}
-                  />
-                </CardContent>
-              </Card>
+              <div data-testid="jetlag-supporting-layer" className="grid gap-4 xl:grid-cols-[1.05fr_0.95fr]">
+                <Card data-testid="jetlag-playbook-card">
+                  <CardHeader>
+                    <CardTitle className="text-balance">{t('jetLag.summaryTitle')}</CardTitle>
+                    <CardDescription className="text-pretty">{t('jetLag.summaryDescription')}</CardDescription>
+                  </CardHeader>
+                  <CardContent className="grid gap-5">
+                    <div className="grid gap-3 sm:grid-cols-2">
+                      <StatCard
+                        icon={Clock3}
+                        label={t('jetLag.hourDifference')}
+                        value={`${formatHourValue(Math.abs(plan.hourDifference))}${t('jetLag.hoursSuffix')}`}
+                        helper={t(`jetLag.direction.${plan.direction}`)}
+                      />
+                      <StatCard
+                        icon={PlaneLanding}
+                        label={t('jetLag.flightDuration')}
+                        value={`${formatHourValue(plan.flightDurationHours)}${t('jetLag.hoursSuffix')}`}
+                        helper={t('jetLag.recommendedMode', { intensity: t(`jetLag.intensity.${plan.recommendedIntensity}`) })}
+                      />
+                      <StatCard
+                        icon={MoonStar}
+                        label={t('jetLag.recoveryDays')}
+                        value={`${plan.recoveryDays}${t('jetLag.daysSuffix')}`}
+                        helper={t('jetLag.sleepAnchor', { hour: plan.sleepAnchorHour })}
+                      />
+                      <StatCard
+                        icon={SunMedium}
+                        label={t('jetLag.arrivalLocal')}
+                        value={arrivalDisplay}
+                        helper={t(`jetLag.lightTiming.${plan.lightTiming}`)}
+                      />
+                    </div>
 
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-balance">{t('jetLag.clockTitle')}</CardTitle>
-                  <CardDescription className="text-pretty">{t('jetLag.clockDescription')}</CardDescription>
-                </CardHeader>
-                <CardContent className="grid gap-4">
-                  <div className="grid gap-3 md:grid-cols-3">
-                    <StatCard
-                      icon={Clock3}
-                      label={t('jetLag.originNow')}
-                      value={currentTime ? formatJetLagInstant(currentTime, prefs.originTimeZone, locale) : '---'}
-                      helper={getClockHelperLabel(prefs.originTimeZone)}
-                    />
-                    <StatCard
-                      icon={Clock3}
-                      label={t('jetLag.destinationNow')}
-                      value={currentTime ? formatJetLagInstant(currentTime, prefs.destinationTimeZone, locale) : '---'}
-                      helper={getClockHelperLabel(prefs.destinationTimeZone)}
-                    />
-                    <StatCard
-                      icon={PlaneLanding}
-                      label={t('jetLag.clockDifference')}
-                      value={plan ? `${formatHourValue(Math.abs(plan.hourDifference))}${t('jetLag.hoursSuffix')}` : '---'}
-                      helper={hourDifferenceLabel ?? t('jetLag.invalidTimingDescription')}
-                    />
-                  </div>
+                    <div className="grid gap-3 md:grid-cols-3 xl:grid-cols-1">
+                      <AdviceCard
+                        icon={MoonStar}
+                        title={t('jetLag.sleepTitle')}
+                        description={t('jetLag.sleepAdvice', { hour: plan.sleepAnchorHour })}
+                      />
+                      <AdviceCard
+                        icon={SunMedium}
+                        title={t('jetLag.lightTitle')}
+                        description={t(`jetLag.lightAdvice.${plan.lightTiming}`)}
+                      />
+                      <AdviceCard
+                        icon={Coffee}
+                        title={t('jetLag.caffeineTitle')}
+                        description={t('jetLag.caffeineAdvice', { hours: formatHourValue(plan.caffeineDelayHours) })}
+                      />
+                    </div>
 
-                  <div className="grid gap-3 md:grid-cols-2">
-                    <DualZoneTimeCard
-                      title={t('jetLag.departureDualTitle')}
-                      originLabel={t('jetLag.clockOriginColumn')}
-                      destinationLabel={t('jetLag.clockDestinationColumn')}
-                      originValue={formatJetLagDualZoneTime(prefs.departureAt, prefs.originTimeZone, prefs.originTimeZone, locale)}
-                      destinationValue={formatJetLagDualZoneTime(prefs.departureAt, prefs.originTimeZone, prefs.destinationTimeZone, locale)}
-                    />
-                    <DualZoneTimeCard
-                      title={t('jetLag.arrivalDualTitle')}
-                      originLabel={t('jetLag.clockOriginColumn')}
-                      destinationLabel={t('jetLag.clockDestinationColumn')}
-                      originValue={formatJetLagDualZoneTime(prefs.arrivalAt, prefs.destinationTimeZone, prefs.originTimeZone, locale)}
-                      destinationValue={formatJetLagDualZoneTime(prefs.arrivalAt, prefs.destinationTimeZone, prefs.destinationTimeZone, locale)}
-                    />
-                  </div>
-                </CardContent>
-              </Card>
+                    <div className="rounded-2xl border border-border/80 bg-[color:var(--surface-floating)] p-4">
+                      <p className="text-sm font-medium text-foreground">{t('jetLag.napTitle')}</p>
+                      <p className="mt-2 text-sm text-muted-foreground">
+                        {t('jetLag.napAdvice', { minutes: plan.napMinutes, hour: plan.napCutoffHour })}
+                      </p>
+                      <Button
+                        type="button"
+                        variant="secondary"
+                        className="mt-3"
+                        onClick={() => setPrefs(getDefaultJetLagPrefs())}
+                      >
+                        {t('jetLag.reset')}
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
 
-              <div className="grid gap-4 md:grid-cols-3">
-                <AdviceCard
-                  icon={MoonStar}
-                  title={t('jetLag.sleepTitle')}
-                  description={t('jetLag.sleepAdvice', { hour: plan.sleepAnchorHour })}
-                />
-                <AdviceCard
-                  icon={SunMedium}
-                  title={t('jetLag.lightTitle')}
-                  description={t(`jetLag.lightAdvice.${plan.lightTiming}`)}
-                />
-                <AdviceCard
-                  icon={Coffee}
-                  title={t('jetLag.caffeineTitle')}
-                  description={t('jetLag.caffeineAdvice', { hours: formatHourValue(plan.caffeineDelayHours) })}
-                />
+                <Card data-testid="jetlag-timing-card">
+                  <CardHeader>
+                    <CardTitle className="text-balance">{t('jetLag.clockTitle')}</CardTitle>
+                    <CardDescription className="text-pretty">{t('jetLag.clockDescription')}</CardDescription>
+                  </CardHeader>
+                  <CardContent className="grid gap-4">
+                    <div className="grid gap-3 md:grid-cols-3 xl:grid-cols-1">
+                      <StatCard
+                        icon={Clock3}
+                        label={t('jetLag.originNow')}
+                        value={currentTime ? formatJetLagInstant(currentTime, prefs.originTimeZone, locale) : '---'}
+                        helper={getClockHelperLabel(prefs.originTimeZone)}
+                      />
+                      <StatCard
+                        icon={Clock3}
+                        label={t('jetLag.destinationNow')}
+                        value={currentTime ? formatJetLagInstant(currentTime, prefs.destinationTimeZone, locale) : '---'}
+                        helper={getClockHelperLabel(prefs.destinationTimeZone)}
+                      />
+                      <StatCard
+                        icon={PlaneLanding}
+                        label={t('jetLag.clockDifference')}
+                        value={plan ? `${formatHourValue(Math.abs(plan.hourDifference))}${t('jetLag.hoursSuffix')}` : '---'}
+                        helper={hourDifferenceLabel ?? t('jetLag.invalidTimingDescription')}
+                      />
+                    </div>
+
+                    <div className="grid gap-3">
+                      <DualZoneTimeCard
+                        title={t('jetLag.departureDualTitle')}
+                        originLabel={t('jetLag.clockOriginColumn')}
+                        destinationLabel={t('jetLag.clockDestinationColumn')}
+                        originValue={formatJetLagDualZoneTime(prefs.departureAt, prefs.originTimeZone, prefs.originTimeZone, locale)}
+                        destinationValue={formatJetLagDualZoneTime(prefs.departureAt, prefs.originTimeZone, prefs.destinationTimeZone, locale)}
+                      />
+                      <DualZoneTimeCard
+                        title={t('jetLag.arrivalDualTitle')}
+                        originLabel={t('jetLag.clockOriginColumn')}
+                        destinationLabel={t('jetLag.clockDestinationColumn')}
+                        originValue={formatJetLagDualZoneTime(prefs.arrivalAt, prefs.destinationTimeZone, prefs.originTimeZone, locale)}
+                        destinationValue={formatJetLagDualZoneTime(prefs.arrivalAt, prefs.destinationTimeZone, prefs.destinationTimeZone, locale)}
+                      />
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-balance">{t('jetLag.napTitle')}</CardTitle>
-                  <CardDescription className="text-pretty">
-                    {t('jetLag.napAdvice', { minutes: plan.napMinutes, hour: plan.napCutoffHour })}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <Button
-                    type="button"
-                    variant="secondary"
-                    onClick={() => setPrefs(getDefaultJetLagPrefs())}
-                  >
-                    {t('jetLag.reset')}
-                  </Button>
-                </CardContent>
-              </Card>
             </>
           )}
         </div>

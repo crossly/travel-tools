@@ -183,6 +183,11 @@ describe('JetLagPage', () => {
 
     render(createElement(JetLagPage, { locale: 'en-US' }))
 
+    expect(screen.getByTestId('jetlag-primary-plan')).toBeTruthy()
+    expect(screen.getByTestId('jetlag-supporting-layer')).toBeTruthy()
+    expect(screen.getByTestId('jetlag-playbook-card')).toBeTruthy()
+    expect(screen.getByTestId('jetlag-timing-card')).toBeTruthy()
+
     expect(screen.getAllByText('7h').length).toBeGreaterThan(0)
     expect(screen.getByText('16h')).toBeTruthy()
     expect(screen.getByText('Recommended mode: Moderate')).toBeTruthy()

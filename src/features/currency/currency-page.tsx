@@ -186,7 +186,20 @@ export function CurrencyPage({ locale, initialData }: { locale: Locale; initialD
               <CardDescription className="text-xs font-semibold tracking-[0.16em] uppercase">{t('currency.resultLabel')}</CardDescription>
               <CardTitle className="text-4xl md:text-5xl">{converted} {normalizeCurrency(target)}</CardTitle>
             </div>
-            <Badge variant={freshnessVariant} className="self-start">{status?.title ?? t('currency.freshnessLive')}</Badge>
+            <div className="flex flex-wrap items-center gap-2 self-start" data-testid="currency-maintenance-actions">
+              <Badge variant={freshnessVariant}>{status?.title ?? t('currency.freshnessLive')}</Badge>
+              <Button
+                type="button"
+                variant="nav"
+                size="sm"
+                className="currency-refresh-action rounded-full border border-border bg-[color:var(--surface-floating)] px-3"
+                onClick={() => void loadRates(source, true)}
+                disabled={loading}
+              >
+                <RefreshCw className="h-4 w-4" />
+                {t('currency.refreshAction')}
+              </Button>
+            </div>
           </div>
           <div className="currency-result-meta grid gap-2 text-sm text-muted-foreground sm:grid-cols-2">
             <p>{t('currency.rateLabel')}: <span className="mono text-foreground">{rates?.rates?.[normalizeCurrency(target)]?.toFixed(6) ?? '---'}</span></p>
@@ -232,14 +245,10 @@ export function CurrencyPage({ locale, initialData }: { locale: Locale; initialD
               ))}
             </div>
           </FieldGroup>
-          <div className="currency-actions grid gap-2 sm:grid-cols-[1fr_auto]">
-            <Button type="button" variant="outline" size="lg" className="currency-detect-action" onClick={() => void onDetect()} disabled={detecting}>
+          <div className="currency-actions grid gap-2" data-testid="currency-assist-actions">
+            <Button type="button" variant="outline" size="lg" className="currency-detect-action w-full" onClick={() => void onDetect()} disabled={detecting}>
               <ScanSearch className="h-4 w-4" />
               {t('currency.detectAction')}
-            </Button>
-            <Button type="button" variant="ghost" size="lg" className="currency-refresh-action" onClick={() => void loadRates(source, true)} disabled={loading}>
-              <RefreshCw className="h-4 w-4" />
-              {t('currency.refreshAction')}
             </Button>
           </div>
         </CardContent>

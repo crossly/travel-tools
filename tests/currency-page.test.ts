@@ -29,6 +29,13 @@ const readCurrencyPrefs = vi.fn<() => { source: string; target: string }>(() => 
 const writeCachedCurrencyRates = vi.fn()
 const writeCurrencyPrefs = vi.fn()
 const writeLastTool = vi.fn()
+const defaultRatesResponse = {
+  base: 'USD',
+  date: '2026-03-17',
+  rates: { EUR: 0.87 },
+  updatedAt: '2026-03-17T00:00:00.000Z',
+}
+fetchCurrencyRates.mockResolvedValue(defaultRatesResponse)
 const translateCurrency = (key: string) => ({
   'currency.title': '汇率换算',
   'currency.description': 'desc',
@@ -84,11 +91,13 @@ describe('CurrencyPage', () => {
     writeCachedCurrencyRates.mockReset()
     writeCurrencyPrefs.mockReset()
     writeLastTool.mockReset()
+    fetchCurrencyRates.mockResolvedValue(defaultRatesResponse)
     readCachedCurrencyRates.mockReturnValue({ raw: null, updatedAt: null })
     readCurrencyPrefs.mockReturnValue({ source: 'USD', target: 'EUR' })
   })
 
   it('uses a danger badge when refreshing rates fails', async () => {
+    fetchCurrencyRates.mockRejectedValueOnce(new Error('FX_FETCH_FAILED'))
     fetchCurrencyRates.mockRejectedValueOnce(new Error('FX_FETCH_FAILED'))
     const { CurrencyPage } = await import('@/features/currency/currency-page')
 
@@ -124,6 +133,25 @@ describe('CurrencyPage', () => {
       expect(screen.getByText('cache')).toBeTruthy()
       expect(screen.queryByTestId('inline-status')).toBeNull()
     })
+  })
+
+  it('keeps refresh as a low-emphasis maintenance action in the result header', async () => {
+    const { CurrencyPage } = await import('@/features/currency/currency-page')
+
+    render(createElement(CurrencyPage, { locale: 'zh-CN' }))
+    await waitFor(() => {
+      expect(fetchCurrencyRates).toHaveBeenCalled()
+    })
+
+    const refreshButton = screen.getByRole('button', { name: '刷新汇率' })
+    const detectButton = screen.getByRole('button', { name: '识别本地币种' })
+
+    const maintenanceRegion = screen.getByTestId('currency-maintenance-actions')
+    const assistRegion = screen.getByTestId('currency-assist-actions')
+
+    expect(maintenanceRegion.contains(refreshButton)).toBe(true)
+    expect(assistRegion.contains(detectButton)).toBe(true)
+    expect(assistRegion.contains(refreshButton)).toBe(false)
   })
 
   it('ignores cached rates when the cached base does not match the preferred source', async () => {
