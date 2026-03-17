@@ -66,13 +66,22 @@ This direction should avoid common AI-generated aesthetics:
 - Currency tool page layout and state presentation.
 - Split-bill landing page layout and empty-state treatment.
 - Supporting design tokens and base UI primitives needed to express the new hierarchy.
-- Fixes for hydration mismatch and `hreflang` prop usage if they are in the touched areas or closely related code paths.
+- Required fixes for the known homepage hydration mismatch and invalid `hreflang` React prop usage.
 
 ### Out of Scope
 
 - Deep redesign of travel phrases, packing list, local apps, jet lag, settings, trip detail pages, settlement pages, or add-expense flow.
 - Changes to API handlers or business rules.
 - New product features beyond what is required to support the redesign.
+
+### Shared Primitive Acceptance Rule
+
+Changes to shared styling primitives must be bounded as follows:
+
+1. Global token refinements in `src/styles.css` are allowed when they preserve readability and layout integrity on untouched pages.
+2. Structural styling changes in `src/components/ui/card.tsx` and `src/components/ui/button.tsx` must be additive or opt-in through variants, modifier classes, or page-level composition, rather than silently redesigning every existing use site.
+3. Untouched feature pages may inherit subtle palette polish, but they must not require page-specific edits to remain usable.
+4. Implementation verification must include at least one untouched page from outside this redesign scope to confirm shared primitive changes did not cause regressions.
 
 ## Target Files and Boundaries
 
@@ -87,8 +96,18 @@ Primary implementation targets:
 - `src/styles.css`
 - `src/components/ui/card.tsx`
 - `src/components/ui/button.tsx`
+- `src/lib/seo.ts`
+- `src/routes/__root.tsx`
 
-Secondary updates may be needed in closely related shared components if required for consistency, but the implementation should keep write scope focused around these areas.
+Allowed secondary updates are limited to:
+
+1. Components directly imported by the target files above and needed to realize the new shell or page composition.
+2. Metadata or SSR helpers required to complete the mandatory hydration mismatch and `hreflang` fixes.
+3. No other feature modules should be edited unless they are needed for regression repair caused by shared-shell changes.
+
+Boundary rule:
+
+- A work item should stop at the shell, homepage, currency page, split-bill landing page, or the named metadata/SSR fix path. It should not expand into unrelated feature redesign.
 
 ## Experience Model
 
@@ -165,8 +184,22 @@ Currency page structure:
    - Swap action.
    - Quick amount shortcuts.
 3. Secondary actions:
-   - Detect local currency as intelligent helper action.
-   - Refresh rates as maintenance action with lower emphasis than the primary result.
+   - Detect local currency as a secondary assistive action that updates source currency and may show a short success or failure status.
+   - Refresh rates as a lower-emphasis maintenance action for refreshing data freshness, not the primary call to action.
+
+Currency state placement:
+
+1. Loading rates:
+   - Existing result panel remains visible when prior data exists.
+   - Refresh action shows loading state.
+2. Cached or offline rates:
+   - Status is shown inside the primary result region, not as a detached bottom block.
+3. Refresh or detect failure:
+   - Error appears in a visible inline status region directly below the primary panel.
+   - Previously loaded successful data remains visible if available.
+4. No data available:
+   - The primary panel must still render with an explicit unavailable state rather than collapsing the page.
+   - Controls remain usable so the user can retry or change currencies.
 
 Expected result:
 
@@ -195,10 +228,24 @@ Split-bill page structure:
    - Clear start action.
 2. Supporting context:
    - Device identity in a quieter treatment.
-   - Optional brief explanation of local-first behavior if space allows.
+   - Short fixed explanation of local-first behavior in one compact support block.
 3. Recent trip continuation panel:
    - More intentional framing for "continue where you left off."
    - Stronger empty state language and composition.
+
+Split-bill state placement:
+
+1. Identity bootstrap in progress:
+   - The primary start panel remains visible but disabled.
+   - A quiet inline status or support block explains that device setup is in progress.
+2. Trip creation validation or submit failure:
+   - Errors remain attached to the form and/or are summarized in a visible inline status immediately after the form region.
+3. Trip list loading:
+   - The recent-trip panel keeps its heading and frame while showing loading copy or placeholders.
+4. No trips:
+   - The recent-trip panel shows a guided empty state rather than an empty container.
+5. Trips available:
+   - The recent-trip panel prioritizes quick continuation links without competing with the primary create-trip task.
 
 Expected result:
 
@@ -228,6 +275,7 @@ Required changes:
 1. Support lighter or more open sections that are not full cards.
 2. Preserve full cards for dense or stateful content where enclosure improves comprehension.
 3. Allow the homepage and shell to mix enclosed and unenclosed sections intentionally.
+4. Any new card treatment needed for the redesign should be introduced as an opt-in variant or page-specific class, not by breaking existing card consumers by default.
 
 ### Button System
 
@@ -238,6 +286,7 @@ Required changes:
 1. Primary actions should feel assertive and branded.
 2. Secondary and maintenance actions should look clearly subordinate.
 3. Utility icon buttons should feel integrated with the shell rather than mechanically repeated.
+4. New hierarchy should be expressed with additive variants or scoped classes where possible, so untouched pages do not need broad button rewrites.
 
 ## Responsiveness
 
@@ -275,9 +324,11 @@ Requirements:
 ## Technical Fixes Included in This Phase
 
 1. Resolve the homepage hydration mismatch.
+   - Expected owner path: homepage rendering and SSR-adjacent code, currently surfaced through `src/routes/__root.tsx` and the homepage route/render path.
 2. Replace invalid `hreflang` React prop usage with the correct React prop name.
+   - Expected owner path: metadata generation in `src/lib/seo.ts` and any consumer that renders alternate links.
 
-These fixes are included because they are already visible during UI review and are likely to interfere with confident delivery if ignored.
+These fixes are mandatory deliverables for this phase, even if their implementation lands slightly outside the core page files named above.
 
 ## Testing Strategy
 
