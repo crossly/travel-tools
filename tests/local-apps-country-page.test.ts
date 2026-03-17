@@ -125,7 +125,7 @@ describe('LocalAppsCountryPage', () => {
 
     const view = render(createElement(LocalAppsCountryPage, { locale: 'en-US', summary, guide }))
 
-    const favicon = view.container.querySelector('img[src="https://example.com/favicon.ico"]')
+    const favicon = view.container.querySelector('img[src="https://favicon.is/example.com?larger=true"]')
     expect(favicon).toBeTruthy()
 
     fireEvent.error(favicon as HTMLImageElement)

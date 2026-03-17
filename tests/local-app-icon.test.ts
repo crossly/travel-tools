@@ -12,7 +12,7 @@ describe('LocalAppIcon', () => {
       links: [{ platform: 'official', url: 'https://example.com' }],
     }))
 
-    const favicon = view.container.querySelector('img[src="https://example.com/favicon.ico"]')
+    const favicon = view.container.querySelector('img[src="https://favicon.is/example.com?larger=true"]')
     expect(favicon).toBeTruthy()
     expect(view.container.querySelector('[data-app-icon-id="navitime"][data-icon-state="loading"]')).toBeTruthy()
 

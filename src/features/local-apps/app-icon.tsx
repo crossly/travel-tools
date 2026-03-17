@@ -8,7 +8,10 @@ export function buildLocalAppFaviconUrl(links: LocalAppPlatformLink[]) {
   if (!officialLink) return null
 
   try {
-    return `${new URL(officialLink).origin}/favicon.ico`
+    const hostname = new URL(officialLink).hostname
+    if (!hostname) return null
+
+    return `https://favicon.is/${hostname}?larger=true`
   } catch {
     return null
   }
