@@ -27,7 +27,7 @@ vi.mock('@/lib/i18n', () => ({
 }))
 
 describe('DesktopToolNav semantics', () => {
-  it('sets aria-current on the active tool link', async () => {
+  it('sets aria-current on the active tool link without permanently featuring currency', async () => {
     const { DesktopToolNav } = await import('@/components/app/app-shell-header-controls')
 
     render(
@@ -37,7 +37,11 @@ describe('DesktopToolNav semantics', () => {
       }),
     )
 
-    expect(screen.getByRole('link', { name: 'Local Apps' }).getAttribute('aria-current')).toBe('page')
-    expect(screen.getByRole('link', { name: 'Currency' }).getAttribute('aria-current')).toBeNull()
+    const activeLink = screen.getByRole('link', { name: 'Local Apps' })
+    const currencyLink = screen.getByRole('link', { name: 'Currency' })
+
+    expect(activeLink.getAttribute('aria-current')).toBe('page')
+    expect(currencyLink.getAttribute('aria-current')).toBeNull()
+    expect(currencyLink.className).not.toContain('is-featured')
   })
 })

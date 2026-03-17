@@ -43,6 +43,7 @@ export function PackingListPage({ locale }: { locale: Locale }) {
   const templates = listPackingTemplates()
   const { activeList, activeListId, lists, setActiveListId, setLists } = usePackingLists()
   const [selectedTemplateId, setSelectedTemplateId] = useState(templates[0]?.id ?? 'weekend')
+  const selectedTemplate = templates.find((template) => template.id === selectedTemplateId) ?? templates[0] ?? null
   const [newListName, setNewListName] = useState('')
   const [itemDrafts, setItemDrafts] = useState<Record<PackingSectionId, string>>(createEmptyDrafts)
   const [status, setStatus] = useState<{ tone: 'warning'; title: string; description?: string } | null>(null)
@@ -373,7 +374,36 @@ export function PackingListPage({ locale }: { locale: Locale }) {
             )
           })}
         </div>
-      ) : null}
+      ) : (
+        <Card className="border-dashed border-border/80 bg-[color:var(--surface-floating)]">
+          <CardContent className="grid gap-6 p-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
+            <div className="space-y-3">
+              <div className="inline-flex size-12 items-center justify-center rounded-2xl border border-border bg-background">
+                <Briefcase className="size-5 text-primary" />
+              </div>
+              <div className="space-y-2">
+                <h2 className="display text-balance text-2xl font-semibold text-foreground">{t('packing.emptyTitle')}</h2>
+                <p className="max-w-xl text-pretty text-sm leading-6 text-muted-foreground md:text-base">{t('packing.emptyDescription')}</p>
+              </div>
+              {selectedTemplate ? (
+                <div className="rounded-2xl border border-border bg-background/80 p-4">
+                  <p className="text-sm font-medium text-muted-foreground">{t(selectedTemplate.nameKey)}</p>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">{t(selectedTemplate.descriptionKey)}</p>
+                </div>
+              ) : null}
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-2">
+              {sectionIds.slice(0, 4).map((sectionId) => (
+                <div key={sectionId} className="rounded-2xl border border-border bg-background/80 p-4">
+                  <p className="font-medium text-foreground">{t(`packing.section.${sectionId}`)}</p>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">{t('packing.noItemsDescription')}</p>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      )}
     </AppShell>
   )
 }

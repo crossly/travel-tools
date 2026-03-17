@@ -39,7 +39,7 @@ export function SettlementPage({ locale, tripId, initialData }: { locale: Locale
 
   const summaryText = settlement?.transfers.length
     ? settlement.transfers.map((item) => `${getParticipantLabel(item.fromMemberId)} -> ${getParticipantLabel(item.toMemberId)}: ${item.amountBase.toFixed(2)}`).join('\n')
-    : 'NO_TRANSFER_NEEDED'
+    : t('settlement.noTransfer')
 
   useEffect(() => {
     if (resolvedInitialData.device) {
@@ -84,10 +84,14 @@ export function SettlementPage({ locale, tripId, initialData }: { locale: Locale
       ) : null}
       {!pageStatus || (trip && settlement) ? (
       <div className="grid gap-4 xl:grid-cols-[1.1fr_0.9fr]">
-        <Card>
-          <CardHeader>
+        <Card className="border-primary/20 bg-[linear-gradient(145deg,var(--surface-floating),color-mix(in_oklab,var(--surface-floating)_78%,var(--accent)_22%))]">
+          <CardHeader className="gap-3">
             <CardTitle>{t('settlement.transferSuggestion')}</CardTitle>
-            <CardDescription>{trip?.trip.settlementCurrency ?? ''}</CardDescription>
+            <CardDescription>
+              {settlement?.transfers.length
+                ? trip?.trip.settlementCurrency ?? ''
+                : t('settlement.noTransfer')}
+            </CardDescription>
           </CardHeader>
           <CardContent className="space-y-3">
             {!settlement ? (
@@ -106,7 +110,12 @@ export function SettlementPage({ locale, tripId, initialData }: { locale: Locale
                 <p className="font-medium">{getParticipantLabel(transfer.fromMemberId)} → {getParticipantLabel(transfer.toMemberId)}</p>
                 <p className="mt-1 mono text-sm text-muted-foreground">{transfer.amountBase.toFixed(2)} {trip?.trip.settlementCurrency}</p>
               </div>
-            )) : <p className="text-sm text-muted-foreground">{t('settlement.noTransfer')}</p>}
+            )) : (
+              <div className="rounded-2xl border border-border/70 bg-background/80 p-4">
+                <p className="text-base font-semibold text-foreground">{t('settlement.noTransfer')}</p>
+                <p className="mt-2 text-sm text-muted-foreground">{trip?.trip.name ?? ''}</p>
+              </div>
+            )}
             {settlement ? (
               <Button
                 type="button"

@@ -56,7 +56,6 @@ export function DesktopToolNav({
         const Icon = item.icon
         const path = getLocalizedPath(locale, item.path)
         const isActive = item.tool ? activeTool === item.tool : false
-        const isFeatured = item.tool === 'currency'
         return (
           <Link
             key={item.key}
@@ -64,7 +63,6 @@ export function DesktopToolNav({
             aria-current={isActive ? 'page' : undefined}
             className={cn(
               'desktop-tool-link',
-              isFeatured && 'is-featured',
               isActive && 'is-active',
             )}
             onClick={() => {

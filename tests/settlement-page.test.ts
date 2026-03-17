@@ -55,6 +55,11 @@ vi.mock('@/lib/i18n', () => ({
 
 describe('SettlementPage', () => {
   beforeEach(() => {
+    fetchSnapshotMock.mockReset()
+    fetchSettlementMock.mockReset()
+  })
+
+  beforeEach(() => {
     Object.defineProperty(globalThis.navigator, 'clipboard', {
       configurable: true,
       value: {
@@ -122,6 +127,42 @@ describe('SettlementPage', () => {
     await waitFor(() => {
       expect(clipboardWriteText).toHaveBeenCalled()
       expect(screen.getByText('CLIPBOARD_UNAVAILABLE')).toBeTruthy()
+    })
+  })
+
+  it('copies a localized no-transfer summary when nobody needs to pay', async () => {
+    const clipboardWriteText = vi.fn().mockResolvedValue(undefined)
+    Object.defineProperty(globalThis.navigator, 'clipboard', {
+      configurable: true,
+      value: {
+        writeText: clipboardWriteText,
+      },
+    })
+
+    fetchSnapshotMock.mockResolvedValue({
+      trip: {
+        id: 'trip-1',
+        name: 'Tokyo',
+        expenseCurrency: 'JPY',
+        settlementCurrency: 'CNY',
+      },
+    })
+    fetchSettlementMock.mockResolvedValue({
+      transfers: [],
+      currencySummary: { expenseCurrency: 'JPY', settlementCurrency: 'CNY' },
+      expenseConversions: [],
+      balances: [],
+      summaryText: '',
+    })
+
+    const { SettlementPage } = await import('@/features/split-bill/settlement-page')
+
+    render(createElement(SettlementPage, { locale: 'en-US', tripId: 'trip-1' }))
+
+    fireEvent.click(await screen.findByRole('button', { name: 'Copy settlement text' }))
+
+    await waitFor(() => {
+      expect(clipboardWriteText).toHaveBeenCalledWith('No transfer needed')
     })
   })
 })

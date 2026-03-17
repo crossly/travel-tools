@@ -194,9 +194,11 @@ export function LocalAppsCountryPage({
                 <a
                   key={category.id}
                   href={`#${category.id}-apps`}
+                  aria-label={t('localApps.categoryJumpLinkLabel', { category: category.label })}
+                  title={category.label}
                   className={cn(
-                    'inline-flex h-10 shrink-0 whitespace-nowrap items-center justify-center rounded-xl border border-border bg-[color:var(--surface-floating)] px-4 text-sm font-medium text-foreground transition-colors hover:bg-muted',
-                    isCategoryJumpCompact && 'h-9 rounded-full px-3 text-xs md:text-sm',
+                    'inline-flex min-h-10 shrink-0 items-center justify-center rounded-xl border border-border bg-[color:var(--surface-floating)] px-4 py-2 text-center text-sm font-medium leading-tight text-foreground transition-colors hover:bg-muted whitespace-normal',
+                    isCategoryJumpCompact && 'min-h-9 max-w-[9.5rem] rounded-full px-3 text-xs md:max-w-none md:text-sm',
                   )}
                 >
                   {category.label}

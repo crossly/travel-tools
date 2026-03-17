@@ -2,6 +2,11 @@ import type { Messages } from '@/lib/i18n/types'
 
 export const settingsMessages: Messages = {
   'zh-CN': {
+    'settings.languageDescription': '切换界面语言。',
+    'settings.themeDescription': '选择亮色、暗色或跟随系统。',
+    'settings.tripDataTitle': '行程数据',
+    'settings.tripDataDescription': '导出当前行程，或把 JSON 导回当前行程。',
+    'settings.tripRequiredHint': '先在 AA 记账里创建或打开一个当前行程，再使用导入或导出。',
     'settings.exportCurrentTrip': '导出当前行程',
     'settings.exportAction': '导出',
     'settings.exportPending': '正在导出',
@@ -15,6 +20,11 @@ export const settingsMessages: Messages = {
     'settings.noTripToImport': '没有可导入的当前行程',
   },
   'en-US': {
+    'settings.languageDescription': 'Switch the interface language.',
+    'settings.themeDescription': 'Choose light, dark, or system appearance.',
+    'settings.tripDataTitle': 'Trip data',
+    'settings.tripDataDescription': 'Export the current trip, or restore JSON into the current trip.',
+    'settings.tripRequiredHint': 'Create or open a current trip in Bill Splitter before importing or exporting.',
     'settings.exportCurrentTrip': 'Export current trip',
     'settings.exportAction': 'Export',
     'settings.exportPending': 'Exporting',

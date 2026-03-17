@@ -31,6 +31,8 @@ type ImportFormValues = Output<ReturnType<typeof createImportFormSchema>>
 
 export function SettingsPage({ locale }: { locale: Locale }) {
   const { t, tError } = useI18n()
+  const activeTripId = readActiveTripId()
+  const hasActiveTrip = Boolean(activeTripId)
   const [exportStatus, setExportStatus] = useState<{ tone: 'success' | 'warning' | 'danger'; title: string } | null>(null)
   const [importStatus, setImportStatus] = useState<{ tone: 'success' | 'warning' | 'danger'; title: string } | null>(null)
   const [isExporting, setIsExporting] = useState(false)
@@ -44,8 +46,7 @@ export function SettingsPage({ locale }: { locale: Locale }) {
   })
 
   async function onExport() {
-    const tripId = readActiveTripId()
-    if (!tripId) {
+    if (!activeTripId) {
       setExportStatus({ tone: 'warning', title: t('settings.noTripToExport') })
       return
     }
@@ -54,8 +55,8 @@ export function SettingsPage({ locale }: { locale: Locale }) {
     setExportStatus(null)
 
     try {
-      const content = await exportTrip(tripId)
-      downloadTextFile(resolveExportFilename(tripId, content), content)
+      const content = await exportTrip(activeTripId)
+      downloadTextFile(resolveExportFilename(activeTripId, content), content)
       setExportStatus({ tone: 'success', title: t('settings.exportSuccess') })
     } catch (error) {
       setExportStatus({ tone: 'danger', title: tError((error as Error).message) })
@@ -65,8 +66,7 @@ export function SettingsPage({ locale }: { locale: Locale }) {
   }
 
   async function onImport(values: ImportFormValues) {
-    const tripId = readActiveTripId()
-    if (!tripId) {
+    if (!activeTripId) {
       setImportStatus({ tone: 'warning', title: t('settings.noTripToImport') })
       return
     }
@@ -75,7 +75,7 @@ export function SettingsPage({ locale }: { locale: Locale }) {
     setImportStatus(null)
 
     try {
-      await importTrip(tripId, values.content)
+      await importTrip(activeTripId, values.content)
       setImportStatus({ tone: 'success', title: t('settings.importSuccess') })
       importForm.reset()
     } catch (error) {
@@ -96,7 +96,7 @@ export function SettingsPage({ locale }: { locale: Locale }) {
         <Card>
           <CardHeader>
             <CardTitle>{t('settings.language')}</CardTitle>
-            <CardDescription>{t('settings.language')}</CardDescription>
+            <CardDescription>{t('settings.languageDescription')}</CardDescription>
           </CardHeader>
           <CardContent>
             <LocaleSwitcher className="min-w-[10rem]" />
@@ -105,7 +105,7 @@ export function SettingsPage({ locale }: { locale: Locale }) {
         <Card>
           <CardHeader>
             <CardTitle>{t('settings.appearance')}</CardTitle>
-            <CardDescription>{t('settings.theme')}</CardDescription>
+            <CardDescription>{t('settings.themeDescription')}</CardDescription>
           </CardHeader>
           <CardContent>
             <ThemeToggle className="min-w-[10rem]" />
@@ -113,62 +113,73 @@ export function SettingsPage({ locale }: { locale: Locale }) {
         </Card>
       </div>
 
-      <div className="grid gap-4 xl:grid-cols-2">
-        <Card>
-          <CardHeader>
-            <CardTitle>{t('settings.exportCurrentTrip')}</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <Button type="button" onClick={() => void onExport()} disabled={isExporting}>
-              {isExporting ? t('settings.exportPending') : t('settings.exportAction')}
-            </Button>
-            {exportStatus ? <InlineStatus tone={exportStatus.tone} title={exportStatus.title} /> : null}
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle>{t('settings.importTitle')}</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <Form {...importForm}>
-              <form
-                className="space-y-4"
-                onSubmit={(event) => {
-                  event.preventDefault()
-                  void importForm.handleSubmit((values) => onImport(values))(event)
-                }}
-              >
-                <FormField
-                  control={importForm.control}
-                  name="content"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>{t('settings.importTitle')}</FormLabel>
-                      <FormControl>
-                        <Textarea
-                          {...field}
-                          placeholder={t('settings.importPlaceholder')}
-                          disabled={isImporting}
-                          onChange={(event) => {
-                            field.onChange(event)
-                            importForm.clearErrors('content')
-                            setImportStatus(null)
-                          }}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <Button type="submit" disabled={isImporting}>
-                  {isImporting ? t('settings.importPending') : t('settings.importAction')}
+      <Card tone="soft">
+        <CardHeader>
+          <CardTitle>{t('settings.tripDataTitle')}</CardTitle>
+          <CardDescription>{t('settings.tripDataDescription')}</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {!hasActiveTrip ? (
+            <InlineStatus tone="warning" title={t('settings.tripRequiredHint')} />
+          ) : null}
+          <div className="grid gap-4 xl:grid-cols-2">
+            <Card tone="plain">
+              <CardHeader>
+                <CardTitle>{t('settings.exportCurrentTrip')}</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <Button type="button" onClick={() => void onExport()} disabled={!hasActiveTrip || isExporting}>
+                  {isExporting ? t('settings.exportPending') : t('settings.exportAction')}
                 </Button>
-              </form>
-            </Form>
-            {importStatus ? <InlineStatus tone={importStatus.tone} title={importStatus.title} /> : null}
-          </CardContent>
-        </Card>
-      </div>
+                {exportStatus ? <InlineStatus tone={exportStatus.tone} title={exportStatus.title} /> : null}
+              </CardContent>
+            </Card>
+            <Card tone="plain">
+              <CardHeader>
+                <CardTitle>{t('settings.importTitle')}</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <Form {...importForm}>
+                  <form
+                    className="space-y-4"
+                    onSubmit={(event) => {
+                      event.preventDefault()
+                      void importForm.handleSubmit((values) => onImport(values))(event)
+                    }}
+                  >
+                    <FormField
+                      control={importForm.control}
+                      name="content"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>{t('settings.importTitle')}</FormLabel>
+                          <FormControl>
+                            <Textarea
+                              {...field}
+                              placeholder={t('settings.importPlaceholder')}
+                              disabled={!hasActiveTrip || isImporting}
+                              onChange={(event) => {
+                                field.onChange(event)
+                                importForm.clearErrors('content')
+                                setImportStatus(null)
+                              }}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <Button type="submit" disabled={!hasActiveTrip || isImporting}>
+                      {isImporting ? t('settings.importPending') : t('settings.importAction')}
+                    </Button>
+                  </form>
+                </Form>
+                {importStatus ? <InlineStatus tone={importStatus.tone} title={importStatus.title} /> : null}
+              </CardContent>
+            </Card>
+          </div>
+        </CardContent>
+      </Card>
     </AppShell>
   )
 }

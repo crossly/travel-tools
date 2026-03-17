@@ -18,7 +18,7 @@
     "test:travel-phrases:prod": "ROUTECRATE_SMOKE_URL=https://www.routecrate.com vitest run --config vitest.config.ts tests/travel-phrases-production-smoke.test.ts",
     "typecheck": "tsc --noEmit",
     "deploy": "pnpm run build && wrangler deploy",
-    "db:migrate:local": "wrangler d1 execute split-bill --local --file=./migrations/0001_init.sql",
+    "db:migrate:local": "wrangler d1 execute split-bill --local --file=./migrations/0001_init.sql && wrangler d1 execute split-bill --local --file=./migrations/0002_trip_expense_currency.sql",
     "phrases:audio": "node ./scripts/generate-travel-phrases-audio.mjs"
   },
   "license": "ISC",

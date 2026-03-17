@@ -92,6 +92,9 @@ vi.mock('@/lib/i18n', () => ({
       'jetLag.intensityDescription.heavy': 'Stricter timing',
       'jetLag.summaryTitle': 'Recovery summary',
       'jetLag.summaryDescription': 'Start with the timezone gap.',
+      'jetLag.nextStepTitle': 'First move after landing',
+      'jetLag.nextStepDescription': `Stay awake until about ${values?.hour}:00 local time.`,
+      'jetLag.nextStepBadge': 'Landing plan',
       'jetLag.hourDifference': 'Time difference',
       'jetLag.flightDuration': 'Flight duration',
       'jetLag.recoveryDays': 'Estimated reset days',
@@ -183,6 +186,8 @@ describe('JetLagPage', () => {
     expect(screen.getAllByText('7h').length).toBeGreaterThan(0)
     expect(screen.getByText('16h')).toBeTruthy()
     expect(screen.getByText('Recommended mode: Moderate')).toBeTruthy()
+    expect(screen.getByText('First move after landing')).toBeTruthy()
+    expect(screen.getByText('Stay awake until about 22:00 local time.')).toBeTruthy()
     expect(screen.getByText('Wait about 1.5 hours')).toBeTruthy()
     expect(screen.getByText('Time zone snapshot')).toBeTruthy()
     expect(screen.getByText('Origin now')).toBeTruthy()

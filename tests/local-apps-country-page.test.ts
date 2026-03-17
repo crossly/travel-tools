@@ -29,6 +29,7 @@ vi.mock('@/lib/i18n', () => ({
         'localApps.categoryJumpTitle': 'Jump by category',
         'localApps.categoryJumpDescription': 'Open the app categories that matter faster.',
         'localApps.categoryJumpStickyLabel': 'Local app category navigation',
+        'localApps.categoryJumpLinkLabel': `Jump to ${values?.category}`,
         'localApps.cautionTitle': 'Read first',
         'localApps.downloadTitle': 'Download flow',
         'localApps.downloadDescription': 'Start from the official link first.',
@@ -131,5 +132,15 @@ describe('LocalAppsCountryPage', () => {
 
     expect(view.container.querySelector('[data-app-icon-id="navitime"][data-icon-state="fallback"]')).toBeTruthy()
     expect(view.container.querySelector('[data-app-icon-id="maps-inline"][data-icon-state="fallback"]')).toBeTruthy()
+  })
+
+  it('keeps category jump links readable on small screens', async () => {
+    const { LocalAppsCountryPage } = await import('@/features/local-apps/country-page')
+
+    const view = render(createElement(LocalAppsCountryPage, { locale: 'en-US', summary, guide }))
+    const jumpLink = view.getByRole('link', { name: 'Jump to Maps' })
+
+    expect(jumpLink.getAttribute('title')).toBe('Maps')
+    expect(jumpLink.className).toContain('whitespace-normal')
   })
 })

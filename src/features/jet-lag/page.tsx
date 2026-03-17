@@ -57,6 +57,7 @@ export function JetLagPage({ locale }: { locale: Locale }) {
 
   const plan = calculateJetLagPlan(prefs)
   const arrivalDisplay = formatJetLagTime(prefs.arrivalAt, prefs.destinationTimeZone, locale)
+  const nextStepDescription = plan ? t('jetLag.nextStepDescription', { hour: plan.sleepAnchorHour }) : null
   const hourDifferenceLabel = plan
     ? plan.direction === 'east'
       ? t('jetLag.relative.ahead', { hours: `${formatHourValue(Math.abs(plan.hourDifference))}${t('jetLag.hoursSuffix')}` })
@@ -142,6 +143,25 @@ export function JetLagPage({ locale }: { locale: Locale }) {
             <InlineStatus tone="warning" title={t('jetLag.invalidTiming')} description={t('jetLag.invalidTimingDescription')} />
           ) : (
             <>
+              <Card className="border-primary/25 bg-[linear-gradient(135deg,var(--surface-floating),color-mix(in_oklab,var(--surface-floating)_78%,var(--accent)_22%))]">
+                <CardContent className="grid gap-3 p-6">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/80">{t('jetLag.nextStepBadge')}</p>
+                  <div className="grid gap-3 md:grid-cols-[minmax(0,1.4fr)_minmax(0,0.8fr)] md:items-end">
+                    <div className="space-y-2">
+                      <h2 className="display text-balance text-2xl font-semibold text-foreground md:text-3xl">{t('jetLag.nextStepTitle')}</h2>
+                      <p className="max-w-2xl text-pretty text-sm leading-6 text-muted-foreground md:text-base">
+                        {nextStepDescription}
+                      </p>
+                    </div>
+                    <div className="rounded-2xl border border-border/70 bg-background/80 p-4">
+                      <p className="text-sm font-medium text-muted-foreground">{t('jetLag.arrivalLocal')}</p>
+                      <p className="mt-2 text-xl font-semibold tabular-nums text-foreground md:text-2xl">{arrivalDisplay}</p>
+                      <p className="mt-2 text-sm text-muted-foreground">{t(`jetLag.lightTiming.${plan.lightTiming}`)}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
               <Card>
                 <CardHeader>
                   <CardTitle className="text-balance">{t('jetLag.summaryTitle')}</CardTitle>

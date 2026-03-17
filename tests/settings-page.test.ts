@@ -38,8 +38,13 @@ vi.mock('@/lib/i18n', () => ({
     t: (key: string) => ({
       'settings.title': '设置',
       'settings.language': '语言',
+      'settings.languageDescription': '切换界面语言。',
       'settings.appearance': '外观',
       'settings.theme': '主题',
+      'settings.themeDescription': '选择亮色、暗色或跟随系统。',
+      'settings.tripDataTitle': '行程数据',
+      'settings.tripDataDescription': '导出当前行程，或把 JSON 导回当前行程。',
+      'settings.tripRequiredHint': '先在 AA 记账里创建或打开一个当前行程，再使用导入或导出。',
       'settings.exportCurrentTrip': '导出当前行程',
       'settings.exportAction': '导出',
       'settings.exportPending': '正在导出',
@@ -130,14 +135,27 @@ describe('SettingsPage', () => {
     appendChildSpy.mockRestore()
   })
 
-  it('shows local warning state when no active trip exists for import', async () => {
-    readActiveTripId.mockReturnValueOnce('')
+  it('surfaces the prerequisite and keeps import disabled when no active trip exists', async () => {
+    readActiveTripId.mockReturnValue('')
     const { SettingsPage } = await import('@/features/site/settings-page')
 
     render(createElement(SettingsPage, { locale: 'zh-CN' }))
-    fireEvent.change(screen.getByPlaceholderText('粘贴导出的 JSON'), { target: { value: '{"ok":true}' } })
-    fireEvent.click(screen.getByRole('button', { name: '导入' }))
 
-    expect(await screen.findByText('没有可导入的当前行程')).toBeTruthy()
+    expect(screen.getByText('先在 AA 记账里创建或打开一个当前行程，再使用导入或导出。')).toBeTruthy()
+    expect(screen.getByRole('button', { name: '导入' }).hasAttribute('disabled')).toBe(true)
+    expect(screen.getByPlaceholderText('粘贴导出的 JSON').hasAttribute('disabled')).toBe(true)
+  })
+
+  it('shows the trip prerequisite and disables import-export actions when no active trip exists', async () => {
+    readActiveTripId.mockReturnValue('')
+    const { SettingsPage } = await import('@/features/site/settings-page')
+
+    render(createElement(SettingsPage, { locale: 'zh-CN' }))
+
+    expect(screen.getByText('切换界面语言。')).toBeTruthy()
+    expect(screen.getByText('选择亮色、暗色或跟随系统。')).toBeTruthy()
+    expect(screen.getByText('先在 AA 记账里创建或打开一个当前行程，再使用导入或导出。')).toBeTruthy()
+    expect(screen.getByRole('button', { name: '导出' }).hasAttribute('disabled')).toBe(true)
+    expect(screen.getByRole('button', { name: '导入' }).hasAttribute('disabled')).toBe(true)
   })
 })

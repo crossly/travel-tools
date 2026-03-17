@@ -54,6 +54,7 @@ vi.mock('@/lib/i18n', () => ({
         'trip.deleteTripAction': 'Confirm delete',
         'trip.splitCount': 'Split count',
         'trip.saveSplitCount': 'Save split count',
+        'trip.splitCountHint': 'Adjust this only when a specific expense should be shared by fewer or more people.',
         'trip.addExpense': 'Add expense',
         'trip.settlement': 'Settlement',
         'trip.noExpenses': 'No expenses',
@@ -128,5 +129,13 @@ describe('TripPage delete confirmations', () => {
       expect(clearActiveTripIdMock).toHaveBeenCalled()
       expect(navigateMock).toHaveBeenCalled()
     })
+  })
+
+  it('shows neutral split-count guidance before any changes are saved', async () => {
+    const { TripPage } = await import('@/features/split-bill/trip-page')
+
+    render(createElement(TripPage, { locale: 'en-US', tripId: 'trip-1' }))
+
+    expect((await screen.findAllByText('Adjust this only when a specific expense should be shared by fewer or more people.')).length).toBeGreaterThan(0)
   })
 })

@@ -20,6 +20,7 @@ export function TripPage({ locale, tripId, initialSnapshot = null }: { locale: L
   const navigate = useNavigate()
   const [snapshot, setSnapshot] = useState<TripSnapshot | null>(initialSnapshot)
   const [isSavingSplitCount, setIsSavingSplitCount] = useState(false)
+  const [hasSavedSplitCount, setHasSavedSplitCount] = useState(false)
   const [pageStatus, setPageStatus] = useState<{ tone: 'danger'; title: string; description?: string } | null>(null)
   const [status, setStatus] = useState<{ tone: 'success' | 'warning' | 'danger'; title: string; description?: string } | null>(null)
 
@@ -46,6 +47,7 @@ export function TripPage({ locale, tripId, initialSnapshot = null }: { locale: L
       await updateTripSettings(tripId, nextCount)
       const latest = await fetchSnapshot(tripId)
       setSnapshot(latest)
+      setHasSavedSplitCount(true)
     } catch (error) {
       setStatus({ tone: 'danger', title: tError((error as Error).message) })
     } finally {
@@ -95,7 +97,7 @@ export function TripPage({ locale, tripId, initialSnapshot = null }: { locale: L
       ) : null}
       {!pageStatus || snapshot ? (
       <div className="grid gap-4 xl:grid-cols-[minmax(0,0.9fr)_minmax(0,1.8fr)]">
-        <div className="xl:order-1">
+        <div className="order-2 xl:order-1">
           <Card>
             <CardHeader>
               <CardTitle>{t('trip.expenseList')}</CardTitle>
@@ -143,7 +145,26 @@ export function TripPage({ locale, tripId, initialSnapshot = null }: { locale: L
           </Card>
         </div>
 
-        <div className="grid gap-4 xl:order-2">
+        <div className="order-1 grid gap-4 xl:order-2">
+          <Card className="border-primary/20 bg-[linear-gradient(145deg,var(--surface-floating),color-mix(in_oklab,var(--surface-floating)_78%,var(--accent)_22%))]">
+            <CardContent className="grid gap-3 p-6 md:grid-cols-[minmax(0,1.3fr)_auto] md:items-center">
+              <div className="space-y-2">
+                <p className="text-sm font-medium text-muted-foreground">{snapshot?.trip.name ?? t('trip.titleFallback')}</p>
+                <p className="display text-balance text-2xl font-semibold text-foreground">{t('trip.addExpense')}</p>
+                <p className="text-sm leading-6 text-muted-foreground">{t('trip.splitCountHint')}</p>
+              </div>
+              <Button
+                type="button"
+                size="lg"
+                className="w-full md:w-auto"
+                disabled={!snapshot}
+                onClick={() => navigate({ to: getLocalizedPath(locale, `/bill-splitter/${tripId}/add-expense`) })}
+              >
+                {t('trip.addExpense')}
+              </Button>
+            </CardContent>
+          </Card>
+
           <Card>
             <CardContent className="flex flex-wrap items-center justify-between gap-4 pt-6">
               <div>
@@ -175,7 +196,11 @@ export function TripPage({ locale, tripId, initialSnapshot = null }: { locale: L
                 </Button>
               </div>
               <p className="w-full text-sm text-muted-foreground">
-                {isSavingSplitCount ? t('common.saving') : t('trip.splitCountSavedInline')}
+                {isSavingSplitCount
+                  ? t('common.saving')
+                  : hasSavedSplitCount
+                    ? t('trip.splitCountSavedInline')
+                    : t('trip.splitCountHint')}
               </p>
             </CardContent>
           </Card>

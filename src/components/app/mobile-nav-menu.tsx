@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, useLocation, useNavigate } from '@tanstack/react-router'
+import { Link, useLocation } from '@tanstack/react-router'
 import { Menu, Settings, X } from 'lucide-react'
 import { LocaleSwitcher } from './locale-switcher'
 import { ThemeToggle } from './theme-toggle'
@@ -19,16 +19,9 @@ export function MobileNavMenu({
   activeTool?: ToolDefinition['slug']
 }) {
   const [open, setOpen] = useState(false)
-  const navigate = useNavigate()
   const location = useLocation()
   const { t } = useI18n()
   const settingsPath = getLocalizedPath(locale, '/settings')
-
-  function onNavigate(path: string, tool?: ToolDefinition['slug']) {
-    if (tool) writeLastTool(tool)
-    setOpen(false)
-    navigate({ to: getLocalizedPath(locale, path), search: location.search })
-  }
 
   return (
     <div className="md:hidden">
@@ -56,19 +49,24 @@ export function MobileNavMenu({
               const Icon = item.icon
               const isActive = item.tool ? activeTool === item.tool : getLocalizedPath(locale, item.path) === location.pathname
               return (
-                <button
+                <Link
                   key={item.key}
-                  type="button"
+                  to={getLocalizedPath(locale, item.path)}
+                  search={location.search}
+                  aria-current={isActive ? 'page' : undefined}
                   className={cn(
                     'mobile-nav-link flex items-center gap-3 rounded-2xl border border-border bg-[color:var(--surface-floating)] px-4 py-3 text-left text-sm font-medium text-foreground shadow-sm transition-colors',
                     isActive && 'is-active border-primary/45 bg-primary/12 text-foreground',
                   )}
-                  onClick={() => onNavigate(item.path, item.tool)}
+                  onClick={() => {
+                    if (item.tool) writeLastTool(item.tool)
+                    setOpen(false)
+                  }}
                 >
                   <Icon className="h-4 w-4" />
                   <span>{t(item.key)}</span>
                   {isActive ? <span className="ml-auto h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" /> : null}
-                </button>
+                </Link>
               )
             })}
           </nav>
@@ -77,16 +75,21 @@ export function MobileNavMenu({
             <p className="text-xs font-medium text-muted-foreground">{t('settings.appearance')}</p>
             <div className="flex items-center gap-2">
               <LocaleSwitcher iconOnly onAfterChange={() => setOpen(false)} />
-              <ThemeToggle iconOnly />
+              <ThemeToggle iconOnly onAfterChange={() => setOpen(false)} />
               <Button
-                type="button"
+                asChild
                 variant="soft"
                 size="icon"
                 className={cn('rounded-2xl', location.pathname === settingsPath && 'border-primary/40 bg-primary/10')}
-                aria-label={t('nav.settings')}
-                onClick={() => onNavigate('/settings')}
               >
-                <Settings className="h-4 w-4" />
+                <Link
+                  to={settingsPath}
+                  search={location.search}
+                  aria-label={t('nav.settings')}
+                  onClick={() => setOpen(false)}
+                >
+                  <Settings className="h-4 w-4" />
+                </Link>
               </Button>
             </div>
           </div>
