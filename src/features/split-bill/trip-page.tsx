@@ -158,7 +158,7 @@ export function TripPage({ locale, tripId, initialSnapshot = null }: { locale: L
                 size="lg"
                 className="w-full md:w-auto"
                 disabled={!snapshot}
-                onClick={() => navigate({ to: getLocalizedPath(locale, `/bill-splitter/${tripId}/add-expense`) })}
+                onClick={() => navigate({ to: getLocalizedPath(locale, `/bill-splitter/${tripId}/add`) })}
               >
                 {t('trip.addExpense')}
               </Button>

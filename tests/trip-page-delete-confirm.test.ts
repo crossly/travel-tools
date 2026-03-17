@@ -138,4 +138,14 @@ describe('TripPage delete confirmations', () => {
 
     expect((await screen.findAllByText('Adjust this only when a specific expense should be shared by fewer or more people.')).length).toBeGreaterThan(0)
   })
+
+  it('navigates to the dedicated add route from the workbench card', async () => {
+    const { TripPage } = await import('@/features/split-bill/trip-page')
+
+    render(createElement(TripPage, { locale: 'en-US', tripId: 'trip-1' }))
+
+    fireEvent.click(await screen.findByRole('button', { name: 'Add expense' }))
+
+    expect(navigateMock).toHaveBeenCalledWith(expect.objectContaining({ to: '/en-us/bill-splitter/trip-1/add' }))
+  })
 })
