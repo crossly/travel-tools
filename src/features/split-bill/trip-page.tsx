@@ -23,6 +23,7 @@ export function TripPage({ locale, tripId, initialSnapshot = null }: { locale: L
   const [hasSavedSplitCount, setHasSavedSplitCount] = useState(false)
   const [pageStatus, setPageStatus] = useState<{ tone: 'danger'; title: string; description?: string } | null>(null)
   const [status, setStatus] = useState<{ tone: 'success' | 'warning' | 'danger'; title: string; description?: string } | null>(null)
+  const activeExpenses = snapshot?.expenses.filter((item) => !item.deletedAt) ?? []
 
   useEffect(() => {
     writeActiveTripId(tripId)
@@ -115,10 +116,8 @@ export function TripPage({ locale, tripId, initialSnapshot = null }: { locale: L
                     <div className="mt-2 h-4 w-20 rounded bg-background/60" />
                   </div>
                 </>
-              ) : snapshot.expenses.filter((item) => !item.deletedAt).length ? (
-                snapshot.expenses
-                  .filter((item) => !item.deletedAt)
-                  .map((expense) => (
+              ) : activeExpenses.length ? (
+                activeExpenses.map((expense) => (
                     <div key={expense.id} className="rounded-2xl border border-border bg-muted p-4">
                       <div className="flex items-start justify-between gap-3">
                         <div>
@@ -139,7 +138,10 @@ export function TripPage({ locale, tripId, initialSnapshot = null }: { locale: L
                     </div>
                   ))
               ) : (
-                <p className="text-sm text-muted-foreground">{t('trip.noExpenses')}</p>
+                <div className="rounded-2xl border border-dashed border-border/80 bg-[color:var(--surface-floating)] p-5">
+                  <p className="text-base font-semibold text-foreground">{t('trip.emptyExpensesTitle')}</p>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">{t('trip.emptyExpensesDescription')}</p>
+                </div>
               )}
             </CardContent>
           </Card>
@@ -162,6 +164,23 @@ export function TripPage({ locale, tripId, initialSnapshot = null }: { locale: L
               >
                 {t('trip.addExpense')}
               </Button>
+            </CardContent>
+          </Card>
+
+          <Card tone="soft">
+            <CardContent className="grid gap-3 pt-6 sm:grid-cols-3">
+              <div className="rounded-2xl border border-border/70 bg-background/80 p-4">
+                <p className="text-sm font-medium text-muted-foreground">{t('trip.summaryExpenses')}</p>
+                <p className="mt-2 text-2xl font-semibold tabular-nums text-foreground">{snapshot ? activeExpenses.length : '--'}</p>
+              </div>
+              <div className="rounded-2xl border border-border/70 bg-background/80 p-4">
+                <p className="text-sm font-medium text-muted-foreground">{t('trip.splitCount')}</p>
+                <p className="mt-2 text-2xl font-semibold tabular-nums text-foreground">{snapshot?.trip.splitCount ?? '--'}</p>
+              </div>
+              <div className="rounded-2xl border border-border/70 bg-background/80 p-4">
+                <p className="text-sm font-medium text-muted-foreground">{t('trip.summarySettlementCurrency')}</p>
+                <p className="mt-2 text-2xl font-semibold tracking-tight text-foreground">{snapshot?.trip.settlementCurrency ?? '--'}</p>
+              </div>
             </CardContent>
           </Card>
 

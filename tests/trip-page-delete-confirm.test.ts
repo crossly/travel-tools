@@ -55,9 +55,13 @@ vi.mock('@/lib/i18n', () => ({
         'trip.splitCount': 'Split count',
         'trip.saveSplitCount': 'Save split count',
         'trip.splitCountHint': 'Adjust this only when a specific expense should be shared by fewer or more people.',
+        'trip.summaryExpenses': 'Recorded expenses',
+        'trip.summarySettlementCurrency': 'Settlement currency',
         'trip.addExpense': 'Add expense',
         'trip.settlement': 'Settlement',
         'trip.noExpenses': 'No expenses',
+        'trip.emptyExpensesTitle': 'Record the first shared expense',
+        'trip.emptyExpensesDescription': 'Use the focused add flow above when you want to capture the next line cleanly. This ledger keeps the full trip total in view.',
         'common.cancel': 'Cancel',
         'home.invalidSplitCount': 'Invalid split count',
         'trip.deleteTripSuccess': 'Trip deleted',
@@ -147,5 +151,25 @@ describe('TripPage delete confirmations', () => {
     fireEvent.click(await screen.findByRole('button', { name: 'Add expense' }))
 
     expect(navigateMock).toHaveBeenCalledWith(expect.objectContaining({ to: '/en-us/bill-splitter/trip-1/add' }))
+  })
+
+  it('shows a richer empty ledger state when no expenses are recorded', async () => {
+    fetchSnapshotMock.mockResolvedValue({
+      trip: {
+        id: 'trip-1',
+        name: 'Tokyo',
+        expenseCurrency: 'JPY',
+        settlementCurrency: 'CNY',
+        splitCount: 2,
+      },
+      expenses: [],
+    })
+
+    const { TripPage } = await import('@/features/split-bill/trip-page')
+
+    render(createElement(TripPage, { locale: 'en-US', tripId: 'trip-1' }))
+
+    expect(await screen.findByText('Record the first shared expense')).toBeTruthy()
+    expect(screen.getByText('Recorded expenses')).toBeTruthy()
   })
 })

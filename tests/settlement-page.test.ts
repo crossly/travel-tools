@@ -38,6 +38,14 @@ vi.mock('@/lib/i18n', () => ({
           'settlement.title': 'Settlement',
           'settlement.transferSuggestion': 'Transfer suggestions',
           'settlement.noTransfer': 'No transfer needed',
+          'settlement.heroBalancedTitle': 'Everyone is already balanced',
+          'settlement.heroTransfersTitle': 'Settle the trip from this list',
+          'settlement.heroBalancedDescription': 'Nobody owes anyone right now. You can still copy the summary or jump back to the trip ledger.',
+          'settlement.heroTransfersDescription': 'Work through the transfer list below, then copy the settlement summary or jump back to the trip ledger.',
+          'settlement.transferCountLabel': 'Transfers',
+          'settlement.totalToMoveLabel': 'Total to move',
+          'settlement.convertedExpensesLabel': 'Converted expenses',
+          'settlement.backToTrip': 'Back to trip',
           'settlement.copyText': 'Copy settlement text',
           'settlement.copySuccess': 'Settlement copied',
           'settlement.ownerLabel': '{name} (You)',
@@ -89,8 +97,9 @@ describe('SettlementPage', () => {
 
     render(createElement(SettlementPage, { locale: 'en-US', tripId: 'trip-1' }))
 
+    expect(await screen.findByText('Settle the trip from this list')).toBeTruthy()
     expect(await screen.findByText('Teammate 1 → 🐼 Panda (You)')).toBeTruthy()
-    expect(screen.getByText('5.00 CNY')).toBeTruthy()
+    expect(screen.getAllByText('5.00 CNY').length).toBeGreaterThan(0)
   })
 
   it('shows an error status when copying settlement text fails', async () => {
@@ -159,6 +168,7 @@ describe('SettlementPage', () => {
 
     render(createElement(SettlementPage, { locale: 'en-US', tripId: 'trip-1' }))
 
+    expect(await screen.findByText('Everyone is already balanced')).toBeTruthy()
     fireEvent.click(await screen.findByRole('button', { name: 'Copy settlement text' }))
 
     await waitFor(() => {
