@@ -183,32 +183,28 @@ export function LocalAppsHomePage({
                   {t('localApps.pendingSectionDescription', { count: section.countries.length })}
                 </p>
               </div>
-              <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              <ul className="grid gap-2" data-testid="local-apps-pending-directory">
                 {section.countries.map((country) => (
-                  <Card key={country.slug}>
-                    <CardHeader className="gap-3">
-                      <div className="flex items-start justify-between gap-3">
-                        <div className="space-y-1">
-                          <CardTitle className="flex items-center gap-3 text-xl">
-                            <span className="text-2xl" aria-hidden="true">{country.flag}</span>
-                            {country.country}
-                          </CardTitle>
-                          <CardDescription className="text-pretty">{country.description}</CardDescription>
-                        </div>
-                        <Badge variant="outline">{t('localApps.pendingBadge')}</Badge>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="rounded-2xl border border-dashed border-border bg-muted/70 p-4">
-                        <p className="flex items-center gap-2 text-sm font-medium text-foreground">
-                          <Smartphone className="size-4 text-primary" />
-                          {t('localApps.pendingCardLabel')}
+                  <li key={country.slug} data-testid="local-apps-pending-row">
+                    <article className="flex flex-wrap items-center gap-3 rounded-2xl border border-dashed border-border bg-muted/65 p-3">
+                      <div className="min-w-0 flex-1">
+                        <p className="truncate text-sm font-semibold text-foreground">
+                          <span className="mr-2" aria-hidden="true">{country.flag}</span>
+                          {country.country}
                         </p>
+                        <p className="mt-1 line-clamp-2 text-xs text-muted-foreground">{country.description}</p>
                       </div>
-                    </CardContent>
-                  </Card>
+                      <div className="flex shrink-0 items-center gap-2">
+                        <Badge variant="outline">{t('localApps.pendingBadge')}</Badge>
+                        <span className="inline-flex items-center gap-1 rounded-full border border-border px-2 py-1 text-xs text-muted-foreground">
+                          <Smartphone className="size-3.5 text-primary" />
+                          {t('localApps.pendingCardLabel')}
+                        </span>
+                      </div>
+                    </article>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </section>
           )
         })}

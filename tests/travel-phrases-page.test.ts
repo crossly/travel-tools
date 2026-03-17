@@ -211,7 +211,7 @@ describe('TravelPhrasesCountryPage', () => {
 })
 
 describe('TravelPhrasesHomePage', () => {
-  it('renders featured countries, teaser copy, and region sections in the html', async () => {
+  it('renders featured countries, teaser copy, and compact region directory sections', async () => {
     const { listPhraseCountrySummaries } = await import('@/lib/travel-phrases')
     const { TravelPhrasesHomePage } = await import('@/features/travel-phrases/home-page')
     const packs = listPhraseCountrySummaries('en-US')
@@ -222,17 +222,12 @@ describe('TravelPhrasesHomePage', () => {
     expect(screen.queryByRole('heading', { name: 'Audio-ready right now' })).toBeNull()
     expect(screen.queryByRole('heading', { name: 'Browse by region' })).toBeNull()
     expect(screen.getByText(/rail travel, convenience stores, and polite service language/i)).toBeTruthy()
-    expect(screen.getAllByText('IC cards').length).toBeGreaterThan(0)
-    expect(screen.getAllByText(/BTS|Grab/i).length).toBeGreaterThan(0)
-    expect(screen.getAllByText('T-money and Kakao T').length).toBeGreaterThan(0)
-    expect(screen.getAllByText('Hawker centres and MRT').length).toBeGreaterThan(0)
-    expect(screen.getAllByText("Touch 'n Go and mamak stops").length).toBeGreaterThan(0)
-    expect(screen.getAllByText('EasyCard, TRA, and night markets').length).toBeGreaterThan(0)
-    expect(screen.getAllByText('Octopus, MTR, and cha chaan teng orders').length).toBeGreaterThan(0)
-    expect(screen.getAllByText('DB trains, cash questions, and bakery stops').length).toBeGreaterThan(0)
     expect(screen.getAllByRole('heading', { name: 'Japan' })).toHaveLength(1)
     expect(screen.getAllByRole('heading', { name: 'France' })).toHaveLength(1)
     expect(screen.getByText('Asia travel phrase packs')).toBeTruthy()
     expect(screen.getByText('Middle East travel phrase packs')).toBeTruthy()
+    expect(screen.getAllByTestId('phrases-region-directory').length).toBeGreaterThan(0)
+    expect(screen.getAllByTestId('phrases-region-row').length).toBeGreaterThan(0)
+    expect(screen.getByText('Malaysia')).toBeTruthy()
   })
 })

@@ -127,9 +127,31 @@ export function TravelPhrasesHomePage({
                   {t('phrases.regionSectionDescription', { region: regionLabel, count: section.packs.length })}
                 </p>
               </div>
-              <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-                {section.packs.map((pack) => renderPackCard(pack, false))}
-              </div>
+              <ul className="grid gap-2" data-testid="phrases-region-directory">
+                {section.packs.map((pack) => (
+                  <li key={`directory-${pack.slug}`} data-testid="phrases-region-row">
+                    <article className="flex flex-wrap items-center gap-3 rounded-2xl border border-border bg-[color:var(--surface-floating)] p-3">
+                      <div className="min-w-0 flex-1">
+                        <p className="truncate text-sm font-semibold text-foreground">
+                          <span className="mr-2" aria-hidden="true">{pack.flag}</span>
+                          {pack.country}
+                        </p>
+                        <p className="mt-1 line-clamp-2 text-xs text-muted-foreground">{pack.description}</p>
+                      </div>
+                      <div className="flex shrink-0 items-center gap-2">
+                        <Badge variant="outline">{pack.languageName}</Badge>
+                        <Badge variant="outline">{t('phrases.packCount', { count: pack.phraseCount })}</Badge>
+                        <Button asChild variant="secondary" size="sm">
+                          <Link to={getLocalizedPath(locale, `/travel-phrases/${pack.slug}`)}>
+                            {pack.title}
+                            <ArrowRight className="size-4" />
+                          </Link>
+                        </Button>
+                      </div>
+                    </article>
+                  </li>
+                ))}
+              </ul>
             </section>
           )
         })}

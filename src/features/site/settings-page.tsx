@@ -7,6 +7,7 @@ import { AppShell } from '@/components/app/app-shell'
 import { InlineStatus } from '@/components/app/inline-status'
 import { LocaleSwitcher } from '@/components/app/locale-switcher'
 import { ThemeToggle } from '@/components/app/theme-toggle'
+import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
@@ -92,42 +93,46 @@ export function SettingsPage({ locale }: { locale: Locale }) {
 
   return (
     <AppShell locale={locale} title={t('settings.title')} activeTool={undefined}>
-      <div className="grid gap-4 xl:grid-cols-2">
-        <Card>
-          <CardHeader>
-            <CardTitle>{t('settings.language')}</CardTitle>
-            <CardDescription>{t('settings.languageDescription')}</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <LocaleSwitcher className="min-w-[10rem]" />
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle>{t('settings.appearance')}</CardTitle>
-            <CardDescription>{t('settings.themeDescription')}</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ThemeToggle className="min-w-[10rem]" />
-          </CardContent>
-        </Card>
-      </div>
+      <Card tone="plain">
+        <CardHeader className="gap-1">
+          <CardTitle>{t('settings.preferencesTitle')}</CardTitle>
+          <CardDescription>{t('settings.preferencesDescription')}</CardDescription>
+        </CardHeader>
+        <CardContent className="grid gap-3 border-t border-border/70 pt-5 md:grid-cols-2">
+          <div className="rounded-2xl border border-border/80 bg-[color:var(--surface-floating)] p-4">
+            <p className="text-sm font-medium text-foreground">{t('settings.language')}</p>
+            <p className="mt-1 text-sm text-muted-foreground">{t('settings.languageDescription')}</p>
+            <div className="mt-3">
+              <LocaleSwitcher className="min-w-[10rem]" />
+            </div>
+          </div>
+          <div className="rounded-2xl border border-border/80 bg-[color:var(--surface-floating)] p-4">
+            <p className="text-sm font-medium text-foreground">{t('settings.appearance')}</p>
+            <p className="mt-1 text-sm text-muted-foreground">{t('settings.themeDescription')}</p>
+            <div className="mt-3">
+              <ThemeToggle className="min-w-[10rem]" />
+            </div>
+          </div>
+        </CardContent>
+      </Card>
 
       <Card tone="soft">
-        <CardHeader>
-          <CardTitle>{t('settings.tripDataTitle')}</CardTitle>
+        <CardHeader className="gap-1">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <CardTitle>{t('settings.tripDataTitle')}</CardTitle>
+            <Badge variant={hasActiveTrip ? 'success' : 'warning'}>{hasActiveTrip ? t('settings.tripReadyBadge') : t('settings.tripRequiredHint')}</Badge>
+          </div>
           <CardDescription>{t('settings.tripDataDescription')}</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          {!hasActiveTrip ? (
-            <InlineStatus tone="warning" title={t('settings.tripRequiredHint')} />
-          ) : null}
           <div className="grid gap-4 xl:grid-cols-2">
             <Card tone="plain">
               <CardHeader>
                 <CardTitle>{t('settings.exportCurrentTrip')}</CardTitle>
+                <CardDescription>{t('settings.exportDescription')}</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
+                {!hasActiveTrip ? <InlineStatus tone="warning" title={t('settings.tripRequiredActionHint')} /> : null}
                 <Button type="button" onClick={() => void onExport()} disabled={!hasActiveTrip || isExporting}>
                   {isExporting ? t('settings.exportPending') : t('settings.exportAction')}
                 </Button>
@@ -137,8 +142,10 @@ export function SettingsPage({ locale }: { locale: Locale }) {
             <Card tone="plain">
               <CardHeader>
                 <CardTitle>{t('settings.importTitle')}</CardTitle>
+                <CardDescription>{t('settings.importDescription')}</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
+                {!hasActiveTrip ? <InlineStatus tone="warning" title={t('settings.tripRequiredActionHint')} /> : null}
                 <Form {...importForm}>
                   <form
                     className="space-y-4"

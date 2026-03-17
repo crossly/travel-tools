@@ -37,18 +37,24 @@ vi.mock('@/lib/i18n', () => ({
   useI18n: () => ({
     t: (key: string) => ({
       'settings.title': '设置',
-      'settings.language': '语言',
+      'settings.preferencesTitle': '偏好设置',
+      'settings.preferencesDescription': '语言和外观会立即生效。',
+      'settings.language': '界面语言',
       'settings.languageDescription': '切换界面语言。',
-      'settings.appearance': '外观',
+      'settings.appearance': '外观主题',
       'settings.theme': '主题',
       'settings.themeDescription': '选择亮色、暗色或跟随系统。',
       'settings.tripDataTitle': '行程数据',
-      'settings.tripDataDescription': '导出当前行程，或把 JSON 导回当前行程。',
+      'settings.tripDataDescription': '导出当前行程快照，或把 JSON 恢复到当前行程。',
+      'settings.tripReadyBadge': '已连接当前行程',
       'settings.tripRequiredHint': '先在 AA 记账里创建或打开一个当前行程，再使用导入或导出。',
+      'settings.tripRequiredActionHint': '当前没有行程：请先在 AA 记账创建或打开一个当前行程。',
       'settings.exportCurrentTrip': '导出当前行程',
+      'settings.exportDescription': '导出当前行程为 JSON 备份。',
       'settings.exportAction': '导出',
       'settings.exportPending': '正在导出',
       'settings.importTitle': '导入 JSON',
+      'settings.importDescription': '把导出的 JSON 恢复到当前行程。',
       'settings.importPlaceholder': '粘贴导出的 JSON',
       'settings.importAction': '导入',
       'settings.importPending': '正在导入',
@@ -76,7 +82,8 @@ describe('SettingsPage', () => {
     const { SettingsPage } = await import('@/features/site/settings-page')
 
     render(createElement(SettingsPage, { locale: 'zh-CN' }))
-    expect(screen.getByRole('heading', { name: '语言' })).toBeTruthy()
+    expect(screen.getByRole('heading', { name: '偏好设置' })).toBeTruthy()
+    expect(screen.getByText('界面语言')).toBeTruthy()
     expect(screen.getByText('locale-switcher')).toBeTruthy()
     fireEvent.click(screen.getByRole('button', { name: '导入' }))
 
@@ -125,6 +132,7 @@ describe('SettingsPage', () => {
 
     render(createElement(SettingsPage, { locale: 'zh-CN' }))
     expect(screen.getByRole('heading', { name: '导出当前行程' })).toBeTruthy()
+    expect(screen.getByText('导出当前行程为 JSON 备份。')).toBeTruthy()
     fireEvent.click(screen.getByRole('button', { name: '导出' }))
 
     expect(await screen.findByText('导出成功')).toBeTruthy()
@@ -141,21 +149,10 @@ describe('SettingsPage', () => {
 
     render(createElement(SettingsPage, { locale: 'zh-CN' }))
 
-    expect(screen.getByText('先在 AA 记账里创建或打开一个当前行程，再使用导入或导出。')).toBeTruthy()
+    expect(screen.getAllByText('当前没有行程：请先在 AA 记账创建或打开一个当前行程。').length).toBe(2)
+    expect(screen.getByText('导出当前行程为 JSON 备份。')).toBeTruthy()
+    expect(screen.getByText('把导出的 JSON 恢复到当前行程。')).toBeTruthy()
     expect(screen.getByRole('button', { name: '导入' }).hasAttribute('disabled')).toBe(true)
     expect(screen.getByPlaceholderText('粘贴导出的 JSON').hasAttribute('disabled')).toBe(true)
-  })
-
-  it('shows the trip prerequisite and disables import-export actions when no active trip exists', async () => {
-    readActiveTripId.mockReturnValue('')
-    const { SettingsPage } = await import('@/features/site/settings-page')
-
-    render(createElement(SettingsPage, { locale: 'zh-CN' }))
-
-    expect(screen.getByText('切换界面语言。')).toBeTruthy()
-    expect(screen.getByText('选择亮色、暗色或跟随系统。')).toBeTruthy()
-    expect(screen.getByText('先在 AA 记账里创建或打开一个当前行程，再使用导入或导出。')).toBeTruthy()
-    expect(screen.getByRole('button', { name: '导出' }).hasAttribute('disabled')).toBe(true)
-    expect(screen.getByRole('button', { name: '导入' }).hasAttribute('disabled')).toBe(true)
   })
 })

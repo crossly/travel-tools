@@ -54,6 +54,12 @@ vi.mock('@/lib/i18n', () => ({
       'packing.essentialsMissing': 'Check',
       'packing.emptyTitle': 'No packing list yet',
       'packing.emptyDescription': 'Create your first list',
+      'packing.starterTitle': 'Starter preview',
+      'packing.starterDescription': 'Start with a template, then work through key categories.',
+      'packing.starterStepTemplate': '1. Pick a template',
+      'packing.starterStepName': '2. Name this list',
+      'packing.starterStepCreate': '3. Create and start packing',
+      'packing.starterItemsLabel': 'Representative items',
       'packing.addItemTitle': 'Add a custom item',
       'packing.addItemPlaceholder': 'For example: camera tripod',
       'packing.addItemAction': 'Add item',
@@ -109,6 +115,13 @@ describe('PackingListPage', () => {
     const { PackingListPage } = await import('@/features/packing-list/home-page')
 
     const view = render(createElement(PackingListPage, { locale: 'en-US' }))
+
+    expect(screen.getByText('Starter preview')).toBeTruthy()
+    expect(screen.getByText('1. Pick a template')).toBeTruthy()
+    expect(screen.getByText('2. Name this list')).toBeTruthy()
+    expect(screen.getByText('3. Create and start packing')).toBeTruthy()
+    expect(screen.getByText('Representative items')).toBeTruthy()
+    expect(screen.getByText('Passport')).toBeTruthy()
 
     fireEvent.change(screen.getByLabelText('List name'), { target: { value: 'Tokyo Spring' } })
     fireEvent.click(screen.getByRole('button', { name: 'Create list' }))

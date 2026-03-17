@@ -1,5 +1,5 @@
 import '@/lib/i18n/messages/packing'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Briefcase, Check, Circle, ListChecks, Plus } from 'lucide-react'
 import { AppShell } from '@/components/app/app-shell'
 import { ConfirmActionDialog } from '@/components/app/confirm-action-dialog'
@@ -16,6 +16,7 @@ import {
   createPackingListFromTemplate,
   getEssentialPackingItems,
   getPackingItemLabel,
+  getPackingTemplate,
   listPackingTemplates,
   replacePackingSection,
 } from '@/lib/packing-list'
@@ -54,6 +55,21 @@ export function PackingListPage({ locale }: { locale: Locale }) {
 
   const stats = countPackingProgress(activeList)
   const essentials = getEssentialPackingItems(activeList)
+  const starterTemplate = useMemo(
+    () => getPackingTemplate(selectedTemplateId),
+    [selectedTemplateId],
+  )
+  const starterItems = useMemo(
+    () => starterTemplate?.sections.flatMap((section) => section.items.map((item) => t(item.builtinKey))).slice(0, 6) ?? [],
+    [starterTemplate, t],
+  )
+  const starterSections = useMemo(
+    () => starterTemplate?.sections.slice(0, 4).map((section) => ({
+      id: section.id,
+      items: section.items.slice(0, 2).map((item) => t(item.builtinKey)),
+    })) ?? [],
+    [starterTemplate, t],
+  )
 
   function updateActiveList(updater: (list: PackingList) => PackingList) {
     setLists((current) => current.map((list) => (list.id === activeListId ? updater(list) : list)))
@@ -376,7 +392,7 @@ export function PackingListPage({ locale }: { locale: Locale }) {
         </div>
       ) : (
         <Card className="border-dashed border-border/80 bg-[color:var(--surface-floating)]">
-          <CardContent className="grid gap-6 p-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
+          <CardContent className="grid gap-6 p-6 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.25fr)]">
             <div className="space-y-3">
               <div className="inline-flex size-12 items-center justify-center rounded-2xl border border-border bg-background">
                 <Briefcase className="size-5 text-primary" />
@@ -393,13 +409,35 @@ export function PackingListPage({ locale }: { locale: Locale }) {
               ) : null}
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-2">
-              {sectionIds.slice(0, 4).map((sectionId) => (
-                <div key={sectionId} className="rounded-2xl border border-border bg-background/80 p-4">
-                  <p className="font-medium text-foreground">{t(`packing.section.${sectionId}`)}</p>
-                  <p className="mt-2 text-sm leading-6 text-muted-foreground">{t('packing.noItemsDescription')}</p>
+            <div className="space-y-4">
+              <div className="rounded-2xl border border-border bg-background/80 p-4">
+                <h3 className="text-base font-semibold text-foreground">{t('packing.starterTitle')}</h3>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">{t('packing.starterDescription')}</p>
+                <ol className="mt-3 grid gap-2 text-sm text-foreground/90">
+                  <li>{t('packing.starterStepTemplate')}</li>
+                  <li>{t('packing.starterStepName')}</li>
+                  <li>{t('packing.starterStepCreate')}</li>
+                </ol>
+                <div className="mt-4">
+                  <p className="text-xs font-semibold tracking-[0.16em] text-muted-foreground uppercase">{t('packing.starterItemsLabel')}</p>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {starterItems.map((item, index) => (
+                      <span key={`${item}-${index}`} className="rounded-full border border-border/80 bg-[color:var(--surface-floating)] px-2.5 py-1 text-xs text-foreground">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              ))}
+              </div>
+
+              <div className="grid gap-3 sm:grid-cols-2">
+                {starterSections.map((section) => (
+                  <div key={section.id} className="rounded-2xl border border-border bg-background/80 p-4">
+                    <p className="font-medium text-foreground">{t(`packing.section.${section.id}`)}</p>
+                    <p className="mt-2 text-sm leading-6 text-muted-foreground">{section.items.join(' · ')}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </CardContent>
         </Card>

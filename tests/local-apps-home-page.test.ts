@@ -77,10 +77,23 @@ const countries: LocalAppCountrySummary[] = [
     categoryCount: 1,
     appCount: 3,
   },
+  {
+    country: 'Malaysia',
+    slug: 'malaysia',
+    region: 'asia',
+    flag: 'MY',
+    ready: false,
+    title: 'Malaysia Local Apps',
+    description: 'Malaysia summary',
+    highlights: [],
+    categoryIds: [],
+    categoryCount: 0,
+    appCount: 0,
+  },
 ]
 
 describe('LocalAppsHomePage', () => {
-  it('renders region tabs without importing the heavy travel-phrases module', async () => {
+  it('renders region tabs and a compact pending-country directory without importing the heavy travel-phrases module', async () => {
     const { LocalAppsHomePage } = await import('@/features/local-apps/home-page')
 
     render(createElement(LocalAppsHomePage, {
@@ -94,5 +107,8 @@ describe('LocalAppsHomePage', () => {
     expect(screen.queryByRole('heading', { name: 'Install before you board' })).toBeNull()
     expect(screen.queryByRole('heading', { name: 'Roster still syncing' })).toBeNull()
     expect(screen.getByText('Japan')).toBeTruthy()
+    expect(screen.getByText('Malaysia')).toBeTruthy()
+    expect(screen.queryAllByTestId('local-apps-pending-directory').length).toBeGreaterThan(0)
+    expect(screen.queryAllByTestId('local-apps-pending-row').length).toBeGreaterThan(0)
   })
 })
