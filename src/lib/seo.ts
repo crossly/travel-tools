@@ -6,7 +6,7 @@ import type { Locale } from '@/lib/types'
 type HeadLink = {
   rel: string
   href: string
-  hreflang?: string
+  hrefLang?: string
   type?: string
 }
 
@@ -62,13 +62,13 @@ function buildAlternateLinks(pathname: string, xDefaultPath = getLocalizedPath(D
   const links: HeadLink[] = SUPPORTED_LOCALES.map((locale) => ({
     rel: 'alternate',
     href: absoluteUrl(getLocalizedPath(locale, pathname)),
-    hreflang: locale,
+    hrefLang: locale,
   }))
 
   links.push({
     rel: 'alternate',
     href: absoluteUrl(xDefaultPath),
-    hreflang: 'x-default',
+    hrefLang: 'x-default',
   })
 
   return links

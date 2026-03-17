@@ -13,7 +13,8 @@ const HOME_PAGE_STATS = {
 }
 
 vi.mock('@tanstack/react-router', () => ({
-  Link: ({ children, ...props }: { children?: React.ReactNode } & Record<string, unknown>) => createElement('a', props, children),
+  Link: ({ children, to, ...props }: { children?: React.ReactNode; to?: string } & Record<string, unknown>) =>
+    createElement('a', { ...props, href: typeof to === 'string' ? to : '#' }, children),
 }))
 
 vi.mock('@/components/app/app-shell', () => ({
@@ -41,6 +42,7 @@ vi.mock('@/lib/jet-lag', () => {
 })
 
 vi.mock('@/lib/i18n', () => ({
+  registerMessages: () => {},
   useI18n: () => ({
     t: (key: string, values?: Record<string, string | number>) => ({
       'site.homeTitle': '旅行中真正常用的小工具',
@@ -111,6 +113,24 @@ describe('HomePage', () => {
     expect(screen.getByText('6 人 · 2 个币种')).toBeTruthy()
     expect(screen.getByRole('heading', { name: '先处理会立刻影响决策的事' })).toBeTruthy()
     expect(screen.getByRole('heading', { name: '再补足沟通、落地和恢复节奏' })).toBeTruthy()
+  })
+
+  it('renders a featured primary tool and supporting tools instead of an equal-weight grid', async () => {
+    const { HomePage } = await import('@/features/site/home-page')
+
+    render(createElement(HomePage, { locale: 'zh-CN', stats: HOME_PAGE_STATS }))
+
+    expect(screen.getByTestId('home-featured-tool')).toBeTruthy()
+    expect(screen.getAllByTestId('home-supporting-tool')).toHaveLength(2)
+  })
+
+  it('renders companion tools in an editorial list section', async () => {
+    const { HomePage } = await import('@/features/site/home-page')
+
+    render(createElement(HomePage, { locale: 'zh-CN', stats: HOME_PAGE_STATS }))
+
+    expect(screen.getByTestId('home-companion-list')).toBeTruthy()
+    expect(screen.getAllByTestId('home-companion-item')).toHaveLength(3)
   })
 
   it('does not render the future expansion card', async () => {

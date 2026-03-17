@@ -10,6 +10,8 @@ const buttonVariants = cva(
       variant: {
         default: 'border-primary/25 bg-primary text-primary-foreground shadow-sm hover:opacity-95',
         secondary: 'border-border bg-[color:var(--surface-floating)] text-foreground shadow-sm hover:bg-muted',
+        soft: 'border-border/80 bg-card text-foreground shadow-sm hover:bg-muted',
+        nav: 'border-transparent bg-transparent text-foreground hover:bg-muted/70',
         outline: 'border-border bg-transparent text-foreground hover:bg-muted',
         ghost: 'border-transparent text-foreground hover:bg-muted',
         destructive: 'border-transparent bg-[var(--danger)] text-white shadow-sm hover:opacity-95',

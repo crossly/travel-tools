@@ -87,7 +87,7 @@ describe('route heads', () => {
     ]))
     expect(head.links).toEqual(expect.arrayContaining([
       expect.objectContaining({ rel: 'canonical', href: 'https://www.routecrate.com/zh-cn' }),
-      expect.objectContaining({ rel: 'alternate', hreflang: 'x-default', href: 'https://www.routecrate.com/' }),
+      expect.objectContaining({ rel: 'alternate', hrefLang: 'x-default', href: 'https://www.routecrate.com/' }),
     ]))
   })
 
@@ -121,7 +121,7 @@ describe('route heads', () => {
     ]))
     expect(head.links).toEqual(expect.arrayContaining([
       expect.objectContaining({ rel: 'canonical', href: 'https://www.routecrate.com/zh-cn' }),
-      expect.objectContaining({ rel: 'alternate', hreflang: 'x-default', href: 'https://www.routecrate.com/' }),
+      expect.objectContaining({ rel: 'alternate', hrefLang: 'x-default', href: 'https://www.routecrate.com/' }),
     ]))
   })
 
@@ -163,8 +163,8 @@ describe('route heads', () => {
     ]))
     expect(head.links).toEqual(expect.arrayContaining([
       expect.objectContaining({ rel: 'canonical', href: 'https://www.routecrate.com/en-us/currency' }),
-      expect.objectContaining({ rel: 'alternate', hreflang: 'zh-CN', href: 'https://www.routecrate.com/zh-cn/currency' }),
-      expect.objectContaining({ rel: 'alternate', hreflang: 'x-default', href: 'https://www.routecrate.com/en-us/currency' }),
+      expect.objectContaining({ rel: 'alternate', hrefLang: 'zh-CN', href: 'https://www.routecrate.com/zh-cn/currency' }),
+      expect.objectContaining({ rel: 'alternate', hrefLang: 'x-default', href: 'https://www.routecrate.com/en-us/currency' }),
     ]))
   })
 

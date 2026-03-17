@@ -175,24 +175,28 @@ export function CurrencyPage({ locale, initialData }: { locale: Locale; initialD
   }, [amount, rates, target])
 
   const freshnessVariant = status?.tone === 'danger' ? 'danger' : status?.tone === 'warning' ? 'warning' : 'success'
+  const showInlineError = status?.tone === 'danger'
 
   return (
     <AppShell locale={locale} title={t('currency.title')} description={t('currency.description')} activeTool="currency">
-      <Card>
-        <CardHeader>
-          <div className="flex items-start justify-between gap-3">
-            <div>
-              <CardDescription>{t('currency.resultLabel')}</CardDescription>
-              <CardTitle className="mt-2 text-4xl">{converted} {normalizeCurrency(target)}</CardTitle>
+      <Card className="currency-result-card overflow-hidden">
+        <CardHeader className="gap-4">
+          <div className="currency-result-header flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+            <div className="space-y-2">
+              <CardDescription className="text-xs font-semibold tracking-[0.16em] uppercase">{t('currency.resultLabel')}</CardDescription>
+              <CardTitle className="text-4xl md:text-5xl">{converted} {normalizeCurrency(target)}</CardTitle>
             </div>
-            <Badge variant={freshnessVariant}>{status?.title ?? t('currency.freshnessLive')}</Badge>
+            <Badge variant={freshnessVariant} className="self-start">{status?.title ?? t('currency.freshnessLive')}</Badge>
           </div>
-          <div className="grid gap-2 text-sm text-muted-foreground sm:grid-cols-2">
+          <div className="currency-result-meta grid gap-2 text-sm text-muted-foreground sm:grid-cols-2">
             <p>{t('currency.rateLabel')}: <span className="mono text-foreground">{rates?.rates?.[normalizeCurrency(target)]?.toFixed(6) ?? '---'}</span></p>
             <p>{t('currency.updatedLabel')}: <span className="text-foreground">{updatedAt ? new Date(updatedAt).toLocaleString() : '---'}</span></p>
           </div>
+          {status && status.tone !== 'danger' && status.description ? (
+            <p className="currency-status-note rounded-xl border border-border bg-muted px-3 py-2 text-sm text-muted-foreground">{status.description}</p>
+          ) : null}
         </CardHeader>
-        <CardContent className="grid gap-4">
+        <CardContent className="currency-controls grid gap-4 border-t border-border/80 pt-5">
           <FieldGroup label={t('currency.amountLabel')}>
             <Input value={amount} onChange={(event) => setAmount(event.target.value)} inputMode="decimal" placeholder={t('currency.placeholder')} className="h-14 text-2xl" />
           </FieldGroup>
@@ -228,12 +232,12 @@ export function CurrencyPage({ locale, initialData }: { locale: Locale; initialD
               ))}
             </div>
           </FieldGroup>
-          <div className="grid gap-2 sm:grid-cols-2">
-            <Button type="button" variant="secondary" size="lg" onClick={() => void onDetect()} disabled={detecting}>
+          <div className="currency-actions grid gap-2 sm:grid-cols-[1fr_auto]">
+            <Button type="button" variant="outline" size="lg" className="currency-detect-action" onClick={() => void onDetect()} disabled={detecting}>
               <ScanSearch className="h-4 w-4" />
               {t('currency.detectAction')}
             </Button>
-            <Button type="button" variant="secondary" size="lg" onClick={() => void loadRates(source, true)} disabled={loading}>
+            <Button type="button" variant="ghost" size="lg" className="currency-refresh-action" onClick={() => void loadRates(source, true)} disabled={loading}>
               <RefreshCw className="h-4 w-4" />
               {t('currency.refreshAction')}
             </Button>
@@ -241,7 +245,7 @@ export function CurrencyPage({ locale, initialData }: { locale: Locale; initialD
         </CardContent>
       </Card>
 
-      {status ? <InlineStatus tone={status.tone} title={status.title} description={status.description} /> : null}
+      {showInlineError ? <InlineStatus tone={status.tone} title={status.title} description={status.description} /> : null}
     </AppShell>
   )
 }

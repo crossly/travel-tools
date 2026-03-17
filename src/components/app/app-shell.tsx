@@ -45,21 +45,25 @@ export function AppShell({
   return (
     <div className="app-shell">
       <div className="page-wrap">
-        <header className="mb-6">
+        <header className="mb-6 space-y-4">
           <Suspense fallback={<MobileHeaderFallback brand={t('app.name')} homePath={getLocalizedPath(locale, '/')} />}>
             <MobileNavMenu locale={locale} activeTool={activeTool} />
           </Suspense>
-          <Card className="hidden md:block">
-            <CardHeader className="hidden md:flex">
-              <div className="flex items-center justify-between gap-6">
-                <Link to={getLocalizedPath(locale, '/')} className="flex min-w-0 items-center gap-3">
-                  <BrandMark />
-                  <p className="display truncate text-2xl font-semibold text-foreground">{t('app.name')}</p>
+          <Card tone="soft" className="shell-frame hidden md:block">
+            <CardHeader className="hidden md:flex gap-4">
+              <div className="flex items-start justify-between gap-6">
+                <Link to={getLocalizedPath(locale, '/')} className="shell-brand-link flex min-w-0 items-center gap-3">
+                  <BrandMark className="size-11 rounded-2xl" />
+                  <div className="min-w-0">
+                    <p className="shell-brand-kicker">{t('site.tagline')}</p>
+                    <p className="display truncate text-2xl font-semibold text-foreground">{t('app.name')}</p>
+                  </div>
                 </Link>
                 <Suspense fallback={<DesktopControlsFallback />}>
                   <AppShellHeaderControls locale={locale} />
                 </Suspense>
               </div>
+              <div className="shell-nav-divider" aria-hidden="true" />
               <Suspense fallback={<DesktopNavFallback />}>
                 <DesktopToolNav locale={locale} activeTool={activeTool} />
               </Suspense>
@@ -112,24 +116,26 @@ function BrandMark({ className = 'size-10 rounded-2xl' }: { className?: string }
 
 function DesktopControlsFallback() {
   return (
-    <div className="flex items-center justify-end gap-2" aria-hidden="true">
-      <div className="size-10 rounded-full border border-border bg-[var(--input)]" />
-      <div className="size-10 rounded-full border border-border bg-[var(--input)]" />
-      <div className="size-10 rounded-full border border-border bg-[var(--input)]" />
-      <div className="size-10 rounded-full border border-border bg-[var(--input)]" />
+    <div className="shell-utility-cluster" aria-hidden="true">
+      <div className="size-10 rounded-2xl border border-border bg-[var(--input)]" />
+      <div className="size-10 rounded-2xl border border-border bg-[var(--input)]" />
+      <div className="size-10 rounded-2xl border border-border bg-[var(--input)]" />
+      <div className="size-10 rounded-2xl border border-border bg-[var(--input)]" />
     </div>
   )
 }
 
 function DesktopNavFallback() {
   return (
-    <div className="flex gap-2 overflow-hidden pb-1" aria-hidden="true">
-      <div className="h-10 w-28 shrink-0 rounded-full border border-border bg-[var(--input)]" />
-      <div className="h-10 w-28 shrink-0 rounded-full border border-border bg-[var(--input)]" />
-      <div className="h-10 w-32 shrink-0 rounded-full border border-border bg-[var(--input)]" />
-      <div className="h-10 w-24 shrink-0 rounded-full border border-border bg-[var(--input)]" />
-      <div className="h-10 w-24 shrink-0 rounded-full border border-border bg-[var(--input)]" />
-      <div className="h-10 w-24 shrink-0 rounded-full border border-border bg-[var(--input)]" />
+    <div className="desktop-tool-nav" aria-hidden="true">
+      <div className="desktop-tool-nav-track">
+        <div className="h-10 w-28 shrink-0 rounded-xl border border-border bg-[var(--input)]" />
+        <div className="h-10 w-28 shrink-0 rounded-xl border border-border bg-[var(--input)]" />
+        <div className="h-10 w-32 shrink-0 rounded-xl border border-border bg-[var(--input)]" />
+        <div className="h-10 w-24 shrink-0 rounded-xl border border-border bg-[var(--input)]" />
+        <div className="h-10 w-24 shrink-0 rounded-xl border border-border bg-[var(--input)]" />
+        <div className="h-10 w-24 shrink-0 rounded-xl border border-border bg-[var(--input)]" />
+      </div>
     </div>
   )
 }

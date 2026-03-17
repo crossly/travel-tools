@@ -36,9 +36,9 @@ export function MobileNavMenu({
         <LinkBrand locale={locale} label={t('app.name')} />
         <Button
           type="button"
-          variant="outline"
+          variant="soft"
           size="icon"
-          className="rounded-xl"
+          className="rounded-2xl"
           aria-label={open ? t('site.mobileCloseMenu') : t('site.mobileMenu')}
           onClick={() => setOpen((current) => !current)}
         >
@@ -48,6 +48,9 @@ export function MobileNavMenu({
 
       {open ? (
         <div className="mb-4 rounded-3xl border border-border bg-card p-3 shadow-xl">
+          <p className="px-2 pb-2 text-[11px] font-semibold tracking-[0.2em] text-muted-foreground uppercase">
+            {t('nav.desktopToolNavigation')}
+          </p>
           <nav className="grid gap-2">
             {MOBILE_NAV_ITEMS.map((item) => {
               const Icon = item.icon
@@ -57,13 +60,14 @@ export function MobileNavMenu({
                   key={item.key}
                   type="button"
                   className={cn(
-                    'flex items-center gap-3 rounded-2xl border border-border bg-[color:var(--surface-floating)] px-4 py-3 text-left text-sm font-medium text-foreground shadow-sm',
-                    isActive && 'border-primary/40 bg-primary/10',
+                    'flex items-center gap-3 rounded-2xl border border-border bg-[color:var(--surface-floating)] px-4 py-3 text-left text-sm font-medium text-foreground shadow-sm transition-colors',
+                    isActive && 'border-primary/40 bg-primary/10 text-foreground',
                   )}
                   onClick={() => onNavigate(item.path, item.tool)}
                 >
                   <Icon className="h-4 w-4" />
-                  {t(item.key)}
+                  <span>{t(item.key)}</span>
+                  {isActive ? <span className="ml-auto h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" /> : null}
                 </button>
               )
             })}
@@ -76,9 +80,9 @@ export function MobileNavMenu({
               <ThemeToggle iconOnly />
               <Button
                 type="button"
-                variant="secondary"
+                variant="soft"
                 size="icon"
-                className={cn('rounded-full', location.pathname === settingsPath && 'border-primary/40 bg-primary/10')}
+                className={cn('rounded-2xl', location.pathname === settingsPath && 'border-primary/40 bg-primary/10')}
                 aria-label={t('nav.settings')}
                 onClick={() => onNavigate('/settings')}
               >

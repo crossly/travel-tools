@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { createElement } from 'react'
-import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 
 vi.mock('@/components/app/app-shell', () => ({
@@ -18,12 +18,41 @@ vi.mock('@/components/app/currency-combobox', () => ({
     ]),
 }))
 
+vi.mock('@/components/app/inline-status', () => ({
+  InlineStatus: ({ tone, title, description }: { tone: string; title: string; description?: string }) =>
+    createElement('div', { 'data-testid': 'inline-status', 'data-tone': tone }, [title, description].filter(Boolean).join(':')),
+}))
+
 const fetchCurrencyRates = vi.fn()
 const readCachedCurrencyRates = vi.fn<() => { raw: string | null; updatedAt: string | null }>(() => ({ raw: null, updatedAt: null }))
 const readCurrencyPrefs = vi.fn<() => { source: string; target: string }>(() => ({ source: 'USD', target: 'EUR' }))
 const writeCachedCurrencyRates = vi.fn()
 const writeCurrencyPrefs = vi.fn()
 const writeLastTool = vi.fn()
+const translateCurrency = (key: string) => ({
+  'currency.title': '汇率换算',
+  'currency.description': 'desc',
+  'currency.resultLabel': '换算结果',
+  'currency.freshnessLive': '实时',
+  'currency.freshnessOffline': '离线',
+  'currency.freshnessCached': '缓存',
+  'currency.offlineNotice': 'offline',
+  'currency.cacheNotice': 'cache',
+  'currency.errorTitle': '汇率获取失败',
+  'currency.rateLabel': '当前汇率',
+  'currency.updatedLabel': '更新时间',
+  'currency.amountLabel': '金额',
+  'currency.placeholder': '0.00',
+  'currency.fromLabel': '从',
+  'currency.toLabel': '到',
+  'currency.swap': '交换币种',
+  'currency.quickAmounts': '快捷金额',
+  'currency.detectAction': '识别本地币种',
+  'currency.refreshAction': '刷新汇率',
+  'currency.detectedTitle': '已识别本地币种',
+  'currency.detectedStatus': 'detected',
+})[key] ?? key
+const translateCurrencyError = (code: string) => code
 
 vi.mock('@/lib/api/client', () => ({
   fetchCurrencyRates,
@@ -41,33 +70,14 @@ vi.mock('@/lib/storage', () => ({
 vi.mock('@/lib/i18n', () => ({
   registerMessages: vi.fn(),
   useI18n: () => ({
-    t: (key: string) => ({
-      'currency.title': '汇率换算',
-      'currency.description': 'desc',
-      'currency.resultLabel': '换算结果',
-      'currency.freshnessLive': '实时',
-      'currency.freshnessOffline': '离线',
-      'currency.freshnessCached': '缓存',
-      'currency.offlineNotice': 'offline',
-      'currency.cacheNotice': 'cache',
-      'currency.errorTitle': '汇率获取失败',
-      'currency.rateLabel': '当前汇率',
-      'currency.updatedLabel': '更新时间',
-      'currency.amountLabel': '金额',
-      'currency.placeholder': '0.00',
-      'currency.fromLabel': '从',
-      'currency.toLabel': '到',
-      'currency.swap': '交换币种',
-      'currency.quickAmounts': '快捷金额',
-      'currency.detectAction': '识别本地币种',
-      'currency.refreshAction': '刷新汇率',
-    })[key] ?? key,
-    tError: (code: string) => code,
+    t: translateCurrency,
+    tError: translateCurrencyError,
   }),
 }))
 
 describe('CurrencyPage', () => {
   afterEach(() => {
+    cleanup()
     fetchCurrencyRates.mockReset()
     readCachedCurrencyRates.mockReset()
     readCurrencyPrefs.mockReset()
@@ -88,6 +98,31 @@ describe('CurrencyPage', () => {
     await waitFor(() => {
       const badges = screen.getAllByText('汇率获取失败')
       expect(badges.some((badge) => badge.className.includes('text-[var(--danger)]'))).toBe(true)
+    })
+  })
+
+  it('keeps cached guidance in the result region and reserves inline status for errors', async () => {
+    const { CurrencyPage } = await import('@/features/currency/currency-page')
+
+    render(createElement(CurrencyPage, {
+      locale: 'zh-CN',
+      initialData: {
+        source: 'USD',
+        target: 'EUR',
+        rates: {
+          base: 'USD',
+          date: '2026-03-17',
+          rates: { EUR: 0.87 },
+          updatedAt: '2026-03-17T00:00:00.000Z',
+          cached: true,
+        },
+      },
+    }))
+
+    await waitFor(() => {
+      expect(screen.getAllByText('缓存').length).toBeGreaterThan(0)
+      expect(screen.getByText('cache')).toBeTruthy()
+      expect(screen.queryByTestId('inline-status')).toBeNull()
     })
   })
 

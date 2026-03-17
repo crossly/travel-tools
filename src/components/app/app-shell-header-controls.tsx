@@ -20,14 +20,14 @@ export function AppShellHeaderControls({
   const settingsPath = getLocalizedPath(locale, '/settings')
 
   return (
-    <div className="flex items-center justify-end gap-2">
+    <div className="shell-utility-cluster">
       <LocaleSwitcher iconOnly />
       <ThemeToggle iconOnly />
       <Button
         asChild
-        variant="secondary"
+        variant="soft"
         size="icon"
-        className={cn('rounded-full', location.pathname === settingsPath && 'border-primary/40 bg-primary/10 text-foreground')}
+        className={cn('rounded-2xl', location.pathname === settingsPath && 'border-primary/40 bg-primary/10 text-foreground')}
       >
         <Link to={settingsPath} aria-label={t('nav.settings')}>
           <Settings className="h-4 w-4" />
@@ -49,34 +49,35 @@ export function DesktopToolNav({
   return (
     <nav
       aria-label={t('nav.desktopToolNavigation')}
-      className="flex w-full items-center gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      className="desktop-tool-nav"
     >
+      <div className="desktop-tool-nav-track">
       {TOOL_NAV_ITEMS.map((item) => {
         const Icon = item.icon
         const path = getLocalizedPath(locale, item.path)
         const isActive = item.tool ? activeTool === item.tool : false
+        const isFeatured = item.tool === 'currency'
         return (
-          <Button
+          <Link
             key={item.key}
-            asChild
-            variant="secondary"
+            to={path}
+            aria-current={isActive ? 'page' : undefined}
             className={cn(
-              'h-10 shrink-0 rounded-full px-4',
-              isActive && 'border-primary/40 bg-primary/10 text-foreground',
+              'desktop-tool-link',
+              isFeatured && 'is-featured',
+              isActive && 'is-active',
             )}
+            onClick={() => {
+              if (item.tool) writeLastTool(item.tool)
+            }}
           >
-            <Link
-              to={path}
-              onClick={() => {
-                if (item.tool) writeLastTool(item.tool)
-              }}
-            >
-              <Icon className="h-4 w-4" />
-              {t(item.key)}
-            </Link>
-          </Button>
+            <Icon className="h-4 w-4" />
+            <span>{t(item.key)}</span>
+            {isActive ? <span className="desktop-tool-link-indicator" aria-hidden="true" /> : null}
+          </Link>
         )
       })}
+      </div>
     </nav>
   )
 }

@@ -105,144 +105,143 @@ export function SplitBillHomePage({ locale, initialData }: { locale: Locale; ini
   return (
     <AppShell locale={locale} title={t('split.title')} description={t('split.description')} activeTool="split-bill">
       <div className="grid gap-4 xl:grid-cols-[1.1fr_0.9fr]">
-        <div className="grid gap-4">
-          <Card>
-            <CardHeader>
-              <CardTitle>{t('home.tripStepTitle')}</CardTitle>
-              <CardDescription>{bootstrappingIdentity ? t('home.createTripLocked') : t('home.tripStepDescription')}</CardDescription>
-            </CardHeader>
-            <CardContent className="grid gap-4">
-              {bootstrappingIdentity ? (
-                <div className="rounded-xl border border-dashed border-border bg-muted px-4 py-3 text-sm text-muted-foreground">
-                  {t('home.identityGenerating')}
-                </div>
-              ) : device ? (
-                <div className="rounded-xl border border-border bg-muted px-4 py-3">
-                  <p className="text-xs text-muted-foreground">{t('home.identityInlineLabel')}</p>
-                  <p className="mt-1 font-medium text-foreground">{device.displayName}</p>
-                </div>
-              ) : null}
-              <Form {...form}>
-                <form
-                  className="grid gap-4"
-                  onSubmit={(event) => {
-                    event.preventDefault()
-                    void form.handleSubmit((values) => onCreateTrip(values))(event)
-                  }}
-                >
+        <Card tone="soft" data-testid="split-start-panel" className="split-workspace-card split-start-card overflow-hidden">
+          <CardHeader className="gap-1">
+            <CardTitle>{t('home.tripStepTitle')}</CardTitle>
+            <CardDescription>{bootstrappingIdentity ? t('home.createTripLocked') : t('home.tripStepDescription')}</CardDescription>
+          </CardHeader>
+          <CardContent className="grid gap-4 border-t border-border/70 pt-5">
+            {bootstrappingIdentity ? (
+              <div className="rounded-xl border border-dashed border-border bg-muted px-4 py-3 text-sm text-muted-foreground">
+                {t('home.identityGenerating')}
+              </div>
+            ) : device ? (
+              <div className="split-device-card rounded-xl border border-border/80 bg-muted px-4 py-3">
+                <p className="text-xs text-muted-foreground">{t('home.identityInlineLabel')}</p>
+                <p className="mt-1 font-medium text-foreground">{device.displayName}</p>
+              </div>
+            ) : null}
+            <Form {...form}>
+              <form
+                className="grid gap-4"
+                onSubmit={(event) => {
+                  event.preventDefault()
+                  void form.handleSubmit((values) => onCreateTrip(values))(event)
+                }}
+              >
+                <FormField
+                  control={form.control}
+                  name="tripName"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{t('home.createTrip')}</FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          placeholder={t('home.tripNamePlaceholder')}
+                          disabled={!identityReady}
+                          onChange={(event) => {
+                            field.onChange(event)
+                            setStatus(null)
+                          }}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <div className="grid gap-4 md:grid-cols-2">
                   <FormField
                     control={form.control}
-                    name="tripName"
+                    name="expenseCurrency"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>{t('home.createTrip')}</FormLabel>
+                        <FormLabel>{t('home.expenseCurrency')}</FormLabel>
                         <FormControl>
-                          <Input
-                            {...field}
-                            placeholder={t('home.tripNamePlaceholder')}
-                            disabled={!identityReady}
-                            onChange={(event) => {
-                              field.onChange(event)
+                          <CurrencyCombobox
+                            value={field.value}
+                            onValueChange={(value) => {
+                              field.onChange(value)
                               setStatus(null)
                             }}
+                            locale={locale}
+                            disabled={!identityReady}
                           />
                         </FormControl>
+                        <FormDescription>{t('home.expenseCurrencyHelper')}</FormDescription>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                  <div className="grid gap-4 md:grid-cols-2">
-                    <FormField
-                      control={form.control}
-                      name="expenseCurrency"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>{t('home.expenseCurrency')}</FormLabel>
-                          <FormControl>
-                            <CurrencyCombobox
-                              value={field.value}
-                              onValueChange={(value) => {
-                                field.onChange(value)
-                                setStatus(null)
-                              }}
-                              locale={locale}
-                              disabled={!identityReady}
-                            />
-                          </FormControl>
-                          <FormDescription>{t('home.expenseCurrencyHelper')}</FormDescription>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="settlementCurrency"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>{t('home.settlementCurrency')}</FormLabel>
-                          <FormControl>
-                            <CurrencyCombobox
-                              value={field.value}
-                              onValueChange={(value) => {
-                                field.onChange(value)
-                                setStatus(null)
-                              }}
-                              locale={locale}
-                              disabled={!identityReady}
-                            />
-                          </FormControl>
-                          <FormDescription>{t('home.settlementCurrencyHelper')}</FormDescription>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
                   <FormField
                     control={form.control}
-                    name="splitCount"
+                    name="settlementCurrency"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>{t('home.splitCount')}</FormLabel>
+                        <FormLabel>{t('home.settlementCurrency')}</FormLabel>
                         <FormControl>
-                          <Input
-                            {...field}
-                            inputMode="numeric"
-                            className="mono"
-                            disabled={!identityReady}
-                            onChange={(event) => {
-                              field.onChange(event)
+                          <CurrencyCombobox
+                            value={field.value}
+                            onValueChange={(value) => {
+                              field.onChange(value)
                               setStatus(null)
                             }}
+                            locale={locale}
+                            disabled={!identityReady}
                           />
                         </FormControl>
+                        <FormDescription>{t('home.settlementCurrencyHelper')}</FormDescription>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                  <Button type="submit" size="lg" className="w-full" disabled={!identityReady}>
-                    {t('home.createStart')}
-                  </Button>
-                </form>
-              </Form>
-            </CardContent>
-          </Card>
-        </div>
+                </div>
+                <FormField
+                  control={form.control}
+                  name="splitCount"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{t('home.splitCount')}</FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          inputMode="numeric"
+                          className="mono"
+                          disabled={!identityReady}
+                          onChange={(event) => {
+                            field.onChange(event)
+                            setStatus(null)
+                          }}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <Button type="submit" size="lg" className="w-full" disabled={!identityReady}>
+                  {t('home.createStart')}
+                </Button>
+              </form>
+            </Form>
+            {status ? <InlineStatus tone={status.tone} title={status.title} description={status.description} /> : null}
+          </CardContent>
+        </Card>
 
-        <Card>
-          <CardHeader>
+        <Card tone="plain" data-testid="split-continue-panel" className="split-workspace-card split-continue-card overflow-hidden">
+          <CardHeader className="gap-1">
             <CardTitle>{t('home.recentStepTitle')}</CardTitle>
             <CardDescription>{t('home.recentStepDescription')}</CardDescription>
           </CardHeader>
-          <CardContent className="space-y-3">
+          <CardContent className="space-y-3 border-t border-border/70 pt-5">
             {loadingTrips ? <p className="text-sm text-muted-foreground">{t('common.loading')}</p> : null}
             {!loadingTrips && trips.length === 0 ? (
-              <div className="rounded-2xl border border-dashed border-border p-5 text-sm text-muted-foreground">
+              <div className="split-empty-state rounded-2xl border border-dashed border-border p-5 text-sm text-muted-foreground">
                 <p className="font-medium text-foreground">{t('home.noTrips')}</p>
                 <p className="mt-1">{t('home.noTripsDescription')}</p>
               </div>
             ) : null}
             {trips.slice(0, 6).map((trip) => (
-              <Link key={trip.id} to={getLocalizedPath(locale, `/bill-splitter/${trip.id}`)} className="block rounded-2xl border border-border bg-muted p-4">
+              <Link key={trip.id} to={getLocalizedPath(locale, `/bill-splitter/${trip.id}`)} className="split-trip-link block rounded-2xl border border-border bg-muted p-4 transition-[background-color,border-color,transform,box-shadow] hover:bg-card">
                 <p className="font-medium">{trip.name}</p>
                 <p className="mt-1 text-sm text-muted-foreground">{trip.expenseCurrency} / {trip.settlementCurrency}</p>
               </Link>
@@ -250,8 +249,6 @@ export function SplitBillHomePage({ locale, initialData }: { locale: Locale; ini
           </CardContent>
         </Card>
       </div>
-
-      {status ? <InlineStatus tone={status.tone} title={status.title} description={status.description} /> : null}
     </AppShell>
   )
 }

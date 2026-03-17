@@ -15,7 +15,8 @@ const HOME_PAGE_STATS = {
 }
 
 vi.mock('@tanstack/react-router', () => ({
-  Link: ({ children, ...props }: { children?: React.ReactNode } & Record<string, unknown>) => createElement('a', props, children),
+  Link: ({ children, to, ...props }: { children?: React.ReactNode; to?: string } & Record<string, unknown>) =>
+    createElement('a', { ...props, href: typeof to === 'string' ? to : '#' }, children),
 }))
 
 vi.mock('@/components/app/app-shell', () => ({
@@ -23,6 +24,7 @@ vi.mock('@/components/app/app-shell', () => ({
 }))
 
 vi.mock('@/lib/i18n', () => ({
+  registerMessages: () => {},
   useI18n: () => ({
     t: (key: string, values?: Record<string, string | number>) => ({
       'site.homeTitle': 'Travel tools that stay useful on the road',
