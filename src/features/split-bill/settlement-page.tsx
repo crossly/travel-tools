@@ -234,14 +234,19 @@ export function SettlementPage({ locale, tripId, initialData }: { locale: Locale
                         <div className="mt-2 h-4 w-40 rounded bg-background/60" />
                       </div>
                     </>
-                  ) : settlement.expenseConversions.map((row) => (
+                  ) : settlement.expenseConversions.length ? settlement.expenseConversions.map((row) => (
                     <div key={row.expenseId} className="rounded-2xl border border-border bg-muted p-4">
                       <p className="font-medium">{row.title}</p>
                       <p className="mt-1 text-sm text-muted-foreground">
                         {row.originalAmount.toFixed(2)} {row.originalCurrency} → {row.settlementAmount.toFixed(2)} {trip?.trip.settlementCurrency}
                       </p>
                     </div>
-                  ))}
+                  )) : (
+                    <div className="rounded-2xl border border-dashed border-border/80 bg-[color:var(--surface-floating)] p-4">
+                      <p className="text-base font-semibold text-foreground">{t('settlement.fxDetailsEmptyTitle')}</p>
+                      <p className="mt-2 text-sm leading-6 text-muted-foreground">{t('settlement.fxDetailsEmptyDescription')}</p>
+                    </div>
+                  )}
                 </CardContent>
               </Card>
             </div>

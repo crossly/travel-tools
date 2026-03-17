@@ -123,6 +123,14 @@ export function TripPage({ locale, tripId, initialSnapshot = null }: { locale: L
                         <div>
                           <p className="font-medium">{expense.title}</p>
                           <p className="mt-1 text-sm text-muted-foreground">{expense.amountOriginal.toFixed(2)} {expense.originalCurrency}</p>
+                          <div className="mt-3 flex flex-wrap gap-2 text-xs text-muted-foreground">
+                            <span className="rounded-full border border-border/70 bg-background/80 px-2.5 py-1">
+                              {t('trip.expenseDateLabel', { date: expense.spentAt })}
+                            </span>
+                            <span className="rounded-full border border-border/70 bg-background/80 px-2.5 py-1">
+                              {t('trip.expenseSplitCountLabel', { count: expense.splitCount })}
+                            </span>
+                          </div>
                         </div>
                         <ConfirmActionDialog
                           triggerLabel={t('trip.deleteExpense')}

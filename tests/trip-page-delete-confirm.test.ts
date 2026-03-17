@@ -57,6 +57,8 @@ vi.mock('@/lib/i18n', () => ({
         'trip.splitCountHint': 'Adjust this only when a specific expense should be shared by fewer or more people.',
         'trip.summaryExpenses': 'Recorded expenses',
         'trip.summarySettlementCurrency': 'Settlement currency',
+        'trip.expenseDateLabel': 'Date: 2026-03-17',
+        'trip.expenseSplitCountLabel': 'Split by 2',
         'trip.addExpense': 'Add expense',
         'trip.settlement': 'Settlement',
         'trip.noExpenses': 'No expenses',
@@ -116,6 +118,8 @@ describe('TripPage delete confirmations', () => {
     await waitFor(() => {
       expect(deleteExpenseMock).toHaveBeenCalledWith('trip-1', 'expense-1')
     })
+    expect(screen.getByText('Date: 2026-03-17')).toBeTruthy()
+    expect(screen.getByText('Split by 2')).toBeTruthy()
     expect(window.confirm).not.toHaveBeenCalled()
   })
 

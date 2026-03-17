@@ -46,6 +46,8 @@ vi.mock('@/lib/i18n', () => ({
           'settlement.totalToMoveLabel': 'Total to move',
           'settlement.convertedExpensesLabel': 'Converted expenses',
           'settlement.backToTrip': 'Back to trip',
+          'settlement.fxDetailsEmptyTitle': 'No extra FX detail is needed',
+          'settlement.fxDetailsEmptyDescription': 'All recorded expenses already match the settlement currency, so there is nothing else to expand here.',
           'settlement.copyText': 'Copy settlement text',
           'settlement.copySuccess': 'Settlement copied',
           'settlement.ownerLabel': '{name} (You)',
@@ -100,6 +102,7 @@ describe('SettlementPage', () => {
     expect(await screen.findByText('Settle the trip from this list')).toBeTruthy()
     expect(await screen.findByText('Teammate 1 → 🐼 Panda (You)')).toBeTruthy()
     expect(screen.getAllByText('5.00 CNY').length).toBeGreaterThan(0)
+    expect(screen.getByText('No extra FX detail is needed')).toBeTruthy()
   })
 
   it('shows an error status when copying settlement text fails', async () => {
