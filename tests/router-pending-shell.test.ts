@@ -13,5 +13,9 @@ describe('router pending shell', () => {
     const view = render(createElement(PendingComponent!))
 
     expect(view.container.querySelector('[data-route-pending-shell="true"]')).toBeTruthy()
+    expect(view.container.querySelector('[data-route-pending-frame="true"]')).toBeTruthy()
+    expect(view.container.querySelector('[data-route-pending-primary="true"]')).toBeTruthy()
+    expect(view.container.querySelector('[data-route-pending-secondary="true"]')).toBeTruthy()
+    expect(view.container.querySelector('.shell-nav-divider')).toBeTruthy()
   })
 })
