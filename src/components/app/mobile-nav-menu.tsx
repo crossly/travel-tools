@@ -60,8 +60,8 @@ export function MobileNavMenu({
                   key={item.key}
                   type="button"
                   className={cn(
-                    'flex items-center gap-3 rounded-2xl border border-border bg-[color:var(--surface-floating)] px-4 py-3 text-left text-sm font-medium text-foreground shadow-sm transition-colors',
-                    isActive && 'border-primary/40 bg-primary/10 text-foreground',
+                    'mobile-nav-link flex items-center gap-3 rounded-2xl border border-border bg-[color:var(--surface-floating)] px-4 py-3 text-left text-sm font-medium text-foreground shadow-sm transition-colors',
+                    isActive && 'is-active border-primary/45 bg-primary/12 text-foreground',
                   )}
                   onClick={() => onNavigate(item.path, item.tool)}
                 >

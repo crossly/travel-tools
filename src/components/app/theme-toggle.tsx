@@ -1,5 +1,6 @@
+import { useEffect, useState } from 'react'
 import { Moon, Sun, SunMoon } from 'lucide-react'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { Select, SelectContent, SelectItem, SelectTrigger } from '@/components/ui/select'
 import { cn } from '@/lib/utils'
 import { useI18n } from '@/lib/i18n'
 import { useTheme } from '@/lib/theme'
@@ -22,7 +23,14 @@ export function ThemeToggle({
 } = {}) {
   const { theme, setTheme } = useTheme()
   const { t } = useI18n()
-  const { Icon, labelKey } = THEME_META[theme]
+  const [hydrated, setHydrated] = useState(false)
+
+  useEffect(() => {
+    setHydrated(true)
+  }, [])
+
+  const displayTheme = hydrated ? theme : 'system'
+  const { Icon, labelKey } = THEME_META[displayTheme]
   const currentLabel = t(labelKey)
 
   return (
@@ -48,7 +56,7 @@ export function ThemeToggle({
         ) : (
           <span className="flex min-w-0 items-center gap-2">
             <Icon className="h-4 w-4 text-muted-foreground" />
-            <SelectValue />
+            <span>{currentLabel}</span>
           </span>
         )}
       </SelectTrigger>

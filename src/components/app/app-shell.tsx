@@ -73,7 +73,7 @@ export function AppShell({
         {showPageIntro ? (
           <section className="mb-6">
             <div className="max-w-3xl">
-              <p className="text-xs font-semibold tracking-[0.24em] text-muted-foreground uppercase">
+              <p className="page-eyebrow text-xs font-semibold tracking-[0.24em] text-muted-foreground uppercase">
                 {activeTool ? t(currentTool?.nameKey ?? 'app.name') : t('site.tagline')}
               </p>
               <h1 className="mt-2 display text-3xl font-semibold text-foreground md:text-4xl">{title}</h1>

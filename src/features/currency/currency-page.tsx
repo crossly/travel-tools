@@ -200,15 +200,15 @@ export function CurrencyPage({ locale, initialData }: { locale: Locale; initialD
           <FieldGroup label={t('currency.amountLabel')}>
             <Input value={amount} onChange={(event) => setAmount(event.target.value)} inputMode="decimal" placeholder={t('currency.placeholder')} className="h-14 text-2xl" />
           </FieldGroup>
-          <div className="grid gap-4 sm:grid-cols-[1fr_auto_1fr] sm:items-end">
-            <FieldGroup label={t('currency.fromLabel')}>
+          <div className="currency-exchange-grid grid gap-4 sm:grid-cols-[1fr_auto_1fr] sm:items-end">
+            <FieldGroup label={t('currency.fromLabel')} className="currency-source-field">
               <CurrencyCombobox value={source} onValueChange={(nextValue) => setSource(normalizeCurrency(nextValue))} locale={locale} />
             </FieldGroup>
             <Button
               type="button"
               variant="outline"
               size="icon"
-              className="sm:mb-1"
+              className="currency-swap-button sm:mb-1"
               aria-label={t('currency.swap')}
               onClick={() => {
                 const nextSource = target
@@ -219,14 +219,14 @@ export function CurrencyPage({ locale, initialData }: { locale: Locale; initialD
             >
               ⇄
             </Button>
-            <FieldGroup label={t('currency.toLabel')}>
+            <FieldGroup label={t('currency.toLabel')} className="currency-target-field">
               <CurrencyCombobox value={target} onValueChange={(nextValue) => setTarget(normalizeCurrency(nextValue))} locale={locale} />
             </FieldGroup>
           </div>
           <FieldGroup label={t('currency.quickAmounts')}>
-            <div className="flex flex-wrap gap-2">
+            <div className="currency-quick-amount-grid flex flex-wrap gap-2">
               {['10', '50', '100', '500'].map((value) => (
-                <Button key={value} type="button" variant="outline" size="sm" onClick={() => setAmount(value)}>
+                <Button key={value} type="button" variant="outline" size="sm" className="currency-quick-amount-button" onClick={() => setAmount(value)}>
                   {value}
                 </Button>
               ))}

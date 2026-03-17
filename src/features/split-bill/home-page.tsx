@@ -104,13 +104,13 @@ export function SplitBillHomePage({ locale, initialData }: { locale: Locale; ini
 
   return (
     <AppShell locale={locale} title={t('split.title')} description={t('split.description')} activeTool="split-bill">
-      <div className="grid gap-4 xl:grid-cols-[1.1fr_0.9fr]">
+      <div className="split-home-layout grid gap-4 xl:grid-cols-[1.1fr_0.9fr]">
         <Card tone="soft" data-testid="split-start-panel" className="split-workspace-card split-start-card overflow-hidden">
           <CardHeader className="gap-1">
             <CardTitle>{t('home.tripStepTitle')}</CardTitle>
             <CardDescription>{bootstrappingIdentity ? t('home.createTripLocked') : t('home.tripStepDescription')}</CardDescription>
           </CardHeader>
-          <CardContent className="grid gap-4 border-t border-border/70 pt-5">
+          <CardContent className="split-start-card-body grid gap-4 border-t border-border/70 pt-5">
             {bootstrappingIdentity ? (
               <div className="rounded-xl border border-dashed border-border bg-muted px-4 py-3 text-sm text-muted-foreground">
                 {t('home.identityGenerating')}
@@ -123,7 +123,7 @@ export function SplitBillHomePage({ locale, initialData }: { locale: Locale; ini
             ) : null}
             <Form {...form}>
               <form
-                className="grid gap-4"
+                className="split-start-form grid gap-4"
                 onSubmit={(event) => {
                   event.preventDefault()
                   void form.handleSubmit((values) => onCreateTrip(values))(event)
@@ -150,7 +150,7 @@ export function SplitBillHomePage({ locale, initialData }: { locale: Locale; ini
                     </FormItem>
                   )}
                 />
-                <div className="grid gap-4 md:grid-cols-2">
+                <div className="split-currency-grid grid gap-4 md:grid-cols-2">
                   <FormField
                     control={form.control}
                     name="expenseCurrency"
@@ -232,7 +232,7 @@ export function SplitBillHomePage({ locale, initialData }: { locale: Locale; ini
             <CardTitle>{t('home.recentStepTitle')}</CardTitle>
             <CardDescription>{t('home.recentStepDescription')}</CardDescription>
           </CardHeader>
-          <CardContent className="space-y-3 border-t border-border/70 pt-5">
+          <CardContent className="split-continue-body space-y-3 border-t border-border/70 pt-5">
             {loadingTrips ? <p className="text-sm text-muted-foreground">{t('common.loading')}</p> : null}
             {!loadingTrips && trips.length === 0 ? (
               <div className="split-empty-state rounded-2xl border border-dashed border-border p-5 text-sm text-muted-foreground">

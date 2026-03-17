@@ -67,16 +67,16 @@ html.dark,
 html[data-theme="dark"] {
   --background: #111416;
   --foreground: #f5efe7;
-  --card: rgba(24, 28, 31, 0.92);
+  --card: rgba(22, 26, 29, 0.94);
   --card-foreground: #f5efe7;
-  --surface-floating: #171b1e;
-  --muted: rgba(28, 32, 35, 0.95);
+  --surface-floating: #1d2225;
+  --muted: rgba(17, 20, 23, 0.96);
   --muted-foreground: #b3a79a;
   --border: rgba(255, 245, 232, 0.1);
   --input: rgba(19, 22, 25, 0.96);
   --primary: #f08a37;
   --primary-foreground: #17120f;
-  --secondary: #1d2326;
+  --secondary: #20262a;
   --secondary-foreground: #f5efe7;
   --accent: #211b15;
   --accent-foreground: #f6ede2;
@@ -95,10 +95,10 @@ html[data-theme="dark"] {
   --hero-orb-fill: rgba(240, 138, 55, 0.07);
   --hero-route-dash: rgba(240, 138, 55, 0.18);
   --hero-route-glow-start: rgba(240, 138, 55, 0.78);
-  --hero-route-glow-end: rgba(240, 138, 55, 0.16);
+  --hero-route-glow-end: rgba(240, 138, 55, 0.24);
   --hero-route-shadow: rgba(240, 138, 55, 0.08);
-  --hero-surface-start: rgba(27, 31, 34, 0.96);
-  --hero-surface-end: rgba(19, 22, 25, 0.88);
+  --hero-surface-start: rgba(33, 37, 40, 0.98);
+  --hero-surface-end: rgba(22, 25, 28, 0.92);
   --hero-node-stroke: rgba(17, 20, 22, 0.96);
   --hero-node-shadow: rgba(0, 0, 0, 0.26);
 }
@@ -162,6 +162,11 @@ select {
   backdrop-filter: blur(18px);
 }
 
+html.dark .glass,
+html[data-theme="dark"] .glass {
+  backdrop-filter: blur(14px);
+}
+
 .shell-frame {
   background:
     linear-gradient(140deg, color-mix(in oklab, var(--card) 86%, var(--primary) 14%), var(--card)),
@@ -179,6 +184,13 @@ select {
 
 .shell-brand-link:hover .shell-brand-kicker {
   color: color-mix(in oklab, var(--muted-foreground) 72%, var(--primary) 28%);
+}
+
+html.dark .shell-brand-kicker,
+html[data-theme="dark"] .shell-brand-kicker,
+html.dark .page-eyebrow,
+html[data-theme="dark"] .page-eyebrow {
+  color: color-mix(in oklab, var(--foreground) 68%, var(--muted-foreground) 32%);
 }
 
 .shell-nav-divider {
@@ -241,6 +253,30 @@ select {
   border-color: color-mix(in oklab, var(--primary) 45%, var(--border) 55%);
   background: color-mix(in oklab, var(--primary) 14%, var(--card) 86%);
   color: var(--foreground);
+}
+
+html.dark .desktop-tool-link,
+html[data-theme="dark"] .desktop-tool-link {
+  color: color-mix(in oklab, var(--foreground) 84%, var(--muted-foreground) 16%);
+}
+
+html.dark .desktop-tool-link:hover,
+html[data-theme="dark"] .desktop-tool-link:hover {
+  border-color: color-mix(in oklab, var(--primary) 18%, var(--border) 82%);
+  background: color-mix(in oklab, var(--secondary) 78%, var(--surface-floating) 22%);
+}
+
+html.dark .desktop-tool-link.is-featured,
+html[data-theme="dark"] .desktop-tool-link.is-featured {
+  border-color: color-mix(in oklab, var(--primary) 26%, var(--border) 74%);
+  background: color-mix(in oklab, var(--primary) 9%, var(--surface-floating) 91%);
+}
+
+html.dark .desktop-tool-link.is-active,
+html[data-theme="dark"] .desktop-tool-link.is-active {
+  border-color: color-mix(in oklab, var(--primary) 52%, var(--border) 48%);
+  background: color-mix(in oklab, var(--primary) 18%, var(--surface-floating) 82%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .desktop-tool-link-indicator {
@@ -396,12 +432,46 @@ select {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
 }
 
+.home-featured-cta,
+.home-supporting-cta,
+.home-companion-cta {
+  min-height: 3rem;
+}
+
+html.dark .home-featured-card,
+html[data-theme="dark"] .home-featured-card {
+  background:
+    linear-gradient(160deg, color-mix(in oklab, var(--surface-floating) 84%, var(--primary) 16%), rgba(20, 24, 27, 0.96)),
+    var(--card);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 247, 235, 0.04),
+    0 22px 42px rgba(0, 0, 0, 0.28);
+}
+
+html.dark .home-featured-metric,
+html[data-theme="dark"] .home-featured-metric {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.18);
+}
+
 .home-supporting-card {
   min-height: 100%;
   background:
     linear-gradient(180deg, color-mix(in oklab, var(--surface-floating) 90%, transparent 10%), var(--card)),
     var(--card);
   box-shadow: 0 12px 30px rgba(120, 84, 44, 0.05);
+}
+
+html.dark .home-supporting-card,
+html[data-theme="dark"] .home-supporting-card {
+  border-color: color-mix(in oklab, var(--border) 75%, rgba(255, 255, 255, 0.08) 25%);
+  background:
+    linear-gradient(180deg, color-mix(in oklab, var(--surface-floating) 88%, rgba(255, 255, 255, 0.02) 12%), rgba(20, 24, 27, 0.92)),
+    var(--card);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 247, 235, 0.03),
+    0 14px 28px rgba(0, 0, 0, 0.2);
 }
 
 .home-companion-list {
@@ -433,6 +503,27 @@ select {
   transform: translateY(-1px);
 }
 
+html.dark .home-companion-panel,
+html[data-theme="dark"] .home-companion-panel {
+  border-color: color-mix(in oklab, var(--border) 78%, var(--primary) 22%);
+  background:
+    linear-gradient(180deg, color-mix(in oklab, var(--surface-floating) 84%, rgba(255, 255, 255, 0.02) 16%), rgba(18, 21, 24, 0.9)),
+    var(--card);
+  box-shadow: inset 0 1px 0 rgba(255, 247, 235, 0.03);
+}
+
+html.dark .home-companion-panel:hover,
+html[data-theme="dark"] .home-companion-panel:hover {
+  border-color: color-mix(in oklab, var(--primary) 30%, var(--border) 70%);
+  background: color-mix(in oklab, var(--surface-floating) 86%, var(--primary) 14%);
+}
+
+html.dark .home-companion-cta,
+html[data-theme="dark"] .home-companion-cta {
+  border-color: color-mix(in oklab, var(--border) 64%, var(--primary) 36%);
+  background: color-mix(in oklab, var(--surface-floating) 88%, transparent 12%);
+}
+
 .currency-result-card {
   background:
     linear-gradient(180deg, color-mix(in oklab, var(--surface-floating) 94%, transparent 6%), var(--card)),
@@ -454,8 +545,29 @@ select {
   color: color-mix(in oklab, var(--foreground) 76%, transparent 24%);
 }
 
+html.dark .currency-result-card,
+html[data-theme="dark"] .currency-result-card {
+  background:
+    linear-gradient(180deg, color-mix(in oklab, var(--surface-floating) 92%, var(--primary) 8%), rgba(19, 23, 26, 0.96)),
+    var(--card);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 247, 235, 0.04),
+    0 18px 34px rgba(0, 0, 0, 0.28);
+}
+
+html.dark .currency-status-note,
+html[data-theme="dark"] .currency-status-note {
+  border-color: color-mix(in oklab, var(--warning) 26%, var(--border) 74%);
+  background: color-mix(in oklab, var(--warning-soft) 64%, var(--surface-floating) 36%);
+  color: color-mix(in oklab, var(--foreground) 88%, transparent 12%);
+}
+
 .currency-controls {
   gap: 1.1rem;
+}
+
+.currency-exchange-grid {
+  align-items: end;
 }
 
 .currency-actions {
@@ -466,13 +578,40 @@ select {
   justify-content: center;
 }
 
+.currency-quick-amount-button {
+  min-width: 3.25rem;
+}
+
 .currency-refresh-action {
   color: color-mix(in oklab, var(--foreground) 78%, transparent 22%);
   justify-self: end;
 }
 
+html.dark .currency-swap-button,
+html[data-theme="dark"] .currency-swap-button,
+html.dark .currency-refresh-action,
+html[data-theme="dark"] .currency-refresh-action {
+  border-color: color-mix(in oklab, var(--border) 58%, var(--primary) 42%);
+  background: color-mix(in oklab, var(--surface-floating) 88%, transparent 12%);
+  color: color-mix(in oklab, var(--foreground) 90%, transparent 10%);
+}
+
+html.dark .currency-refresh-action:hover,
+html[data-theme="dark"] .currency-refresh-action:hover {
+  background: color-mix(in oklab, var(--surface-floating) 76%, var(--primary) 24%);
+}
+
+html.dark .currency-quick-amount-button,
+html[data-theme="dark"] .currency-quick-amount-button {
+  background: color-mix(in oklab, var(--surface-floating) 84%, transparent 16%);
+}
+
 .split-workspace-card {
   min-height: 100%;
+}
+
+.split-home-layout {
+  align-items: start;
 }
 
 .split-start-card {
@@ -505,6 +644,52 @@ select {
   border-color: color-mix(in oklab, var(--primary) 20%, var(--border) 80%);
   transform: translateY(-1px);
   box-shadow: 0 10px 22px rgba(116, 81, 44, 0.05);
+}
+
+html.dark .split-start-card,
+html[data-theme="dark"] .split-start-card {
+  background:
+    linear-gradient(180deg, color-mix(in oklab, var(--surface-floating) 74%, var(--primary) 26%), rgba(21, 24, 27, 0.98)),
+    var(--card);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 247, 235, 0.04),
+    0 20px 38px rgba(0, 0, 0, 0.28);
+}
+
+html.dark .split-continue-card,
+html[data-theme="dark"] .split-continue-card {
+  border-color: color-mix(in oklab, var(--border) 76%, var(--primary) 24%);
+  background:
+    linear-gradient(180deg, color-mix(in oklab, var(--surface-floating) 86%, transparent 14%), rgba(17, 20, 23, 0.42)),
+    transparent;
+}
+
+html.dark .split-device-card,
+html[data-theme="dark"] .split-device-card,
+html.dark .split-empty-state,
+html[data-theme="dark"] .split-empty-state {
+  border-color: color-mix(in oklab, var(--border) 62%, var(--primary) 38%);
+  background: color-mix(in oklab, var(--surface-floating) 88%, rgba(255, 255, 255, 0.02) 12%);
+  box-shadow: inset 0 1px 0 rgba(255, 247, 235, 0.04);
+}
+
+html.dark .split-trip-link,
+html[data-theme="dark"] .split-trip-link {
+  border-color: color-mix(in oklab, var(--border) 62%, var(--primary) 38%);
+  background: color-mix(in oklab, var(--surface-floating) 88%, rgba(255, 255, 255, 0.02) 12%);
+  box-shadow: inset 0 1px 0 rgba(255, 247, 235, 0.04);
+}
+
+html.dark .split-trip-link:hover,
+html[data-theme="dark"] .split-trip-link:hover {
+  border-color: color-mix(in oklab, var(--primary) 28%, var(--border) 72%);
+  background: color-mix(in oklab, var(--primary) 10%, var(--surface-floating) 90%);
+  box-shadow: none;
+}
+
+html.dark .mobile-nav-link.is-active,
+html[data-theme="dark"] .mobile-nav-link.is-active {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .mono {
@@ -558,20 +743,108 @@ select {
 }
 
 @media (max-width: 899px) {
+  .page-wrap {
+    width: min(1140px, calc(100% - 20px));
+    padding: 16px 0 88px;
+  }
+
   .hero-art-wrap {
-    min-height: 188px;
+    min-height: 176px;
   }
 
   .home-primary-layout {
     grid-template-columns: minmax(0, 1fr);
   }
 
+  .home-section + .home-section {
+    padding-top: 1rem;
+  }
+
+  .hero-highlight-line {
+    padding: 0.55rem 0.9rem;
+  }
+
+  .home-supporting-stack,
+  .home-companion-list {
+    gap: 0.85rem;
+  }
+
+  .home-featured-card,
+  .home-supporting-card,
+  .home-companion-panel,
+  .currency-result-card,
+  .split-workspace-card {
+    border-radius: 1.4rem;
+  }
+
+  .home-featured-cta,
+  .home-supporting-cta,
+  .home-companion-cta {
+    width: 100%;
+  }
+
   .home-companion-panel:hover {
     transform: none;
   }
 
+  .currency-result-header {
+    gap: 0.75rem;
+  }
+
+  .currency-result-meta {
+    gap: 0.55rem;
+    padding-top: 0.8rem;
+  }
+
+  .currency-status-note {
+    padding: 0.75rem 0.9rem;
+  }
+
+  .currency-exchange-grid {
+    gap: 0.8rem;
+  }
+
+  .currency-swap-button {
+    justify-self: center;
+    margin-top: -0.15rem;
+    margin-bottom: -0.15rem;
+  }
+
+  .currency-quick-amount-grid {
+    gap: 0.55rem;
+  }
+
+  .currency-quick-amount-button {
+    min-width: 3.5rem;
+  }
+
+  .currency-actions {
+    gap: 0.7rem;
+  }
+
+  .currency-detect-action,
   .currency-refresh-action {
     justify-self: stretch;
+    width: 100%;
+  }
+
+  .split-home-layout {
+    gap: 1rem;
+  }
+
+  .split-start-card-body,
+  .split-start-form,
+  .split-currency-grid {
+    gap: 1rem;
+  }
+
+  .split-continue-body {
+    gap: 0.85rem;
+  }
+
+  .split-empty-state {
+    min-height: auto;
+    padding: 1rem 1.1rem;
   }
 }
 

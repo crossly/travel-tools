@@ -168,7 +168,7 @@ function FeaturedHomeToolCard({ locale, icon: Icon, badge, title, description, m
         <div className="home-featured-metric rounded-2xl border border-primary/20 bg-[color:var(--surface-floating)] p-5">
           <p className="mono text-3xl font-medium tabular-nums md:text-4xl">{metric}</p>
         </div>
-        <Button asChild size="lg" className="w-full justify-between md:w-auto">
+        <Button asChild size="lg" className="home-featured-cta w-full justify-between md:w-auto">
           <Link to={getLocalizedPath(locale, path)}>
             {title}
             <ArrowRight className="size-4" />
@@ -204,7 +204,7 @@ function HomeToolCard({
         <div className="rounded-2xl border border-border bg-muted p-4">
           <p className={compact ? 'mono text-xl font-medium tabular-nums' : 'mono text-2xl font-medium tabular-nums'}>{metric}</p>
         </div>
-        <Button asChild variant="secondary" size="lg" className="w-full justify-between">
+        <Button asChild variant="secondary" size="lg" className="home-supporting-cta w-full justify-between">
           <Link to={getLocalizedPath(locale, path)}>
             {title}
             <ArrowRight className="size-4" />
@@ -228,7 +228,7 @@ function CompanionToolItem({ locale, icon: Icon, badge, title, description, metr
         <h3 className="display mt-3 text-xl font-semibold">{title}</h3>
         <p className="mt-2 text-sm leading-6 text-muted-foreground">{description}</p>
         <p className="mono mt-4 text-sm font-medium tabular-nums text-foreground/90">{metric}</p>
-        <Button asChild variant="nav" className="mt-auto w-full justify-between rounded-xl border border-border bg-[color:var(--surface-floating)] px-4 py-2.5 text-sm">
+        <Button asChild variant="nav" className="home-companion-cta mt-auto w-full justify-between rounded-xl border border-border bg-[color:var(--surface-floating)] px-4 py-2.5 text-sm">
           <Link to={getLocalizedPath(locale, path)}>
             {title}
             <ArrowRight className="size-4" />
