@@ -107,7 +107,7 @@ vi.mock('@/components/app/theme-toggle', () => ({
 }))
 
 describe('MobileNavMenu', () => {
-  it('opens a flat menu with link-based nav items and closes after theme or locale changes', async () => {
+  it('shows quick-switch tool links before opening the full menu and closes after theme or locale changes', async () => {
     const { MobileNavMenu } = await import('@/components/app/mobile-nav-menu')
 
     render(
@@ -117,21 +117,22 @@ describe('MobileNavMenu', () => {
       }),
     )
 
+    expect(screen.getByRole('link', { name: '汇率' })).toBeTruthy()
+    expect(screen.getByRole('link', { name: 'AA' })).toBeTruthy()
+    expect(screen.getByRole('link', { name: '行李' })).toBeTruthy()
+
     fireEvent.click(screen.getByRole('button', { name: '菜单' }))
 
     expect(screen.getByRole('link', { name: '首页' })).toBeTruthy()
-    expect(screen.getByRole('link', { name: '汇率' })).toBeTruthy()
     expect(screen.getByRole('link', { name: '短语卡' })).toBeTruthy()
     expect(screen.getByRole('link', { name: '本地 App' })).toBeTruthy()
-    expect(screen.getByRole('link', { name: 'AA' })).toBeTruthy()
-    expect(screen.getByRole('link', { name: '行李' })).toBeTruthy()
     expect(screen.getByRole('link', { name: '时差' })).toBeTruthy()
     fireEvent.click(screen.getByRole('button', { name: '外观' }))
-    expect(screen.queryByRole('link', { name: '首页' })).toBeNull()
+    expect(screen.queryByTestId('mobile-nav-panel')).toBeNull()
 
     fireEvent.click(screen.getByRole('button', { name: '菜单' }))
     fireEvent.click(screen.getByRole('button', { name: '语言' }))
-    expect(screen.queryByRole('link', { name: '首页' })).toBeNull()
+    expect(screen.queryByTestId('mobile-nav-panel')).toBeNull()
 
     expect(setThemeMock).toHaveBeenCalledWith('dark')
     expect(setLocaleMock).toHaveBeenCalledWith('en-US')

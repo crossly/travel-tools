@@ -126,6 +126,8 @@ describe('PackingListPage', () => {
     fireEvent.change(screen.getByLabelText('List name'), { target: { value: 'Tokyo Spring' } })
     fireEvent.click(screen.getByRole('button', { name: 'Create list' }))
 
+    expect(await screen.findByTestId('packing-workspace-header')).toBeTruthy()
+    expect(screen.getAllByTestId('packing-section-group')).toHaveLength(6)
     expect((await screen.findAllByText('Passport')).length).toBeGreaterThan(0)
     expect(screen.getByRole('combobox', { name: 'Current list' }).textContent).toContain('Tokyo Spring')
     expect(screen.getByRole('combobox', { name: 'Current list' }).tagName).toBe('BUTTON')

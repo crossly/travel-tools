@@ -62,6 +62,14 @@ vi.mock('@/lib/i18n', async (importOriginal) => {
       'phrases.regionAfrica': 'Africa',
       'phrases.regionMiddleEast': 'Middle East',
       'phrases.regionOceania': 'Oceania',
+      'phrases.searchLabel': 'Search packs',
+      'phrases.searchPlaceholder': 'Search by country or language',
+      'phrases.quickStartTitle': 'Start with these country packs',
+      'phrases.quickStartDescription': 'Open a country fast when you already know where you are going.',
+      'phrases.directoryTitle': 'Browse the full phrase directory',
+      'phrases.directoryDescription': 'Filter by region or search by country and language.',
+      'phrases.searchEmptyTitle': 'No phrase packs match this search',
+      'phrases.searchEmptyDescription': 'Try another country, language, or region.',
       'phrases.featuredTitle': 'Featured country packs',
       'phrases.featuredDescription': 'Start with the countries that already include localized travel notes.',
       'phrases.regionSectionTitle': `${values?.region} travel phrase packs`,
@@ -229,5 +237,18 @@ describe('TravelPhrasesHomePage', () => {
     expect(screen.getAllByTestId('phrases-region-directory').length).toBeGreaterThan(0)
     expect(screen.getAllByTestId('phrases-region-row').length).toBeGreaterThan(0)
     expect(screen.getByText('Malaysia')).toBeTruthy()
+  })
+
+  it('filters the directory with a search field for faster country lookup', async () => {
+    const { listPhraseCountrySummaries } = await import('@/lib/travel-phrases')
+    const { TravelPhrasesHomePage } = await import('@/features/travel-phrases/home-page')
+    const packs = listPhraseCountrySummaries('en-US')
+
+    render(createElement(TravelPhrasesHomePage, { locale: 'en-US', packs }))
+
+    fireEvent.change(screen.getByLabelText('Search packs'), { target: { value: 'japan' } })
+
+    expect(screen.getAllByText('Japan').length).toBeGreaterThan(0)
+    expect(screen.queryByText('France')).toBeNull()
   })
 })

@@ -65,20 +65,17 @@ export function HomePage({ locale, stats }: { locale: Locale; stats: HomePageSta
       path: '/jet-lag',
     },
   ]
-  const [featuredCard, ...supportingCards] = primaryCards
 
   return (
     <AppShell locale={locale} title={t('site.homeTitle')} description={t('site.homeDescription')} showPageIntro={false}>
-      <Card tone="soft" className="hero-card overflow-hidden">
-        <CardHeader className="hero-grid gap-8">
-          <div className="hero-copy space-y-5">
-            <Badge variant="outline" className="w-fit">
-              {t('site.tagline')}
-            </Badge>
-            <p className="hero-eyebrow text-xs font-semibold uppercase text-muted-foreground">
+      <Card tone="soft" className="hero-card home-hero-card overflow-hidden">
+        <CardHeader className="hero-grid home-hero-grid gap-6">
+          <div className="hero-copy home-hero-copy space-y-4">
+            <p className="shell-brand-kicker">{t('site.tagline')}</p>
+            <p className="hero-eyebrow text-sm font-medium text-muted-foreground">
               {t('site.heroEyebrow')}
             </p>
-            <h1 className="display max-w-3xl text-balance text-4xl leading-tight font-semibold tracking-tight sm:text-5xl">
+            <h1 className="display max-w-3xl text-balance text-[clamp(2.2rem,5vw,4.25rem)] leading-[1.02] font-semibold tracking-tight">
               {t('site.heroTitle')}
             </h1>
             <CardDescription className="max-w-2xl text-pretty text-base leading-7 sm:text-lg">
@@ -97,29 +94,25 @@ export function HomePage({ locale, stats }: { locale: Locale; stats: HomePageSta
             settleMetric={t('site.heroMetricSettle')}
           />
         </CardHeader>
-      </Card>
-
-      <div className="space-y-8">
-        <section className="home-section home-section-primary space-y-4" aria-labelledby="home-section-primary">
+        <CardContent className="home-hero-priority pt-0">
           <div className="home-section-intro space-y-2">
-            <Badge variant="outline">{t('site.primaryToolsBadge')}</Badge>
-            <h2 id="home-section-primary" className="display text-balance text-2xl font-semibold text-foreground">
+            <p className="shell-brand-kicker">{t('site.quickToolsLabel')}</p>
+            <h2 className="display text-balance text-2xl font-semibold text-foreground" id="home-section-primary">
               {t('site.primaryToolsTitle')}
             </h2>
             <p className="max-w-3xl text-pretty text-sm leading-6 text-muted-foreground md:text-base">
               {t('site.primaryToolsDescription')}
             </p>
           </div>
-          <div className="home-primary-layout">
-            <FeaturedHomeToolCard locale={locale} {...featuredCard} />
-            <div className="home-supporting-stack">
-              {supportingCards.map((card) => (
-                <HomeToolCard key={card.path} locale={locale} compact testId="home-supporting-tool" {...card} />
-              ))}
-            </div>
-          </div>
-        </section>
+          <ul className="home-priority-rail" data-testid="home-priority-rail">
+            {primaryCards.map((card) => (
+              <HomePriorityItem key={card.path} locale={locale} {...card} />
+            ))}
+          </ul>
+        </CardContent>
+      </Card>
 
+      <div className="space-y-8">
         <section className="home-section home-section-guides space-y-4" aria-labelledby="home-section-guides">
           <div className="home-section-intro space-y-2">
             <Badge variant="outline">{t('site.companionToolsBadge')}</Badge>
@@ -150,68 +143,24 @@ type HomeToolCardDefinition = {
   path: string
 }
 
-function FeaturedHomeToolCard({ locale, icon: Icon, badge, title, description, metric, path }: HomeToolCardDefinition & { locale: Locale }) {
+function HomePriorityItem({ locale, icon: Icon, badge, title, description, metric, path }: HomeToolCardDefinition & { locale: Locale }) {
   return (
-    <Card tone="soft" className="home-featured-card" data-testid="home-featured-tool">
-      <CardHeader className="space-y-4">
-        <div className="flex items-center justify-between gap-4">
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-xs font-semibold text-foreground">
+    <li data-testid="home-priority-item">
+      <Link to={getLocalizedPath(locale, path)} className="home-priority-item">
+        <div className="home-priority-item-top">
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/18 bg-primary/8 px-3 py-1 text-xs font-semibold text-foreground">
             <Icon className="size-4" />
             <span>{badge}</span>
           </div>
-          <Badge variant="outline">{title}</Badge>
+          <ArrowRight className="size-4 text-primary" />
         </div>
-        <CardTitle className="text-balance text-2xl md:text-3xl">{title}</CardTitle>
-        <CardDescription className="max-w-xl text-pretty text-base leading-7">{description}</CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        <div className="home-featured-metric rounded-2xl border border-primary/20 bg-[color:var(--surface-floating)] p-5">
-          <p className="mono text-3xl font-medium tabular-nums md:text-4xl">{metric}</p>
+        <div className="space-y-2">
+          <h3 className="display text-xl font-semibold text-foreground">{title}</h3>
+          <p className="mono text-lg font-medium tabular-nums text-foreground/92">{metric}</p>
+          <p className="text-sm leading-6 text-muted-foreground">{description}</p>
         </div>
-        <Button asChild size="lg" className="home-featured-cta w-full justify-between md:w-auto">
-          <Link to={getLocalizedPath(locale, path)}>
-            {title}
-            <ArrowRight className="size-4" />
-          </Link>
-        </Button>
-      </CardContent>
-    </Card>
-  )
-}
-
-function HomeToolCard({
-  locale,
-  icon: Icon,
-  badge,
-  title,
-  description,
-  metric,
-  path,
-  compact = false,
-  testId,
-}: HomeToolCardDefinition & { locale: Locale; compact?: boolean; testId?: string }) {
-  return (
-    <Card tone="soft" className={compact ? 'home-supporting-card' : undefined} data-testid={testId}>
-      <CardHeader>
-        <div className="flex items-center justify-between">
-          <Icon className="size-6 text-primary" />
-          <Badge variant="outline">{badge}</Badge>
-        </div>
-        <CardTitle className="text-balance">{title}</CardTitle>
-        <CardDescription className="text-pretty">{description}</CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        <div className="rounded-2xl border border-border bg-muted p-4">
-          <p className={compact ? 'mono text-xl font-medium tabular-nums' : 'mono text-2xl font-medium tabular-nums'}>{metric}</p>
-        </div>
-        <Button asChild variant="secondary" size="lg" className="home-supporting-cta w-full justify-between">
-          <Link to={getLocalizedPath(locale, path)}>
-            {title}
-            <ArrowRight className="size-4" />
-          </Link>
-        </Button>
-      </CardContent>
-    </Card>
+      </Link>
+    </li>
   )
 }
 

@@ -6,7 +6,6 @@ import { AppShell } from '@/components/app/app-shell'
 import { ConfirmActionDialog } from '@/components/app/confirm-action-dialog'
 import { InlineStatus } from '@/components/app/inline-status'
 import { PageState } from '@/components/app/page-state'
-import { ExpenseFormCard } from './expense-form-card'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { deleteExpense, deleteTrip, fetchSnapshot, updateTripSettings } from '@/lib/api/client'
@@ -231,17 +230,6 @@ export function TripPage({ locale, tripId, initialSnapshot = null }: { locale: L
               </p>
             </CardContent>
           </Card>
-
-          <ExpenseFormCard
-            locale={locale}
-            tripId={tripId}
-            snapshot={snapshot}
-            submitLabel={t('trip.addExpense')}
-            onSaved={async () => {
-              const latest = await fetchSnapshot(tripId)
-              setSnapshot(latest)
-            }}
-          />
 
           <Card>
             <CardContent className="grid gap-3 pt-6 md:grid-cols-2">

@@ -77,6 +77,7 @@ vi.mock('@/lib/i18n', () => ({
       'site.heroMetricRate': '100 美元 → 728 人民币',
       'site.heroMetricSplit': '4 人 · 2 笔支出',
       'site.heroMetricSettle': '2 笔转账',
+      'site.quickToolsLabel': '先打开这些',
       'site.toolBadgeCurrency': '汇率卡',
       'site.toolBadgeSplitBill': '同行卡',
       'site.toolBadgePacking': '打包卡',
@@ -115,13 +116,14 @@ describe('HomePage', () => {
     expect(screen.getByRole('heading', { name: '再补足沟通、落地和恢复节奏' })).toBeTruthy()
   })
 
-  it('renders a featured primary tool and supporting tools instead of an equal-weight grid', async () => {
+  it('surfaces three primary tool shortcuts inside the first-viewport rail', async () => {
     const { HomePage } = await import('@/features/site/home-page')
 
     render(createElement(HomePage, { locale: 'zh-CN', stats: HOME_PAGE_STATS }))
 
-    expect(screen.getByTestId('home-featured-tool')).toBeTruthy()
-    expect(screen.getAllByTestId('home-supporting-tool')).toHaveLength(2)
+    expect(screen.getByTestId('home-priority-rail')).toBeTruthy()
+    expect(screen.getAllByTestId('home-priority-item')).toHaveLength(3)
+    expect(screen.getByText('先打开这些')).toBeTruthy()
   })
 
   it('renders companion tools in an editorial list section', async () => {
@@ -156,7 +158,7 @@ describe('HomePage', () => {
 
     render(createElement(HomePage, { locale: 'zh-CN', stats: HOME_PAGE_STATS }))
 
-    expect(screen.getAllByText('行李清单')).toHaveLength(2)
+    expect(screen.getByText('行李清单')).toBeTruthy()
     expect(screen.getByText('4 个模板 · 本地保存')).toBeTruthy()
     expect(screen.getByText('汇率卡')).toBeTruthy()
     expect(screen.getByText('同行卡')).toBeTruthy()

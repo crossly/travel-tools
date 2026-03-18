@@ -178,7 +178,7 @@ export function PackingListPage({ locale }: { locale: Locale }) {
             <CardDescription className="text-pretty">{t('packing.createDescription')}</CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4">
-            {lists.length ? (
+            {!activeList && lists.length ? (
               <div className="space-y-2">
                 <Label htmlFor="packing-current-list">{t('packing.currentList')}</Label>
                 <Select value={activeListId ?? undefined} onValueChange={setActiveListId}>
@@ -290,24 +290,96 @@ export function PackingListPage({ locale }: { locale: Locale }) {
       {status?.tone === 'warning' ? <InlineStatus tone="warning" title={status.title} /> : null}
 
       {activeList ? (
-        <div className="grid gap-4 lg:grid-cols-2">
+        <>
+          <Card tone="soft" data-testid="packing-workspace-header">
+            <CardContent className="grid gap-5 pt-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-start">
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <p className="shell-brand-kicker">{t('packing.currentList')}</p>
+                  <div className="max-w-sm">
+                    <Select value={activeListId ?? undefined} onValueChange={setActiveListId}>
+                      <SelectTrigger
+                        id="packing-current-list"
+                        aria-label={t('packing.currentList')}
+                        className="w-full justify-between rounded-xl px-3 font-medium"
+                      >
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {lists.map((list) => (
+                          <SelectItem key={list.id} value={list.id}>
+                            {list.name}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+                <p className="max-w-2xl text-sm leading-6 text-muted-foreground">{t('packing.essentialsDescription')}</p>
+              </div>
+
+              <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+                <StatCard icon={ListChecks} label={t('packing.statsTotal')} value={stats.total} />
+                <StatCard icon={Check} label={t('packing.statsPacked')} value={stats.packed} />
+                <StatCard icon={Circle} label={t('packing.statsRemaining')} value={stats.remaining} />
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card tone="plain">
+            <CardHeader>
+              <CardTitle className="text-balance">{t('packing.essentialsTitle')}</CardTitle>
+              <CardDescription className="text-pretty">{t('packing.essentialsDescription')}</CardDescription>
+            </CardHeader>
+            <CardContent className="grid gap-3">
+              {essentials.map((item) => {
+                const packed = item.checked
+                return (
+                  <div key={item.id} className="flex items-center justify-between gap-3 rounded-2xl border border-border bg-[color:var(--surface-floating)] px-4 py-3">
+                    <div className="flex items-center gap-3">
+                      <div className={cn('flex size-10 items-center justify-center rounded-full border', packed ? 'border-primary/30 bg-primary/10 text-primary' : 'border-border text-muted-foreground')}>
+                        {packed ? <Check className="size-4" /> : <Briefcase className="size-4" />}
+                      </div>
+                      <div>
+                        <p className="font-medium text-foreground">{getPackingItemLabel(item, (key) => t(key))}</p>
+                        <p className="text-sm text-muted-foreground">{packed ? t('packing.essentialsReady') : t('packing.essentialsMissing')}</p>
+                      </div>
+                    </div>
+                    <Button
+                      type="button"
+                      variant={packed ? 'secondary' : 'outline'}
+                      size="sm"
+                      onClick={() => {
+                        const section = activeList.sections.find((entry) => entry.items.some((entryItem) => entryItem.id === item.id))
+                        if (section) toggleItem(section.id, item.id)
+                      }}
+                    >
+                      {packed ? t('packing.markUnpacked') : t('packing.markPacked')}
+                    </Button>
+                  </div>
+                )
+              })}
+            </CardContent>
+          </Card>
+
+          <div className="grid gap-4">
           {sectionIds.map((sectionId) => {
             const section = activeList.sections.find((entry) => entry.id === sectionId)
             const items = section?.items ?? []
 
             return (
-              <Card key={sectionId}>
-                <CardHeader>
+              <section key={sectionId} data-testid="packing-section-group" className="packing-section-group rounded-[1.75rem] border border-border bg-[color:var(--surface-floating)] p-5 shadow-sm">
+                <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
                   <div className="flex items-center justify-between gap-3">
                     <div>
-                      <CardTitle className="text-balance">{t(`packing.section.${sectionId}`)}</CardTitle>
-                      <CardDescription>
+                      <h2 className="display text-balance text-2xl font-semibold text-foreground">{t(`packing.section.${sectionId}`)}</h2>
+                      <p className="mt-1 text-sm text-muted-foreground">
                         <span className="tabular-nums">{items.filter((item) => item.checked).length}</span> / <span className="tabular-nums">{items.length}</span>
-                      </CardDescription>
+                      </p>
                     </div>
                   </div>
-                </CardHeader>
-                <CardContent className="grid gap-3">
+                </div>
+                <div className="mt-4 grid gap-3">
                   {items.length ? items.map((item) => (
                     <div
                       key={item.id}
@@ -385,11 +457,12 @@ export function PackingListPage({ locale }: { locale: Locale }) {
                       </Button>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </section>
             )
           })}
-        </div>
+          </div>
+        </>
       ) : (
         <Card className="border-dashed border-border/80 bg-[color:var(--surface-floating)]">
           <CardContent className="grid gap-6 p-6 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.25fr)]">

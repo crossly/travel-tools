@@ -3,7 +3,7 @@ import { Link, useLocation } from '@tanstack/react-router'
 import { Menu, Settings, X } from 'lucide-react'
 import { LocaleSwitcher } from './locale-switcher'
 import { ThemeToggle } from './theme-toggle'
-import { MOBILE_NAV_ITEMS } from './navigation-items'
+import { MOBILE_NAV_ITEMS, TOOL_NAV_ITEMS } from './navigation-items'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { getLocalizedPath } from '@/lib/site'
@@ -22,10 +22,12 @@ export function MobileNavMenu({
   const location = useLocation()
   const { t } = useI18n()
   const settingsPath = getLocalizedPath(locale, '/settings')
+  const quickToolOrder: ToolDefinition['slug'][] = ['currency', 'split-bill', 'packing-list']
+  const quickTools = TOOL_NAV_ITEMS.filter((item) => item.tool && quickToolOrder.includes(item.tool))
 
   return (
     <div className="md:hidden">
-      <div className="mb-4 flex items-center justify-between gap-3 rounded-2xl border border-border bg-card px-4 py-3 shadow-sm">
+      <div className="mb-3 flex items-center justify-between gap-3 rounded-2xl border border-border bg-card px-4 py-3 shadow-sm">
         <LinkBrand locale={locale} label={t('app.name')} />
         <Button
           type="button"
@@ -39,10 +41,32 @@ export function MobileNavMenu({
         </Button>
       </div>
 
+      <nav aria-label={t('site.mobileTools')} className="mobile-quick-tools mb-4">
+        {quickTools.map((item) => {
+          const Icon = item.icon
+          const isActive = item.tool === activeTool
+          return (
+            <Link
+              key={item.key}
+              to={getLocalizedPath(locale, item.path)}
+              search={location.search}
+              aria-current={isActive ? 'page' : undefined}
+              className={cn('mobile-quick-link', isActive && 'is-active')}
+              onClick={() => {
+                if (item.tool) writeLastTool(item.tool)
+              }}
+            >
+              <Icon className="h-4 w-4" />
+              <span>{t(item.key)}</span>
+            </Link>
+          )
+        })}
+      </nav>
+
       {open ? (
-        <div className="mb-4 rounded-3xl border border-border bg-card p-3 shadow-xl">
-          <p className="px-2 pb-2 text-[11px] font-semibold tracking-[0.2em] text-muted-foreground uppercase">
-            {t('nav.desktopToolNavigation')}
+        <div data-testid="mobile-nav-panel" className="mb-4 rounded-3xl border border-border bg-card p-3 shadow-xl">
+          <p className="px-2 pb-2 text-[11px] font-semibold tracking-[0.12em] text-muted-foreground">
+            {t('site.mobileBrowse')}
           </p>
           <nav className="grid gap-2">
             {MOBILE_NAV_ITEMS.map((item) => {
@@ -72,7 +96,7 @@ export function MobileNavMenu({
           </nav>
 
           <div className="mt-3 flex items-center justify-between gap-2 border-t border-border/80 pt-3">
-            <p className="text-xs font-medium text-muted-foreground">{t('settings.appearance')}</p>
+            <p className="text-xs font-medium text-muted-foreground">{t('site.mobilePreferences')}</p>
             <div className="flex items-center gap-2">
               <LocaleSwitcher iconOnly onAfterChange={() => setOpen(false)} />
               <ThemeToggle iconOnly onAfterChange={() => setOpen(false)} />

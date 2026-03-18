@@ -152,6 +152,7 @@ describe('TripPage delete confirmations', () => {
 
     render(createElement(TripPage, { locale: 'en-US', tripId: 'trip-1' }))
 
+    expect(screen.queryByText('expense form')).toBeNull()
     fireEvent.click(await screen.findByRole('button', { name: 'Add expense' }))
 
     expect(navigateMock).toHaveBeenCalledWith(expect.objectContaining({ to: '/en-us/bill-splitter/trip-1/add' }))
