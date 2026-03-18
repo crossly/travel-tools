@@ -81,4 +81,13 @@ describe('home landing styling', () => {
     expect(css).toContain('.home-intro-title')
     expect(css).toContain('.home-priority-rail')
   })
+
+  it('keeps the original app font stacks instead of editorial replacements', () => {
+    const css = readFileSync(resolve(process.cwd(), 'src/styles.css'), 'utf8')
+
+    expect(css).toContain('--font-sans: "Inter Variable", "Inter", "Noto Sans SC", system-ui, sans-serif;')
+    expect(css).toContain('--font-display: "Manrope Variable", "Manrope", "Inter", sans-serif;')
+    expect(css).not.toContain('Fraunces')
+    expect(css).not.toContain('Source+Sans+3')
+  })
 })
