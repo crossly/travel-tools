@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { createElement } from 'react'
-import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { act, fireEvent, render, screen, waitFor, within } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import type { PackingList } from '@/lib/types'
 
@@ -154,6 +154,22 @@ describe('PackingListPage', () => {
 
     expect(writePackingLists).toHaveBeenCalled()
     expect(writeActivePackingListId).toHaveBeenCalled()
+  }, 10_000)
+
+  it('keeps the active packing workspace in one card with the essentials and stats together', async () => {
+    const { PackingListPage } = await import('@/features/packing-list/home-page')
+
+    render(createElement(PackingListPage, { locale: 'en-US' }))
+
+    fireEvent.change(screen.getByLabelText('List name'), { target: { value: 'Tokyo Spring' } })
+    fireEvent.click(screen.getByRole('button', { name: 'Create list' }))
+
+    const workspace = await screen.findByTestId('packing-workspace-header')
+
+    expect(within(workspace).getByText('Current list')).toBeTruthy()
+    expect(within(workspace).getByText('Total items')).toBeTruthy()
+    expect(within(workspace).getByText('Before-you-leave essentials')).toBeTruthy()
+    expect(within(workspace).getByText('Passport')).toBeTruthy()
   }, 10_000)
 
   it('debounces packing list persistence while the user is typing notes', async () => {

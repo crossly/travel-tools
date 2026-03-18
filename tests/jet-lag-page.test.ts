@@ -221,4 +221,37 @@ describe('JetLagPage', () => {
     expect(screen.getAllByText(formatJetLagInstant(new Date('2026-01-15T01:00:00.000Z'), 'Asia/Shanghai', 'en-US')).length).toBeGreaterThan(0)
     expect(screen.getAllByText(formatJetLagInstant(new Date('2026-01-15T01:00:00.000Z'), 'Europe/Paris', 'en-US')).length).toBeGreaterThan(0)
   })
+
+  it('keeps the current route context when resetting the plan', async () => {
+    storedPrefs = {
+      originTimeZone: 'America/New_York',
+      destinationTimeZone: 'Europe/Paris',
+      departureAt: '2026-03-20T08:00',
+      arrivalAt: '2026-03-20T23:00',
+      intensity: 'heavy',
+    }
+
+    const { JetLagPage } = await import('@/features/jet-lag/page')
+
+    render(createElement(JetLagPage, { locale: 'en-US' }))
+
+    expect(screen.getByText('America/New_York')).toBeTruthy()
+    expect(screen.getByText('Europe/Paris')).toBeTruthy()
+    expect(screen.getByDisplayValue('2026-03-20T08:00')).toBeTruthy()
+    expect(screen.getByDisplayValue('2026-03-20T23:00')).toBeTruthy()
+
+    fireEvent.click(await screen.findByRole('button', { name: 'Reset sample trip' }))
+
+    const latestPrefs = writeJetLagPrefs.mock.calls.at(-1)?.[0] as JetLagPrefs | undefined
+
+    expect(screen.getByText('America/New_York')).toBeTruthy()
+    expect(screen.getByText('Europe/Paris')).toBeTruthy()
+    expect(latestPrefs).toMatchObject({
+      originTimeZone: 'America/New_York',
+      destinationTimeZone: 'Europe/Paris',
+      intensity: 'heavy',
+    })
+    expect(latestPrefs?.departureAt).not.toBe('2026-03-20T08:00')
+    expect(latestPrefs?.arrivalAt).not.toBe('2026-03-20T23:00')
+  })
 })

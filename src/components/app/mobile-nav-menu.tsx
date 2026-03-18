@@ -49,7 +49,6 @@ export function MobileNavMenu({
             <Link
               key={item.key}
               to={getLocalizedPath(locale, item.path)}
-              search={location.search}
               aria-current={isActive ? 'page' : undefined}
               className={cn('mobile-quick-link', isActive && 'is-active')}
               onClick={() => {
@@ -76,7 +75,6 @@ export function MobileNavMenu({
                 <Link
                   key={item.key}
                   to={getLocalizedPath(locale, item.path)}
-                  search={location.search}
                   aria-current={isActive ? 'page' : undefined}
                   className={cn(
                     'mobile-nav-link flex items-center gap-3 rounded-2xl border border-border bg-[color:var(--surface-floating)] px-4 py-3 text-left text-sm font-medium text-foreground shadow-sm transition-colors',
@@ -108,7 +106,6 @@ export function MobileNavMenu({
               >
                 <Link
                   to={settingsPath}
-                  search={location.search}
                   aria-label={t('nav.settings')}
                   onClick={() => setOpen(false)}
                 >

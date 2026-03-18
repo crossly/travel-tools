@@ -292,73 +292,74 @@ export function PackingListPage({ locale }: { locale: Locale }) {
       {activeList ? (
         <>
           <Card tone="soft" data-testid="packing-workspace-header">
-            <CardContent className="grid gap-5 pt-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-start">
-              <div className="space-y-4">
-                <div className="space-y-2">
-                  <p className="shell-brand-kicker">{t('packing.currentList')}</p>
-                  <div className="max-w-sm">
-                    <Select value={activeListId ?? undefined} onValueChange={setActiveListId}>
-                      <SelectTrigger
-                        id="packing-current-list"
-                        aria-label={t('packing.currentList')}
-                        className="w-full justify-between rounded-xl px-3 font-medium"
-                      >
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {lists.map((list) => (
-                          <SelectItem key={list.id} value={list.id}>
-                            {list.name}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </div>
-                <p className="max-w-2xl text-sm leading-6 text-muted-foreground">{t('packing.essentialsDescription')}</p>
-              </div>
-
-              <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-                <StatCard icon={ListChecks} label={t('packing.statsTotal')} value={stats.total} />
-                <StatCard icon={Check} label={t('packing.statsPacked')} value={stats.packed} />
-                <StatCard icon={Circle} label={t('packing.statsRemaining')} value={stats.remaining} />
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card tone="plain">
-            <CardHeader>
-              <CardTitle className="text-balance">{t('packing.essentialsTitle')}</CardTitle>
-              <CardDescription className="text-pretty">{t('packing.essentialsDescription')}</CardDescription>
-            </CardHeader>
-            <CardContent className="grid gap-3">
-              {essentials.map((item) => {
-                const packed = item.checked
-                return (
-                  <div key={item.id} className="flex items-center justify-between gap-3 rounded-2xl border border-border bg-[color:var(--surface-floating)] px-4 py-3">
-                    <div className="flex items-center gap-3">
-                      <div className={cn('flex size-10 items-center justify-center rounded-full border', packed ? 'border-primary/30 bg-primary/10 text-primary' : 'border-border text-muted-foreground')}>
-                        {packed ? <Check className="size-4" /> : <Briefcase className="size-4" />}
-                      </div>
-                      <div>
-                        <p className="font-medium text-foreground">{getPackingItemLabel(item, (key) => t(key))}</p>
-                        <p className="text-sm text-muted-foreground">{packed ? t('packing.essentialsReady') : t('packing.essentialsMissing')}</p>
-                      </div>
+            <CardContent className="grid gap-5 pt-6">
+              <div className="grid gap-5 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-start">
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <p className="shell-brand-kicker">{t('packing.currentList')}</p>
+                    <div className="max-w-sm">
+                      <Select value={activeListId ?? undefined} onValueChange={setActiveListId}>
+                        <SelectTrigger
+                          id="packing-current-list"
+                          aria-label={t('packing.currentList')}
+                          className="w-full justify-between rounded-xl px-3 font-medium"
+                        >
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {lists.map((list) => (
+                            <SelectItem key={list.id} value={list.id}>
+                              {list.name}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
                     </div>
-                    <Button
-                      type="button"
-                      variant={packed ? 'secondary' : 'outline'}
-                      size="sm"
-                      onClick={() => {
-                        const section = activeList.sections.find((entry) => entry.items.some((entryItem) => entryItem.id === item.id))
-                        if (section) toggleItem(section.id, item.id)
-                      }}
-                    >
-                      {packed ? t('packing.markUnpacked') : t('packing.markPacked')}
-                    </Button>
                   </div>
-                )
-              })}
+                  <p className="max-w-2xl text-sm leading-6 text-muted-foreground">{t('packing.essentialsDescription')}</p>
+                </div>
+
+                <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+                  <StatCard icon={ListChecks} label={t('packing.statsTotal')} value={stats.total} />
+                  <StatCard icon={Check} label={t('packing.statsPacked')} value={stats.packed} />
+                  <StatCard icon={Circle} label={t('packing.statsRemaining')} value={stats.remaining} />
+                </div>
+              </div>
+              <div className="grid gap-3 border-t border-border/70 pt-5">
+                <div className="space-y-2">
+                  <CardTitle className="text-balance">{t('packing.essentialsTitle')}</CardTitle>
+                  <CardDescription className="text-pretty">{t('packing.essentialsDescription')}</CardDescription>
+                </div>
+                <div className="grid gap-3">
+                  {essentials.map((item) => {
+                    const packed = item.checked
+                    return (
+                      <div key={item.id} className="flex items-center justify-between gap-3 rounded-2xl border border-border bg-[color:var(--surface-floating)] px-4 py-3">
+                        <div className="flex items-center gap-3">
+                          <div className={cn('flex size-10 items-center justify-center rounded-full border', packed ? 'border-primary/30 bg-primary/10 text-primary' : 'border-border text-muted-foreground')}>
+                            {packed ? <Check className="size-4" /> : <Briefcase className="size-4" />}
+                          </div>
+                          <div>
+                            <p className="font-medium text-foreground">{getPackingItemLabel(item, (key) => t(key))}</p>
+                            <p className="text-sm text-muted-foreground">{packed ? t('packing.essentialsReady') : t('packing.essentialsMissing')}</p>
+                          </div>
+                        </div>
+                        <Button
+                          type="button"
+                          variant={packed ? 'secondary' : 'outline'}
+                          size="sm"
+                          onClick={() => {
+                            const section = activeList.sections.find((entry) => entry.items.some((entryItem) => entryItem.id === item.id))
+                            if (section) toggleItem(section.id, item.id)
+                          }}
+                        >
+                          {packed ? t('packing.markUnpacked') : t('packing.markPacked')}
+                        </Button>
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
             </CardContent>
           </Card>
 

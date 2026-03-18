@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { createElement } from 'react'
 import type { ReactNode } from 'react'
-import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor, within } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 
 const fetchSnapshotMock = vi.fn()
@@ -156,6 +156,25 @@ describe('TripPage delete confirmations', () => {
     fireEvent.click(await screen.findByRole('button', { name: 'Add expense' }))
 
     expect(navigateMock).toHaveBeenCalledWith(expect.objectContaining({ to: '/en-us/bill-splitter/trip-1/add' }))
+  })
+
+  it('keeps add expense as the primary action and groups split-count and trip controls in the secondary area', async () => {
+    const { TripPage } = await import('@/features/split-bill/trip-page')
+
+    render(createElement(TripPage, { locale: 'en-US', tripId: 'trip-1' }))
+
+    const primaryActionCard = await screen.findByTestId('trip-primary-action-card')
+    const secondaryActionsCard = await screen.findByTestId('trip-secondary-actions-card')
+
+    expect(within(primaryActionCard).getByRole('button', { name: 'Add expense' })).toBeTruthy()
+    expect(within(primaryActionCard).queryByText('Split count')).toBeNull()
+    expect(within(primaryActionCard).queryByRole('button', { name: 'Settlement' })).toBeNull()
+    expect(within(primaryActionCard).queryByRole('button', { name: 'Delete trip' })).toBeNull()
+
+    expect(within(secondaryActionsCard).getByText('Split count')).toBeTruthy()
+    expect(within(secondaryActionsCard).getByRole('button', { name: 'Settlement' })).toBeTruthy()
+    expect(within(secondaryActionsCard).getByRole('button', { name: 'Delete trip' })).toBeTruthy()
+    expect(screen.getAllByText('Split count').length).toBe(1)
   })
 
   it('shows a richer empty ledger state when no expenses are recorded', async () => {

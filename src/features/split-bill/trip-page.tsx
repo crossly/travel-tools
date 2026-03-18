@@ -155,7 +155,7 @@ export function TripPage({ locale, tripId, initialSnapshot = null }: { locale: L
         </div>
 
         <div className="order-1 grid gap-4 xl:order-2">
-          <Card className="border-primary/20 bg-[linear-gradient(145deg,var(--surface-floating),color-mix(in_oklab,var(--surface-floating)_78%,var(--accent)_22%))]">
+          <Card data-testid="trip-primary-action-card" className="border-primary/20 bg-[linear-gradient(145deg,var(--surface-floating),color-mix(in_oklab,var(--surface-floating)_78%,var(--accent)_22%))]">
             <CardContent className="grid gap-3 p-6 md:grid-cols-[minmax(0,1.3fr)_auto] md:items-center">
               <div className="space-y-2">
                 <p className="text-sm font-medium text-muted-foreground">{snapshot?.trip.name ?? t('trip.titleFallback')}</p>
@@ -175,14 +175,10 @@ export function TripPage({ locale, tripId, initialSnapshot = null }: { locale: L
           </Card>
 
           <Card tone="soft">
-            <CardContent className="grid gap-3 pt-6 sm:grid-cols-3">
+            <CardContent className="grid gap-3 pt-6 sm:grid-cols-2">
               <div className="rounded-2xl border border-border/70 bg-background/80 p-4">
                 <p className="text-sm font-medium text-muted-foreground">{t('trip.summaryExpenses')}</p>
                 <p className="mt-2 text-2xl font-semibold tabular-nums text-foreground">{snapshot ? activeExpenses.length : '--'}</p>
-              </div>
-              <div className="rounded-2xl border border-border/70 bg-background/80 p-4">
-                <p className="text-sm font-medium text-muted-foreground">{t('trip.splitCount')}</p>
-                <p className="mt-2 text-2xl font-semibold tabular-nums text-foreground">{snapshot?.trip.splitCount ?? '--'}</p>
               </div>
               <div className="rounded-2xl border border-border/70 bg-background/80 p-4">
                 <p className="text-sm font-medium text-muted-foreground">{t('trip.summarySettlementCurrency')}</p>
@@ -191,69 +187,69 @@ export function TripPage({ locale, tripId, initialSnapshot = null }: { locale: L
             </CardContent>
           </Card>
 
-          <Card>
-            <CardContent className="flex flex-wrap items-center justify-between gap-4 pt-6">
-              <div>
-                <p className="text-sm font-medium text-muted-foreground">{t('trip.splitCount')}</p>
-                <p className="mt-1 text-3xl font-semibold tabular-nums">{snapshot?.trip.splitCount ?? '--'}</p>
+          <Card data-testid="trip-secondary-actions-card">
+            <CardContent className="grid gap-5 pt-6">
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                <div>
+                  <p className="text-sm font-medium text-muted-foreground">{t('trip.splitCount')}</p>
+                  <p className="mt-1 text-3xl font-semibold tabular-nums">{snapshot?.trip.splitCount ?? '--'}</p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Button
+                    type="button"
+                    variant="secondary"
+                    size="icon"
+                    className="rounded-full"
+                    disabled={!snapshot || isSavingSplitCount || snapshot.trip.splitCount <= 1}
+                    aria-label={t('trip.decreaseSplitCount')}
+                    onClick={() => void onChangeSplitCount((snapshot?.trip.splitCount ?? 1) - 1)}
+                  >
+                    <Minus className="h-4 w-4" />
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="secondary"
+                    size="icon"
+                    className="rounded-full"
+                    disabled={!snapshot || isSavingSplitCount}
+                    aria-label={t('trip.increaseSplitCount')}
+                    onClick={() => void onChangeSplitCount((snapshot?.trip.splitCount ?? 0) + 1)}
+                  >
+                    <Plus className="h-4 w-4" />
+                  </Button>
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                <Button
-                  type="button"
-                  variant="secondary"
-                  size="icon"
-                  className="rounded-full"
-                  disabled={!snapshot || isSavingSplitCount || snapshot.trip.splitCount <= 1}
-                  aria-label={t('trip.decreaseSplitCount')}
-                  onClick={() => void onChangeSplitCount((snapshot?.trip.splitCount ?? 1) - 1)}
-                >
-                  <Minus className="h-4 w-4" />
-                </Button>
-                <Button
-                  type="button"
-                  variant="secondary"
-                  size="icon"
-                  className="rounded-full"
-                  disabled={!snapshot || isSavingSplitCount}
-                  aria-label={t('trip.increaseSplitCount')}
-                  onClick={() => void onChangeSplitCount((snapshot?.trip.splitCount ?? 0) + 1)}
-                >
-                  <Plus className="h-4 w-4" />
-                </Button>
-              </div>
-              <p className="w-full text-sm text-muted-foreground">
+              <p className="text-sm text-muted-foreground">
                 {isSavingSplitCount
                   ? t('common.saving')
                   : hasSavedSplitCount
                     ? t('trip.splitCountSavedInline')
                     : t('trip.splitCountHint')}
               </p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardContent className="grid gap-3 pt-6 md:grid-cols-2">
-              <Button
-                type="button"
-                variant="secondary"
-                size="lg"
-                className="w-full"
-                disabled={!snapshot}
-                onClick={() => navigate({ to: getLocalizedPath(locale, `/bill-splitter/${tripId}/settlement`) })}
-              >
-                {t('trip.settlement')}
-              </Button>
-              <ConfirmActionDialog
-                triggerLabel={t('trip.deleteTrip')}
-                title={t('trip.deleteTripConfirmTitle')}
-                description={t('trip.deleteTripConfirmBody')}
-                confirmLabel={t('trip.deleteTripAction')}
-                cancelLabel={t('common.cancel')}
-                onConfirm={onDeleteTrip}
-                triggerDisabled={!snapshot}
-                triggerSize="lg"
-                triggerClassName="w-full"
-              />
+              <div className="grid gap-3 md:grid-cols-2">
+                <Button
+                  type="button"
+                  variant="secondary"
+                  size="lg"
+                  className="w-full"
+                  disabled={!snapshot}
+                  onClick={() => navigate({ to: getLocalizedPath(locale, `/bill-splitter/${tripId}/settlement`) })}
+                >
+                  {t('trip.settlement')}
+                </Button>
+                <ConfirmActionDialog
+                  triggerLabel={t('trip.deleteTrip')}
+                  title={t('trip.deleteTripConfirmTitle')}
+                  description={t('trip.deleteTripConfirmBody')}
+                  confirmLabel={t('trip.deleteTripAction')}
+                  cancelLabel={t('common.cancel')}
+                  onConfirm={onDeleteTrip}
+                  triggerDisabled={!snapshot}
+                  triggerSize="lg"
+                  triggerVariant="outline"
+                  triggerClassName="w-full"
+                />
+              </div>
             </CardContent>
           </Card>
         </div>

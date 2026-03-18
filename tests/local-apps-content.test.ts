@@ -6,6 +6,12 @@ describe('local apps content', () => {
     expect(countReadyLocalAppCountries()).toBe(listReadyLocalAppCountrySlugs().length)
   })
 
+  it('keeps country flags as emoji in local app summaries', () => {
+    const japan = listLocalAppCountrySummaries('en-US').find((summary) => summary.slug === 'japan')
+
+    expect(japan?.flag).toBe('🇯🇵')
+  })
+
   it('builds ready guides from tracked countries with valid https links', async () => {
     const summaries = listLocalAppCountrySummaries('en-US')
     const trackedSlugSet = new Set(summaries.map((summary) => summary.slug))

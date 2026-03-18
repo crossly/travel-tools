@@ -1,7 +1,6 @@
 import { LOCAL_APP_GUIDE_SUMMARIES } from '@/data/local-apps/guide-summaries'
 import type { RawLocalAppGuideDefinition, RawLocalAppRecommendation } from '@/data/local-apps/types'
 import { translate } from '@/lib/i18n'
-import { listRawPhraseCountrySummaries } from '@/lib/travel-phrases'
 import type {
   LocalAppCountrySummary,
   LocalAppGuide,
@@ -10,11 +9,59 @@ import type {
   PhraseRegion,
 } from '@/lib/types'
 
-const phraseSummaries = listRawPhraseCountrySummaries()
-const phraseSummaryBySlug = new Map(phraseSummaries.map((summary) => [summary.slug, summary]))
+type LocalAppCountryProfile = {
+  countryCode: string
+  region: PhraseRegion
+}
+
+const LOCAL_APP_COUNTRY_PROFILES: Record<string, LocalAppCountryProfile> = {
+  argentina: { countryCode: 'AR', region: 'americas' },
+  australia: { countryCode: 'AU', region: 'oceania' },
+  austria: { countryCode: 'AT', region: 'europe' },
+  brazil: { countryCode: 'BR', region: 'americas' },
+  cambodia: { countryCode: 'KH', region: 'asia' },
+  canada: { countryCode: 'CA', region: 'americas' },
+  chile: { countryCode: 'CL', region: 'americas' },
+  china: { countryCode: 'CN', region: 'asia' },
+  colombia: { countryCode: 'CO', region: 'americas' },
+  'costa-rica': { countryCode: 'CR', region: 'americas' },
+  egypt: { countryCode: 'EG', region: 'africa' },
+  france: { countryCode: 'FR', region: 'europe' },
+  germany: { countryCode: 'DE', region: 'europe' },
+  greece: { countryCode: 'GR', region: 'europe' },
+  'hong-kong': { countryCode: 'HK', region: 'asia' },
+  india: { countryCode: 'IN', region: 'asia' },
+  indonesia: { countryCode: 'ID', region: 'asia' },
+  italy: { countryCode: 'IT', region: 'europe' },
+  japan: { countryCode: 'JP', region: 'asia' },
+  kenya: { countryCode: 'KE', region: 'africa' },
+  malaysia: { countryCode: 'MY', region: 'asia' },
+  mauritius: { countryCode: 'MU', region: 'africa' },
+  mexico: { countryCode: 'MX', region: 'americas' },
+  morocco: { countryCode: 'MA', region: 'africa' },
+  netherlands: { countryCode: 'NL', region: 'europe' },
+  'new-zealand': { countryCode: 'NZ', region: 'oceania' },
+  peru: { countryCode: 'PE', region: 'americas' },
+  philippines: { countryCode: 'PH', region: 'asia' },
+  portugal: { countryCode: 'PT', region: 'europe' },
+  singapore: { countryCode: 'SG', region: 'asia' },
+  'south-africa': { countryCode: 'ZA', region: 'africa' },
+  'south-korea': { countryCode: 'KR', region: 'asia' },
+  spain: { countryCode: 'ES', region: 'europe' },
+  switzerland: { countryCode: 'CH', region: 'europe' },
+  taiwan: { countryCode: 'TW', region: 'asia' },
+  tanzania: { countryCode: 'TZ', region: 'africa' },
+  thailand: { countryCode: 'TH', region: 'asia' },
+  turkey: { countryCode: 'TR', region: 'europe' },
+  'united-arab-emirates': { countryCode: 'AE', region: 'middle-east' },
+  'united-states': { countryCode: 'US', region: 'americas' },
+  vietnam: { countryCode: 'VN', region: 'asia' },
+}
+
 const guideSummaryBySlug = new Map(LOCAL_APP_GUIDE_SUMMARIES.map((guide) => [guide.slug, guide]))
 const featuredCountrySlugs = LOCAL_APP_GUIDE_SUMMARIES.map((guide) => guide.slug)
 const featuredCountryRank = new Map(featuredCountrySlugs.map((slug, index) => [slug, index]))
+const countryNameFormatterByLocale = new Map<Locale, Intl.DisplayNames>()
 const guideModuleLoaders = import.meta.glob('../data/local-apps/country-guides/*.ts') as Record<
   string,
   () => Promise<{ LOCAL_APP_GUIDE: RawLocalAppGuideDefinition }>
@@ -26,6 +73,22 @@ const guideLoaderBySlug = new Map(
   ]),
 )
 const guideCache = new Map<string, RawLocalAppGuideDefinition | null>()
+
+function getCountryName(locale: Locale, countryCode: string) {
+  let formatter = countryNameFormatterByLocale.get(locale)
+  if (!formatter) {
+    formatter = new Intl.DisplayNames([locale], { type: 'region' })
+    countryNameFormatterByLocale.set(locale, formatter)
+  }
+
+  return formatter.of(countryCode) ?? countryCode
+}
+
+function getCountryFlag(countryCode: string) {
+  return countryCode
+    .toUpperCase()
+    .replace(/./g, (character) => String.fromCodePoint(127397 + character.charCodeAt(0)))
+}
 
 async function loadGuideDefinition(slug: string) {
   if (guideCache.has(slug)) {
@@ -44,26 +107,28 @@ async function loadGuideDefinition(slug: string) {
 }
 
 function buildSummary(locale: Locale, slug: string): LocalAppCountrySummary | null {
-  const phraseSummary = phraseSummaryBySlug.get(slug)
-  if (!phraseSummary) return null
+  const guideSummary = guideSummaryBySlug.get(slug)
+  const profile = LOCAL_APP_COUNTRY_PROFILES[slug]
+  if (!guideSummary || !profile) return null
 
-  const guide = guideSummaryBySlug.get(slug)
+  const country = getCountryName(locale, profile.countryCode)
+  const ready = guideLoaderBySlug.has(slug)
   return {
-    country: phraseSummary.country[locale],
+    country,
     slug,
-    region: phraseSummary.region,
-    flag: phraseSummary.flag,
-    ready: Boolean(guide),
-    title: guide
-      ? translate(locale, 'localApps.countryPageTitle', { country: phraseSummary.country[locale] })
-      : translate(locale, 'localApps.countryPendingTitle', { country: phraseSummary.country[locale] }),
-    description: guide
-      ? guide.teaser[locale]
-      : translate(locale, 'localApps.pendingCardDescription', { country: phraseSummary.country[locale] }),
-    highlights: guide?.highlights[locale] ?? [],
-    categoryIds: guide?.categoryIds ?? [],
-    categoryCount: guide?.categoryCount ?? 0,
-    appCount: guide?.appCount ?? 0,
+    region: profile.region,
+    flag: getCountryFlag(profile.countryCode),
+    ready,
+    title: ready
+      ? translate(locale, 'localApps.countryPageTitle', { country })
+      : translate(locale, 'localApps.countryPendingTitle', { country }),
+    description: ready
+      ? guideSummary.teaser[locale]
+      : translate(locale, 'localApps.pendingCardDescription', { country }),
+    highlights: guideSummary.highlights[locale],
+    categoryIds: guideSummary.categoryIds,
+    categoryCount: guideSummary.categoryCount,
+    appCount: guideSummary.appCount,
   }
 }
 
@@ -79,8 +144,8 @@ function buildRecommendation(locale: Locale, recommendation: RawLocalAppRecommen
 }
 
 export function listLocalAppCountrySummaries(locale: Locale, region: PhraseRegion | 'all' = 'all') {
-  return phraseSummaries
-    .filter((summary) => region === 'all' || summary.region === region)
+  return LOCAL_APP_GUIDE_SUMMARIES
+    .filter((summary) => region === 'all' || LOCAL_APP_COUNTRY_PROFILES[summary.slug]?.region === region)
     .map((summary) => buildSummary(locale, summary.slug))
     .filter((summary): summary is LocalAppCountrySummary => Boolean(summary))
 }
@@ -104,11 +169,11 @@ export function getLocalAppCountrySummary(locale: Locale, slug: string) {
 }
 
 export function countReadyLocalAppCountries() {
-  return featuredCountrySlugs.length
+  return featuredCountrySlugs.filter((slug) => guideLoaderBySlug.has(slug)).length
 }
 
 export function countTrackedLocalAppCountries() {
-  return phraseSummaries.length
+  return LOCAL_APP_GUIDE_SUMMARIES.length
 }
 
 export async function getLocalAppGuide(locale: Locale, slug: string): Promise<LocalAppGuide | null> {

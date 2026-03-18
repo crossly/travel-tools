@@ -9,22 +9,16 @@ vi.mock('@tanstack/react-router', () => ({
   useLocation: () => ({ pathname: '/en-US/local-apps' }),
 }))
 
-vi.mock('@/lib/i18n', () => ({
-  useI18n: () => ({
-    t: (key: string) =>
-      ({
-        'nav.home': 'Home',
-        'nav.currency': 'Currency',
-        'nav.travelPhrases': 'Phrases',
-        'nav.localApps': 'Local Apps',
-        'nav.splitBill': 'Bill Splitter',
-        'nav.packingList': 'Packing',
-        'nav.jetLag': 'Jet Lag',
-        'nav.settings': 'Settings',
-        'nav.desktopToolNavigation': 'Tool navigation',
-      })[key] ?? key,
-  }),
-}))
+vi.mock('@/lib/i18n', async () => {
+  const actual = await vi.importActual<typeof import('@/lib/i18n')>('@/lib/i18n')
+
+  return {
+    ...actual,
+    useI18n: () => ({
+      t: (key: string, values?: Record<string, string | number>) => actual.translate('en-US', key, values),
+    }),
+  }
+})
 
 describe('DesktopToolNav semantics', () => {
   it('sets aria-current on the active tool link without permanently featuring currency', async () => {
@@ -37,6 +31,7 @@ describe('DesktopToolNav semantics', () => {
       }),
     )
 
+    expect(screen.getByRole('navigation', { name: 'Open a tool' })).toBeTruthy()
     const activeLink = screen.getByRole('link', { name: 'Local Apps' })
     const currencyLink = screen.getByRole('link', { name: 'Currency' })
 

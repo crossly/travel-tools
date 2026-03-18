@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { calculateJetLagPlan, getRecommendedJetLagIntensity, resolveDefaultOriginTimeZone } from '@/lib/jet-lag'
+import { calculateJetLagPlan, getRecommendedJetLagIntensity, getResetJetLagPrefs, resolveDefaultOriginTimeZone } from '@/lib/jet-lag'
 
 describe('jet lag helpers', () => {
   it('classifies recommended intensity from the timezone gap', () => {
@@ -40,5 +40,21 @@ describe('jet lag helpers', () => {
 
   it('keeps the detected browser timezone even when it is outside the curated list', () => {
     expect(resolveDefaultOriginTimeZone('Asia/Kolkata')).toBe('Asia/Kolkata')
+  })
+
+  it('resets the plan while preserving the current route context', () => {
+    expect(
+      getResetJetLagPrefs({
+        originTimeZone: 'America/New_York',
+        destinationTimeZone: 'Asia/Tokyo',
+        departureAt: '2026-03-20T08:00',
+        arrivalAt: '2026-03-21T01:00',
+        intensity: 'heavy',
+      }, new Date('2026-03-18T12:00:00.000Z')),
+    ).toMatchObject({
+      originTimeZone: 'America/New_York',
+      destinationTimeZone: 'Asia/Tokyo',
+      intensity: 'heavy',
+    })
   })
 })

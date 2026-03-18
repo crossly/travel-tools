@@ -18,6 +18,7 @@ import {
   getDefaultJetLagPrefs,
   getJetLagTimezoneOption,
   getInitialJetLagPrefs,
+  getResetJetLagPrefs,
   resolveDefaultOriginTimeZone,
 } from '@/lib/jet-lag'
 import { useI18n } from '@/lib/i18n'
@@ -226,7 +227,7 @@ export function JetLagPage({ locale }: { locale: Locale }) {
                         type="button"
                         variant="secondary"
                         className="mt-3"
-                        onClick={() => setPrefs(getDefaultJetLagPrefs())}
+                        onClick={() => setPrefs((current) => getResetJetLagPrefs(current))}
                       >
                         {t('jetLag.reset')}
                       </Button>

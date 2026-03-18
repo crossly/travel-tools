@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from '@tanstack/react-router'
+import { useNavigate } from '@tanstack/react-router'
 import { Compass } from 'lucide-react'
 import { TOOLS, getLocalizedPath } from '@/lib/site'
 import { useI18n } from '@/lib/i18n'
@@ -13,7 +13,6 @@ export function ToolSwitcher({
   activeTool?: ToolDefinition['slug']
 }) {
   const navigate = useNavigate()
-  const location = useLocation()
   const { t } = useI18n()
 
   return (
@@ -26,7 +25,7 @@ export function ToolSwitcher({
           const tool = TOOLS.find((item) => item.slug === slug)
           if (!tool) return
           writeLastTool(tool.slug)
-          navigate({ to: getLocalizedPath(locale, tool.entryPath), search: location.search })
+          navigate({ to: getLocalizedPath(locale, tool.entryPath) })
         }}
         className="max-w-32 bg-transparent text-foreground outline-none sm:max-w-none"
       >

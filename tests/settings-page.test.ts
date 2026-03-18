@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { createElement } from 'react'
-import { fireEvent, render, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 
 vi.mock('@/components/app/app-shell', () => ({
@@ -17,9 +17,6 @@ vi.mock('@/components/app/locale-switcher', () => ({
 
 const exportTrip = vi.fn()
 const importTrip = vi.fn()
-const createObjectURL = vi.fn(() => 'blob:mock')
-const revokeObjectURL = vi.fn()
-const anchorClick = vi.fn()
 
 vi.mock('@/lib/api/client', () => ({
   exportTrip,
@@ -73,86 +70,21 @@ describe('SettingsPage', () => {
     importTrip.mockReset()
     readActiveTripId.mockReset()
     readActiveTripId.mockReturnValue('trip_123')
-    createObjectURL.mockClear()
-    revokeObjectURL.mockClear()
-    anchorClick.mockClear()
   })
 
-  it('shows an inline field error when import content is empty', async () => {
+  it('renders only site-level preferences and does not touch trip helpers', async () => {
     const { SettingsPage } = await import('@/features/site/settings-page')
 
     render(createElement(SettingsPage, { locale: 'zh-CN' }))
+
     expect(screen.getByRole('heading', { name: '偏好设置' })).toBeTruthy()
     expect(screen.getByText('界面语言')).toBeTruthy()
     expect(screen.getByText('locale-switcher')).toBeTruthy()
-    fireEvent.click(screen.getByRole('button', { name: '导入' }))
-
-    expect(await screen.findByText('错误:MISSING_IMPORT_CONTENT')).toBeTruthy()
-  })
-
-  it('shows an inline field error when import json is invalid', async () => {
-    importTrip.mockRejectedValueOnce(new Error('INVALID_JSON_FORMAT'))
-    const { SettingsPage } = await import('@/features/site/settings-page')
-
-    render(createElement(SettingsPage, { locale: 'zh-CN' }))
-    fireEvent.change(screen.getByPlaceholderText('粘贴导出的 JSON'), { target: { value: '{bad json' } })
-    fireEvent.click(screen.getByRole('button', { name: '导入' }))
-
-    expect(await screen.findByText('错误:INVALID_JSON_FORMAT')).toBeTruthy()
-  })
-
-  it('shows a unified error status when export fails', async () => {
-    exportTrip.mockRejectedValueOnce(new Error('REQUEST_FAILED'))
-    const { SettingsPage } = await import('@/features/site/settings-page')
-
-    render(createElement(SettingsPage, { locale: 'zh-CN' }))
-    fireEvent.click(screen.getByRole('button', { name: '导出' }))
-
-    expect(await screen.findByText('错误:REQUEST_FAILED')).toBeTruthy()
-  })
-
-  it('downloads a json file when export succeeds', async () => {
-    exportTrip.mockResolvedValueOnce('{"trip":true}')
-    const appendChildSpy = vi.spyOn(document.body, 'appendChild')
-    const createElementSpy = vi.spyOn(document, 'createElement').mockImplementation(((tagName: string) => {
-      if (tagName === 'a') {
-        const anchor = document.createElementNS('http://www.w3.org/1999/xhtml', 'a') as HTMLAnchorElement
-        anchor.click = anchorClick
-        return anchor
-      }
-      return document.createElementNS('http://www.w3.org/1999/xhtml', tagName)
-    }) as typeof document.createElement)
-
-    vi.stubGlobal('URL', {
-      createObjectURL,
-      revokeObjectURL,
-    })
-
-    const { SettingsPage } = await import('@/features/site/settings-page')
-
-    render(createElement(SettingsPage, { locale: 'zh-CN' }))
-    expect(screen.getByRole('heading', { name: '导出当前行程' })).toBeTruthy()
-    expect(screen.getByText('导出当前行程为 JSON 备份。')).toBeTruthy()
-    fireEvent.click(screen.getByRole('button', { name: '导出' }))
-
-    expect(await screen.findByText('导出成功')).toBeTruthy()
-    expect(createObjectURL).toHaveBeenCalled()
-    expect(anchorClick).toHaveBeenCalled()
-
-    createElementSpy.mockRestore()
-    appendChildSpy.mockRestore()
-  })
-
-  it('surfaces the prerequisite and keeps import disabled when no active trip exists', async () => {
-    readActiveTripId.mockReturnValue('')
-    const { SettingsPage } = await import('@/features/site/settings-page')
-
-    render(createElement(SettingsPage, { locale: 'zh-CN' }))
-
-    expect(screen.getAllByText('当前没有行程：请先在 AA 记账创建或打开一个当前行程。').length).toBe(2)
-    expect(screen.getByText('导出当前行程为 JSON 备份。')).toBeTruthy()
-    expect(screen.getByText('把导出的 JSON 恢复到当前行程。')).toBeTruthy()
-    expect(screen.getByRole('button', { name: '导入' }).hasAttribute('disabled')).toBe(true)
-    expect(screen.getByPlaceholderText('粘贴导出的 JSON').hasAttribute('disabled')).toBe(true)
+    expect(screen.queryByText('行程数据')).toBeNull()
+    expect(screen.queryByRole('button', { name: '导出' })).toBeNull()
+    expect(screen.queryByRole('button', { name: '导入' })).toBeNull()
+    expect(readActiveTripId).not.toHaveBeenCalled()
+    expect(exportTrip).not.toHaveBeenCalled()
+    expect(importTrip).not.toHaveBeenCalled()
   })
 })

@@ -23,9 +23,9 @@ beforeAll(() => {
 })
 
 vi.mock('@tanstack/react-router', () => ({
-  Link: ({ children, to, ...props }: { children?: React.ReactNode; to?: string } & Record<string, unknown>) =>
-    createElement('a', { ...props, href: typeof to === 'string' ? to : '#' }, children),
-  useLocation: () => ({ pathname: '/zh-CN/currency', search: '' }),
+  Link: ({ children, to, search, ...props }: { children?: React.ReactNode; to?: string; search?: string } & Record<string, unknown>) =>
+    createElement('a', { ...props, href: `${typeof to === 'string' ? to : '#'}${typeof search === 'string' ? search : ''}` }, children),
+  useLocation: () => ({ pathname: '/zh-CN/currency', search: '?keep=1' }),
   useNavigate: () => navigateMock,
 }))
 
@@ -107,7 +107,7 @@ vi.mock('@/components/app/theme-toggle', () => ({
 }))
 
 describe('MobileNavMenu', () => {
-  it('shows quick-switch tool links before opening the full menu and closes after theme or locale changes', async () => {
+  it('shows quick-switch tool links before opening the full menu and does not carry search across tool links', async () => {
     const { MobileNavMenu } = await import('@/components/app/mobile-nav-menu')
 
     render(
@@ -117,9 +117,9 @@ describe('MobileNavMenu', () => {
       }),
     )
 
-    expect(screen.getByRole('link', { name: '汇率' })).toBeTruthy()
-    expect(screen.getByRole('link', { name: 'AA' })).toBeTruthy()
-    expect(screen.getByRole('link', { name: '行李' })).toBeTruthy()
+    expect(screen.getByRole('link', { name: '汇率' }).getAttribute('href')).toBe('/zh-cn/currency')
+    expect(screen.getByRole('link', { name: 'AA' }).getAttribute('href')).toBe('/zh-cn/bill-splitter')
+    expect(screen.getByRole('link', { name: '行李' }).getAttribute('href')).toBe('/zh-cn/packing-list')
 
     fireEvent.click(screen.getByRole('button', { name: '菜单' }))
 
@@ -127,6 +127,7 @@ describe('MobileNavMenu', () => {
     expect(screen.getByRole('link', { name: '短语卡' })).toBeTruthy()
     expect(screen.getByRole('link', { name: '本地 App' })).toBeTruthy()
     expect(screen.getByRole('link', { name: '时差' })).toBeTruthy()
+    expect(screen.getByRole('link', { name: '设置' }).getAttribute('href')).toBe('/zh-cn/settings')
     fireEvent.click(screen.getByRole('button', { name: '外观' }))
     expect(screen.queryByTestId('mobile-nav-panel')).toBeNull()
 

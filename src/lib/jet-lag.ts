@@ -66,6 +66,17 @@ export function getDefaultJetLagPrefs(originTimeZone = resolveDefaultOriginTimeZ
   }
 }
 
+export function getResetJetLagPrefs(currentPrefs: JetLagPrefs, now = new Date()): JetLagPrefs {
+  const departureAt = toDateTimeInputValue(new Date(now.getTime() + 24 * 60 * 60 * 1000))
+  const arrivalAt = toDateTimeInputValue(new Date(now.getTime() + 24 * 60 * 60 * 1000 + 9 * 60 * 60 * 1000))
+
+  return {
+    ...currentPrefs,
+    departureAt,
+    arrivalAt,
+  }
+}
+
 export function resolveDefaultOriginTimeZone(browserTimeZone = getResolvedBrowserTimeZone()) {
   if (browserTimeZone?.trim()) {
     return browserTimeZone

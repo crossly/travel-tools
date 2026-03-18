@@ -4,26 +4,21 @@ import { render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 
 vi.mock('@tanstack/react-router', () => ({
-  Link: ({ children, ...props }: { children?: React.ReactNode } & Record<string, unknown>) => createElement('a', props, children),
+  Link: ({ children, to, ...props }: { children?: React.ReactNode; to?: string } & Record<string, unknown>) =>
+    createElement('a', { ...props, href: typeof to === 'string' ? to : '#' }, children),
   useLocation: () => ({ pathname: '/en-US/local-apps' }),
 }))
 
-vi.mock('@/lib/i18n', () => ({
-  useI18n: () => ({
-    t: (key: string) =>
-      ({
-        'nav.home': 'Home',
-        'nav.currency': 'Currency',
-        'nav.travelPhrases': 'Phrases',
-        'nav.localApps': 'Local Apps',
-        'nav.splitBill': 'Bill Splitter',
-        'nav.packingList': 'Packing',
-        'nav.jetLag': 'Jet Lag',
-        'nav.settings': 'Settings',
-        'nav.desktopToolNavigation': 'Tool navigation',
-      })[key] ?? key,
-  }),
-}))
+vi.mock('@/lib/i18n', async () => {
+  const actual = await vi.importActual<typeof import('@/lib/i18n')>('@/lib/i18n')
+
+  return {
+    ...actual,
+    useI18n: () => ({
+      t: (key: string, values?: Record<string, string | number>) => actual.translate('en-US', key, values),
+    }),
+  }
+})
 
 describe('DesktopToolNav', () => {
   it('renders tool tabs without duplicating home in the desktop navigation row', async () => {
@@ -36,7 +31,7 @@ describe('DesktopToolNav', () => {
       }),
     )
 
-    expect(screen.getByRole('navigation', { name: 'Tool navigation' })).toBeTruthy()
+    expect(screen.getByRole('navigation', { name: 'Open a tool' })).toBeTruthy()
     expect(screen.getByRole('link', { name: 'Local Apps' })).toBeTruthy()
     expect(screen.queryByRole('link', { name: 'Home' })).toBeNull()
   })
