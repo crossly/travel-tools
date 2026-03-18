@@ -54,7 +54,7 @@ describe('AddExpensePage', () => {
     vi.clearAllMocks()
   })
 
-  it('renders a trip workbench around the expense form', async () => {
+  it('keeps the add-expense page focused on the form instead of leading with side panels', async () => {
     const { AddExpensePage } = await import('@/features/split-bill/add-expense-page')
 
     render(createElement(AddExpensePage, {
@@ -78,12 +78,9 @@ describe('AddExpensePage', () => {
     }))
 
     expect(screen.getByText('Record one expense, then jump back to the trip ledger.')).toBeTruthy()
-    expect(screen.getByText('This trip')).toBeTruthy()
-    expect(screen.getByText('How FX is handled')).toBeTruthy()
-    expect(screen.getByText('Expense currency')).toBeTruthy()
-    expect(screen.getByText('Settlement currency')).toBeTruthy()
-    expect(screen.getByText('Default split count')).toBeTruthy()
     expect(screen.getByText('expense form')).toBeTruthy()
+    expect(screen.queryByText('This trip')).toBeNull()
+    expect(screen.queryByText('How FX is handled')).toBeNull()
     expect(fetchSnapshotMock).not.toHaveBeenCalled()
 
     fireEvent.click(screen.getByRole('button', { name: 'Return to trip ledger' }))

@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { createElement } from 'react'
-import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor, within } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import type { TripSnapshot } from '@/lib/types'
 
@@ -89,6 +89,13 @@ vi.mock('@/lib/i18n', () => ({
         'addExpense.fxPreviewAuto': `Quoted rate · ${values?.amount} ${values?.fromCurrency} -> ${values?.converted} ${values?.toCurrency}`,
         'addExpense.fxPreviewManual': `Manual rate · ${values?.amount} ${values?.fromCurrency} -> ${values?.converted} ${values?.toCurrency}`,
         'addExpense.fxPreviewUnavailable': 'FX quote unavailable right now.',
+        'addExpense.tripDefaultsLabel': 'This trip',
+        'addExpense.fxHelperSummary': 'Use the trip-date quote by default. Expand only when you need to override it.',
+        'addExpense.fxHelperExpand': 'Expand FX help',
+        'addExpense.fxHelperCollapse': 'Hide FX help',
+        'addExpense.quotePolicyAuto': "Leave the manual FX field empty to preview settlement totals with that day's quote.",
+        'addExpense.quotePolicyManual': 'A manual rate immediately replaces the preview and becomes the saved conversion.',
+        'addExpense.quotePolicyReturn': 'After saving, you go straight back to the trip ledger to add the next line or check totals.',
         'common.saving': 'Saving',
         'home.invalidSplitCount': 'Split count must be at least 1',
       })[key] ?? key,
@@ -119,6 +126,30 @@ describe('ExpenseFormCard', () => {
     createExpense.mockReset()
   })
 
+  it('keeps trip defaults compact and hides the detailed fx policy until expanded', async () => {
+    const { ExpenseFormCard } = await import('@/features/split-bill/expense-form-card')
+
+    render(createElement(ExpenseFormCard, {
+      locale: 'en-US',
+      tripId: 'trip-1',
+      snapshot,
+      submitLabel: 'Add expense',
+    }))
+
+    const defaults = screen.getByTestId('expense-trip-defaults')
+    expect(within(defaults).getByText('This trip')).toBeTruthy()
+    expect(within(defaults).getByText('Expense currency JPY')).toBeTruthy()
+    expect(within(defaults).getByText('Settlement currency CNY')).toBeTruthy()
+    expect(within(defaults).getByText('Default split count 3')).toBeTruthy()
+    expect(screen.getByText('Use the trip-date quote by default. Expand only when you need to override it.')).toBeTruthy()
+    expect(screen.queryByText("Leave the manual FX field empty to preview settlement totals with that day's quote.")).toBeNull()
+
+    fireEvent.click(screen.getByRole('button', { name: 'Expand FX help' }))
+
+    expect(await screen.findByText("Leave the manual FX field empty to preview settlement totals with that day's quote.")).toBeTruthy()
+    expect(screen.getByRole('button', { name: 'Hide FX help' })).toBeTruthy()
+  })
+
   it('shows an automatic and manual FX settlement preview before saving', async () => {
     fetchFxQuote.mockResolvedValue({ rate: 0.05, fromCurrency: 'JPY', toCurrency: 'CNY' })
     const { ExpenseFormCard } = await import('@/features/split-bill/expense-form-card')
@@ -132,7 +163,6 @@ describe('ExpenseFormCard', () => {
 
     expect(screen.getByText('Settlement preview')).toBeTruthy()
     expect(screen.getByText('Start from the trip defaults below, and only override the fields that are different for this line.')).toBeTruthy()
-    expect(screen.getByText('Default split count')).toBeTruthy()
     expect(screen.getByText('Enter an amount to preview the settlement-side total.')).toBeTruthy()
 
     fireEvent.change(screen.getByRole('textbox', { name: 'Amount' }), { target: { value: '100' } })

@@ -41,6 +41,7 @@ export function ExpenseFormCard({
   const { t, tError } = useI18n()
   const navigate = useNavigate()
   const [isSaving, setIsSaving] = useState(false)
+  const [showFxPolicy, setShowFxPolicy] = useState(false)
   const [status, setStatus] = useState<{ tone: 'success' | 'warning' | 'danger'; title: string; description?: string } | null>(null)
   const [fxQuoteState, setFxQuoteState] = useState<{ status: 'idle' | 'loading' | 'ready' | 'error'; rate?: number }>({ status: 'idle' })
   const expenseSchema = useMemo(() => createExpenseFormSchema({
@@ -196,18 +197,18 @@ export function ExpenseFormCard({
       </CardHeader>
       <CardContent className="grid gap-4">
         {snapshot ? (
-          <div className="grid gap-3 sm:grid-cols-3">
-            <div className="rounded-2xl border border-border/70 bg-[color:var(--surface-floating)] p-4">
-              <p className="text-sm font-medium text-muted-foreground">{t('addExpense.summaryExpenseCurrency')}</p>
-              <p className="mt-2 text-xl font-semibold tracking-tight text-foreground">{snapshot.trip.expenseCurrency}</p>
-            </div>
-            <div className="rounded-2xl border border-border/70 bg-[color:var(--surface-floating)] p-4">
-              <p className="text-sm font-medium text-muted-foreground">{t('addExpense.summarySettlementCurrency')}</p>
-              <p className="mt-2 text-xl font-semibold tracking-tight text-foreground">{snapshot.trip.settlementCurrency}</p>
-            </div>
-            <div className="rounded-2xl border border-border/70 bg-[color:var(--surface-floating)] p-4">
-              <p className="text-sm font-medium text-muted-foreground">{t('addExpense.summarySplitCount')}</p>
-              <p className="mt-2 text-xl font-semibold tabular-nums text-foreground">{snapshot.trip.splitCount}</p>
+          <div data-testid="expense-trip-defaults" className="grid gap-2">
+            <p className="text-xs font-semibold tracking-[0.12em] text-muted-foreground uppercase">{t('addExpense.tripDefaultsLabel')}</p>
+            <div className="flex flex-wrap gap-2">
+              <span className="rounded-full border border-border/70 bg-[color:var(--surface-floating)] px-3 py-1.5 text-sm text-foreground">
+                {t('addExpense.summaryExpenseCurrency')} {snapshot.trip.expenseCurrency}
+              </span>
+              <span className="rounded-full border border-border/70 bg-[color:var(--surface-floating)] px-3 py-1.5 text-sm text-foreground">
+                {t('addExpense.summarySettlementCurrency')} {snapshot.trip.settlementCurrency}
+              </span>
+              <span className="rounded-full border border-border/70 bg-[color:var(--surface-floating)] px-3 py-1.5 text-sm text-foreground">
+                {t('addExpense.summarySplitCount')} {snapshot.trip.splitCount}
+              </span>
             </div>
           </div>
         ) : null}
@@ -333,13 +334,33 @@ export function ExpenseFormCard({
             </div>
 
             <div className="grid gap-4 rounded-2xl border border-border/70 bg-[color:var(--surface-floating)] p-4">
+              <div className="flex flex-col gap-3 rounded-2xl border border-border/70 bg-background/80 p-4">
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                  <p className="text-sm text-muted-foreground">{t('addExpense.fxHelperSummary')}</p>
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="sm"
+                    className="h-auto px-0 py-0 text-sm text-foreground hover:bg-transparent"
+                    onClick={() => setShowFxPolicy((current) => !current)}
+                  >
+                    {showFxPolicy ? t('addExpense.fxHelperCollapse') : t('addExpense.fxHelperExpand')}
+                  </Button>
+                </div>
+                {showFxPolicy ? (
+                  <div className="grid gap-3 text-sm leading-6 text-muted-foreground">
+                    <div className="rounded-2xl border border-border/70 bg-[color:var(--surface-floating)] p-4">{t('addExpense.quotePolicyAuto')}</div>
+                    <div className="rounded-2xl border border-border/70 bg-[color:var(--surface-floating)] p-4">{t('addExpense.quotePolicyManual')}</div>
+                    <div className="rounded-2xl border border-border/70 bg-[color:var(--surface-floating)] p-4">{t('addExpense.quotePolicyReturn')}</div>
+                  </div>
+                ) : null}
+              </div>
               <FormField
                 control={form.control}
                 name="manualFx"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>{t('addExpense.manualFx')}</FormLabel>
-                    <p className="text-sm text-muted-foreground">{t('addExpense.manualFxDescription')}</p>
                     <FormControl>
                       <Input
                         {...field}
