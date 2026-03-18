@@ -108,9 +108,10 @@ describe('HomePage', () => {
 
     render(createElement(HomePage, { locale: 'zh-CN', stats: HOME_PAGE_STATS }))
 
-    expect(screen.getByRole('heading', { level: 1, name: '旅行常用的汇率、短语和 AA 记账工具' })).toBeTruthy()
-    expect(screen.getByText('一个站解决旅行中的汇率换算、现场沟通和多人分账，弱网和移动端也能顺手使用。')).toBeTruthy()
-    expect(screen.getByText('弱网优先 · 多币种 · 移动端顺手')).toBeTruthy()
+    expect(screen.getByRole('heading', { level: 1, name: '旅行中真正常用的小工具' })).toBeTruthy()
+    expect(screen.queryByRole('heading', { level: 1, name: '旅行常用的汇率、短语和 AA 记账工具' })).toBeNull()
+    expect(screen.queryByText('一个站解决旅行中的汇率换算、现场沟通和多人分账，弱网和移动端也能顺手使用。')).toBeNull()
+    expect(screen.queryByText('弱网优先 · 多币种 · 移动端顺手')).toBeNull()
     expect(screen.getByText('6 人 · 2 个币种')).toBeTruthy()
     expect(screen.getByRole('heading', { name: '先处理会立刻影响决策的事' })).toBeTruthy()
     expect(screen.getByRole('heading', { name: '再补足沟通、落地和恢复节奏' })).toBeTruthy()
@@ -123,7 +124,7 @@ describe('HomePage', () => {
 
     expect(screen.getByTestId('home-priority-rail')).toBeTruthy()
     expect(screen.getAllByTestId('home-priority-item')).toHaveLength(3)
-    expect(screen.getByText('先打开这些')).toBeTruthy()
+    expect(screen.queryByText('先打开这些')).toBeNull()
   })
 
   it('renders companion tools in an editorial list section', async () => {

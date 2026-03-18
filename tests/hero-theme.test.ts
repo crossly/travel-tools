@@ -65,26 +65,20 @@ vi.mock('@/lib/i18n', () => ({
   }),
 }))
 
-describe('hero theme styling', () => {
-  it('uses theme variables for the SVG gradient surfaces', async () => {
+describe('home landing styling', () => {
+  it('does not render decorative hero artwork on the homepage', async () => {
     const { HomePage } = await import('@/features/site/home-page')
 
     const { container } = render(createElement(HomePage, { locale: 'en-US', stats: HOME_PAGE_STATS }))
-    const stops = Array.from(container.querySelectorAll('stop'))
-    const stopColors = stops.map((node) => node.getAttribute('stop-color'))
-
-    expect(stopColors).toContain('var(--hero-route-glow-start)')
-    expect(stopColors).toContain('var(--hero-route-glow-end)')
-    expect(stopColors).toContain('var(--hero-surface-start)')
-    expect(stopColors).toContain('var(--hero-surface-end)')
+    expect(container.querySelector('.home-intro')).toBeTruthy()
+    expect(container.querySelector('.hero-art-wrap')).toBeNull()
   })
 
-  it('defines dedicated dark-mode hero tokens', () => {
+  it('defines compact homepage intro styles', () => {
     const css = readFileSync(resolve(process.cwd(), 'src/styles.css'), 'utf8')
 
-    expect(css).toContain('--hero-card-bg')
-    expect(css).toContain('--hero-pill-bg')
-    expect(css).toContain('--hero-route-shadow')
-    expect(css).toMatch(/html\.dark,\s*html\[data-theme="dark"\]\s*\{[\s\S]*--hero-card-bg:/)
+    expect(css).toContain('.home-intro')
+    expect(css).toContain('.home-intro-title')
+    expect(css).toContain('.home-priority-rail')
   })
 })

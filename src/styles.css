@@ -423,25 +423,21 @@ html[data-theme="dark"] .desktop-tool-link.is-active {
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
 }
 
-.home-hero-card {
-  padding-bottom: 0.4rem;
+.home-layout {
+  gap: 2rem;
 }
 
-.home-hero-grid {
-  grid-template-columns: minmax(0, 1.08fr) minmax(240px, 0.92fr);
+.home-intro {
+  padding-block: 0.25rem 0.1rem;
 }
 
-.home-hero-copy {
-  padding-right: 0.4rem;
+.home-intro-title {
+  max-width: 24ch;
+  line-height: 1.06;
 }
 
 .home-section-intro {
   max-width: 46rem;
-}
-
-.home-hero-priority {
-  display: grid;
-  gap: 1.1rem;
 }
 
 .home-priority-rail {
@@ -769,21 +765,12 @@ html[data-theme="dark"] .mobile-nav-link.is-active {
     padding: 16px 0 88px;
   }
 
-  .hero-art-wrap {
-    min-height: 176px;
-  }
-
-  .home-hero-grid,
   .home-priority-rail {
     grid-template-columns: minmax(0, 1fr);
   }
 
   .home-section + .home-section {
-    padding-top: 1rem;
-  }
-
-  .hero-highlight-line {
-    padding: 0.55rem 0.9rem;
+    padding-top: 0.6rem;
   }
 
   .home-companion-list {
