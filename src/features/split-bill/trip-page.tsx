@@ -8,17 +8,32 @@ import { InlineStatus } from '@/components/app/inline-status'
 import { PageState } from '@/components/app/page-state'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { deleteExpense, deleteTrip, fetchSnapshot, updateTripSettings } from '@/lib/api/client'
+import { Textarea } from '@/components/ui/textarea'
+import { deleteExpense, deleteTrip, exportTrip, fetchSnapshot, importTrip, updateTripSettings } from '@/lib/api/client'
+import { buildDatedJsonFilename, downloadTextFile } from '@/lib/files'
 import { getLocalizedPath } from '@/lib/site'
 import { useI18n } from '@/lib/i18n'
 import { clearActiveTripId, writeActiveTripId } from '@/lib/storage'
 import type { Locale, TripSnapshot } from '@/lib/types'
+
+function resolveExportFilename(tripName: string | undefined, tripId: string, content: string) {
+  try {
+    const parsed = JSON.parse(content) as { trip?: { name?: string } }
+    return buildDatedJsonFilename(parsed.trip?.name || tripName || tripId)
+  } catch {
+    return buildDatedJsonFilename(tripName || tripId)
+  }
+}
 
 export function TripPage({ locale, tripId, initialSnapshot = null }: { locale: Locale; tripId: string; initialSnapshot?: TripSnapshot | null }) {
   const { t, tError } = useI18n()
   const navigate = useNavigate()
   const [snapshot, setSnapshot] = useState<TripSnapshot | null>(initialSnapshot)
   const [isSavingSplitCount, setIsSavingSplitCount] = useState(false)
+  const [isExporting, setIsExporting] = useState(false)
+  const [isImporting, setIsImporting] = useState(false)
+  const [showImport, setShowImport] = useState(false)
+  const [importContent, setImportContent] = useState('')
   const [hasSavedSplitCount, setHasSavedSplitCount] = useState(false)
   const [pageStatus, setPageStatus] = useState<{ tone: 'danger'; title: string; description?: string } | null>(null)
   const [status, setStatus] = useState<{ tone: 'success' | 'warning' | 'danger'; title: string; description?: string } | null>(null)
@@ -73,6 +88,45 @@ export function TripPage({ locale, tripId, initialSnapshot = null }: { locale: L
       navigate({ to: getLocalizedPath(locale, '/bill-splitter') })
     } catch (error) {
       setStatus({ tone: 'danger', title: tError((error as Error).message) })
+    }
+  }
+
+  async function onExportTrip() {
+    if (!snapshot || isExporting) return
+
+    try {
+      setIsExporting(true)
+      setStatus(null)
+      const content = await exportTrip(tripId)
+      downloadTextFile(resolveExportFilename(snapshot.trip.name, tripId, content), content)
+      setStatus({ tone: 'success', title: t('trip.exportSuccess') })
+    } catch (error) {
+      setStatus({ tone: 'danger', title: tError((error as Error).message) })
+    } finally {
+      setIsExporting(false)
+    }
+  }
+
+  async function onImportTrip() {
+    if (!snapshot || isImporting) return
+    if (!importContent.trim()) {
+      setStatus({ tone: 'warning', title: t('trip.importContentRequired') })
+      return
+    }
+
+    try {
+      setIsImporting(true)
+      setStatus(null)
+      await importTrip(tripId, importContent)
+      const latest = await fetchSnapshot(tripId)
+      setSnapshot(latest)
+      setImportContent('')
+      setShowImport(false)
+      setStatus({ tone: 'success', title: t('trip.importSuccess') })
+    } catch (error) {
+      setStatus({ tone: 'danger', title: tError((error as Error).message) })
+    } finally {
+      setIsImporting(false)
     }
   }
 
@@ -250,6 +304,43 @@ export function TripPage({ locale, tripId, initialSnapshot = null }: { locale: L
                   triggerClassName="w-full"
                 />
               </div>
+              <div className="grid gap-3 md:grid-cols-2">
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="w-full"
+                  disabled={!snapshot || isExporting}
+                  onClick={() => void onExportTrip()}
+                >
+                  {isExporting ? t('trip.exportPending') : t('trip.exportJson')}
+                </Button>
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="w-full"
+                  disabled={!snapshot || isImporting}
+                  onClick={() => setShowImport((current) => !current)}
+                >
+                  {showImport ? t('trip.importToggleClose') : t('trip.importToggleOpen')}
+                </Button>
+              </div>
+              {showImport ? (
+                <div className="grid gap-3 rounded-2xl border border-border/70 bg-[color:var(--surface-floating)] p-4">
+                  <p className="text-sm text-muted-foreground">{t('trip.importDescription')}</p>
+                  <Textarea
+                    value={importContent}
+                    placeholder={t('trip.importPlaceholder')}
+                    disabled={isImporting}
+                    onChange={(event) => {
+                      setImportContent(event.target.value)
+                      setStatus(null)
+                    }}
+                  />
+                  <Button type="button" className="w-full md:w-auto" disabled={isImporting} onClick={() => void onImportTrip()}>
+                    {isImporting ? t('trip.importPending') : t('trip.importAction')}
+                  </Button>
+                </div>
+              ) : null}
             </CardContent>
           </Card>
         </div>
