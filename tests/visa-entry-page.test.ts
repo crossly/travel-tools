@@ -92,4 +92,17 @@ describe('VisaEntryCountryPage', () => {
     expect(screen.getByText('Japan Customs traveller guidance')).toBeTruthy()
     expect(screen.getByText('Visit Japan Web pre-arrival flow')).toBeTruthy()
   })
+
+  it('renders localized Chinese guide copy when the locale is zh-CN', async () => {
+    const { getVisaEntryDestinationGuide } = await import('@/lib/visa-entry')
+    const { VisaEntryCountryPage } = await import('@/features/visa-entry/country-page')
+
+    const guide = getVisaEntryDestinationGuide('zh-CN', 'japan')
+    render(createElement(VisaEntryCountryPage, { locale: 'zh-CN', guide }))
+
+    expect(screen.getByText(/最近核对 2026-03-19/)).toBeTruthy()
+    expect(screen.getAllByText(/先看/).length).toBeGreaterThan(0)
+    expect(screen.getAllByText(/入境前/).length).toBeGreaterThan(0)
+    expect(screen.getAllByText(/海关/).length).toBeGreaterThan(0)
+  })
 })
