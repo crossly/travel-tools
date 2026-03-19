@@ -11,7 +11,8 @@ vi.mock('@tanstack/react-router', () => ({
 }))
 
 vi.mock('@/components/app/app-shell', () => ({
-  AppShell: ({ children }: { children?: ReactNode }) => createElement('div', null, children),
+  AppShell: ({ children, activeTool }: { children?: ReactNode; activeTool?: string }) =>
+    createElement('div', { 'data-testid': 'app-shell', 'data-active-tool': activeTool ?? '' }, children),
 }))
 
 vi.mock('@/lib/i18n', () => ({
@@ -79,6 +80,7 @@ describe('TippingCountryPage', () => {
 
     render(createElement(TippingCountryPage, { locale: 'en-US', pack }))
 
+    expect(screen.getByTestId('app-shell').getAttribute('data-active-tool')).toBe('tipping')
     expect(screen.getByText('Tipping is usually not expected in Japan.')).toBeTruthy()
     expect(screen.getByText('Restaurant')).toBeTruthy()
     expect(screen.getByText('Delivery')).toBeTruthy()
@@ -92,6 +94,7 @@ describe('TippingCountryPage', () => {
 
     render(createElement(TippingCountryPage, { locale: 'en-US', pack: null }))
 
+    expect(screen.getByTestId('app-shell').getAttribute('data-active-tool')).toBe('tipping')
     expect(screen.getByText('Country not found')).toBeTruthy()
     expect(screen.getByRole('link', { name: 'Back to countries' })).toBeTruthy()
   })

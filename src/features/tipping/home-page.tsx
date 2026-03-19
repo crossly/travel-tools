@@ -65,7 +65,7 @@ export function TippingHomePage({
   }, [activeRegion, filteredCountries])
 
   return (
-    <AppShell locale={locale} title={t('tipping.title')} description={t('tipping.description')}>
+    <AppShell locale={locale} title={t('tipping.title')} description={t('tipping.description')} activeTool="tipping">
       <Card tone="plain">
         <CardHeader className="gap-5">
           <div className="flex flex-wrap items-start justify-between gap-4">

@@ -3,7 +3,7 @@ import { join } from 'node:path'
 
 const SITE_URL = 'https://www.routecrate.com'
 const locales = ['en-us', 'zh-cn']
-const staticPaths = ['', '/currency', '/bill-splitter', '/travel-phrases', '/packing-list', '/jet-lag', '/local-apps']
+const staticPaths = ['', '/currency', '/bill-splitter', '/travel-phrases', '/packing-list', '/jet-lag', '/local-apps', '/tipping', '/visa-entry']
 const regionOrder = { asia: 0, 'middle-east': 1, europe: 2, americas: 3, africa: 4, oceania: 5 }
 
 function resolveAudioCoverage(entries = []) {
@@ -23,10 +23,9 @@ function resolveAudioCoverage(entries = []) {
 
 async function main() {
   const countriesDir = join(process.cwd(), 'src/data/travel-phrases')
-  const localAppsGuidesPath = join(process.cwd(), 'src/data/local-apps/guides.ts')
-  const localAppsExpansionsPath = join(process.cwd(), 'src/data/local-apps/guide-expansions.ts')
-  const localAppsExpansionsExtraPath = join(process.cwd(), 'src/data/local-apps/guide-expansions-extra.ts')
-  const localAppsExpansionsRemainingPath = join(process.cwd(), 'src/data/local-apps/guide-expansions-remaining.ts')
+  const localAppsGuidesDir = join(process.cwd(), 'src/data/local-apps/country-guides')
+  const tippingCountriesDir = join(process.cwd(), 'src/data/tipping/countries')
+  const visaEntryCountriesDir = join(process.cwd(), 'src/data/visa-entry/countries')
   const countryFiles = (await readdir(countriesDir))
     .filter((file) => file.endsWith('.json') && file !== 'phrase-definitions.json' && file !== 'index.json')
 
@@ -45,20 +44,11 @@ async function main() {
     }),
   )
 
-  const [localAppsSource, localAppsExpansionsSource, localAppsExpansionsExtraSource, localAppsExpansionsRemainingSource] = await Promise.all([
-    readFile(localAppsGuidesPath, 'utf8'),
-    readFile(localAppsExpansionsPath, 'utf8'),
-    readFile(localAppsExpansionsExtraPath, 'utf8'),
-    readFile(localAppsExpansionsRemainingPath, 'utf8'),
+  const [localAppSlugs, tippingSlugs, visaEntrySlugs] = await Promise.all([
+    listSlugsFromDirectory(localAppsGuidesDir),
+    listSlugsFromDirectory(tippingCountriesDir),
+    listSlugsFromDirectory(visaEntryCountriesDir),
   ])
-  const localAppSlugs = Array.from(
-    new Set([
-      ...Array.from(localAppsSource.matchAll(/slug:\s*'([^']+)'/g), (match) => match[1]),
-      ...Array.from(localAppsExpansionsSource.matchAll(/slug:\s*'([^']+)'/g), (match) => match[1]),
-      ...Array.from(localAppsExpansionsExtraSource.matchAll(/slug:\s*'([^']+)'/g), (match) => match[1]),
-      ...Array.from(localAppsExpansionsRemainingSource.matchAll(/slug:\s*'([^']+)'/g), (match) => match[1]),
-    ]),
-  )
 
   countryPacks.sort(
     (left, right) =>
@@ -92,6 +82,12 @@ async function main() {
     ...buildLocalizedUrls(
       localAppSlugs.map((slug) => ({ path: `/local-apps/${slug}`, lastModified: buildDate })),
     ),
+    ...buildLocalizedUrls(
+      tippingSlugs.map((slug) => ({ path: `/tipping/${slug}`, lastModified: buildDate })),
+    ),
+    ...buildLocalizedUrls(
+      visaEntrySlugs.map((slug) => ({ path: `/visa-entry/${slug}`, lastModified: buildDate })),
+    ),
   ]
 
   const xml = [
@@ -117,6 +113,13 @@ function buildLocalizedUrls(paths, defaultLastmod) {
       }
     }),
   )
+}
+
+async function listSlugsFromDirectory(directory) {
+  return (await readdir(directory))
+    .filter((file) => file.endsWith('.ts'))
+    .map((file) => file.replace(/\.ts$/, ''))
+    .sort()
 }
 
 main().catch((error) => {

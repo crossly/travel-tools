@@ -121,7 +121,7 @@ describe('route heads', () => {
     ]))
     expect(head.links).toEqual(expect.arrayContaining([
       expect.objectContaining({ rel: 'canonical', href: 'https://www.routecrate.com/zh-cn' }),
-      expect.objectContaining({ rel: 'alternate', hrefLang: 'x-default', href: 'https://www.routecrate.com/' }),
+      expect.objectContaining({ rel: 'alternate', hrefLang: 'x-default', href: 'https://www.routecrate.com/en-us' }),
     ]))
   })
 
@@ -259,6 +259,29 @@ describe('route heads', () => {
     ]))
     expect(head.links).toEqual(expect.arrayContaining([
       expect.objectContaining({ rel: 'canonical', href: 'https://www.routecrate.com/en-us/tipping' }),
+    ]))
+  })
+
+  it('emits public metadata for tipping country pages', async () => {
+    const { Route } = await import('@/routes/$locale/tipping/$country')
+    const head = (Route as unknown as {
+      options: {
+        head: (args: { params: { locale: string; country: string } }) => {
+          meta: Array<Record<string, string>>
+          links: Array<Record<string, string>>
+        }
+      }
+    }).options.head({
+      params: { locale: 'en-us', country: 'japan' },
+    })
+
+    expect(head.meta).toEqual(expect.arrayContaining([
+      expect.objectContaining({ name: 'robots', content: 'index, follow' }),
+      expect.objectContaining({ property: 'og:url', content: 'https://www.routecrate.com/en-us/tipping/japan' }),
+    ]))
+    expect(head.links).toEqual(expect.arrayContaining([
+      expect.objectContaining({ rel: 'canonical', href: 'https://www.routecrate.com/en-us/tipping/japan' }),
+      expect.objectContaining({ rel: 'alternate', hrefLang: 'x-default', href: 'https://www.routecrate.com/en-us/tipping/japan' }),
     ]))
   })
 

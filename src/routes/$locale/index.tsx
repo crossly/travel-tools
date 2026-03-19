@@ -20,7 +20,6 @@ export const Route = createFileRoute('/$locale/')({
       keywords: translate(locale, 'site.homeKeywords').split(','),
       ogImageVariant: 'home',
       pathname: '/',
-      xDefaultPath: '/',
       structuredData: 'website',
     })
   },

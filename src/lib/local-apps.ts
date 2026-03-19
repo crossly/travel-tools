@@ -161,7 +161,7 @@ export function listReadyLocalAppCountrySummaries(locale: Locale, region: Phrase
 }
 
 export function listReadyLocalAppCountrySlugs() {
-  return featuredCountrySlugs
+  return featuredCountrySlugs.filter((slug) => guideLoaderBySlug.has(slug))
 }
 
 export function getLocalAppCountrySummary(locale: Locale, slug: string) {
@@ -169,7 +169,7 @@ export function getLocalAppCountrySummary(locale: Locale, slug: string) {
 }
 
 export function countReadyLocalAppCountries() {
-  return featuredCountrySlugs.filter((slug) => guideLoaderBySlug.has(slug)).length
+  return listReadyLocalAppCountrySlugs().length
 }
 
 export function countTrackedLocalAppCountries() {

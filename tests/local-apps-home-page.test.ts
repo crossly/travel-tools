@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { createElement } from 'react'
-import { render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 import type { LocalAppCountrySummary } from '@/lib/types'
 
@@ -44,6 +44,10 @@ vi.mock('@/lib/i18n', () => ({
         'localApps.summaryBadge': 'Overview',
         'localApps.summaryTitle': 'Country app guides',
         'localApps.summaryDescription': 'Install the right apps before you land.',
+        'localApps.searchLabel': 'Search countries',
+        'localApps.searchPlaceholder': 'Search by country or category',
+        'localApps.searchEmptyTitle': 'No app guides found',
+        'localApps.searchEmptyDescription': 'Try a different country or category',
         'localApps.readyBadge': 'Ready',
         'localApps.readyTitle': 'Ready countries',
         'localApps.readyDescription': 'Start with countries that already have verified guides.',
@@ -93,7 +97,7 @@ const countries: LocalAppCountrySummary[] = [
 ]
 
 describe('LocalAppsHomePage', () => {
-  it('renders region tabs and a compact pending-country directory without importing the heavy travel-phrases module', async () => {
+  it('renders region tabs, search, and a compact pending-country directory without importing the heavy travel-phrases module', async () => {
     const { LocalAppsHomePage } = await import('@/features/local-apps/home-page')
 
     render(createElement(LocalAppsHomePage, {
@@ -104,11 +108,17 @@ describe('LocalAppsHomePage', () => {
     }))
 
     expect(screen.getByRole('button', { name: 'Asia' })).toBeTruthy()
+    expect(screen.getByRole('textbox', { name: 'Search countries' })).toBeTruthy()
     expect(screen.queryByRole('heading', { name: 'Install before you board' })).toBeNull()
     expect(screen.queryByRole('heading', { name: 'Roster still syncing' })).toBeNull()
     expect(screen.getByText('Japan')).toBeTruthy()
     expect(screen.getByText('Malaysia')).toBeTruthy()
     expect(screen.queryAllByTestId('local-apps-pending-directory').length).toBeGreaterThan(0)
     expect(screen.queryAllByTestId('local-apps-pending-row').length).toBeGreaterThan(0)
+
+    fireEvent.change(screen.getByRole('textbox', { name: 'Search countries' }), { target: { value: 'japan' } })
+
+    expect(await screen.findByText('Japan')).toBeTruthy()
+    expect(screen.queryByText('Malaysia')).toBeNull()
   })
 })

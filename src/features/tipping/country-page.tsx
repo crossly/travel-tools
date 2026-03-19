@@ -38,7 +38,7 @@ export function TippingCountryPage({
 
   if (!pack) {
     return (
-      <AppShell locale={locale} title={t('tipping.title')} description={t('tipping.description')}>
+      <AppShell locale={locale} title={t('tipping.title')} description={t('tipping.description')} activeTool="tipping">
         <PageState
           tone="danger"
           title={t('tipping.notFoundTitle')}
@@ -54,7 +54,7 @@ export function TippingCountryPage({
   }
 
   return (
-    <AppShell locale={locale} title={pack.title} description={pack.description}>
+    <AppShell locale={locale} title={pack.title} description={pack.description} activeTool="tipping">
       <Card tone="plain">
         <CardHeader className="gap-4">
           <div className="flex flex-wrap items-start justify-between gap-4">

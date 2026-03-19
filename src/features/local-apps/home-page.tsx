@@ -1,11 +1,12 @@
 import '@/lib/i18n/messages/local-apps'
-import { useEffect, useMemo, useState } from 'react'
+import { useDeferredValue, useEffect, useMemo, useState } from 'react'
 import { Link } from '@tanstack/react-router'
-import { ArrowRight, Download, Smartphone } from 'lucide-react'
+import { ArrowRight, Download, Search, Smartphone } from 'lucide-react'
 import { AppShell } from '@/components/app/app-shell'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
 import { getLocalizedPath } from '@/lib/site'
 import { useI18n } from '@/lib/i18n'
 import { PHRASE_REGIONS } from '@/lib/phrase-regions'
@@ -46,6 +47,8 @@ export function LocalAppsHomePage({
 }) {
   const { t } = useI18n()
   const [activeRegion, setActiveRegion] = useState<typeof PHRASE_REGIONS[number]>('all')
+  const [query, setQuery] = useState('')
+  const deferredQuery = useDeferredValue(query.trim().toLowerCase())
 
   useEffect(() => {
     writeLastTool('local-apps')
@@ -56,14 +59,30 @@ export function LocalAppsHomePage({
     [activeRegion, countries],
   )
 
+  const filteredCountries = useMemo(() => {
+    if (!deferredQuery) return visibleCountries
+
+    return visibleCountries.filter((country) => {
+      const searchText = [
+        country.country,
+        country.title,
+        country.description,
+        ...country.highlights,
+        ...country.categoryIds.map((categoryId) => t(categoryLabelKey[categoryId])),
+      ].join(' ').toLowerCase()
+
+      return searchText.includes(deferredQuery)
+    })
+  }, [deferredQuery, t, visibleCountries])
+
   const readyCountries = useMemo(
-    () => visibleCountries.filter((country) => country.ready),
-    [visibleCountries],
+    () => filteredCountries.filter((country) => country.ready),
+    [filteredCountries],
   )
 
   const pendingCountries = useMemo(
-    () => visibleCountries.filter((country) => !country.ready),
-    [visibleCountries],
+    () => filteredCountries.filter((country) => !country.ready),
+    [filteredCountries],
   )
 
   const regionSections = useMemo(() => {
@@ -95,21 +114,47 @@ export function LocalAppsHomePage({
               </p>
             </div>
           </div>
-          <div className="flex flex-wrap gap-2">
-            {PHRASE_REGIONS.map((region) => (
-              <Button
-                key={region}
-                type="button"
-                variant="secondary"
-                className={cn(activeRegion === region && 'border-primary/35 bg-primary/10 text-foreground')}
-                onClick={() => setActiveRegion(region)}
-              >
-                {t(regionLabelKey[region])}
-              </Button>
-            ))}
-          </div>
+          <CardContent className="grid gap-4 p-0">
+            <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
+              <label className="grid gap-2">
+                <span className="text-sm font-medium text-foreground">{t('localApps.searchLabel')}</span>
+                <div className="relative">
+                  <Search className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
+                  <Input
+                    aria-label={t('localApps.searchLabel')}
+                    value={query}
+                    onChange={(event) => setQuery(event.target.value)}
+                    placeholder={t('localApps.searchPlaceholder')}
+                    className="pl-9"
+                  />
+                </div>
+              </label>
+              <div className="flex flex-wrap gap-2">
+                {PHRASE_REGIONS.map((region) => (
+                  <Button
+                    key={region}
+                    type="button"
+                    variant="secondary"
+                    className={cn(activeRegion === region && 'border-primary/35 bg-primary/10 text-foreground')}
+                    onClick={() => setActiveRegion(region)}
+                  >
+                    {t(regionLabelKey[region])}
+                  </Button>
+                ))}
+              </div>
+            </div>
+          </CardContent>
         </CardHeader>
       </Card>
+
+      {!filteredCountries.length ? (
+        <Card tone="plain">
+          <CardContent className="grid gap-2 pt-6">
+            <CardTitle>{t('localApps.searchEmptyTitle')}</CardTitle>
+            <CardDescription>{t('localApps.searchEmptyDescription')}</CardDescription>
+          </CardContent>
+        </Card>
+      ) : null}
 
       <section className="space-y-4">
         <div className="space-y-2">

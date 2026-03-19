@@ -11,7 +11,8 @@ vi.mock('@tanstack/react-router', () => ({
 }))
 
 vi.mock('@/components/app/app-shell', () => ({
-  AppShell: ({ children }: { children?: ReactNode }) => createElement('div', null, children),
+  AppShell: ({ children, activeTool }: { children?: ReactNode; activeTool?: string }) =>
+    createElement('div', { 'data-testid': 'app-shell', 'data-active-tool': activeTool ?? '' }, children),
 }))
 
 vi.mock('@/lib/i18n', () => ({
@@ -78,6 +79,7 @@ describe('TippingHomePage', () => {
 
     render(createElement(TippingHomePage, { locale: 'en-US', countries }))
 
+    expect(screen.getByTestId('app-shell').getAttribute('data-active-tool')).toBe('tipping')
     expect(screen.getByRole('textbox', { name: 'Search countries' })).toBeTruthy()
     expect(screen.getByRole('button', { name: 'Asia' })).toBeTruthy()
     expect(screen.getByRole('heading', { name: 'Japan' })).toBeTruthy()
