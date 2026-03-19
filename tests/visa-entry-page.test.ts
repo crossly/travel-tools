@@ -67,6 +67,8 @@ describe('VisaEntryHomePage', () => {
 
     render(createElement(VisaEntryHomePage, { locale: 'en-US', destinations: listVisaEntryDestinationSummaries('en-US') }))
 
+    expect(screen.getByTestId('directory-search-row')).toBeTruthy()
+    expect(screen.getByTestId('directory-filter-row')).toBeTruthy()
     fireEvent.change(screen.getByLabelText('Search destinations'), { target: { value: 'japan' } })
 
     expect(screen.getByText('Japan')).toBeTruthy()

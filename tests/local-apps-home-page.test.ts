@@ -108,6 +108,8 @@ describe('LocalAppsHomePage', () => {
     }))
 
     expect(screen.getByRole('button', { name: 'Asia' })).toBeTruthy()
+    expect(screen.getByTestId('directory-search-row')).toBeTruthy()
+    expect(screen.getByTestId('directory-filter-row')).toBeTruthy()
     expect(screen.getByRole('textbox', { name: 'Search countries' })).toBeTruthy()
     expect(screen.queryByRole('heading', { name: 'Install before you board' })).toBeNull()
     expect(screen.queryByRole('heading', { name: 'Roster still syncing' })).toBeNull()

@@ -234,6 +234,8 @@ describe('TravelPhrasesHomePage', () => {
     expect(screen.getAllByRole('heading', { name: 'France' })).toHaveLength(1)
     expect(screen.getByText('Asia travel phrase packs')).toBeTruthy()
     expect(screen.getByText('Middle East travel phrase packs')).toBeTruthy()
+    expect(screen.getByTestId('directory-search-row')).toBeTruthy()
+    expect(screen.getByTestId('directory-filter-row')).toBeTruthy()
     expect(screen.getAllByTestId('phrases-region-directory').length).toBeGreaterThan(0)
     expect(screen.getAllByTestId('phrases-region-row').length).toBeGreaterThan(0)
     expect(screen.getByText('Malaysia')).toBeTruthy()

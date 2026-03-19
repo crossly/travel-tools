@@ -80,6 +80,8 @@ describe('TippingHomePage', () => {
     render(createElement(TippingHomePage, { locale: 'en-US', countries }))
 
     expect(screen.getByTestId('app-shell').getAttribute('data-active-tool')).toBe('tipping')
+    expect(screen.getByTestId('directory-search-row')).toBeTruthy()
+    expect(screen.getByTestId('directory-filter-row')).toBeTruthy()
     expect(screen.getByRole('textbox', { name: 'Search countries' })).toBeTruthy()
     expect(screen.getByRole('button', { name: 'Asia' })).toBeTruthy()
     expect(screen.getByRole('heading', { name: 'Japan' })).toBeTruthy()
