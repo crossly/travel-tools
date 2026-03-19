@@ -19,7 +19,7 @@ export type LocalAppPlatformId = 'official' | 'ios' | 'android'
 
 export type ToolDefinition = {
   id: string
-  slug: 'currency' | 'split-bill' | 'travel-phrases' | 'packing-list' | 'jet-lag' | 'local-apps'
+  slug: 'currency' | 'split-bill' | 'packing-list' | 'travel-phrases' | 'visa-entry' | 'tipping' | 'local-apps' | 'jet-lag'
   nameKey: string
   entryPath: string
 }

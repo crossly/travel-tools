@@ -74,7 +74,7 @@ describe('HomePage', () => {
     expect(screen.getByText('付款前先看汇率')).toBeTruthy()
     expect(screen.getByText('同行记账时先打开')).toBeTruthy()
     expect(screen.getByRole('heading', { name: '先处理会立刻影响决策的事' })).toBeTruthy()
-    expect(screen.getByRole('heading', { name: '再补足沟通、落地和恢复节奏' })).toBeTruthy()
+    expect(screen.getByRole('heading', { name: '再补足沟通、入境、礼仪和恢复节奏' })).toBeTruthy()
   })
 
   it('surfaces three primary tool shortcuts inside the first-viewport rail', async () => {
@@ -93,7 +93,7 @@ describe('HomePage', () => {
     render(createElement(HomePage, { locale: 'zh-CN', stats: HOME_PAGE_STATS }))
 
     expect(screen.getByTestId('home-companion-list')).toBeTruthy()
-    expect(screen.getAllByTestId('home-companion-item')).toHaveLength(3)
+    expect(screen.getAllByTestId('home-companion-item')).toHaveLength(5)
   })
 
   it('does not render the future expansion card', async () => {
@@ -112,6 +112,17 @@ describe('HomePage', () => {
 
     expect(screen.getAllByText('旅行短语卡')).toHaveLength(2)
     expect(screen.getByText('现场沟通时先打开')).toBeTruthy()
+  })
+
+  it('renders the visa entry and tipping tool cards', async () => {
+    const { HomePage } = await import('@/features/site/home-page')
+
+    render(createElement(HomePage, { locale: 'zh-CN', stats: HOME_PAGE_STATS }))
+
+    expect(screen.getAllByText('签证 / 入境')).toHaveLength(2)
+    expect(screen.getByText('出发前快速查看入境要求、申报和官方入口。')).toBeTruthy()
+    expect(screen.getAllByText('小费速查')).toHaveLength(2)
+    expect(screen.getByText('付款前快速查看常见小费习惯和服务费。')).toBeTruthy()
   })
 
   it('renders the packing list tool card', async () => {

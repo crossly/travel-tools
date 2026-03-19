@@ -29,28 +29,40 @@ export const TOOLS: ToolDefinition[] = [
     entryPath: '/bill-splitter',
   },
   {
-    id: 'tool_travel_phrases',
-    slug: 'travel-phrases',
-    nameKey: 'tool.travelPhrases.name',
-    entryPath: '/travel-phrases',
-  },
-  {
     id: 'tool_packing_list',
     slug: 'packing-list',
     nameKey: 'tool.packingList.name',
     entryPath: '/packing-list',
   },
   {
-    id: 'tool_jet_lag',
-    slug: 'jet-lag',
-    nameKey: 'tool.jetLag.name',
-    entryPath: '/jet-lag',
+    id: 'tool_travel_phrases',
+    slug: 'travel-phrases',
+    nameKey: 'tool.travelPhrases.name',
+    entryPath: '/travel-phrases',
+  },
+  {
+    id: 'tool_visa_entry',
+    slug: 'visa-entry',
+    nameKey: 'tool.visaEntry.name',
+    entryPath: '/visa-entry',
+  },
+  {
+    id: 'tool_tipping',
+    slug: 'tipping',
+    nameKey: 'tool.tipping.name',
+    entryPath: '/tipping',
   },
   {
     id: 'tool_local_apps',
     slug: 'local-apps',
     nameKey: 'tool.localApps.name',
     entryPath: '/local-apps',
+  },
+  {
+    id: 'tool_jet_lag',
+    slug: 'jet-lag',
+    nameKey: 'tool.jetLag.name',
+    entryPath: '/jet-lag',
   },
 ]
 

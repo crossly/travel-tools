@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest'
 import {
   DEFAULT_LOCALE,
+  TOOLS,
+  getToolBySlug,
   getLocalizedPath,
   replaceLocaleInPath,
   resolveExplicitLocaleFromPath,
@@ -54,5 +56,20 @@ describe('site helpers', () => {
   it('respects accept-language priority instead of matching by substring order', () => {
     expect(resolveRequestLocale(null, 'en-US,en;q=0.9,zh-CN;q=0.1')).toBe('en-US')
     expect(resolveRequestLocale(null, 'fr-FR,zh-CN;q=0.8,en-US;q=0.7')).toBe('zh-CN')
+  })
+
+  it('registers the tipping and visa entry tools in the site tool list', () => {
+    expect(TOOLS.map((tool) => tool.slug)).toEqual([
+      'currency',
+      'split-bill',
+      'packing-list',
+      'travel-phrases',
+      'visa-entry',
+      'tipping',
+      'local-apps',
+      'jet-lag',
+    ])
+    expect(getToolBySlug('visa-entry')?.entryPath).toBe('/visa-entry')
+    expect(getToolBySlug('tipping')?.entryPath).toBe('/tipping')
   })
 })

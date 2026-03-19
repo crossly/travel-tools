@@ -17,13 +17,17 @@ import { Route as LocaleSettingsRouteImport } from './routes/$locale/settings'
 import { Route as LocalePackingListRouteImport } from './routes/$locale/packing-list'
 import { Route as LocaleJetLagRouteImport } from './routes/$locale/jet-lag'
 import { Route as LocaleCurrencyRouteImport } from './routes/$locale/currency'
+import { Route as LocaleVisaEntryIndexRouteImport } from './routes/$locale/visa-entry/index'
 import { Route as LocaleTravelPhrasesIndexRouteImport } from './routes/$locale/travel-phrases/index'
+import { Route as LocaleTippingIndexRouteImport } from './routes/$locale/tipping/index'
 import { Route as LocaleLocalAppsIndexRouteImport } from './routes/$locale/local-apps/index'
 import { Route as LocaleBillSplitterIndexRouteImport } from './routes/$locale/bill-splitter/index'
 import { Route as ApiSiteHealthRouteImport } from './routes/api/site/health'
 import { Route as ApiFxRatesRouteImport } from './routes/api/fx/rates'
 import { Route as ApiFxDetectRouteImport } from './routes/api/fx/detect'
+import { Route as LocaleVisaEntryCountryRouteImport } from './routes/$locale/visa-entry/$country'
 import { Route as LocaleTravelPhrasesCountryRouteImport } from './routes/$locale/travel-phrases/$country'
+import { Route as LocaleTippingCountryRouteImport } from './routes/$locale/tipping/$country'
 import { Route as LocaleLocalAppsCountryRouteImport } from './routes/$locale/local-apps/$country'
 import { Route as LocaleBillSplitterTripIdRouteRouteImport } from './routes/$locale/bill-splitter/$tripId/route'
 import { Route as ApiSplitBillTripsIndexRouteImport } from './routes/api/split-bill/trips/index'
@@ -82,12 +86,22 @@ const LocaleCurrencyRoute = LocaleCurrencyRouteImport.update({
   path: '/currency',
   getParentRoute: () => LocaleRouteRoute,
 } as any)
+const LocaleVisaEntryIndexRoute = LocaleVisaEntryIndexRouteImport.update({
+  id: '/visa-entry/',
+  path: '/visa-entry/',
+  getParentRoute: () => LocaleRouteRoute,
+} as any)
 const LocaleTravelPhrasesIndexRoute =
   LocaleTravelPhrasesIndexRouteImport.update({
     id: '/travel-phrases/',
     path: '/travel-phrases/',
     getParentRoute: () => LocaleRouteRoute,
   } as any)
+const LocaleTippingIndexRoute = LocaleTippingIndexRouteImport.update({
+  id: '/tipping/',
+  path: '/tipping/',
+  getParentRoute: () => LocaleRouteRoute,
+} as any)
 const LocaleLocalAppsIndexRoute = LocaleLocalAppsIndexRouteImport.update({
   id: '/local-apps/',
   path: '/local-apps/',
@@ -113,12 +127,22 @@ const ApiFxDetectRoute = ApiFxDetectRouteImport.update({
   path: '/api/fx/detect',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LocaleVisaEntryCountryRoute = LocaleVisaEntryCountryRouteImport.update({
+  id: '/visa-entry/$country',
+  path: '/visa-entry/$country',
+  getParentRoute: () => LocaleRouteRoute,
+} as any)
 const LocaleTravelPhrasesCountryRoute =
   LocaleTravelPhrasesCountryRouteImport.update({
     id: '/travel-phrases/$country',
     path: '/travel-phrases/$country',
     getParentRoute: () => LocaleRouteRoute,
   } as any)
+const LocaleTippingCountryRoute = LocaleTippingCountryRouteImport.update({
+  id: '/tipping/$country',
+  path: '/tipping/$country',
+  getParentRoute: () => LocaleRouteRoute,
+} as any)
 const LocaleLocalAppsCountryRoute = LocaleLocalAppsCountryRouteImport.update({
   id: '/local-apps/$country',
   path: '/local-apps/$country',
@@ -230,13 +254,17 @@ export interface FileRoutesByFullPath {
   '/$locale/': typeof LocaleIndexRoute
   '/$locale/bill-splitter/$tripId': typeof LocaleBillSplitterTripIdRouteRouteWithChildren
   '/$locale/local-apps/$country': typeof LocaleLocalAppsCountryRoute
+  '/$locale/tipping/$country': typeof LocaleTippingCountryRoute
   '/$locale/travel-phrases/$country': typeof LocaleTravelPhrasesCountryRoute
+  '/$locale/visa-entry/$country': typeof LocaleVisaEntryCountryRoute
   '/api/fx/detect': typeof ApiFxDetectRoute
   '/api/fx/rates': typeof ApiFxRatesRoute
   '/api/site/health': typeof ApiSiteHealthRoute
   '/$locale/bill-splitter/': typeof LocaleBillSplitterIndexRoute
   '/$locale/local-apps/': typeof LocaleLocalAppsIndexRoute
+  '/$locale/tipping/': typeof LocaleTippingIndexRoute
   '/$locale/travel-phrases/': typeof LocaleTravelPhrasesIndexRoute
+  '/$locale/visa-entry/': typeof LocaleVisaEntryIndexRoute
   '/$locale/bill-splitter/$tripId/add': typeof LocaleBillSplitterTripIdAddRoute
   '/$locale/bill-splitter/$tripId/settlement': typeof LocaleBillSplitterTripIdSettlementRoute
   '/api/phrase-audio/$country/$phraseId': typeof ApiPhraseAudioCountryPhraseIdRoute
@@ -262,13 +290,17 @@ export interface FileRoutesByTo {
   '/api/og-image': typeof ApiOgImageRoute
   '/$locale': typeof LocaleIndexRoute
   '/$locale/local-apps/$country': typeof LocaleLocalAppsCountryRoute
+  '/$locale/tipping/$country': typeof LocaleTippingCountryRoute
   '/$locale/travel-phrases/$country': typeof LocaleTravelPhrasesCountryRoute
+  '/$locale/visa-entry/$country': typeof LocaleVisaEntryCountryRoute
   '/api/fx/detect': typeof ApiFxDetectRoute
   '/api/fx/rates': typeof ApiFxRatesRoute
   '/api/site/health': typeof ApiSiteHealthRoute
   '/$locale/bill-splitter': typeof LocaleBillSplitterIndexRoute
   '/$locale/local-apps': typeof LocaleLocalAppsIndexRoute
+  '/$locale/tipping': typeof LocaleTippingIndexRoute
   '/$locale/travel-phrases': typeof LocaleTravelPhrasesIndexRoute
+  '/$locale/visa-entry': typeof LocaleVisaEntryIndexRoute
   '/$locale/bill-splitter/$tripId/add': typeof LocaleBillSplitterTripIdAddRoute
   '/$locale/bill-splitter/$tripId/settlement': typeof LocaleBillSplitterTripIdSettlementRoute
   '/api/phrase-audio/$country/$phraseId': typeof ApiPhraseAudioCountryPhraseIdRoute
@@ -297,13 +329,17 @@ export interface FileRoutesById {
   '/$locale/': typeof LocaleIndexRoute
   '/$locale/bill-splitter/$tripId': typeof LocaleBillSplitterTripIdRouteRouteWithChildren
   '/$locale/local-apps/$country': typeof LocaleLocalAppsCountryRoute
+  '/$locale/tipping/$country': typeof LocaleTippingCountryRoute
   '/$locale/travel-phrases/$country': typeof LocaleTravelPhrasesCountryRoute
+  '/$locale/visa-entry/$country': typeof LocaleVisaEntryCountryRoute
   '/api/fx/detect': typeof ApiFxDetectRoute
   '/api/fx/rates': typeof ApiFxRatesRoute
   '/api/site/health': typeof ApiSiteHealthRoute
   '/$locale/bill-splitter/': typeof LocaleBillSplitterIndexRoute
   '/$locale/local-apps/': typeof LocaleLocalAppsIndexRoute
+  '/$locale/tipping/': typeof LocaleTippingIndexRoute
   '/$locale/travel-phrases/': typeof LocaleTravelPhrasesIndexRoute
+  '/$locale/visa-entry/': typeof LocaleVisaEntryIndexRoute
   '/$locale/bill-splitter/$tripId/add': typeof LocaleBillSplitterTripIdAddRoute
   '/$locale/bill-splitter/$tripId/settlement': typeof LocaleBillSplitterTripIdSettlementRoute
   '/api/phrase-audio/$country/$phraseId': typeof ApiPhraseAudioCountryPhraseIdRoute
@@ -333,13 +369,17 @@ export interface FileRouteTypes {
     | '/$locale/'
     | '/$locale/bill-splitter/$tripId'
     | '/$locale/local-apps/$country'
+    | '/$locale/tipping/$country'
     | '/$locale/travel-phrases/$country'
+    | '/$locale/visa-entry/$country'
     | '/api/fx/detect'
     | '/api/fx/rates'
     | '/api/site/health'
     | '/$locale/bill-splitter/'
     | '/$locale/local-apps/'
+    | '/$locale/tipping/'
     | '/$locale/travel-phrases/'
+    | '/$locale/visa-entry/'
     | '/$locale/bill-splitter/$tripId/add'
     | '/$locale/bill-splitter/$tripId/settlement'
     | '/api/phrase-audio/$country/$phraseId'
@@ -365,13 +405,17 @@ export interface FileRouteTypes {
     | '/api/og-image'
     | '/$locale'
     | '/$locale/local-apps/$country'
+    | '/$locale/tipping/$country'
     | '/$locale/travel-phrases/$country'
+    | '/$locale/visa-entry/$country'
     | '/api/fx/detect'
     | '/api/fx/rates'
     | '/api/site/health'
     | '/$locale/bill-splitter'
     | '/$locale/local-apps'
+    | '/$locale/tipping'
     | '/$locale/travel-phrases'
+    | '/$locale/visa-entry'
     | '/$locale/bill-splitter/$tripId/add'
     | '/$locale/bill-splitter/$tripId/settlement'
     | '/api/phrase-audio/$country/$phraseId'
@@ -399,13 +443,17 @@ export interface FileRouteTypes {
     | '/$locale/'
     | '/$locale/bill-splitter/$tripId'
     | '/$locale/local-apps/$country'
+    | '/$locale/tipping/$country'
     | '/$locale/travel-phrases/$country'
+    | '/$locale/visa-entry/$country'
     | '/api/fx/detect'
     | '/api/fx/rates'
     | '/api/site/health'
     | '/$locale/bill-splitter/'
     | '/$locale/local-apps/'
+    | '/$locale/tipping/'
     | '/$locale/travel-phrases/'
+    | '/$locale/visa-entry/'
     | '/$locale/bill-splitter/$tripId/add'
     | '/$locale/bill-splitter/$tripId/settlement'
     | '/api/phrase-audio/$country/$phraseId'
@@ -494,11 +542,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleCurrencyRouteImport
       parentRoute: typeof LocaleRouteRoute
     }
+    '/$locale/visa-entry/': {
+      id: '/$locale/visa-entry/'
+      path: '/visa-entry'
+      fullPath: '/$locale/visa-entry/'
+      preLoaderRoute: typeof LocaleVisaEntryIndexRouteImport
+      parentRoute: typeof LocaleRouteRoute
+    }
     '/$locale/travel-phrases/': {
       id: '/$locale/travel-phrases/'
       path: '/travel-phrases'
       fullPath: '/$locale/travel-phrases/'
       preLoaderRoute: typeof LocaleTravelPhrasesIndexRouteImport
+      parentRoute: typeof LocaleRouteRoute
+    }
+    '/$locale/tipping/': {
+      id: '/$locale/tipping/'
+      path: '/tipping'
+      fullPath: '/$locale/tipping/'
+      preLoaderRoute: typeof LocaleTippingIndexRouteImport
       parentRoute: typeof LocaleRouteRoute
     }
     '/$locale/local-apps/': {
@@ -536,11 +598,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiFxDetectRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/$locale/visa-entry/$country': {
+      id: '/$locale/visa-entry/$country'
+      path: '/visa-entry/$country'
+      fullPath: '/$locale/visa-entry/$country'
+      preLoaderRoute: typeof LocaleVisaEntryCountryRouteImport
+      parentRoute: typeof LocaleRouteRoute
+    }
     '/$locale/travel-phrases/$country': {
       id: '/$locale/travel-phrases/$country'
       path: '/travel-phrases/$country'
       fullPath: '/$locale/travel-phrases/$country'
       preLoaderRoute: typeof LocaleTravelPhrasesCountryRouteImport
+      parentRoute: typeof LocaleRouteRoute
+    }
+    '/$locale/tipping/$country': {
+      id: '/$locale/tipping/$country'
+      path: '/tipping/$country'
+      fullPath: '/$locale/tipping/$country'
+      preLoaderRoute: typeof LocaleTippingCountryRouteImport
       parentRoute: typeof LocaleRouteRoute
     }
     '/$locale/local-apps/$country': {
@@ -692,10 +768,14 @@ interface LocaleRouteRouteChildren {
   LocaleIndexRoute: typeof LocaleIndexRoute
   LocaleBillSplitterTripIdRouteRoute: typeof LocaleBillSplitterTripIdRouteRouteWithChildren
   LocaleLocalAppsCountryRoute: typeof LocaleLocalAppsCountryRoute
+  LocaleTippingCountryRoute: typeof LocaleTippingCountryRoute
   LocaleTravelPhrasesCountryRoute: typeof LocaleTravelPhrasesCountryRoute
+  LocaleVisaEntryCountryRoute: typeof LocaleVisaEntryCountryRoute
   LocaleBillSplitterIndexRoute: typeof LocaleBillSplitterIndexRoute
   LocaleLocalAppsIndexRoute: typeof LocaleLocalAppsIndexRoute
+  LocaleTippingIndexRoute: typeof LocaleTippingIndexRoute
   LocaleTravelPhrasesIndexRoute: typeof LocaleTravelPhrasesIndexRoute
+  LocaleVisaEntryIndexRoute: typeof LocaleVisaEntryIndexRoute
 }
 
 const LocaleRouteRouteChildren: LocaleRouteRouteChildren = {
@@ -707,10 +787,14 @@ const LocaleRouteRouteChildren: LocaleRouteRouteChildren = {
   LocaleBillSplitterTripIdRouteRoute:
     LocaleBillSplitterTripIdRouteRouteWithChildren,
   LocaleLocalAppsCountryRoute: LocaleLocalAppsCountryRoute,
+  LocaleTippingCountryRoute: LocaleTippingCountryRoute,
   LocaleTravelPhrasesCountryRoute: LocaleTravelPhrasesCountryRoute,
+  LocaleVisaEntryCountryRoute: LocaleVisaEntryCountryRoute,
   LocaleBillSplitterIndexRoute: LocaleBillSplitterIndexRoute,
   LocaleLocalAppsIndexRoute: LocaleLocalAppsIndexRoute,
+  LocaleTippingIndexRoute: LocaleTippingIndexRoute,
   LocaleTravelPhrasesIndexRoute: LocaleTravelPhrasesIndexRoute,
+  LocaleVisaEntryIndexRoute: LocaleVisaEntryIndexRoute,
 }
 
 const LocaleRouteRouteWithChildren = LocaleRouteRoute._addFileChildren(

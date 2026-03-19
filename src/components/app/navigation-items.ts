@@ -1,4 +1,4 @@
-import { Briefcase, Clock3, Home, Languages, ReceiptText, Smartphone, WalletCards } from 'lucide-react'
+import { Briefcase, Clock3, HandCoins, Home, Languages, ReceiptText, ShieldCheck, Smartphone, WalletCards } from 'lucide-react'
 import type { ToolDefinition } from '@/lib/types'
 
 type NavItem = {
@@ -10,10 +10,12 @@ type NavItem = {
 
 export const TOOL_NAV_ITEMS: NavItem[] = [
   { key: 'nav.currency', icon: WalletCards, path: '/currency', tool: 'currency' },
-  { key: 'nav.travelPhrases', icon: Languages, path: '/travel-phrases', tool: 'travel-phrases' },
-  { key: 'nav.localApps', icon: Smartphone, path: '/local-apps', tool: 'local-apps' },
   { key: 'nav.splitBill', icon: ReceiptText, path: '/bill-splitter', tool: 'split-bill' },
   { key: 'nav.packingList', icon: Briefcase, path: '/packing-list', tool: 'packing-list' },
+  { key: 'nav.travelPhrases', icon: Languages, path: '/travel-phrases', tool: 'travel-phrases' },
+  { key: 'nav.visaEntry', icon: ShieldCheck, path: '/visa-entry', tool: 'visa-entry' },
+  { key: 'nav.tipping', icon: HandCoins, path: '/tipping', tool: 'tipping' },
+  { key: 'nav.localApps', icon: Smartphone, path: '/local-apps', tool: 'local-apps' },
   { key: 'nav.jetLag', icon: Clock3, path: '/jet-lag', tool: 'jet-lag' },
 ]
 

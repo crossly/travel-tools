@@ -7,6 +7,8 @@ import { packingMessages } from '@/lib/i18n/catalog/packing'
 import { jetLagMessages } from '@/lib/i18n/catalog/jet-lag'
 import { routeMetaMessages } from '@/lib/i18n/catalog/route-meta'
 import { splitBillMessages } from '@/lib/i18n/catalog/split-bill'
+import { tippingMessages } from '@/lib/i18n/catalog/tipping'
+import { visaEntryMessages } from '@/lib/i18n/catalog/visa-entry'
 import type { Messages } from '@/lib/i18n/types'
 
 function mergeMessageCatalogs(catalogs: Messages[]) {
@@ -34,6 +36,8 @@ export function validateMessageCatalog() {
     packingMessages,
     jetLagMessages,
     splitBillMessages,
+    tippingMessages,
+    visaEntryMessages,
   ])
   const defaultKeys = new Set(Object.keys(mergedCatalog[DEFAULT_LOCALE]))
   const issues: string[] = []
