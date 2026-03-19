@@ -58,18 +58,16 @@ describe('site helpers', () => {
     expect(resolveRequestLocale(null, 'fr-FR,zh-CN;q=0.8,en-US;q=0.7')).toBe('zh-CN')
   })
 
-  it('registers the tipping and visa entry tools in the site tool list', () => {
+  it('keeps the shell tool list limited to the currently trusted tools', () => {
     expect(TOOLS.map((tool) => tool.slug)).toEqual([
       'currency',
       'split-bill',
       'packing-list',
       'travel-phrases',
-      'visa-entry',
-      'tipping',
       'local-apps',
       'jet-lag',
     ])
-    expect(getToolBySlug('visa-entry')?.entryPath).toBe('/visa-entry')
-    expect(getToolBySlug('tipping')?.entryPath).toBe('/tipping')
+    expect(getToolBySlug('visa-entry')).toBeUndefined()
+    expect(getToolBySlug('tipping')).toBeUndefined()
   })
 })

@@ -27,7 +27,7 @@ describe('route heads', () => {
 
     expect(head.meta).toEqual(expect.arrayContaining([
       expect.objectContaining({ title: '旅行箱' }),
-      expect.objectContaining({ name: 'description', content: '统一壳、统一交互、统一主题。现在覆盖汇率、短语卡、本地 App、签证入境、小费规则、旅行 AA、行李清单和倒时差。' }),
+      expect.objectContaining({ name: 'description', content: '统一壳、统一交互、统一主题。现在覆盖汇率、短语卡、本地 App、旅行 AA、行李清单和倒时差。' }),
     ]))
     expect(head.links).toEqual(expect.arrayContaining([
       expect.objectContaining({ rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' }),
@@ -108,7 +108,7 @@ describe('route heads', () => {
       expect.objectContaining({ title: '旅行箱' }),
       expect.objectContaining({
         name: 'description',
-        content: '统一壳、统一交互、统一主题。现在覆盖汇率、短语卡、本地 App、签证入境、小费规则、旅行 AA、行李清单和倒时差。',
+        content: '统一壳、统一交互、统一主题。现在覆盖汇率、短语卡、本地 App、旅行 AA、行李清单和倒时差。',
       }),
       expect.objectContaining({
         property: 'og:image',
@@ -116,7 +116,7 @@ describe('route heads', () => {
       }),
       expect.objectContaining({
         name: 'keywords',
-        content: '旅行汇率换算,旅行短语卡,本地App推荐,签证入境速查,小费规则,旅行AA记账,行李清单,倒时差,出国旅行工具',
+        content: '旅行汇率换算,旅行短语卡,本地App推荐,旅行AA记账,行李清单,倒时差,出国旅行工具',
       }),
     ]))
     expect(head.links).toEqual(expect.arrayContaining([

@@ -41,18 +41,6 @@ export const TOOLS: ToolDefinition[] = [
     entryPath: '/travel-phrases',
   },
   {
-    id: 'tool_visa_entry',
-    slug: 'visa-entry',
-    nameKey: 'tool.visaEntry.name',
-    entryPath: '/visa-entry',
-  },
-  {
-    id: 'tool_tipping',
-    slug: 'tipping',
-    nameKey: 'tool.tipping.name',
-    entryPath: '/tipping',
-  },
-  {
     id: 'tool_local_apps',
     slug: 'local-apps',
     nameKey: 'tool.localApps.name',
