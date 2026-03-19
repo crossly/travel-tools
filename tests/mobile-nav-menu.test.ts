@@ -45,6 +45,8 @@ vi.mock('@/lib/i18n', () => ({
         'nav.home': '首页',
         'nav.currency': '汇率',
         'nav.travelPhrases': '短语卡',
+        'nav.visaEntry': '签证 / 入境',
+        'nav.tipping': '小费速查',
         'nav.localApps': '本地 App',
         'nav.splitBill': 'AA',
         'nav.packingList': '行李',
@@ -125,8 +127,8 @@ describe('MobileNavMenu', () => {
 
     expect(screen.getByRole('link', { name: '首页' })).toBeTruthy()
     expect(screen.getByRole('link', { name: '短语卡' })).toBeTruthy()
-    expect(screen.queryByRole('link', { name: '签证 / 入境' })).toBeNull()
-    expect(screen.queryByRole('link', { name: '小费速查' })).toBeNull()
+    expect(screen.getByRole('link', { name: '签证 / 入境' }).getAttribute('href')).toBe('/zh-cn/visa-entry')
+    expect(screen.getByRole('link', { name: '小费速查' }).getAttribute('href')).toBe('/zh-cn/tipping')
     expect(screen.getByRole('link', { name: '本地 App' })).toBeTruthy()
     expect(screen.getByRole('link', { name: '时差' })).toBeTruthy()
     expect(screen.getByRole('link', { name: '设置' }).getAttribute('href')).toBe('/zh-cn/settings')

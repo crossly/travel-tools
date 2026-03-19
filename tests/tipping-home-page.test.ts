@@ -37,6 +37,8 @@ vi.mock('@/lib/i18n', () => ({
         'tipping.countryCount': '{count} countries',
         'tipping.cardOpen': 'Open',
         'tipping.countryRule': '{country} usually follows this rule',
+        'tipping.sourceCountLabel': '{count} sources',
+        'tipping.reviewedLabel': 'Last reviewed {date}',
       })[key]?.replace?.('{count}', String(params?.count ?? '')) ?? key,
   }),
 }))
@@ -58,7 +60,8 @@ describe('TippingHomePage', () => {
         title: 'Japan tipping guide',
         description: 'Japan usually does not expect tips.',
         headlineRule: 'Japan usually does not expect tips.',
-        reviewedAt: '2026-03-19',
+        lastReviewed: '2026-03-19',
+        sourceCount: 2,
       },
       {
         country: 'France',
@@ -68,7 +71,8 @@ describe('TippingHomePage', () => {
         title: 'France tipping guide',
         description: 'France usually includes service.',
         headlineRule: 'France usually includes service.',
-        reviewedAt: '2026-03-19',
+        lastReviewed: '2026-03-19',
+        sourceCount: 2,
       },
     ] satisfies TippingCountrySummary[]
 

@@ -55,10 +55,12 @@ export function VisaEntryCountryPage({
               <CardDescription className="max-w-3xl text-pretty text-sm leading-6 md:text-base">
                 {guide.summary}
               </CardDescription>
-            </div>
-            <div className="rounded-2xl border border-border bg-[color:var(--surface-floating)] px-4 py-3">
-              <p className="text-sm font-medium text-foreground">{t('visaEntry.verificationNoteTitle')}</p>
-              <p className="mt-1 text-sm leading-6 text-muted-foreground">{guide.verificationNote}</p>
+              <div className="flex flex-wrap items-center gap-2 pt-1 text-sm text-muted-foreground">
+                <span className="rounded-full border border-border bg-background px-3 py-1 font-medium text-foreground/80">
+                  {guide.specialFlow}
+                </span>
+                <span>{locale === 'zh-CN' ? `最近核对 ${guide.lastReviewed}` : `Last reviewed ${guide.lastReviewed}`}</span>
+              </div>
             </div>
           </div>
         </CardHeader>
@@ -97,40 +99,35 @@ export function VisaEntryCountryPage({
         </Card>
       </div>
 
-      <div className="grid gap-4 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
-        <Card>
-          <CardHeader>
-            <CardTitle>{t('visaEntry.officialLinksTitle')}</CardTitle>
-            <CardDescription>{t('visaEntry.verificationNoteBody')}</CardDescription>
-          </CardHeader>
-          <CardContent className="grid gap-3">
-            {guide.officialLinks.map((link) => (
-              <Button key={link.href} asChild variant="secondary" className="w-full justify-between">
-                <a href={link.href} target="_blank" rel="noreferrer">
-                  <span>{link.label}</span>
-                  <ExternalLink className="size-4" />
-                </a>
-              </Button>
-            ))}
-          </CardContent>
-        </Card>
-
-        <Card tone="plain" className="border-primary/20">
-          <CardContent className="grid gap-3 pt-6">
+      <Card tone="soft">
+        <CardHeader>
+          <CardTitle>{t('visaEntry.officialLinksTitle')}</CardTitle>
+          <CardDescription>{t('visaEntry.verificationNoteBody')}</CardDescription>
+        </CardHeader>
+        <CardContent className="grid gap-3">
+          {guide.officialLinks.map((link) => (
+            <Button key={link.href} asChild variant="secondary" className="w-full justify-between">
+              <a href={link.href} target="_blank" rel="noreferrer">
+                <span>{link.label}</span>
+                <ExternalLink className="size-4" />
+              </a>
+            </Button>
+          ))}
+          <div className="rounded-2xl border border-primary/20 bg-background/80 p-4">
             <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
               <ShieldAlert className="size-4 text-primary" />
               {t('visaEntry.verificationNoteTitle')}
             </div>
-            <p className="text-sm leading-6 text-foreground/85">{guide.verificationNote}</p>
-            <Button asChild variant="outline" className="w-full justify-between">
+            <p className="mt-2 text-sm leading-6 text-foreground/85">{guide.verificationNote}</p>
+            <Button asChild variant="outline" className="mt-4 w-full justify-between">
               <Link to={getLocalizedPath(locale, '/visa-entry')}>
                 <ArrowLeft className="size-4" />
                 {t('visaEntry.backToHome')}
               </Link>
             </Button>
-          </CardContent>
-        </Card>
-      </div>
+          </div>
+        </CardContent>
+      </Card>
     </AppShell>
   )
 }

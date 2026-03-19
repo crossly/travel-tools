@@ -155,9 +155,10 @@ export function TippingHomePage({
                                 {country.country}
                               </h4>
                               <Badge variant="outline">{t(regionLabelKey[country.region])}</Badge>
+                              <Badge variant="outline">{t('tipping.sourceCountLabel', { count: country.sourceCount })}</Badge>
                             </div>
                             <p className="text-sm leading-6 text-muted-foreground">{country.headlineRule}</p>
-                            <p className="text-xs text-muted-foreground">{t('tipping.reviewedLabel', { date: country.reviewedAt })}</p>
+                            <p className="text-xs text-muted-foreground">{t('tipping.reviewedLabel', { date: country.lastReviewed })}</p>
                           </div>
                           <Button asChild variant="secondary" size="lg" className="shrink-0">
                             <Link to={getLocalizedPath(locale, `/tipping/${country.slug}`)}>
@@ -178,4 +179,3 @@ export function TippingHomePage({
     </AppShell>
   )
 }
-

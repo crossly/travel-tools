@@ -75,7 +75,7 @@ describe('VisaEntryHomePage', () => {
 })
 
 describe('VisaEntryCountryPage', () => {
-  it('renders the country guide blocks for entry checks', async () => {
+  it('renders the country guide blocks and official source links', async () => {
     const { getVisaEntryDestinationGuide } = await import('@/lib/visa-entry')
     const { VisaEntryCountryPage } = await import('@/features/visa-entry/country-page')
 
@@ -87,6 +87,9 @@ describe('VisaEntryCountryPage', () => {
     expect(screen.getByText('Customs declaration')).toBeTruthy()
     expect(screen.getByText('Health declaration')).toBeTruthy()
     expect(screen.getByText('Official links')).toBeTruthy()
-    expect(screen.getAllByText('Verify the official immigration or customs site and your airline before departure.')).toHaveLength(2)
+    expect(screen.getByText('Last reviewed: 2026-03-19')).toBeTruthy()
+    expect(screen.getByText('Ministry of Foreign Affairs visa information')).toBeTruthy()
+    expect(screen.getByText('Japan Customs traveller guidance')).toBeTruthy()
+    expect(screen.getByText('Visit Japan Web pre-arrival flow')).toBeTruthy()
   })
 })

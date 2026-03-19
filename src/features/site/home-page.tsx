@@ -1,6 +1,6 @@
 import '@/lib/i18n/messages/phrases'
 import { Link } from '@tanstack/react-router'
-import { ArrowRight, Briefcase, Clock3, Languages, ReceiptText, Smartphone, WalletCards } from 'lucide-react'
+import { ArrowRight, Briefcase, Clock3, HandCoins, Languages, ReceiptText, ShieldCheck, Smartphone, WalletCards } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { AppShell } from '@/components/app/app-shell'
 import { Badge } from '@/components/ui/badge'
@@ -47,6 +47,22 @@ export function HomePage({ locale, stats }: { locale: Locale; stats: HomePageSta
       description: t('site.phrasesPreview'),
       metric: t('site.phrasesMetric', { packs: stats.phrasePackCount, phrases: stats.totalPhraseCount }),
       path: '/travel-phrases',
+    },
+    {
+      icon: ShieldCheck,
+      badge: t('site.toolBadgeVisaEntry'),
+      title: t('tool.visaEntry.name'),
+      description: t('site.visaEntryPreview'),
+      metric: t('site.visaEntryMetric'),
+      path: '/visa-entry',
+    },
+    {
+      icon: HandCoins,
+      badge: t('site.toolBadgeTipping'),
+      title: t('tool.tipping.name'),
+      description: t('site.tippingPreview'),
+      metric: t('site.tippingMetric'),
+      path: '/tipping',
     },
     {
       icon: Smartphone,

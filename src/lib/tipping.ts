@@ -1,15 +1,7 @@
-import { TIPPING_COUNTRIES, TIPPING_REGIONS, type TippingCountryProfile, type TippingTone } from '@/data/tipping'
+import { TIPPING_COUNTRIES, TIPPING_REGIONS, type TippingCategoryId, type TippingCountryDefinition, type TippingCopy, type TippingSource } from '@/data/tipping'
 import type { Locale, PhraseRegion } from '@/lib/types'
 
-export type TippingCategoryId =
-  | 'restaurant'
-  | 'cafe'
-  | 'bar'
-  | 'taxi'
-  | 'hotel'
-  | 'guide'
-  | 'porter'
-  | 'delivery'
+export { TIPPING_REGIONS }
 
 export const TIPPING_CATEGORY_IDS: TippingCategoryId[] = [
   'restaurant',
@@ -22,8 +14,6 @@ export const TIPPING_CATEGORY_IDS: TippingCategoryId[] = [
   'delivery',
 ]
 
-export { TIPPING_REGIONS }
-
 export interface TippingCountrySummary {
   country: string
   slug: string
@@ -32,20 +22,23 @@ export interface TippingCountrySummary {
   title: string
   description: string
   headlineRule: string
-  reviewedAt: string
+  lastReviewed: string
+  sourceCount: number
 }
 
 export interface TippingCountryPack extends TippingCountrySummary {
   rules: Record<TippingCategoryId, string>
   notes: string[]
-  verificationNote: string
+  sources: Array<{ label: string; href: string }>
 }
-
-type LocalizedCopy = Record<Locale, string>
 
 const COUNTRY_NAME_FORMATTERS = new Map<Locale, Intl.DisplayNames>()
 const COUNTRY_SUMMARY_CACHE = new Map<string, TippingCountrySummary[]>()
 const COUNTRY_PACK_CACHE = new Map<string, TippingCountryPack | null>()
+
+function localize(copy: TippingCopy, locale: Locale) {
+  return copy[locale]
+}
 
 function getCountryName(locale: Locale, countryCode: string) {
   let formatter = COUNTRY_NAME_FORMATTERS.get(locale)
@@ -63,295 +56,201 @@ function getCountryFlag(countryCode: string) {
     .replace(/./g, (character) => String.fromCodePoint(127397 + character.charCodeAt(0)))
 }
 
-function copy(locale: Locale, zh: string, en: string) {
-  return locale === 'zh-CN' ? zh : en
+function localizeSource(source: TippingSource, locale: Locale) {
+  return {
+    label: localize(source.label, locale),
+    href: source.href,
+  }
 }
 
-function buildHeadlineRule(locale: Locale, country: string, tone: TippingTone) {
-  const copyMap: Record<TippingTone, LocalizedCopy> = {
-    'no-tip': {
-      'zh-CN': `{country} 通常不需要小费。`,
-      'en-US': `Tipping is usually not expected in {country}.`,
-    },
-    'round-up': {
-      'zh-CN': `在 {country}，四舍五入通常就够了。`,
-      'en-US': `Rounding up is usually enough in {country}.`,
-    },
-    customary: {
-      'zh-CN': `{country} 常见少量现金小费。`,
-      'en-US': `Small cash tips are common in {country}.`,
-    },
-    mixed: {
-      'zh-CN': `先看账单；{country} 的小费习惯会因场景而异。`,
-      'en-US': `Check the bill first; tipping in {country} depends on the setting.`,
-    },
+export function buildTippingCountrySources(def: TippingCountryDefinition, locale: Locale) {
+  const sources = def.sources.map((source) => localizeSource(source, locale))
+
+  const deduped: Array<{ label: string; href: string }> = []
+  const seen = new Set<string>()
+
+  for (const source of sources) {
+    if (seen.has(source.href)) continue
+    seen.add(source.href)
+    deduped.push(source)
   }
 
-  return copyMap[tone][locale].replace('{country}', country)
+  return deduped
 }
 
-function buildDescription(locale: Locale, country: string, tone: TippingTone) {
-  if (tone === 'no-tip') {
-    return copy(locale, `${country} 的小费速查。`, `Quick tipping guidance for ${country}.`)
-  }
-
-  if (tone === 'round-up') {
-    return copy(locale, `${country} 通常只要四舍五入或留少量零钱。`, `Rounding up or leaving a small amount is usually enough in ${country}.`)
-  }
-
-  if (tone === 'customary') {
-    return copy(locale, `${country} 常见少量现金小费。`, `Small cash tips are common in ${country}.`)
-  }
-
-  return copy(locale, `${country} 的小费习惯会因场景而异。`, `Tipping in ${country} depends on the setting.`)
-}
-
-function buildCategoryRule(locale: Locale, country: string, tone: TippingTone, category: TippingCategoryId) {
-  const templates: Record<TippingTone, Record<TippingCategoryId, LocalizedCopy>> = {
-    'no-tip': {
-      restaurant: {
-        'zh-CN': `通常不用给；如果服务特别好，可四舍五入或留一点零钱。`,
-        'en-US': `Usually not required; round up or leave a small amount only when service stands out.`,
-      },
-      cafe: {
-        'zh-CN': `咖啡馆一般不用给，留零钱即可。`,
-        'en-US': `Usually not expected in cafes; keeping the change is fine.`,
-      },
-      bar: {
-        'zh-CN': `酒吧多半不用给，点单时直接按账单结算就行。`,
-        'en-US': `Bars usually do not expect tips; paying the bill is enough.`,
-      },
-      taxi: {
-        'zh-CN': `出租车通常不用额外给，只有特别帮忙时再考虑四舍五入。`,
-        'en-US': `Taxis usually do not expect extra tip; round up only if needed.`,
-      },
-      hotel: {
-        'zh-CN': `酒店小费通常只在行李、门童等特别服务时出现。`,
-        'en-US': `Hotel tips are usually limited to luggage or standout service.`,
-      },
-      guide: {
-        'zh-CN': `导游或包车服务若帮你省了很多时间，可留少量现金表示感谢。`,
-        'en-US': `For guides or private drivers, a small cash thank-you is a reasonable gesture.`,
-      },
-      porter: {
-        'zh-CN': `行李员若提供帮助，少量现金即可。`,
-        'en-US': `A small cash thank-you is enough for porters.`,
-      },
-      delivery: {
-        'zh-CN': `外卖或送餐一般不用额外给。`,
-        'en-US': `Delivery usually does not require an extra tip.`,
-      },
-    },
-    'round-up': {
-      restaurant: {
-        'zh-CN': `先看账单，通常四舍五入或留 5% 左右就够了。`,
-        'en-US': `Check the bill first; rounding up or leaving about 5% is usually enough.`,
-      },
-      cafe: {
-        'zh-CN': `咖啡馆多半只需四舍五入。`,
-        'en-US': `Cafes usually only need a small round-up.`,
-      },
-      bar: {
-        'zh-CN': `酒吧一般四舍五入即可。`,
-        'en-US': `Bars usually only need a round-up.`,
-      },
-      taxi: {
-        'zh-CN': `出租车可直接凑整，通常不用多给。`,
-        'en-US': `Taxis can usually be rounded up without more.`,
-      },
-      hotel: {
-        'zh-CN': `酒店服务若比较到位，少量零钱即可。`,
-        'en-US': `A small coin tip is enough when hotel service feels extra helpful.`,
-      },
-      guide: {
-        'zh-CN': `导游服务若连续一整天，少量现金比大额更常见。`,
-        'en-US': `For guides, a small cash tip is more typical than a large amount.`,
-      },
-      porter: {
-        'zh-CN': `行李员通常给少量零钱即可。`,
-        'en-US': `Porters usually only need a small coin tip.`,
-      },
-      delivery: {
-        'zh-CN': `送餐和外卖通常只要四舍五入。`,
-        'en-US': `Delivery usually only needs a round-up.`,
-      },
-    },
-    customary: {
-      restaurant: {
-        'zh-CN': `通常会留 10% 左右；先看账单有没有服务费。`,
-        'en-US': `About 10% is common; check the bill for a service charge first.`,
-      },
-      cafe: {
-        'zh-CN': `咖啡馆若是桌边服务，留少量现金会比较自然。`,
-        'en-US': `For table service, a small cash tip is usually fine.`,
-      },
-      bar: {
-        'zh-CN': `吧台若有调酒或桌边服务，可留一点现金。`,
-        'en-US': `For bar service, a small cash tip is usually appreciated.`,
-      },
-      taxi: {
-        'zh-CN': `出租车可四舍五入，长距离或特别帮忙时再多留一点。`,
-        'en-US': `Round up for taxis, and add a little more for longer rides or extra help.`,
-      },
-      hotel: {
-        'zh-CN': `酒店行李和客房服务常会给少量现金。`,
-        'en-US': `Hotel porters and housekeeping often get a small cash tip.`,
-      },
-      guide: {
-        'zh-CN': `导游通常会给更明确的小费；按半天或全天服务来加。`,
-        'en-US': `Guides often expect a clearer cash tip, usually scaled to half-day or full-day service.`,
-      },
-      porter: {
-        'zh-CN': `行李员通常给少量现金表示感谢。`,
-        'en-US': `A small cash tip is common for porters.`,
-      },
-      delivery: {
-        'zh-CN': `外卖或送餐通常给少量现金或四舍五入。`,
-        'en-US': `Delivery usually gets a small cash tip or a round-up.`,
-      },
-    },
-    mixed: {
-      restaurant: {
-        'zh-CN': `先看账单；多数场景四舍五入就够，服务很好的地方可留少量现金。`,
-        'en-US': `Check the bill first; round up in most places and leave a small cash tip when service stands out.`,
-      },
-      cafe: {
-        'zh-CN': `咖啡馆通常不用多给，零钱或四舍五入即可。`,
-        'en-US': `Cafes usually only need a small round-up or change left behind.`,
-      },
-      bar: {
-        'zh-CN': `酒吧看服务场景，通常少量现金就够。`,
-        'en-US': `Bars usually only need a small cash tip depending on the service style.`,
-      },
-      taxi: {
-        'zh-CN': `出租车可直接凑整，特别服务时再多给一点。`,
-        'en-US': `Taxis can usually be rounded up, with a little extra for standout help.`,
-      },
-      hotel: {
-        'zh-CN': `酒店服务可视情况给少量现金。`,
-        'en-US': `Hotel service can usually be tipped with a small cash amount when appropriate.`,
-      },
-      guide: {
-        'zh-CN': `导游或司机若陪你一整天，少量现金很常见。`,
-        'en-US': `For full-day guides or drivers, a small cash tip is common.`,
-      },
-      porter: {
-        'zh-CN': `行李员一般给少量零钱即可。`,
-        'en-US': `Porters usually only need a small coin tip.`,
-      },
-      delivery: {
-        'zh-CN': `外卖或送餐可四舍五入；看当地习惯再补一点。`,
-        'en-US': `Delivery can usually be rounded up, with a little extra depending on local custom.`,
-      },
-    },
-  }
-
-  return templates[tone][category][locale].replace('{country}', country)
-}
-
-function buildNotes(locale: Locale, tone: TippingTone) {
-  const notes: LocalizedCopy[] = tone === 'no-tip'
-    ? [
-        {
-          'zh-CN': '先看账单里有没有服务费或小费栏。',
-          'en-US': 'Check whether service charge or a tip line is already included.',
-        },
-        {
-          'zh-CN': '零星零钱比大额现金更自然。',
-          'en-US': 'Small change usually feels more natural than a large bill.',
-        },
-      ]
-    : tone === 'round-up'
-      ? [
-          {
-            'zh-CN': '四舍五入通常就够。',
-            'en-US': 'Rounding up is usually enough.',
-          },
-          {
-            'zh-CN': '先看账单是否已经含服务费。',
-            'en-US': 'Check whether the bill already includes a service charge.',
-          },
-        ]
-      : tone === 'customary'
-        ? [
-            {
-              'zh-CN': '现金小费更稳。',
-              'en-US': 'Cash is usually the safest tip format.',
-            },
-            {
-              'zh-CN': '先确认账单有没有已经包含服务费。',
-              'en-US': 'Check the bill first in case service charge is already included.',
-            },
-          ]
-        : [
-            {
-              'zh-CN': '先看账单再决定给不给。',
-              'en-US': 'Check the bill before deciding whether to tip.',
-            },
-            {
-              'zh-CN': '场景不同，习惯也会不同。',
-              'en-US': 'The expectation changes with the setting.',
-            },
-          ]
-
-  return notes.map((item) => item[locale])
-}
-
-function buildVerificationNote(locale: Locale, reviewedAt: string) {
-  return copy(
-    locale,
-    `这是一份快速速查，最后更新时间 ${reviewedAt}。高价餐厅、包车和特殊场景请以当地说明为准。`,
-    `This is a quick lookup, last reviewed on ${reviewedAt}. Check local guidance for premium dining, private drivers, or special cases.`,
-  )
-}
-
-function buildCountryTitle(locale: Locale, country: string) {
-  return copy(locale, `${country} 小费速查`, `Tipping in ${country}`)
-}
-
-function buildCountryDescription(locale: Locale, country: string, tone: TippingTone) {
-  return copy(
-    locale,
-    tone === 'no-tip'
-      ? `${country} 的小费速查，适合付款前快速看一眼。`
-      : `${country} 的小费速查，适合付款前快速看一眼。`,
-    `Quick tipping guidance for ${country}, designed for a fast check before you pay.`,
-  )
-}
-
-function buildSummary(locale: Locale, profile: TippingCountryProfile): TippingCountrySummary {
-  const country = getCountryName(locale, profile.countryCode)
+function buildSummary(locale: Locale, def: TippingCountryDefinition): TippingCountrySummary {
+  const country = getCountryName(locale, def.countryCode)
 
   return {
     country,
-    slug: profile.slug,
-    region: profile.region,
-    flag: getCountryFlag(profile.countryCode),
-    title: buildCountryTitle(locale, country),
-    description: buildCountryDescription(locale, country, profile.tone),
-    headlineRule: buildHeadlineRule(locale, country, profile.tone),
-    reviewedAt: profile.reviewedAt,
+    slug: def.slug,
+    region: def.region,
+    flag: def.flag,
+    title: localize(def.title, locale),
+    description: localize(def.description, locale),
+    headlineRule: localize(def.headlineRule, locale),
+    lastReviewed: def.lastReviewed,
+    sourceCount: buildTippingCountrySources(def, locale).length,
   }
 }
 
-function buildPack(locale: Locale, profile: TippingCountryProfile): TippingCountryPack {
-  const summary = buildSummary(locale, profile)
+function buildPack(locale: Locale, def: TippingCountryDefinition): TippingCountryPack {
+  const summary = buildSummary(locale, def)
 
   return {
     ...summary,
     rules: TIPPING_CATEGORY_IDS.reduce((rules, category) => {
-      rules[category] = buildCategoryRule(locale, summary.country, profile.tone, category)
+      rules[category] = localize(def.rules[category], locale)
       return rules
     }, {} as Record<TippingCategoryId, string>),
-    notes: buildNotes(locale, profile.tone),
-    verificationNote: buildVerificationNote(locale, profile.reviewedAt),
+    notes: def.notes.map((note) => localize(note, locale)),
+    sources: buildTippingCountrySources(def, locale),
   }
 }
 
+function normalizeContent(value: string) {
+  return value
+    .normalize('NFKC')
+    .toLowerCase()
+    .replace(/\s+/g, '')
+    .replace(/[^\p{Letter}\p{Number}]+/gu, '')
+}
+
+function stripCountryMarkers(value: string, def: TippingCountryDefinition) {
+  const markers = [
+    def.countryCode,
+    def.slug,
+    def.countryCode.toLowerCase(),
+    def.slug.replace(/-/g, ''),
+    def.slug.replace(/-/g, ' '),
+    def.slug.replace(/-/g, '_'),
+    def.slug.split('-').join(''),
+    getCountryName('en-US', def.countryCode),
+    getCountryName('zh-CN', def.countryCode),
+  ]
+
+  let result = value
+  for (const marker of markers) {
+    if (!marker) continue
+    const escaped = marker.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    result = result.replace(new RegExp(escaped, 'gi'), '')
+  }
+  return result
+}
+
+function fingerprintDefinition(def: TippingCountryDefinition) {
+  const locales: Locale[] = ['zh-CN', 'en-US']
+  const fields = [
+    ...locales.flatMap((locale) => [
+      localize(def.title, locale),
+      localize(def.description, locale),
+      localize(def.headlineRule, locale),
+      ...TIPPING_CATEGORY_IDS.map((category) => localize(def.rules[category], locale)),
+      ...def.notes.map((note) => localize(note, locale)),
+      ...def.sources.map((source) => localize(source.label, locale)),
+    ]),
+  ]
+
+  return normalizeContent(fields.map((field) => stripCountryMarkers(field, def)).join('|'))
+}
+
+function hasTemplateLikeText(value: string, def: TippingCountryDefinition) {
+  const lower = value.toLowerCase()
+  const badFragments = [
+    '{country}',
+    '{percent}',
+    'template',
+    'placeholder',
+    'tone',
+  ]
+
+  return badFragments.some((fragment) => lower.includes(fragment))
+    || normalizeContent(stripCountryMarkers(value, def)).length < 4
+}
+
+export function validateTippingCountryDefinition(def: TippingCountryDefinition, locale: Locale = 'en-US') {
+  const errors: string[] = []
+  const sources = buildTippingCountrySources(def, locale)
+
+  if (sources.length < 2) {
+    errors.push(`${def.slug}: expected at least 2 sources`)
+  }
+
+  if (!sources.some((source) => source.href.includes('worldtravelguide.net'))) {
+    errors.push(`${def.slug}: missing World Travel Guide source`)
+  }
+
+  if (!sources.some((source) => source.href.includes('wikivoyage.org'))) {
+    errors.push(`${def.slug}: missing Wikivoyage source`)
+  }
+
+  const localizedFields = [
+    def.title['zh-CN'],
+    def.title['en-US'],
+    def.description['zh-CN'],
+    def.description['en-US'],
+    def.headlineRule['zh-CN'],
+    def.headlineRule['en-US'],
+    ...TIPPING_CATEGORY_IDS.flatMap((category) => [def.rules[category]['zh-CN'], def.rules[category]['en-US']]),
+    ...def.notes.flatMap((note) => [note['zh-CN'], note['en-US']]),
+    ...sources.flatMap((source) => [source.label, source.href]),
+  ]
+
+  const contentFieldsByLocale: Record<Locale, string[]> = {
+    'zh-CN': [
+      def.title['zh-CN'],
+      def.description['zh-CN'],
+      def.headlineRule['zh-CN'],
+      ...TIPPING_CATEGORY_IDS.map((category) => def.rules[category]['zh-CN']),
+      ...def.notes.map((note) => note['zh-CN']),
+    ],
+    'en-US': [
+      def.title['en-US'],
+      def.description['en-US'],
+      def.headlineRule['en-US'],
+      ...TIPPING_CATEGORY_IDS.map((category) => def.rules[category]['en-US']),
+      ...def.notes.map((note) => note['en-US']),
+    ],
+  }
+
+  const hasTemplateLikeRepetition = (Object.entries(contentFieldsByLocale) as Array<[Locale, string[]]>)
+    .some(([, fields]) => new Set(
+      fields
+        .map((value) => normalizeContent(stripCountryMarkers(value, def)))
+        .filter(Boolean),
+    ).size < 6)
+
+  if (hasTemplateLikeRepetition) {
+    errors.push(`${def.slug}: template-like repetition detected`)
+  }
+
+  for (const value of localizedFields) {
+    if (!value || !value.trim()) {
+      errors.push(`${def.slug}: missing tipping content`)
+      break
+    }
+
+    if (hasTemplateLikeText(value, def)) {
+      errors.push(`${def.slug}: template-like content detected`)
+      break
+    }
+  }
+
+  return errors
+}
+
 export function listTippingCountrySummaries(locale: Locale, region: PhraseRegion | 'all' = 'all') {
-  return TIPPING_COUNTRIES
-    .filter((profile) => region === 'all' || profile.region === region)
-    .map((profile) => buildSummary(locale, profile))
+  const cacheKey = `${locale}:${region}`
+  if (COUNTRY_SUMMARY_CACHE.has(cacheKey)) {
+    return COUNTRY_SUMMARY_CACHE.get(cacheKey) ?? []
+  }
+
+  const summaries = TIPPING_COUNTRIES
+    .filter((def) => region === 'all' || def.region === region)
+    .map((def) => buildSummary(locale, def))
+
+  COUNTRY_SUMMARY_CACHE.set(cacheKey, summaries)
+  return summaries
 }
 
 export function getTippingCountryPack(locale: Locale, slug: string) {
@@ -360,43 +259,58 @@ export function getTippingCountryPack(locale: Locale, slug: string) {
     return COUNTRY_PACK_CACHE.get(cacheKey) ?? null
   }
 
-  const profile = TIPPING_COUNTRIES.find((item) => item.slug === slug)
-  if (!profile) {
+  const def = TIPPING_COUNTRIES.find((item) => item.slug === slug)
+  if (!def) {
     COUNTRY_PACK_CACHE.set(cacheKey, null)
     return null
   }
 
-  const pack = buildPack(locale, profile)
+  const pack = buildPack(locale, def)
   COUNTRY_PACK_CACHE.set(cacheKey, pack)
   return pack
 }
 
-export function validateTippingCountryRegistry() {
+export function validateTippingCountryDefinitions(definitions: readonly TippingCountryDefinition[], locale: Locale = 'en-US') {
   const errors: string[] = []
-  const seen = new Set<string>()
+  const seenSlugs = new Set<string>()
+  const seenFingerprints = new Map<string, string>()
 
-  for (const profile of TIPPING_COUNTRIES) {
-    if (seen.has(profile.slug)) {
-      errors.push(`duplicate tipping slug "${profile.slug}"`)
-    }
-    seen.add(profile.slug)
-
-    if (!TIPPING_REGIONS.includes(profile.region)) {
-      errors.push(`${profile.slug}: invalid region "${profile.region}"`)
-    }
-
-    if (!profile.countryCode || profile.countryCode.length !== 2) {
-      errors.push(`${profile.slug}: invalid country code`)
-    }
-
-    if (!profile.reviewedAt) {
-      errors.push(`${profile.slug}: missing reviewedAt`)
-    }
+  if (definitions.length !== 41) {
+    errors.push(`expected 41 tipping destinations, received ${definitions.length}`)
   }
 
-  if (TIPPING_COUNTRIES.length !== 41) {
-    errors.push(`expected 41 tipping destinations, received ${TIPPING_COUNTRIES.length}`)
+  for (const def of definitions) {
+    if (seenSlugs.has(def.slug)) {
+      errors.push(`duplicate tipping slug "${def.slug}"`)
+    }
+    seenSlugs.add(def.slug)
+
+    if (!def.countryCode || def.countryCode.length !== 2) {
+      errors.push(`${def.slug}: invalid country code`)
+    }
+
+    if (!TIPPING_REGIONS.includes(def.region)) {
+      errors.push(`${def.slug}: invalid region "${def.region}"`)
+    }
+
+    if (!def.lastReviewed) {
+      errors.push(`${def.slug}: missing lastReviewed`)
+    }
+
+    errors.push(...validateTippingCountryDefinition(def, locale))
+
+    const fingerprint = fingerprintDefinition(def)
+    const previousSlug = seenFingerprints.get(fingerprint)
+    if (previousSlug) {
+      errors.push(`${def.slug}: duplicate-looking content matches ${previousSlug}`)
+    } else {
+      seenFingerprints.set(fingerprint, def.slug)
+    }
   }
 
   return errors
+}
+
+export function validateTippingCountryRegistry() {
+  return validateTippingCountryDefinitions(TIPPING_COUNTRIES)
 }

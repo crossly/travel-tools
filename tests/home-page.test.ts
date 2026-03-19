@@ -93,7 +93,7 @@ describe('HomePage', () => {
     render(createElement(HomePage, { locale: 'zh-CN', stats: HOME_PAGE_STATS }))
 
     expect(screen.getByTestId('home-companion-list')).toBeTruthy()
-    expect(screen.getAllByTestId('home-companion-item')).toHaveLength(3)
+    expect(screen.getAllByTestId('home-companion-item')).toHaveLength(5)
   })
 
   it('does not render the future expansion card', async () => {
@@ -114,13 +114,15 @@ describe('HomePage', () => {
     expect(screen.getByText('现场沟通时先打开')).toBeTruthy()
   })
 
-  it('does not surface the paused visa entry and tipping tools on the homepage', async () => {
+  it('surfaces visa entry and tipping alongside the companion tools', async () => {
     const { HomePage } = await import('@/features/site/home-page')
 
     render(createElement(HomePage, { locale: 'zh-CN', stats: HOME_PAGE_STATS }))
 
-    expect(screen.queryByText('签证 / 入境')).toBeNull()
-    expect(screen.queryByText('小费速查')).toBeNull()
+    expect(screen.getAllByText('签证 / 入境')).toHaveLength(2)
+    expect(screen.getByText('边检前先核对')).toBeTruthy()
+    expect(screen.getAllByText('小费速查')).toHaveLength(2)
+    expect(screen.getByText('付款前先看习惯')).toBeTruthy()
   })
 
   it('renders the packing list tool card', async () => {
@@ -133,6 +135,8 @@ describe('HomePage', () => {
     expect(screen.getByText('付款前先看汇率')).toBeTruthy()
     expect(screen.getByText('同行记账时先打开')).toBeTruthy()
     expect(screen.getByText('打包')).toBeTruthy()
+    expect(screen.getByText('入境')).toBeTruthy()
+    expect(screen.getByText('小费')).toBeTruthy()
     expect(screen.getByText('应用')).toBeTruthy()
     expect(screen.getByText('时区')).toBeTruthy()
   })

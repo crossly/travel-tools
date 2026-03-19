@@ -1,66 +1,98 @@
-import type { PhraseRegion } from '@/lib/types'
+import { TIPPING_COUNTRY_ARGENTINA } from './countries/argentina'
+import { TIPPING_COUNTRY_AUSTRALIA } from './countries/australia'
+import { TIPPING_COUNTRY_AUSTRIA } from './countries/austria'
+import { TIPPING_COUNTRY_BRAZIL } from './countries/brazil'
+import { TIPPING_COUNTRY_CAMBODIA } from './countries/cambodia'
+import { TIPPING_COUNTRY_CANADA } from './countries/canada'
+import { TIPPING_COUNTRY_CHILE } from './countries/chile'
+import { TIPPING_COUNTRY_CHINA } from './countries/china'
+import { TIPPING_COUNTRY_COLOMBIA } from './countries/colombia'
+import { TIPPING_COUNTRY_COSTA_RICA } from './countries/costa-rica'
+import { TIPPING_COUNTRY_EGYPT } from './countries/egypt'
+import { TIPPING_COUNTRY_FRANCE } from './countries/france'
+import { TIPPING_COUNTRY_GERMANY } from './countries/germany'
+import { TIPPING_COUNTRY_GREECE } from './countries/greece'
+import { TIPPING_COUNTRY_HONG_KONG } from './countries/hong-kong'
+import { TIPPING_COUNTRY_INDIA } from './countries/india'
+import { TIPPING_COUNTRY_INDONESIA } from './countries/indonesia'
+import { TIPPING_COUNTRY_ITALY } from './countries/italy'
+import { TIPPING_COUNTRY_JAPAN } from './countries/japan'
+import { TIPPING_COUNTRY_KENYA } from './countries/kenya'
+import { TIPPING_COUNTRY_MALAYSIA } from './countries/malaysia'
+import { TIPPING_COUNTRY_MAURITIUS } from './countries/mauritius'
+import { TIPPING_COUNTRY_MEXICO } from './countries/mexico'
+import { TIPPING_COUNTRY_MOROCCO } from './countries/morocco'
+import { TIPPING_COUNTRY_NETHERLANDS } from './countries/netherlands'
+import { TIPPING_COUNTRY_NEW_ZEALAND } from './countries/new-zealand'
+import { TIPPING_COUNTRY_PERU } from './countries/peru'
+import { TIPPING_COUNTRY_PHILIPPINES } from './countries/philippines'
+import { TIPPING_COUNTRY_PORTUGAL } from './countries/portugal'
+import { TIPPING_COUNTRY_SINGAPORE } from './countries/singapore'
+import { TIPPING_COUNTRY_SOUTH_AFRICA } from './countries/south-africa'
+import { TIPPING_COUNTRY_SOUTH_KOREA } from './countries/south-korea'
+import { TIPPING_COUNTRY_SPAIN } from './countries/spain'
+import { TIPPING_COUNTRY_SWITZERLAND } from './countries/switzerland'
+import { TIPPING_COUNTRY_TAIWAN } from './countries/taiwan'
+import { TIPPING_COUNTRY_TANZANIA } from './countries/tanzania'
+import { TIPPING_COUNTRY_THAILAND } from './countries/thailand'
+import { TIPPING_COUNTRY_TURKEY } from './countries/turkey'
+import { TIPPING_COUNTRY_UNITED_ARAB_EMIRATES } from './countries/united-arab-emirates'
+import { TIPPING_COUNTRY_UNITED_STATES } from './countries/united-states'
+import { TIPPING_COUNTRY_VIETNAM } from './countries/vietnam'
+import { copy, defineTippingCountry, source, type TippingCategoryId, type TippingCountryDefinition, type TippingCopy, type TippingSource } from './schema'
 
-export type TippingTone = 'no-tip' | 'round-up' | 'customary' | 'mixed'
+export const TIPPING_REGIONS = ['all', 'asia', 'europe', 'americas', 'africa', 'middle-east', 'oceania'] as const
 
-export interface TippingCountryProfile {
-  slug: string
-  countryCode: string
-  region: PhraseRegion
-  tone: TippingTone
-  reviewedAt: string
+export const TIPPING_COUNTRIES: readonly TippingCountryDefinition[] = [
+  TIPPING_COUNTRY_CAMBODIA,
+  TIPPING_COUNTRY_CHINA,
+  TIPPING_COUNTRY_HONG_KONG,
+  TIPPING_COUNTRY_INDIA,
+  TIPPING_COUNTRY_INDONESIA,
+  TIPPING_COUNTRY_JAPAN,
+  TIPPING_COUNTRY_MALAYSIA,
+  TIPPING_COUNTRY_PHILIPPINES,
+  TIPPING_COUNTRY_SINGAPORE,
+  TIPPING_COUNTRY_SOUTH_KOREA,
+  TIPPING_COUNTRY_TAIWAN,
+  TIPPING_COUNTRY_THAILAND,
+  TIPPING_COUNTRY_VIETNAM,
+  TIPPING_COUNTRY_TURKEY,
+  TIPPING_COUNTRY_UNITED_ARAB_EMIRATES,
+  TIPPING_COUNTRY_AUSTRIA,
+  TIPPING_COUNTRY_FRANCE,
+  TIPPING_COUNTRY_GERMANY,
+  TIPPING_COUNTRY_GREECE,
+  TIPPING_COUNTRY_ITALY,
+  TIPPING_COUNTRY_NETHERLANDS,
+  TIPPING_COUNTRY_PORTUGAL,
+  TIPPING_COUNTRY_SPAIN,
+  TIPPING_COUNTRY_SWITZERLAND,
+  TIPPING_COUNTRY_ARGENTINA,
+  TIPPING_COUNTRY_BRAZIL,
+  TIPPING_COUNTRY_CANADA,
+  TIPPING_COUNTRY_CHILE,
+  TIPPING_COUNTRY_COLOMBIA,
+  TIPPING_COUNTRY_COSTA_RICA,
+  TIPPING_COUNTRY_MEXICO,
+  TIPPING_COUNTRY_PERU,
+  TIPPING_COUNTRY_UNITED_STATES,
+  TIPPING_COUNTRY_EGYPT,
+  TIPPING_COUNTRY_KENYA,
+  TIPPING_COUNTRY_MAURITIUS,
+  TIPPING_COUNTRY_MOROCCO,
+  TIPPING_COUNTRY_SOUTH_AFRICA,
+  TIPPING_COUNTRY_TANZANIA,
+  TIPPING_COUNTRY_AUSTRALIA,
+  TIPPING_COUNTRY_NEW_ZEALAND,
+] as const
+
+export {
+  copy,
+  defineTippingCountry,
+  source,
+  type TippingCategoryId,
+  type TippingCountryDefinition,
+  type TippingCopy,
+  type TippingSource,
 }
-
-export const TIPPING_REGIONS: Array<'all' | PhraseRegion> = [
-  'all',
-  'asia',
-  'europe',
-  'americas',
-  'africa',
-  'middle-east',
-  'oceania',
-]
-
-export const TIPPING_COUNTRIES = [
-  { slug: 'cambodia', countryCode: 'KH', region: 'asia', tone: 'mixed', reviewedAt: '2026-03-19' },
-  { slug: 'china', countryCode: 'CN', region: 'asia', tone: 'no-tip', reviewedAt: '2026-03-19' },
-  { slug: 'hong-kong', countryCode: 'HK', region: 'asia', tone: 'no-tip', reviewedAt: '2026-03-19' },
-  { slug: 'india', countryCode: 'IN', region: 'asia', tone: 'customary', reviewedAt: '2026-03-19' },
-  { slug: 'indonesia', countryCode: 'ID', region: 'asia', tone: 'mixed', reviewedAt: '2026-03-19' },
-  { slug: 'japan', countryCode: 'JP', region: 'asia', tone: 'no-tip', reviewedAt: '2026-03-19' },
-  { slug: 'malaysia', countryCode: 'MY', region: 'asia', tone: 'mixed', reviewedAt: '2026-03-19' },
-  { slug: 'philippines', countryCode: 'PH', region: 'asia', tone: 'customary', reviewedAt: '2026-03-19' },
-  { slug: 'singapore', countryCode: 'SG', region: 'asia', tone: 'no-tip', reviewedAt: '2026-03-19' },
-  { slug: 'south-korea', countryCode: 'KR', region: 'asia', tone: 'no-tip', reviewedAt: '2026-03-19' },
-  { slug: 'taiwan', countryCode: 'TW', region: 'asia', tone: 'no-tip', reviewedAt: '2026-03-19' },
-  { slug: 'thailand', countryCode: 'TH', region: 'asia', tone: 'mixed', reviewedAt: '2026-03-19' },
-  { slug: 'vietnam', countryCode: 'VN', region: 'asia', tone: 'mixed', reviewedAt: '2026-03-19' },
-  { slug: 'turkey', countryCode: 'TR', region: 'middle-east', tone: 'mixed', reviewedAt: '2026-03-19' },
-  { slug: 'united-arab-emirates', countryCode: 'AE', region: 'middle-east', tone: 'mixed', reviewedAt: '2026-03-19' },
-  { slug: 'austria', countryCode: 'AT', region: 'europe', tone: 'round-up', reviewedAt: '2026-03-19' },
-  { slug: 'france', countryCode: 'FR', region: 'europe', tone: 'round-up', reviewedAt: '2026-03-19' },
-  { slug: 'germany', countryCode: 'DE', region: 'europe', tone: 'round-up', reviewedAt: '2026-03-19' },
-  { slug: 'greece', countryCode: 'GR', region: 'europe', tone: 'round-up', reviewedAt: '2026-03-19' },
-  { slug: 'italy', countryCode: 'IT', region: 'europe', tone: 'round-up', reviewedAt: '2026-03-19' },
-  { slug: 'netherlands', countryCode: 'NL', region: 'europe', tone: 'round-up', reviewedAt: '2026-03-19' },
-  { slug: 'portugal', countryCode: 'PT', region: 'europe', tone: 'round-up', reviewedAt: '2026-03-19' },
-  { slug: 'spain', countryCode: 'ES', region: 'europe', tone: 'round-up', reviewedAt: '2026-03-19' },
-  { slug: 'switzerland', countryCode: 'CH', region: 'europe', tone: 'round-up', reviewedAt: '2026-03-19' },
-  { slug: 'argentina', countryCode: 'AR', region: 'americas', tone: 'customary', reviewedAt: '2026-03-19' },
-  { slug: 'brazil', countryCode: 'BR', region: 'americas', tone: 'customary', reviewedAt: '2026-03-19' },
-  { slug: 'canada', countryCode: 'CA', region: 'americas', tone: 'customary', reviewedAt: '2026-03-19' },
-  { slug: 'chile', countryCode: 'CL', region: 'americas', tone: 'customary', reviewedAt: '2026-03-19' },
-  { slug: 'colombia', countryCode: 'CO', region: 'americas', tone: 'customary', reviewedAt: '2026-03-19' },
-  { slug: 'costa-rica', countryCode: 'CR', region: 'americas', tone: 'customary', reviewedAt: '2026-03-19' },
-  { slug: 'mexico', countryCode: 'MX', region: 'americas', tone: 'customary', reviewedAt: '2026-03-19' },
-  { slug: 'peru', countryCode: 'PE', region: 'americas', tone: 'customary', reviewedAt: '2026-03-19' },
-  { slug: 'united-states', countryCode: 'US', region: 'americas', tone: 'customary', reviewedAt: '2026-03-19' },
-  { slug: 'egypt', countryCode: 'EG', region: 'africa', tone: 'mixed', reviewedAt: '2026-03-19' },
-  { slug: 'kenya', countryCode: 'KE', region: 'africa', tone: 'mixed', reviewedAt: '2026-03-19' },
-  { slug: 'mauritius', countryCode: 'MU', region: 'africa', tone: 'mixed', reviewedAt: '2026-03-19' },
-  { slug: 'morocco', countryCode: 'MA', region: 'africa', tone: 'mixed', reviewedAt: '2026-03-19' },
-  { slug: 'south-africa', countryCode: 'ZA', region: 'africa', tone: 'mixed', reviewedAt: '2026-03-19' },
-  { slug: 'tanzania', countryCode: 'TZ', region: 'africa', tone: 'mixed', reviewedAt: '2026-03-19' },
-  { slug: 'australia', countryCode: 'AU', region: 'oceania', tone: 'no-tip', reviewedAt: '2026-03-19' },
-  { slug: 'new-zealand', countryCode: 'NZ', region: 'oceania', tone: 'no-tip', reviewedAt: '2026-03-19' },
-] as const satisfies readonly TippingCountryProfile[]
-

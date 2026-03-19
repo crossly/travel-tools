@@ -73,6 +73,11 @@ export function TippingCountryPage({
             <div className="rounded-2xl border border-border bg-[color:var(--surface-floating)] px-4 py-3">
               <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">{t('tipping.headlineLabel')}</p>
               <p className="mt-2 text-sm leading-6 text-foreground">{pack.headlineRule}</p>
+              <p className="mt-3 text-xs text-muted-foreground">
+                {t('tipping.reviewedLabel', { date: pack.lastReviewed })}
+                {' · '}
+                {t('tipping.sourceCountLabel', { count: pack.sourceCount })}
+              </p>
             </div>
           </div>
         </CardHeader>
@@ -112,16 +117,19 @@ export function TippingCountryPage({
 
         <Card tone="soft">
           <CardHeader className="gap-3">
-            <CardTitle>{t('tipping.verificationLabel')}</CardTitle>
+            <CardTitle>{t('tipping.sourcesLabel')}</CardTitle>
           </CardHeader>
-          <CardContent className="pt-0">
-            <p className="rounded-2xl border border-border/70 bg-background/80 px-4 py-3 text-sm leading-6 text-muted-foreground">
-              {pack.verificationNote}
-            </p>
+          <CardContent className="grid gap-3 pt-0">
+            {pack.sources.map((source) => (
+              <Button key={source.href} asChild variant="secondary" className="w-full justify-between">
+                <a href={source.href} target="_blank" rel="noreferrer">
+                  <span>{source.label}</span>
+                </a>
+              </Button>
+            ))}
           </CardContent>
         </Card>
       </section>
     </AppShell>
   )
 }
-

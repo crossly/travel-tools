@@ -34,10 +34,10 @@ vi.mock('@/lib/i18n', () => ({
         'tipping.porterLabel': 'Porter',
         'tipping.deliveryLabel': 'Delivery',
         'tipping.notesLabel': 'Notes',
-        'tipping.officialLinksLabel': 'Official links',
-        'tipping.notRequired': 'Usually not required',
-        'tipping.roundUp': 'Round up only',
-        'tipping.percentTip': '{percent}% is common',
+        'tipping.sourcesLabel': 'Sources',
+        'tipping.sourceCountLabel': '{count} sources',
+        'tipping.reviewedLabel': 'Last reviewed {date}',
+        'tipping.countryDescription': 'Quick tipping lookup for {country}',
       })[key]?.replace?.('{percent}', String(params?.percent ?? '')) ?? key,
   }),
 }))
@@ -58,7 +58,8 @@ describe('TippingCountryPage', () => {
       title: 'Japan tipping guide',
       description: 'Quick tipping lookup for Japan.',
       headlineRule: 'Tipping is usually not expected in Japan.',
-      reviewedAt: '2026-03-19',
+      lastReviewed: '2026-03-19',
+      sourceCount: 2,
       rules: {
         restaurant: 'Tipping is usually not expected.',
         cafe: 'Round up only if you want to.',
@@ -70,7 +71,10 @@ describe('TippingCountryPage', () => {
         delivery: 'Usually not required.',
       },
       notes: ['Cash may be easier than card for small tips.'],
-      verificationNote: 'This is a quick lookup only.',
+      sources: [
+        { label: 'Wikivoyage: Japan', href: 'https://en.wikivoyage.org/wiki/Japan' },
+        { label: 'World Travel Guide: Japan', href: 'https://www.worldtravelguide.net/guides/asia/japan/' },
+      ],
     } satisfies TippingCountryPack
 
     render(createElement(TippingCountryPage, { locale: 'en-US', pack }))
@@ -79,6 +83,8 @@ describe('TippingCountryPage', () => {
     expect(screen.getByText('Restaurant')).toBeTruthy()
     expect(screen.getByText('Delivery')).toBeTruthy()
     expect(screen.getByText('Cash may be easier than card for small tips.')).toBeTruthy()
+    expect(screen.getByRole('link', { name: 'Wikivoyage: Japan' })).toBeTruthy()
+    expect(screen.getByRole('link', { name: 'World Travel Guide: Japan' })).toBeTruthy()
   })
 
   it('shows the not found state when a country is missing', async () => {
