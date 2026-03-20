@@ -41,6 +41,7 @@ type RootAliasHeadOptions = {
   locale: Locale
   title: string
   description: string
+  keywords?: string[]
 }
 
 type ToolRouteHeadOptions = Omit<PublicPageHeadOptions, 'title' | 'description' | 'keywords'> & {
@@ -258,13 +259,14 @@ export function buildPrivatePageHead({ locale, title, description }: PrivatePage
   return { meta }
 }
 
-export function buildRootAliasHead({ locale, title, description }: RootAliasHeadOptions): HeadDefinition {
+export function buildRootAliasHead({ locale, title, description, keywords }: RootAliasHeadOptions): HeadDefinition {
   const canonicalUrl = absoluteUrl(getLocalizedPath(locale, '/'))
 
   return {
     meta: [
       { title: buildDocumentTitle(locale, title) },
       { name: 'description', content: description },
+      ...(keywords?.length ? [{ name: 'keywords', content: keywords.join(',') }] : []),
       { name: 'robots', content: 'noindex, follow' },
     ],
     links: [

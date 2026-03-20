@@ -25,6 +25,7 @@ export const Route = createRootRoute({
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { title: buildDocumentTitle(locale) },
         { name: 'description', content: translate(locale, 'site.homeDescription') },
+        { name: 'keywords', content: translate(locale, 'site.homeKeywords') },
         ...(googleSiteVerification ? [{ name: 'google-site-verification', content: googleSiteVerification }] : []),
         ...(bingSiteVerification ? [{ name: 'msvalidate.01', content: bingSiteVerification }] : []),
       ],

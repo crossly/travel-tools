@@ -16,6 +16,7 @@ export const Route = createFileRoute('/')({
       locale,
       title: translate(locale, 'app.name'),
       description: translate(locale, 'site.homeDescription'),
+      keywords: translate(locale, 'site.homeKeywords').split(','),
     })
   },
   component: RootIndexRouteComponent,
