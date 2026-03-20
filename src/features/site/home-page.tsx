@@ -135,7 +135,7 @@ function HomePriorityItem({ locale, icon: Icon, badge, title, description, metri
     <li data-testid="home-priority-item">
       <Link to={getLocalizedPath(locale, path)} className="home-priority-item">
         <div className="home-priority-item-top">
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary/18 bg-primary/8 px-3 py-1 text-xs font-semibold text-foreground">
+          <div className="home-priority-badge inline-flex items-center gap-2 rounded-full border border-primary/18 bg-primary/8 px-3 py-1 text-xs font-semibold text-foreground">
             <Icon className="size-4" />
             <span>{badge}</span>
           </div>
@@ -156,7 +156,7 @@ function CompanionToolItem({ locale, icon: Icon, badge, title, description, metr
     <li className="home-companion-item" data-testid="home-companion-item">
       <article className="home-companion-panel">
         <div className="flex items-center gap-3">
-          <div className="inline-flex size-9 items-center justify-center rounded-xl border border-primary/20 bg-primary/10">
+          <div className="home-companion-icon inline-flex size-9 items-center justify-center rounded-xl border border-primary/20 bg-primary/10">
             <Icon className="size-4 text-primary" />
           </div>
           <Badge variant="outline">{badge}</Badge>

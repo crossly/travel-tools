@@ -90,4 +90,13 @@ describe('home landing styling', () => {
     expect(css).not.toContain('Fraunces')
     expect(css).not.toContain('Source+Sans+3')
   })
+
+  it('keeps dark mode homepage surfaces flatter than the light theme treatment', () => {
+    const css = readFileSync(resolve(process.cwd(), 'src/styles.css'), 'utf8')
+
+    expect(css).toContain('html.dark .home-priority-item')
+    expect(css).toContain('html.dark .home-companion-panel')
+    expect(css).not.toContain('linear-gradient(180deg, color-mix(in oklab, var(--surface-floating) 84%, rgba(255, 255, 255, 0.02) 16%), rgba(18, 21, 24, 0.9))')
+    expect(css).not.toContain('box-shadow: inset 0 1px 0 rgba(255, 247, 235, 0.03);')
+  })
 })
